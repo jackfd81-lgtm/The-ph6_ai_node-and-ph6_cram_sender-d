@@ -1,0 +1,45 @@
+# Personal / system dotfiles
+.bash_history
+.bash_logout
+.bashrc
+.cache/
+.cargo/
+.claude/
+.claude.json
+.config/
+.gitconfig
+.hermes/
+.local/
+.npm/
+.npm-global/
+.npmrc
+.ollama/
+.openclaw/
+.pi/
+.profile
+.ssh/
+.sudo_as_admin_successful
+.zshrc
+
+# Downloads
+Downloads/
+
+# Large generated data
+ph6_safe_inventory_report.txt
+ph6_stack_inventory_report.json
+
+# Archives
+*.tar.gz
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# Env
+.env
+*.log
