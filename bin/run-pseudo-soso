@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+cd "$HOME/ph6_pseudo_soso"
+source "$HOME/ph6_pseudo_soso/.venv/bin/activate"
+
+python3 "$HOME/ph6_pseudo_soso/pseudo_soso_agent.py" "$@"

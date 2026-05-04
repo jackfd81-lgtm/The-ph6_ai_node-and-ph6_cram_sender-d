@@ -27,6 +27,21 @@ Downloads/
 # Large generated data
 ph6_safe_inventory_report.txt
 ph6_stack_inventory_report.json
+test_ph6_stack_inventory.py
+
+# Generated reports
+ph6_total_systems_test_*.txt
+ph6_300_validation_*.txt
+pi5_unfinished_work_report_*.txt
+
+# Runtime state dirs (separate git repos or transient data)
+.ph6_agents/
+.ph6_pseudo_soso/
+ph6_agents/
+ph6_pseudo_soso/
+ph6lite_cam/
+archive/
+oi-env/
 
 # Archives
 *.tar.gz

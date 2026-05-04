@@ -1,0 +1,9 @@
+incoming/
+runs/
+reports/
+logs/
+tools/
+.venv/
+__pycache__/
+*.py[cod]
+*.log

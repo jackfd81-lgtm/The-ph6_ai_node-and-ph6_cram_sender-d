@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+cd "$HOME/ph6_agents"
+source "$HOME/ph6_agents/.venv/bin/activate"
+
+python3 "$HOME/ph6_agents/ph6_agents.py" "$@"

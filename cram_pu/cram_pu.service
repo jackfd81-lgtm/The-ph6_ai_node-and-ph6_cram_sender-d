@@ -1,0 +1,15 @@
+[Unit]
+Description=PH6 CRAM-PU Receiver Node
+After=network.target
+
+[Service]
+Type=simple
+User=jack
+WorkingDirectory=/home/jack/cram_pu
+Environment=PATH=/home/jack/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 /home/jack/cram_pu/cram_pu_server.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

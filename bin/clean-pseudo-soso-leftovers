@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Cleaning known non-authoritative generated files..."
+
+cd "$HOME/frame_filter" 2>/dev/null && {
+  rm -f ph6lite_coherence_report.json
+  find . -type d -name "__pycache__" -prune -exec rm -rf {} +
+  git status --short
+}
+
+cd "$HOME/ph6_storage_monitor" 2>/dev/null && {
+  find . -type d -name "__pycache__" -prune -exec rm -rf {} +
+  git status --short
+}
+
+echo "Done."
