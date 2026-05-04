@@ -1,6 +1,6 @@
-from fastapi import FastAPI, UploadFile, File, Form
+from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 import shutil
 import json
 import hashlib
@@ -27,7 +27,7 @@ def blake2b256_file(path: Path) -> str:
     return h.hexdigest()
 
 def now_id():
-    return datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+    return datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
 
 @app.get("/health")
 def health():
@@ -76,7 +76,7 @@ async def upload_run(
             "verdict": "PASS" if soso_status.upper() in ["ADVISORY_ONLY", "NONE"] else "HOLD"
         },
         "cram_pu_verdict": "ACCEPTED_FOR_REPLAY" if valid else "INVALID_RUN_REJECTED_FOR_CERT",
-        "timestamp_utc": datetime.utcnow().isoformat() + "Z"
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
     }
 
     report_path = REPORTS / f"{run_id}.json"
@@ -86,6 +86,31 @@ async def upload_run(
         log.write(json.dumps(report) + "\n")
 
     return report
+
+@app.get("/list_runs")
+def list_runs():
+    runs = []
+    for rp in sorted(REPORTS.glob("*.json")):
+        try:
+            r = json.loads(rp.read_text())
+            runs.append({
+                "run_id":       r.get("run_id"),
+                "run_name":     r.get("run_name"),
+                "frame_count":  r.get("frame_count"),
+                "valid_run":    r.get("valid_run"),
+                "cram_pu_verdict": r.get("cram_pu_verdict"),
+                "timestamp_utc": r.get("timestamp_utc"),
+            })
+        except Exception:
+            pass
+    return {"runs": runs, "count": len(runs)}
+
+@app.get("/get_report/{run_id}")
+def get_report(run_id: str):
+    report_path = REPORTS / f"{run_id}.json"
+    if not report_path.exists():
+        raise HTTPException(status_code=404, detail=f"run_id not found: {run_id}")
+    return json.loads(report_path.read_text())
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8765)
