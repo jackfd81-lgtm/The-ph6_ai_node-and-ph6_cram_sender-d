@@ -1,0 +1,18 @@
+{
+  "swarm_id": "S1",
+  "role": "active_memory",
+  "authority": "NONE",
+  "lane": "LANE_2_ADVISORY",
+  "ssmt_version": "1.0",
+  "ttl_seconds": 30,
+  "output_type": "advisory",
+  "advisory_payload": {
+    "active_cram_refs": ["cram://frame/0001", "cram://frame/0002"],
+    "active_tok_refs": ["tok://rt/0001"],
+    "summary": "current advisory state snapshot"
+  },
+  "drift_score": 0,
+  "confidence_fp": 95,
+  "created_at": 1746403200.0,
+  "dependency_for_replay": false
+}

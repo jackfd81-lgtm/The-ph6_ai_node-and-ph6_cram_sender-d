@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SwarmAuditEvent",
+  "type": "object",
+  "required": ["event_type", "swarm_id", "timestamp", "packet_ref"],
+  "properties": {
+    "event_type":  { "type": "string", "enum": ["written", "validated", "rejected"] },
+    "swarm_id":    { "type": "string" },
+    "timestamp":   { "type": "number" },
+    "packet_ref":  { "type": "string" },
+    "detail":      { "type": "string" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SSMTReplayReceipt",
+  "type": "object",
+  "required": ["cycle_id", "packets_validated", "all_independent", "timestamp"],
+  "properties": {
+    "cycle_id":           { "type": "string" },
+    "packets_validated":  { "type": "integer", "minimum": 0 },
+    "all_independent":    { "type": "boolean" },
+    "timestamp":          { "type": "number" },
+    "closure_result":     { "type": "object" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SwarmPacket",
+  "type": "object",
+  "required": [
+    "swarm_id", "role", "authority", "lane", "ssmt_version",
+    "ttl_seconds", "output_type", "advisory_payload",
+    "drift_score", "confidence_fp", "created_at", "dependency_for_replay"
+  ],
+  "properties": {
+    "swarm_id":            { "type": "string", "enum": ["S1","S2","S3","S4","S5","S6","S7","S8","S9"] },
+    "role":                { "type": "string" },
+    "authority":           { "type": "string", "const": "NONE" },
+    "lane":                { "type": "string", "const": "LANE_2_ADVISORY" },
+    "ssmt_version":        { "type": "string", "const": "1.0" },
+    "ttl_seconds":         { "type": "integer", "minimum": 1 },
+    "output_type":         { "type": "string", "const": "advisory" },
+    "advisory_payload":    { "type": "object" },
+    "drift_score":         { "type": "integer", "minimum": 0 },
+    "confidence_fp":       { "type": "integer", "minimum": 0, "maximum": 100 },
+    "created_at":          { "type": "number" },
+    "dependency_for_replay": { "type": "boolean", "const": false }
+  },
+  "additionalProperties": false
+}

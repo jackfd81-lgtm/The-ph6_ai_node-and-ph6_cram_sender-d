@@ -1,0 +1,18 @@
+{
+  "swarm_id": "S9",
+  "role": "future_acquisition",
+  "authority": "NONE",
+  "lane": "LANE_2_ADVISORY",
+  "ssmt_version": "1.0",
+  "ttl_seconds": 600,
+  "output_type": "advisory",
+  "advisory_payload": {
+    "predicted_gaps": ["cram://frame/0010", "tok://rt/0005"],
+    "acquisition_targets": ["cram://frame/0010"],
+    "future_facing": true
+  },
+  "drift_score": 0,
+  "confidence_fp": 50,
+  "created_at": 1746403320.0,
+  "dependency_for_replay": false
+}

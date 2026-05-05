@@ -1,0 +1,17 @@
+{
+  "swarm_id": "S8",
+  "role": "drift_tracking",
+  "authority": "NONE",
+  "lane": "LANE_2_ADVISORY",
+  "ssmt_version": "1.0",
+  "ttl_seconds": 300,
+  "output_type": "advisory",
+  "advisory_payload": {
+    "drift_detected": true,
+    "conflict_signals": ["tok://rt/0002 expired", "cram://frame/0003 stale"]
+  },
+  "drift_score": 4,
+  "confidence_fp": 75,
+  "created_at": 1746403260.0,
+  "dependency_for_replay": false
+}
