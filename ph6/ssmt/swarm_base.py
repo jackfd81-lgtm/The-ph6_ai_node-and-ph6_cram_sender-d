@@ -28,6 +28,7 @@ class BaseSwarm(ABC):
             drift_score=payload.pop("_drift_score", 0),
             confidence_fp=payload.pop("_confidence_fp", 100),
             dependency_for_replay=False,
+            cram_packet_hash=data.cram_packet_hash,
         )
 
     def _assert_no_authority_leak(self, payload: dict) -> None:

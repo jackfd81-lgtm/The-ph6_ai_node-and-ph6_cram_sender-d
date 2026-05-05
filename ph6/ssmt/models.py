@@ -8,6 +8,7 @@ class SwarmInput:
     cram_refs: List[str]
     tok_refs: List[str]
     advisory_refs: List[str]
+    cram_packet_hash: str = ""
 
 
 @dataclass
@@ -24,3 +25,4 @@ class SwarmPacket:
     confidence_fp: int
     created_at: float = field(default_factory=time.time)
     dependency_for_replay: bool = False
+    cram_packet_hash: str = ""
