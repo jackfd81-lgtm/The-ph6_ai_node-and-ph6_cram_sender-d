@@ -98,8 +98,12 @@ No JEDI override.
 No advisory return path.
 ```
 
-This matches the locked canon: PSEUDO-M measures, PSEUDO-A adjudicates, and no AI, token,
-SoSo output, Swarm output, or external service may generate authoritative PASS/DROP verdicts.
+This matches the locked canon: PSEUDO-M measures, PSEUDO-A adjudicates.
+
+SoSo, JEDI, Swarm, and TOK may analyze advisory continuity, drift, topology, and epistemic
+pressure. They may not decide truth, certify evidence, influence PASS/DROP, alter PSEUDO
+thresholds, mutate CRAM records, or participate in replay authority. All outputs remain
+Lane-2 advisory material stored under MRAM-S with Authority ZERO.
 
 ## 2.4 PSEUDO Authority Rule
 
