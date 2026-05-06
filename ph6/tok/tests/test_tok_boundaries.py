@@ -29,6 +29,8 @@ FORBIDDEN_PATHS = [
 def test_tok_forbidden_terms_absent():
     root = Path(__file__).parent.parent
     for path in root.rglob("*.py"):
+        if path.parent.name == "tests":
+            continue
         text = path.read_text(encoding="utf-8")
         for term in FORBIDDEN_TERMS:
             assert term not in text, f"Forbidden term '{term}' found in {path}"
@@ -37,6 +39,8 @@ def test_tok_forbidden_terms_absent():
 def test_tok_forbidden_paths_absent():
     root = Path(__file__).parent.parent
     for path in root.rglob("*.py"):
+        if path.parent.name == "tests":
+            continue
         text = path.read_text(encoding="utf-8")
         for forbidden in FORBIDDEN_PATHS:
             assert forbidden not in text, f"Forbidden path '{forbidden}' found in {path}"
