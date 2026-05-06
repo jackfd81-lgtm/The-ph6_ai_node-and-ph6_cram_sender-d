@@ -109,13 +109,9 @@ def run(n_packets: int = 10, base_dir: Path | None = None) -> bool:
 
         # 4+5. Route by verdict
         if verd["verdict"] == "PASS":
-            commit = cram_writer.commit(frame_id, dep["payload_hash"], verd)
-            # .blake2b sidecar: externally checkable without parsing JSON
-            sidecar_name = f"cram_{frame_id:010d}.json"
-            sidecar_path = cram_store / (sidecar_name + ".blake2b")
-            sidecar_path.write_text(
-                f"{commit['cram_hash']}  {sidecar_name}\n", encoding="utf-8"
-            )
+            # CRAMWriter.commit() writes both the CRAM JSON and the .blake2b
+            # marker atomically (write→fsync→rename→fsync dir).
+            cram_writer.commit(frame_id, dep["payload_hash"], verd)
             counts["pass"] += 1
         else:
             shedding_logger.log(

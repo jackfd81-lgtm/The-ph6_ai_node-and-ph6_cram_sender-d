@@ -52,7 +52,7 @@ def emit_rebuild_receipt(
         "vlt_count": vlt_count,
         "archive_count": archive_count,
         "audit_chain_valid": audit_chain_valid,
-        "result": "PASS" if audit_chain_valid else "WARN",
+        "advisory_result": "PASS" if audit_chain_valid else "WARN",
     }
 
     receipt["rebuilt_state_hash"] = blake2b256_hex(receipt)

@@ -16,15 +16,24 @@ import json
 import os
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 import cv2
 import numpy as np
 
+from ph6.cram_pu.schemas.canonical import fp_int
+
 BRIGHT_MIN  = 20
 BRIGHT_MAX  = 235
 LAP_MIN     = 15.0
 MOTION_MAX  = 0.40
+
+# Precomputed fixed-point thresholds (scale 10000)
+_FP_BRIGHT_MIN  = fp_int(BRIGHT_MIN)
+_FP_BRIGHT_MAX  = fp_int(BRIGHT_MAX)
+_FP_LAP_MIN     = fp_int(LAP_MIN)
+_FP_MOTION_MAX  = fp_int(MOTION_MAX)
 
 
 def _append_jsonl(path: Path, record: dict) -> None:
@@ -51,6 +60,10 @@ def _decode_frame(payload: bytes) -> np.ndarray:
 
 
 def _pseudo_metrics(frame: np.ndarray, prev_gray=None) -> dict:
+    """
+    Compute PSEUDO metrics as fixed-point integers (scale 10000).
+    No raw floats in the authority path.
+    """
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     mb   = float(np.mean(gray))
     lv   = float(cv2.Laplacian(gray, cv2.CV_64F).var())
@@ -59,33 +72,35 @@ def _pseudo_metrics(frame: np.ndarray, prev_gray=None) -> dict:
         mf   = float(np.mean(diff > 15))
     else:
         mf   = 0.0
-    return {"mean_brightness": round(mb, 4),
-            "laplacian_var":   round(lv, 4),
-            "motion_fraction": round(mf, 4)}
+    return {
+        "mean_brightness_fp": fp_int(mb),
+        "laplacian_var_fp":   fp_int(lv),
+        "motion_fraction_fp": fp_int(mf),
+    }
 
 
 def _pseudo_verdict(metrics: dict) -> tuple:
     reasons = []
-    mb  = metrics["mean_brightness"]
-    lv  = metrics["laplacian_var"]
-    mf  = metrics["motion_fraction"]
-    if mb < BRIGHT_MIN:  reasons.append("brightness_low")
-    if mb > BRIGHT_MAX:  reasons.append("brightness_high")
-    if lv < LAP_MIN:     reasons.append("blur_low_detail")
-    if mf > MOTION_MAX:  reasons.append("motion_high")
+    mb  = metrics["mean_brightness_fp"]
+    lv  = metrics["laplacian_var_fp"]
+    mf  = metrics["motion_fraction_fp"]
+    if mb < _FP_BRIGHT_MIN:  reasons.append("brightness_low")
+    if mb > _FP_BRIGHT_MAX:  reasons.append("brightness_high")
+    if lv < _FP_LAP_MIN:     reasons.append("blur_low_detail")
+    if mf > _FP_MOTION_MAX:  reasons.append("motion_high")
     return ("PASS" if not reasons else "DROP"), reasons
 
 
 def _soso_advisory(metrics: dict) -> dict:
     """Advisory only. Authority NONE. Must not affect verdict."""
-    mb = metrics["mean_brightness"]
-    if mb > 150:
-        state, confidence = "STABLE", 0.85
-    elif mb > 80:
-        state, confidence = "MODERATE", 0.60
+    mb = metrics["mean_brightness_fp"]
+    if mb > fp_int(150):
+        state = "STABLE"
+    elif mb > fp_int(80):
+        state = "MODERATE"
     else:
-        state, confidence = "UNSTABLE", 0.30
-    return {"state": state, "confidence": confidence, "authority": "NONE"}
+        state = "UNSTABLE"
+    return {"state": state, "authority": "NONE"}
 
 
 def run_verdicts(arrivals: list, payloads: dict,
@@ -105,15 +120,17 @@ def run_verdicts(arrivals: list, payloads: dict,
         prev_gray = gray
 
         record = {
-            "schema":        "ph6.pseudo_verdict.v1",
-            "packet_id":     pid,
-            "verdict":       verdict,
-            "reasons":       reasons,
-            "metrics":       metrics,
-            "input_hash":    arr["received_hash"],
-            "authority":     "LANE_1",
-            "soso_advisory": soso,
-            "timestamp":     time.time(),
+            "schema":            "ph6.pseudo_verdict.v1",
+            "packet_id":         pid,
+            "verdict":           verdict,
+            "reasons":           reasons,
+            "metrics":           metrics,
+            "fixed_point_scale": 10000,
+            "input_hash":        arr["received_hash"],
+            "hash_algorithm":    "BLAKE2b-256",
+            "authority":         "LANE_1",
+            "soso_advisory":     soso,
+            "timestamp_utc":     datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
         _append_jsonl(verdict_log, record)
         results.append(record)

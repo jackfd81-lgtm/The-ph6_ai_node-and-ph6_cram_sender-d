@@ -12,10 +12,13 @@ import json
 import os
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 import cv2
 import numpy as np
+
+from ph6.cram_pu.schemas.canonical import fp_int
 
 
 def _read_jsonl(path: Path) -> list:
@@ -70,8 +73,14 @@ BRIGHT_MAX  = 235
 LAP_MIN     = 15.0
 MOTION_MAX  = 0.40
 
+_FP_BRIGHT_MIN  = fp_int(BRIGHT_MIN)
+_FP_BRIGHT_MAX  = fp_int(BRIGHT_MAX)
+_FP_LAP_MIN     = fp_int(LAP_MIN)
+_FP_MOTION_MAX  = fp_int(MOTION_MAX)
+
 
 def _pseudo_metrics(frame: np.ndarray, prev_gray=None) -> dict:
+    """Fixed-point metrics — must match cram_pu_verdict_runner._pseudo_metrics exactly."""
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     mb   = float(np.mean(gray))
     lv   = float(cv2.Laplacian(gray, cv2.CV_64F).var())
@@ -80,17 +89,19 @@ def _pseudo_metrics(frame: np.ndarray, prev_gray=None) -> dict:
         mf   = float(np.mean(diff > 15))
     else:
         mf   = 0.0
-    return {"mean_brightness": round(mb, 4),
-            "laplacian_var":   round(lv, 4),
-            "motion_fraction": round(mf, 4)}
+    return {
+        "mean_brightness_fp": fp_int(mb),
+        "laplacian_var_fp":   fp_int(lv),
+        "motion_fraction_fp": fp_int(mf),
+    }
 
 
 def _pseudo_verdict(metrics: dict) -> tuple:
     reasons = []
-    if metrics["mean_brightness"] < BRIGHT_MIN: reasons.append("brightness_low")
-    if metrics["mean_brightness"] > BRIGHT_MAX: reasons.append("brightness_high")
-    if metrics["laplacian_var"]   < LAP_MIN:    reasons.append("blur_low_detail")
-    if metrics["motion_fraction"] > MOTION_MAX: reasons.append("motion_high")
+    if metrics["mean_brightness_fp"] < _FP_BRIGHT_MIN: reasons.append("brightness_low")
+    if metrics["mean_brightness_fp"] > _FP_BRIGHT_MAX: reasons.append("brightness_high")
+    if metrics["laplacian_var_fp"]   < _FP_LAP_MIN:    reasons.append("blur_low_detail")
+    if metrics["motion_fraction_fp"] > _FP_MOTION_MAX: reasons.append("motion_high")
     return ("PASS" if not reasons else "DROP"), reasons
 
 
@@ -169,7 +180,7 @@ def verify_replay(original_verdicts: list, payloads: dict,
 
     report = {
         "schema":          "ph6.replay_report.v1",
-        "timestamp":       time.time(),
+        "timestamp_utc":   datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "ok":              ok,
         "total":           len(original_verdicts),
         "replayed":        len(replay_results),

@@ -182,11 +182,8 @@ def _run_pass(pass_num: int, label: str, seed: int, n_frames: int,
         verd = verd_log.log(frame_id, payload, dep["payload_hash"])
 
         if verd["verdict"] == "PASS":
-            commit = cram_w.commit(frame_id, dep["payload_hash"], verd)
-            sn = f"cram_{frame_id:010d}.json"
-            (cram_store / (sn + ".blake2b")).write_text(
-                f"{commit['cram_hash']}  {sn}\n"
-            )
+            # CRAMWriter.commit() writes both the CRAM JSON and .blake2b marker atomically.
+            cram_w.commit(frame_id, dep["payload_hash"], verd)
             result.cram_commits += 1
         else:
             shed_log.log(frame_id=frame_id, policy_ref="PH6-DROP-POLICY-v1",

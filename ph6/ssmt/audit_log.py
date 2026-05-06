@@ -2,6 +2,7 @@ import os
 import json
 import time
 from dataclasses import asdict
+from datetime import datetime, timezone
 from .constants import SSMT_WRITE_ROOT
 from .hash_chain import chain_event, canon_hash
 
@@ -39,17 +40,22 @@ class SSMTAuditLog:
         packet_dict = asdict(packet)
 
         event = {
-            "schema": "ph6.ssmt.audit_event.v1",
-            "event_seq": prev_seq + 1,
-            "event_type": "SSMT_PACKET_WRITE",
-            "object_id": f"{packet.swarm_id}:{int(packet.created_at)}",
-            "packet_hash": canon_hash(packet_dict),
-            "packet_path": packet_path,
-            "swarm_id": packet.swarm_id,
-            "authority": packet.authority,
-            "lane": packet.lane,
+            "schema":               "ph6.ssmt.audit_event.v1",
+            "event_seq":            prev_seq + 1,
+            "event_type":           "SSMT_PACKET_WRITE",
+            "object_id":            f"{packet.swarm_id}:{int(packet.created_at)}",
+            "authority_hash":       canon_hash(packet_dict),
+            "node_id":              packet.swarm_id,
+            "stage":                "PACKET_WRITE",
+            "status":               "OK",
+            "timestamp_utc":        datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            # Legacy fields preserved for existing consumers
+            "packet_hash":          canon_hash(packet_dict),
+            "packet_path":          packet_path,
+            "swarm_id":             packet.swarm_id,
+            "authority":            packet.authority,
+            "lane":                 packet.lane,
             "dependency_for_replay": packet.dependency_for_replay,
-            "timestamp": time.time(),
         }
 
         chained = chain_event(event, prev_hash)

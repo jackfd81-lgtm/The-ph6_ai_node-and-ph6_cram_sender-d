@@ -10,6 +10,7 @@ import json
 import os
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -58,7 +59,7 @@ class AtomicCRAMCommitter:
             "verdict":       "PASS",
             "authority":     "LANE_1",
             "prev_cram_hash": self._prev_hash,
-            "timestamp":     time.time(),
+            "timestamp_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
         record["cram_hash"] = _blake2b256(
             {k: v for k, v in record.items() if k != "cram_hash"}

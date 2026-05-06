@@ -143,11 +143,8 @@ def run(n_packets: int = 12, base_dir: Path | None = None,
         verd = verdict_logger.log(frame_id, payload, payload_hash)
 
         if verd["verdict"] == "PASS":
-            commit = cram_writer.commit(frame_id, payload_hash, verd)
-            sidecar_name = f"cram_{frame_id:010d}.json"
-            (cram_store / (sidecar_name + ".blake2b")).write_text(
-                f"{commit['cram_hash']}  {sidecar_name}\n"
-            )
+            # CRAMWriter.commit() writes both the CRAM JSON and .blake2b marker atomically.
+            cram_writer.commit(frame_id, payload_hash, verd)
             counts["pass"] += 1
         else:
             shedding_logger.log(

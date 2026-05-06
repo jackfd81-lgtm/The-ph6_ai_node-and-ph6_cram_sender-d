@@ -20,6 +20,7 @@ import json
 import os
 import time
 from dataclasses import dataclass, field, asdict
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 
@@ -528,16 +529,19 @@ class CRAMWriter:
             "verdict":        "PASS",
             "authority":      "LANE_1",
             "prev_cram_hash": self._prev_hash,
-            "timestamp":      time.time(),
+            "timestamp_utc":  datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
         record["cram_hash"] = blake2b256(
             {k: v for k, v in record.items() if k != "cram_hash"}
         )
 
         filename = f"cram_{frame_id:010d}.json"
-        final = self.store / filename
-        tmp = self.store / (filename + ".tmp")
+        final    = self.store / filename
+        tmp      = self.store / (filename + ".tmp")
+        marker   = self.store / (filename + ".blake2b")
+        tmp_marker = self.store / (filename + ".blake2b.tmp")
 
+        # Atomic write: CRAM commit JSON
         with tmp.open("w", encoding="utf-8") as f:
             json.dump(record, f, ensure_ascii=False, sort_keys=True,
                       separators=(",", ":"), allow_nan=False)
@@ -547,6 +551,17 @@ class CRAMWriter:
 
         os.replace(str(tmp), str(final))
 
+        # Atomic write: .blake2b commit marker
+        marker_data = record["cram_hash"].encode("utf-8") + b"\n"
+        fd = os.open(str(tmp_marker), os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o644)
+        try:
+            os.write(fd, marker_data)
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+        os.replace(str(tmp_marker), str(marker))
+
+        # Single fsync of parent dir covers both final files
         dir_fd = os.open(str(self.store), os.O_RDONLY)
         try:
             os.fsync(dir_fd)
@@ -574,7 +589,7 @@ class SheddingLogger:
             "policy_ref": policy_ref,
             "reason": reason,
             "authority": "LANE_1",
-            "timestamp": time.time(),
+            "timestamp_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
         with self.paths.shedding_log.open("a", encoding="utf-8") as f:
             f.write(json.dumps(entry, sort_keys=True, separators=(",", ":"),
