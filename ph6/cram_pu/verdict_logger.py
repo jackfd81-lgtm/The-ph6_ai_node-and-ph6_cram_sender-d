@@ -7,12 +7,17 @@ PSEUDO thresholds:
   brightness_min:  20   (mean byte value)
   brightness_max: 235
   variance_min:    15.0 (byte variance — low-detail rejection)
+
+Metrics use Decimal ROUND_HALF_EVEN fixed-point (4 decimal places).
+Raw floats are forbidden in the Lane-1 authority path.
 """
 
 import json
 import os
 import time
 from pathlib import Path
+
+from ph6.cram_pu.schemas.canonical import fp_int
 
 BRIGHT_MIN = 20
 BRIGHT_MAX = 235
@@ -30,32 +35,37 @@ def _append_jsonl(path: Path, record: dict) -> None:
 
 
 def _pseudo_metrics(payload: bytes) -> dict:
+    """
+    Compute brightness and variance as fixed-point integers.
+    No raw floats in the authority path.
+    """
     if not payload:
-        return {"mean_brightness": 0.0, "byte_variance": 0.0}
+        return {"mean_brightness_fp": 0, "byte_variance_fp": 0}
     n = len(payload)
     mean = sum(payload) / n
     variance = sum((b - mean) ** 2 for b in payload) / n
     return {
-        "mean_brightness": round(mean, 4),
-        "byte_variance":   round(variance, 4),
+        "mean_brightness_fp": fp_int(mean),
+        "byte_variance_fp":   fp_int(variance),
     }
 
 
 def _pseudo_verdict(metrics: dict) -> tuple:
     reasons = []
-    mb = metrics["mean_brightness"]
-    bv = metrics["byte_variance"]
-    if mb < BRIGHT_MIN:  reasons.append("brightness_low")
-    if mb > BRIGHT_MAX:  reasons.append("brightness_high")
-    if bv < VAR_MIN:     reasons.append("low_detail")
+    # Compare against fixed-point thresholds (4 decimal places)
+    mb = metrics["mean_brightness_fp"]
+    bv = metrics["byte_variance_fp"]
+    if mb < fp_int(BRIGHT_MIN):  reasons.append("brightness_low")
+    if mb > fp_int(BRIGHT_MAX):  reasons.append("brightness_high")
+    if bv < fp_int(VAR_MIN):     reasons.append("low_detail")
     return ("PASS" if not reasons else "DROP"), reasons
 
 
 def _soso_advisory(metrics: dict) -> dict:
-    mb = metrics["mean_brightness"]
-    if mb > 150:   state = "STABLE"
-    elif mb > 80:  state = "MODERATE"
-    else:          state = "UNSTABLE"
+    mb = metrics["mean_brightness_fp"]
+    if mb > fp_int(150):   state = "STABLE"
+    elif mb > fp_int(80):  state = "MODERATE"
+    else:                  state = "UNSTABLE"
     return {"state": state, "authority": "NONE"}
 
 
@@ -76,9 +86,10 @@ class VerdictLogger:
             "metrics":        metrics,
             "input_hash":     payload_hash,
             "hash_algorithm": "BLAKE2b-256",
+            "fixed_point_scale": 10000,
             "authority":      "LANE_1",
             "soso_advisory":  soso,
-            "timestamp":      time.time(),
+            "timestamp_utc":  time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         }
         _append_jsonl(self.log_path, record)
         return record

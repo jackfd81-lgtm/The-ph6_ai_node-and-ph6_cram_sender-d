@@ -67,8 +67,10 @@ class AtomicCRAMCommitter:
         filename = f"cram_{self._seq:010d}.json"
         final    = self.cram_dir / filename
         tmp      = self.cram_dir / (filename + ".tmp")
+        marker   = self.cram_dir / (filename + ".blake2b")
+        tmp_marker = self.cram_dir / (filename + ".blake2b.tmp")
 
-        # Atomic write contract
+        # Atomic write contract: payload
         fd = os.open(str(tmp), os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o644)
         try:
             data = (_canonical_bytes(record) + b"\n")
@@ -79,6 +81,19 @@ class AtomicCRAMCommitter:
 
         os.replace(str(tmp), str(final))
 
+        # Atomic write contract: .blake2b commit marker
+        # Object is authoritative only after both final and marker exist.
+        marker_data = record["cram_hash"].encode("utf-8") + b"\n"
+        fd2 = os.open(str(tmp_marker), os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o644)
+        try:
+            os.write(fd2, marker_data)
+            os.fsync(fd2)
+        finally:
+            os.close(fd2)
+
+        os.replace(str(tmp_marker), str(marker))
+
+        # Single fsync of parent directory covers both files
         dir_fd = os.open(str(self.cram_dir), os.O_RDONLY)
         try:
             os.fsync(dir_fd)
