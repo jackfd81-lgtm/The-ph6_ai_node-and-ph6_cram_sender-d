@@ -1,0 +1,31 @@
+{
+  "schema": "ph6.hrg9.replay_parity_receipt.v1",
+  "timestamp_utc": "2026-05-06T21:00:16Z",
+  "original_run": {
+    "pass": 1,
+    "label": "Baseline",
+    "seed": 1,
+    "n_frames": 300,
+    "run_dir": "/home/jack/ph6/cram_pu/validation_runs/20260506T111731Z/pass_1",
+    "run_timestamp": "20260506T111731Z",
+    "git_commit_at_run": "a95e552"
+  },
+  "replay_run": {
+    "pass": 2,
+    "label": "Repeatability",
+    "seed": 1,
+    "n_frames": 300,
+    "run_dir": "/home/jack/ph6/cram_pu/validation_runs/20260506T111731Z/pass_2",
+    "run_timestamp": "20260506T111731Z",
+    "git_commit_at_run": "a95e552"
+  },
+  "parity_method": "BLAKE2b-256 hash of sorted list of {frame_id, payload_hash, verdict} per CRAM commit",
+  "advisory_independence": "SoSo advisory state NOT used in replay \u2014 verified by authority_isolation.json pass_1+pass_2",
+  "original_result_set_hash": "blake2b256:3487aff928284bd7f61e0eadc8d9f3a740fb6ef1e7c1eeff0f416d74f88fa79a",
+  "replay_result_set_hash": "blake2b256:3487aff928284bd7f61e0eadc8d9f3a740fb6ef1e7c1eeff0f416d74f88fa79a",
+  "parity_match": true,
+  "replay_command": "run_4pass_system_test.py (pass_1=seed:1 n:300, pass_2=seed:1 n:300)",
+  "source_evidence_path": "/home/jack/ph6/cram_pu/validation_runs/20260506T111731Z",
+  "failure_reason": null,
+  "note": "Parity computed at git HEAD e8fc6c2; validation run executed at a95e552. Changes between those commits are docs/schemas/tests only \u2014 verdict runner and replay verifier unchanged (confirmed by canon linter PASS at HEAD)."
+}

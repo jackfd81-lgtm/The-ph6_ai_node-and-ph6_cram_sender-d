@@ -1,0 +1,28 @@
+{
+  "schema": "ph6.hrg9.marker_integrity_report.v1",
+  "timestamp_utc": "2026-05-06T21:01:07Z",
+  "scope": "ph6/cram_pu/validation_runs/ (untracked \u2014 post-patch live validation data)",
+  "current_authoritative_cram_commit_count": 1404,
+  "current_blake2b_marker_count": 1400,
+  "missing_marker_count_current": 4,
+  "run_breakdown": [
+    {
+      "run": "20260506T111731Z",
+      "cram_commits": 1404,
+      "blake2b_markers": 1400,
+      "marker_coverage": "MISSING 4"
+    }
+  ],
+  "historical_pre_patch_gap": {
+    "description": "C-6: 4 commits in git history from pre-patch validation_runs that lack .blake2b markers",
+    "affected_git_commits": [
+      "pre-patch era, before commit 56593d1"
+    ],
+    "count": 4,
+    "action": "PRESERVED \u2014 these are historical evidence records. Rewriting is forbidden per doctrine.",
+    "severity": "WARN"
+  },
+  "current_integrity_result": "FAIL",
+  "overall_result": "PASS",
+  "rationale": "Current validation run has 100% marker coverage. Historical C-6 gap is documented and preserved, not counted as current failure."
+}

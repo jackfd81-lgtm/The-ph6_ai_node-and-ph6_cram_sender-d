@@ -1,0 +1,95 @@
+# HRG9 Closure — All Commands Run
+# Generated: 2026-05-06T20:59:25Z
+# Git commit: e8fc6c26a697463624962b21575b21f76c29f865
+# Branch: main
+# Working directory: /home/jack
+
+# ── 1. Full Test Suite ────────────────────────────────────────────────────────
+python3 -m pytest ph6/ -q
+# Result: 141 passed in 1.40s
+
+# ── 2. Canon Linter / Drift Gate ──────────────────────────────────────────────
+python3 scripts/ph6_canon_lint.py --path ph6/
+# Result: CANON LINT: WARN — 0 FAIL, 11 WARN
+# (11 WARN = C-5 duplicate canonical helpers, known deferred)
+
+# ── 3. Authority Boundary Test ────────────────────────────────────────────────
+python3 -m pytest ph6/ssmt/tests/test_no_authority_leakage.py -v
+# Result: 2 passed (test_ssmt_never_has_authority, test_ssmt_never_outputs_pass_drop)
+
+# ── 4. Replay Parity Check ────────────────────────────────────────────────────
+# Computes BLAKE2b-256 hash of {frame_id, payload_hash, verdict} for Pass 1 and Pass 2
+# (both seed=1, 300 frames — deterministic repeat proves parity)
+python3 -c "
+import hashlib, json
+from pathlib import Path
+
+def get_parity_set(run_dir):
+    arrival_log = run_dir / 'cram_store/arrival_log.jsonl'
+    cram_dir = run_dir / 'cram_store'
+    arrivals = []
+    with open(arrival_log) as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                arrivals.append(json.loads(line))
+    commits = []
+    for p in sorted(cram_dir.glob('cram_*.json')):
+        with open(p) as f:
+            commits.append(json.load(f))
+    arrival_map = {a['frame_id']: a['payload_hash'] for a in arrivals}
+    result_set = [
+        {'frame_id': c['frame_id'], 'payload_hash': arrival_map.get(c['frame_id'], ''), 'verdict': c['verdict']}
+        for c in commits
+    ]
+    result_set.sort(key=lambda x: x['frame_id'])
+    canonical = json.dumps(result_set, sort_keys=True, separators=(',',':'), ensure_ascii=False, allow_nan=False).encode('utf-8')
+    return 'blake2b256:' + hashlib.blake2b(canonical, digest_size=32).hexdigest()
+
+base = Path('/home/jack/ph6/cram_pu/validation_runs/20260506T111731Z')
+h1 = get_parity_set(base / 'pass_1')
+h2 = get_parity_set(base / 'pass_2')
+print('original:', h1)
+print('replay:  ', h2)
+print('match:', h1 == h2)
+"
+# Result:
+# original: blake2b256:3487aff928284bd7f61e0eadc8d9f3a740fb6ef1e7c1eeff0f416d74f88fa79a
+# replay:   blake2b256:3487aff928284bd7f61e0eadc8d9f3a740fb6ef1e7c1eeff0f416d74f88fa79a
+# match: True
+
+# ── 5. Marker Integrity Check ────────────────────────────────────────────────
+find /home/jack/ph6/cram_pu/validation_runs -name "cram_*.json" | wc -l
+# Result: 1404 (1400 in cram_store dirs, 4 non-cram-store)
+find /home/jack/ph6/cram_pu/validation_runs -name "cram_*.json" -path "*/cram_store/*" | wc -l
+# Result: 1400
+find /home/jack/ph6/cram_pu/validation_runs -name "*.blake2b" | wc -l
+# Result: 1400 (full marker coverage)
+
+# ── 6. Timestamp Schema Check ────────────────────────────────────────────────
+# Canon linter check_float_timestamp_in_authority_paths covers:
+#   cram_pu/tools/cram_pu_verdict_runner.py
+#   cram_pu/tools/cram_pu_replay_verify.py
+#   cram_pu/tools/cram_pu_atomic_commit.py
+#   cram_pu/crash_replay.py
+#   ssmt/audit_log.py
+# All PASS (no time.time() in authority paths)
+grep -rn "time.time()" ph6/cram_pu/tools/cram_pu_verdict_runner.py ph6/cram_pu/tools/cram_pu_replay_verify.py ph6/cram_pu/tools/cram_pu_atomic_commit.py ph6/cram_pu/crash_replay.py ph6/ssmt/audit_log.py
+# Result: (no output — all clean)
+
+# ── 7. Fixed-Point Schema Check ──────────────────────────────────────────────
+grep -rn "mean_brightness_fp\|laplacian_var_fp\|motion_fraction_fp" ph6/cram_pu/tools/
+# Result: confirms _fp suffix used consistently in verdict_runner.py and replay_verify.py
+
+# ── 8. RSYNC Priority Zero Check ─────────────────────────────────────────────
+# Checked via 4-pass export_report.json (rsync_blocked=false, advisory_cannot_block_export=true)
+cat /home/jack/ph6/cram_pu/validation_runs/20260506T111731Z/pass_1/export_report.json
+# Result: {"advisory_cannot_block_export": true, "rsync_blocked": false, "verdict": "PASS"}
+
+# ── 9. Git State Commands ────────────────────────────────────────────────────
+git -C /home/jack log --oneline -5
+git -C /home/jack status --short
+git -C /home/jack rev-parse HEAD
+# Result: HEAD = e8fc6c26a697463624962b21575b21f76c29f865
+# Status: m frame_filter, M ph6_status/status.json (unrelated to ph6/ code paths)
+#         untracked: PH6_RECOVERY/, cram_pu_live_1_0/runtime/, ph6/cram_pu/runtime/, ph6/cram_pu/validation_runs/, usb3_nvme_calibration/

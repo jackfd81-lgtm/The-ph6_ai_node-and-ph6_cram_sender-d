@@ -1,0 +1,42 @@
+{
+  "schema": "ph6.hrg9.canon_lint_report.v1",
+  "timestamp_utc": "2026-05-06T21:00:26Z",
+  "canon_linter_command": "python3 scripts/ph6_canon_lint.py --path ph6/",
+  "linter_path": "/home/jack/scripts/ph6_canon_lint.py",
+  "scan_root": "ph6/",
+  "fail_count": 0,
+  "warn_count": 11,
+  "check_results": {
+    "float_epoch_timestamps_in_authority_paths": "PASS",
+    "old_float_metric_field_names": "PASS",
+    "unsafe_blake2b_write_text": "PASS",
+    "duplicate_canonical_helpers": "WARN",
+    "forbidden_audit_event_types": "PASS",
+    "tok_advisory_result_naming": "PASS",
+    "lane2_authority_leakage": "PASS"
+  },
+  "known_warnings": {
+    "C-5": {
+      "description": "11 duplicate canonical_json/blake2b helper implementations outside schemas/canonical.py",
+      "affected_files": [
+        "ph6/ssmt/hash_chain.py (2 defs)",
+        "ph6/tok/lifecycle.py (1 def)",
+        "ph6/tok/rebuild.py (1 def)",
+        "ph6/cram_pu/crash_replay.py (2 defs)",
+        "ph6/cram_pu/tools/cram_pu_atomic_commit.py (2 defs)",
+        "ph6/cram_pu/tools/cram_pu_replay_verify.py (1 def)",
+        "ph6/cram_pu/tools/cram_pu_postrun_receipt.py (2 defs)"
+      ],
+      "severity": "WARN",
+      "disposition": "DEFERRED \u2014 refactor excluded from HRG9 closure pass per STRICT RULES"
+    },
+    "C-6": {
+      "description": "Historical pre-patch validation_run commits without .blake2b markers",
+      "affected_commits": 4,
+      "severity": "WARN",
+      "disposition": "PRESERVED as historical record \u2014 current validation_runs have full marker coverage"
+    }
+  },
+  "canon_lint_result": "PASS",
+  "rationale": "Exit code 0. Zero FAIL-level issues. All WARN items are known, documented, and within tolerance."
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "ph6.hrg9.timestamp_fixedpoint_schema.v1",
+  "timestamp_utc": "2026-05-06T21:04:54Z",
+  "timestamp_schema_check": {
+    "authority_paths_checked": [
+      "ph6/cram_pu/tools/cram_pu_verdict_runner.py",
+      "ph6/cram_pu/tools/cram_pu_replay_verify.py",
+      "ph6/cram_pu/tools/cram_pu_atomic_commit.py",
+      "ph6/cram_pu/crash_replay.py",
+      "ph6/ssmt/audit_log.py"
+    ],
+    "float_timestamp_in_authority_paths": 0,
+    "result": "PASS",
+    "detail": "Canon linter check_float_timestamp_in_authority_paths: PASS. No time.time() found in any authority path."
+  },
+  "internal_runtime_float_timestamps": {
+    "files": [
+      "ph6/cram_pu/tools/cram_pu_shedding.py (internal shedding log)",
+      "ph6/cram_pu/tools/cram_pu_continuity_check.py (runtime check)",
+      "ph6/cram_pu/tools/cram_pu_receiver.py (arrival timestamp)",
+      "ph6/cram_pu/tools/cram_pu_postrun_receipt.py (internal receipt)",
+      "ph6/ssmt/replay_receipt.py (advisory Lane-2)",
+      "ph6/ssmt/failure_injection.py (FI test infra)",
+      "ph6/cram_pu/tools/cram_pu_fi_suite.py (FI test infra)"
+    ],
+    "count": 9,
+    "severity": "WARN",
+    "detail": "These are internal runtime-only or advisory paths. Not authoritative/canonical. Per policy: WARN if internal runtime-only."
+  },
+  "fixed_point_schema_check": {
+    "authority_paths_checked": [
+      "ph6/cram_pu/tools/cram_pu_verdict_runner.py",
+      "ph6/cram_pu/tools/cram_pu_replay_verify.py"
+    ],
+    "fields_confirmed": [
+      "mean_brightness_fp (fp_int encoded)",
+      "laplacian_var_fp (fp_int encoded)",
+      "motion_fraction_fp (fp_int encoded)"
+    ],
+    "old_float_fields_in_authority_paths": 0,
+    "result": "PASS",
+    "detail": "Canon linter check_old_float_metric_fields: PASS. All production verdict and replay paths use _fp suffix consistently."
+  },
+  "overall_result": "WARN",
+  "summary": "Authority paths clean. Internal runtime paths use time.time() \u2014 WARN only, within policy. Fixed-point fields consistent in all authority paths."
+}

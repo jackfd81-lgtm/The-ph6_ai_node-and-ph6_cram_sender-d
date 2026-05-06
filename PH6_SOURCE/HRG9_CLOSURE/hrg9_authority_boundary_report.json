@@ -1,0 +1,33 @@
+{
+  "schema": "ph6.hrg9.authority_boundary_report.v1",
+  "timestamp_utc": "2026-05-06T21:00:42Z",
+  "evidence_base": [
+    "python3 -m pytest ph6/ssmt/tests/test_no_authority_leakage.py -v \u2192 2/2 PASS",
+    "python3 scripts/ph6_canon_lint.py --path ph6/ \u2192 lane2_authority_leakage: PASS",
+    "ph6/cram_pu/validation_runs/20260506T111731Z/pass_*/authority_isolation.json \u2192 all 4 passes PASS"
+  ],
+  "checks": {
+    "lane2_authority_leakage": {
+      "result": "PASS",
+      "detail": "test_ssmt_never_has_authority PASS; canon linter lane2_authority_leakage PASS; 4-pass authority_isolation.json all PASS (lane2_leakage=0)"
+    },
+    "tok_soso_mrams_pass_drop_check": {
+      "result": "PASS",
+      "detail": "TOK, SoSo, MRAM-S have authority=NONE in all advisory outputs. No PASS/DROP verdict fields emitted by advisory lanes. canon linter PASS on lane2 check."
+    },
+    "cram_write_boundary_check": {
+      "result": "PASS",
+      "detail": "CRAMWriter authority=LANE_1 on all commits. MRAM-S writes to its own store only (advisory). Confirmed by authority_isolation.json (verdict_auth_lane1=true, advisory_auth_none=true) across all 4 passes."
+    },
+    "rsync_blocking_risk": {
+      "result": "PASS",
+      "detail": "export_report.json: rsync_blocked=false, advisory_cannot_block_export=true across all 4 passes. RSYNC Priority Zero / Never Blocks RSYNC invariant intact."
+    },
+    "replay_advisory_independence": {
+      "result": "PASS",
+      "detail": "cram_pu_replay_verify.py confirms SoSo advisory state NOT used in replay. Parity receipt proves same input_hash \u2192 same verdict without advisory state."
+    }
+  },
+  "overall_result": "PASS",
+  "summary": "All authority boundary invariants hold. Lane 1 is sole PASS/DROP authority. PSEUDO is sole adjudicator. CRAM is authoritative truth. Advisory systems have Authority ZERO. RSYNC cannot be blocked."
+}

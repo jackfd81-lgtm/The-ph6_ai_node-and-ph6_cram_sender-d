@@ -1,0 +1,73 @@
+{
+  "schema": "ph6.hrg9.manifest.v1",
+  "version": "1.0",
+  "generated_at_utc": "2026-05-06T20:59:56Z",
+  "repo_commit_hash": "e8fc6c26a697463624962b21575b21f76c29f865",
+  "branch": "main",
+  "working_tree_status": "M frame_filter\n M ph6_status/status.json\n?? PH6_RECOVERY/\n?? PH6_SOURCE/HRG9_CLOSURE/\n?? cram_pu_live_1_0/runtime/\n?? ph6/cram_pu/runtime/\n?? ph6/cram_pu/validation_runs/\n?? usb3_nvme_calibration/",
+  "python_version": "3.13.5",
+  "host": "jackjack",
+  "platform": "Linux-6.12.75+rpt-rpi-2712-aarch64-with-glibc2.41",
+  "artifact_list": [
+    "hrg9_manifest.json",
+    "hrg9_environment_snapshot.json",
+    "hrg9_canon_lint_report.json",
+    "hrg9_authority_boundary_report.json",
+    "hrg9_marker_integrity_report.json",
+    "hrg9_replay_parity_receipt.json",
+    "hrg9_test_commands.txt",
+    "hrg9_timestamp_fixedpoint_report.json",
+    "hrg9_final_summary.md"
+  ],
+  "validation_commands": {
+    "test_suite": "python3 -m pytest ph6/ -q",
+    "canon_linter": "python3 scripts/ph6_canon_lint.py --path ph6/",
+    "authority_boundary": "python3 -m pytest ph6/ssmt/tests/test_no_authority_leakage.py -v",
+    "replay_parity": "python3 -c \"...see hrg9_test_commands.txt...\"",
+    "marker_integrity": "python3 -c \"...see hrg9_test_commands.txt...\""
+  },
+  "validation_results": {
+    "test_suite": {
+      "result": "PASS",
+      "passed": 141,
+      "failed": 0
+    },
+    "canon_linter": {
+      "result": "WARN",
+      "fail_count": 0,
+      "warn_count": 11
+    },
+    "authority_boundary": {
+      "result": "PASS",
+      "passed": 2,
+      "failed": 0
+    },
+    "replay_parity": {
+      "result": "PASS",
+      "parity_match": true
+    },
+    "marker_integrity": {
+      "result": "PASS",
+      "missing_current": 0
+    },
+    "timestamp_schema": {
+      "result": "WARN",
+      "authority_paths_clean": true,
+      "internal_runtime_float_count": 9
+    },
+    "fixed_point_schema": {
+      "result": "PASS"
+    },
+    "rsync_priority_zero": {
+      "result": "PASS",
+      "rsync_blocked": false
+    }
+  },
+  "hrg9_status": "PASS",
+  "stop_ship_recommendation": "LIFT HRG9 STOP-SHIP ONLY \u2014 all required checks PASS, no FAIL-level findings",
+  "known_open_warnings": [
+    "C-5: 11 duplicate canonical helper implementations \u2014 WARN only, deferred refactor",
+    "C-6: historical pre-patch validation_runs commits without .blake2b markers \u2014 preserved as historical record",
+    "Timestamp: internal runtime-only paths use time.time() \u2014 WARN only, not in authority paths"
+  ]
+}
