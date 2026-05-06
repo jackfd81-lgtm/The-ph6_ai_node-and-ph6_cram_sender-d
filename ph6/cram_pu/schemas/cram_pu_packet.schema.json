@@ -4,87 +4,90 @@
   "definitions": {
     "departure": {
       "type": "object",
-      "required": ["schema","packet_id","source_node_id","departure_seq","departure_timestamp","payload_hash","media_type","size_bytes"],
+      "required": ["schema","frame_id","payload_hash","hash_algorithm","media_type","size_bytes","departure_timestamp","authority"],
       "properties": {
         "schema":              {"type":"string","const":"ph6.raw_departure.v1"},
-        "packet_id":           {"type":"string"},
-        "source_node_id":      {"type":"string"},
-        "departure_seq":       {"type":"integer","minimum":1},
-        "departure_timestamp": {"type":"number"},
-        "payload_hash":        {"type":"string","pattern":"^blake2b256:"},
+        "frame_id":            {"type":"integer","minimum":1},
+        "payload_hash":        {"type":"string","pattern":"^[0-9a-f]{64}$"},
+        "hash_algorithm":      {"type":"string","const":"BLAKE2b-256"},
         "media_type":          {"type":"string","enum":["FRAME","AUDIO","SENSOR"]},
         "size_bytes":          {"type":"integer","minimum":0},
+        "departure_timestamp": {"type":"number"},
         "authority":           {"type":"string","const":"NONE"}
-      }
+      },
+      "additionalProperties": false
     },
     "arrival": {
       "type": "object",
-      "required": ["schema","packet_id","arrival_seq","arrival_timestamp","received_hash","transfer_status"],
+      "required": ["schema","frame_id","payload_hash","hash_algorithm","transfer_status","arrival_timestamp","authority"],
       "properties": {
-        "schema":             {"type":"string","const":"ph6.raw_arrival.v1"},
-        "packet_id":          {"type":"string"},
-        "arrival_seq":        {"type":"integer","minimum":1},
-        "arrival_timestamp":  {"type":"number"},
-        "received_hash":      {"type":"string","pattern":"^blake2b256:"},
-        "transfer_status":    {"type":"string","enum":["OK","HASH_MISMATCH","MISSING_DEPARTURE"]},
-        "authority":          {"type":"string","const":"LANE_1_RECEIVER"}
-      }
+        "schema":            {"type":"string","const":"ph6.raw_arrival.v1"},
+        "frame_id":          {"type":"integer","minimum":1},
+        "payload_hash":      {"type":"string","pattern":"^[0-9a-f]{64}$"},
+        "hash_algorithm":    {"type":"string","const":"BLAKE2b-256"},
+        "transfer_status":   {"type":"string","enum":["OK","HASH_MISMATCH"]},
+        "arrival_timestamp": {"type":"number"},
+        "authority":         {"type":"string","const":"LANE_1"}
+      },
+      "additionalProperties": false
     },
     "verdict": {
       "type": "object",
-      "required": ["schema","packet_id","verdict","metrics","input_hash","authority"],
+      "required": ["schema","frame_id","verdict","metrics","input_hash","hash_algorithm","authority","soso_advisory"],
       "properties": {
-        "schema":       {"type":"string","const":"ph6.pseudo_verdict.v1"},
-        "packet_id":    {"type":"string"},
-        "verdict":      {"type":"string","enum":["PASS","DROP"]},
+        "schema":         {"type":"string","const":"ph6.pseudo_verdict.v1"},
+        "frame_id":       {"type":"integer","minimum":1},
+        "verdict":        {"type":"string","enum":["PASS","DROP"]},
+        "reasons":        {"type":"array","items":{"type":"string"}},
         "metrics": {
           "type":"object",
-          "required":["mean_brightness","laplacian_var","motion_fraction"],
+          "required":["mean_brightness","byte_variance"],
           "properties": {
             "mean_brightness": {"type":"number"},
-            "laplacian_var":   {"type":"number"},
-            "motion_fraction": {"type":"number"}
-          }
+            "byte_variance":   {"type":"number"}
+          },
+          "additionalProperties": false
         },
-        "reasons":    {"type":"array","items":{"type":"string"}},
-        "input_hash": {"type":"string"},
-        "authority":  {"type":"string","const":"LANE_1"},
+        "input_hash":     {"type":"string","pattern":"^[0-9a-f]{64}$"},
+        "hash_algorithm": {"type":"string","const":"BLAKE2b-256"},
+        "authority":      {"type":"string","const":"LANE_1"},
         "soso_advisory": {
           "type":"object",
           "description":"Advisory only — must not influence verdict",
+          "required":["authority"],
           "properties": {
             "state":     {"type":"string"},
-            "confidence":{"type":"number"},
             "authority": {"type":"string","const":"NONE"}
           }
-        }
+        },
+        "timestamp":      {"type":"number"}
       }
     },
     "cram_commit": {
       "type": "object",
-      "required": ["schema","packet_id","payload_hash","verdict","authority","prev_cram_hash","cram_hash"],
+      "required": ["schema","frame_id","payload_hash","hash_algorithm","verdict","authority","prev_cram_hash","cram_hash"],
       "properties": {
-        "schema":        {"type":"string","const":"ph6.cram_commit.v1"},
-        "packet_id":     {"type":"string"},
-        "payload_hash":  {"type":"string"},
-        "verdict":       {"type":"string","const":"PASS"},
-        "authority":     {"type":"string","const":"LANE_1"},
-        "prev_cram_hash":{"type":"string"},
-        "cram_hash":     {"type":"string"},
-        "timestamp":     {"type":"number"}
+        "schema":         {"type":"string","const":"ph6.cram_commit.v1"},
+        "frame_id":       {"type":"integer","minimum":1},
+        "payload_hash":   {"type":"string","pattern":"^[0-9a-f]{64}$"},
+        "hash_algorithm": {"type":"string","const":"BLAKE2b-256"},
+        "verdict":        {"type":"string","const":"PASS"},
+        "authority":      {"type":"string","const":"LANE_1"},
+        "prev_cram_hash": {"type":"string","pattern":"^[0-9a-f]{64}$"},
+        "cram_hash":      {"type":"string","pattern":"^[0-9a-f]{64}$"},
+        "timestamp":      {"type":"number"}
       }
     },
     "shedding_event": {
       "type": "object",
-      "required": ["schema","packet_id","policy_id","reason","shed_seq","authority"],
+      "required": ["schema","frame_id","policy_ref","reason","authority"],
       "properties": {
-        "schema":    {"type":"string","const":"ph6.drop_shedding.v1"},
-        "packet_id": {"type":"string"},
-        "policy_id": {"type":"string"},
-        "reason":    {"type":"string"},
-        "shed_seq":  {"type":"integer","minimum":1},
-        "authority": {"type":"string","const":"LANE_1"},
-        "timestamp": {"type":"number"}
+        "schema":     {"type":"string","const":"ph6.drop_shedding.v1"},
+        "frame_id":   {"type":"integer","minimum":1},
+        "policy_ref": {"type":"string","minLength":1},
+        "reason":     {"type":"string"},
+        "authority":  {"type":"string","const":"LANE_1"},
+        "timestamp":  {"type":"number"}
       }
     }
   }

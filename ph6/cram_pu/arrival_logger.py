@@ -1,0 +1,47 @@
+"""
+CRAM-PU arrival logger.
+Verifies received payload against departure hash.
+Writes ph6.raw_arrival.v1 records keyed by frame_id.
+payload_hash field matches departure_logger output format exactly.
+"""
+
+import hashlib
+import json
+import os
+import time
+from pathlib import Path
+
+
+def _blake2b256_bytes(data: bytes) -> str:
+    return hashlib.blake2b(data, digest_size=32).hexdigest()
+
+
+def _append_jsonl(path: Path, record: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, sort_keys=True, separators=(",", ":"),
+                           ensure_ascii=False, allow_nan=False))
+        f.write("\n")
+        f.flush()
+        os.fsync(f.fileno())
+
+
+class ArrivalLogger:
+    def __init__(self, log_path: Path):
+        self.log_path = log_path
+
+    def log(self, frame_id: int, payload: bytes,
+            expected_hash: str) -> dict:
+        received_hash = _blake2b256_bytes(payload)
+        status = "OK" if received_hash == expected_hash else "HASH_MISMATCH"
+        record = {
+            "schema":            "ph6.raw_arrival.v1",
+            "frame_id":          frame_id,
+            "payload_hash":      received_hash,
+            "hash_algorithm":    "BLAKE2b-256",
+            "transfer_status":   status,
+            "arrival_timestamp": time.time(),
+            "authority":         "LANE_1",
+        }
+        _append_jsonl(self.log_path, record)
+        return record

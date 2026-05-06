@@ -521,13 +521,14 @@ class CRAMWriter:
             )
 
         record = {
-            "schema": "ph6.cram_commit.v1",
-            "frame_id": frame_id,
-            "payload_hash": payload_hash,
-            "verdict": "PASS",
-            "authority": "LANE_1",
+            "schema":         "ph6.cram_commit.v1",
+            "frame_id":       frame_id,
+            "payload_hash":   payload_hash,
+            "hash_algorithm": "BLAKE2b-256",
+            "verdict":        "PASS",
+            "authority":      "LANE_1",
             "prev_cram_hash": self._prev_hash,
-            "timestamp": time.time(),
+            "timestamp":      time.time(),
         }
         record["cram_hash"] = blake2b256(
             {k: v for k, v in record.items() if k != "cram_hash"}
