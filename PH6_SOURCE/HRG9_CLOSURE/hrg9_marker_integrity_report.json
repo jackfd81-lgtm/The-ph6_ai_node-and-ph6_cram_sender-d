@@ -1,28 +1,30 @@
 {
   "schema": "ph6.hrg9.marker_integrity_report.v1",
-  "timestamp_utc": "2026-05-06T21:01:07Z",
+  "timestamp_utc": "2026-05-06T21:29:06Z",
   "scope": "ph6/cram_pu/validation_runs/ (untracked \u2014 post-patch live validation data)",
-  "current_authoritative_cram_commit_count": 1404,
+  "counting_note": "Authoritative CRAM commits = cram_*.json files under cram_store/ subdirectories only. 4 cram_integrity.json files at pass root are integrity-check outputs, not CRAM commits.",
+  "current_authoritative_cram_commit_count": 1400,
   "current_blake2b_marker_count": 1400,
-  "missing_marker_count_current": 4,
+  "missing_marker_count_current": 0,
   "run_breakdown": [
     {
       "run": "20260506T111731Z",
-      "cram_commits": 1404,
+      "cram_commits_in_cram_store": 1400,
+      "cram_integrity_json_files_at_pass_root": 4,
       "blake2b_markers": 1400,
-      "marker_coverage": "MISSING 4"
+      "marker_coverage": "FULL \u2014 0 missing"
     }
   ],
   "historical_pre_patch_gap": {
-    "description": "C-6: 4 commits in git history from pre-patch validation_runs that lack .blake2b markers",
+    "description": "C-6: 4 git-committed validation_run artifacts from pre-patch era lack .blake2b markers",
     "affected_git_commits": [
       "pre-patch era, before commit 56593d1"
     ],
     "count": 4,
-    "action": "PRESERVED \u2014 these are historical evidence records. Rewriting is forbidden per doctrine.",
+    "action": "PRESERVED \u2014 historical evidence records. Rewriting is forbidden per doctrine.",
     "severity": "WARN"
   },
-  "current_integrity_result": "FAIL",
+  "current_integrity_result": "PASS",
   "overall_result": "PASS",
-  "rationale": "Current validation run has 100% marker coverage. Historical C-6 gap is documented and preserved, not counted as current failure."
+  "rationale": "Current validation run has 100% marker coverage (1400/1400). Historical C-6 gap is documented and preserved. Prior report incorrectly counted cram_integrity.json files as CRAM commits \u2014 corrected here."
 }

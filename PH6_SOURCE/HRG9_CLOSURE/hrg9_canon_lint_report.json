@@ -1,6 +1,6 @@
 {
   "schema": "ph6.hrg9.canon_lint_report.v1",
-  "timestamp_utc": "2026-05-06T21:00:26Z",
+  "timestamp_utc": "2026-05-06T21:29:06Z",
   "canon_linter_command": "python3 scripts/ph6_canon_lint.py --path ph6/",
   "linter_path": "/home/jack/scripts/ph6_canon_lint.py",
   "scan_root": "ph6/",

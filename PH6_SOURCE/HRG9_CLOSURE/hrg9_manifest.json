@@ -1,10 +1,10 @@
 {
   "schema": "ph6.hrg9.manifest.v1",
   "version": "1.0",
-  "generated_at_utc": "2026-05-06T20:59:56Z",
-  "repo_commit_hash": "e8fc6c26a697463624962b21575b21f76c29f865",
+  "generated_at_utc": "2026-05-06T21:29:06Z",
+  "repo_commit_hash": "ce1cc1f3031cf4e6a38f7411fdcc6c5057a73182",
   "branch": "main",
-  "working_tree_status": "M frame_filter\n M ph6_status/status.json\n?? PH6_RECOVERY/\n?? PH6_SOURCE/HRG9_CLOSURE/\n?? cram_pu_live_1_0/runtime/\n?? ph6/cram_pu/runtime/\n?? ph6/cram_pu/validation_runs/\n?? usb3_nvme_calibration/",
+  "working_tree_status": "m frame_filter\n M ph6_status/status.json\n?? PH6_RECOVERY/\n?? cram_pu_live_1_0/runtime/\n?? ph6/cram_pu/runtime/\n?? ph6/cram_pu/validation_runs/\n?? usb3_nvme_calibration/",
   "python_version": "3.13.5",
   "host": "jackjack",
   "platform": "Linux-6.12.75+rpt-rpi-2712-aarch64-with-glibc2.41",
@@ -30,7 +30,8 @@
     "test_suite": {
       "result": "PASS",
       "passed": 141,
-      "failed": 0
+      "failed": 0,
+      "duration_s": 1.42
     },
     "canon_linter": {
       "result": "WARN",

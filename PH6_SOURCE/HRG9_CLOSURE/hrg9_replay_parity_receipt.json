@@ -1,6 +1,6 @@
 {
   "schema": "ph6.hrg9.replay_parity_receipt.v1",
-  "timestamp_utc": "2026-05-06T21:00:16Z",
+  "timestamp_utc": "2026-05-06T21:29:06Z",
   "original_run": {
     "pass": 1,
     "label": "Baseline",
@@ -27,5 +27,5 @@
   "replay_command": "run_4pass_system_test.py (pass_1=seed:1 n:300, pass_2=seed:1 n:300)",
   "source_evidence_path": "/home/jack/ph6/cram_pu/validation_runs/20260506T111731Z",
   "failure_reason": null,
-  "note": "Parity computed at git HEAD e8fc6c2; validation run executed at a95e552. Changes between those commits are docs/schemas/tests only \u2014 verdict runner and replay verifier unchanged (confirmed by canon linter PASS at HEAD)."
+  "note": "Parity computed at git HEAD ce1cc1f; validation run executed at a95e552. Changes between those commits are docs/schemas/evidence artifacts only \u2014 verdict runner and replay verifier unchanged (confirmed by canon linter PASS at HEAD)."
 }

@@ -1,12 +1,12 @@
 # HRG9 Closure — All Commands Run
-# Generated: 2026-05-06T20:59:25Z
-# Git commit: e8fc6c26a697463624962b21575b21f76c29f865
+# Generated: 2026-05-06T21:29:06Z
+# Git commit: ce1cc1f3031cf4e6a38f7411fdcc6c5057a73182
 # Branch: main
 # Working directory: /home/jack
 
 # ── 1. Full Test Suite ────────────────────────────────────────────────────────
 python3 -m pytest ph6/ -q
-# Result: 141 passed in 1.40s
+# Result: 141 passed in 1.42s
 
 # ── 2. Canon Linter / Drift Gate ──────────────────────────────────────────────
 python3 scripts/ph6_canon_lint.py --path ph6/
@@ -90,6 +90,7 @@ cat /home/jack/ph6/cram_pu/validation_runs/20260506T111731Z/pass_1/export_report
 git -C /home/jack log --oneline -5
 git -C /home/jack status --short
 git -C /home/jack rev-parse HEAD
-# Result: HEAD = e8fc6c26a697463624962b21575b21f76c29f865
+# Result: HEAD = ce1cc1f3031cf4e6a38f7411fdcc6c5057a73182
 # Status: m frame_filter, M ph6_status/status.json (unrelated to ph6/ code paths)
 #         untracked: PH6_RECOVERY/, cram_pu_live_1_0/runtime/, ph6/cram_pu/runtime/, ph6/cram_pu/validation_runs/, usb3_nvme_calibration/
+# Note: PH6_SOURCE/HRG9_CLOSURE/ is now tracked (committed in ce1cc1f)

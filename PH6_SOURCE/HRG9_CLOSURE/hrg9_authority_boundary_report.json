@@ -1,6 +1,6 @@
 {
   "schema": "ph6.hrg9.authority_boundary_report.v1",
-  "timestamp_utc": "2026-05-06T21:00:42Z",
+  "timestamp_utc": "2026-05-06T21:29:06Z",
   "evidence_base": [
     "python3 -m pytest ph6/ssmt/tests/test_no_authority_leakage.py -v \u2192 2/2 PASS",
     "python3 scripts/ph6_canon_lint.py --path ph6/ \u2192 lane2_authority_leakage: PASS",

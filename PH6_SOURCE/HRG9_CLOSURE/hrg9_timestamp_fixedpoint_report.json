@@ -1,6 +1,6 @@
 {
   "schema": "ph6.hrg9.timestamp_fixedpoint_schema.v1",
-  "timestamp_utc": "2026-05-06T21:04:54Z",
+  "timestamp_utc": "2026-05-06T21:29:06Z",
   "timestamp_schema_check": {
     "authority_paths_checked": [
       "ph6/cram_pu/tools/cram_pu_verdict_runner.py",
