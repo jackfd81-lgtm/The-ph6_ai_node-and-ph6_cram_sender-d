@@ -1,0 +1,54 @@
+{
+  "authority": "LANE_1",
+  "fi_coverage": [
+    "FI-01",
+    "FI-02",
+    "FI-03",
+    "FI-04",
+    "FI-05",
+    "FI-06",
+    "FI-07",
+    "FI-08"
+  ],
+  "lane": "LANE_1",
+  "module": "ph6.cram_pu",
+  "proofs": [
+    {
+      "authority_field": "NONE",
+      "check": "departure_records",
+      "enforced": true
+    },
+    {
+      "authority_field": "LANE_1",
+      "check": "arrival_records",
+      "enforced": true
+    },
+    {
+      "authority_field": "LANE_1",
+      "check": "verdict_records",
+      "enforced": true
+    },
+    {
+      "authority_field": "LANE_1",
+      "check": "cram_commits",
+      "enforced": true
+    },
+    {
+      "authority_field": "NONE",
+      "check": "soso_advisory",
+      "enforced": true,
+      "note": "advisory only, never alters verdict"
+    },
+    {
+      "check": "cram_writer_pass_guard",
+      "enforced": true,
+      "note": "ValueError on non-PASS"
+    },
+    {
+      "check": "shedding_policy_ref_required",
+      "enforced": true
+    }
+  ],
+  "schema": "ph6.hrg9.authority_proof.v1",
+  "timestamp": 1778064870.1938915
+}

@@ -1,0 +1,22 @@
+{
+  "commit": "0355264",
+  "failed": 0,
+  "lane": "LANE_2_ADVISORY",
+  "module": "ph6.ssmt",
+  "passed": 43,
+  "schema": "ph6.hrg9.test_suite.v1",
+  "test_files": [
+    "test_audit_log.py",
+    "test_failure_injection.py",
+    "test_hash_chain.py",
+    "test_no_authority_leakage.py",
+    "test_replay_independence.py",
+    "test_replay_receipt.py",
+    "test_scheduler.py",
+    "test_ssmt_boundaries.py",
+    "test_tok_bridge.py"
+  ],
+  "timestamp": 1778064870.1938915,
+  "total": 43,
+  "verdict": "PASS"
+}

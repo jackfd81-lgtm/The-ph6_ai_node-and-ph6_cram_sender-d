@@ -1,0 +1,37 @@
+{
+  "closure_state": "CLOSED_AS_HRG9_STYLE_EVIDENCE_PACKET",
+  "created_utc": "2026-05-06",
+  "full_test_suite": "80/80 PASS",
+  "head_commit": "d426561",
+  "hrg9_hash": "e0e5648c318f8bdb6c22f80ff5af044661537aec4d500c40539961447833cc91",
+  "lane_separation": "PASS",
+  "lanes": {
+    "LANE_1_CRAM_PU": {
+      "authority": "LANE_1",
+      "blake2b_sidecars": true,
+      "clean_path": "PASS",
+      "commit": "95327f1",
+      "fi_suite": "8/8",
+      "fresh_checkout": "PASS",
+      "milestone": "CRAM-PU-LIVE-1.0",
+      "schema_validation": "PASS",
+      "tests": "37/37",
+      "verdict": "PASS"
+    },
+    "LANE_2_SSMT": {
+      "audit_chain_valid": true,
+      "authority": "NONE",
+      "commit": "0355264",
+      "fi_suite": "13/13",
+      "forensic_closure": "PASS",
+      "milestone": "SSMT-CERT-1.0",
+      "tests": "43/43",
+      "verdict": "PASS"
+    }
+  },
+  "next_gate": "PH6_FULL_PRODUCTION_CLEARANCE",
+  "production_clearance": false,
+  "schema": "ph6.hrg9.closeout_attestation.v1",
+  "standard": "HRG9-STYLE",
+  "system": "PH6"
+}

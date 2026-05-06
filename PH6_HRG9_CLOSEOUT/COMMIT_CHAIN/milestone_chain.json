@@ -1,0 +1,34 @@
+{
+  "branch": "main",
+  "head": "d426561",
+  "milestones": [
+    {
+      "commit": "50a5134",
+      "description": "SSMT-1.0 Lane-2 advisory swarm layer + live sidecar",
+      "tag": "SSMT-1.0"
+    },
+    {
+      "commit": "0355264",
+      "description": "SSMT-CERT-1.0: phase lock — real cognition, CRAM hash linking, FI suite",
+      "tag": "SSMT-CERT-1.0"
+    },
+    {
+      "commit": "793db89",
+      "description": "CRAM-PU-LIVE-1.0: crash/replay validation + full runtime wiring",
+      "tag": "CRAM-PU-LIVE-1.0-WIRE"
+    },
+    {
+      "commit": "95327f1",
+      "description": "CRAM-PU-LIVE-1.0: hardened runtime — manifest, schema validation, FI suite, BLAKE2b-256 labels, .blake2b sidecars",
+      "tag": "CRAM-PU-LIVE-1.0"
+    },
+    {
+      "commit": "d426561",
+      "description": "CRAM-PU-LIVE-1.0 closeout packet",
+      "tag": "CRAM-PU-LIVE-1.0-CLOSEOUT"
+    }
+  ],
+  "repo": "The-ph6_ai_node-and-ph6_cram_sender-d",
+  "schema": "ph6.hrg9.milestone_chain.v1",
+  "timestamp": 1778064870.1938915
+}

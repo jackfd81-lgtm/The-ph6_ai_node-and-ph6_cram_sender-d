@@ -1,0 +1,22 @@
+{
+  "checks": {
+    "all_authority_none": true,
+    "all_lane_2": true,
+    "audit_chain_events": 81,
+    "audit_chain_valid": true,
+    "audit_events_match_packets": true,
+    "memory_passed": true,
+    "no_pass_drop": true,
+    "no_replay_dependency": true,
+    "receipt_hash_present": true,
+    "tok_bridge_read_only": true
+  },
+  "module": "ph6.ssmt",
+  "passed": true,
+  "receipt_hash": "a1a84ac9a8f6e06d64af54517f36429d205d6468cf6d46a5ae7484bd46c87312",
+  "schema": "ph6.hrg9.forensic_closure.v1",
+  "standard": "HRG9-compatible",
+  "swarms_validated": 9,
+  "timestamp": 1778064870.1938915,
+  "validator": "ForensicClosureValidator"
+}

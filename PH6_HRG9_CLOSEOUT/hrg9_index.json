@@ -1,0 +1,31 @@
+{
+  "artifacts": {
+    "COMMIT_CHAIN": [
+      "COMMIT_CHAIN/milestone_chain.json"
+    ],
+    "CRAM_PU_LIVE_1_0_PACKET": "../PH6_CLOSEOUT_PACKET/CRAM_PU_LIVE_1_0/",
+    "FULL_TEST_SUITE": [
+      "FULL_TEST_SUITE/combined_results.json"
+    ],
+    "LANE_1_CRAM_PU": [
+      "LANE_1_CRAM_PU/test_suite.json",
+      "LANE_1_CRAM_PU/authority_proof.json",
+      "LANE_1_CRAM_PU/closeout_reference.json"
+    ],
+    "LANE_2_SSMT": [
+      "LANE_2_SSMT/test_suite.json",
+      "LANE_2_SSMT/forensic_closure.json",
+      "LANE_2_SSMT/authority_proof.json",
+      "LANE_2_SSMT/fi_summary.json"
+    ],
+    "LANE_SEPARATION": [
+      "LANE_SEPARATION/boundary_proof.json"
+    ],
+    "hrg9_attestation": "hrg9_attestation.json"
+  },
+  "created_utc": "2026-05-06",
+  "head_commit": "d426561",
+  "schema": "ph6.hrg9.index.v1",
+  "standard": "HRG9-STYLE",
+  "system": "PH6"
+}

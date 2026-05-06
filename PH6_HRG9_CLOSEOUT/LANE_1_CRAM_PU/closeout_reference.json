@@ -1,0 +1,18 @@
+{
+  "artifact": "CRAM-PU-LIVE-1.0",
+  "artifacts": [
+    "commit.txt",
+    "manifest.json",
+    "clean_path_receipt.json",
+    "fi_report.json",
+    "schema_validation_receipt.json",
+    "blake2b_sidecar_inventory.txt",
+    "fresh_checkout_verification.md",
+    "closeout_attestation.json"
+  ],
+  "closure_state": "CLOSED_AS_REPRODUCIBLE_LIVE_AUTHORITY_NODE_HARNESS",
+  "commit": "95327f1",
+  "packet_path": "PH6_CLOSEOUT_PACKET/CRAM_PU_LIVE_1_0",
+  "schema": "ph6.hrg9.closeout_reference.v1",
+  "timestamp": 1778064870.1938915
+}

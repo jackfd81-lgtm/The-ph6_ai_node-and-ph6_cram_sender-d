@@ -1,0 +1,39 @@
+{
+  "lane_1_authority": "LANE_1",
+  "lane_2_authority": "NONE",
+  "schema": "ph6.hrg9.lane_separation.v1",
+  "separation_proofs": [
+    {
+      "enforcement": "ForensicClosureValidator.root must start with /var/ph6/mram-s/swarms/; RuntimeError raised otherwise",
+      "rule": "SSMT_cannot_write_Lane1_paths",
+      "test": "test_ssmt_boundaries.py",
+      "verified": true
+    },
+    {
+      "enforcement": "All SwarmPacket.authority == 'NONE'; ForensicClosureValidator.all_authority_none check",
+      "rule": "SSMT_advisory_authority_is_NONE",
+      "test": "test_no_authority_leakage.py",
+      "verified": true
+    },
+    {
+      "enforcement": "crash_replay.check_advisory_isolation scans MRAM-S for Lane-1 path references; FI-05 proves detection",
+      "rule": "CRAM_PU_never_reads_SSMT_authority",
+      "test": "cram_pu_fi_suite.py FI-05",
+      "verified": true
+    },
+    {
+      "enforcement": "VerdictLogger.log: PSEUDO metrics are pure-stdlib deterministic; soso_advisory field carries authority=NONE and is ignored by verdict logic",
+      "rule": "verdict_derived_from_PSEUDO_only",
+      "test": "verdict_logger.py + crash_replay.check_advisory_isolation",
+      "verified": true
+    },
+    {
+      "enforcement": "CRAMWriter gate: verdict must be PASS; CRAMWriter.commit raises ValueError on DROP or non-PASS",
+      "rule": "CRAM_hash_chain_not_writable_by_SSMT",
+      "test": "cram_pu_fi_suite.py FI-06",
+      "verified": true
+    }
+  ],
+  "separation_verdict": "PASS",
+  "timestamp": 1778064870.1938915
+}

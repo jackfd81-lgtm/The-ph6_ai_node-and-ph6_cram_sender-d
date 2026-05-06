@@ -1,0 +1,48 @@
+{
+  "authority": "NONE",
+  "fi_ssmt_coverage": [
+    "FI-SSMT-01",
+    "FI-SSMT-02",
+    "FI-SSMT-03",
+    "FI-SSMT-04",
+    "FI-SSMT-05"
+  ],
+  "lane": "LANE_2_ADVISORY",
+  "module": "ph6.ssmt",
+  "proofs": [
+    {
+      "check": "all_swarm_packets_authority_none",
+      "enforced": true
+    },
+    {
+      "check": "all_swarm_packets_lane_2_advisory",
+      "enforced": true
+    },
+    {
+      "check": "forbidden_output_fields",
+      "enforced": true,
+      "fields": [
+        "authority_decision",
+        "drop",
+        "pass",
+        "verdict"
+      ],
+      "note": "pass/drop/verdict/authority_decision never appear in advisory_payload"
+    },
+    {
+      "check": "tok_bridge_read_only",
+      "enforced": true
+    },
+    {
+      "check": "write_root_boundary",
+      "enforced": true,
+      "path_prefix": "/var/ph6/mram-s/swarms/"
+    },
+    {
+      "check": "cram_read_only",
+      "enforced": true
+    }
+  ],
+  "schema": "ph6.hrg9.authority_proof.v1",
+  "timestamp": 1778064870.1938915
+}

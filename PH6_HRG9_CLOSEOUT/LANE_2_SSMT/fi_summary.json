@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "caught_by": "OSError(ENOSPC)",
+      "id": "FI-SSMT-01",
+      "name": "disk full mid-write"
+    },
+    {
+      "caught_by": "truncating write context manager",
+      "id": "FI-SSMT-02",
+      "name": "partial write crash"
+    },
+    {
+      "caught_by": "fsync failure injection",
+      "id": "FI-SSMT-03",
+      "name": "audit log partial write"
+    },
+    {
+      "caught_by": "threading race detection",
+      "id": "FI-SSMT-04",
+      "name": "concurrent scheduler runs"
+    },
+    {
+      "caught_by": "same-second same-swarm guard",
+      "id": "FI-SSMT-05",
+      "name": "timestamp collision"
+    }
+  ],
+  "commit": "0355264",
+  "module": "ph6.ssmt",
+  "passed": 13,
+  "schema": "ph6.hrg9.fi_summary.v1",
+  "test_file": "test_failure_injection.py",
+  "timestamp": 1778064870.1938915,
+  "total_fi_tests": 13,
+  "verdict": "PASS"
+}
