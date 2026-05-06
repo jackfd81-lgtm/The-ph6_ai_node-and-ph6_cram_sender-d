@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PH6 CRAM-PU Packet Schemas",
+  "definitions": {
+    "departure": {
+      "type": "object",
+      "required": ["schema","packet_id","source_node_id","departure_seq","departure_timestamp","payload_hash","media_type","size_bytes"],
+      "properties": {
+        "schema":              {"type":"string","const":"ph6.raw_departure.v1"},
+        "packet_id":           {"type":"string"},
+        "source_node_id":      {"type":"string"},
+        "departure_seq":       {"type":"integer","minimum":1},
+        "departure_timestamp": {"type":"number"},
+        "payload_hash":        {"type":"string","pattern":"^blake2b256:"},
+        "media_type":          {"type":"string","enum":["FRAME","AUDIO","SENSOR"]},
+        "size_bytes":          {"type":"integer","minimum":0},
+        "authority":           {"type":"string","const":"NONE"}
+      }
+    },
+    "arrival": {
+      "type": "object",
+      "required": ["schema","packet_id","arrival_seq","arrival_timestamp","received_hash","transfer_status"],
+      "properties": {
+        "schema":             {"type":"string","const":"ph6.raw_arrival.v1"},
+        "packet_id":          {"type":"string"},
+        "arrival_seq":        {"type":"integer","minimum":1},
+        "arrival_timestamp":  {"type":"number"},
+        "received_hash":      {"type":"string","pattern":"^blake2b256:"},
+        "transfer_status":    {"type":"string","enum":["OK","HASH_MISMATCH","MISSING_DEPARTURE"]},
+        "authority":          {"type":"string","const":"LANE_1_RECEIVER"}
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "required": ["schema","packet_id","verdict","metrics","input_hash","authority"],
+      "properties": {
+        "schema":       {"type":"string","const":"ph6.pseudo_verdict.v1"},
+        "packet_id":    {"type":"string"},
+        "verdict":      {"type":"string","enum":["PASS","DROP"]},
+        "metrics": {
+          "type":"object",
+          "required":["mean_brightness","laplacian_var","motion_fraction"],
+          "properties": {
+            "mean_brightness": {"type":"number"},
+            "laplacian_var":   {"type":"number"},
+            "motion_fraction": {"type":"number"}
+          }
+        },
+        "reasons":    {"type":"array","items":{"type":"string"}},
+        "input_hash": {"type":"string"},
+        "authority":  {"type":"string","const":"LANE_1"},
+        "soso_advisory": {
+          "type":"object",
+          "description":"Advisory only — must not influence verdict",
+          "properties": {
+            "state":     {"type":"string"},
+            "confidence":{"type":"number"},
+            "authority": {"type":"string","const":"NONE"}
+          }
+        }
+      }
+    },
+    "cram_commit": {
+      "type": "object",
+      "required": ["schema","packet_id","payload_hash","verdict","authority","prev_cram_hash","cram_hash"],
+      "properties": {
+        "schema":        {"type":"string","const":"ph6.cram_commit.v1"},
+        "packet_id":     {"type":"string"},
+        "payload_hash":  {"type":"string"},
+        "verdict":       {"type":"string","const":"PASS"},
+        "authority":     {"type":"string","const":"LANE_1"},
+        "prev_cram_hash":{"type":"string"},
+        "cram_hash":     {"type":"string"},
+        "timestamp":     {"type":"number"}
+      }
+    },
+    "shedding_event": {
+      "type": "object",
+      "required": ["schema","packet_id","policy_id","reason","shed_seq","authority"],
+      "properties": {
+        "schema":    {"type":"string","const":"ph6.drop_shedding.v1"},
+        "packet_id": {"type":"string"},
+        "policy_id": {"type":"string"},
+        "reason":    {"type":"string"},
+        "shed_seq":  {"type":"integer","minimum":1},
+        "authority": {"type":"string","const":"LANE_1"},
+        "timestamp": {"type":"number"}
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@ class SSMTLiveSidecar:
     Reads:  CRAM references, TOK advisory references.
     Writes: MRAM-S swarm packets only.
 
-    Never:  writes CRAM, affects PSEUDO, affects PASS/DROP, blocks RSYNC.
+    Never:  writes CRAM, touches Lane-1 state, affects Lane-1 verdict, blocks RSYNC.
 
     Runtime order:
       1. CRAM commit (caller)

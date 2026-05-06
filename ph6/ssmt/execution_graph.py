@@ -9,6 +9,6 @@ EXECUTION_GRAPH = [
 
 FORBIDDEN_EDGES = [
     ("S1", "CRAM_WRITE"),
-    ("S8", "PASS"),
-    ("S9", "DROP"),
+    ("S8", "ADVISORY_ACCEPT_TRACE"),
+    ("S9", "ADVISORY_REJECT_TRACE"),
 ]

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PH6 CRAM-PU Postrun Receipt",
+  "type": "object",
+  "required": [
+    "schema","receipt_id","runtime_wired",
+    "packets_total","packets_passed","packets_dropped","packets_shed",
+    "cram_commits","replay_matches","chain_valid",
+    "soso_influenced_verdict","pass_silently_dropped","drop_shed_without_policy",
+    "timestamp","receipt_hash"
+  ],
+  "properties": {
+    "schema":                   {"type":"string","const":"ph6.cram_pu.receipt.v1"},
+    "receipt_id":               {"type":"string"},
+    "runtime_wired":            {"type":"boolean"},
+    "packets_total":            {"type":"integer"},
+    "packets_passed":           {"type":"integer"},
+    "packets_dropped":          {"type":"integer"},
+    "packets_shed":             {"type":"integer"},
+    "cram_commits":             {"type":"integer"},
+    "replay_matches":           {"type":"integer"},
+    "chain_valid":              {"type":"boolean"},
+    "soso_influenced_verdict":  {"type":"boolean","const":false},
+    "pass_silently_dropped":    {"type":"boolean","const":false},
+    "drop_shed_without_policy": {"type":"boolean","const":false},
+    "rsync_blocked":            {"type":"boolean","const":false},
+    "timestamp":                {"type":"number"},
+    "receipt_hash":             {"type":"string"}
+  }
+}
