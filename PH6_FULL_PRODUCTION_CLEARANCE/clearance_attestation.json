@@ -1,37 +1,86 @@
 {
-  "blocking_disposition": "AI lane disabled by design; CRAM-PU Lane-1 and SSMT Lane-2 unaffected",
-  "blocking_item": "OI-01: Hailo inference not wired",
-  "blocking_open_items": 1,
-  "clearance_excludes": [
-    "Hailo AI inference (OI-01)",
-    "two-Pi live transfer (OI-03)"
-  ],
-  "clearance_hash": "9541b5f3cf0b1b19ebc57b69b6c931cabbb442b4ecad7d649fdd40e40a0a1f3e",
-  "clearance_scope": "LANE_1_CRAM_PU + LANE_2_SSMT + frame_filter authority model",
+  "clearance_hash": "c0fa5d337d79b0e775598f1f217abcc7c1c3cf3d1a8636ee7716dc37e753fdd3",
   "date": "2026-05-06",
+  "evidence_head_commit": "af712d0",
   "full_production_clearance": false,
-  "gates_passed": {
-    "300_frame_validation": "PASS — 2026-05-04",
-    "authority_model": "PASS",
-    "blake2b_sidecars": "PASS",
-    "cram_pu_fi_suite": "8/8 PASS",
-    "cram_pu_live_1_0": "PASS — commit 95327f1",
-    "forensic_closure": "PASS",
-    "fresh_checkout": "PASS",
-    "full_test_suite": "100/100 PASS",
-    "hrg9_evidence_packet": "PASS — commit ad85651",
-    "lane_separation": "PASS",
-    "open_items_reviewed": "4 items, 1 blocking (OI-01 AI disabled by design)",
-    "schema_validation": "PASS",
-    "ssmt_cert_1_0": "PASS — commit 0355264",
-    "ssmt_fi_suite": "13/13 PASS"
+  "gates": {
+    "G10_production_status_change": {
+      "action": "scope_clearance set True after G1-G9 all PASS; full_production_clearance withheld pending OI-01 + OI-03",
+      "result": "PASS"
+    },
+    "G1_hrg9_evidence_packet": {
+      "artifact": "PH6_HRG9_CLOSEOUT/hrg9_attestation.json",
+      "commit": "ad85651",
+      "result": "PASS"
+    },
+    "G2_cram_pu_closeout_packet": {
+      "artifact": "PH6_CLOSEOUT_PACKET/CRAM_PU_LIVE_1_0/closeout_attestation.json",
+      "commit": "d426561",
+      "result": "PASS"
+    },
+    "G3_ssmt_cert_packet": {
+      "artifact": "ph6/ssmt/forensic_closure.py",
+      "commit": "0355264",
+      "result": "PASS",
+      "tests": "43/43"
+    },
+    "G4_lane_separation_proof": {
+      "artifact": "PH6_HRG9_CLOSEOUT/LANE_SEPARATION/boundary_proof.json",
+      "result": "PASS"
+    },
+    "G5_full_test_suite": {
+      "breakdown": "43 SSMT + 37 CRAM-PU + 20 frame_filter",
+      "result": "PASS",
+      "total": "100/100"
+    },
+    "G6_frame_filter_suite_repaired": {
+      "fix": "conftest.py added, commit c22f39b (submodule)",
+      "result": "PASS",
+      "total": "20/20"
+    },
+    "G7_audit_schema_compliance": {
+      "errors": 0,
+      "result": "PASS",
+      "validator": "cram_pu_schema_validate.py"
+    },
+    "G8_rsync_priority_zero": {
+      "blocked_by": null,
+      "queue_depth": 1,
+      "result": "PASS"
+    },
+    "G9_lane2_cannot_write_cram": {
+      "checks": [
+        "CRAM_READ_ONLY",
+        "write_root_boundary",
+        "tok_bridge_read_only",
+        "write_root_is_mram_s",
+        "ssmt_boundary_tests"
+      ],
+      "result": "PASS"
+    }
   },
-  "head_commit": "ad85651",
+  "gates_failed": 0,
+  "gates_passed": 10,
+  "gates_total": 10,
   "next_gate": "OI-01_HAILO_WIRING + OI-03_TWO_PI_LIVE_TRANSFER",
-  "note": "Full clearance requires OI-01 Hailo wiring and OI-03 two-Pi live transfer verification",
-  "open_items_count": 4,
-  "production_clearance": true,
+  "open_items_blocking": [
+    {
+      "description": "Hailo AI inference not wired",
+      "id": "OI-01",
+      "status": "BLOCKING_FULL_CLEARANCE"
+    },
+    {
+      "description": "Two-Pi live network transfer not verified",
+      "id": "OI-03",
+      "status": "SCOPE_ITEM"
+    }
+  ],
   "schema": "ph6.production.clearance.v1",
+  "scope": "LANE_1_CRAM_PU + LANE_2_SSMT + frame_filter authority model + lane separation + full test suite",
+  "scope_clearance": true,
+  "scope_note": "10-gate proof layer cleared. Full operational clearance requires closing OI-01 and OI-03.",
   "system": "PH6",
-  "verdict": "CLEARED_WITH_KNOWN_OPEN_ITEMS"
+  "timestamp": 1778065332.3375,
+  "verdict": "CLEARED_WITH_KNOWN_OPEN_ITEMS",
+  "version": "3"
 }
