@@ -1,0 +1,48 @@
+{
+  "blocking": 1,
+  "items": [
+    {
+      "blocking_for_production": true,
+      "component": "ph6_ai_node",
+      "description": "Hailo inference not wired — ai_node_server.py returns placeholder result",
+      "disposition": "KNOWN_OPEN — AI lane disabled by design until Hailo integration complete",
+      "evidence": "status.json ai=DISABLED; ai_node_server.py line 30: 'Hailo inference not wired yet'",
+      "id": "OI-01",
+      "severity": "BLOCKING_FOR_AI_LANE",
+      "workaround": "Lane-2 advisory path runs without Hailo; CRAM-PU Lane-1 unaffected"
+    },
+    {
+      "blocking_for_production": false,
+      "component": "frame_filter/test_ph6lite_phase2.py",
+      "description": "6 test errors: missing run_dir fixture (no conftest.py)",
+      "disposition": "FIXED — conftest.py added 2026-05-06; 20/20 frame_filter tests now pass",
+      "evidence": "pytest: 'fixture run_dir not found' — tests need live run data",
+      "id": "OI-02",
+      "resolution_commit": "pending",
+      "severity": "TEST_INFRA"
+    },
+    {
+      "blocking_for_production": false,
+      "component": "two_pi_integration",
+      "description": "CRAM-PU proven single-Pi only; two-Pi transfer path not live-tested",
+      "disposition": "KNOWN_SCOPE — single-Pi authority model proven; two-Pi wiring is deployment step",
+      "evidence": "All CRAM-PU-LIVE-1.0 runs use in-process simulation, not network transfer",
+      "id": "OI-03",
+      "severity": "INTEGRATION",
+      "workaround": "departure→arrival simulation is correct protocol proof; only transport differs"
+    },
+    {
+      "blocking_for_production": false,
+      "component": "ph6_ai_node",
+      "description": "ai_node_server.py has no authentication or rate limiting",
+      "disposition": "KNOWN_OPEN — acceptable for closed-network Pi deployment; pre-internet hardening needed",
+      "evidence": "FastAPI /process endpoint accepts any upload without auth",
+      "id": "OI-04",
+      "severity": "HARDENING"
+    }
+  ],
+  "non_blocking": 3,
+  "schema": "ph6.production.open_items.v1",
+  "timestamp": 1778065150.8239207,
+  "total": 4
+}

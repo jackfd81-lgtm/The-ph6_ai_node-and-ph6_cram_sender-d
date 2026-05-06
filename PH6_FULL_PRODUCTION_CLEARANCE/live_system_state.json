@@ -1,0 +1,43 @@
+{
+  "components": {
+    "ai_node": {
+      "note": "Hailo inference not wired — OI-01",
+      "status": "DISABLED"
+    },
+    "camera": {
+      "note": "Pi camera running at 1fps",
+      "status": "OK"
+    },
+    "cram_pu": {
+      "note": "CRAM-PU-LIVE-1.0 proven, commit 95327f1",
+      "status": "OK"
+    },
+    "cram_sender": {
+      "note": "ph6_cram_sender client operational",
+      "status": "OK"
+    },
+    "frame_filter": {
+      "note": "300-frame validation PASS 2026-05-04",
+      "status": "OK"
+    },
+    "ssmt": {
+      "note": "SSMT-CERT-1.0 proven, commit 0355264",
+      "status": "OK"
+    },
+    "storage_monitor": {
+      "note": "ph6_storage_monitor present",
+      "status": "OK"
+    }
+  },
+  "last_300_frame_validation": "PASS — 2026-05-04 (ph6_300_validation_20260504_061647.txt)",
+  "schema": "ph6.production.live_state.v1",
+  "status_json": {
+    "ai": "DISABLED",
+    "cam": "OK",
+    "cram": "OK",
+    "fps": 1.0,
+    "frame": 300,
+    "status": "DONE"
+  },
+  "timestamp": 1778065150.8239207
+}

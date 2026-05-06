@@ -1,0 +1,44 @@
+{
+  "failed": 0,
+  "fi_suites": [
+    {
+      "passed": 8,
+      "suite": "cram_pu_fi_suite.py",
+      "tests": 8
+    },
+    {
+      "passed": 13,
+      "suite": "ssmt test_failure_injection.py",
+      "tests": 13
+    }
+  ],
+  "passed": 100,
+  "platform": "linux/Pi5",
+  "pytest": "9.0.3",
+  "python": "3.13.5",
+  "schema": "ph6.production.test_suite.v1",
+  "suites": [
+    {
+      "failed": 0,
+      "module": "ph6.ssmt",
+      "passed": 43,
+      "tests": 43
+    },
+    {
+      "failed": 0,
+      "module": "ph6.cram_pu",
+      "passed": 37,
+      "tests": 37
+    },
+    {
+      "failed": 0,
+      "module": "frame_filter",
+      "note": "conftest.py added to provide run_dir fixture",
+      "passed": 20,
+      "tests": 20
+    }
+  ],
+  "timestamp": 1778065150.8239207,
+  "total": 100,
+  "verdict": "PASS"
+}

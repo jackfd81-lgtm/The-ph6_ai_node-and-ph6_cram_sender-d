@@ -1,0 +1,45 @@
+{
+  "cross_lane_separation_proven": true,
+  "lanes": {
+    "LANE_1": {
+      "authority": "LANE_1",
+      "components": [
+        "frame_filter PSEUDO verdict",
+        "CRAM-PU receiver",
+        "CRAMWriter"
+      ],
+      "may_issue_pass_drop": true,
+      "may_write_cram": true,
+      "proven_by": [
+        "CRAM-PU-LIVE-1.0",
+        "FI-01..08",
+        "37 unit tests"
+      ]
+    },
+    "LANE_2_ADVISORY": {
+      "authority": "NONE",
+      "components": [
+        "SSMT swarms S1-S9",
+        "ph6_ai_node (when enabled)",
+        "SoSo advisory"
+      ],
+      "may_issue_pass_drop": false,
+      "may_write_cram": false,
+      "proven_by": [
+        "SSMT-CERT-1.0",
+        "FI-SSMT-01..05",
+        "43 unit tests",
+        "test_no_authority_leakage.py",
+        "test_token_leakage.py"
+      ]
+    }
+  },
+  "proven_by": [
+    "FI-05 advisory_isolation",
+    "LANE_SEPARATION/boundary_proof.json",
+    "test_ssmt_boundaries.py"
+  ],
+  "schema": "ph6.production.authority_model.v1",
+  "soso_cannot_change_verdict": true,
+  "timestamp": 1778065150.8239207
+}

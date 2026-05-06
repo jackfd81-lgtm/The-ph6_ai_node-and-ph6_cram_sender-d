@@ -1,0 +1,36 @@
+{
+  "artifacts": [
+    {
+      "artifact": "SSMT-1.0",
+      "commit": "50a5134",
+      "location": "ph6/ssmt/"
+    },
+    {
+      "artifact": "SSMT-CERT-1.0",
+      "commit": "0355264",
+      "location": "ph6/ssmt/"
+    },
+    {
+      "artifact": "CRAM-PU-LIVE-1.0",
+      "commit": "95327f1",
+      "location": "ph6/cram_pu/"
+    },
+    {
+      "artifact": "CRAM-PU-CLOSEOUT",
+      "commit": "d426561",
+      "location": "PH6_CLOSEOUT_PACKET/CRAM_PU_LIVE_1_0/"
+    },
+    {
+      "artifact": "HRG9-CLOSEOUT",
+      "commit": "ad85651",
+      "location": "PH6_HRG9_CLOSEOUT/"
+    },
+    {
+      "artifact": "PRODUCTION-CLEARANCE",
+      "commit": "pending",
+      "location": "PH6_FULL_PRODUCTION_CLEARANCE/"
+    }
+  ],
+  "schema": "ph6.production.evidence_chain.v1",
+  "timestamp": 1778065150.8239207
+}
