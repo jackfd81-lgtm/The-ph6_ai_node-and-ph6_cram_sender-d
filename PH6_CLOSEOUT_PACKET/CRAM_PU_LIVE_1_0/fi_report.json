@@ -1,0 +1,68 @@
+{
+  "commit": "95327f1",
+  "milestone": "CRAM-PU-LIVE-1.0",
+  "passed": 8,
+  "schema": "ph6.cram_pu.fi_report.v1",
+  "suite": "cram_pu_fi_suite.py",
+  "tests": [
+    {
+      "caught_by": "continuity.orphan_departures",
+      "fault": "no arrival record for frame 1",
+      "id": "FI-01",
+      "name": "missing arrival",
+      "result": "PASS"
+    },
+    {
+      "caught_by": "continuity.hash_mismatches",
+      "fault": "arrival hash differs from departure hash",
+      "id": "FI-02",
+      "name": "corrupted payload hash",
+      "result": "PASS"
+    },
+    {
+      "caught_by": "continuity.orphan_departures",
+      "fault": "frame 3 arrival omitted from 1-4 set",
+      "id": "FI-03",
+      "name": "sequence gap",
+      "result": "PASS"
+    },
+    {
+      "caught_by": "cram_integrity.hash_failures",
+      "fault": "cram_hash field set to 'a'*64",
+      "id": "FI-04",
+      "name": "tampered cram_hash",
+      "result": "PASS"
+    },
+    {
+      "caught_by": "advisory_isolation",
+      "fault": "MRAM-S advisory contains Lane-1 path",
+      "id": "FI-05",
+      "name": "Lane-2 path leakage",
+      "result": "PASS"
+    },
+    {
+      "caught_by": "code-level ValueError",
+      "fault": "CRAMWriter called with DROP verdict",
+      "id": "FI-06",
+      "name": "PASS-guard on commit",
+      "result": "PASS"
+    },
+    {
+      "caught_by": "drop_shedding.unlogged_drops",
+      "fault": "shedding entry missing policy_ref field",
+      "id": "FI-07",
+      "name": "DROP without policy_ref",
+      "result": "PASS"
+    },
+    {
+      "caught_by": "cram_integrity.prev_hash_mismatches",
+      "fault": "commit 2 prev_cram_hash set to genesis",
+      "id": "FI-08",
+      "name": "broken prev_cram_hash",
+      "result": "PASS"
+    }
+  ],
+  "timestamp": 1778064545.7815068,
+  "total": 8,
+  "verdict": "PASS"
+}

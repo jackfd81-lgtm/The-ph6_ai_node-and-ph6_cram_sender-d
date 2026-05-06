@@ -1,0 +1,18 @@
+{
+  "schema": "ph6.closeout.cram_pu_live.v1",
+  "artifact": "CRAM-PU-LIVE-1.0",
+  "commit": "95327f1",
+  "classification": "RUNTIME_PROOF_ARTIFACT",
+  "closure_state": "CLOSED_AS_REPRODUCIBLE_LIVE_AUTHORITY_NODE_HARNESS",
+  "production_clearance": false,
+  "hrg9_clearance": false,
+  "clean_path": "PASS",
+  "schema_validation": "PASS",
+  "failure_injection": "8/8 PASS",
+  "fresh_checkout_verified": true,
+  "manifest_written": true,
+  "blake2b_sidecars_present": true,
+  "source_drift": "NONE_EXCEPT_RUNTIME_EVIDENCE",
+  "authority_note": "Supports PH6 closeout evidence chain; does not alone clear full PH6 production.",
+  "next_gate": "PH6_HRG9_STYLE_CLOSEOUT_PACKET"
+}

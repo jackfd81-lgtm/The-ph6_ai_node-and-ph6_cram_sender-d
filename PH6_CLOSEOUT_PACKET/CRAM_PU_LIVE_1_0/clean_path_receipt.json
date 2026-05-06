@@ -1,0 +1,23 @@
+{
+  "all_seven_checks": "PASS",
+  "authority_leakage": false,
+  "clean_path_verdict": "PASS",
+  "commit": "95327f1",
+  "cram_commits": 9,
+  "created_utc": "20260506T104756Z",
+  "drop_shed_without_policy": false,
+  "milestone": "CRAM-PU-LIVE-1.0",
+  "packets_dropped": 3,
+  "packets_passed": 9,
+  "packets_total": 12,
+  "pass_silently_lost": false,
+  "receipt_hash": "1280215f25c2e73610e15bfbc56ad4b40085118ff2ebf1814a4cc18c786a5e3b",
+  "replay_verdict": "PASS",
+  "rsync_blocked": false,
+  "run_id": "99f50a00-908f-437e-9a50-e15317c2b20b",
+  "schema": "ph6.cram_pu.clean_path_receipt.v1",
+  "schema_validation": "PASS",
+  "shedding_events": 3,
+  "timestamp": 1778064524.396991,
+  "torn_files": false
+}

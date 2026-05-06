@@ -1,0 +1,25 @@
+{
+  "checks": [
+    "schema field const",
+    "frame_id present and int",
+    "payload_hash / input_hash / cram_hash: 64-hex",
+    "hash_algorithm == 'BLAKE2b-256'",
+    "authority value per record type",
+    "soso_advisory.authority == NONE",
+    "policy_ref present on shedding events"
+  ],
+  "commit": "95327f1",
+  "errors_found": 0,
+  "milestone": "CRAM-PU-LIVE-1.0",
+  "records_validated": {
+    "arrival": 12,
+    "cram_commit": 9,
+    "departure": 12,
+    "shedding": 3,
+    "verdict": 12
+  },
+  "schema": "ph6.cram_pu.schema_validation_receipt.v1",
+  "timestamp": 1778064545.7820103,
+  "validator": "ph6/cram_pu/tools/cram_pu_schema_validate.py",
+  "verdict": "PASS"
+}
