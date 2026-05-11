@@ -1,0 +1,33 @@
+{
+  "schema": "ph6.gate_card.v1",
+  "gate_id": "CDG-1.0-SEAL",
+  "evaluated_utc": "2026-05-11T00:00:00Z",
+  "operator": "jackfd81-lgtm",
+  "document": "PH6_SOURCE/DRAFT/PH6-CDG-1.0.md",
+  "canon_position": "Book VI — Constitutional Governance",
+  "gate_results": {
+    "drift_gate_scan": "PASS",
+    "six_book_compatibility": "PASS",
+    "repo_audit_schema_validation": "PASS",
+    "canon_routing_review": "PASS"
+  },
+  "false_positives_cleared": [
+    "F-01 hit line 284: affirms Authority ZERO, not escalation",
+    "Book III hit line 218: prohibition text, not violation"
+  ],
+  "stale_references_corrected": [
+    "AI_ENTRY_INDEX.md: HRG9 OPEN → CLOSED; CDG governance path added",
+    "GLOSSARY_LOCK.md: HRG9 definition updated to CLOSED",
+    "PH6-MASTER-AI-INGEST-6.0.md: header status corrected; HRG9 STOP-SHIP removed"
+  ],
+  "files_updated": [
+    "PH6_SOURCE/DRAFT/PH6-CDG-1.0.md",
+    "PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md",
+    "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+    "PH6_SOURCE/AI_ENTRY_INDEX.md",
+    "PH6_SOURCE/GLOSSARY_LOCK.md",
+    "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md"
+  ],
+  "seal_verdict": "SEALED",
+  "note": "CDG-1.0 is Book VI. Governs amendment, drift control, and canon routing. Does not override Books 0-V operationally."
+}

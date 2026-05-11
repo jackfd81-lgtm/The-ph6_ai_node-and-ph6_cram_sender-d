@@ -1,0 +1,23 @@
+{
+  "audit_schema": "ph6.repo_audit.v1",
+  "overall_status": "PASS|WARN|BLOCKED",
+  "production_status": "STOP_SHIP|CLEARED",
+  "blocker_count": 0,
+  "high_count": 0,
+  "medium_count": 0,
+  "low_count": 0,
+  "info_count": 0,
+  "hrg9_status": "CLOSED",
+  "hrg9_commit": "2ef5fd6",
+  "current_stop_ship_reasons": [
+    "OI-01_HAILO_HARDWARE_GATED",
+    "OI-03_PI_TO_PI_LIVE_TRANSFER_NOT_VERIFIED"
+  ],
+  "lane2_authority_leakage": false,
+  "sha256_authority_misuse": false,
+  "motion_field_drift": false,
+  "tests_below_300": false,
+  "rsync_blocking_risk": false,
+  "fi_03_content_hash_verification": "REQUIRED",
+  "next_action": ""
+}

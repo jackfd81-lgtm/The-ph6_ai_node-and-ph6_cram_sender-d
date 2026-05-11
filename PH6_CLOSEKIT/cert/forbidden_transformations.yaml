@@ -1,0 +1,82 @@
+schema: ph6.forbidden_transformations.v1
+version: "1.0"
+locked_utc: "2026-05-11T00:00:00Z"
+
+forbidden:
+  F-01:
+    name: Authority Escalation
+    rule: Lane 2 may never acquire Lane 1 authority.
+    triggers: DRIFT_FAIL
+    examples:
+      - AI system issuing PASS or DROP
+      - SoSo output altering threshold
+      - TOK becoming replay dependency
+
+  F-02:
+    name: Evidence Contamination
+    rule: Advisory output may never enter authoritative evidence packets.
+    triggers: DRIFT_FAIL
+    examples:
+      - SoSo advisory field in EvidencePacket
+      - Token metadata in CRAM-A record
+      - AI commentary in audit chain
+
+  F-03:
+    name: Reverse Path Violation
+    rule: Downstream interpretation may never rewrite upstream evidence.
+    triggers: DRIFT_FAIL
+    examples:
+      - Replay engine mutating CRAM-A records
+      - Post-processing retroactively reclassifying verdicts
+      - Analytics layer patching audit events
+
+  F-04:
+    name: Verdict Override
+    rule: No advisory, swarm, or AI layer may alter PASS/DROP.
+    triggers: DRIFT_FAIL
+    examples:
+      - Swarm consensus overriding PSEUDO-A verdict
+      - Confidence score changing verdict
+      - AI recommending threshold adjustment at runtime
+
+  F-05:
+    name: Replay Mutation
+    rule: Replay must reproduce, not reinterpret, authoritative state.
+    triggers: DRIFT_FAIL
+    examples:
+      - Replay producing different hashes than original
+      - Replay injecting new advisory context
+      - Replay depending on SoSo or TOK state
+
+  F-06:
+    name: Token Authority Promotion
+    rule: SoSo, swarm, and advisory tokens remain non-authoritative.
+    triggers: DRIFT_FAIL
+    examples:
+      - TOK token influencing PASS/DROP
+      - VDT/VLT token becoming CRAM-A entry
+      - RT token referenced in authority hash chain
+
+  F-07:
+    name: Forbidden Optimization
+    rule: >
+      No optimization may weaken fsync guarantees, bypass atomic commit,
+      reorder authoritative writes, introduce probabilistic authority,
+      create hidden mutable state, or trade replayability for throughput.
+    triggers: DRIFT_FAIL
+    examples:
+      - Deferred fsync for performance
+      - Async CRAM commit pipeline
+      - Batched writes without per-commit markers
+      - mmap on authoritative paths
+
+  F-08:
+    name: Degradation Inversion
+    rule: >
+      Under resource exhaustion, Lane 1 and export must survive last.
+      Fairness-based degradation that harms Lane 1 or RSYNC is forbidden.
+    triggers: DRIFT_FAIL
+    examples:
+      - Throttling CRAM commits to balance AI load
+      - Blocking RSYNC to preserve advisory computation
+      - Symmetric degradation across lanes

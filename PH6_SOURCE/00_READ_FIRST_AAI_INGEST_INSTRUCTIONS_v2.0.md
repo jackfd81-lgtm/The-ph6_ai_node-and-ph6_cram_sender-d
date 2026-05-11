@@ -44,15 +44,16 @@ Prove everything.
 
 ## 1. Mandatory Canon Structure
 
-All PH6 source material must be organized into this **six-book stack only**:
+All PH6 source material must be organized into this **seven-book stack only**:
 
 ```text
-Book 0  — Interpretive Control Plane
-Book I  — Operational Source Constitution
-Book II — Scientific Instrument Master
+Book 0   — Interpretive Control Plane
+Book I   — Operational Source Constitution
+Book II  — Scientific Instrument Master
 Book III — Boundary Containment Annex
-Book IV — Certification Proof Pack
-Book V  — Experimental Swarm Annex
+Book IV  — Certification Proof Pack
+Book V   — Experimental Swarm Annex
+Book VI  — Constitutional Governance (CDG-1.0)
 ```
 
 No alternate active structure is permitted.
@@ -63,11 +64,12 @@ Forbidden:
 DOC0–DOC3 as active canon
 parallel canon stacks
 duplicate doctrine homes
-new top-level authority books
+new top-level authority books (except Book VI Governance layer)
 merged Book V authority material
 ```
 
-The old four-document structure is superseded by the six-book stack.
+The old four-document structure is superseded by the seven-book stack.
+Book VI is governance-authoritative and reads above Books 0–V for amendment and canon-routing decisions.
 
 ---
 
@@ -76,12 +78,13 @@ The old four-document structure is superseded by the six-book stack.
 AI must read and reason in this exact order:
 
 ```text
-1. Book 0  — Interpret
-2. Book I  — Constitute
-3. Book II — Measure
+1. Book 0   — Interpret
+2. Book I   — Constitute
+3. Book II  — Measure
 4. Book III — Contain
-5. Book IV — Prove
-6. Book V  — Explore
+5. Book IV  — Prove
+6. Book V   — Explore
+7. Book VI  — Govern (canon routing, amendment, drift control)
 ```
 
 Operational law:
@@ -199,6 +202,7 @@ Each doctrine fragment must live in exactly one canonical home.
 | Prohibitions / containment            | Book III       |
 | Certification / validation            | Book IV        |
 | Advisory experiments / swarm / tokens | Book V         |
+| Governance / CDG / amendment rules    | Book VI        |
 
 Rule:
 

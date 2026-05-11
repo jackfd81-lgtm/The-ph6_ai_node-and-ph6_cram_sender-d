@@ -41,7 +41,7 @@ Purpose: Lock canonical terminology. Synonyms and paraphrases are forbidden
 | **fixed-point** | Integer metric encoding at scale 10000, using Decimal ROUND_HALF_EVEN | float metric, decimal metric |
 | **EvidencePacket** | Sealed authoritative boundary object — Lane-2 data may never enter | evidence record, verdict packet |
 | **DRIFT_FAIL** | Architectural violation state — halt and audit | failure, error, mismatch |
-| **HRG9** | The production-clearance hardware replay evidence gate — OPEN until all artifacts pass | hardware gate, replay gate |
+| **HRG9** | The production-clearance hardware replay evidence gate — CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |
 | **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |
 
 ---

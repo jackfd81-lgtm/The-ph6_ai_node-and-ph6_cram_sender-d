@@ -8,8 +8,8 @@
 Document ID: PH6-MASTER-AI-INGEST-6.0
 Classification: AUTHORITATIVE ENGINEERING HANDOFF
 Role: CANONICAL AI INGEST DOCUMENT
-Status: ACTIVE — STOP-SHIP UNTIL HRG9 CLOSURE
-Primary Authority: Book 0 → Book I → Book II → Book III → Book IV → Book V
+Status: ACTIVE — STOP-SHIP (OI-01 hardware-gated, OI-03 real Pi-to-Pi not yet verified; HRG9 CLOSED at 2ef5fd6)
+Primary Authority: Book 0 → Book I → Book II → Book III → Book IV → Book V → Book VI
 Prepared For: Human Engineers, AI Systems, Audit Agents, Reconstruction Agents
 Prepared By: Jack Frantz Disla | DISLA
 ```
@@ -70,19 +70,21 @@ Measure third.
 Contain fourth.
 Prove fifth.
 Explore last.
+Govern above all.
 Never reverse this order.
 ```
 
 Mandatory reading order:
 
-| Order   | Book                         | Question Answered           |
-| ------- | ---------------------------- | --------------------------- |
-| Book 0  | Interpretive Control Plane   | How doctrine is interpreted |
-| Book I  | Operational Constitution     | What is true                |
-| Book II | Scientific Instrument Master | How truth is measured       |
-| Book III| Boundary Containment         | What is forbidden           |
-| Book IV | Certification Proof Pack     | How truth is proven         |
-| Book V  | Experimental Swarm Annex     | What may be explored safely |
+| Order    | Book                         | Question Answered              |
+| -------- | ---------------------------- | ------------------------------ |
+| Book 0   | Interpretive Control Plane   | How doctrine is interpreted    |
+| Book I   | Operational Constitution     | What is true                   |
+| Book II  | Scientific Instrument Master | How truth is measured          |
+| Book III | Boundary Containment         | What is forbidden              |
+| Book IV  | Certification Proof Pack     | How truth is proven            |
+| Book V   | Experimental Swarm Annex     | What may be explored safely    |
+| Book VI  | Constitutional Governance    | How the canon itself is governed |
 
 ---
 
@@ -600,7 +602,7 @@ Enforce atomic write discipline.
 Do not widen authority.
 Do not weaken constraints.
 Do not close evidence gaps without proof.
-Do not clear STOP-SHIP until HRG9 closes completely.
+Do not clear STOP-SHIP until OI-01 and OI-03 are verified (HRG9 already closed at 2ef5fd6).
 ```
 
 ---
@@ -610,13 +612,14 @@ Do not clear STOP-SHIP until HRG9 closes completely.
 This consolidated master integrates and normalizes:
 
 ```text
-Book 0 — Interpretive Control Plane
-Book I — Operational Constitution
-Book II — Scientific Instrument Master
+Book 0   — Interpretive Control Plane
+Book I   — Operational Constitution
+Book II  — Scientific Instrument Master
 Book III — Boundary Containment Annex
-Book IV — Certification Proof Pack
-Book V — Experimental Swarm Annex
-Consolidated Canon Stack v4.0
+Book IV  — Certification Proof Pack
+Book V   — Experimental Swarm Annex
+Book VI  — Constitutional Governance (CDG-1.0)
+Consolidated Canon Stack v5.0
 Instrument & Runtime Architecture
 Controlled Extensions Annex
 ```

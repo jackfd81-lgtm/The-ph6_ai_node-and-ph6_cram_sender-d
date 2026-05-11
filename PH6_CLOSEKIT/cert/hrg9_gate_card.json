@@ -1,0 +1,35 @@
+{
+  "schema": "ph6.hrg9.gate_card.v1",
+  "gate_id": "HRG9-CLOSEOUT",
+  "evaluated_utc": "2026-05-11T00:00:00Z",
+  "evidence_commit": "2ef5fd6",
+  "result_set_hash": "901d34616169362ad8cc92451f71838c3e83d825b58c7c1f95d341968261d15a",
+  "artifact_hashes": {
+    "hrg9_authority_boundary_report.json": "2972b7e8ee1840418c5ee0ca34537f9190b8e0bffc1a7d45bcd2a178c0b08b95",
+    "hrg9_canon_lint_report.json": "e9cbd8650d8d6046612078184e17148bb3b4060c52314c3e57eac9ab3662ff0c",
+    "hrg9_environment_snapshot.json": "3066439517dd87dc47d153fd75c912620c867223fd9feb0ec556fb7d82bd8590",
+    "hrg9_final_summary.md": "2215299f3c74c2614aace68d0fd40b4980ee917ae832ba57ad12933466a96ca5",
+    "hrg9_manifest.json": "d2a0a8939f3cd7484248bc1dd1fa922cd6a531b5cb059e304d30c1624753ee3e",
+    "hrg9_marker_integrity_report.json": "525478854e8ae4d114c41b6118fddc7771526c412afc20b22be80508ac85dcb3",
+    "hrg9_replay_parity_receipt.json": "8444ba1aae712600d71c54e54c72ef2d0dfd3f7ba7a6f37d7e95e3ada325df93",
+    "hrg9_test_commands.txt": "7e64611d8b9227e8e2ce629b97b90557f1d402b9f1a37b2be5ed2f707b11dc4e",
+    "hrg9_timestamp_fixedpoint_report.json": "a70afe5515064a5fe50095490e8ad3529a8f71d19294ec8831d6e6ecdc807b61"
+  },
+  "operator": "jackfd81-lgtm",
+  "p1_vector_pass": true,
+  "p2_vector_pass": true,
+  "p3_vector_pass": true,
+  "result_set_hash_identical": true,
+  "replay_parity_receipt_emitted": true,
+  "authority_hash_match": true,
+  "cra_provenance_closed": true,
+  "seal_packet_assembled": false,
+  "stop_ship_release_cleared": false,
+  "open_items": ["OI-01", "OI-03"],
+  "open_item_notes": {
+    "OI-01": "Hailo AI inference wiring — hardware-gated, new Pi 5 needed. Does not block Lane 1.",
+    "OI-03": "Two-Pi live transfer — loopback proven at a95e552, real Pi-to-Pi not yet verified."
+  },
+  "closeout_decision": "HRG9_CLOSED_STOP_SHIP_FOR_OI01_OI03",
+  "note": "HRG9 gate is satisfied. STOP-SHIP remains only for OI-01 and OI-03. Do not reopen HRG9."
+}

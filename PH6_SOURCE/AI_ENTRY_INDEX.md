@@ -46,6 +46,12 @@ PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md  (sections 12–26)
 PH6_SOURCE/DRAFT/PH6-CLAUDE-PATCH-HANDOFF-1.0.md
 ```
 
+### Governance / amendment path (only if amending doctrine or routing canon changes)
+
+```text
+PH6_SOURCE/DRAFT/PH6-CDG-1.0.md
+```
+
 ### Token / Lane-2 advisory path (only if touching TOK / SoSo / Swarm)
 
 ```text
@@ -73,14 +79,15 @@ Lane 5 = RSYNC. Priority Zero. Must never be blocked.
 ## Current Open Items
 
 ```text
-STOP-SHIP: HRG9 evidence gate is OPEN. Production is not cleared.
+STOP-SHIP: OI-01 (Hailo hardware-gated) and OI-03 (real Pi-to-Pi transfer not verified).
+HRG9: CLOSED at commit 2ef5fd6. Do not reopen.
 
 Open gaps (do not close without evidence):
-- HRG9 closure artifacts absent
 - MRAM-S advisory schema not formally registered
 - Scientific metadata schema absent
 - Resource-cage systemd units not in repo
 - Drift Gate automated check absent
+- CDG-1.0 (Book VI) pending Drift Gate seal
 ```
 
 ---
