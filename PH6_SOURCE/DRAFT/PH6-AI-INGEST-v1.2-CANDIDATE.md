@@ -974,9 +974,25 @@ Sealing does NOT mean:
 
 # STATUS
 
-State:    CANDIDATE (not sealed)
-Version:  v1.2-CANDIDATE
-Saved:    2026-05-14
-Gap:      S-08 and S-09 open (see Section 31)
-P3:       Waiver/baseline system deferred — scan surface too small to justify
-Next:     Human sign-off on S-08/S-09 → seal
+State:    SEALED
+Version:  v1.2
+Sealed:   2026-05-14
+Seal commit: 1ec44edf9ca583ab7cf13d0098d79fa819fe9784
+
+Seal scope limited to governance framework version v1.2.
+
+This seal attests:
+- The governance framework described here reflects actual repo state at seal commit.
+- The validator suite is confirmed complete for this version scope.
+- The governance manifest v1.1 is confirmed accurate.
+- S-08 and S-09 sign-off is complete.
+
+This seal does NOT attest:
+- Total future drift immunity.
+- Complete runtime enforcement.
+- Operational closure.
+- OI-01 or OI-03 resolution.
+- Waiver infrastructure completeness.
+
+P3:  Waiver/baseline system intentionally deferred — scan surface too small to justify.
+Next: v1.3 document — runtime enforcement escalation, pre-commit hook expansion.

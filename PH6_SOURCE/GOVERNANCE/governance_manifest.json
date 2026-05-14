@@ -108,6 +108,7 @@
     "executable_governance":     "OPERATIONAL"
   },
 
-  "seal_status": "UNSEALED — v1.1 candidate, executable layer operational, seal review in progress (S-08/S-09)",
-  "next_seal_condition": "S-08 manifest completeness sign-off and S-09 manifest version review complete — see PH6-AI-INGEST-v1.2-CANDIDATE.md Section 31"
+  "seal_status": "SEALED — governance framework v1.2, seal commit 1ec44edf9ca583ab7cf13d0098d79fa819fe9784, sealed 2026-05-14",
+  "seal_scope": "Governance framework version v1.2 only. Does not attest runtime enforcement completeness, OI-01/OI-03 resolution, or waiver infrastructure.",
+  "next_seal_condition": "v1.3 document — runtime enforcement escalation, extended ph6/ scan coverage, pre-commit hook expansion"
 }
