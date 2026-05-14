@@ -1,0 +1,24 @@
+name: PH6 Governance Scan
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  governance-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run AI preflight check
+        run: python3 PH6_SOURCE/TOOLS/ai_preflight_check.py
+
+      - name: Run governance drift scan
+        run: python3 PH6_SOURCE/TOOLS/governance_drift_scan.py --scan-root PH6_SOURCE
