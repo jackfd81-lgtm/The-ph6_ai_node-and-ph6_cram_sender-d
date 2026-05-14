@@ -456,21 +456,64 @@ def run_scan(scan_root: Path, gov_dir: Path, project_root: Path) -> dict:
     }
 
 
+def _apply_discovery_mode(report: dict) -> dict:
+    """
+    Post-process a scan report for discovery mode.
+
+    Remaps all finding severities to INFO, forces overall_result to
+    DISCOVERY_PASS, and zeros the blocking counters.  The report never
+    causes a nonzero exit in this mode — it is advisory only.
+    """
+    info_count = 0
+    for f in report["findings"]:
+        if f.get("severity") not in ("PASS", "INFO"):
+            f["severity"] = "INFO"
+            info_count += 1
+    for check in report["summary_by_check"]:
+        if report["summary_by_check"][check]["severity"] not in ("PASS",):
+            report["summary_by_check"][check]["severity"] = "INFO"
+    report["overall_result"] = "DISCOVERY_PASS"
+    report["info_count"]     = info_count
+    report["critical_count"] = 0
+    report["high_count"]     = 0
+    report["warn_count"]     = 0
+    return report
+
+
 def print_human_summary(report: dict) -> None:
-    print(f"\nPH6 GOVERNANCE DRIFT SCAN")
-    print(f"  scan_root:   {report['scan_root']}")
-    print(f"  generated:   {report['generated_at_utc']}")
-    print(f"  result:      {report['overall_result']}")
-    print(f"  critical:    {report['critical_count']}")
-    print(f"  high:        {report['high_count']}")
-    print(f"  warn:        {report['warn_count']}")
+    is_discovery = report["overall_result"] == "DISCOVERY_PASS"
+
+    if is_discovery:
+        print(f"\nPH6 GOVERNANCE RUNTIME DISCOVERY SCAN  [non-blocking]")
+        print(f"  scan_root:   {report['scan_root']}")
+        print(f"  generated:   {report['generated_at_utc']}")
+        print(f"  result:      DISCOVERY_PASS")
+        print(f"  info:        {report.get('info_count', 0)}   (advisory only — does not block commits)")
+    else:
+        print(f"\nPH6 GOVERNANCE DRIFT SCAN")
+        print(f"  scan_root:   {report['scan_root']}")
+        print(f"  generated:   {report['generated_at_utc']}")
+        print(f"  result:      {report['overall_result']}")
+        print(f"  critical:    {report['critical_count']}")
+        print(f"  high:        {report['high_count']}")
+        print(f"  warn:        {report['warn_count']}")
     print()
 
     for check, summary in report["summary_by_check"].items():
-        marker = "[PASS]" if summary["severity"] == "PASS" else f"[{summary['severity']}]"
+        sev = summary["severity"]
+        marker = "[PASS]" if sev == "PASS" else f"[{sev}]"
         print(f"  {marker:12s} {check}: {summary['count']} finding(s)")
 
-    if report["critical_count"] or report["high_count"]:
+    if is_discovery and report.get("info_count", 0):
+        print("\n  --- DISCOVERY FINDINGS (advisory only — do not block) ---")
+        for f in report["findings"]:
+            if f.get("severity") != "INFO":
+                continue
+            loc = f"{f['file']}:{f['line']}" if f.get("line") else f['file']
+            print(f"  [INFO] {f['check']}")
+            print(f"         {loc}")
+            print(f"         {f.get('detail', f.get('content', ''))}")
+    elif not is_discovery and (report["critical_count"] or report["high_count"]):
         print("\n  --- FINDINGS ---")
         for f in report["findings"]:
             sev = f.get("severity", "WARN")
@@ -488,9 +531,18 @@ def main() -> int:
     default_gov = str(Path(__file__).resolve().parent.parent / "GOVERNANCE")
     ap.add_argument("--scan-root",      default=".",      help="Directory tree to scan (default: cwd)")
     ap.add_argument("--governance-dir", default=default_gov, help="Path to GOVERNANCE dir")
-    ap.add_argument("--project-root",   default=None,     help="Project root for manifest file resolution (default: scan-root)")
+    ap.add_argument("--project-root",   default=None,     help="Project root for manifest file resolution (default: cwd)")
     ap.add_argument("--report-out",     help="Write JSON report to this file")
     ap.add_argument("--json-only",      action="store_true", help="Emit JSON only, no human summary")
+    ap.add_argument(
+        "--discovery",
+        action="store_true",
+        help=(
+            "Discovery mode: remap all findings to INFO, always exit 0. "
+            "Use to map drift surface without blocking commits. "
+            "Lane: 2 / Authority: ZERO."
+        ),
+    )
     args = ap.parse_args()
 
     scan_root    = Path(args.scan_root).resolve()
@@ -499,6 +551,9 @@ def main() -> int:
     project_root = Path(args.project_root).resolve() if args.project_root else Path.cwd()
 
     report = run_scan(scan_root, gov_dir, project_root)
+
+    if args.discovery:
+        report = _apply_discovery_mode(report)
 
     json_out = json.dumps(report, indent=2, sort_keys=False)
 
@@ -512,6 +567,9 @@ def main() -> int:
         else:
             print_human_summary(report)
             print(json_out)
+
+    if args.discovery:
+        return 0
 
     overall = report["overall_result"]
     if overall == "FAIL_CRITICAL":

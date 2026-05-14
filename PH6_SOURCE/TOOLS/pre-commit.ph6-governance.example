@@ -15,6 +15,7 @@ cd "$REPO_ROOT"
 PREFLIGHT="PH6_SOURCE/TOOLS/ai_preflight_check.py"
 DRIFT_SCAN="PH6_SOURCE/TOOLS/governance_drift_scan.py"
 SCAN_ROOT="PH6_SOURCE"
+RUNTIME_ROOT="ph6"
 
 echo ""
 echo "PH6 GOVERNANCE PRE-COMMIT CHECK"
@@ -75,6 +76,22 @@ if [[ $DRIFT_EXIT -ne 0 ]]; then
 fi
 
 rm -f "$DRIFT_REPORT"
+
+# ── Step 3: Runtime-tree discovery (non-blocking) ─────────────────────────────
+# Scans ph6/ runtime tree in discovery mode.
+# All findings are INFO only — they never block commits.
+# Purpose: map drift surface before enforcement is added.
+
+if [[ -d "$RUNTIME_ROOT" ]]; then
+    echo ""
+    echo "[ 3 / 3 ] Runtime-tree discovery scan  [non-blocking]"
+    echo ""
+
+    python3 "$DRIFT_SCAN" \
+        --scan-root "$RUNTIME_ROOT" \
+        --discovery
+    # exit code ignored — discovery mode always exits 0 by design
+fi
 
 # ── All clear ─────────────────────────────────────────────────────────────────
 echo ""
