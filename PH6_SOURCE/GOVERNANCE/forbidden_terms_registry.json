@@ -1,0 +1,175 @@
+{
+  "schema": "ph6.governance.forbidden_terms_registry.v1",
+  "version": "1.0",
+  "generated_at_utc": "2026-05-13T00:00:00Z",
+  "description": "Registry of terms, fields, and patterns forbidden in PH6 production code and evidence. Canonical enforcement source for governance_drift_scan.py and ai_preflight_check.py.",
+  "severity_levels": {
+    "CRITICAL": "Immediate governance violation — exit nonzero, block session",
+    "HIGH":     "Strong governance concern — flag prominently, require acknowledgement",
+    "WARN":     "Drift indicator — note in report, no session block"
+  },
+  "entries": [
+    {
+      "id": "FT-01",
+      "term": "motion_score",
+      "category": "forbidden_field",
+      "severity": "CRITICAL",
+      "reason": "Retired metric field. Canonical replacement is motion_fraction. Evidence with this field is non-canonical and replay-invalid.",
+      "canonical_replacement": "motion_fraction",
+      "applies_to": ["source_python", "json_output", "evidence", "schema_files"],
+      "scan_pattern": "motion_score",
+      "scan_flags": []
+    },
+    {
+      "id": "FT-02",
+      "term": "motion_decay_score",
+      "category": "forbidden_field",
+      "severity": "CRITICAL",
+      "reason": "Retired metric field. Canonical replacement is motion_fraction. Evidence with this field is non-canonical and replay-invalid.",
+      "canonical_replacement": "motion_fraction",
+      "applies_to": ["source_python", "json_output", "evidence", "schema_files"],
+      "scan_pattern": "motion_decay_score",
+      "scan_flags": []
+    },
+    {
+      "id": "FT-03",
+      "term": "online_learning",
+      "category": "forbidden_concept",
+      "severity": "CRITICAL",
+      "reason": "Non-replayable. Lane 1 must be deterministic and bounded. Any component that learns at runtime cannot produce forensically reproducible output.",
+      "applies_to": ["source_python", "documentation"],
+      "scan_pattern": "online[_ ]learning",
+      "scan_flags": ["IGNORECASE"]
+    },
+    {
+      "id": "FT-04",
+      "term": "adaptive_threshold",
+      "category": "forbidden_concept",
+      "severity": "CRITICAL",
+      "reason": "Drift. Thresholds must be fixed at design time and replay-stable. Runtime threshold adaptation invalidates CRAM authority.",
+      "applies_to": ["source_python", "documentation"],
+      "scan_pattern": "adaptive[_ ]threshold",
+      "scan_flags": ["IGNORECASE"]
+    },
+    {
+      "id": "FT-05",
+      "term": "self_authorize",
+      "category": "forbidden_concept",
+      "severity": "CRITICAL",
+      "reason": "Governance collapse. No component may promote its own authority. Authority is granted only by Lane-1 architecture, never at runtime.",
+      "applies_to": ["source_python"],
+      "scan_pattern": "self[_ ]?authoriz",
+      "scan_flags": ["IGNORECASE"]
+    },
+    {
+      "id": "FT-06",
+      "term": "sha256_as_canonical_authority",
+      "category": "forbidden_pattern",
+      "severity": "HIGH",
+      "reason": "SHA256 may exist for compatibility only. It is never canonical authority. Canonical hash is BLAKE2b-256. Using hash_algorithm=sha256 in authoritative paths misrepresents canonical truth.",
+      "applies_to": ["source_python", "json_output"],
+      "scan_pattern": "\"hash_algorithm\"\\s*:\\s*\"sha256\"",
+      "scan_flags": ["IGNORECASE"]
+    },
+    {
+      "id": "FT-07",
+      "term": "forbidden_audit_event_PROMOTE",
+      "category": "forbidden_audit_event_type",
+      "severity": "CRITICAL",
+      "reason": "PROMOTE implies authority escalation. No component may promote evidence or authority status. Forbidden per PH6 audit event contract.",
+      "applies_to": ["source_python"],
+      "scan_pattern": "\"event_type\"\\s*:\\s*\"PROMOTE\"",
+      "scan_flags": []
+    },
+    {
+      "id": "FT-08",
+      "term": "forbidden_audit_event_REJECT",
+      "category": "forbidden_audit_event_type",
+      "severity": "CRITICAL",
+      "reason": "REJECT implies authority to refuse evidence. Use PASS/DROP semantics in Lane-1 only.",
+      "applies_to": ["source_python"],
+      "scan_pattern": "\"event_type\"\\s*:\\s*\"REJECT\"",
+      "scan_flags": []
+    },
+    {
+      "id": "FT-09",
+      "term": "forbidden_audit_event_ACCEPT",
+      "category": "forbidden_audit_event_type",
+      "severity": "CRITICAL",
+      "reason": "ACCEPT implies authority to endorse evidence. Use PASS/DROP semantics in Lane-1 only.",
+      "applies_to": ["source_python"],
+      "scan_pattern": "\"event_type\"\\s*:\\s*\"ACCEPT\"",
+      "scan_flags": []
+    },
+    {
+      "id": "FT-10",
+      "term": "forbidden_audit_event_FLAG",
+      "category": "forbidden_audit_event_type",
+      "severity": "CRITICAL",
+      "reason": "FLAG has ambiguous authority semantics. It implies Lane-2 can mark evidence for treatment — forbidden.",
+      "applies_to": ["source_python"],
+      "scan_pattern": "\"event_type\"\\s*:\\s*\"FLAG\"",
+      "scan_flags": []
+    },
+    {
+      "id": "FT-11",
+      "term": "forbidden_audit_event_HOLD",
+      "category": "forbidden_audit_event_type",
+      "severity": "CRITICAL",
+      "reason": "HOLD implies blocking authority. Blocking export or evidence is forbidden for all Lane-2 components.",
+      "applies_to": ["source_python"],
+      "scan_pattern": "\"event_type\"\\s*:\\s*\"HOLD\"",
+      "scan_flags": []
+    },
+    {
+      "id": "FT-12",
+      "term": "forbidden_audit_event_REVIEW",
+      "category": "forbidden_audit_event_type",
+      "severity": "CRITICAL",
+      "reason": "REVIEW has ambiguous authority semantics implying a holding state. Forbidden.",
+      "applies_to": ["source_python"],
+      "scan_pattern": "\"event_type\"\\s*:\\s*\"REVIEW\"",
+      "scan_flags": []
+    },
+    {
+      "id": "FT-13",
+      "term": "forbidden_audit_event_RETAIN",
+      "category": "forbidden_audit_event_type",
+      "severity": "CRITICAL",
+      "reason": "RETAIN implies evidence mutation or selective preservation authority. Forbidden for Lane-2.",
+      "applies_to": ["source_python"],
+      "scan_pattern": "\"event_type\"\\s*:\\s*\"RETAIN\"",
+      "scan_flags": []
+    },
+    {
+      "id": "FT-14",
+      "term": "weight_mutation",
+      "category": "forbidden_concept",
+      "severity": "CRITICAL",
+      "reason": "Runtime weight mutation makes replay non-deterministic. Lane-1 components must have fixed parameters.",
+      "applies_to": ["source_python"],
+      "scan_pattern": "weight[_ ]mutation|mutate[_ ]weight",
+      "scan_flags": ["IGNORECASE"]
+    },
+    {
+      "id": "FT-15",
+      "term": "hidden_state_mutation",
+      "category": "forbidden_concept",
+      "severity": "HIGH",
+      "reason": "Hidden state invalidates audit integrity. All state changes in Lane-1 must be logged.",
+      "applies_to": ["source_python"],
+      "scan_pattern": "hidden[_ ]state",
+      "scan_flags": ["IGNORECASE"]
+    },
+    {
+      "id": "FT-16",
+      "term": "cloud_required_authority",
+      "category": "forbidden_concept",
+      "severity": "CRITICAL",
+      "reason": "Lane-1 must be offline-capable. Cloud-dependent authority creates availability-dependent determinism — invalid.",
+      "applies_to": ["source_python", "documentation"],
+      "scan_pattern": "cloud[_ ]required|requires[_ ]cloud",
+      "scan_flags": ["IGNORECASE"]
+    }
+  ]
+}

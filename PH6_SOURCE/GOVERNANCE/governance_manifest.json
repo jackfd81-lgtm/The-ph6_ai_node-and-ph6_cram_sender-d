@@ -1,0 +1,109 @@
+{
+  "schema": "ph6.governance.manifest.v1",
+  "version": "1.0",
+  "generated_at_utc": "2026-05-13T00:00:00Z",
+  "description": "PH6 machine-readable governance manifest. Canonical authority source for all automated governance tooling. Do not edit without a version bump and Drift Gate scan.",
+
+  "canonical_hash_algorithm": "BLAKE2b-256",
+  "canonical_commit_marker": ".blake2b",
+  "sha256_status": "COMPATIBILITY_ONLY",
+
+  "lane2_authority": "ZERO",
+  "rsync_priority": "ABSOLUTE",
+  "minimum_valid_test_frames": 300,
+
+  "lane_authority_map": {
+    "0":   { "name": "Physical sensors",          "authority": "NONE",              "pass_drop": false },
+    "0.5": { "name": "Smart spigot pre-filter",   "authority": "DROP_ONLY",         "pass_drop": false },
+    "1":   { "name": "Deterministic authority",   "authority": "FULL",              "pass_drop": true  },
+    "2":   { "name": "AI / SoSo / TOK / Swarm",  "authority": "ZERO",              "pass_drop": false },
+    "5":   { "name": "Export / RSYNC",            "authority": "EXPORT_SOVEREIGN",  "pass_drop": false }
+  },
+
+  "lane1_components": ["CRAM", "PSEUDO-A"],
+  "lane2_components": ["ChatGPT", "Claude", "Gemini", "Grok", "LocalLLMs", "SoSo", "TOK", "SSMT", "JEDI"],
+
+  "lane1_forbidden": [
+    "online_learning",
+    "adaptive_threshold",
+    "runtime_self_modification",
+    "weight_mutation",
+    "hidden_state_mutation",
+    "ai_authority_escalation"
+  ],
+
+  "lane2_forbidden": [
+    "issue_PASS_DROP",
+    "mutate_evidence",
+    "modify_thresholds",
+    "override_replay",
+    "block_RSYNC",
+    "alter_canonical_hashes",
+    "rewrite_authoritative_audit",
+    "become_replay_dependency",
+    "modify_CRAM_A",
+    "self_authorize",
+    "silently_mutate_schemas",
+    "modify_deterministic_gate_semantics"
+  ],
+
+  "forbidden_fields": [
+    "motion_score",
+    "motion_decay_score"
+  ],
+  "canonical_metric_field": "motion_fraction",
+
+  "forbidden_audit_event_types": [
+    "PROMOTE", "REJECT", "ACCEPT", "FLAG", "HOLD", "REVIEW", "RETAIN"
+  ],
+
+  "atomic_write_contract": {
+    "steps": ["write_tmp", "fsync_file", "rename", "fsync_directory"],
+    "violation_consequence": "Invalidates authoritative trust"
+  },
+
+  "stop_ship_gates": [
+    {
+      "id": "OI-01",
+      "description": "Hailo hardware integration incomplete",
+      "severity": "STOP_SHIP",
+      "status": "OPEN",
+      "blocks": ["production_release"]
+    },
+    {
+      "id": "OI-03",
+      "description": "Real Pi-to-Pi live transfer not yet fully certified",
+      "severity": "STOP_SHIP",
+      "status": "OPEN",
+      "blocks": ["production_release", "two_pi_certification"]
+    }
+  ],
+
+  "current_project_state": "ADVANCED_PRE_PRODUCTION",
+
+  "governance_files": {
+    "forbidden_terms_registry": "PH6_SOURCE/GOVERNANCE/forbidden_terms_registry.json",
+    "schema_lock_registry":     "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+    "governance_manifest":      "PH6_SOURCE/GOVERNANCE/governance_manifest.json",
+    "ai_preflight_check":       "PH6_SOURCE/TOOLS/ai_preflight_check.py",
+    "governance_drift_scan":    "PH6_SOURCE/TOOLS/governance_drift_scan.py"
+  },
+
+  "doctrine_files": {
+    "cdg_1_0":           "PH6_SOURCE/DRAFT/PH6-CDG-1.0.md",
+    "ai_ingest_v1_1":    "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md",
+    "ai_core_v3":        "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+    "master_ingest_6_0": "PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md"
+  },
+
+  "governance_maturity": {
+    "doctrine":                  "85-90%",
+    "runtime_enforcement":       "55-65%",
+    "certification_infra":       "45-55%",
+    "machine_readable_governance": "EMERGING",
+    "executable_governance":     "IN_PROGRESS"
+  },
+
+  "seal_status": "UNSEALED — v1.0 candidate, executable layer being built",
+  "next_seal_condition": "All five governance layer files present and drift_scan exits 0"
+}

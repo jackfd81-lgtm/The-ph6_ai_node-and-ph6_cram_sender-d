@@ -1,0 +1,174 @@
+{
+  "schema": "ph6.governance.schema_lock_registry.v1",
+  "version": "1.0",
+  "generated_at_utc": "2026-05-13T00:00:00Z",
+  "description": "Registry of all locked PH6 schemas, their required fields, canonical hash algorithm, and Lane authority. Any schema change without a version bump is a governance violation.",
+  "canonical_hash_algorithm": "BLAKE2b-256",
+  "canonical_commit_marker": ".blake2b",
+  "sha256_status": "COMPATIBILITY_ONLY — never canonical authority",
+  "locked_schemas": [
+    {
+      "schema_id": "ph6.raw_departure.v1",
+      "version": "1",
+      "lane": 0,
+      "authority": "NONE",
+      "required_fields": ["schema", "frame_id", "payload_hash", "hash_algorithm", "media_type", "size_bytes", "departure_timestamp", "authority"],
+      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "hash_algorithm_field": "BLAKE2b-256",
+      "locked": true,
+      "notes": "Sensor departure packet — Lane 0 origin, no PASS/DROP"
+    },
+    {
+      "schema_id": "ph6.raw_arrival.v1",
+      "version": "1",
+      "lane": 0,
+      "authority": "NONE",
+      "required_fields": ["schema", "frame_id", "payload_hash", "hash_algorithm", "transfer_status", "arrival_timestamp", "authority"],
+      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "hash_algorithm_field": "BLAKE2b-256",
+      "locked": true,
+      "notes": "Sensor arrival packet — Lane 0 transit, no PASS/DROP"
+    },
+    {
+      "schema_id": "ph6.pseudo_verdict.v1",
+      "version": "1",
+      "lane": 1,
+      "authority": "LANE_1",
+      "required_fields": ["schema", "frame_id", "verdict", "metrics", "input_hash", "hash_algorithm", "authority", "soso_advisory"],
+      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "allowed_verdict_values": ["PASS", "DROP"],
+      "hash_algorithm_field": "BLAKE2b-256",
+      "locked": true,
+      "notes": "PSEUDO deterministic verdict — sole PASS/DROP issuer alongside CRAM"
+    },
+    {
+      "schema_id": "ph6.cram_commit.v1",
+      "version": "1",
+      "lane": 1,
+      "authority": "LANE_1",
+      "required_fields": ["schema", "frame_id", "payload_hash", "hash_algorithm", "verdict", "authority", "prev_cram_hash", "cram_hash"],
+      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "allowed_verdict_values": ["PASS", "DROP"],
+      "hash_algorithm_field": "BLAKE2b-256",
+      "locked": true,
+      "notes": "CRAM atomic commit — authoritative evidence substrate entry"
+    },
+    {
+      "schema_id": "ph6.drop_shedding.v1",
+      "version": "1",
+      "lane": 1,
+      "authority": "LANE_1",
+      "required_fields": ["schema", "frame_id", "policy_ref", "reason", "authority"],
+      "forbidden_fields": [],
+      "hash_algorithm_field": "BLAKE2b-256",
+      "locked": true,
+      "notes": "DROP shedding record — Lane-1 only"
+    },
+    {
+      "schema_id": "ph6.cram_audit.v1",
+      "version": "1",
+      "lane": 1,
+      "authority": "LANE_1",
+      "required_fields": ["schema", "event_seq", "event_type", "object_id", "event_hash", "prev_event_hash", "authority_hash", "timestamp_utc", "node_id", "stage", "status"],
+      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "hash_algorithm_field": "BLAKE2b-256",
+      "locked": true,
+      "notes": "Lane-1 audit chain — atomic, fsync-guaranteed, hash-chained"
+    },
+    {
+      "schema_id": "ph6.audit_event.v1",
+      "version": "1",
+      "lane": 2,
+      "authority": "NONE",
+      "required_fields": ["schema", "event_type", "object_id", "authority_hash", "authority", "lane", "ts", "event_seq", "prev_event_hash", "event_hash"],
+      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "authority_hash_value": "0000000000000000000000000000000000000000000000000000000000000000",
+      "locked": true,
+      "notes": "Lane-2 advisory audit — authority_hash is always 64 zeros (ZERO authority sentinel)"
+    },
+    {
+      "schema_id": "ph6.mram_s.advisory.v1",
+      "version": "1",
+      "lane": 2,
+      "authority": "NONE",
+      "required_fields": ["schema", "advisory_result"],
+      "forbidden_fields": ["verdict", "motion_score", "motion_decay_score"],
+      "locked": true,
+      "notes": "MRAM-S advisory output — must never emit verdict field"
+    },
+    {
+      "schema_id": "ph6.ssmt.audit_event.v1",
+      "version": "1",
+      "lane": 2,
+      "authority": "NONE",
+      "required_fields": ["schema", "event_type", "object_id", "lane", "authority"],
+      "forbidden_fields": ["verdict", "motion_score", "motion_decay_score"],
+      "locked": true,
+      "notes": "SSMT Lane-2 advisory audit — Authority ZERO"
+    },
+    {
+      "schema_id": "ph6.tok.advisory_event.v1",
+      "version": "1",
+      "lane": 2,
+      "authority": "NONE",
+      "required_fields": ["schema", "advisory_result"],
+      "forbidden_fields": ["verdict", "result", "motion_score", "motion_decay_score"],
+      "locked": true,
+      "notes": "TOK advisory — must use advisory_result, never result or verdict"
+    },
+    {
+      "schema_id": "ph6.cram_pu.receipt.v1",
+      "version": "1",
+      "lane": 1,
+      "authority": "LANE_1",
+      "required_fields": ["schema"],
+      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "locked": true,
+      "notes": "CRAM-PU run receipt"
+    },
+    {
+      "schema_id": "ph6.rsync_queue.v1",
+      "version": "1",
+      "lane": 5,
+      "authority": "EXPORT_SOVEREIGN",
+      "required_fields": ["schema"],
+      "forbidden_fields": [],
+      "locked": true,
+      "notes": "Lane 5 export queue — RSYNC Priority Zero, nothing may block"
+    },
+    {
+      "schema_id": "ph6.governance.manifest.v1",
+      "version": "1",
+      "lane": 0,
+      "authority": "GOVERNANCE",
+      "required_fields": [
+        "schema", "version", "canonical_hash_algorithm", "canonical_commit_marker",
+        "lane2_authority", "rsync_priority", "minimum_valid_test_frames",
+        "forbidden_fields", "stop_ship_gates", "lane_authority_map"
+      ],
+      "forbidden_fields": [],
+      "locked": true,
+      "notes": "Governance manifest — machine-readable authority source of truth"
+    },
+    {
+      "schema_id": "ph6.governance.drift_report.v1",
+      "version": "1",
+      "lane": 2,
+      "authority": "NONE",
+      "required_fields": ["schema", "scan_root", "generated_at_utc", "critical_count", "high_count", "warn_count", "overall_result", "findings"],
+      "forbidden_fields": [],
+      "locked": true,
+      "notes": "Output schema for governance_drift_scan.py"
+    },
+    {
+      "schema_id": "ph6.governance.preflight_report.v1",
+      "version": "1",
+      "lane": 2,
+      "authority": "NONE",
+      "required_fields": ["schema", "generated_at_utc", "overall_result", "checks"],
+      "forbidden_fields": [],
+      "locked": true,
+      "notes": "Output schema for ai_preflight_check.py"
+    }
+  ]
+}
