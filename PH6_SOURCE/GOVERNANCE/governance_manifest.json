@@ -1,7 +1,7 @@
 {
   "schema": "ph6.governance.manifest.v1",
-  "version": "1.0",
-  "generated_at_utc": "2026-05-13T00:00:00Z",
+  "version": "1.1",
+  "generated_at_utc": "2026-05-14T00:00:00Z",
   "description": "PH6 machine-readable governance manifest. Canonical authority source for all automated governance tooling. Do not edit without a version bump and Drift Gate scan.",
 
   "canonical_hash_algorithm": "BLAKE2b-256",
@@ -82,28 +82,32 @@
   "current_project_state": "ADVANCED_PRE_PRODUCTION",
 
   "governance_files": {
-    "forbidden_terms_registry": "PH6_SOURCE/GOVERNANCE/forbidden_terms_registry.json",
-    "schema_lock_registry":     "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
-    "governance_manifest":      "PH6_SOURCE/GOVERNANCE/governance_manifest.json",
-    "ai_preflight_check":       "PH6_SOURCE/TOOLS/ai_preflight_check.py",
-    "governance_drift_scan":    "PH6_SOURCE/TOOLS/governance_drift_scan.py"
+    "forbidden_terms_registry":   "PH6_SOURCE/GOVERNANCE/forbidden_terms_registry.json",
+    "schema_lock_registry":       "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+    "governance_manifest":        "PH6_SOURCE/GOVERNANCE/governance_manifest.json",
+    "severity_policy":            "PH6_SOURCE/GOVERNANCE/severity_policy.json",
+    "ai_preflight_check":         "PH6_SOURCE/TOOLS/ai_preflight_check.py",
+    "governance_drift_scan":      "PH6_SOURCE/TOOLS/governance_drift_scan.py",
+    "pre_commit_hook_template":   "PH6_SOURCE/TOOLS/pre-commit.ph6-governance.example",
+    "install_precommit_hook":     "PH6_SOURCE/TOOLS/install_precommit_hook.sh"
   },
 
   "doctrine_files": {
     "cdg_1_0":           "PH6_SOURCE/DRAFT/PH6-CDG-1.0.md",
     "ai_ingest_v1_1":    "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md",
+    "ai_ingest_v1_2":    "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md",
     "ai_core_v3":        "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
     "master_ingest_6_0": "PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md"
   },
 
   "governance_maturity": {
     "doctrine":                  "85-90%",
-    "runtime_enforcement":       "55-65%",
+    "runtime_enforcement":       "65-75%",
     "certification_infra":       "45-55%",
     "machine_readable_governance": "EMERGING",
-    "executable_governance":     "IN_PROGRESS"
+    "executable_governance":     "OPERATIONAL"
   },
 
-  "seal_status": "UNSEALED — v1.0 candidate, executable layer being built",
-  "next_seal_condition": "All five governance layer files present and drift_scan exits 0"
+  "seal_status": "UNSEALED — v1.1 candidate, executable layer operational, seal review in progress (S-08/S-09)",
+  "next_seal_condition": "S-08 manifest completeness sign-off and S-09 manifest version review complete — see PH6-AI-INGEST-v1.2-CANDIDATE.md Section 31"
 }
