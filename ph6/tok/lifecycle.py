@@ -170,6 +170,18 @@ class VLT(TokenBase):
 # Advisory Audit Chain
 # =============================================================================
 
+_TOK_EVENT_ADVISORY_RESULT = {
+    "RT_GENESIS": "OBSERVATION",
+    "VDT_GENESIS": "OBSERVATION",
+    "VLT_GENESIS": "OBSERVATION",
+    "VDT_PROMOTED_TO_VLT": "ANALYSIS_COMPLETE",
+    "VDT_PRUNED": "ANALYSIS_COMPLETE",
+    "VLT_PRUNED": "ANALYSIS_COMPLETE",
+    "VLT_PROTECTION_REQUEST": "OBSERVATION",
+    "LIVE_STORE_LOAD_WARNING": "DRIFT_WARNING",
+}
+
+
 class AdvisoryAudit:
     """
     Append-only advisory audit chain.
@@ -204,6 +216,12 @@ class AdvisoryAudit:
             "schema": "ph6.tok.advisory_event.v1",
             "authority": "ZERO",
             "advisory_only": True,
+            "advisory_result": _TOK_EVENT_ADVISORY_RESULT.get(event_type, "OBSERVATION"),
+            "replay_dependency": False,
+            "affects_pass_drop": False,
+            "affects_thresholds": False,
+            "affects_cram_commit": False,
+            "affects_rsync": False,
             "event_type": event_type,
             "timestamp_ms": event_time_ms if event_time_ms is not None else now_ms(),
             "prev_event_hash": self.prev_event_hash,

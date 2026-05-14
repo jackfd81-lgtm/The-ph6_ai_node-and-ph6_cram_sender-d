@@ -10,6 +10,13 @@ FORBIDDEN_OUTPUT_FIELDS = {
     "pass",
     "drop",
     "verdict",
+    "result",
+    "final",
+    "block",
+    "override",
+    "approve",
+    "reject",
+    "certify",
     "authority_decision",
 }
 

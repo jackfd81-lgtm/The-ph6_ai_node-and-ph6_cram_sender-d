@@ -26,6 +26,8 @@ def test_closure_validator_passes():
     assert result["no_replay_dependency"] is True
     assert result["no_pass_drop"] is True
     assert result["tok_bridge_read_only"] is True
+    assert result["all_advisory_only"] is True
+    assert result["all_affects_none"] is True
 
 
 def test_ssmt_version_constant():

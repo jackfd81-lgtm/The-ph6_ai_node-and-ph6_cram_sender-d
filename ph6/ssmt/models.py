@@ -26,3 +26,8 @@ class SwarmPacket:
     created_at: float = field(default_factory=time.time)
     dependency_for_replay: bool = False
     cram_packet_hash: str = ""
+    advisory_only: bool = True
+    affects_pass_drop: bool = False
+    affects_thresholds: bool = False
+    affects_cram_commit: bool = False
+    affects_rsync: bool = False

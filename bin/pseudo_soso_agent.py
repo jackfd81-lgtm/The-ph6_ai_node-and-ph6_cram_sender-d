@@ -349,9 +349,24 @@ def soso_observe(state: Dict[str, Any], tests: Dict[str, Any], pseudo: Dict[str,
     if not notes:
         notes.append("No advisory pattern warning detected.")
 
+    if any(f in drift_flags for f in ("repeated_hold_pattern", "event_log_path_mismatch")):
+        advisory_result = "DRIFT_WARNING"
+    elif drift_flags:
+        advisory_result = "UNSTABLE"
+    else:
+        advisory_result = "STABLE"
+
     return {
+        "schema": "ph6.soso.advisory.v1",
         "agent": "SoSo",
         "authority": "NONE",
+        "advisory_only": True,
+        "replay_dependency": False,
+        "affects_pass_drop": False,
+        "affects_thresholds": False,
+        "affects_cram_commit": False,
+        "affects_rsync": False,
+        "advisory_result": advisory_result,
         "notes": notes,
         "drift_flags": drift_flags,
         "suggested_focus": suggested_focus,

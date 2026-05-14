@@ -11,7 +11,11 @@ class ReplayValidator:
         return True
 
     def validate_no_pass_drop(self, packets) -> bool:
-        forbidden = {"pass", "drop", "verdict", "authority_decision"}
+        forbidden = {
+            "pass", "drop", "verdict", "result", "final",
+            "block", "override", "approve", "reject", "certify",
+            "authority_decision",
+        }
         for packet in packets:
             if forbidden & set(packet.advisory_payload.keys()):
                 return False

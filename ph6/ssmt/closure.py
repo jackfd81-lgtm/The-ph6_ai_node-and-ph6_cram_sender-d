@@ -18,6 +18,14 @@ class ClosureValidator:
             "no_replay_dependency": self._replay.validate_no_replay_dependency(packets),
             "no_pass_drop": self._replay.validate_no_pass_drop(packets),
             "tok_bridge_read_only": not self._tok.is_writable(),
+            "all_advisory_only": all(p.advisory_only is True for p in packets),
+            "all_affects_none": all(
+                p.affects_pass_drop is False
+                and p.affects_thresholds is False
+                and p.affects_cram_commit is False
+                and p.affects_rsync is False
+                for p in packets
+            ),
         }
         results["passed"] = all(results.values())
         return results
