@@ -1,0 +1,82 @@
+{
+  "schema": "ph6.governance.severity_policy.v1",
+  "version": "1.0",
+  "generated_at_utc": "2026-05-14T00:00:00Z",
+  "description": "PH6 severity level definitions for governance findings. Defines workflow behavior, certification implications, and merge policy per severity. Referenced by governance_drift_scan.py and ai_preflight_check.py.",
+
+  "severity_levels": {
+    "CRITICAL": {
+      "exit_code": 1,
+      "validator_result": "FAIL",
+      "workflow_behavior": "Fail immediately. No further checks required.",
+      "merge_implication": "BLOCK — must not merge until all CRITICAL findings are resolved",
+      "certification_implication": "STOP-SHIP — PH6-CERT run is invalid. Certification cannot proceed.",
+      "human_review_required": true,
+      "examples": [
+        "Forbidden term used in authoritative context (e.g. PSEUDO, SoSo, adaptive in Lane-1 path)",
+        "SHA-256 used as canonical hash authority (sha256_status violation)",
+        "Lane-2 component asserting PASS/DROP authority",
+        "BLAKE2b marker regression detected",
+        "Forbidden JSON field present in schema-locked file"
+      ]
+    },
+    "HIGH": {
+      "exit_code": 2,
+      "validator_result": "FAIL",
+      "workflow_behavior": "Fail after full scan completes.",
+      "merge_implication": "BLOCK — must not merge until all HIGH findings are resolved or formally waived",
+      "certification_implication": "CERTIFICATION HOLD — PH6-CERT run is suspended until findings are cleared or a governance waiver packet is issued",
+      "human_review_required": true,
+      "examples": [
+        "Governance manifest file missing or unreadable",
+        "Schema lock registry references a file that does not exist",
+        "Lane authority map entry malformed or missing required fields",
+        "Forbidden term found in a borderline context requiring human adjudication"
+      ]
+    },
+    "WARN": {
+      "exit_code": 0,
+      "validator_result": "PASS",
+      "workflow_behavior": "Scan completes and exits 0. Warning is surfaced in report output.",
+      "merge_implication": "ALLOW with review — WARN findings must be acknowledged before merge in a certification context; advisory-only in development sessions",
+      "certification_implication": "CERTIFICATION ADVISORY — recorded in the cert run report. Does not block cert, but must be reviewed and annotated before a SEALED cert is issued.",
+      "human_review_required": false,
+      "examples": [
+        "Forbidden term found only in definitional or prohibition context (scanner correctly exempts, surfaces as WARN for audit trail)",
+        "DRAFT file contains terminology that is flagged in canon but not yet promoted"
+      ]
+    },
+    "INFO": {
+      "exit_code": 0,
+      "validator_result": "PASS",
+      "workflow_behavior": "Scan completes and exits 0. Finding is recorded in JSON report only.",
+      "merge_implication": "ALLOW — no action required",
+      "certification_implication": "INFORMATIONAL — logged in cert run report for provenance. No review obligation.",
+      "human_review_required": false,
+      "examples": [
+        "STOP-SHIP gate is open (OI-01, OI-03) — noted for traceability, does not block AI session work",
+        "Governance manifest version is older than latest schema version",
+        "Schema count or entry count differs from last known baseline"
+      ]
+    }
+  },
+
+  "exit_code_map": {
+    "0": "PASS (no CRITICAL or HIGH findings)",
+    "1": "FAIL — CRITICAL findings present",
+    "2": "FAIL — HIGH findings present, no CRITICAL"
+  },
+
+  "certification_run_policy": {
+    "SEALED_cert_requires": [
+      "exit_code == 0 on both ai_preflight_check.py and governance_drift_scan.py",
+      "All WARN findings reviewed and annotated in cert run report",
+      "All INFO findings recorded in cert run report",
+      "No open STOP-SHIP gates (OI-01, OI-03) unless formally waived"
+    ],
+    "cert_run_invalidated_by": [
+      "Any CRITICAL finding",
+      "Any HIGH finding without an active governance waiver packet"
+    ]
+  }
+}
