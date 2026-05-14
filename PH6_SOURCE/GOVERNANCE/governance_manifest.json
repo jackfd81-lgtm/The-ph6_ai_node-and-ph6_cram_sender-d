@@ -1,6 +1,6 @@
 {
   "schema": "ph6.governance.manifest.v1",
-  "version": "1.1",
+  "version": "1.2",
   "generated_at_utc": "2026-05-14T00:00:00Z",
   "description": "PH6 machine-readable governance manifest. Canonical authority source for all automated governance tooling. Do not edit without a version bump and Drift Gate scan.",
 
@@ -93,11 +93,12 @@
   },
 
   "doctrine_files": {
-    "cdg_1_0":           "PH6_SOURCE/DRAFT/PH6-CDG-1.0.md",
-    "ai_ingest_v1_1":    "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md",
-    "ai_ingest_v1_2":    "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md",
-    "ai_core_v3":        "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
-    "master_ingest_6_0": "PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md"
+    "cdg_1_0":                    "PH6_SOURCE/DRAFT/PH6-CDG-1.0.md",
+    "ai_ingest_v1_1":             "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md",
+    "ai_ingest_v1_2":             "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md",
+    "ai_core_v3":                 "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+    "master_ingest_6_0":          "PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md",
+    "soso_family_contract_v1_0":  "PH6_SOURCE/DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md"
   },
 
   "governance_maturity": {
@@ -108,7 +109,7 @@
     "executable_governance":     "OPERATIONAL"
   },
 
-  "seal_status": "SEALED — governance framework v1.2, seal commit 1ec44edf9ca583ab7cf13d0098d79fa819fe9784, sealed 2026-05-14",
-  "seal_scope": "Governance framework version v1.2 only. Does not attest runtime enforcement completeness, OI-01/OI-03 resolution, or waiver infrastructure.",
-  "next_seal_condition": "v1.3 document — runtime enforcement escalation, extended ph6/ scan coverage, pre-commit hook expansion"
+  "seal_status": "UNSEALED — manifest v1.2 adds ph6.soso.advisory.v1 schema lock and SoSo family contract doctrine; requires drift scan pass before seal review",
+  "seal_scope": "Prior seal: governance framework v1.1, commit 1ec44edf9ca583ab7cf13d0098d79fa819fe9784, sealed 2026-05-14. Current manifest v1.2 is not yet sealed.",
+  "next_seal_condition": "Drift scan pass at HEAD after soso_family_contract_v1_0 registration; then v1.3 scope — runtime enforcement escalation, extended ph6/ scan coverage"
 }

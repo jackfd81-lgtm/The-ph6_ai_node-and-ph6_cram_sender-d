@@ -169,6 +169,16 @@
       "forbidden_fields": [],
       "locked": true,
       "notes": "Output schema for ai_preflight_check.py"
+    },
+    {
+      "schema_id": "ph6.soso.advisory.v1",
+      "version": "1",
+      "lane": 2,
+      "authority": "NONE",
+      "required_fields": ["schema", "advisory_result"],
+      "forbidden_fields": ["verdict", "result", "motion_score", "motion_decay_score"],
+      "locked": true,
+      "notes": "SoSo-family advisory output — must use advisory_result, never verdict or result"
     }
   ]
 }
