@@ -807,10 +807,45 @@ This document is NOT sealed.
 
 ---
 
+# 29. GOVERNANCE PROGRESS CHECKPOINT — 2026-05-14
+
+## Commits Recorded
+
+| Commit  | Description                                         | Status |
+| ------- | --------------------------------------------------- | ------ |
+| f27e7d3 | governance: add executable AI ingest validation layer | MERGED |
+| 8a211e0 | ci: run PH6 governance validators                   | MERGED |
+| 5291647 | governance: add severity policy and cert implications mapping | MERGED |
+
+---
+
+## Current Validator State
+
+```text
+Preflight (ai_preflight_check.py):    PASS
+Drift scan (governance_drift_scan.py): PASS
+Findings: 0
+```
+
+---
+
+## P3 Disposition
+
+P3 (waiver / baseline exception system) is deferred.
+
+Reason: scan surface is currently small.
+Gate: revisit when scan coverage expands to ph6/ runtime tree or finding
+volume justifies a structured waiver workflow.
+
+This deferral does not block sealing review.
+
+---
+
 # STATUS
 
 State:    CANDIDATE (not sealed)
 Version:  v1.2-CANDIDATE
 Saved:    2026-05-14
 Gap:      Extended scan coverage and CI integration pending (Section 28)
+P3:       Waiver/baseline system deferred — scan surface too small to justify
 Next:     v1.3 — pre-commit hook wiring, ph6/ runtime tree scan, seal review

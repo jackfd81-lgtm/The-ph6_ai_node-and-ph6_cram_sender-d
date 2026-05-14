@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+# PH6 Governance Pre-Commit Hook
+# Lane:      2 (Advisory tooling — no authority path writes)
+# Authority: ZERO
+#
+# Runs PH6 governance validators before every local commit.
+# Blocks the commit if either validator exits nonzero.
+#
+# Install:  bash PH6_SOURCE/TOOLS/install_precommit_hook.sh
+# Remove:   rm .git/hooks/pre-commit   (disables enforcement for this repo)
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+PREFLIGHT="PH6_SOURCE/TOOLS/ai_preflight_check.py"
+DRIFT_SCAN="PH6_SOURCE/TOOLS/governance_drift_scan.py"
+SCAN_ROOT="PH6_SOURCE"
+
+echo ""
+echo "PH6 GOVERNANCE PRE-COMMIT CHECK"
+echo "================================"
+
+# Verify python3 available
+if ! command -v python3 &>/dev/null; then
+    echo "FAIL: python3 not found — governance validators cannot run." >&2
+    echo "      Commit blocked." >&2
+    exit 1
+fi
+
+# Verify validators present
+if [[ ! -f "$PREFLIGHT" ]]; then
+    echo "FAIL: preflight validator not found: $PREFLIGHT" >&2
+    echo "      Commit blocked." >&2
+    exit 1
+fi
+if [[ ! -f "$DRIFT_SCAN" ]]; then
+    echo "FAIL: drift scanner not found: $DRIFT_SCAN" >&2
+    echo "      Commit blocked." >&2
+    exit 1
+fi
+
+# ── Step 1: Preflight ──────────────────────────────────────────────────────────
+echo ""
+echo "[ 1 / 2 ] AI session preflight check"
+echo ""
+
+PREFLIGHT_REPORT="$(mktemp /tmp/ph6_preflight_precommit_XXXXXX.json)"
+python3 "$PREFLIGHT" --report-out "$PREFLIGHT_REPORT"
+PREFLIGHT_EXIT=$?
+rm -f "$PREFLIGHT_REPORT"
+
+if [[ $PREFLIGHT_EXIT -ne 0 ]]; then
+    echo "" >&2
+    echo "PREFLIGHT FAIL — commit blocked." >&2
+    echo "Resolve governance layer issues before committing." >&2
+    exit 1
+fi
+
+# ── Step 2: Drift scan ─────────────────────────────────────────────────────────
+echo ""
+echo "[ 2 / 2 ] Governance drift scan"
+echo ""
+
+DRIFT_REPORT="$(mktemp /tmp/ph6_drift_precommit_XXXXXX.json)"
+python3 "$DRIFT_SCAN" \
+    --scan-root "$SCAN_ROOT" \
+    --report-out "$DRIFT_REPORT"
+DRIFT_EXIT=$?
+
+if [[ $DRIFT_EXIT -ne 0 ]]; then
+    echo "" >&2
+    echo "DRIFT SCAN FAIL — commit blocked." >&2
+    echo "Report preserved: $DRIFT_REPORT" >&2
+    exit 1
+fi
+
+rm -f "$DRIFT_REPORT"
+
+# ── All clear ─────────────────────────────────────────────────────────────────
+echo ""
+echo "GOVERNANCE PASS — commit allowed."
+echo "================================"
+echo ""
+exit 0
