@@ -54,15 +54,26 @@ Do not proceed on a dirty tree unless the task explicitly targets uncommitted wo
 
 ## Current Authority State
 
-| Component             | Lane | Authority    | May Touch PASS/DROP? |
-|-----------------------|------|--------------|----------------------|
-| CRAM / PSEUDO-A       | 1    | FULL         | Yes                  |
-| Smart spigot          | 0.5  | DROP_ONLY    | No                   |
-| Physical sensors      | 0    | NONE         | No                   |
-| SoSo / TOK / Swarm    | 2    | ZERO         | No                   |
-| SSMT / JEDI / MRAM-S  | 2    | ZERO         | No                   |
-| All AI models (LLMs)  | 2    | ZERO         | No                   |
-| RSYNC / export        | 5    | EXPORT_SOVEREIGN | No               |
+Three components require distinct handling. They are **not interchangeable**.
+
+| Component        | Lane        | Authority          | Writes To       | Role                                      |
+|------------------|-------------|--------------------|-----------------|-------------------------------------------|
+| PSEUDO           | Lane 1      | **Authoritative**  | CRAM-A / audit  | Deterministic PASS/DROP engine            |
+| TOK (Tokens)     | Lane 2      | **Authority ZERO** | MRAM-S only     | Advisory continuity / drift observation   |
+| Swarm            | Lane 2      | **Authority ZERO** | MRAM-S only     | Advisory ensemble — quarantined until C01B|
+| SoSo             | Lane 2      | **Authority ZERO** | MRAM-S only     | Advisory sidecar                          |
+| SSMT / JEDI      | Lane 2      | **Authority ZERO** | MRAM-S only     | Advisory layers                           |
+| All AI models    | Lane 2      | **Authority ZERO** | (none)          | No write access                           |
+| Smart spigot     | Lane 0.5    | DROP_ONLY          | (pre-filter)    | Pre-filter only                           |
+| Physical sensors | Lane 0      | NONE               | (none)          | Input only                                |
+| RSYNC / export   | Lane 5      | EXPORT_SOVEREIGN   | External        | Non-blocking export                       |
+
+```
+PSEUDO decides.
+Tokens observe continuity.
+Swarm advises collectively.
+Only Lane 1 can affect PASS/DROP.
+```
 
 **RSYNC is Priority Zero. It must never be blocked, delayed, or resource-starved.**
 
@@ -153,11 +164,12 @@ PH6 / CRAM v3.1 — Evidence Closure Campaign
 Goal: runtime proof, not doctrine expansion.
 
 Priority order:
-1. 300-frame full-stack coherence run
-2. Pi-to-Pi live transfer (closes OI-03)
-3. Resource pressure / RSYNC non-blocking campaign
-4. Crash recovery campaign
-5. Replay parity campaign
+1. C01   — 300-frame full-stack coherence run (PSEUDO=ON, SoSo=ON, TOK=ON, Swarm=OFF)
+2. C01B  — Advisory expansion variant (Swarm=ON, MRAM-S only) — requires C01 closed first
+3. C02   — Pi-to-Pi live transfer (closes OI-03)
+4. C03   — Resource pressure / RSYNC non-blocking campaign
+5. C04   — Crash recovery campaign
+6. C05   — Replay parity campaign
 
 Evidence campaigns are tracked in: `PH6_SOURCE/EVIDENCE_CAMPAIGNS/`
 Gap register is at: `PH6_SOURCE/GAP_REGISTER_v3.0.md`

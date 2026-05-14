@@ -54,13 +54,26 @@ OI-03:                OPEN / STOP-SHIP — Real Pi-to-Pi transfer not yet certif
 
 ## Authority Model
 
-| Lane | Component                        | Authority         | PASS/DROP? |
-|------|----------------------------------|-------------------|------------|
-| 0    | Physical sensors                 | NONE              | No         |
-| 0.5  | Smart spigot                     | DROP_ONLY         | No         |
-| 1    | CRAM, PSEUDO-A                   | FULL              | Yes        |
-| 2    | All AI (SoSo, TOK, SSMT, LLMs)   | ZERO              | No         |
-| 5    | RSYNC / export                   | EXPORT_SOVEREIGN  | No         |
+Three components require distinct handling. They are **not interchangeable**.
+
+| Component        | Lane   | Authority          | Writes To       | Role                                        |
+|------------------|--------|--------------------|-----------------|---------------------------------------------|
+| PSEUDO           | Lane 1 | **Authoritative**  | CRAM-A / audit  | Deterministic PASS/DROP engine              |
+| TOK (Tokens)     | Lane 2 | **Authority ZERO** | MRAM-S only     | Advisory continuity / drift observation     |
+| Swarm            | Lane 2 | **Authority ZERO** | MRAM-S only     | Advisory ensemble — quarantined until C01B  |
+| SoSo             | Lane 2 | **Authority ZERO** | MRAM-S only     | Advisory sidecar                            |
+| SSMT / JEDI      | Lane 2 | **Authority ZERO** | MRAM-S only     | Advisory layers                             |
+| All AI models    | Lane 2 | **Authority ZERO** | (none)          | No write access                             |
+| Smart spigot     | Lane 0.5 | DROP_ONLY        | (pre-filter)    | Pre-filter only                             |
+| Physical sensors | Lane 0 | NONE               | (none)          | Input only                                  |
+| RSYNC / export   | Lane 5 | EXPORT_SOVEREIGN   | External        | Non-blocking export                         |
+
+```
+PSEUDO decides.
+Tokens observe continuity.
+Swarm advises collectively.
+Only Lane 1 can affect PASS/DROP.
+```
 
 Lane 2 authority is permanently ZERO. It cannot be escalated. AI models are Lane 2.
 
@@ -123,11 +136,12 @@ git status --short
 The system needs **runtime proof**, not more doctrine.
 
 ```text
-1. 300-frame full-stack coherence run           ← first priority
-2. Pi-to-Pi live transfer campaign              ← closes OI-03
-3. Resource pressure / RSYNC non-blocking run
-4. Crash recovery campaign
-5. Replay parity campaign
+1. C01   — 300-frame full-stack coherence run (PSEUDO=ON, SoSo=ON, TOK=ON, Swarm=OFF)
+2. C01B  — Advisory expansion: Swarm enabled, MRAM-S only (requires C01 closed first)
+3. C02   — Pi-to-Pi live transfer (closes OI-03)
+4. C03   — Resource pressure / RSYNC non-blocking
+5. C04   — Crash recovery
+6. C05   — Replay parity
 ```
 
 Campaign templates: `PH6_SOURCE/EVIDENCE_CAMPAIGNS/`
