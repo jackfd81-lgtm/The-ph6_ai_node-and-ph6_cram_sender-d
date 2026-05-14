@@ -841,11 +841,142 @@ This deferral does not block sealing review.
 
 ---
 
+# 30. v1.3 HARDENING CHECKPOINT — 2026-05-14
+
+## Phase Transition
+
+GOVERNANCE CREATION → GOVERNANCE HARDENING
+
+No new doctrine was introduced in v1.3.
+All work expanded enforcement surface or closed mutation paths.
+
+---
+
+## Commits Recorded
+
+| Commit  | Description                                      | Status |
+| ------- | ------------------------------------------------ | ------ |
+| 9c1f4c2 | governance: add tracked pre-commit enforcement hook | MERGED |
+| 1abdf6c | governance: add runtime-tree discovery scanning  | MERGED |
+
+---
+
+## Pre-Commit Enforcement
+
+The canonical hook template is tracked at:
+
+```text
+PH6_SOURCE/TOOLS/pre-commit.ph6-governance.example
+```
+
+Installer:
+
+```text
+PH6_SOURCE/TOOLS/install_precommit_hook.sh
+```
+
+The installer backs up any existing hook before replacing it.
+The hook runs preflight + drift scan before every local commit.
+The hook template travels with the repository.
+
+---
+
+## Runtime-Tree Discovery
+
+Scan surface expanded to include `ph6/` runtime tree.
+
+Behavior: INFO-only, exit 0, never blocks commits.
+
+Purpose: map drift surface before enforcement is added.
+
+Initial baseline:
+
+```text
+Scan root:         ph6/
+Result:            DISCOVERY_PASS
+Info findings:     0
+```
+
+Escalation path when ready:
+
+| Phase                | Behavior               |
+| -------------------- | ---------------------- |
+| Discovery (current)  | INFO-only, exit 0      |
+| Advisory enforcement | WARN/HIGH mapping      |
+| Blocking enforcement | FAIL_CRITICAL/FAIL_HIGH|
+| Cert enforcement     | seal/cert gating       |
+
+---
+
+## Current Enforcement State
+
+| Mutation path    | Enforcement             |
+| ---------------- | ----------------------- |
+| Local commit     | Pre-commit hook (PASS)  |
+| Repository entry | CI governance scan (PASS) |
+| Runtime tree     | Discovery scan (INFO-only, 0 findings) |
+
+---
+
+# 31. SEAL REVIEW CHECKLIST
+
+This document is not yet sealed.
+
+The following checklist defines what sealing requires.
+
+Seal status: NOT READY — items below are open.
+
+---
+
+## Required Before Seal
+
+| Item | Requirement | Status |
+| ---- | ----------- | ------ |
+| S-01 | All governance files present and verified (Section 28) | PASS |
+| S-02 | Preflight validator passing at HEAD | PASS |
+| S-03 | Drift scan passing at HEAD | PASS |
+| S-04 | CI governance enforcement active | PASS |
+| S-05 | Pre-commit enforcement hook tracked and installed | PASS |
+| S-06 | Runtime-tree discovery baseline established | PASS |
+| S-07 | Extended scan coverage: ph6/ runtime tree included | PASS |
+| S-08 | Human sign-off on manifest completeness | OPEN |
+| S-09 | Governance manifest version reviewed for completeness | OPEN |
+| S-10 | No FAIL_CRITICAL or FAIL_HIGH findings at time of seal | PASS (current) |
+
+---
+
+## Seal-Blocking Items
+
+S-08 and S-09 are the only remaining open items.
+
+Neither requires new infrastructure.
+Both require human review and explicit sign-off.
+
+---
+
+## What Seal Means
+
+Sealing this document means:
+
+* The governance framework described here reflects the actual repo state.
+* The validator suite is confirmed complete for this version scope.
+* The manifest is confirmed accurate.
+* Future changes require a version bump (v1.3) and a new seal review.
+
+Sealing does NOT mean:
+
+* All future drift is impossible.
+* Waivers are finalized.
+* Runtime enforcement is complete.
+* OI-01 or OI-03 are closed.
+
+---
+
 # STATUS
 
 State:    CANDIDATE (not sealed)
 Version:  v1.2-CANDIDATE
 Saved:    2026-05-14
-Gap:      Extended scan coverage and CI integration pending (Section 28)
+Gap:      S-08 and S-09 open (see Section 31)
 P3:       Waiver/baseline system deferred — scan surface too small to justify
-Next:     v1.3 — pre-commit hook wiring, ph6/ runtime tree scan, seal review
+Next:     Human sign-off on S-08/S-09 → seal
