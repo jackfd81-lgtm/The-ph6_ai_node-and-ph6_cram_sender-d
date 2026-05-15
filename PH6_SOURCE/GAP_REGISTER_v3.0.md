@@ -24,6 +24,8 @@ Purpose:     Single authoritative register for all open, closed, and deferred ga
 | 300-frame coherence run       | OPEN      | No         | Campaign 01 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01   |
 | Advisory expansion (Swarm)    | OPEN      | No         | Campaign 01B receipt; C01 must close first  | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01B  |
 | Pi-to-Pi live transfer        | OPEN      | YES        | Campaign 02 receipt (satisfies OI-03)       | Human + Campaign 02  | EVIDENCE_CAMPAIGNS/CAMPAIGN_02   |
+| GAP-16A: USB AV contention    | CONFIRMED | No         | av_contention_20260515T100841Z report       | Evidence-backed      | EVIDENCE_CAMPAIGNS/GAPS/GAP-16   |
+| GAP-16B: USB disconnect       | OPEN      | No         | Isolation test: video-only 5+ min           | Human after evidence | EVIDENCE_CAMPAIGNS/GAPS/GAP-16   |
 | Resource pressure RSYNC       | OPEN      | No         | Campaign 03 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_03   |
 | Crash recovery                | OPEN      | No         | Campaign 04 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_04   |
 | Replay parity                 | OPEN      | No         | Campaign 05 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_05   |

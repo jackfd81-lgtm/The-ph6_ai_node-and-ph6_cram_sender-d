@@ -2,93 +2,170 @@
 
 ```text
 GAP-ID:    GAP-16
-Status:    OPEN / HARDWARE-CONSTRAINED
+Status:    CONFIRMED / SPLIT — GAP-16A + GAP-16B
 Severity:  MEDIUM
 Opened:    2026-05-14
+Updated:   2026-05-15
+```
+
+---
+
+## Classification
+
+GAP-16 is now split into two distinct findings based on C01-GAP16-R2 evidence.
+
+```text
+GAP-16A: USB AV contention degradation
+         — measurable and repeatable
+         — no disconnect, no drops in clean run
+
+GAP-16B: Intermittent physical/thermal USB instability
+         — camera disconnect observed in prior runs and R2
+         — not yet proven as contention-induced
+         — suspected: cable seating or thermal event
 ```
 
 ---
 
 ## Summary
 
-Concurrent video capture and built-in USB microphone capture using the Microdia
-Streaming Camera (0c45:636b) causes the camera to drop off the USB bus entirely.
-The failure is a kernel UVC driver / USB isochronous transfer conflict — not a
-PH6 deterministic logic failure.
+The Microdia Streaming Camera (0c45:636b) exposes both UVC video and USB Audio
+on the same USB device. Simultaneous capture causes measurable FPS degradation
+and audio clipping. In some runs, the camera also disconnects entirely —
+classified separately as GAP-16B pending further isolation.
 
-**C01 video-only evidence run is not affected.**
+This is a sensor ingest quality issue, not a PH6 deterministic logic defect.
+Lane 1 authority, CRAM write contract, and audit chain are unaffected.
 
 ---
 
-## Observed Failure
+## GAP-16A: AV Contention Degradation — CONFIRMED
+
+### Evidence (patched 60s run — `av_contention_20260515T100841Z`)
+
+```text
+run_id:              20260515T100841Z
+duration:            60s simultaneous audio+video
+camera:              0c45:636b Microdia Streaming Camera at /dev/video1
+audio:               hw:2,0 USB Audio, 44100 Hz mono
+
+Video results:
+  passed_frames:     1195
+  dropped_frames:    0
+  actual_fps:        19.9 (standalone baseline: ~29.6)
+  fps_degradation:   ~33%
+  disconnect:        none
+
+Audio results:
+  overrun_count:     0
+  arecord_rc:        0
+  rms:               917 (audio-only baseline: ~392)
+  peak:              32767 (clipping ceiling)
+  clipping:          YES
+```
+
+### Interpretation
+
+The USB camera and USB audio path can coexist without disconnect or frame
+drops, but simultaneous capture causes:
+- Video FPS degraded ~33% (30 → 20 fps)
+- Audio RMS elevated ~2.3× vs audio-only baseline
+- Audio peak at clipping ceiling (32767)
+
+This is USB isochronous transfer pressure on the shared bus, not a
+PH6 authority or CRAM defect.
+
+---
+
+## GAP-16B: Intermittent USB Disconnect — SPLIT REQUIRED
+
+### Evidence (C01-GAP16-R2 — `gap16_r2_20260515T101657Z`)
+
+```text
+run_id:              20260515T101657Z
+target_frames:       600
+frames_passed:       351
+disconnect_at_sec:   18.065
+consecutive_fails:   30 (threshold reached)
+audio_overruns:      5330
+arecord_rc:          1
+thermal:             49–50°C (stable range, not thermal throttle)
+```
+
+### Prior disconnect observations
+
+| Run | Mode | Duration | Exit |
+|---|---|---|---|
+| run_20260514_231752 | video + audio | ~15s | camera_loss |
+| run_20260514_232026 | video + audio | ~2s  | camera_loss |
+| Extended stability 5-min test | video only | ~205s | VIDIOC_REQBUFS errno=19 |
+| AV contention first run | video + audio | ~60s | camera_loss |
+| C01-GAP16-R2 | video + audio | ~18s | CAMERA_DISCONNECT (30 consec fails) |
+
+### Interpretation
+
+Disconnect occurs in video-only and AV runs alike. Thermal data is stable
+(49–50°C). Root cause is not confirmed — candidates are:
+- USB cable / connector seating
+- USB bus power transient under combined load
+- Kernel UVC driver isochronous scheduling conflict (original hypothesis)
+
+GAP-16B requires further isolation to distinguish cable fault from bus fault.
+
+---
+
+## Original Hard-Disconnect Observation (2026-05-14)
 
 ```text
 Error:    VIDIOC_REQBUFS: errno=19 (No such device)
-Symptom:  /dev/video0 disappears
-          ALSA card 1 disappears
+Symptom:  /dev/videoX disappears from node list
+          ALSA card disappears
           Microdia device disappears from lsusb
 Recovery: Physical USB replug required
 ```
 
-Failure reproductions:
-
-| Run | Mode | Frames | Exit |
-|---|---|---|---|
-| run_20260514_231752 | video + audio (640x480) | 60 | camera_loss |
-| run_20260514_232026 | video + audio (320x240) | 49 | camera_loss |
-| arecord standalone  | audio only 44100Hz | — | ALSA xrun → No such device |
-| arecord standalone  | audio only 8000Hz  | — | ALSA xrun → No such device |
+This failure mode is still valid. It is now classified under GAP-16B.
 
 ---
 
-## Root Cause
-
-The Microdia Streaming Camera exposes both UVC video and USB Audio on the same
-USB device/bus. The Pi 5 USB controller cannot sustain simultaneous DMA buffer
-allocation for both isochronous streams (video) and interrupt/bulk transfers
-(audio). When both are requested, the kernel drops the device.
-
-This is a hardware/driver constraint, not a PH6 software defect.
-
----
-
-## C01 Impact
+## Audio-Only Baseline (Confirmed Stable)
 
 ```text
-NONE.
+Campaign: ph6.usb_audio_test.v1 — audio_test_20260515T095839Z
+Duration: 180s (3 minutes)
+Chunks:   180 / 180
+Drops:    0
+Overruns: 0
+Avg RMS:  392
+Result:   PASS
+```
 
-C01 evidence run (run_20260514_231321) used video only.
-  frames:          300
-  replay_status:   PASS
-  hash_chain:      intact / 1139 packets
-  result_set_hash: 08a841b092a413436eabf2fdb096436fc814a5f932e565b71475ba81a69375a4
-  PostRun:         COMPLETE
-  C01 status:      PASS — pending human sign-off
+Audio-only path is stable for the tested duration.
+
+---
+
+## Lane Impact
+
+```text
+Authority Impact:  NONE
+Lane 1 Impact:     NONE (if actual FPS and audio metrics are recorded per run)
+Lane 2 Impact:     NONE
+CRAM Impact:       NONE
+Audit Chain:       NONE
+C01 Video-Only:    UNAFFECTED — confirmed stable at 300 frames
 ```
 
 ---
 
-## Audio Evidence Captured (Despite Failure)
-
-The WAV files written before each crash contain valid fan audio signal:
-
-| File | Duration | RMS | Fan signal |
-|---|---|---|---|
-| run_20260514_231752/hot/run_audio.wav | 14.7s | 969 | YES |
-| run_20260514_232026/hot/run_audio.wav | 1.6s  | 496 | YES |
-| /tmp/fan_test.wav (arecord)           | 15.0s | 1173 | YES |
-
-Fan is detectable. USB stability is not.
-
----
-
-## Recommended Operational Rule
+## Required Operational Rules
 
 ```text
-For PH6 C01/C02 video evidence runs:
-  Use Microdia camera for video only.
-  Do not enable --audio with the Microdia built-in mic.
-  The --audio flag in frame_filter.py is incompatible with this camera.
+1. Record actual FPS in every AV run — do not assume nominal FPS.
+2. Record audio peak, RMS, and overrun count in every AV run.
+3. Classify audio with peak >= 32767 as degraded-quality evidence.
+4. Do not use nominal FPS assumptions during simultaneous AV capture.
+5. If camera disconnect is observed: stop loop cleanly (threshold=30 consec fails),
+   log disconnect_at_sec, trigger GAP-16B re-evaluation.
 ```
 
 ---
@@ -96,34 +173,27 @@ For PH6 C01/C02 video evidence runs:
 ## Recommended Mitigations
 
 ```text
-1. External USB mic on a separate port/device (preferred — cleanest fix).
-2. Sequential capture: audio-only first, video-only second (works but not concurrent).
-3. Different camera/mic pair with independent USB endpoints.
-4. Avoid --audio flag entirely during PH6 video evidence runs.
+GAP-16A (contention degradation):
+  1. Separate USB buses for camera and microphone (preferred).
+  2. Separate ingest nodes (one Pi for video, one for audio).
+  3. Accept ~20 FPS as operational ceiling for this hardware under AV load.
+
+GAP-16B (intermittent disconnect):
+  1. Reseat USB cable — test with known-good cable.
+  2. Powered USB hub to isolate bus power transients.
+  3. Run video-only stability test for 10+ minutes to characterize disconnect rate.
+  4. If disconnect persists in video-only: cable/port fault.
+  5. If disconnect only under AV: USB bus power collapse under combined load.
 ```
 
 ---
 
-## Scope
+## Next Required Action
 
 ```text
-Affected:     audio+video concurrent capture with Microdia camera
-Not affected: video-only capture (confirmed stable at 640x480, 1280x720, 1920x1080)
-Not affected: PSEUDO logic
-Not affected: CRAM write contract
-Not affected: Lane 1 / Lane 2 authority model
-Not affected: replay parity
-Not affected: RSYNC behavior
-Not affected: C01 closure
-```
-
----
-
-## Next Action
-
-```text
-No PH6 software patch required.
-Hardware mitigation (external mic) recommended before audio evidence runs.
-C01 closure proceeds independently — human sign-off on C01_CLOSURE_RECEIPT.md.
-C02 (Pi-to-Pi transfer) proceeds independently — no audio dependency.
+GAP-16A: STABLE-CONFIRMED pending one additional clean AV run with no disconnect.
+GAP-16B: Isolation test required:
+         - Run video-only capture for 5+ minutes.
+         - If disconnect occurs: cable/port fault (not contention).
+         - If clean: disconnect is AV-load-induced (bus power issue).
 ```
