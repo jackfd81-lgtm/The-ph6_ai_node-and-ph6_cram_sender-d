@@ -1,0 +1,40 @@
+{
+  "schema": "ph6.cram_spine_proof.v1",
+  "campaign_ref": "PRE-C01-CRAM-SPINE-PROOF",
+  "run_stamp": "20260515T111525Z",
+  "run_id": "157817e5-ade1-452d-8e20-35c734f1f8e8",
+  "hash_algorithm": "BLAKE2b-256",
+  "authority": "LANE_1",
+  "ai_authority": "NONE",
+  "timestamp": 1778843752.4863474,
+  "iso_timestamp": "20260515T111552Z",
+  "frames_processed": 300,
+  "pass_count": 206,
+  "drop_count": 94,
+  "verdict": "PASS",
+  "invariants": {
+    "1_torn_files": "PASS",
+    "2_pass_loss": "PASS",
+    "3_drop_shedding": "PASS",
+    "4_advisory_iso": "PASS",
+    "5_cram_integrity": "PASS",
+    "6_rsync_health": "PASS",
+    "continuity": "PASS"
+  },
+  "schema_validation": "PASS",
+  "artifact_hashes": {
+    "manifest": "1892cbccf39448d200aa575976808362114d0351ae599a861c1e6c4251e9ddb4",
+    "departure_log": "66a03b3c6df6ebf5bd8429d3475b68558204c167d0be901185d32eef07699b5b",
+    "arrival_log": "76f7b04d2680044b75c9e47e0d0b5b0879a155d5b92cf30a61b608539f59d8d8",
+    "verdict_log": "188b13726c0a6fe9f6c87d807b647a9c4af532645962e44309ce9307687efb7c",
+    "shedding_log": "ad5ec42a0d02f2956032c0baaf3a3918aa7c378841fb35e931408778229e9778",
+    "rsync_queue": "61ad6a23ba7c8cbdcf95b83cf3072eeb0710510dc7f5873ce96e0d8450a729b3"
+  },
+  "c01_gaps": [
+    "TOK not wired into pipeline (TOK-LEAK-001 not run)",
+    "PSEUDO metrics: mean_brightness/byte_variance \u2014 C01 spec requires entropy/laplacian_var/motion_fraction",
+    "Input: synthetic packets \u2014 C01 spec requires real camera frames",
+    "ph6_console.py --full-stack entry point does not exist"
+  ],
+  "receipt_hash": "0384f3f2566d5312a746d414b2ed2f35142163960353435b0a60429ec47fb27e"
+}
