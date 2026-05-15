@@ -25,6 +25,7 @@ Before touching any code, configuration, or doctrine:
 
 ```text
 PH6_SOURCE/AI_ENTRY_INDEX.md               ← you are here
+PH6_SOURCE/00_AI_AGENT_READ_FIRST.md       ← authority, permissions, patch classes
 PH6_SOURCE/DRAFT/PH6-AI-INGEST-STACK-1.0.md
 ```
 
@@ -32,6 +33,7 @@ PH6_SOURCE/DRAFT/PH6-AI-INGEST-STACK-1.0.md
 
 ```text
 PH6_SOURCE/AI_ENTRY_INDEX.md
+PH6_SOURCE/00_AI_AGENT_READ_FIRST.md       ← READ BEFORE TOUCHING ANYTHING
 PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md
 PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md
 PH6_SOURCE/DRAFT/PH6-SYSTEM-OVERVIEW-v1.0.md
@@ -88,6 +90,44 @@ Open gaps (do not close without evidence):
 - Resource-cage systemd units not in repo
 - Drift Gate automated check absent
 - CDG-1.0 (Book VI) pending Drift Gate seal
+```
+
+---
+
+## Local Evidence-Chain Status (2026-05-15)
+
+```text
+TEST CLASS: CRAM integrity + Lane-1 authority + evidence-chain validation
+RUN:        ph6/validation_runs/fast_cram_20260515T103846Z
+RESULT:     LOCAL EVIDENCE-CHAIN PASS
+
+result_set_hash: 063838affb08553591a453faa9c2611f31ce3120eeb2042bdb321262b44f1746
+
+What PASSED:
+  FAST CRAM 300-write run         PASS
+  Full CRAM integrity (300/300)   PASS
+  PSEUDO Lane-1 deterministic     PASS
+  Forbidden motion fields absent  PASS
+  SoSo Authority ZERO             PASS
+  SoSo no PASS/DROP contamination PASS
+  Final full-stack receipt        PASS
+
+What this proves:
+  Evidence is written, hashed, and marker-verified.
+  Lane 1 remains deterministic under repeated evaluation.
+  SoSo does not gain authority.
+  Final receipt binds the run.
+
+Maturity impact: CRAM + Lane-1 subsystem moves from architecture-backed
+to local evidence-backed. Project-wide status remains architecture-backed
+until OI-01, OI-03, C03, C04, C05 are proven.
+
+Not yet closed:
+  OI-01 Hailo hardware gate
+  OI-03 Pi-to-Pi transfer
+  C03 RSYNC pressure
+  C04 crash recovery
+  C05 formal replay parity
 ```
 
 ---
