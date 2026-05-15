@@ -1,0 +1,27 @@
+{
+  "schema": "ph6.tok_leak_001.v1",
+  "campaign_ref": "CAMPAIGN_01_300_FRAME_COHERENCE",
+  "test_id": "TOK-LEAK-001",
+  "hash_algorithm": "BLAKE2b-256",
+  "authority": "LANE_1",
+  "ai_authority": "NONE",
+  "iso_timestamp": "20260515T111936Z",
+  "n_packets": 300,
+  "run_a": {
+    "tok_enabled": true,
+    "result_set_hash": "a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660",
+    "tok_rt_count": 138,
+    "run_ok": true,
+    "run_dir": "/home/jack/ph6/cram_pu/runtime/tok_leak_001_20260515T111936Z_tok_on"
+  },
+  "run_b": {
+    "tok_enabled": false,
+    "result_set_hash": "a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660",
+    "tok_rt_count": 0,
+    "run_ok": true,
+    "run_dir": "/home/jack/ph6/cram_pu/runtime/tok_leak_001_20260515T111936Z_tok_off"
+  },
+  "hash_parity": true,
+  "verdict": "TOK_LEAK_001_PASS",
+  "receipt_hash": "c839e9554aadf4eb6c47e043eeee7184be0e127b2cff4c8744716f2cb7a2996c"
+}

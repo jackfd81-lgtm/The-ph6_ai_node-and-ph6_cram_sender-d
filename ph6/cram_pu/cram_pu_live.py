@@ -34,6 +34,47 @@ from ph6.cram_pu.crash_replay import (
     SheddingLogger,
 )
 from ph6.cram_pu.tools.cram_pu_schema_validate import validate_run_dir
+from ph6.cram_pu.schemas.canonical import canonical_json, blake2b_256
+from ph6.tok.lifecycle import TokenStore, RT, now_ms as tok_now_ms
+
+
+class _TokSidecar:
+    """
+    Lane-2 advisory token sidecar.  Authority ZERO.  Writes MRAM-S only.
+
+    Any exception inside this class is caught and logged advisory — it must
+    never propagate into the Lane-1 verdict or CRAM path.
+    """
+
+    def __init__(self, mram_s_dir: Path, enabled: bool) -> None:
+        self.enabled = enabled
+        self._store: TokenStore | None = None
+        if enabled:
+            try:
+                self._store = TokenStore(str(mram_s_dir / "tokens"))
+            except Exception as e:
+                print(f"  TOK sidecar init failed (advisory): {e}", file=sys.stderr)
+
+    def on_pass(self, frame_id: int, cram_ref_hash: str) -> None:
+        if not self.enabled or self._store is None:
+            return
+        try:
+            rt = RT(
+                token_id=f"rt_{frame_id:010d}",
+                cram_ref_hash=cram_ref_hash,
+                timestamp_ms=tok_now_ms(),
+                object_class="",
+                bbox=[],
+                confidence=0.0,
+            )
+            self._store.add_rt(rt)
+        except Exception:
+            pass  # advisory failure — never surfaces to Lane-1
+
+    def rt_count(self) -> int:
+        if self._store is None:
+            return 0
+        return len(self._store.rt_store)
 
 
 def _atomic_write_json(path: Path, record: dict) -> None:
@@ -70,7 +111,8 @@ def _generate_packets(n: int) -> list[tuple[int, bytes]]:
     return packets
 
 
-def run(n_packets: int = 10, base_dir: Path | None = None) -> bool:
+def run(n_packets: int = 10, base_dir: Path | None = None,
+        tok_enabled: bool = True) -> dict:
     ts     = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     run_id = str(uuid.uuid4())
 
@@ -83,6 +125,8 @@ def run(n_packets: int = 10, base_dir: Path | None = None) -> bool:
     mram_s_dir.mkdir(parents=True, exist_ok=True)
 
     paths = CRAMPaths(cram_store=cram_store, mram_s=mram_s_dir)
+
+    tok = _TokSidecar(mram_s_dir, enabled=tok_enabled)
 
     departure_logger = DepartureLogger(paths.departure_log)
     arrival_logger   = ArrivalLogger(paths.arrival_log)
@@ -112,6 +156,7 @@ def run(n_packets: int = 10, base_dir: Path | None = None) -> bool:
             # CRAMWriter.commit() writes both the CRAM JSON and the .blake2b
             # marker atomically (write→fsync→rename→fsync dir).
             cram_writer.commit(frame_id, dep["payload_hash"], verd)
+            tok.on_pass(frame_id, dep["payload_hash"])  # Lane-2 advisory, authority ZERO
             counts["pass"] += 1
         else:
             shedding_logger.log(
@@ -146,7 +191,19 @@ def run(n_packets: int = 10, base_dir: Path | None = None) -> bool:
         f.write(json.dumps(rsync_entry, sort_keys=True, separators=(",", ":"),
                            ensure_ascii=False, allow_nan=False) + "\n")
 
-    # 8. Schema validation
+    # 8. result_set_hash — hash of the verdict sequence only (TOK must not affect this)
+    verdict_records = [
+        json.loads(line)
+        for line in paths.verdict_log.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    verdict_sequence = [
+        {"frame_id": r["frame_id"], "verdict": r["verdict"]}
+        for r in verdict_records
+    ]
+    result_set_hash = blake2b_256(canonical_json(verdict_sequence))
+
+    # 9. Schema validation
     schema_errors = validate_run_dir(paths)
     if schema_errors:
         print("SCHEMA VIOLATIONS:")
@@ -155,14 +212,14 @@ def run(n_packets: int = 10, base_dir: Path | None = None) -> bool:
     else:
         print("  Schema validation: PASS")
 
-    # 9. Crash/replay validation (seven invariants)
+    # 10. Crash/replay validation (seven invariants)
     print()
     validator = CrashReplayValidator(paths)
     report    = validator.run()
     print(report.summary())
     print()
 
-    # 10. Manifest
+    # 11. Manifest
     manifest = {
         "schema":    "ph6.cram_pu.live_manifest.v1",
         "milestone": "CRAM-PU-LIVE-1.0",
@@ -178,9 +235,12 @@ def run(n_packets: int = 10, base_dir: Path | None = None) -> bool:
         },
         "cram_store": str(cram_store),
         "mram_s":     str(mram_s_dir),
-        "counts":     counts,
-        "schema_ok":  len(schema_errors) == 0,
-        "replay_verdict": report.verdict,
+        "counts":           counts,
+        "schema_ok":        len(schema_errors) == 0,
+        "replay_verdict":   report.verdict,
+        "result_set_hash":  result_set_hash,
+        "tok_enabled":      tok_enabled,
+        "tok_rt_count":     tok.rt_count(),
         "acceptance": {
             "continuity_required":         True,
             "replay_required":             True,
@@ -190,18 +250,33 @@ def run(n_packets: int = 10, base_dir: Path | None = None) -> bool:
     }
     _atomic_write_json(base_dir / "manifest.json", manifest)
 
-    return report.verdict == "PASS" and len(schema_errors) == 0
+    ok = report.verdict == "PASS" and len(schema_errors) == 0
+    return {
+        "ok":              ok,
+        "result_set_hash": result_set_hash,
+        "tok_enabled":     tok_enabled,
+        "tok_rt_count":    tok.rt_count(),
+        "run_dir":         str(base_dir),
+    }
 
 
 if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser()
-    ap.add_argument("--packets",  type=int,  default=10)
-    ap.add_argument("--run-dir",  type=Path, default=None)
+    ap.add_argument("--packets",      type=int,            default=10)
+    ap.add_argument("--run-dir",      type=Path,           default=None)
+    ap.add_argument("--tok-disabled", action="store_true", default=False)
     args = ap.parse_args()
 
-    ok = run(n_packets=args.packets, base_dir=args.run_dir)
-    if ok:
+    result = run(
+        n_packets=args.packets,
+        base_dir=args.run_dir,
+        tok_enabled=not args.tok_disabled,
+    )
+    print(f"  result_set_hash : {result['result_set_hash']}")
+    print(f"  tok_enabled     : {result['tok_enabled']}")
+    print(f"  tok_rt_count    : {result['tok_rt_count']}")
+    if result["ok"]:
         print("CRAM_PU_LIVE_1_0_PASS=True")
         sys.exit(0)
     else:
