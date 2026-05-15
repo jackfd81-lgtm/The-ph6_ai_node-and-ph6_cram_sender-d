@@ -1,0 +1,42 @@
+{
+  "schema": "ph6.calibration_gate.replay_parity.v1",
+  "document_ref": "PH6-CALIBRATION-GATE-BLOCK-v1.0",
+  "hash_algorithm": "BLAKE2b-256",
+  "authority": "LANE_1",
+  "ai_authority": "NONE",
+  "timestamp": 1778843329.33133,
+  "iso_timestamp": "20260515T110849Z",
+  "verdict": "REPLAY_PARITY_PASS",
+  "anchors": {
+    "anchor_soft": {
+      "image_path": "/home/jack/frame_filter/frames_pseudo_soso_5min_4/frame_001130.jpg",
+      "raw_bytes_hash": "47c8370c52949aac19125890f4327f5ecc131de90da536fd7ce38643450f1859",
+      "run_1_hash": "1295130bd69c399870a466c5796ae25b0c884a39d01d0e40f05661974d68760f",
+      "run_2_hash": "1295130bd69c399870a466c5796ae25b0c884a39d01d0e40f05661974d68760f",
+      "parity": true,
+      "metrics_fp": {
+        "brightness_mean": 759013,
+        "contrast_stddev": 288105,
+        "laplacian_variance": 769021
+      },
+      "blur_gate": "WARN",
+      "exposure_gate": "nominal"
+    },
+    "anchor_sharp": {
+      "image_path": "/home/jack/frame_filter/frames_ph6_forced_drop_20260428_090045/frame_000001.jpg",
+      "raw_bytes_hash": "c48097c61a58d0a3a91d25bc8f127f64bcab3f9c6892753cc58fd9bc3d9ea471",
+      "run_1_hash": "07100e152ea02c90f4b5d0d0dd8b2304b5984958367c159bf7edbd2a87f87e5a",
+      "run_2_hash": "07100e152ea02c90f4b5d0d0dd8b2304b5984958367c159bf7edbd2a87f87e5a",
+      "parity": true,
+      "metrics_fp": {
+        "brightness_mean": 1239527,
+        "contrast_stddev": 917479,
+        "laplacian_variance": 45245420
+      },
+      "blur_gate": "PASS",
+      "exposure_gate": "nominal"
+    }
+  },
+  "notes": "anchor_soft laplacian=76.9 (WARN boundary \u2014 DROP-zone fixture images not available locally; replay parity proof holds at any laplacian value)",
+  "receipt_hash": "622434c90bcf7b7615495e2a688ac70a94dae443f3863aae7fa0865a0dff4001"
+}

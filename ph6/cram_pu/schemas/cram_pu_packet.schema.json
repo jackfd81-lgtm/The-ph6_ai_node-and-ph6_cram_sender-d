@@ -41,10 +41,14 @@
         "reasons":        {"type":"array","items":{"type":"string"}},
         "metrics": {
           "type":"object",
-          "required":["mean_brightness","byte_variance"],
+          "required":["mean_brightness","byte_variance","laplacian_variance","contrast_stddev"],
           "properties": {
-            "mean_brightness": {"type":"number"},
-            "byte_variance":   {"type":"number"}
+            "mean_brightness":    {"type":"number"},
+            "byte_variance":      {"type":"number"},
+            "laplacian_variance": {"type":"number"},
+            "contrast_stddev":    {"type":"number"},
+            "entropy":            {"type":"number"},
+            "edge_density":       {"type":"number"}
           },
           "additionalProperties": false
         },
