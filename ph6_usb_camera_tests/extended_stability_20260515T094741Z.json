@@ -1,0 +1,84 @@
+{
+  "schema": "ph6.usb_camera.extended_stability.v1",
+  "generated_utc": "2026-05-15T09:47:41.873256+00:00",
+  "device_index": 0,
+  "requested": {
+    "frames": 7200,
+    "target_fps": 24,
+    "width": 640,
+    "height": 480,
+    "fourcc": "MJPG"
+  },
+  "actual": {
+    "frames_captured": 4087,
+    "width": 640,
+    "height": 480,
+    "reported_fps": 25.0,
+    "duration_sec": 205.439,
+    "expected_duration_sec": 300.0,
+    "actual_fps": 19.894,
+    "duration_error_sec": -94.561,
+    "duration_error_percent": -31.52
+  },
+  "stability": {
+    "read_failures": 1,
+    "duplicate_hash_count": 0,
+    "frozen_frame_count": 0,
+    "mean_absdiff": 2.264689,
+    "min_absdiff": 1.389632,
+    "max_absdiff": 10.54487,
+    "p95_frame_interval_ms": 52.127,
+    "max_frame_interval_ms": 56.11
+  },
+  "usb_state": {
+    "start_usb_present": true,
+    "end_usb_present": true,
+    "start_video_nodes": [
+      "/dev/video0",
+      "/dev/video1",
+      "/dev/video19",
+      "/dev/video20",
+      "/dev/video21",
+      "/dev/video22",
+      "/dev/video23",
+      "/dev/video24",
+      "/dev/video25",
+      "/dev/video26",
+      "/dev/video27",
+      "/dev/video28",
+      "/dev/video29",
+      "/dev/video30",
+      "/dev/video31",
+      "/dev/video32",
+      "/dev/video33",
+      "/dev/video34",
+      "/dev/video35"
+    ],
+    "end_video_nodes": [
+      "/dev/video19",
+      "/dev/video20",
+      "/dev/video21",
+      "/dev/video22",
+      "/dev/video23",
+      "/dev/video24",
+      "/dev/video25",
+      "/dev/video26",
+      "/dev/video27",
+      "/dev/video28",
+      "/dev/video29",
+      "/dev/video30",
+      "/dev/video31",
+      "/dev/video32",
+      "/dev/video33",
+      "/dev/video34",
+      "/dev/video35"
+    ]
+  },
+  "verdict": "FAIL",
+  "reasons": [
+    "captured_less_than_requested",
+    "frame_read_failures",
+    "actual_fps_outside_22_26_range",
+    "duration_error_over_15_percent"
+  ]
+}

@@ -1,0 +1,1463 @@
+{
+  "schema": "ph6.usb_audio_test.v1",
+  "run_id": "20260515T095839Z",
+  "alsa_device": "hw:2,0",
+  "rate_hz": 44100,
+  "channels": 1,
+  "format": "S16_LE",
+  "duration_sec": 180,
+  "chunk_sec": 1,
+  "target_chunks": 180,
+  "passed_chunks": 180,
+  "dropped_chunks": 0,
+  "silent_chunks": 0,
+  "avg_rms": 392.15,
+  "peak_all": 11067,
+  "overrun_count": 0,
+  "actual_duration": 180.238,
+  "arecord_rc": 0,
+  "valid_ph6_minimum": true,
+  "test_result": "PASS",
+  "records": [
+    {
+      "chunk_index": 0,
+      "status": "PASS",
+      "rms": 779.38,
+      "peak": 7129,
+      "chunk_hash_blake2b_256": "261566f6535ffc5bcb77e4bf65014eba0506ada485292cc469d7f2a0d6869a7c",
+      "timestamp_utc": "2026-05-15T10:01:39.734938+00:00"
+    },
+    {
+      "chunk_index": 1,
+      "status": "PASS",
+      "rms": 507.6,
+      "peak": 2235,
+      "chunk_hash_blake2b_256": "97ace3e309c9a37cb8a356a0641f3da75275d055974879a33994956bfe604c94",
+      "timestamp_utc": "2026-05-15T10:01:39.742657+00:00"
+    },
+    {
+      "chunk_index": 2,
+      "status": "PASS",
+      "rms": 714.51,
+      "peak": 3099,
+      "chunk_hash_blake2b_256": "b65c448fdd1d513827f167e8a22ba93f4489b5204ff7bac8f326710074992440",
+      "timestamp_utc": "2026-05-15T10:01:39.750315+00:00"
+    },
+    {
+      "chunk_index": 3,
+      "status": "PASS",
+      "rms": 786.79,
+      "peak": 3943,
+      "chunk_hash_blake2b_256": "75ce4902a5710c134d9e379d341d8ad6c567a863197da57f591229886a83de12",
+      "timestamp_utc": "2026-05-15T10:01:39.757942+00:00"
+    },
+    {
+      "chunk_index": 4,
+      "status": "PASS",
+      "rms": 655.95,
+      "peak": 2379,
+      "chunk_hash_blake2b_256": "f0c7b5e6106b4bc903626921c11c81d9b1e2eb4876b270c75d85b436a4a949ae",
+      "timestamp_utc": "2026-05-15T10:01:39.765588+00:00"
+    },
+    {
+      "chunk_index": 5,
+      "status": "PASS",
+      "rms": 583.78,
+      "peak": 3206,
+      "chunk_hash_blake2b_256": "46b161d433f92f6aafd0bfd01682b76e96b2496078fd3ce9351401ab6145b0d8",
+      "timestamp_utc": "2026-05-15T10:01:39.773124+00:00"
+    },
+    {
+      "chunk_index": 6,
+      "status": "PASS",
+      "rms": 658.72,
+      "peak": 2638,
+      "chunk_hash_blake2b_256": "37aa49e580527077290a8089486bbdd2b9ec320a6e5b3c317bb338c5354662ee",
+      "timestamp_utc": "2026-05-15T10:01:39.780677+00:00"
+    },
+    {
+      "chunk_index": 7,
+      "status": "PASS",
+      "rms": 1104.93,
+      "peak": 5745,
+      "chunk_hash_blake2b_256": "80aa45172c6a63cdab1604a0effca33450de6d0135d1bded1211e340548be970",
+      "timestamp_utc": "2026-05-15T10:01:39.788421+00:00"
+    },
+    {
+      "chunk_index": 8,
+      "status": "PASS",
+      "rms": 325.09,
+      "peak": 2396,
+      "chunk_hash_blake2b_256": "89cfd8193f8ba542d3a98b57dbb9a716ec699be758fed1ee0e37f14f23068802",
+      "timestamp_utc": "2026-05-15T10:01:39.795783+00:00"
+    },
+    {
+      "chunk_index": 9,
+      "status": "PASS",
+      "rms": 730.32,
+      "peak": 3141,
+      "chunk_hash_blake2b_256": "d42b17d75b8bde3c6a73fde6553cb8aac2977c7af51af4205ddfb8819209ccc9",
+      "timestamp_utc": "2026-05-15T10:01:39.803459+00:00"
+    },
+    {
+      "chunk_index": 10,
+      "status": "PASS",
+      "rms": 671.19,
+      "peak": 3166,
+      "chunk_hash_blake2b_256": "9c5d27eb0432142feb5c51514bf76c692344827906e9af9d5ea8b6a2b571102e",
+      "timestamp_utc": "2026-05-15T10:01:39.811042+00:00"
+    },
+    {
+      "chunk_index": 11,
+      "status": "PASS",
+      "rms": 479.21,
+      "peak": 2536,
+      "chunk_hash_blake2b_256": "550a388025d041f343a739184567005610620981ead11549eaa2eda73ecec902",
+      "timestamp_utc": "2026-05-15T10:01:39.818609+00:00"
+    },
+    {
+      "chunk_index": 12,
+      "status": "PASS",
+      "rms": 717.75,
+      "peak": 3465,
+      "chunk_hash_blake2b_256": "395cba979bd05ec08b93dcb71e41f84830b975d9ab8d5e849aee2eed9305ca3d",
+      "timestamp_utc": "2026-05-15T10:01:39.826284+00:00"
+    },
+    {
+      "chunk_index": 13,
+      "status": "PASS",
+      "rms": 445.52,
+      "peak": 1814,
+      "chunk_hash_blake2b_256": "9c6e6b3fe1c7ac4125e4c2603a1d5f917fb2c10a24e306d3c71805eb74844b51",
+      "timestamp_utc": "2026-05-15T10:01:39.833830+00:00"
+    },
+    {
+      "chunk_index": 14,
+      "status": "PASS",
+      "rms": 602.53,
+      "peak": 2117,
+      "chunk_hash_blake2b_256": "6088a9997f4e18e756ffd4dd00421c20f9f100f2360aeafc86e4d0072f50a672",
+      "timestamp_utc": "2026-05-15T10:01:39.841529+00:00"
+    },
+    {
+      "chunk_index": 15,
+      "status": "PASS",
+      "rms": 714.91,
+      "peak": 3180,
+      "chunk_hash_blake2b_256": "daa286237d2cc425fbef4a7d2423854c63518a74f63e26a3c3dd13356551f393",
+      "timestamp_utc": "2026-05-15T10:01:39.849145+00:00"
+    },
+    {
+      "chunk_index": 16,
+      "status": "PASS",
+      "rms": 484.68,
+      "peak": 2514,
+      "chunk_hash_blake2b_256": "f715b1df47fffc381bdea0bf647987a11a18d4b7f58857f3416d86ca31e53477",
+      "timestamp_utc": "2026-05-15T10:01:39.856741+00:00"
+    },
+    {
+      "chunk_index": 17,
+      "status": "PASS",
+      "rms": 659.4,
+      "peak": 2427,
+      "chunk_hash_blake2b_256": "a5f9b2ceee9246d03945e41f8788156a6fc4675520d6ce79ed47d3f975eb9734",
+      "timestamp_utc": "2026-05-15T10:01:39.864477+00:00"
+    },
+    {
+      "chunk_index": 18,
+      "status": "PASS",
+      "rms": 1024.54,
+      "peak": 4795,
+      "chunk_hash_blake2b_256": "6772b5f322b9bf208608ecdf60c75ee25c39d2aa97f50246fd1613f95614a680",
+      "timestamp_utc": "2026-05-15T10:01:39.872145+00:00"
+    },
+    {
+      "chunk_index": 19,
+      "status": "PASS",
+      "rms": 545.06,
+      "peak": 2064,
+      "chunk_hash_blake2b_256": "397e16bf73ce2678f36b2256a702fb3e6233446c4634724bee5b738fb7577257",
+      "timestamp_utc": "2026-05-15T10:01:39.879730+00:00"
+    },
+    {
+      "chunk_index": 20,
+      "status": "PASS",
+      "rms": 679.56,
+      "peak": 3251,
+      "chunk_hash_blake2b_256": "5b258f596d60f8e20ffad394a53b586054a0fd776fd41f2c7fcad9dfe7d8889b",
+      "timestamp_utc": "2026-05-15T10:01:39.887470+00:00"
+    },
+    {
+      "chunk_index": 21,
+      "status": "PASS",
+      "rms": 723.44,
+      "peak": 3107,
+      "chunk_hash_blake2b_256": "0ba6d5037dd52df546454d64622a2f756b791d2c1694d679ac9d2174292d4038",
+      "timestamp_utc": "2026-05-15T10:01:39.895173+00:00"
+    },
+    {
+      "chunk_index": 22,
+      "status": "PASS",
+      "rms": 575.47,
+      "peak": 3501,
+      "chunk_hash_blake2b_256": "3a1ca50f1a50934b51dc95b0c579571c884f00f62755f0bf4055802c9106198d",
+      "timestamp_utc": "2026-05-15T10:01:39.902640+00:00"
+    },
+    {
+      "chunk_index": 23,
+      "status": "PASS",
+      "rms": 225.33,
+      "peak": 849,
+      "chunk_hash_blake2b_256": "41d81dc3f35badee2bc18d4e4587b72033284b2bae34870fc45ab11405d7b12e",
+      "timestamp_utc": "2026-05-15T10:01:39.909858+00:00"
+    },
+    {
+      "chunk_index": 24,
+      "status": "PASS",
+      "rms": 241.11,
+      "peak": 863,
+      "chunk_hash_blake2b_256": "43a0bd62e127fedf0e2dd5be305d7223aefb4dbfccfd5d7c330e0207ddc7fda3",
+      "timestamp_utc": "2026-05-15T10:01:39.917055+00:00"
+    },
+    {
+      "chunk_index": 25,
+      "status": "PASS",
+      "rms": 314.8,
+      "peak": 1268,
+      "chunk_hash_blake2b_256": "4339b94341ef940900122d97338a192aa87bec84dffaa5d667ebceb18f4e68ce",
+      "timestamp_utc": "2026-05-15T10:01:39.924408+00:00"
+    },
+    {
+      "chunk_index": 26,
+      "status": "PASS",
+      "rms": 307.36,
+      "peak": 1755,
+      "chunk_hash_blake2b_256": "a005cff1a2295a707f83f761b8fe553bc21f5e46c54fc6eb5c7927c527222f7b",
+      "timestamp_utc": "2026-05-15T10:01:39.931730+00:00"
+    },
+    {
+      "chunk_index": 27,
+      "status": "PASS",
+      "rms": 282.09,
+      "peak": 1943,
+      "chunk_hash_blake2b_256": "c161d46ec069cdcce6a65242dcdec974f473e411e308218d1797f52028586416",
+      "timestamp_utc": "2026-05-15T10:01:39.938994+00:00"
+    },
+    {
+      "chunk_index": 28,
+      "status": "PASS",
+      "rms": 244.04,
+      "peak": 998,
+      "chunk_hash_blake2b_256": "3532838fe24ea0cadf618cc4c2ccbf13eac5bdc9725548e2e92a603242c9fac3",
+      "timestamp_utc": "2026-05-15T10:01:39.946205+00:00"
+    },
+    {
+      "chunk_index": 29,
+      "status": "PASS",
+      "rms": 289.38,
+      "peak": 1867,
+      "chunk_hash_blake2b_256": "4bf746b33b0b5a8bda441aa927e837ede1a45512ecda053548863c5176757436",
+      "timestamp_utc": "2026-05-15T10:01:39.953483+00:00"
+    },
+    {
+      "chunk_index": 30,
+      "status": "PASS",
+      "rms": 263.86,
+      "peak": 1330,
+      "chunk_hash_blake2b_256": "9019584662041f4f7611b5f56ef162f6aacb97756743931811e52a6da5d06e10",
+      "timestamp_utc": "2026-05-15T10:01:39.960927+00:00"
+    },
+    {
+      "chunk_index": 31,
+      "status": "PASS",
+      "rms": 282.16,
+      "peak": 1358,
+      "chunk_hash_blake2b_256": "138ab83bfda9d78de4028f0160620311d2e12b4788e51b9da802afba05ea8dfe",
+      "timestamp_utc": "2026-05-15T10:01:39.968235+00:00"
+    },
+    {
+      "chunk_index": 32,
+      "status": "PASS",
+      "rms": 281.99,
+      "peak": 1752,
+      "chunk_hash_blake2b_256": "2d6bdb95832daea9ba8563afd51b8dd15c94e667da3affc98e8a040e2f5f8f7f",
+      "timestamp_utc": "2026-05-15T10:01:39.975541+00:00"
+    },
+    {
+      "chunk_index": 33,
+      "status": "PASS",
+      "rms": 311.87,
+      "peak": 1364,
+      "chunk_hash_blake2b_256": "d1b0b434968cac43a4af3422cadc52766f2a1d4c550cff95141c60c4214a63ce",
+      "timestamp_utc": "2026-05-15T10:01:39.982875+00:00"
+    },
+    {
+      "chunk_index": 34,
+      "status": "PASS",
+      "rms": 344.33,
+      "peak": 1479,
+      "chunk_hash_blake2b_256": "621cac04ef678c43cde673333dc60e30605bfd006f7b8244709a526c561e96e0",
+      "timestamp_utc": "2026-05-15T10:01:39.990227+00:00"
+    },
+    {
+      "chunk_index": 35,
+      "status": "PASS",
+      "rms": 451.82,
+      "peak": 1763,
+      "chunk_hash_blake2b_256": "d8ecbe134b73b197723ecb60d0f28db889429cde5a5f64220652b8510d17f0d1",
+      "timestamp_utc": "2026-05-15T10:01:39.997639+00:00"
+    },
+    {
+      "chunk_index": 36,
+      "status": "PASS",
+      "rms": 663.41,
+      "peak": 4092,
+      "chunk_hash_blake2b_256": "14853dd577da9ecb09999686f17d0fdfb7ac11fcdf444ca8e0707a8464ae672a",
+      "timestamp_utc": "2026-05-15T10:01:40.005214+00:00"
+    },
+    {
+      "chunk_index": 37,
+      "status": "PASS",
+      "rms": 579.1,
+      "peak": 2565,
+      "chunk_hash_blake2b_256": "f10922a17116d130256377f5fc4152be998f05b372242a77afc9b5c861d6ebf2",
+      "timestamp_utc": "2026-05-15T10:01:40.012743+00:00"
+    },
+    {
+      "chunk_index": 38,
+      "status": "PASS",
+      "rms": 466.1,
+      "peak": 1850,
+      "chunk_hash_blake2b_256": "30d0d04f50aab2d6d53624ef0e45d26ea5c91a7e277924ed6d56e7060649c3ac",
+      "timestamp_utc": "2026-05-15T10:01:40.020189+00:00"
+    },
+    {
+      "chunk_index": 39,
+      "status": "PASS",
+      "rms": 312.8,
+      "peak": 1369,
+      "chunk_hash_blake2b_256": "de688651a977a20f1452c4a08ff6513753b0ac9b10d530f70a524109d1012ab2",
+      "timestamp_utc": "2026-05-15T10:01:40.027520+00:00"
+    },
+    {
+      "chunk_index": 40,
+      "status": "PASS",
+      "rms": 736.15,
+      "peak": 4910,
+      "chunk_hash_blake2b_256": "7cfaafe3e9becb78728681986175e580f998d4064f809f93e5e3ee6b59cbcfe1",
+      "timestamp_utc": "2026-05-15T10:01:40.035084+00:00"
+    },
+    {
+      "chunk_index": 41,
+      "status": "PASS",
+      "rms": 577.53,
+      "peak": 5107,
+      "chunk_hash_blake2b_256": "c2b0bc0bd9529b74c00c41e25327bff15ffe78266fec94eb6738871d714e1862",
+      "timestamp_utc": "2026-05-15T10:01:40.042592+00:00"
+    },
+    {
+      "chunk_index": 42,
+      "status": "PASS",
+      "rms": 420.52,
+      "peak": 1333,
+      "chunk_hash_blake2b_256": "a91078b756142217a1da50c34e42dc7134aea67cbd5ec77ba5fdeb4b6cc833a0",
+      "timestamp_utc": "2026-05-15T10:01:40.050039+00:00"
+    },
+    {
+      "chunk_index": 43,
+      "status": "PASS",
+      "rms": 497.11,
+      "peak": 2534,
+      "chunk_hash_blake2b_256": "624a3bd621de97d170f73c29283a0ac88c56e3fccadb1c872284d0e7a0f6880a",
+      "timestamp_utc": "2026-05-15T10:01:40.057518+00:00"
+    },
+    {
+      "chunk_index": 44,
+      "status": "PASS",
+      "rms": 343.5,
+      "peak": 1338,
+      "chunk_hash_blake2b_256": "1993c1864b165147076806700be39e97898f29e3d257dc9b6f0d4bd9d669d3b8",
+      "timestamp_utc": "2026-05-15T10:01:40.064861+00:00"
+    },
+    {
+      "chunk_index": 45,
+      "status": "PASS",
+      "rms": 323.95,
+      "peak": 1448,
+      "chunk_hash_blake2b_256": "39ae5253b7d7576c190a05d04c97c3b88c89a403e061421e169bdbcc267bd0d5",
+      "timestamp_utc": "2026-05-15T10:01:40.072115+00:00"
+    },
+    {
+      "chunk_index": 46,
+      "status": "PASS",
+      "rms": 324.02,
+      "peak": 1181,
+      "chunk_hash_blake2b_256": "3583de89ae243e4fa6b948d14ae21ec817c08e12cccc6c4e637c06672d8694ac",
+      "timestamp_utc": "2026-05-15T10:01:40.079463+00:00"
+    },
+    {
+      "chunk_index": 47,
+      "status": "PASS",
+      "rms": 487.69,
+      "peak": 3352,
+      "chunk_hash_blake2b_256": "a656b12c8137bcba50c1fea74d33b8977bfd0068e2787c103745a1da3c1ccaa6",
+      "timestamp_utc": "2026-05-15T10:01:40.086947+00:00"
+    },
+    {
+      "chunk_index": 48,
+      "status": "PASS",
+      "rms": 499.34,
+      "peak": 2407,
+      "chunk_hash_blake2b_256": "011fe610d22c6ec7ada0a8cd3efdf4cd850bf375e8464a1950e2470427f6c201",
+      "timestamp_utc": "2026-05-15T10:01:40.094300+00:00"
+    },
+    {
+      "chunk_index": 49,
+      "status": "PASS",
+      "rms": 657.77,
+      "peak": 2730,
+      "chunk_hash_blake2b_256": "6b533ba897e7b9c7c4bdff7a6d9d226840aa4d35d7ae78ee527a7fb80755c00a",
+      "timestamp_utc": "2026-05-15T10:01:40.101900+00:00"
+    },
+    {
+      "chunk_index": 50,
+      "status": "PASS",
+      "rms": 318.67,
+      "peak": 1575,
+      "chunk_hash_blake2b_256": "a19315e2007841c590a015b0d6ee5bcdfe4d1cd6b46204493055a6b6f8484fb1",
+      "timestamp_utc": "2026-05-15T10:01:40.109183+00:00"
+    },
+    {
+      "chunk_index": 51,
+      "status": "PASS",
+      "rms": 534.75,
+      "peak": 2140,
+      "chunk_hash_blake2b_256": "776f89197ef96fd43e39e33b16256ffe10d5f67cf40897b21806a0754d0ba852",
+      "timestamp_utc": "2026-05-15T10:01:40.116580+00:00"
+    },
+    {
+      "chunk_index": 52,
+      "status": "PASS",
+      "rms": 311.64,
+      "peak": 1364,
+      "chunk_hash_blake2b_256": "9572f1581a27753583177279e7b28dbf8b89529b70cb8bf0f248b11016737d1c",
+      "timestamp_utc": "2026-05-15T10:01:40.123857+00:00"
+    },
+    {
+      "chunk_index": 53,
+      "status": "PASS",
+      "rms": 340.36,
+      "peak": 1527,
+      "chunk_hash_blake2b_256": "9d8eb199821cf8e339ac54019e1f453c644ffc824830448ccefe18256ad498b9",
+      "timestamp_utc": "2026-05-15T10:01:40.131090+00:00"
+    },
+    {
+      "chunk_index": 54,
+      "status": "PASS",
+      "rms": 445.24,
+      "peak": 2072,
+      "chunk_hash_blake2b_256": "5010f28896fc622d9901ed404c609656e1ca4efeecb9d7ba7cc1c63c66934616",
+      "timestamp_utc": "2026-05-15T10:01:40.138578+00:00"
+    },
+    {
+      "chunk_index": 55,
+      "status": "PASS",
+      "rms": 333.47,
+      "peak": 1538,
+      "chunk_hash_blake2b_256": "eb51944cc0358098845a4c91cb9bb210ad6b6cc3d6540fef1c62b79103c83fd4",
+      "timestamp_utc": "2026-05-15T10:01:40.145784+00:00"
+    },
+    {
+      "chunk_index": 56,
+      "status": "PASS",
+      "rms": 476.19,
+      "peak": 2275,
+      "chunk_hash_blake2b_256": "2571f35512e1d8567a85ccc1dc149e16d533cccb4fd17c52a447950f64de979d",
+      "timestamp_utc": "2026-05-15T10:01:40.153253+00:00"
+    },
+    {
+      "chunk_index": 57,
+      "status": "PASS",
+      "rms": 443.67,
+      "peak": 1912,
+      "chunk_hash_blake2b_256": "228e124c488877761034c5eba468bcc380e401d99a57079f6fef79bbf2729f8c",
+      "timestamp_utc": "2026-05-15T10:01:40.160574+00:00"
+    },
+    {
+      "chunk_index": 58,
+      "status": "PASS",
+      "rms": 403.28,
+      "peak": 1665,
+      "chunk_hash_blake2b_256": "94effe09a8a73d079ecfb7fa5be96989a959147c01a74eb57046969367bded2a",
+      "timestamp_utc": "2026-05-15T10:01:40.167957+00:00"
+    },
+    {
+      "chunk_index": 59,
+      "status": "PASS",
+      "rms": 342.29,
+      "peak": 2272,
+      "chunk_hash_blake2b_256": "939b98b7adefdb6c108f0959c3f5238ab6140dfbd6515614c9254e64770c2cc1",
+      "timestamp_utc": "2026-05-15T10:01:40.175160+00:00"
+    },
+    {
+      "chunk_index": 60,
+      "status": "PASS",
+      "rms": 598.01,
+      "peak": 2933,
+      "chunk_hash_blake2b_256": "afdd1340c72ecaa3f4938f036053947fbc2ee8cc44dc75aa83b4ff0f665bcbba",
+      "timestamp_utc": "2026-05-15T10:01:40.182803+00:00"
+    },
+    {
+      "chunk_index": 61,
+      "status": "PASS",
+      "rms": 467.34,
+      "peak": 1746,
+      "chunk_hash_blake2b_256": "715d46f518b542c9ef196390a18e43bf29dfdbc043bc7f589a9433213c3a362f",
+      "timestamp_utc": "2026-05-15T10:01:40.192057+00:00"
+    },
+    {
+      "chunk_index": 62,
+      "status": "PASS",
+      "rms": 300.09,
+      "peak": 1490,
+      "chunk_hash_blake2b_256": "8a5fc4ab5a85fc7002aeeeded118726d2cfa5fe050e42c6941a4937b109fec55",
+      "timestamp_utc": "2026-05-15T10:01:40.203200+00:00"
+    },
+    {
+      "chunk_index": 63,
+      "status": "PASS",
+      "rms": 245.29,
+      "peak": 914,
+      "chunk_hash_blake2b_256": "e397a556b5bf63bdb31a05662dc9ac4e1804cab83ff9a2121a8eec0d670bf47c",
+      "timestamp_utc": "2026-05-15T10:01:40.213941+00:00"
+    },
+    {
+      "chunk_index": 64,
+      "status": "PASS",
+      "rms": 239.64,
+      "peak": 1918,
+      "chunk_hash_blake2b_256": "503579193637ae34838c4ecfed3a946f47abe0a01b6e3be6273cd424eb1e5533",
+      "timestamp_utc": "2026-05-15T10:01:40.224616+00:00"
+    },
+    {
+      "chunk_index": 65,
+      "status": "PASS",
+      "rms": 208.9,
+      "peak": 821,
+      "chunk_hash_blake2b_256": "ac49c890084bba4245915c71bbc52f2cfc6b9cff06a015de26371d29c05aab33",
+      "timestamp_utc": "2026-05-15T10:01:40.235224+00:00"
+    },
+    {
+      "chunk_index": 66,
+      "status": "PASS",
+      "rms": 219.48,
+      "peak": 961,
+      "chunk_hash_blake2b_256": "075776d67ddb209da1d0643697ec3e49e0e79274402e0f6ab270d306e48fa63e",
+      "timestamp_utc": "2026-05-15T10:01:40.245925+00:00"
+    },
+    {
+      "chunk_index": 67,
+      "status": "PASS",
+      "rms": 220.74,
+      "peak": 863,
+      "chunk_hash_blake2b_256": "50d6df572ef5ddb431072eed8bb8b41cdb1ab98792bb6c2bb22698a1d35c3a33",
+      "timestamp_utc": "2026-05-15T10:01:40.256656+00:00"
+    },
+    {
+      "chunk_index": 68,
+      "status": "PASS",
+      "rms": 243.92,
+      "peak": 964,
+      "chunk_hash_blake2b_256": "d48fe6a0b016c3e08d569b3dbbed5747d50d89a2daa87868817948652725fd84",
+      "timestamp_utc": "2026-05-15T10:01:40.267405+00:00"
+    },
+    {
+      "chunk_index": 69,
+      "status": "PASS",
+      "rms": 523.34,
+      "peak": 5158,
+      "chunk_hash_blake2b_256": "4c03aa79b13d112a45db6a2e093698ba4d7172c7bf15de1ddabe46ca241bd3e6",
+      "timestamp_utc": "2026-05-15T10:01:40.278422+00:00"
+    },
+    {
+      "chunk_index": 70,
+      "status": "PASS",
+      "rms": 334.93,
+      "peak": 1409,
+      "chunk_hash_blake2b_256": "fae5ade44b5740dd60a3cc503310bd4b5811ffa4b91e83c547dc9a657957f268",
+      "timestamp_utc": "2026-05-15T10:01:40.288946+00:00"
+    },
+    {
+      "chunk_index": 71,
+      "status": "PASS",
+      "rms": 277.27,
+      "peak": 3954,
+      "chunk_hash_blake2b_256": "4587bae61dfd6475d5c7f2fe3cfb7ee7d4a3278ae7f50134601b12f2f8685842",
+      "timestamp_utc": "2026-05-15T10:01:40.296196+00:00"
+    },
+    {
+      "chunk_index": 72,
+      "status": "PASS",
+      "rms": 229.45,
+      "peak": 1603,
+      "chunk_hash_blake2b_256": "1da9eec67fab51f6111f5eac773611958bb63aaa5c38742c9c95d729b616303d",
+      "timestamp_utc": "2026-05-15T10:01:40.303327+00:00"
+    },
+    {
+      "chunk_index": 73,
+      "status": "PASS",
+      "rms": 235.02,
+      "peak": 1012,
+      "chunk_hash_blake2b_256": "e625d3670481142df6cf2b6acf12b08d20d53f01f977f4a6463ae583f26f25db",
+      "timestamp_utc": "2026-05-15T10:01:40.310479+00:00"
+    },
+    {
+      "chunk_index": 74,
+      "status": "PASS",
+      "rms": 244.53,
+      "peak": 905,
+      "chunk_hash_blake2b_256": "004e86a7719523b97d39d574bc07845034230967f1ac8bf8d438d1e4fd556855",
+      "timestamp_utc": "2026-05-15T10:01:40.317709+00:00"
+    },
+    {
+      "chunk_index": 75,
+      "status": "PASS",
+      "rms": 607.08,
+      "peak": 2922,
+      "chunk_hash_blake2b_256": "ff43f5a93f131e9764002f073c3ef492742ca0ba32c10b9ede55940a57daa00e",
+      "timestamp_utc": "2026-05-15T10:01:40.325188+00:00"
+    },
+    {
+      "chunk_index": 76,
+      "status": "PASS",
+      "rms": 342.68,
+      "peak": 1873,
+      "chunk_hash_blake2b_256": "913d4ccaf95a375fb2c5b04cf1373a8ef23b911361d4fb18e62f668948bcdb17",
+      "timestamp_utc": "2026-05-15T10:01:40.332530+00:00"
+    },
+    {
+      "chunk_index": 77,
+      "status": "PASS",
+      "rms": 238.57,
+      "peak": 840,
+      "chunk_hash_blake2b_256": "8d027fbdc68d9503b1437601d6c9933ed80b3ae23cf4a7d31fea6965067149ae",
+      "timestamp_utc": "2026-05-15T10:01:40.339687+00:00"
+    },
+    {
+      "chunk_index": 78,
+      "status": "PASS",
+      "rms": 246.67,
+      "peak": 807,
+      "chunk_hash_blake2b_256": "0705b3c12fbab4a456a4038fc6b8137db8539c496a532acf59576385d3553146",
+      "timestamp_utc": "2026-05-15T10:01:40.346891+00:00"
+    },
+    {
+      "chunk_index": 79,
+      "status": "PASS",
+      "rms": 234.66,
+      "peak": 1012,
+      "chunk_hash_blake2b_256": "1bc9c47c888c2fe0899b508c490efa5721aaab4cb4e7ff577e308a42f0a170d0",
+      "timestamp_utc": "2026-05-15T10:01:40.354060+00:00"
+    },
+    {
+      "chunk_index": 80,
+      "status": "PASS",
+      "rms": 259.64,
+      "peak": 956,
+      "chunk_hash_blake2b_256": "bd7ee3df38f4333aeb2abfcde028b9fd4b19646f14bdf11ae68296a198c84493",
+      "timestamp_utc": "2026-05-15T10:01:40.361291+00:00"
+    },
+    {
+      "chunk_index": 81,
+      "status": "PASS",
+      "rms": 239.43,
+      "peak": 810,
+      "chunk_hash_blake2b_256": "f5504af5c8268d24983fd26231e4339650f13356b24b61437b1934f7c0e4d863",
+      "timestamp_utc": "2026-05-15T10:01:40.368508+00:00"
+    },
+    {
+      "chunk_index": 82,
+      "status": "PASS",
+      "rms": 236.99,
+      "peak": 1088,
+      "chunk_hash_blake2b_256": "ca0172c3df78201665a03d5d4885f6530a55685ca2caf3b9d55e383a35fb0c13",
+      "timestamp_utc": "2026-05-15T10:01:40.375658+00:00"
+    },
+    {
+      "chunk_index": 83,
+      "status": "PASS",
+      "rms": 246.96,
+      "peak": 866,
+      "chunk_hash_blake2b_256": "73d79587188eb129557d956afeb518d4e0144e1807e839cd1ef39f0aeae32fea",
+      "timestamp_utc": "2026-05-15T10:01:40.382854+00:00"
+    },
+    {
+      "chunk_index": 84,
+      "status": "PASS",
+      "rms": 245.1,
+      "peak": 821,
+      "chunk_hash_blake2b_256": "52ade9d59863dc368ace04436fbffbfc36e43770c4314f34f278e3ce149ad82b",
+      "timestamp_utc": "2026-05-15T10:01:40.390029+00:00"
+    },
+    {
+      "chunk_index": 85,
+      "status": "PASS",
+      "rms": 249.07,
+      "peak": 849,
+      "chunk_hash_blake2b_256": "1c9eb237c34c082c33fb1e8f66968b49707c5666c9104a3f03fd3a64fbebb2a2",
+      "timestamp_utc": "2026-05-15T10:01:40.397207+00:00"
+    },
+    {
+      "chunk_index": 86,
+      "status": "PASS",
+      "rms": 232.76,
+      "peak": 894,
+      "chunk_hash_blake2b_256": "1055caf2a02ef7aeaab965d7d697a2ce2d5bb5e40a067d3375650da74c5bf0d6",
+      "timestamp_utc": "2026-05-15T10:01:40.404329+00:00"
+    },
+    {
+      "chunk_index": 87,
+      "status": "PASS",
+      "rms": 230.44,
+      "peak": 1164,
+      "chunk_hash_blake2b_256": "4be83a6ad07e0953d5b65cfdec67f417948746e0ae34479a1e406118ac718f9c",
+      "timestamp_utc": "2026-05-15T10:01:40.411434+00:00"
+    },
+    {
+      "chunk_index": 88,
+      "status": "PASS",
+      "rms": 272.51,
+      "peak": 1724,
+      "chunk_hash_blake2b_256": "d1e3ccf17489c778993971b803147a063c72d08abc940ba5f5d7b05db9c6c080",
+      "timestamp_utc": "2026-05-15T10:01:40.418650+00:00"
+    },
+    {
+      "chunk_index": 89,
+      "status": "PASS",
+      "rms": 345.9,
+      "peak": 1788,
+      "chunk_hash_blake2b_256": "86775693e479332be90f3c357bb02f311a4cc00d078c2b78a9140194f09b4aea",
+      "timestamp_utc": "2026-05-15T10:01:40.425953+00:00"
+    },
+    {
+      "chunk_index": 90,
+      "status": "PASS",
+      "rms": 536.32,
+      "peak": 2171,
+      "chunk_hash_blake2b_256": "6fa3dc2fbb5a3438cfc25f3827c516f8d0a3a16b3f749f11063867e61cbd8c2a",
+      "timestamp_utc": "2026-05-15T10:01:40.433655+00:00"
+    },
+    {
+      "chunk_index": 91,
+      "status": "PASS",
+      "rms": 241.62,
+      "peak": 947,
+      "chunk_hash_blake2b_256": "327d1068b2765c80b79b4864cde5f27a672b5274cada595cd784020c17bf2d5f",
+      "timestamp_utc": "2026-05-15T10:01:40.440910+00:00"
+    },
+    {
+      "chunk_index": 92,
+      "status": "PASS",
+      "rms": 250.67,
+      "peak": 1712,
+      "chunk_hash_blake2b_256": "9f7d4ce39fdc52abe0fe84332e12b43fc178511cff51311c6453ccbec523607b",
+      "timestamp_utc": "2026-05-15T10:01:40.448170+00:00"
+    },
+    {
+      "chunk_index": 93,
+      "status": "PASS",
+      "rms": 251.5,
+      "peak": 930,
+      "chunk_hash_blake2b_256": "f7af3e2aecd453bb72a5bca61eba6665142583114a533ee4380908386c9b5a06",
+      "timestamp_utc": "2026-05-15T10:01:40.455450+00:00"
+    },
+    {
+      "chunk_index": 94,
+      "status": "PASS",
+      "rms": 252.67,
+      "peak": 967,
+      "chunk_hash_blake2b_256": "5cdbb9bf91ebd1d5c477d20d966754366fe607c9ff2788b74cfa4782ee99ea53",
+      "timestamp_utc": "2026-05-15T10:01:40.462738+00:00"
+    },
+    {
+      "chunk_index": 95,
+      "status": "PASS",
+      "rms": 244.14,
+      "peak": 961,
+      "chunk_hash_blake2b_256": "8f28f7629dab6166b15781838a859e9ec28d3062cc170a4a94d5aff017ff349e",
+      "timestamp_utc": "2026-05-15T10:01:40.469989+00:00"
+    },
+    {
+      "chunk_index": 96,
+      "status": "PASS",
+      "rms": 284.17,
+      "peak": 1035,
+      "chunk_hash_blake2b_256": "91910331c8cf878ac1a31ac2c8442c673d767ed63067417109aa58aacc631a3d",
+      "timestamp_utc": "2026-05-15T10:01:40.477544+00:00"
+    },
+    {
+      "chunk_index": 97,
+      "status": "PASS",
+      "rms": 253.41,
+      "peak": 1721,
+      "chunk_hash_blake2b_256": "aadbcdadf55d5f924d068fce96262c9c57f091d7966229d9f122bc74bd061a2a",
+      "timestamp_utc": "2026-05-15T10:01:40.485031+00:00"
+    },
+    {
+      "chunk_index": 98,
+      "status": "PASS",
+      "rms": 259.49,
+      "peak": 978,
+      "chunk_hash_blake2b_256": "db3551bffc1b51e42f8642b5fb15814c409b9924439cea7b4619ca28c7b8446e",
+      "timestamp_utc": "2026-05-15T10:01:40.492491+00:00"
+    },
+    {
+      "chunk_index": 99,
+      "status": "PASS",
+      "rms": 237.19,
+      "peak": 885,
+      "chunk_hash_blake2b_256": "7c85dc8e16f5d84904b89478e7b167303fa564719bee5b36dd6a4ef622b46c6a",
+      "timestamp_utc": "2026-05-15T10:01:40.499813+00:00"
+    },
+    {
+      "chunk_index": 100,
+      "status": "PASS",
+      "rms": 279.61,
+      "peak": 883,
+      "chunk_hash_blake2b_256": "3113da80da0b6e5b4c6f373b73e8b122ade49378d492c3014c50405a5ad15a2f",
+      "timestamp_utc": "2026-05-15T10:01:40.507226+00:00"
+    },
+    {
+      "chunk_index": 101,
+      "status": "PASS",
+      "rms": 246.21,
+      "peak": 838,
+      "chunk_hash_blake2b_256": "074cfd6a9f943e92501d1dd3646fbdd13e72a4609d83306a05a71400b4b4e23a",
+      "timestamp_utc": "2026-05-15T10:01:40.514532+00:00"
+    },
+    {
+      "chunk_index": 102,
+      "status": "PASS",
+      "rms": 244.91,
+      "peak": 970,
+      "chunk_hash_blake2b_256": "f8a9945775def694b8f1b4175f64215c658b4048940bdec5499ec8602ef011b8",
+      "timestamp_utc": "2026-05-15T10:01:40.521833+00:00"
+    },
+    {
+      "chunk_index": 103,
+      "status": "PASS",
+      "rms": 253.22,
+      "peak": 1352,
+      "chunk_hash_blake2b_256": "dfbaae802f358ccdcff15e3a43ba580c62bcae6123561512c572e20e7cfe9800",
+      "timestamp_utc": "2026-05-15T10:01:40.529094+00:00"
+    },
+    {
+      "chunk_index": 104,
+      "status": "PASS",
+      "rms": 241.02,
+      "peak": 880,
+      "chunk_hash_blake2b_256": "b6cc13c49b2cf0d6d788ffb3281b500edd00be22e73443bc513920afa0cbb7ed",
+      "timestamp_utc": "2026-05-15T10:01:40.536364+00:00"
+    },
+    {
+      "chunk_index": 105,
+      "status": "PASS",
+      "rms": 245.32,
+      "peak": 987,
+      "chunk_hash_blake2b_256": "a3e7d29dba2c34caddc63af61b43f997c2f4c1d6871cdedb7b93f9bcdfe5f64c",
+      "timestamp_utc": "2026-05-15T10:01:40.543593+00:00"
+    },
+    {
+      "chunk_index": 106,
+      "status": "PASS",
+      "rms": 270.67,
+      "peak": 1352,
+      "chunk_hash_blake2b_256": "6c335fe85254a527db7c11f55ac066519dbbac250b6991a1581bbe671e8018ed",
+      "timestamp_utc": "2026-05-15T10:01:40.550967+00:00"
+    },
+    {
+      "chunk_index": 107,
+      "status": "PASS",
+      "rms": 283.34,
+      "peak": 1881,
+      "chunk_hash_blake2b_256": "635c94543c565f9878a1831d4039d1f3186eb7de2d9e2063ec07771e589a3435",
+      "timestamp_utc": "2026-05-15T10:01:40.558411+00:00"
+    },
+    {
+      "chunk_index": 108,
+      "status": "PASS",
+      "rms": 313.64,
+      "peak": 7250,
+      "chunk_hash_blake2b_256": "48b49452a3653a1db69bd7ef2337667581b3654682d4bbe57648af22e98bad52",
+      "timestamp_utc": "2026-05-15T10:01:40.565810+00:00"
+    },
+    {
+      "chunk_index": 109,
+      "status": "PASS",
+      "rms": 377.88,
+      "peak": 3808,
+      "chunk_hash_blake2b_256": "44496630f9760d5aba9c39eea882edb434178a207e9e2218e37ede9e7dfa2d5e",
+      "timestamp_utc": "2026-05-15T10:01:40.573366+00:00"
+    },
+    {
+      "chunk_index": 110,
+      "status": "PASS",
+      "rms": 725.06,
+      "peak": 4511,
+      "chunk_hash_blake2b_256": "e0370f8d6586b3879684096b8e7b1c8123c62312f7c678c2883aea58af496f43",
+      "timestamp_utc": "2026-05-15T10:01:40.581120+00:00"
+    },
+    {
+      "chunk_index": 111,
+      "status": "PASS",
+      "rms": 284.04,
+      "peak": 1321,
+      "chunk_hash_blake2b_256": "1a0eddcc8e2f2071a1968ee6ddc940b57ae7322a6d9fa6746612ceb6c0ff2aec",
+      "timestamp_utc": "2026-05-15T10:01:40.588528+00:00"
+    },
+    {
+      "chunk_index": 112,
+      "status": "PASS",
+      "rms": 263.38,
+      "peak": 936,
+      "chunk_hash_blake2b_256": "f8210a374394cb354e48c1417f109634d7a01dc9d5ad8ce22fc63ec90f4b94e4",
+      "timestamp_utc": "2026-05-15T10:01:40.595820+00:00"
+    },
+    {
+      "chunk_index": 113,
+      "status": "PASS",
+      "rms": 356.27,
+      "peak": 2078,
+      "chunk_hash_blake2b_256": "b5f91ebc44e7e7e7e97a81d437310e65854799b1c6c8dbe62dd2d02c5bc9684f",
+      "timestamp_utc": "2026-05-15T10:01:40.603331+00:00"
+    },
+    {
+      "chunk_index": 114,
+      "status": "PASS",
+      "rms": 325.89,
+      "peak": 1659,
+      "chunk_hash_blake2b_256": "546e69c34701cec30d7b81ccbe41db68baf8f575c3c12b5c3d7a168b1fc817b5",
+      "timestamp_utc": "2026-05-15T10:01:40.610684+00:00"
+    },
+    {
+      "chunk_index": 115,
+      "status": "PASS",
+      "rms": 293.56,
+      "peak": 3225,
+      "chunk_hash_blake2b_256": "1a74e004034378192ee17947491ec2f856ce4206cd58b0510ce934cef2e5d75f",
+      "timestamp_utc": "2026-05-15T10:01:40.618014+00:00"
+    },
+    {
+      "chunk_index": 116,
+      "status": "PASS",
+      "rms": 261.73,
+      "peak": 1043,
+      "chunk_hash_blake2b_256": "f3dd77350bf14f9a53b565c8cbc33e542edc07473bc07166136c90051ec442fd",
+      "timestamp_utc": "2026-05-15T10:01:40.625282+00:00"
+    },
+    {
+      "chunk_index": 117,
+      "status": "PASS",
+      "rms": 252.07,
+      "peak": 995,
+      "chunk_hash_blake2b_256": "7e7856e96fe835bbafd10fc85954b268af70194b7e006e7ad353c0a086605b9e",
+      "timestamp_utc": "2026-05-15T10:01:40.632492+00:00"
+    },
+    {
+      "chunk_index": 118,
+      "status": "PASS",
+      "rms": 238.7,
+      "peak": 1057,
+      "chunk_hash_blake2b_256": "54fa57876c31dea886bdff56e22d45cb3d0fce5cafe08c4b7c2af4a0a8b0c5a3",
+      "timestamp_utc": "2026-05-15T10:01:40.639715+00:00"
+    },
+    {
+      "chunk_index": 119,
+      "status": "PASS",
+      "rms": 274.46,
+      "peak": 1285,
+      "chunk_hash_blake2b_256": "9766baa2c5a0e4e45b36bb688a7d9ebdeee6090cafd87d00d8eac87848fe1621",
+      "timestamp_utc": "2026-05-15T10:01:40.646998+00:00"
+    },
+    {
+      "chunk_index": 120,
+      "status": "PASS",
+      "rms": 229.03,
+      "peak": 812,
+      "chunk_hash_blake2b_256": "a0b0a51085313081c46bc6e7404d942bb3add6598d6d6d94288d08848f3c43a4",
+      "timestamp_utc": "2026-05-15T10:01:40.654421+00:00"
+    },
+    {
+      "chunk_index": 121,
+      "status": "PASS",
+      "rms": 243.87,
+      "peak": 987,
+      "chunk_hash_blake2b_256": "adfe037a9b9659dba34ab1e213050181f1ea10192c7ff12d00f5ce355dcccbe9",
+      "timestamp_utc": "2026-05-15T10:01:40.661713+00:00"
+    },
+    {
+      "chunk_index": 122,
+      "status": "PASS",
+      "rms": 250.68,
+      "peak": 1859,
+      "chunk_hash_blake2b_256": "b7ad0eb840d412415597de761b22749c261a17dc14bd2aa1c7dfe57ff7034eba",
+      "timestamp_utc": "2026-05-15T10:01:40.669117+00:00"
+    },
+    {
+      "chunk_index": 123,
+      "status": "PASS",
+      "rms": 258.01,
+      "peak": 1046,
+      "chunk_hash_blake2b_256": "65585374d586fdc3ad40a60768b198d930dd921bb35859e0ae348b8b8f4338ab",
+      "timestamp_utc": "2026-05-15T10:01:40.676417+00:00"
+    },
+    {
+      "chunk_index": 124,
+      "status": "PASS",
+      "rms": 474.96,
+      "peak": 4556,
+      "chunk_hash_blake2b_256": "08ea12f03aaa82ea3e47cc2d679c70533f48c884bb74a3af1695c038f30d5618",
+      "timestamp_utc": "2026-05-15T10:01:40.683887+00:00"
+    },
+    {
+      "chunk_index": 125,
+      "status": "PASS",
+      "rms": 289.44,
+      "peak": 1243,
+      "chunk_hash_blake2b_256": "20717ec81343571b5b6a6d3f89d2df0ef860cd2321c31b0259fe6015c501c1ef",
+      "timestamp_utc": "2026-05-15T10:01:40.691219+00:00"
+    },
+    {
+      "chunk_index": 126,
+      "status": "PASS",
+      "rms": 251.64,
+      "peak": 857,
+      "chunk_hash_blake2b_256": "f24b81d0f85109d713e3c58fc447eacb7ea185322a9e29f0343b76086e5856fa",
+      "timestamp_utc": "2026-05-15T10:01:40.698492+00:00"
+    },
+    {
+      "chunk_index": 127,
+      "status": "PASS",
+      "rms": 274.23,
+      "peak": 1276,
+      "chunk_hash_blake2b_256": "3b4e10ee93c64eb3427b876f6d47fcb2c486a5980546436cc119066cd6c7f18c",
+      "timestamp_utc": "2026-05-15T10:01:40.705779+00:00"
+    },
+    {
+      "chunk_index": 128,
+      "status": "PASS",
+      "rms": 227.12,
+      "peak": 959,
+      "chunk_hash_blake2b_256": "983044b151d9f2c8f2724b949bad10de9527832fe24cc8cd2d59f76df557a777",
+      "timestamp_utc": "2026-05-15T10:01:40.712989+00:00"
+    },
+    {
+      "chunk_index": 129,
+      "status": "PASS",
+      "rms": 256.98,
+      "peak": 1040,
+      "chunk_hash_blake2b_256": "2eb7d02031a0c2ce723730469055b8cbfe36ed7f77309591f62adf0e93045196",
+      "timestamp_utc": "2026-05-15T10:01:40.720278+00:00"
+    },
+    {
+      "chunk_index": 130,
+      "status": "PASS",
+      "rms": 242.94,
+      "peak": 930,
+      "chunk_hash_blake2b_256": "ad1e36e8274b044e6d1720970ff87605e99e58b7cd35a072f91e88d4b022bced",
+      "timestamp_utc": "2026-05-15T10:01:40.727497+00:00"
+    },
+    {
+      "chunk_index": 131,
+      "status": "PASS",
+      "rms": 250.83,
+      "peak": 942,
+      "chunk_hash_blake2b_256": "c50ccfaf10d8efade0e437aa1809b2a80ab780744f96e6f92957e738b78541c1",
+      "timestamp_utc": "2026-05-15T10:01:40.734771+00:00"
+    },
+    {
+      "chunk_index": 132,
+      "status": "PASS",
+      "rms": 277.38,
+      "peak": 1552,
+      "chunk_hash_blake2b_256": "d5b93f43fe2acc9c9662dd563205a649d95289cff94dd6e5d39c15043c8f5e55",
+      "timestamp_utc": "2026-05-15T10:01:40.742015+00:00"
+    },
+    {
+      "chunk_index": 133,
+      "status": "PASS",
+      "rms": 372.32,
+      "peak": 2174,
+      "chunk_hash_blake2b_256": "f0bcc6fcefe35e6dca9886249bbdb9a6ccfa08138d39143aff7f57f7fcafa6f2",
+      "timestamp_utc": "2026-05-15T10:01:40.749296+00:00"
+    },
+    {
+      "chunk_index": 134,
+      "status": "PASS",
+      "rms": 228.67,
+      "peak": 930,
+      "chunk_hash_blake2b_256": "e4703d2c597eb36b8ad9b0bd18a334ed582f60182fc30fdd45a43f4712e58b90",
+      "timestamp_utc": "2026-05-15T10:01:40.756487+00:00"
+    },
+    {
+      "chunk_index": 135,
+      "status": "PASS",
+      "rms": 305.15,
+      "peak": 1324,
+      "chunk_hash_blake2b_256": "fb89d14e38ec175da8ebb5d35cf2a4d8f816ba59dd14afc8c0ceae775b6ca7b5",
+      "timestamp_utc": "2026-05-15T10:01:40.763831+00:00"
+    },
+    {
+      "chunk_index": 136,
+      "status": "PASS",
+      "rms": 248.35,
+      "peak": 874,
+      "chunk_hash_blake2b_256": "39b0d7fcbaa145b6e23d8a3994988e8c0301554df8752882edf993e855a7ce82",
+      "timestamp_utc": "2026-05-15T10:01:40.771102+00:00"
+    },
+    {
+      "chunk_index": 137,
+      "status": "PASS",
+      "rms": 248.73,
+      "peak": 1167,
+      "chunk_hash_blake2b_256": "39c7fb52a2b2888c9f12c63fe67ad5010271d083df324b24899f247e0936445e",
+      "timestamp_utc": "2026-05-15T10:01:40.778387+00:00"
+    },
+    {
+      "chunk_index": 138,
+      "status": "PASS",
+      "rms": 223.81,
+      "peak": 936,
+      "chunk_hash_blake2b_256": "375cfb525ba2894cee07c769b5d749d09ca24328525cd76b47d4253857ff3669",
+      "timestamp_utc": "2026-05-15T10:01:40.785770+00:00"
+    },
+    {
+      "chunk_index": 139,
+      "status": "PASS",
+      "rms": 266.82,
+      "peak": 891,
+      "chunk_hash_blake2b_256": "fcc26693b40c2bea1855cb0654e241f597bbf1e7c124497d1f0952977bf274fa",
+      "timestamp_utc": "2026-05-15T10:01:40.793200+00:00"
+    },
+    {
+      "chunk_index": 140,
+      "status": "PASS",
+      "rms": 276.96,
+      "peak": 3262,
+      "chunk_hash_blake2b_256": "5ebb4e4cde94b363695c13af88de53607f6d1f37dff432db402b49fff34d4e5e",
+      "timestamp_utc": "2026-05-15T10:01:40.800620+00:00"
+    },
+    {
+      "chunk_index": 141,
+      "status": "PASS",
+      "rms": 241.92,
+      "peak": 1389,
+      "chunk_hash_blake2b_256": "edd7b80bcbd8ce0e1534779ebe68322b304ce958a7a4c4c6b6b7894c3f1e3be6",
+      "timestamp_utc": "2026-05-15T10:01:40.807983+00:00"
+    },
+    {
+      "chunk_index": 142,
+      "status": "PASS",
+      "rms": 370.3,
+      "peak": 2331,
+      "chunk_hash_blake2b_256": "cb7afb81ccb9d6b6a294ad788ad4929d3f89262cb9bd4dab4228c04b44b23b00",
+      "timestamp_utc": "2026-05-15T10:01:40.815601+00:00"
+    },
+    {
+      "chunk_index": 143,
+      "status": "PASS",
+      "rms": 301.54,
+      "peak": 1729,
+      "chunk_hash_blake2b_256": "f76895327fb46f76f11ae4e64333a2f125b77c443c4d1d5d1499f06bcc1c9a00",
+      "timestamp_utc": "2026-05-15T10:01:40.823014+00:00"
+    },
+    {
+      "chunk_index": 144,
+      "status": "PASS",
+      "rms": 288.46,
+      "peak": 998,
+      "chunk_hash_blake2b_256": "9774c870c425c96fccc2d963a283c87df7945aee7858649af931c05a0e31cce9",
+      "timestamp_utc": "2026-05-15T10:01:40.830391+00:00"
+    },
+    {
+      "chunk_index": 145,
+      "status": "PASS",
+      "rms": 261.81,
+      "peak": 1065,
+      "chunk_hash_blake2b_256": "e950558c2fd500b938241a8cda71d8b72d4c1dc89a092b3726198aca44042316",
+      "timestamp_utc": "2026-05-15T10:01:40.837759+00:00"
+    },
+    {
+      "chunk_index": 146,
+      "status": "PASS",
+      "rms": 261.41,
+      "peak": 928,
+      "chunk_hash_blake2b_256": "4af1f878bd3176e7250c7ffcfd651c5a5aba072b5d913ead7975ec6891e0b883",
+      "timestamp_utc": "2026-05-15T10:01:40.845186+00:00"
+    },
+    {
+      "chunk_index": 147,
+      "status": "PASS",
+      "rms": 229.84,
+      "peak": 987,
+      "chunk_hash_blake2b_256": "a8e87b245e1495aeb3ad494413f6292c16917e21c3d99c5da007e6a7cb42de18",
+      "timestamp_utc": "2026-05-15T10:01:40.852477+00:00"
+    },
+    {
+      "chunk_index": 148,
+      "status": "PASS",
+      "rms": 253.4,
+      "peak": 840,
+      "chunk_hash_blake2b_256": "a26dd44471eebfa996c200d72d8180a17f097c08406e4ba34b091cc7f796b1be",
+      "timestamp_utc": "2026-05-15T10:01:40.859841+00:00"
+    },
+    {
+      "chunk_index": 149,
+      "status": "PASS",
+      "rms": 280.61,
+      "peak": 1470,
+      "chunk_hash_blake2b_256": "54d6f9a1395ba8b66ed119293144e96645cd471a84d9da08d21d4ae2ffdfdedc",
+      "timestamp_utc": "2026-05-15T10:01:40.867355+00:00"
+    },
+    {
+      "chunk_index": 150,
+      "status": "PASS",
+      "rms": 274.86,
+      "peak": 987,
+      "chunk_hash_blake2b_256": "08c900ffbda02beb28a107bf4f0fadcb6374816bdc8f7ac1e0daacf352b6ab5e",
+      "timestamp_utc": "2026-05-15T10:01:40.875255+00:00"
+    },
+    {
+      "chunk_index": 151,
+      "status": "PASS",
+      "rms": 399.46,
+      "peak": 2657,
+      "chunk_hash_blake2b_256": "17c55a164e826d4ee891cf24ccc7a04c98013d87a1c3ae9256b8a0a18a71ee7d",
+      "timestamp_utc": "2026-05-15T10:01:40.882933+00:00"
+    },
+    {
+      "chunk_index": 152,
+      "status": "PASS",
+      "rms": 437.43,
+      "peak": 2314,
+      "chunk_hash_blake2b_256": "c44440cca8173a48f3daf9838c7ea66316c868367a8340279d14ca38e3b18eff",
+      "timestamp_utc": "2026-05-15T10:01:40.890629+00:00"
+    },
+    {
+      "chunk_index": 153,
+      "status": "PASS",
+      "rms": 501.15,
+      "peak": 6001,
+      "chunk_hash_blake2b_256": "855686c03882497ab576d5a0daa46216440d338e274a45703f52de3467c383f7",
+      "timestamp_utc": "2026-05-15T10:01:40.898210+00:00"
+    },
+    {
+      "chunk_index": 154,
+      "status": "PASS",
+      "rms": 471.47,
+      "peak": 2154,
+      "chunk_hash_blake2b_256": "04594f1594de91e6248d8ce5d6b177fa827465790b2092c5165fed75dade1e05",
+      "timestamp_utc": "2026-05-15T10:01:40.905952+00:00"
+    },
+    {
+      "chunk_index": 155,
+      "status": "PASS",
+      "rms": 399.02,
+      "peak": 2053,
+      "chunk_hash_blake2b_256": "8d3a323845bedf5b016e93829062a94dd2c3e542f995fb8b0f8fb0bd0a809462",
+      "timestamp_utc": "2026-05-15T10:01:40.913437+00:00"
+    },
+    {
+      "chunk_index": 156,
+      "status": "PASS",
+      "rms": 251.67,
+      "peak": 1147,
+      "chunk_hash_blake2b_256": "ea7698ae506f29c706a6d832b7ad140f42f19ffce30744a467f632515d6b3727",
+      "timestamp_utc": "2026-05-15T10:01:40.920828+00:00"
+    },
+    {
+      "chunk_index": 157,
+      "status": "PASS",
+      "rms": 275.65,
+      "peak": 2013,
+      "chunk_hash_blake2b_256": "36668aa6ce6f1edc9eadfa4e9a4300d7521c781d1c496cd9388005e38da295ad",
+      "timestamp_utc": "2026-05-15T10:01:40.928283+00:00"
+    },
+    {
+      "chunk_index": 158,
+      "status": "PASS",
+      "rms": 260.04,
+      "peak": 2008,
+      "chunk_hash_blake2b_256": "f7fd0001d36080ccb1ac0bef642fde1ca04f638f57ace9f7acf6c45e411f3e41",
+      "timestamp_utc": "2026-05-15T10:01:40.935749+00:00"
+    },
+    {
+      "chunk_index": 159,
+      "status": "PASS",
+      "rms": 255.67,
+      "peak": 1577,
+      "chunk_hash_blake2b_256": "606035b9cddcd82a4d69b36555296c9a688a1f5f25c596934e3794d31264cd59",
+      "timestamp_utc": "2026-05-15T10:01:40.943199+00:00"
+    },
+    {
+      "chunk_index": 160,
+      "status": "PASS",
+      "rms": 243.99,
+      "peak": 1774,
+      "chunk_hash_blake2b_256": "73762045ad9b3022b74c731cd6560a8304c94bb351be8b3b32af87cfabba9526",
+      "timestamp_utc": "2026-05-15T10:01:40.950631+00:00"
+    },
+    {
+      "chunk_index": 161,
+      "status": "PASS",
+      "rms": 248.0,
+      "peak": 874,
+      "chunk_hash_blake2b_256": "aea01f072d48898bc1aba7027b77ae69c6ce5b0c54c05f842f6f9bab7a085592",
+      "timestamp_utc": "2026-05-15T10:01:40.958004+00:00"
+    },
+    {
+      "chunk_index": 162,
+      "status": "PASS",
+      "rms": 259.63,
+      "peak": 973,
+      "chunk_hash_blake2b_256": "2fbdcc3926f18180cbb3a85d4467cb4835647bff9f0973dc0cfc672923930ea9",
+      "timestamp_utc": "2026-05-15T10:01:40.965385+00:00"
+    },
+    {
+      "chunk_index": 163,
+      "status": "PASS",
+      "rms": 265.32,
+      "peak": 964,
+      "chunk_hash_blake2b_256": "3785e48accb3d804883a206796c59ae449c3d8f61306be671f5e0e2883a8dea9",
+      "timestamp_utc": "2026-05-15T10:01:40.972753+00:00"
+    },
+    {
+      "chunk_index": 164,
+      "status": "PASS",
+      "rms": 237.56,
+      "peak": 762,
+      "chunk_hash_blake2b_256": "39cdfec17ca39622ce8014a14e7ef4dd7e7c31ff2c599fb5af84294aa5557771",
+      "timestamp_utc": "2026-05-15T10:01:40.980051+00:00"
+    },
+    {
+      "chunk_index": 165,
+      "status": "PASS",
+      "rms": 260.65,
+      "peak": 2165,
+      "chunk_hash_blake2b_256": "7093ba34892a07228bd4bc9007dfcfa6e22e9cc97cddefaa3e2bf364bde9296a",
+      "timestamp_utc": "2026-05-15T10:01:40.987356+00:00"
+    },
+    {
+      "chunk_index": 166,
+      "status": "PASS",
+      "rms": 707.1,
+      "peak": 8153,
+      "chunk_hash_blake2b_256": "5273b335d6286754bd0f1f7c912a89d3efdab8b13b5c89717980c5309b81e4da",
+      "timestamp_utc": "2026-05-15T10:01:40.994798+00:00"
+    },
+    {
+      "chunk_index": 167,
+      "status": "PASS",
+      "rms": 460.34,
+      "peak": 11067,
+      "chunk_hash_blake2b_256": "d3285a6ad74dd366ae72e97d64735a37317b00904ce48f830398816eabfbc382",
+      "timestamp_utc": "2026-05-15T10:01:41.002372+00:00"
+    },
+    {
+      "chunk_index": 168,
+      "status": "PASS",
+      "rms": 414.53,
+      "peak": 2129,
+      "chunk_hash_blake2b_256": "8b1c996634c311df6e26ae25e9d8b93647dbd6cca2b9862c0b62b0ceb801c618",
+      "timestamp_utc": "2026-05-15T10:01:41.009927+00:00"
+    },
+    {
+      "chunk_index": 169,
+      "status": "PASS",
+      "rms": 393.62,
+      "peak": 2058,
+      "chunk_hash_blake2b_256": "4d18bb20e73653ee3dd0e37748204d43a180f3c189786fd1c36ae725f1a5f6d2",
+      "timestamp_utc": "2026-05-15T10:01:41.017408+00:00"
+    },
+    {
+      "chunk_index": 170,
+      "status": "PASS",
+      "rms": 1106.57,
+      "peak": 5461,
+      "chunk_hash_blake2b_256": "7a69ebe73506f34d63bb02023070e2dd9ee31589c9fcc5fe86d1057ff9e18549",
+      "timestamp_utc": "2026-05-15T10:01:41.025028+00:00"
+    },
+    {
+      "chunk_index": 171,
+      "status": "PASS",
+      "rms": 1119.91,
+      "peak": 6418,
+      "chunk_hash_blake2b_256": "04fce48011fbbb8f70dd1cf8abe8b2b08d4983d16886f7f952b311c66caa388a",
+      "timestamp_utc": "2026-05-15T10:01:41.032780+00:00"
+    },
+    {
+      "chunk_index": 172,
+      "status": "PASS",
+      "rms": 751.35,
+      "peak": 4038,
+      "chunk_hash_blake2b_256": "5ae0168a3e37d59242d32ddb1a744bc75bb8eff92341eb46cf971379f3b7c6ed",
+      "timestamp_utc": "2026-05-15T10:01:41.040431+00:00"
+    },
+    {
+      "chunk_index": 173,
+      "status": "PASS",
+      "rms": 646.31,
+      "peak": 3223,
+      "chunk_hash_blake2b_256": "7550530d07b623a71eb6579e66fdac11258949610aacb2a161d88b16bb90f4f0",
+      "timestamp_utc": "2026-05-15T10:01:41.048034+00:00"
+    },
+    {
+      "chunk_index": 174,
+      "status": "PASS",
+      "rms": 741.16,
+      "peak": 2891,
+      "chunk_hash_blake2b_256": "a45448e5fbc6cfde4d27bde2e2c302bd48477df434618da68680c015cffc3ec3",
+      "timestamp_utc": "2026-05-15T10:01:41.055598+00:00"
+    },
+    {
+      "chunk_index": 175,
+      "status": "PASS",
+      "rms": 632.79,
+      "peak": 2095,
+      "chunk_hash_blake2b_256": "5cb6dd69bcdc7772be903965583a92f6117a83ebc30457be7269bc164d245d7e",
+      "timestamp_utc": "2026-05-15T10:01:41.063292+00:00"
+    },
+    {
+      "chunk_index": 176,
+      "status": "PASS",
+      "rms": 646.16,
+      "peak": 3417,
+      "chunk_hash_blake2b_256": "6a1980b1350f1791cba52938c8518fc16828d9f766796d1b1fe97a8e024bb149",
+      "timestamp_utc": "2026-05-15T10:01:41.070920+00:00"
+    },
+    {
+      "chunk_index": 177,
+      "status": "PASS",
+      "rms": 595.61,
+      "peak": 2430,
+      "chunk_hash_blake2b_256": "1e5d7e72e80876cdb6948b86f47279b4494c6a52cc087ec5004acc1313852ecb",
+      "timestamp_utc": "2026-05-15T10:01:41.078678+00:00"
+    },
+    {
+      "chunk_index": 178,
+      "status": "PASS",
+      "rms": 824.61,
+      "peak": 4952,
+      "chunk_hash_blake2b_256": "466b98bb3fb082be2a83baea4c05d529d5fa01438112cc329327732383524520",
+      "timestamp_utc": "2026-05-15T10:01:41.086391+00:00"
+    },
+    {
+      "chunk_index": 179,
+      "status": "PASS",
+      "rms": 810.79,
+      "peak": 4449,
+      "chunk_hash_blake2b_256": "afe49f27f3b7eed6330c3f2f905beb6042200cbc65b7fc34e762f90be151c5d2",
+      "timestamp_utc": "2026-05-15T10:01:41.094222+00:00"
+    }
+  ]
+}
