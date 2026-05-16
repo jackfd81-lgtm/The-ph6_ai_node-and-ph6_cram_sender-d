@@ -270,6 +270,12 @@
       "description": "PH6 AI Preload Pack Generator v1.0 — assembles six-section preload pack with protocol, session anchor, canon, law assertions, gaps, forbidden terms, task."
     },
     {
+      "path":        "TOOLS/ph6_drift_scanner.py",
+      "type":        "RUNTIME",
+      "priority":    26,
+      "description": "PH6 Session Drift Scanner v1.0 — Steps 1-4 deterministic (anchor, build reverify, law assertions, contradiction patterns). Step 5 advisory only. Never infers cognition."
+    },
+    {
       "path":        "AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
       "type":        "LAW",
       "priority":    9,
