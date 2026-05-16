@@ -284,3 +284,44 @@ def test_step_d_clean_store_passes():
     store = _make_store()
     result = certify(store)
     assert result["steps"]["D_advisory_fields_absent"] is True
+
+
+def test_missing_receipt_log_still_reported():
+    """Store with no receipt log at all: receipt chain reports as broken (no log found)."""
+    store = _make_store()
+    (store / "ingest_receipt_log.jsonl").unlink()  # delete the log
+    result = certify(store)
+    # With no receipt log, Step A reports not intact
+    assert result["steps"]["A_receipt_chain_intact"] is False
+
+
+def test_duplicate_event_seq_in_receipt_log_fails_vrc():
+    """Duplicate event_seq detected via receipt chain verifier — fails Step A."""
+    store = _make_store()
+    logger = IngestReceiptLogger(store)
+    logger.arrived(frame_id=1, payload_hash="g" * 64)
+    logger.arrived(frame_id=2, payload_hash="h" * 64)
+
+    # Inject a duplicate seq in the second entry
+    log = store / "ingest_receipt_log.jsonl"
+    lines = log.read_text().splitlines()
+    r2 = json.loads(lines[1])
+    r2["event_seq"] = 1  # duplicate
+    # Also re-seal body without updating event_hash (creates hash mismatch too)
+    lines[1] = json.dumps(r2, sort_keys=True, ensure_ascii=False,
+                           allow_nan=False, separators=(",", ":"))
+    log.write_text("\n".join(lines) + "\n")
+
+    result = certify(store)
+    assert result["passed"] is False
+
+
+def test_verdict_metric_payload_replay_always_in_open_gaps():
+    """
+    Verdict/metric payload-replay comparison is always named as an open gap.
+    This ensures the boundary is explicit in every certification receipt.
+    """
+    store = _make_store()
+    result = certify(store)
+    assert "verdict_metric_payload_replay" in result["open_evidence_gaps"]
+    assert result["production_clearance"] is False
