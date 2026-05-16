@@ -24,6 +24,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 
+from ph6.cfc import make_failure, make_replay_failure
+
 
 # ---------------------------------------------------------------------------
 # Canonical hashing (matches ph6/ssmt/hash_chain.py)
@@ -198,26 +200,143 @@ class CrashReplayReport:
             return "PASS"
         return "FAIL"
 
+    def failures(self) -> list[dict]:
+        """
+        Produce CFC-1.0 failure records for every detected condition.
+        Maps check results to R/C/A/G/O failure classes for traceability.
+        """
+        now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        result: list[dict] = []
+
+        # Torn .tmp files → C1 (atomic write contract violated)
+        for path in self.torn_files.torn:
+            result.append(make_failure(
+                "C1", "HIGH", "torn .tmp file found — atomic write contract violated",
+                path=path, timestamp_utc=now,
+            ))
+
+        # Continuity: departure hash ≠ arrival hash → R3 (authority hash mismatch)
+        for mm in self.continuity.hash_mismatches:
+            result.append(make_replay_failure(
+                "R3", "HIGH", "authority_hash mismatch — departure/arrival payload divergence",
+                object_id=str(mm.get("frame_id")),
+                expected_hash=mm.get("dep_hash"),
+                observed_hash=mm.get("arr_hash"),
+                timestamp_utc=now,
+            ))
+
+        # Continuity: departure with no arrival → R2 (sequence break)
+        for od in self.continuity.orphan_departures:
+            result.append(make_failure(
+                "R2", "HIGH", "departure without matching arrival — replay sequence break",
+                frame_id=od.get("frame_id"), timestamp_utc=now,
+            ))
+
+        # Continuity: arrival with no departure → R2
+        for oa in self.continuity.orphan_arrivals:
+            result.append(make_failure(
+                "R2", "HIGH", "arrival without matching departure — replay sequence break",
+                frame_id=oa.get("frame_id"), timestamp_utc=now,
+            ))
+
+        # Silent PASS loss → R5 (PASS/DROP verdict mismatch with CRAM state)
+        for fid in self.pass_loss.silent_losses:
+            result.append(make_replay_failure(
+                "R5", "CRITICAL", "PASS verdict without CRAM commit — silent loss forbidden",
+                object_id=str(fid), timestamp_utc=now,
+            ))
+
+        # Unlogged DROPs → A1 (audit continuity broken)
+        for fid in self.drop_shedding.unlogged_drops:
+            result.append(make_failure(
+                "A1", "HIGH", "DROP verdict without shedding log entry — audit continuity broken",
+                frame_id=fid, timestamp_utc=now,
+            ))
+
+        # Advisory isolation violations → G5 (authority boundary violated)
+        for path in self.advisory_isolation.lane1_paths_touched_by_advisory:
+            result.append(make_failure(
+                "G5", "CRITICAL", "advisory packet references Lane-1 path — authority boundary violated",
+                path=path, timestamp_utc=now,
+            ))
+
+        # CRAM file hash failures → R3
+        for path in self.cram_integrity.hash_failures:
+            result.append(make_replay_failure(
+                "R3", "HIGH", "CRAM file authority_hash mismatch — content corrupted",
+                object_id=path, timestamp_utc=now,
+            ))
+
+        # CRAM chain breaks → R4 (chain integrity failure)
+        for fid in self.cram_integrity.prev_hash_mismatches:
+            result.append(make_failure(
+                "R4", "HIGH", "CRAM prev_cram_hash chain break — chain integrity failure",
+                frame_id=fid, timestamp_utc=now,
+            ))
+
+        # RSYNC blocked → O1
+        if self.rsync_health.blocked:
+            result.append(make_failure(
+                "O1", "CRITICAL", "RSYNC is blocked — Priority Zero violated",
+                blocked_by=self.rsync_health.reason, timestamp_utc=now,
+            ))
+
+        return result
+
+    def to_report(self) -> dict:
+        """Machine-readable report including CFC-1.0 failure records."""
+        f = self.failures()
+        return {
+            "schema":          "ph6.crash_replay_report.v2",
+            "verdict":         self.verdict,
+            "timestamp_utc":   datetime.fromtimestamp(self.timestamp, timezone.utc)
+                               .strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "failure_count":   len(f),
+            "failures":        f,
+            "checks": {
+                "torn_files":        self.torn_files.ok,
+                "continuity":        self.continuity.ok,
+                "pass_loss":         self.pass_loss.ok,
+                "drop_shedding":     self.drop_shedding.ok,
+                "advisory_isolation": self.advisory_isolation.ok,
+                "cram_integrity":    self.cram_integrity.ok,
+                "rsync_health":      self.rsync_health.ok,
+            },
+        }
+
     def summary(self) -> str:
+        failures = self.failures()
+        by_check: dict[str, list[str]] = {}
+        for f in failures:
+            cls = f["failure_class"]
+            by_check.setdefault(cls, []).append(cls)
+
+        def _tag(ok: bool, codes: list[str]) -> str:
+            s = "PASS" if ok else "FAIL"
+            if not ok and codes:
+                s += f" [{','.join(sorted(set(codes)))}]"
+            return s
+
         lines = [
             f"CRAM-PU Crash/Replay Validation",
             f"Timestamp : {self.timestamp:.3f}",
             f"Verdict   : {self.verdict}",
+            f"Failures  : {len(failures)}",
             f"",
-            f"[1] Torn files       : {'PASS' if self.torn_files.ok else 'FAIL'} "
+            f"[1] Torn files       : {_tag(self.torn_files.ok, ['C1'])} "
             f"({len(self.torn_files.torn)} torn)",
-            f"[2] PASS loss        : {'PASS' if self.pass_loss.ok else 'FAIL'} "
+            f"[2] PASS loss        : {_tag(self.pass_loss.ok, ['R5'])} "
             f"({len(self.pass_loss.silent_losses)} silent losses)",
-            f"[3] DROP shedding    : {'PASS' if self.drop_shedding.ok else 'FAIL'} "
+            f"[3] DROP shedding    : {_tag(self.drop_shedding.ok, ['A1'])} "
             f"({len(self.drop_shedding.unlogged_drops)} unlogged drops)",
-            f"[4] Advisory iso     : {'PASS' if self.advisory_isolation.ok else 'FAIL'} "
+            f"[4] Advisory iso     : {_tag(self.advisory_isolation.ok, ['G5'])} "
             f"({len(self.advisory_isolation.lane1_paths_touched_by_advisory)} violations)",
-            f"[5] CRAM integrity   : {'PASS' if self.cram_integrity.ok else 'FAIL'} "
+            f"[5] CRAM integrity   : {_tag(self.cram_integrity.ok, ['R3','R4'])} "
             f"({len(self.cram_integrity.hash_failures)} hash failures, "
             f"{len(self.cram_integrity.prev_hash_mismatches)} chain breaks)",
-            f"[6] RSYNC health     : {'PASS' if self.rsync_health.ok else 'FAIL'} "
+            f"[6] RSYNC health     : {_tag(self.rsync_health.ok, ['O1'])} "
             f"(blocked={self.rsync_health.blocked})",
-            f"    Continuity       : {'PASS' if self.continuity.ok else 'FAIL'} "
+            f"    Continuity       : {_tag(self.continuity.ok, ['R2','R3'])} "
             f"({self.continuity.matched} matched, "
             f"{len(self.continuity.orphan_departures)} orphan_dep, "
             f"{len(self.continuity.orphan_arrivals)} orphan_arr, "

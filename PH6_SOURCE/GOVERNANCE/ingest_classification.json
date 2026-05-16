@@ -1,0 +1,493 @@
+{
+  "schema": "ph6.ingest.classification.v1",
+  "generated_at_utc": "2026-05-16T00:00:00Z",
+  "description": "Classification manifest for PH6 Ingest Compiler. Every source file maps to exactly one type. No file may appear in two types. Types are loaded in strict priority order.",
+
+  "type_priority": {
+    "LAW":     1,
+    "SCHEMA":  2,
+    "RUNTIME": 3,
+    "STATE":   4,
+    "GAP":     5,
+    "TEST":    6,
+    "HISTORY": 7
+  },
+
+  "type_descriptions": {
+    "LAW":     "Immutable invariants, authority rules, forbidden terms, patch class definitions. These never change without a version bump and explicit human authorization.",
+    "SCHEMA":  "Exact field contracts, schema lock registrations, message formats. Authoritative for all emitted records.",
+    "RUNTIME": "Actual implementation state, service contracts, module descriptions, code-level facts. What the system does now.",
+    "STATE":   "Current operational truth: open items, campaign status, handoff state, drift scan results. Changes frequently.",
+    "GAP":     "Unresolved risks, open blockers, known unknowns. Must be explicit before any STOP-SHIP gate can close.",
+    "TEST":    "Measurable verification evidence: campaign definitions, receipts, evidence runs. Runtime evidence outranks documentation.",
+    "HISTORY": "Archived evolution: chronicles, superseded decisions, closed gate artifacts. Load only for forensic/full_canon builds."
+  },
+
+  "build_targets": {
+    "minimal": {
+      "types":       ["LAW", "SCHEMA"],
+      "description": "Kernel invariants only. Fast session boot. No runtime, no history."
+    },
+    "engineering": {
+      "types":       ["LAW", "SCHEMA", "RUNTIME", "STATE", "GAP"],
+      "description": "Full working context for implementation tasks."
+    },
+    "governance": {
+      "types":       ["LAW", "SCHEMA", "STATE", "GAP"],
+      "description": "Drift enforcement and compliance checks. No runtime implementation detail."
+    },
+    "validation": {
+      "types":       ["LAW", "SCHEMA", "TEST", "STATE"],
+      "description": "Campaign execution and evidence verification. Runtime evidence is authoritative."
+    },
+    "forensic": {
+      "types":       ["LAW", "SCHEMA", "RUNTIME", "STATE", "GAP", "TEST", "HISTORY"],
+      "description": "Full picture for deep investigation. Includes archived evolution."
+    },
+    "full_canon": {
+      "types":       ["LAW", "SCHEMA", "RUNTIME", "STATE", "GAP", "TEST", "HISTORY"],
+      "description": "All files, priority-ordered. Formal record. Same as forensic but includes all registered files."
+    }
+  },
+
+  "files": [
+    {
+      "path":        "GLOSSARY_LOCK.md",
+      "type":        "LAW",
+      "priority":    1,
+      "description": "Canonical terminology lock. Synonyms and paraphrases forbidden in authority paths."
+    },
+    {
+      "path":        "GOVERNANCE/governance_manifest.json",
+      "type":        "LAW",
+      "priority":    2,
+      "description": "Machine-readable authority manifest: lane model, forbidden fields, stop-ship gates, schema version."
+    },
+    {
+      "path":        "GOVERNANCE/forbidden_terms_registry.json",
+      "type":        "LAW",
+      "priority":    3,
+      "description": "Forbidden terms registry. Scanned by drift tooling on every commit."
+    },
+    {
+      "path":        "GOVERNANCE/severity_policy.json",
+      "type":        "LAW",
+      "priority":    4,
+      "description": "Gap severity and escalation policy."
+    },
+    {
+      "path":        "GOVERNANCE/SENSOR_INGEST_AUTHORITY_SEPARATION.md",
+      "type":        "LAW",
+      "priority":    5,
+      "description": "Doctrine: sensor degradation vs authority failure. Derived from GAP-16."
+    },
+    {
+      "path":        "00_AI_AGENT_READ_FIRST.md",
+      "type":        "LAW",
+      "priority":    6,
+      "description": "Primary AI operating protocol: authority, permissions, patch classes, forbidden actions, pre-commit checklist."
+    },
+    {
+      "path":        "DRAFT/PH6-CDG-1.0.md",
+      "type":        "LAW",
+      "priority":    7,
+      "description": "Constitutional Deterministic Governance — six-layer authority model, three new laws."
+    },
+    {
+      "path":        "DRAFT/PH6-CVS3-VALIDATION-GOVERNOR-v6.9.md",
+      "type":        "LAW",
+      "priority":    8,
+      "description": "CVS-3 Validation Governor v6.9 — VAH-1.0 authority hierarchy, VML-1.0 mode lock, CFC-1.0, RFC-1.0."
+    },
+
+    {
+      "path":        "GOVERNANCE/schema_lock_registry.json",
+      "type":        "SCHEMA",
+      "priority":    1,
+      "description": "Locked schema versions. Authoritative for all emitted records."
+    },
+    {
+      "path":        "04_SCHEMAS/ACTIVE_SCHEMA_INDEX.md",
+      "type":        "SCHEMA",
+      "priority":    2,
+      "description": "Human-readable active schema index with field tables."
+    },
+    {
+      "path":        "DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md",
+      "type":        "SCHEMA",
+      "priority":    3,
+      "description": "SoSo family contract — Authority ZERO interface specification."
+    },
+
+    {
+      "path":        "00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "type":        "RUNTIME",
+      "priority":    1,
+      "description": "Canonical reading order and ingest instructions for AI agents."
+    },
+    {
+      "path":        "DRAFT/PH6-AI-INGEST-STACK-1.0.md",
+      "type":        "RUNTIME",
+      "priority":    2,
+      "description": "Minimal ingest stack — fast orientation path."
+    },
+    {
+      "path":        "DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "type":        "RUNTIME",
+      "priority":    3,
+      "description": "Core stable runtime doctrine v3.0."
+    },
+    {
+      "path":        "DRAFT/PH6-MASTER-AI-INGEST-6.0.md",
+      "type":        "RUNTIME",
+      "priority":    4,
+      "description": "Master AI ingest document v6.0. Contains mixed content — load after LAW/SCHEMA are locked."
+    },
+    {
+      "path":        "DRAFT/PH6-SYSTEM-OVERVIEW-v1.0.md",
+      "type":        "RUNTIME",
+      "priority":    5,
+      "description": "System architecture overview."
+    },
+    {
+      "path":        "DRAFT/PH6-LIVING-CRAM-PSEUDO-SOSO-JEDI-v1.0.md",
+      "type":        "RUNTIME",
+      "priority":    6,
+      "description": "Living CRAM + PSEUDO/SoSo/JEDI runtime doctrine."
+    },
+    {
+      "path":        "DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md",
+      "type":        "RUNTIME",
+      "priority":    7,
+      "description": "Ingest candidate v1.1."
+    },
+    {
+      "path":        "DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md",
+      "type":        "RUNTIME",
+      "priority":    8,
+      "description": "Ingest candidate v1.2 (latest candidate)."
+    },
+    {
+      "path":        "DRAFT/PH6-CALIBRATION-GATE-BLOCK-v1.0.md",
+      "type":        "RUNTIME",
+      "priority":    9,
+      "description": "Calibration gate block doctrine."
+    },
+    {
+      "path":        "DRAFT/PH6-RUNTIME-DISCOVERY-CLASSIFICATION-v1.0.md",
+      "type":        "RUNTIME",
+      "priority":    10,
+      "description": "Runtime discovery and classification policy."
+    },
+    {
+      "path":        "DRAFT/PH6-TOKENS-LIVING-CRAM-v1.1.md",
+      "type":        "RUNTIME",
+      "priority":    11,
+      "description": "Token (TOK) doctrine integrated with Living CRAM v1.1."
+    },
+    {
+      "path":        "DRAFT/PH6-TOK-LIFECYCLE-PRUNE-1.0.md",
+      "type":        "RUNTIME",
+      "priority":    12,
+      "description": "TOK lifecycle prune policy."
+    },
+    {
+      "path":        "DRAFT/PH6-TOK-MASTER-UPDATE-1.0.md",
+      "type":        "RUNTIME",
+      "priority":    13,
+      "description": "TOK master update doc."
+    },
+    {
+      "path":        "DRAFT/PH6-TOK-SSMT-CERT-PATCH-v1.0.md",
+      "type":        "RUNTIME",
+      "priority":    14,
+      "description": "TOK-SSMT certification patch."
+    },
+    {
+      "path":        "DRAFT/PH6-PSEUDO-SOSO-JEDI-UPDATE-v1.0.md",
+      "type":        "RUNTIME",
+      "priority":    15,
+      "description": "PSEUDO/SoSo/JEDI update doc."
+    },
+    {
+      "path":        "00_READ_FIRST/CLAUDE_RUNTIME_PRIMER_v1.0.md",
+      "type":        "RUNTIME",
+      "priority":    16,
+      "description": "Claude-specific runtime primer."
+    },
+    {
+      "path":        "00_READ_FIRST/CLAUDE_TERMINAL_OPERATIONAL_PACK_v1.0.md",
+      "type":        "RUNTIME",
+      "priority":    17,
+      "description": "Claude terminal operational pack."
+    },
+    {
+      "path":        "TOOLS/ai_preflight_check.py",
+      "type":        "RUNTIME",
+      "priority":    18,
+      "description": "AI preflight check tool."
+    },
+    {
+      "path":        "TOOLS/governance_drift_scan.py",
+      "type":        "RUNTIME",
+      "priority":    19,
+      "description": "Governance drift scan — scans source for forbidden terms and schema violations."
+    },
+    {
+      "path":        "TOOLS/install_precommit_hook.sh",
+      "type":        "RUNTIME",
+      "priority":    20,
+      "description": "Pre-commit hook installer script."
+    },
+    {
+      "path":        "TOOLS/pre-commit.ph6-governance.example",
+      "type":        "RUNTIME",
+      "priority":    21,
+      "description": "Example pre-commit hook for PH6 governance enforcement."
+    },
+    {
+      "path":        "TOOLS/ph6_ingest_compiler.py",
+      "type":        "RUNTIME",
+      "priority":    22,
+      "description": "PH6 Ingest Compiler v1.0 — generates priority-stratified ingest builds from PH6_SOURCE."
+    },
+    {
+      "path":        "TOOLS/ph6_ingest_verify.py",
+      "type":        "RUNTIME",
+      "priority":    23,
+      "description": "PH6 Ingest Verifier v1.0 — validates classification manifest and build reproducibility."
+    },
+    {
+      "path":        "TOOLS/ph6_session_start.py",
+      "type":        "RUNTIME",
+      "priority":    24,
+      "description": "PH6 Session Start v1.0 — generates ingest receipt (build_exists + build_verified + build_loaded)."
+    },
+    {
+      "path":        "CERTIFICATION/audit_patched.py",
+      "type":        "TEST",
+      "priority":    13,
+      "description": "Certification audit script (patched)."
+    },
+
+    {
+      "path":        "AI_ENTRY_INDEX.md",
+      "type":        "STATE",
+      "priority":    1,
+      "description": "Routing map: which reading path to take per task type."
+    },
+    {
+      "path":        "AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+      "type":        "STATE",
+      "priority":    2,
+      "description": "Current model handoff document — session continuity state."
+    },
+    {
+      "path":        "00_AI_ACTION_INDEX.md",
+      "type":        "STATE",
+      "priority":    3,
+      "description": "AI action index — active tasks and routing."
+    },
+    {
+      "path":        "03_CAMPAIGNS/C01_RUNTIME_CARD.md",
+      "type":        "STATE",
+      "priority":    4,
+      "description": "C01 campaign runtime card — current campaign state."
+    },
+    {
+      "path":        "06_HANDOFF/PH6-OI03-TWO-PI-TRANSFER-PREFLIGHT.md",
+      "type":        "STATE",
+      "priority":    5,
+      "description": "OI-03 two-Pi transfer preflight state."
+    },
+    {
+      "path":        "06_HANDOFF/PH6-ESP32CAM-GOVERNANCE-OPERATIONAL-TEST-20260515.md",
+      "type":        "STATE",
+      "priority":    6,
+      "description": "ESP32-CAM governance operational test state (2026-05-15)."
+    },
+    {
+      "path":        "06_HANDOFF/SESSION_CLOSEOUT_TEMPLATE.md",
+      "type":        "STATE",
+      "priority":    7,
+      "description": "Session closeout template."
+    },
+    {
+      "path":        "GOVERNANCE/drift_report_ph6source_20260513.json",
+      "type":        "STATE",
+      "priority":    8,
+      "description": "Drift report for PH6_SOURCE — 2026-05-13."
+    },
+    {
+      "path":        "GOVERNANCE/drift_report_soso_contract_20260514.json",
+      "type":        "STATE",
+      "priority":    9,
+      "description": "Drift report for SoSo contract — 2026-05-14."
+    },
+
+    {
+      "path":        "GAP_REGISTER_v3.0.md",
+      "type":        "GAP",
+      "priority":    1,
+      "description": "Master gap register v3.0 — all open risks."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/GAPS/GAP-16-MICRODIA-AUDIO-VIDEO-CONTENTION.md",
+      "type":        "GAP",
+      "priority":    2,
+      "description": "GAP-16: Microdia USB camera audio/video contention."
+    },
+
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/CAMPAIGN_01_300_FRAME_COHERENCE.md",
+      "type":        "TEST",
+      "priority":    1,
+      "description": "Campaign C01: 300-frame coherence definition."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/CAMPAIGN_01B_ADVISORY_EXPANSION.md",
+      "type":        "TEST",
+      "priority":    2,
+      "description": "Campaign C01B: advisory expansion."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/CAMPAIGN_02_PI_TO_PI_TRANSFER.md",
+      "type":        "TEST",
+      "priority":    3,
+      "description": "Campaign C02: Pi-to-Pi transfer."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/CAMPAIGN_03_RESOURCE_PRESSURE_RSYNC.md",
+      "type":        "TEST",
+      "priority":    4,
+      "description": "Campaign C03: resource pressure + RSYNC."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/CAMPAIGN_04_CRASH_RECOVERY.md",
+      "type":        "TEST",
+      "priority":    5,
+      "description": "Campaign C04: crash recovery."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/CAMPAIGN_05_REPLAY_PARITY.md",
+      "type":        "TEST",
+      "priority":    6,
+      "description": "Campaign C05: replay parity."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/PH6-ESP32CAM-GOVERNANCE-OPERATIONAL-TEST-20260515.md",
+      "type":        "TEST",
+      "priority":    7,
+      "description": "ESP32-CAM governance operational test evidence (2026-05-15)."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/RECEIPTS/PRE_C01_CRAM_SPINE_PROOF_20260515.md",
+      "type":        "TEST",
+      "priority":    8,
+      "description": "Pre-C01 CRAM spine proof receipt (2026-05-15)."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/RECEIPTS/TOK_LEAK_001_20260516T083748Z.json",
+      "type":        "TEST",
+      "priority":    9,
+      "description": "TOK-LEAK-001 evidence receipt — canonical (2026-05-16)."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/RECEIPTS/OI03_PHASE1_RSYNC_PRIORITY_20260516T084449Z.json",
+      "type":        "TEST",
+      "priority":    10,
+      "description": "OI-03 Phase 1: RSYNC priority zero verification receipt."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/RECEIPTS/OI03_PHASE2_HASH_TRANSFER_20260516T084619Z.json",
+      "type":        "TEST",
+      "priority":    11,
+      "description": "OI-03 Phase 2: result-set hash transfer verification receipt."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/RECEIPTS/OI03_PHASE3_PI_TO_PI_20260516T084757Z.json",
+      "type":        "TEST",
+      "priority":    12,
+      "description": "OI-03 Phase 3: Pi-to-Pi readiness receipt."
+    },
+
+    {
+      "path":        "HRG9_CLOSURE/hrg9_final_summary.md",
+      "type":        "HISTORY",
+      "priority":    1,
+      "description": "HRG9 final summary — CLOSED at commit 2ef5fd6."
+    },
+    {
+      "path":        "HRG9_CLOSURE/hrg9_manifest.json",
+      "type":        "HISTORY",
+      "priority":    2,
+      "description": "HRG9 manifest."
+    },
+    {
+      "path":        "HRG9_CLOSURE/hrg9_authority_boundary_report.json",
+      "type":        "HISTORY",
+      "priority":    3,
+      "description": "HRG9 authority boundary report."
+    },
+    {
+      "path":        "HRG9_CLOSURE/hrg9_canon_lint_report.json",
+      "type":        "HISTORY",
+      "priority":    4,
+      "description": "HRG9 canon lint report."
+    },
+    {
+      "path":        "HRG9_CLOSURE/hrg9_environment_snapshot.json",
+      "type":        "HISTORY",
+      "priority":    5,
+      "description": "HRG9 environment snapshot."
+    },
+    {
+      "path":        "HRG9_CLOSURE/hrg9_marker_integrity_report.json",
+      "type":        "HISTORY",
+      "priority":    6,
+      "description": "HRG9 marker integrity report."
+    },
+    {
+      "path":        "HRG9_CLOSURE/hrg9_replay_parity_receipt.json",
+      "type":        "HISTORY",
+      "priority":    7,
+      "description": "HRG9 replay parity receipt."
+    },
+    {
+      "path":        "HRG9_CLOSURE/hrg9_timestamp_fixedpoint_report.json",
+      "type":        "HISTORY",
+      "priority":    8,
+      "description": "HRG9 timestamp fixedpoint report."
+    },
+    {
+      "path":        "HRG9_CLOSURE/hrg9_test_commands.txt",
+      "type":        "HISTORY",
+      "priority":    9,
+      "description": "HRG9 test commands."
+    },
+    {
+      "path":        "DRAFT/PH6-CDG-1.0-INTEGRATION-CHRONICLE-2026-05-11.md",
+      "type":        "HISTORY",
+      "priority":    10,
+      "description": "CDG integration chronicle — 2026-05-11."
+    },
+    {
+      "path":        "DRAFT/PH6-CDG-1.0-SESSION-CHRONICLE-2026-05-11.md",
+      "type":        "HISTORY",
+      "priority":    11,
+      "description": "CDG session chronicle — 2026-05-11."
+    },
+    {
+      "path":        "DRAFT/PH6-CLAUDE-PATCH-HANDOFF-1.0.md",
+      "type":        "HISTORY",
+      "priority":    12,
+      "description": "Claude patch handoff record."
+    },
+    {
+      "path":        "EVIDENCE_CAMPAIGNS/RECEIPTS/TOK_LEAK_001_20260515T111936Z.json",
+      "type":        "HISTORY",
+      "priority":    13,
+      "description": "TOK-LEAK-001 earlier receipt (2026-05-15) — superseded by 20260516 canonical."
+    }
+  ]
+}

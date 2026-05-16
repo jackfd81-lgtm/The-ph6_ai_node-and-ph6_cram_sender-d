@@ -46,6 +46,8 @@ def _pseudo_metrics(payload: bytes, prev_payload: bytes | None) -> dict:
     """
     if not payload:
         return {
+            "metric_schema":      "ph6.metrics.fixedpoint.v1",
+            "metric_scale":       10000,
             "entropy_fp":         0,
             "laplacian_var_fp":   0,
             "motion_fraction_fp": 0,
@@ -81,6 +83,8 @@ def _pseudo_metrics(payload: bytes, prev_payload: bytes | None) -> dict:
         mf = 0.0
 
     return {
+        "metric_schema":      "ph6.metrics.fixedpoint.v1",
+        "metric_scale":       10000,
         "entropy_fp":         fp_int(h),
         "laplacian_var_fp":   fp_int(lvar),
         "motion_fraction_fp": fp_int(mf),
