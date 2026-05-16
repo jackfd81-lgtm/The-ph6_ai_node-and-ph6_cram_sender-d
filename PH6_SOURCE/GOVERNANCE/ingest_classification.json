@@ -276,6 +276,12 @@
       "description": "PH6 Session Drift Scanner v1.0 — Steps 1-4 deterministic (anchor, build reverify, law assertions, contradiction patterns). Step 5 advisory only. Never infers cognition."
     },
     {
+      "path":        "TOOLS/ph6_receipt_chain_verify.py",
+      "type":        "RUNTIME",
+      "priority":    27,
+      "description": "PH6 Ingest Receipt Chain Verifier v1.0 — walks all receipts in write order, verifies receipt_hash and prev_receipt_hash chain. Chain break = R4 violation."
+    },
+    {
       "path":        "AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
       "type":        "LAW",
       "priority":    9,

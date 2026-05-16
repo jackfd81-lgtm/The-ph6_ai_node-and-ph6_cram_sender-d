@@ -38,6 +38,7 @@ _MANIFEST_PATH  = os.path.join(_BUILDS_DIR, "build_manifest.json")
 _CLF_PATH       = os.path.join(_SOURCE_ROOT, "GOVERNANCE", "ingest_classification.json")
 _DIVIDER        = "=" * 80
 _SEAL_MARKER    = f"\n{_DIVIDER}\nBUILD SEAL"
+_GENESIS_HASH   = "0" * 64
 
 PROFILES = ("minimal", "engineering", "governance", "validation", "forensic", "full_canon")
 
@@ -47,7 +48,8 @@ def _utc_now() -> str:
 
 
 def _ts_slug() -> str:
-    return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    # Include microseconds to prevent same-second collisions in receipt filenames
+    return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
 
 
 def _blake2b(data: bytes) -> str:
@@ -109,6 +111,17 @@ def _load_order_string(clf_path: str, profile: str) -> str:
         return "UNKNOWN"
 
 
+def _latest_receipt_hash() -> str:
+    """Return BLAKE2b-256 of the most recent receipt file, or genesis hash."""
+    try:
+        receipts = sorted(Path(_RECEIPTS_DIR).glob("*.json"))
+        if not receipts:
+            return _GENESIS_HASH
+        return _blake2b(receipts[-1].read_bytes())
+    except (FileNotFoundError, OSError):
+        return _GENESIS_HASH
+
+
 def generate_receipt(
     profile: str,
     verified: bool,
@@ -120,7 +133,7 @@ def generate_receipt(
     session_id = f"ses-{secrets.token_hex(8)}"
     receipt = {
         "schema":               "ph6.ingest.receipt.v1",
-        "receipt_version":      "1.0",
+        "receipt_version":      "1.1",
         "session_id":           session_id,
         "authority_level":      "SESSION-ANCHOR",
         "profile":              profile,
@@ -141,8 +154,22 @@ def generate_receipt(
     return receipt
 
 
+def _seal_receipt(receipt: dict) -> dict:
+    """
+    Add chain fields to receipt.
+    prev_receipt_hash: BLAKE2b-256 of previous receipt file (or genesis).
+    receipt_hash:      BLAKE2b-256 of canonical receipt body (excluding receipt_hash).
+    Same pattern as CRAM atomic commit contract.
+    """
+    receipt["prev_receipt_hash"] = _latest_receipt_hash()
+    body = {k: v for k, v in receipt.items() if k != "receipt_hash"}
+    receipt["receipt_hash"] = _blake2b(_canonical(body).encode("utf-8"))
+    return receipt
+
+
 def write_receipt(receipt: dict, profile: str) -> str:
     os.makedirs(_RECEIPTS_DIR, exist_ok=True)
+    receipt = _seal_receipt(receipt)
     slug     = _ts_slug()
     filename = f"{slug}_{profile}.json"
     out_path = os.path.join(_RECEIPTS_DIR, filename)
