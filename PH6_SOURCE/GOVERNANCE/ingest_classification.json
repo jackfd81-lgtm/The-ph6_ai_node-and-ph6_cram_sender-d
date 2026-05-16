@@ -282,6 +282,24 @@
       "description": "PH6 Ingest Receipt Chain Verifier v1.0 — walks all receipts in write order, verifies receipt_hash and prev_receipt_hash chain. Chain break = R4 violation."
     },
     {
+      "path":        "TOOLS/ph6_evidence_campaign_report.py",
+      "type":        "RUNTIME",
+      "priority":    28,
+      "description": "PH6 Evidence Campaign Report v1.0 — reads campaign_matrix.json and reports current campaign status. Read-only; never modifies campaign status."
+    },
+    {
+      "path":        "VALIDATION/PH6-EVC-1.0.md",
+      "type":        "STATE",
+      "priority":    10,
+      "description": "PH6-EVC-1.0 Evidence Validation Campaign Matrix — five campaigns (EVC-01 to EVC-05) with pass conditions, required artifacts, closure rules, stop-ship gate linkage."
+    },
+    {
+      "path":        "VALIDATION/campaign_matrix.json",
+      "type":        "STATE",
+      "priority":    11,
+      "description": "Machine-readable campaign matrix: EVC-01 through EVC-05 with current status, open gaps, stop-ship gates, local tooling status."
+    },
+    {
       "path":        "AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
       "type":        "LAW",
       "priority":    9,

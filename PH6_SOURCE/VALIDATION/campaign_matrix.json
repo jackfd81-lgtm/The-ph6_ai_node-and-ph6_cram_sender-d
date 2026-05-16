@@ -1,0 +1,237 @@
+{
+  "schema": "ph6.evidence_campaign_matrix.v1",
+  "version": "1.0",
+  "generated_at_utc": "2026-05-16T00:00:00Z",
+  "description": "PH6-EVC-1.0 Evidence Validation Campaign Matrix. Maps every open evidence gap to a named executable campaign with explicit pass/fail conditions. A gap is not closed until its required campaign evidence is produced and reviewed by a human. Software changes cannot substitute for runtime, hardware, endurance, or transfer evidence.",
+
+  "closure_rules": {
+    "who_may_close": "Human operator only — after reviewing required_artifacts",
+    "ai_may_close": false,
+    "software_patch_may_close": false,
+    "unit_test_may_close": false,
+    "production_clearance_requires": ["EVC-01", "EVC-02", "EVC-03", "EVC-04", "EVC-05", "OI-01", "OI-03"]
+  },
+
+  "authority_constraints": {
+    "no_threshold_changes": true,
+    "no_pass_drop_modification": true,
+    "no_lane2_authority": true,
+    "production_clearance_declared": false,
+    "production_clearance_note": "Production clearance may not be declared until all campaigns and STOP-SHIP gates are closed by human-reviewed evidence."
+  },
+
+  "campaigns": [
+    {
+      "campaign_id": "EVC-01",
+      "name": "Crash Receipt Continuity",
+      "status": "OPEN",
+      "target_gap": "crash_receipt_continuity",
+      "objective": "Prove that the CRAM ingest receipt chain survives a crash or power loss during receipt emission. After restart, the chain verifier must either report the chain intact or detect and correctly classify the break.",
+      "prerequisites": [],
+      "commands": [
+        "Start a CRAM-PU ingest run (minimum 10 frames)",
+        "Send SIGKILL to the ingest process mid-run (e.g. kill -9 <pid>)",
+        "Optionally simulate power loss via hardware or UPS",
+        "Restart the ingest process",
+        "Run: python3 ph6/cram_pu/ingest_receipt_verify.py (via a test harness)",
+        "Run: python3 -m ph6.cram_pu.vrc (certify the store post-restart)"
+      ],
+      "required_artifacts": [
+        "ingest_receipt_log.jsonl — present before crash",
+        "ingest_receipt_log.jsonl — state after restart",
+        "ph6.ingest_receipt_verify.v1 report — chain_intact or explicit break classified",
+        "ph6.vrc_receipt.v1 — certification run post-restart",
+        "crash timestamp and process state at time of kill"
+      ],
+      "pass_condition": "Receipt chain verifier correctly reports chain status (intact or broken) after restart. If broken, all breaks are detected and classified. No silent corruption. VRC-1.0 does not suppress failures.",
+      "fail_condition": "Receipt log is silently corrupted, verifier misreports chain as intact when it is broken, or VRC-1.0 produces a passing certification over a broken chain.",
+      "closes_if_pass": ["crash_receipt_continuity"],
+      "remains_open": ["OI-01", "OI-03", "long_run_chain_behavior", "remote_transfer_chain", "verdict_metric_payload_replay"],
+      "authority_impact": "NONE — verification only",
+      "closes_stop_ship": false,
+      "evidence_class": "RUNTIME"
+    },
+
+    {
+      "campaign_id": "EVC-02",
+      "name": "Long-Run Receipt Chain Behavior",
+      "status": "OPEN",
+      "target_gap": "long_run_chain_behavior",
+      "objective": "Prove that the CRAM ingest receipt chain remains deterministic and intact across a sustained run of at least 300 frames or 5 minutes of continuous ingest. Detect any accumulation of errors, sequence drift, or performance degradation.",
+      "prerequisites": [],
+      "commands": [
+        "Start a CRAM-PU ingest run with at least 300 frames (or 5–30 min)",
+        "Monitor receipt emission in real time",
+        "At run completion, run: python3 ph6/cram_pu/ingest_receipt_verify.py",
+        "Run: python3 -m ph6.cram_pu.vrc (certify the completed store)",
+        "Count total receipts vs total frames ingested",
+        "Confirm event_seq is monotonic from 1 to N with no gaps"
+      ],
+      "required_artifacts": [
+        "ingest_receipt_log.jsonl — minimum 300 entries",
+        "ph6.ingest_receipt_verify.v1 report — chain_intact = true",
+        "ph6.vrc_receipt.v1 — certification with result_set_hash",
+        "frame count vs receipt count comparison",
+        "run duration and timestamp span"
+      ],
+      "pass_condition": "Receipt chain verifier reports chain_intact = true across all 300+ receipts. VRC-1.0 certifies cleanly. event_seq monotonic 1..N with no gaps. result_set_hash is stable.",
+      "fail_condition": "Any chain break, event_seq gap, verifier failure, or VRC certification failure across the run.",
+      "closes_if_pass": ["long_run_chain_behavior"],
+      "remains_open": ["OI-01", "OI-03", "crash_receipt_continuity", "remote_transfer_chain", "verdict_metric_payload_replay"],
+      "authority_impact": "NONE — verification only",
+      "closes_stop_ship": false,
+      "evidence_class": "RUNTIME"
+    },
+
+    {
+      "campaign_id": "EVC-03",
+      "name": "Remote Chain Continuity (OI-03)",
+      "status": "OPEN",
+      "target_gap": "remote_transfer_chain",
+      "objective": "Prove that the CRAM ingest receipt chain and CRAM commit chain survive a real Pi-to-Pi transfer with full hash continuity. Receiving Pi must be able to verify the chain without mutation or rewriting of hashes. This campaign is also the closure evidence for OI-03.",
+      "prerequisites": [
+        "Two Raspberry Pi units active and network-connected",
+        "PH6 CRAM-PU operational on sending Pi",
+        "PH6 transfer receiver operational on receiving Pi"
+      ],
+      "commands": [
+        "Run a CRAM ingest session on Pi-A (minimum 300 frames)",
+        "Run the RSYNC/transfer pipeline to Pi-B",
+        "On Pi-B: run python3 ph6/cram_pu/ingest_receipt_verify.py against transferred log",
+        "On Pi-B: run python3 -m ph6.cram_pu.vrc against transferred CRAM store",
+        "Compare result_set_hash from Pi-A and Pi-B — must be identical",
+        "Verify no hash was rewritten during transfer"
+      ],
+      "required_artifacts": [
+        "ingest_receipt_log.jsonl from Pi-A",
+        "ingest_receipt_log.jsonl from Pi-B (transferred, unmodified)",
+        "ph6.ingest_receipt_verify.v1 report from Pi-B — chain_intact = true",
+        "ph6.vrc_receipt.v1 from Pi-B with result_set_hash matching Pi-A",
+        "Transfer log showing RSYNC completion and file hashes",
+        "Confirmation that no hash was rewritten on receive"
+      ],
+      "pass_condition": "Pi-B receipt chain verifier reports chain_intact = true. Pi-B result_set_hash matches Pi-A result_set_hash. No hash mutations during transfer. VRC-1.0 certifies on Pi-B.",
+      "fail_condition": "Any hash mismatch, chain break, or mutation detected on Pi-B. result_set_hash differs between Pi-A and Pi-B.",
+      "closes_if_pass": ["remote_transfer_chain", "OI-03"],
+      "remains_open": ["OI-01", "crash_receipt_continuity", "long_run_chain_behavior", "verdict_metric_payload_replay"],
+      "authority_impact": "NONE — verification only. Closes OI-03 if passed.",
+      "closes_stop_ship": true,
+      "stop_ship_gate_closed": "OI-03",
+      "evidence_class": "HARDWARE_RUNTIME"
+    },
+
+    {
+      "campaign_id": "EVC-04",
+      "name": "Payload Replay Verdict and Metric Comparison",
+      "status": "OPEN",
+      "target_gap": "verdict_metric_payload_replay",
+      "objective": "Prove that PSEUDO-M and PSEUDO-A produce identical verdicts and fixed-point metrics when re-run on the original stored payload bytes. This closes the open boundary in VRC-1.0: that verdict and metric comparison requires payload access not available in the receipt chain.",
+      "prerequisites": [
+        "A completed CRAM ingest run with at least 10 accepted frames",
+        "Original payload bytes accessible (CRAM-0 or equivalent)",
+        "verdict_log.jsonl available from the original run"
+      ],
+      "commands": [
+        "For each INGEST_ACCEPTED frame: load original payload bytes from CRAM-0",
+        "Re-run VerdictLogger on the payload",
+        "Compare: emitted verdict must equal stored verdict",
+        "Compare: emitted entropy_fp must equal stored entropy_fp",
+        "Compare: emitted laplacian_var_fp must equal stored laplacian_var_fp",
+        "Compare: emitted motion_fraction_fp must equal stored motion_fraction_fp",
+        "Verify metric_schema = ph6.metrics.fixedpoint.v1 and metric_scale = 10000 in both",
+        "Record any mismatches as R1 (replay parity failure)"
+      ],
+      "required_artifacts": [
+        "Replay comparison report: frame-by-frame verdict match",
+        "Replay comparison report: frame-by-frame metric match (fixed-point)",
+        "Zero R1 failures — all verdicts and metrics match",
+        "result_set_hash from original run",
+        "result_set_hash from replay run — must match"
+      ],
+      "pass_condition": "All replayed verdicts match stored verdicts. All replayed fixed-point metrics match stored metrics exactly. result_set_hash identical between original and replay run. Zero R1 failures.",
+      "fail_condition": "Any verdict mismatch, metric mismatch, or result_set_hash divergence. A metric mismatch due to float rounding would indicate a fixedpoint encoding violation.",
+      "closes_if_pass": ["verdict_metric_payload_replay"],
+      "remains_open": ["OI-01", "OI-03", "crash_receipt_continuity", "long_run_chain_behavior", "remote_transfer_chain"],
+      "authority_impact": "NONE — verification only",
+      "closes_stop_ship": false,
+      "evidence_class": "RUNTIME"
+    },
+
+    {
+      "campaign_id": "EVC-05",
+      "name": "Production Clearance Review Gate",
+      "status": "OPEN",
+      "target_gap": "production_clearance",
+      "objective": "Human-conducted gate review after all prior campaigns pass and all STOP-SHIP items are closed. This is the only path to production clearance. No software artifact, unit test, or AI output may substitute for this review.",
+      "prerequisites": [
+        "EVC-01 PASS — crash receipt continuity",
+        "EVC-02 PASS — long-run chain behavior",
+        "EVC-03 PASS — remote chain continuity (closes OI-03)",
+        "EVC-04 PASS — payload replay verdict/metric comparison",
+        "OI-01 CLOSED — Hailo hardware integration complete",
+        "OI-03 CLOSED — via EVC-03",
+        "Governance drift scan PASS at HEAD",
+        "VRC-1.0 certification PASS on a live runtime store"
+      ],
+      "commands": [
+        "Human operator reviews all EVC-01 through EVC-04 evidence artifacts",
+        "Human operator confirms OI-01 hardware evidence",
+        "Human operator confirms OI-03 transfer evidence",
+        "Human operator runs final governance drift scan",
+        "Human operator runs final VRC-1.0 certification",
+        "Human operator signs production clearance record"
+      ],
+      "required_artifacts": [
+        "EVC-01 evidence receipts",
+        "EVC-02 evidence receipts",
+        "EVC-03 evidence receipts (including Pi-B VRC receipt)",
+        "EVC-04 replay comparison report",
+        "OI-01 hardware integration report",
+        "OI-03 transfer receipt (from EVC-03)",
+        "Final governance drift scan report",
+        "Final VRC-1.0 ph6.vrc_receipt.v1 with result_set_hash",
+        "Human-signed production clearance record"
+      ],
+      "pass_condition": "All prerequisites met. Human operator signs production clearance after reviewing all evidence. No software change or AI output substitutes for the human review.",
+      "fail_condition": "Any prerequisite not met. Any open STOP-SHIP gate. AI claims production clearance without human review.",
+      "closes_if_pass": ["production_clearance"],
+      "remains_open": [],
+      "authority_impact": "PRODUCTION CLEARANCE — human authority only",
+      "closes_stop_ship": false,
+      "evidence_class": "HUMAN_REVIEW"
+    }
+  ],
+
+  "open_stop_ship_gates": [
+    {
+      "id": "OI-01",
+      "description": "Hailo hardware integration incomplete",
+      "closed_by": null,
+      "status": "OPEN"
+    },
+    {
+      "id": "OI-03",
+      "description": "Real Pi-to-Pi live transfer not yet fully certified",
+      "closed_by": "EVC-03",
+      "status": "OPEN"
+    }
+  ],
+
+  "current_open_evidence_gaps": [
+    "crash_receipt_continuity",
+    "long_run_chain_behavior",
+    "remote_transfer_chain",
+    "verdict_metric_payload_replay",
+    "production_clearance"
+  ],
+
+  "local_tooling_status": {
+    "ai_preload":                    "COMPLETE",
+    "session_drift_scanner":         "COMPLETE",
+    "session_receipt_chain":         "IMPLEMENTED / LOCAL-VERIFIED",
+    "cram_ingest_receipt_chain":     "IMPLEMENTED / UNIT-VERIFIED",
+    "vrc_1_0":                       "IMPLEMENTED / UNIT-TESTED (18/18)",
+    "governance_scan":               "OPERATIONAL",
+    "production_clearance":          "NOT DECLARED"
+  }
+}
