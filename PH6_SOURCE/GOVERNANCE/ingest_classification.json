@@ -264,6 +264,24 @@
       "description": "PH6 Session Start v1.0 — generates ingest receipt (build_exists + build_verified + build_loaded)."
     },
     {
+      "path":        "TOOLS/ph6_pack_generator.py",
+      "type":        "RUNTIME",
+      "priority":    25,
+      "description": "PH6 AI Preload Pack Generator v1.0 — assembles six-section preload pack with protocol, session anchor, canon, law assertions, gaps, forbidden terms, task."
+    },
+    {
+      "path":        "AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "type":        "LAW",
+      "priority":    9,
+      "description": "AI Ingest Protocol v1.0 — tells AI HOW to read PH6 before content is loaded. Eight constraints: identity, reading order, conflict rule, authority, forbidden actions, gap rules, output format, drift detection."
+    },
+    {
+      "path":        "DRAFT/PH6-AI-PRELOAD-PACK-v1.0.md",
+      "type":        "LAW",
+      "priority":    10,
+      "description": "PH6 AI Preload Pack v1.0 — human-authored master preload pack. Eight parts: Protocol, Canon, Assertions, Gaps, Task, Drift Detection, Preload Header, Acceptance Checklist."
+    },
+    {
       "path":        "CERTIFICATION/audit_patched.py",
       "type":        "TEST",
       "priority":    13,

@@ -38,6 +38,13 @@ EXCLUDE_PREFIXES = (
 EXCLUDE_NAMES = {
     "GOVERNANCE/ingest_classification.json",  # the manifest itself
 }
+
+# Generated file patterns excluded from orphan detection (not source files)
+EXCLUDE_GENERATED_SUFFIXES = (
+    "_ingest.txt",           # build profile outputs (builds/)
+    "PRELOAD_PACK_v1.0.txt", # pack generator output
+    "build_manifest.json",   # build manifest
+)
 EXCLUDE_SUFFIXES = (
     ".pyc",
     ".pyo",
@@ -174,7 +181,11 @@ def check_classification(source_root: str, clf: dict) -> list[dict]:
     # ── Check 5: Orphan detection — files in PH6_SOURCE not in manifest ──────
     registered = {e.get("path") for e in files}
     on_disk    = scan_source_files(source_root)
-    orphans    = on_disk - registered - EXCLUDE_NAMES
+    orphans    = set()
+    for path in on_disk - registered - EXCLUDE_NAMES:
+        if any(path.endswith(sfx) for sfx in EXCLUDE_GENERATED_SUFFIXES):
+            continue  # skip generated outputs
+        orphans.add(path)
     for orphan in sorted(orphans):
         failures.append(fail(
             "G4", "Governance", "LOW",
