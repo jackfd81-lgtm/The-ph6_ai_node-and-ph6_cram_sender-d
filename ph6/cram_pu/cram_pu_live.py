@@ -102,9 +102,9 @@ def _generate_packets(n: int) -> list[tuple[int, bytes]]:
     packets = []
     for i in range(1, n + 1):
         if i % 5 == 0:
-            payload = bytes([8] * 300)          # brightness_low  → DROP
+            payload = bytes([8] * 300)          # entropy_low  → DROP (constant byte)
         elif i % 7 == 0:
-            payload = bytes([238] * 300)        # brightness_high → DROP
+            payload = bytes([238] * 300)        # entropy_low  → DROP (constant byte)
         else:
             payload = bytes([(i * 37 + j * 13) % 180 + 25 for j in range(300)])
         packets.append((i, payload))
