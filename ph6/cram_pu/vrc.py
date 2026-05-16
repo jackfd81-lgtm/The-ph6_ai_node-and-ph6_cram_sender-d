@@ -4,18 +4,24 @@ ph6.cram_pu.vrc — Validator Replay Certification v1.0 (PH6-VRC-1.0)
 Certifies that replay output is consistent with the ingest receipt chain.
 
 VRC-1.0 DOES:
-  - walk the ingest receipt log for INGEST_ACCEPTED events
-  - locate the corresponding CRAM commit file for each accepted frame
-  - verify that the CRAM file's cram_hash matches the receipt's authority_hash
-  - verify the CRAM hash chain is intact (prev_cram_hash linkage)
-  - emit a structured certification receipt (ph6.vrc_receipt.v1)
+  Step A — receipt chain intact (prev_event_hash linkage, event_hash seals)
+  Step B — every INGEST_ACCEPTED receipt has a CRAM file; authority_hash matches
+  Step C — CRAM prev_cram_hash chain intact
+  Step D — advisory field contamination absent from CRAM commit records
+  Emit   — result_set_hash (deterministic hash of ordered authority_hashes)
+  Emit   — receipt_chain_final_hash (hash of last receipt line)
+  Emit   — ph6.vrc_receipt.v1, sealed with cert_hash
 
 VRC-1.0 DOES NOT:
-  - declare production clearance (OI-01 and OI-03 remain open)
+  - compare replay verdicts or metrics against re-run PSEUDO
+    (requires original payload bytes — not stored in the receipt chain;
+    this is an open evidence gap for future endurance/payload-replay tests)
+  - declare production clearance (OI-01, OI-03 remain open STOP-SHIP)
   - issue PASS/DROP
   - repair broken chains
   - suppress failures
   - override runtime evidence
+  - invoke Lane 2 components
 
 Authority: VERIFY ONLY (CVS-3 layer)
 Schema:    ph6.vrc_receipt.v1
@@ -200,6 +206,74 @@ def step_c_cram_hash_chain(store: Path, now: str) -> tuple[bool, list[dict]]:
     return len(failures) == 0, failures
 
 
+# ── Advisory-field contamination detection (Step D) ──────────────────────────
+
+_ADVISORY_FIELDS = frozenset({
+    "soso_advisory", "swarm_advisory", "tok_advisory",
+    "advisory", "advisory_only", "mram_s",
+    "confidence", "probability", "ai_verdict",
+})
+
+
+def step_d_advisory_contamination(store: Path, now: str) -> tuple[bool, list[dict]]:
+    """
+    Step D: Scan CRAM commit files for advisory-only fields.
+    Advisory fields in Lane-1 authority records violate the one-way membrane.
+    Returns (clean, failures).
+    """
+    cram_files = sorted(store.glob("cram_*.json"), key=lambda p: p.name)
+    failures = []
+
+    for path in cram_files:
+        try:
+            with path.open("r", encoding="utf-8") as f:
+                rec = json.load(f)
+        except (OSError, json.JSONDecodeError):
+            continue
+
+        contaminated = _ADVISORY_FIELDS & set(rec.keys())
+        if contaminated:
+            failures.append(make_failure(
+                "G5", "HIGH",
+                "Advisory field(s) found in CRAM commit record — Lane 2 membrane violated",
+                file=str(path.name),
+                advisory_fields=sorted(contaminated),
+                timestamp_utc=now,
+            ))
+
+    return len(failures) == 0, failures
+
+
+# ── Deterministic result_set_hash ─────────────────────────────────────────────
+
+def _result_set_hash(store: Path) -> str:
+    """
+    BLAKE2b-256 of the canonical list of authority_hashes for all
+    INGEST_ACCEPTED events in event_seq order.
+    This is the deterministic fingerprint of the accepted evidence set.
+    """
+    accepted = _read_accepted_receipts(store / _RECEIPT_LOG)
+    hashes = [r.get("authority_hash", "") for r in accepted]
+    return _blake2b(_canonical(hashes))
+
+
+def _receipt_chain_final_hash(store: Path) -> str | None:
+    """Hash of the last receipt line in the receipt log."""
+    log_path = store / _RECEIPT_LOG
+    if not log_path.exists():
+        return None
+    try:
+        last_line = b""
+        with log_path.open("rb") as f:
+            for line in f:
+                stripped = line.strip()
+                if stripped:
+                    last_line = stripped
+        return _blake2b(last_line) if last_line else None
+    except OSError:
+        return None
+
+
 # ── Main certification runner ─────────────────────────────────────────────────
 
 def certify(store: Path) -> dict:
@@ -208,6 +282,11 @@ def certify(store: Path) -> dict:
 
     Returns a ph6.vrc_receipt.v1 dict. The caller must write it to disk
     if a permanent record is needed.
+
+    BOUNDARY: VRC-1.0 verifies chain consistency from receipts and CRAM files.
+    Verdict and metric replay comparison (PSEUDO re-run) requires the original
+    payload bytes, which are not stored in the receipt chain. That comparison
+    is an open evidence gap — deferred to payload-replay endurance tests.
 
     This receipt does NOT constitute production clearance.
     OI-01 and OI-03 remain open STOP-SHIP gates.
@@ -225,6 +304,9 @@ def certify(store: Path) -> dict:
     cram_chain_ok, fc = step_c_cram_hash_chain(store, now)
     all_failures.extend(fc)
 
+    advisory_clean, fd = step_d_advisory_contamination(store, now)
+    all_failures.extend(fd)
+
     passed = len(all_failures) == 0
 
     receipt: dict[str, Any] = {
@@ -233,8 +315,9 @@ def certify(store: Path) -> dict:
         "authority":              "VERIFY_ONLY",
         "production_clearance":   False,
         "production_clearance_note": (
-            "VRC-1.0 certifies replay consistency only. "
-            "Production clearance requires OI-01 and OI-03 hardware evidence."
+            "VRC-1.0 certifies receipt/CRAM chain consistency only. "
+            "Production clearance requires OI-01 and OI-03 hardware evidence. "
+            "Verdict and metric payload-replay comparison is an open evidence gap."
         ),
         "passed":                 passed,
         "failure_count":          len(all_failures),
@@ -243,7 +326,16 @@ def certify(store: Path) -> dict:
             "B_accepted_frames_in_cram": verified,
             "B_accepted_frames_missing": missing,
             "C_cram_chain_intact":       cram_chain_ok,
+            "D_advisory_fields_absent":  advisory_clean,
         },
+        "result_set_hash":        _result_set_hash(store),
+        "receipt_chain_final_hash": _receipt_chain_final_hash(store),
+        "open_evidence_gaps": [
+            "verdict_metric_payload_replay",
+            "crash_receipt_continuity",
+            "long_run_chain_behavior",
+            "remote_transfer_chain",
+        ],
         "failures":               all_failures,
         "cram_store":             str(store),
         "open_stop_ship_gates":   ["OI-01", "OI-03"],

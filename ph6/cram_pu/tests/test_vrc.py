@@ -189,3 +189,98 @@ def test_cert_schema_and_authority():
     result = certify(store)
     assert result["schema"] == "ph6.vrc_receipt.v1"
     assert result["authority"] == "VERIFY_ONLY"
+
+
+def test_result_set_hash_deterministic():
+    """result_set_hash is BLAKE2b of ordered authority_hashes — same input → same hash."""
+    import hashlib
+    store = _make_store()
+    logger = IngestReceiptLogger(store)
+    logger.accepted(frame_id=1, cram_hash="a" * 64)
+    logger.accepted(frame_id=2, cram_hash="b" * 64)
+
+    r1 = certify(store)
+    r2 = certify(store)
+    assert r1["result_set_hash"] == r2["result_set_hash"]
+    assert r1["result_set_hash"] is not None
+
+
+def test_receipt_chain_final_hash_present():
+    """receipt_chain_final_hash is set when receipts exist."""
+    store = _make_store()
+    logger = IngestReceiptLogger(store)
+    logger.arrived(frame_id=1, payload_hash="c" * 64)
+    result = certify(store)
+    assert result["receipt_chain_final_hash"] is not None
+
+
+def test_receipt_chain_final_hash_none_when_empty():
+    """receipt_chain_final_hash is None for empty store."""
+    store = _make_store()
+    result = certify(store)
+    assert result["receipt_chain_final_hash"] is None
+
+
+def test_advisory_field_in_cram_fails_step_d():
+    """CRAM commit file with advisory field fails Step D (G5)."""
+    import hashlib
+    store = _make_store()
+
+    # Write a CRAM file that has an advisory field
+    record = {
+        "schema":         "ph6.cram_commit.v1",
+        "frame_id":       1,
+        "payload_hash":   "d" * 64,
+        "hash_algorithm": "BLAKE2b-256",
+        "verdict":        "PASS",
+        "authority":      "LANE_1",
+        "prev_cram_hash": "0" * 64,
+        "timestamp_utc":  "2026-05-16T00:00:00Z",
+        "soso_advisory":  {"state": "STABLE"},  # advisory contamination
+    }
+    canonical = json.dumps(record, sort_keys=True, ensure_ascii=False,
+                           allow_nan=False, separators=(",", ":")).encode()
+    record["cram_hash"] = hashlib.blake2b(canonical, digest_size=32).hexdigest()
+    (store / "cram_0000000001.json").write_text(
+        json.dumps(record, sort_keys=True, separators=(",", ":"))
+    )
+
+    result = certify(store)
+    assert result["passed"] is False
+    classes = [f["failure_class"] for f in result["failures"]]
+    assert "G5" in classes
+
+
+def test_broken_receipt_chain_fails_step_a():
+    """Tampered receipt chain fails Step A."""
+    store = _make_store()
+    logger = IngestReceiptLogger(store)
+    logger.arrived(frame_id=1, payload_hash="e" * 64)
+    logger.arrived(frame_id=2, payload_hash="f" * 64)
+
+    # Tamper the second receipt's prev_event_hash
+    log = store / "ingest_receipt_log.jsonl"
+    lines = log.read_text().splitlines()
+    r2 = json.loads(lines[1])
+    r2["prev_event_hash"] = "0" * 64  # wrong
+    lines[1] = json.dumps(r2, sort_keys=True, ensure_ascii=False,
+                           allow_nan=False, separators=(",", ":"))
+    log.write_text("\n".join(lines) + "\n")
+
+    result = certify(store)
+    assert result["passed"] is False
+    assert result["steps"]["A_receipt_chain_intact"] is False
+
+
+def test_open_evidence_gaps_always_listed():
+    """open_evidence_gaps always includes payload-replay gap."""
+    store = _make_store()
+    result = certify(store)
+    assert "verdict_metric_payload_replay" in result["open_evidence_gaps"]
+
+
+def test_step_d_clean_store_passes():
+    """Store with no advisory fields passes Step D."""
+    store = _make_store()
+    result = certify(store)
+    assert result["steps"]["D_advisory_fields_absent"] is True
