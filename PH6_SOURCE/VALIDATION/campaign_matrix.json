@@ -59,7 +59,16 @@
     {
       "campaign_id": "EVC-02",
       "name": "Long-Run Receipt Chain Behavior",
-      "status": "OPEN",
+      "status": "PASS",
+      "evidence_receipt": "ph6/cram_pu/validation_runs/evc02_20260516T110650Z/ph6.evc02_receipt.v1.json",
+      "evidence_hash": "8400d10b5bc72f9200921ec7",
+      "result_set_hash": "b4f7ec354676d3668c1d32c3",
+      "evidence_timestamp": "2026-05-16T11:06:50Z",
+      "frames_run": 300,
+      "receipts_emitted": 600,
+      "chain_intact": true,
+      "vrc_passed": true,
+      "evc04_seed": 42,
       "target_gap": "long_run_chain_behavior",
       "objective": "Prove that the CRAM ingest receipt chain remains deterministic and intact across a sustained run of at least 300 frames or 5 minutes of continuous ingest. Detect any accumulation of errors, sequence drift, or performance degradation.",
       "prerequisites": [],
@@ -222,7 +231,6 @@
   ],
 
   "current_open_evidence_gaps": [
-    "long_run_chain_behavior",
     "remote_transfer_chain",
     "verdict_metric_payload_replay",
     "production_clearance"
