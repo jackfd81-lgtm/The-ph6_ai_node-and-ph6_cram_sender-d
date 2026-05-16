@@ -1,1 +1,1 @@
-{"status": "DONE", "cam": "OK", "cram": "OK", "ai": "DISABLED", "fps": 900.7, "frame": 100}
+{"status": "SESSION_CLOSED", "cam": "OK", "cram": "OK", "ai": "DISABLED", "fps": 0, "frame": 0, "session_note": "2026-05-16 session closed. OI-03=PASS_LOCAL/REMOTE_PENDING. Remote Pi transfer pending. LOCK: PROHIBITED."}

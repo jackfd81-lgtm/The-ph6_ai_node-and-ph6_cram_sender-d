@@ -1,0 +1,49 @@
+{
+  "schema": "ph6.governance.drift_report.v1",
+  "scan_root": "/home/jack/PH6_SOURCE",
+  "governance_dir": "/home/jack/PH6_SOURCE/GOVERNANCE",
+  "generated_at_utc": "2026-05-14T04:14:07Z",
+  "overall_result": "FAIL_CRITICAL",
+  "critical_count": 3,
+  "high_count": 0,
+  "warn_count": 0,
+  "total_findings": 3,
+  "summary_by_check": {
+    "forbidden_terms": {
+      "count": 3,
+      "severity": "CRITICAL"
+    }
+  },
+  "findings": [
+    {
+      "check": "forbidden_terms",
+      "severity": "CRITICAL",
+      "entry_id": "FT-04",
+      "term": "adaptive_threshold",
+      "file": "/home/jack/PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "line": 411,
+      "content": "- apply adaptive thresholds to authority logic",
+      "reason": "Drift. Thresholds must be fixed at design time and replay-stable. Runtime threshold adaptation invalidates CRAM authority."
+    },
+    {
+      "check": "forbidden_terms",
+      "severity": "CRITICAL",
+      "entry_id": "FT-04",
+      "term": "adaptive_threshold",
+      "file": "/home/jack/PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "line": 580,
+      "content": "adaptive threshold authority",
+      "reason": "Drift. Thresholds must be fixed at design time and replay-stable. Runtime threshold adaptation invalidates CRAM authority."
+    },
+    {
+      "check": "forbidden_terms",
+      "severity": "CRITICAL",
+      "entry_id": "FT-04",
+      "term": "adaptive_threshold",
+      "file": "/home/jack/PH6_SOURCE/DRAFT/PH6-AI-INGEST-STACK-1.0.md",
+      "line": 328,
+      "content": "allow adaptive thresholds",
+      "reason": "Drift. Thresholds must be fixed at design time and replay-stable. Runtime threshold adaptation invalidates CRAM authority."
+    }
+  ]
+}
