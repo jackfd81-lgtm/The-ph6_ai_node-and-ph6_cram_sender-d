@@ -99,7 +99,10 @@
     {
       "campaign_id": "EVC-03",
       "name": "Remote Chain Continuity (OI-03)",
-      "status": "OPEN",
+      "status": "PASS_LOCAL / REMOTE_PENDING",
+      "status_note": "OI-03 Phases 1 (RSYNC priority zero), 2 (result-set hash identity), and 3 (local readiness runner) all passed in local mode. Remote Pi-to-Pi transfer still required. OI-03 remains STOP-SHIP until remote test passes.",
+      "local_phases_passed": ["Phase1_RSYNC_Priority_Zero", "Phase2_ResultSet_Hash_Transfer", "Phase3_Local_Readiness"],
+      "remote_action_required": "Connect second Pi, run Phase 3 with --dest-host <second-Pi-IP>",
       "target_gap": "remote_transfer_chain",
       "objective": "Prove that the CRAM ingest receipt chain and CRAM commit chain survive a real Pi-to-Pi transfer with full hash continuity. Receiving Pi must be able to verify the chain without mutation or rewriting of hashes. This campaign is also the closure evidence for OI-03.",
       "prerequisites": [
@@ -236,7 +239,8 @@
       "id": "OI-03",
       "description": "Real Pi-to-Pi live transfer not yet fully certified",
       "closed_by": "EVC-03",
-      "status": "OPEN"
+      "status": "PASS_LOCAL / REMOTE_PENDING",
+      "status_note": "Local phases 1-3 passed. Remote network-bound transfer is the remaining required evidence. STOP-SHIP classification unchanged until remote pass."
     }
   ],
 
