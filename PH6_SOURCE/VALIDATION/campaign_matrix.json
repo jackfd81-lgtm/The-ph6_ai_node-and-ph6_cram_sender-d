@@ -136,7 +136,17 @@
     {
       "campaign_id": "EVC-04",
       "name": "Payload Replay Verdict and Metric Comparison",
-      "status": "OPEN",
+      "status": "PASS",
+      "evidence_receipt": "ph6/cram_pu/validation_runs/evc04_20260516T111439Z/ph6.evc04_receipt.v1.json",
+      "evidence_hash": "1d249baa01d2c6604d47434d",
+      "evidence_timestamp": "2026-05-16T11:14:39Z",
+      "frames_replayed": 300,
+      "mismatches": 0,
+      "hashes_match": true,
+      "original_verdict_hash": "29641e96da05b4694cedb19b",
+      "replay_verdict_hash": "29641e96da05b4694cedb19b",
+      "metric_schema_verified": "ph6.metrics.fixedpoint.v1",
+      "metric_scale_verified": 10000,
       "target_gap": "verdict_metric_payload_replay",
       "objective": "Prove that PSEUDO-M and PSEUDO-A produce identical verdicts and fixed-point metrics when re-run on the original stored payload bytes. This closes the open boundary in VRC-1.0: that verdict and metric comparison requires payload access not available in the receipt chain.",
       "prerequisites": [
@@ -232,7 +242,6 @@
 
   "current_open_evidence_gaps": [
     "remote_transfer_chain",
-    "verdict_metric_payload_replay",
     "production_clearance"
   ],
 
