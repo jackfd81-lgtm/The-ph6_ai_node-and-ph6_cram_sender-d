@@ -1,0 +1,1134 @@
+PH6_SOURCE/GLOSSARY_LOCK.md:43:| **DRIFT_FAIL** | Architectural violation state — halt and audit | failure, error, mismatch |
+PH6_SOURCE/GLOSSARY_LOCK.md:44:| **HRG9** | The production-clearance hardware replay evidence gate — CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |
+PH6_SOURCE/GLOSSARY_LOCK.md:45:| **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |
+PH6_SOURCE/GLOSSARY_LOCK.md:75:DRIFT_FAIL
+PH6_SOURCE/00_AI_AGENT_READ_FIRST.md:186:    { "id": "OI-01", "description": "Hailo hardware integration incomplete", "status": "OPEN" },
+PH6_SOURCE/00_AI_AGENT_READ_FIRST.md:187:    { "id": "OI-03", "description": "Real Pi-to-Pi live transfer not yet fully certified", "status": "OPEN" }
+PH6_SOURCE/00_AI_AGENT_READ_FIRST.md:213:## 7. OPEN ITEM REGISTER
+PH6_SOURCE/00_AI_AGENT_READ_FIRST.md:217:| OI-01 | Hailo hardware integration              | OPEN   | Yes (STOP-SHIP)    | Hardware run + integration report         |
+PH6_SOURCE/00_AI_AGENT_READ_FIRST.md:218:| OI-03 | Real Pi-to-Pi live transfer             | OPEN   | Yes (STOP-SHIP)    | Transfer log + replay proof               |
+PH6_SOURCE/00_AI_AGENT_READ_FIRST.md:221:**HRG9 is CLOSED. Do not regenerate HRG9 artifacts. Do not list HRG9 as STOP-SHIP.**
+PH6_SOURCE/00_AI_AGENT_READ_FIRST.md:309:> "OI-01 and OI-03 are OPEN STOP-SHIP gates. This patch does not close them. Human closure required."
+PH6_SOURCE/00_AI_AGENT_READ_FIRST.md:334:- [ ] OI-01 and OI-03 remain OPEN unless human-authorized closure evidence is provided.
+PH6_SOURCE/00_AI_AGENT_READ_FIRST.md:354:│  STOP-SHIP gates:          OI-01, OI-03              │
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:298:DRIFT_FAIL triggers
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:321:STOP-SHIP criteria
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:330:STOP-SHIP
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:331:HRG9 OPEN / EVIDENCE BLOCKED
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:397:| DRIFT_FAIL      | Canon violation requiring stop and resolution                                       |
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:465:DRIFT_FAIL
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:501:[OPEN]
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:502:[EVIDENCE BLOCKED]
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:504:[STOP-SHIP]
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:516:HRG9 remains OPEN / EVIDENCE BLOCKED.
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:517:Production remains STOP-SHIP.
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:599:DRIFT_FAIL
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:648:[ ] STOP-SHIP status preserved if evidence missing
+PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md:658:DRIFT_FAIL
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:129:  - do not claim the gap is resolved based on partial evidence
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:136:STOP-SHIP gates (OI-01, OI-03):
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:184:DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:222:│  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   │
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:311:| **DRIFT_FAIL** | Architectural violation state — halt and audit | failure, error, mismatch |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:312:| **HRG9** | The production-clearance hardware replay evidence gate — CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:313:| **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:343:DRIFT_FAIL
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:441:      "status": "OPEN",
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:448:      "status": "OPEN",
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:684:      "certification_implication": "STOP-SHIP — PH6-CERT run is invalid. Certification cannot proceed.",
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:728:        "STOP-SHIP gate is open (OI-01, OI-03) — noted for traceability, does not block AI session work",
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:746:      "No open STOP-SHIP gates (OI-01, OI-03) unless formally waived"
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:1068:    { "id": "OI-01", "description": "Hailo hardware integration incomplete", "status": "OPEN" },
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:1069:    { "id": "OI-03", "description": "Real Pi-to-Pi live transfer not yet fully certified", "status": "OPEN" }
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:1095:## 7. OPEN ITEM REGISTER
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:1099:| OI-01 | Hailo hardware integration              | OPEN   | Yes (STOP-SHIP)    | Hardware run + integration report         |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:1100:| OI-03 | Real Pi-to-Pi live transfer             | OPEN   | Yes (STOP-SHIP)    | Transfer log + replay proof               |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:1103:**HRG9 is CLOSED. Do not regenerate HRG9 artifacts. Do not list HRG9 as STOP-SHIP.**
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:1191:> "OI-01 and OI-03 are OPEN STOP-SHIP gates. This patch does not close them. Human closure required."
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:1216:- [ ] OI-01 and OI-03 remain OPEN unless human-authorized closure evidence is provided.
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:1236:│  STOP-SHIP gates:          OI-01, OI-03              │
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:1319:   - STOP-SHIP rules
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:1577:  AI_ENTRY_INDEX.md           HRG9 OPEN → CLOSED
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:2012:  - do not claim the gap is resolved based on partial evidence
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:2019:STOP-SHIP gates (OI-01, OI-03):
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:2067:DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:2105:│  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   │
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:2532:| OI-01      | Hailo wiring deferred pending new Raspberry Pi 5          | HIGH     | Yes       | Hardware installed and verified        | OPEN   |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:2533:| OI-03      | Real Pi-to-Pi live transfer not yet remotely verified     | CRITICAL | Yes       | Second Pi transfer with hash continuity | OPEN  |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3228:Violation of any containment rule triggers DRIFT_FAIL.
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3361:# 10. DRIFT_FAIL Triggers
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3363:Declare DRIFT_FAIL if any of the following occur:
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3554:      "assertion": "OI-01 is OPEN STOP-SHIP — hardware-gated",
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3562:      "assertion": "OI-03 is OPEN STOP-SHIP — hardware-gated",
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3680:SECTION 04: OPEN GAPS REGISTER
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3690:             Updates require human authorization for STOP-SHIP items.
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3691:             AI may update status of OPEN/DEFERRED non-STOP-SHIP items only.
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3698:| Gap ID                         | Status    | STOP-SHIP? | Evidence Required                          | Closure Authority    | Closure File / Commit            |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3700:| OI-01                         | OPEN      | YES        | Hailo hardware run + integration report     | Human only           | TBD                              |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3701:| OI-03                         | OPEN      | YES        | Real Pi-to-Pi transfer log + replay proof   | Human only           | TBD                              |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3705:| 300-frame coherence run       | OPEN      | No         | Campaign 01 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01   |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3706:| Advisory expansion (Swarm)    | OPEN      | No         | Campaign 01B receipt; C01 must close first  | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01B  |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3707:| Pi-to-Pi live transfer        | OPEN      | YES        | Campaign 02 receipt (satisfies OI-03)       | Human + Campaign 02  | EVIDENCE_CAMPAIGNS/CAMPAIGN_02   |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3709:| GAP-16B: USB disconnect       | OPEN      | No         | Isolation test: video-only 5+ min           | Human after evidence | EVIDENCE_CAMPAIGNS/GAPS/GAP-16   |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3710:| Resource pressure RSYNC       | OPEN      | No         | Campaign 03 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_03   |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3711:| Crash recovery                | OPEN      | No         | Campaign 04 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_04   |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3712:| Replay parity                 | OPEN      | No         | Campaign 05 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_05   |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3720:| OPEN     | Gap exists; evidence not yet collected                                   |
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3727:## STOP-SHIP Rules
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3729:STOP-SHIP gaps (OI-01, OI-03) cannot be closed by:
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3755:### For non-STOP-SHIP gaps
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3758:### For STOP-SHIP gaps (OI-01, OI-03)
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3762:Add a row with Status = OPEN, note evidence required and closure authority.
+PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt:3965:  DRIFT: claiming a STOP-SHIP gate is closed without evidence
+PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py:6:Shows what is OPEN, what prerequisites are blocking, and what is required to proceed.
+PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py:87:    open_campaigns   = [c for c in campaigns if c["status"] == "OPEN"]
+PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py:88:    closed_campaigns = [c for c in campaigns if c["status"] != "OPEN"]
+PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py:89:    stop_ship_open   = [g for g in matrix.get("open_stop_ship_gates", []) if g["status"] == "OPEN"]
+PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py:138:    print("  OPEN EVIDENCE GAPS:")
+PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md:116:  - do not claim the gap is resolved based on partial evidence
+PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md:123:STOP-SHIP gates (OI-01, OI-03):
+PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md:171:DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence
+PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md:209:│  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   │
+PH6_SOURCE/DRAFT/PH6-CLAUDE-PATCH-HANDOFF-1.0.md:7:Status: ACTIVE — STOP-SHIP UNTIL HRG9 CLOSURE
+PH6_SOURCE/DRAFT/PH6-CLAUDE-PATCH-HANDOFF-1.0.md:102:RECOVERY_SWEEP / DRIFT_FAIL
+PH6_SOURCE/DRAFT/PH6-CLAUDE-PATCH-HANDOFF-1.0.md:246:Production remains STOP-SHIP until all above exist and pass.
+PH6_SOURCE/DRAFT/PH6-CLAUDE-PATCH-HANDOFF-1.0.md:291:8. Prepare HRG9 closure artifacts but leave production STOP-SHIP until evidence passes.
+PH6_SOURCE/00_AI_ACTION_INDEX.md:82:## Current STOP-SHIP Items
+PH6_SOURCE/00_AI_ACTION_INDEX.md:188:open STOP-SHIP:    OI-01, OI-03 (hardware-gated; do not falsely close)
+PH6_SOURCE/DRAFT/PH6-PSEUDO-SOSO-JEDI-UPDATE-v1.0.md:194:breach must produce DRIFT_FAIL.
+PH6_SOURCE/DRAFT/PH6-PSEUDO-SOSO-JEDI-UPDATE-v1.0.md:360:Declare DRIFT_FAIL if:
+PH6_SOURCE/GAP_REGISTER_v3.0.md:9:             Updates require human authorization for STOP-SHIP items.
+PH6_SOURCE/GAP_REGISTER_v3.0.md:10:             AI may update status of OPEN/DEFERRED non-STOP-SHIP items only.
+PH6_SOURCE/GAP_REGISTER_v3.0.md:17:| Gap ID                         | Status    | STOP-SHIP? | Evidence Required                          | Closure Authority    | Closure File / Commit            |
+PH6_SOURCE/GAP_REGISTER_v3.0.md:19:| OI-01                         | OPEN      | YES        | Hailo hardware run + integration report     | Human only           | TBD                              |
+PH6_SOURCE/GAP_REGISTER_v3.0.md:20:| OI-03                         | OPEN      | YES        | Real Pi-to-Pi transfer log + replay proof   | Human only           | TBD                              |
+PH6_SOURCE/GAP_REGISTER_v3.0.md:24:| 300-frame coherence run       | OPEN      | No         | Campaign 01 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01   |
+PH6_SOURCE/GAP_REGISTER_v3.0.md:25:| Advisory expansion (Swarm)    | OPEN      | No         | Campaign 01B receipt; C01 must close first  | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01B  |
+PH6_SOURCE/GAP_REGISTER_v3.0.md:26:| Pi-to-Pi live transfer        | OPEN      | YES        | Campaign 02 receipt (satisfies OI-03)       | Human + Campaign 02  | EVIDENCE_CAMPAIGNS/CAMPAIGN_02   |
+PH6_SOURCE/GAP_REGISTER_v3.0.md:28:| GAP-16B: USB disconnect       | OPEN      | No         | Isolation test: video-only 5+ min           | Human after evidence | EVIDENCE_CAMPAIGNS/GAPS/GAP-16   |
+PH6_SOURCE/GAP_REGISTER_v3.0.md:29:| Resource pressure RSYNC       | OPEN      | No         | Campaign 03 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_03   |
+PH6_SOURCE/GAP_REGISTER_v3.0.md:30:| Crash recovery                | OPEN      | No         | Campaign 04 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_04   |
+PH6_SOURCE/GAP_REGISTER_v3.0.md:31:| Replay parity                 | OPEN      | No         | Campaign 05 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_05   |
+PH6_SOURCE/GAP_REGISTER_v3.0.md:39:| OPEN     | Gap exists; evidence not yet collected                                   |
+PH6_SOURCE/GAP_REGISTER_v3.0.md:46:## STOP-SHIP Rules
+PH6_SOURCE/GAP_REGISTER_v3.0.md:48:STOP-SHIP gaps (OI-01, OI-03) cannot be closed by:
+PH6_SOURCE/GAP_REGISTER_v3.0.md:74:### For non-STOP-SHIP gaps
+PH6_SOURCE/GAP_REGISTER_v3.0.md:77:### For STOP-SHIP gaps (OI-01, OI-03)
+PH6_SOURCE/GAP_REGISTER_v3.0.md:81:Add a row with Status = OPEN, note evidence required and closure authority.
+PH6_SOURCE/AI_ENTRY_INDEX.md:84:STOP-SHIP: OI-01 (Hailo hardware-gated) and OI-03 (real Pi-to-Pi transfer not verified).
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-SESSION-CHRONICLE-2026-05-11.md:243:| STOP-SHIP        | constitutional veto         |
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-SESSION-CHRONICLE-2026-05-11.md:323:| HRG doctrine   | STOP-SHIP authority    |
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-SESSION-CHRONICLE-2026-05-11.md:335:| Drift Gate scan            | PENDING             |
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-SESSION-CHRONICLE-2026-05-11.md:336:| Canon compatibility review | PENDING             |
+PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md:49:OI-01:                OPEN / STOP-SHIP — Hailo hardware-gated
+PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md:50:OI-03:                OPEN / STOP-SHIP — Real Pi-to-Pi transfer not yet certified
+PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md:103:- Update the gap register for non-STOP-SHIP items when evidence is confirmed
+PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md:174:- A STOP-SHIP item is closed
+PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md:176:- A new STOP-SHIP item is added
+PH6_SOURCE/TOOLS/ph6_drift_scanner.py:259:        if gate.get("status") == "OPEN":
+PH6_SOURCE/TOOLS/ph6_drift_scanner.py:262:            add(f"LA-STOP-{gid}", f"{gid} is OPEN STOP-SHIP — not closeable by software", "G8",
+PH6_SOURCE/TOOLS/ph6_drift_scanner.py:268:        [r"HRG9\s+(?:is\s+)?(?:OPEN|open)",
+PH6_SOURCE/TOOLS/ph6_drift_scanner.py:269:         r"HRG9.*(?:STOP-SHIP|stop.ship|still\s+open)"],
+PH6_SOURCE/TOOLS/ph6_drift_scanner.py:347:    (r"(?:soft|weak|partial|approximate)\s+authority",
+PH6_SOURCE/DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md:164:Violation of any containment rule triggers DRIFT_FAIL.
+PH6_SOURCE/DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md:297:# 10. DRIFT_FAIL Triggers
+PH6_SOURCE/DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md:299:Declare DRIFT_FAIL if any of the following occur:
+PH6_SOURCE/TOOLS/ph6_pack_generator.py:254:        if gate.get("status") == "OPEN":
+PH6_SOURCE/TOOLS/ph6_pack_generator.py:257:            add("stop_ship", f"{gid} is OPEN STOP-SHIP — hardware-gated",
+PH6_SOURCE/TOOLS/ph6_pack_generator.py:301:    return section_header(4, "OPEN GAPS REGISTER") + _read(_GAP_REGISTER)
+PH6_SOURCE/TOOLS/ph6_pack_generator.py:342:        "  DRIFT: claiming a STOP-SHIP gate is closed without evidence\n",
+PH6_SOURCE/HRG9_CLOSURE/hrg9_manifest.json:68:  "stop_ship_recommendation": "LIFT HRG9 STOP-SHIP ONLY \u2014 all required checks PASS, no FAIL-level findings",
+PH6_SOURCE/TOOLS/ai_preflight_check.py:191:    open_gates = [g for g in gates if g.get("status") == "OPEN"]
+PH6_SOURCE/TOOLS/ai_preflight_check.py:194:        "detail": f"{len(open_gates)} open STOP-SHIP gate(s): {[g['id'] for g in open_gates]}",
+PH6_SOURCE/TOOLS/ai_preflight_check.py:196:        "note": "STOP-SHIP gates are informational in preflight — they block production release, not AI session work",
+PH6_SOURCE/00_READ_FIRST/CLAUDE_RUNTIME_PRIMER_v1.0.md:52:Status:    OPEN
+PH6_SOURCE/00_READ_FIRST/CLAUDE_RUNTIME_PRIMER_v1.0.md:72:# 4. STOP-SHIP ITEMS
+PH6_SOURCE/00_READ_FIRST/CLAUDE_RUNTIME_PRIMER_v1.0.md:113:- closure from partial evidence
+PH6_SOURCE/DRAFT/PH6-RUNTIME-DISCOVERY-CLASSIFICATION-v1.0.md:105:| TODO / FIXME markers | Observational only; no authority relevance unless adjacent to a violation |
+PH6_SOURCE/DRAFT/PH6-RUNTIME-DISCOVERY-CLASSIFICATION-v1.0.md:217:CRITICAL means: STOP-SHIP. Commit blocked. Certification run invalid.
+PH6_SOURCE/DRAFT/PH6-RUNTIME-DISCOVERY-CLASSIFICATION-v1.0.md:229:| CRITICAL | Cert run invalid — STOP-SHIP | Resolve only; no waiver path |
+PH6_SOURCE/DRAFT/PH6-RUNTIME-DISCOVERY-CLASSIFICATION-v1.0.md:238:* No open STOP-SHIP gates (OI-01, OI-03) unless formally waived
+PH6_SOURCE/DRAFT/PH6-RUNTIME-DISCOVERY-CLASSIFICATION-v1.0.md:262:| TODO / FIXME markers (no adjacent violation) | Observational; intent markers are not violations |
+PH6_SOURCE/00_READ_FIRST/CLAUDE_TERMINAL_OPERATIONAL_PACK_v1.0.md:24:OI-01:  OPEN / STOP-SHIP / Hailo hardware-gated
+PH6_SOURCE/00_READ_FIRST/CLAUDE_TERMINAL_OPERATIONAL_PACK_v1.0.md:25:OI-03:  OPEN / STOP-SHIP / real Pi-to-Pi transfer not verified
+PH6_SOURCE/DRAFT/PH6-AI-PRELOAD-PACK-v1.0.md:414:| OI-01      | Hailo wiring deferred pending new Raspberry Pi 5          | HIGH     | Yes       | Hardware installed and verified        | OPEN   |
+PH6_SOURCE/DRAFT/PH6-AI-PRELOAD-PACK-v1.0.md:415:| OI-03      | Real Pi-to-Pi live transfer not yet remotely verified     | CRITICAL | Yes       | Second Pi transfer with hash continuity | OPEN  |
+PH6_SOURCE/DRAFT/PH6-CALIBRATION-GATE-BLOCK-v1.0.md:155:Replay parity failure is a DRIFT_FAIL event and blocks C01.
+PH6_SOURCE/DRAFT/PH6-AI-INGEST-STACK-1.0.md:162:Violation condition: `DRIFT_FAIL`
+PH6_SOURCE/DRAFT/PH6-AI-INGEST-STACK-1.0.md:436:## 15. DRIFT_FAIL CONDITIONS
+PH6_SOURCE/DRAFT/PH6-AI-INGEST-STACK-1.0.md:450:DRIFT_FAIL
+PH6_SOURCE/DRAFT/PH6-TOK-SSMT-CERT-PATCH-v1.0.md:204:Expected: DRIFT_FAIL advisory contamination flag.
+PH6_SOURCE/GOVERNANCE/closure_status.json:9:      "state": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/closure_status.json:43:      "state": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/closure_status.json:96:      "state": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/closure_status.json:149:      "state": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/closure_status.json:190:      "state": "OPEN",
+PH6_SOURCE/GOVERNANCE/closure_status.json:218:      "state": "OPEN",
+PH6_SOURCE/GOVERNANCE/closure_status.json:278:      "state": "OPEN",
+PH6_SOURCE/GOVERNANCE/closure_status.json:339:      "state": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/closure_status.json:384:      "state": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/closure_status.json:415:      "state": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/closure_status.json:446:      "state": "PASS_PENDING_REVIEW",
+PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md:304:| 5     | 04_OPEN_GATES.md          |
+PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md:319:* active STOP-SHIP gates
+PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md:468:## Current STOP-SHIP Items
+PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md:283:STOP-SHIP
+PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md:344:# 13. STOP-SHIP CONDITIONS
+PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md:346:## SYSTEM REMAINS STOP-SHIP IF:
+PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md:359:HRG9 is CLOSED. Do not treat HRG9 as a current STOP-SHIP reason.
+PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md:361:Current STOP-SHIP reasons (only):
+PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md:569:STOP-SHIP
+PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md:601:9. stale HRG9-OPEN references (HRG9 is CLOSED at 2ef5fd6 — flag any doc treating it as missing or blocking)
+PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md:650:STOP-SHIP: OI-01 hardware-gated, OI-03 real Pi-to-Pi not yet verified.
+PH6_SOURCE/GOVERNANCE/severity_policy.json:13:      "certification_implication": "STOP-SHIP — PH6-CERT run is invalid. Certification cannot proceed.",
+PH6_SOURCE/GOVERNANCE/severity_policy.json:57:        "STOP-SHIP gate is open (OI-01, OI-03) — noted for traceability, does not block AI session work",
+PH6_SOURCE/GOVERNANCE/severity_policy.json:75:      "No open STOP-SHIP gates (OI-01, OI-03) unless formally waived"
+PH6_SOURCE/DRAFT/PH6-SYSTEM-OVERVIEW-v1.0.md:190:  "release_verdict": "STOP_SHIP_PENDING_PRODUCTION_CLEARANCE",
+PH6_SOURCE/DRAFT/PH6-TOKENS-LIVING-CRAM-v1.1.md:309:## 9. Token DRIFT_FAIL Additions
+PH6_SOURCE/DRAFT/PH6-TOKENS-LIVING-CRAM-v1.1.md:311:Add these to the master Living CRAM DRIFT_FAIL list:
+PH6_SOURCE/DRAFT/PH6-TOKENS-LIVING-CRAM-v1.1.md:314:Declare DRIFT_FAIL if:
+PH6_SOURCE/HRG9_CLOSURE/hrg9_final_summary.md:15:STOP_SHIP_RECOMMENDATION = LIFT HRG9 STOP-SHIP ONLY
+PH6_SOURCE/HRG9_CLOSURE/hrg9_final_summary.md:159:## STOP-SHIP Decision
+PH6_SOURCE/HRG9_CLOSURE/hrg9_final_summary.md:163:STOP_SHIP_RECOMMENDATION = LIFT HRG9 STOP-SHIP ONLY
+PH6_SOURCE/HRG9_CLOSURE/hrg9_final_summary.md:168:Production is STOP-SHIP for reasons other than HRG9 (OI-01 hardware gate, OI-03 two-Pi).
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:11:Status: ACTIVE — STOP-SHIP (OI-01 hardware-gated, OI-03 real Pi-to-Pi not yet verified; HRG9 CLOSED at 2ef5fd6)
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:344:Deviation = DRIFT_FAIL.
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:495:## 24. DRIFT_FAIL CONDITIONS
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:497:Emit DRIFT_FAIL if:
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:527:**STATUS: OPEN / EVIDENCE BLOCKED**
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:529:STOP-SHIP remains active until ALL pass:
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:541:## 27. CURRENT OPEN GAPS
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:545:| MRAM-S advisory schema population   | OPEN   |
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:546:| Scientific metadata schema          | OPEN   |
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:547:| HRG9 closure                        | OPEN   |
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:548:| audit.py authority_hash defect      | OPEN   |
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:549:| Resource-cage compliance population | OPEN   |
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:550:| Drift Gate verification             | OPEN   |
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:564:| Production        | STOP-SHIP               |
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:565:| HRG9              | OPEN / EVIDENCE BLOCKED |
+PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md:605:Do not clear STOP-SHIP until OI-01 and OI-03 are verified (HRG9 already closed at 2ef5fd6).
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:27:Production clearance requires all campaigns and STOP-SHIP gates closed
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:39:OPEN ITEMS:          HARDWARE / RUNTIME / ENDURANCE EVIDENCE REQUIRED
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:56:| Campaign | Gap Closed                  | Closes STOP-SHIP | Evidence Class  | Status |
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:58:| EVC-01   | crash_receipt_continuity    | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:59:| EVC-02   | long_run_chain_behavior     | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:60:| EVC-03   | remote_transfer_chain       | OI-03            | HARDWARE_RUNTIME | OPEN  |
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:61:| EVC-04   | verdict_metric_payload_replay | No             | RUNTIME         | OPEN   |
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:62:| EVC-05   | production_clearance        | —                | HUMAN_REVIEW    | OPEN   |
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:145:**Closes STOP-SHIP:** OI-03
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:244:Any prerequisite not met. Any open STOP-SHIP gate. AI claims production
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:266:## Open STOP-SHIP Gates
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:270:| OI-01 | Hailo hardware integration incomplete | Hardware run + report | OPEN |
+PH6_SOURCE/VALIDATION/PH6-EVC-1.0.md:271:| OI-03 | Real Pi-to-Pi live transfer not yet certified | EVC-03 | OPEN |
+PH6_SOURCE/DRAFT/PH6-CDG-1.0.md:66:   - STOP-SHIP rules
+PH6_SOURCE/DRAFT/PH6-CDG-1.0.md:324:  AI_ENTRY_INDEX.md           HRG9 OPEN → CLOSED
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-INTEGRATION-CHRONICLE-2026-05-11.md:129:| Drift Gate scan               | PENDING               |
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-INTEGRATION-CHRONICLE-2026-05-11.md:130:| Six-book compatibility review | PENDING               |
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-INTEGRATION-CHRONICLE-2026-05-11.md:131:| Repo audit schema validation  | PENDING               |
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-INTEGRATION-CHRONICLE-2026-05-11.md:132:| Canon routing review          | PENDING               |
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-INTEGRATION-CHRONICLE-2026-05-11.md:146:| CDG-1.0 governance layer       | NEW / PENDING SEAL     |
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-INTEGRATION-CHRONICLE-2026-05-11.md:148:| Production release             | STOP-SHIP (OI-01 hardware-gated, OI-03 real Pi-to-Pi not verified; HRG9 CLOSED at 2ef5fd6) |
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-INTEGRATION-CHRONICLE-2026-05-11.md:154:The phrase "STOP-SHIP pending HRG9" used in prior session output was stale.
+PH6_SOURCE/DRAFT/PH6-CDG-1.0-INTEGRATION-CHRONICLE-2026-05-11.md:156:Current STOP-SHIP reasons: OI-01 (Hailo hardware-gated) and OI-03 (real Pi-to-Pi transfer not verified).
+PH6_SOURCE/06_HANDOFF/PH6-OI03-TWO-PI-TRANSFER-PREFLIGHT.md:5:Status:       OPEN — awaiting second Pi 5
+PH6_SOURCE/06_HANDOFF/PH6-OI03-TWO-PI-TRANSFER-PREFLIGHT.md:15:OI-03 is a STOP-SHIP gate. The loopback variant was proven (commit a95e552).
+PH6_SOURCE/06_HANDOFF/PH6-OI03-TWO-PI-TRANSFER-PREFLIGHT.md:173:OI-03: OPEN
+PH6_SOURCE/DRAFT/PH6-LIVING-CRAM-PSEUDO-SOSO-JEDI-v1.0.md:252:## 12. Living CRAM DRIFT_FAIL Rule
+PH6_SOURCE/DRAFT/PH6-LIVING-CRAM-PSEUDO-SOSO-JEDI-v1.0.md:255:Declare DRIFT_FAIL if:
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_01_300_FRAME_COHERENCE.md:5:Status:       OPEN
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_01_300_FRAME_COHERENCE.md:212:- [ ] All CRAM-A writes completed (no partial writes, no orphaned tmp files)
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/RECEIPTS/OI03_PHASE3_PI_TO_PI_20260516T084757Z.json:1:{"audit_chain_note":"PENDING — G8 audit.py promotion required","audit_chain_verified":false,"authority":"NONE","blake2b_marker_match":true,"cram_file_count_match":true,"destination_node":"local","failure_reasons":[],"frames":300,"generated_at_utc":"20260516T084757Z","human_review_required":true,"lane2_authority_leak":false,"load_ratio":0.9963,"lock_prohibited":true,"lock_state":"PRE_LOCK_CANDIDATE","mismatch_count":0,"node":"jackjack","phase":"PHASE_3_PI_TO_PI_READINESS","remote_compare_note":null,"remote_mode":false,"result_set_hash_match":true,"rsync_baseline_s":0.0806,"rsync_blocked":false,"rsync_loaded_s":0.0803,"rsync_priority_verified":true,"run_id":"04f98369-c30f-4dc1-8c39-e2f4e81bd1b4","schema":"ph6.oi03.pi_to_pi_readiness.v1","source_node":"pi5-worker","status":"PASS_LOCAL","verdict_log_hash_match":true,"work_dir":"/home/jack/ph6/cram_pu/runtime/oi03_phase3_20260516T084757Z"}
+PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md:304:| 5     | 04_OPEN_GATES.md          |
+PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md:319:* active STOP-SHIP gates
+PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md:468:## Current STOP-SHIP Items
+PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md:942:| S-08 | Human sign-off on manifest completeness | OPEN |
+PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md:943:| S-09 | Governance manifest version reviewed for completeness | OPEN |
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/RECEIPTS/OI03_PHASE2_HASH_TRANSFER_20260516T084619Z.json:1:{"audit_chain_note":"PENDING — audit.py not yet promoted to canonical path","audit_chain_verified":false,"authority":"NONE","blake2b_content_match":true,"blake2b_count_match":true,"cram_file_count_match":true,"dest_blake2b_count":206,"dest_cram_file_count":206,"dest_result_set_hash":"a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660","dest_verdict_log_hash":"b72a6d9a4dc37b91486fb1cbaeb6d6010b2ab92e64109be9ca7c47eec123bea8","doctrine":"A transferred hash only has evidentiary weight after the export path proves it cannot be starved. Phase 1 precedes Phase 2.","failure_reasons":[],"generated_at_utc":"20260516T084619Z","mismatch_count":0,"node":"jackjack","phase":"PHASE_2_HASH_TRANSFER","pipeline_packets":300,"result_set_hash_match":true,"rsync_exit_code":0,"rsync_ok":true,"run_id":"96d62df2-6829-4613-87e4-2e74658886e9","schema":"ph6.oi03.hash_transfer.v1","source_blake2b_count":206,"source_cram_file_count":206,"source_result_set_hash":"a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660","source_verdict_log_hash":"b72a6d9a4dc37b91486fb1cbaeb6d6010b2ab92e64109be9ca7c47eec123bea8","status":"PASS","verdict_log_hash_match":true,"work_dir":"/home/jack/ph6/cram_pu/runtime/oi03_phase2_20260516T084619Z"}
+PH6_SOURCE/GOVERNANCE/ingest_classification.json:21:    "GAP":     "Unresolved risks, open blockers, known unknowns. Must be explicit before any STOP-SHIP gate can close.",
+PH6_SOURCE/GOVERNANCE/governance_manifest.json:70:      "status": "OPEN",
+PH6_SOURCE/GOVERNANCE/governance_manifest.json:77:      "status": "OPEN",
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_05_REPLAY_PARITY.md:5:Status:       OPEN
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_02_PI_TO_PI_TRANSFER.md:5:Status:       OPEN
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_02_PI_TO_PI_TRANSFER.md:105:- Any partial CRAM-A write remained incomplete
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_01B_ADVISORY_EXPANSION.md:5:Status:        OPEN
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_01B_ADVISORY_EXPANSION.md:232:C01B does not close any STOP-SHIP gap directly. It provides:
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:8:  "default_campaign_state": "OPEN",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:79:      "closure_status": "OPEN"
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:120:      "closure_status": "OPEN"
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:155:      "closure_status": "OPEN"
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:186:        "partial record promoted",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:192:      "closure_status": "OPEN"
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:230:      "closure_status": "OPEN"
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:269:      "closure_status": "OPEN"
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:306:      "closure_status": "OPEN"
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:346:      "closure_status": "OPEN"
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:425:      "production_clearance_note": "Maximum result is LOCAL_PI_EVIDENCE_SET_COMPLETE_PENDING_REVIEW. Production clearance requires EVC-05 human gate review.",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:426:      "closure_status": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:440:      "maximum_result_without_review": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:462:      "closure_status": "OPEN",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:476:      "maximum_result_without_review": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:478:      "closure_status": "OPEN",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:492:      "maximum_result_without_review": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:494:      "closure_status": "OPEN",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:568:      "maximum_automatic_result": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:570:      "closure_status": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:576:      "closure_status": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:578:      "maximum_automatic_result": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:617:      "closure_status": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:619:      "maximum_automatic_result": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:658:      "closure_status": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:660:      "maximum_automatic_result": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:700:      "closure_status": "OPEN",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:702:      "maximum_automatic_result": "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:799:      "OPEN",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:804:      "PASS_PENDING_REVIEW",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:807:    "initial_state": "OPEN",
+PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json:827:      "partial_run_under_300_frames",
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_04_CRASH_RECOVERY.md:5:Status:       OPEN
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_04_CRASH_RECOVERY.md:17:a run, CRAM-A state remains consistent: no partial authoritative commits,
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_04_CRASH_RECOVERY.md:36:Verify no partial authoritative commit exists.
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_04_CRASH_RECOVERY.md:37:Verify tmp files are either complete or abandoned (not partially renamed).
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_04_CRASH_RECOVERY.md:63:- tmp files that exist without corresponding final files → partial write (FAIL)
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_04_CRASH_RECOVERY.md:112:- [ ] No partial authoritative CRAM-A commit found in any scenario
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_04_CRASH_RECOVERY.md:124:- Any partial authoritative commit found (tmp renamed but hash missing)
+PH6_SOURCE/VALIDATION/campaign_matrix.json:20:    "production_clearance_note": "Production clearance may not be declared until all campaigns and STOP-SHIP gates are closed by human-reviewed evidence."
+PH6_SOURCE/VALIDATION/campaign_matrix.json:102:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/VALIDATION/campaign_matrix.json:103:      "status_note": "OI-03 Phases 1 (RSYNC priority zero), 2 (result-set hash identity), and 3 (local readiness runner) all passed in local mode. Remote Pi-to-Pi transfer still required. OI-03 remains STOP-SHIP until remote test passes.",
+PH6_SOURCE/VALIDATION/campaign_matrix.json:189:      "status": "OPEN",
+PH6_SOURCE/VALIDATION/campaign_matrix.json:191:      "objective": "Human-conducted gate review after all prior campaigns pass and all STOP-SHIP items are closed. This is the only path to production clearance. No software artifact, unit test, or AI output may substitute for this review.",
+PH6_SOURCE/VALIDATION/campaign_matrix.json:222:      "fail_condition": "Any prerequisite not met. Any open STOP-SHIP gate. AI claims production clearance without human review.",
+PH6_SOURCE/VALIDATION/campaign_matrix.json:236:      "status": "OPEN"
+PH6_SOURCE/VALIDATION/campaign_matrix.json:242:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/VALIDATION/campaign_matrix.json:243:      "status_note": "Local phases 1-3 passed. Remote network-bound transfer is the remaining required evidence. STOP-SHIP classification unchanged until remote pass."
+PH6_SOURCE/06_HANDOFF/SESSION_CLOSEOUT_TEMPLATE.md:19:OPEN ITEMS:
+PH6_SOURCE/06_HANDOFF/SESSION_CLOSEOUT_TEMPLATE.md:71:Every open item must appear in OPEN ITEMS.
+PH6_SOURCE/EVIDENCE_CAMPAIGNS/CAMPAIGN_03_RESOURCE_PRESSURE_RSYNC.md:5:Status:       OPEN
+PH6_SOURCE/builds/minimal_ingest.txt:59:| **DRIFT_FAIL** | Architectural violation state — halt and audit | failure, error, mismatch |
+PH6_SOURCE/builds/minimal_ingest.txt:60:| **HRG9** | The production-clearance hardware replay evidence gate — CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |
+PH6_SOURCE/builds/minimal_ingest.txt:61:| **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |
+PH6_SOURCE/builds/minimal_ingest.txt:91:DRIFT_FAIL
+PH6_SOURCE/builds/minimal_ingest.txt:189:      "status": "OPEN",
+PH6_SOURCE/builds/minimal_ingest.txt:196:      "status": "OPEN",
+PH6_SOURCE/builds/minimal_ingest.txt:432:      "certification_implication": "STOP-SHIP — PH6-CERT run is invalid. Certification cannot proceed.",
+PH6_SOURCE/builds/minimal_ingest.txt:476:        "STOP-SHIP gate is open (OI-01, OI-03) — noted for traceability, does not block AI session work",
+PH6_SOURCE/builds/minimal_ingest.txt:494:      "No open STOP-SHIP gates (OI-01, OI-03) unless formally waived"
+PH6_SOURCE/builds/minimal_ingest.txt:816:    { "id": "OI-01", "description": "Hailo hardware integration incomplete", "status": "OPEN" },
+PH6_SOURCE/builds/minimal_ingest.txt:817:    { "id": "OI-03", "description": "Real Pi-to-Pi live transfer not yet fully certified", "status": "OPEN" }
+PH6_SOURCE/builds/minimal_ingest.txt:843:## 7. OPEN ITEM REGISTER
+PH6_SOURCE/builds/minimal_ingest.txt:847:| OI-01 | Hailo hardware integration              | OPEN   | Yes (STOP-SHIP)    | Hardware run + integration report         |
+PH6_SOURCE/builds/minimal_ingest.txt:848:| OI-03 | Real Pi-to-Pi live transfer             | OPEN   | Yes (STOP-SHIP)    | Transfer log + replay proof               |
+PH6_SOURCE/builds/minimal_ingest.txt:851:**HRG9 is CLOSED. Do not regenerate HRG9 artifacts. Do not list HRG9 as STOP-SHIP.**
+PH6_SOURCE/builds/minimal_ingest.txt:939:> "OI-01 and OI-03 are OPEN STOP-SHIP gates. This patch does not close them. Human closure required."
+PH6_SOURCE/builds/minimal_ingest.txt:964:- [ ] OI-01 and OI-03 remain OPEN unless human-authorized closure evidence is provided.
+PH6_SOURCE/builds/minimal_ingest.txt:984:│  STOP-SHIP gates:          OI-01, OI-03              │
+PH6_SOURCE/builds/minimal_ingest.txt:1067:   - STOP-SHIP rules
+PH6_SOURCE/builds/minimal_ingest.txt:1325:  AI_ENTRY_INDEX.md           HRG9 OPEN → CLOSED
+PH6_SOURCE/builds/minimal_ingest.txt:1760:  - do not claim the gap is resolved based on partial evidence
+PH6_SOURCE/builds/minimal_ingest.txt:1767:STOP-SHIP gates (OI-01, OI-03):
+PH6_SOURCE/builds/minimal_ingest.txt:1815:DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence
+PH6_SOURCE/builds/minimal_ingest.txt:1853:│  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   │
+PH6_SOURCE/builds/minimal_ingest.txt:2280:| OI-01      | Hailo wiring deferred pending new Raspberry Pi 5          | HIGH     | Yes       | Hardware installed and verified        | OPEN   |
+PH6_SOURCE/builds/minimal_ingest.txt:2281:| OI-03      | Real Pi-to-Pi live transfer not yet remotely verified     | CRITICAL | Yes       | Second Pi transfer with hash continuity | OPEN  |
+PH6_SOURCE/builds/minimal_ingest.txt:2976:Violation of any containment rule triggers DRIFT_FAIL.
+PH6_SOURCE/builds/minimal_ingest.txt:3109:# 10. DRIFT_FAIL Triggers
+PH6_SOURCE/builds/minimal_ingest.txt:3111:Declare DRIFT_FAIL if any of the following occur:
+PH6_SOURCE/builds/governance_ingest.txt:59:| **DRIFT_FAIL** | Architectural violation state — halt and audit | failure, error, mismatch |
+PH6_SOURCE/builds/governance_ingest.txt:60:| **HRG9** | The production-clearance hardware replay evidence gate — CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |
+PH6_SOURCE/builds/governance_ingest.txt:61:| **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |
+PH6_SOURCE/builds/governance_ingest.txt:91:DRIFT_FAIL
+PH6_SOURCE/builds/governance_ingest.txt:189:      "status": "OPEN",
+PH6_SOURCE/builds/governance_ingest.txt:196:      "status": "OPEN",
+PH6_SOURCE/builds/governance_ingest.txt:432:      "certification_implication": "STOP-SHIP — PH6-CERT run is invalid. Certification cannot proceed.",
+PH6_SOURCE/builds/governance_ingest.txt:476:        "STOP-SHIP gate is open (OI-01, OI-03) — noted for traceability, does not block AI session work",
+PH6_SOURCE/builds/governance_ingest.txt:494:      "No open STOP-SHIP gates (OI-01, OI-03) unless formally waived"
+PH6_SOURCE/builds/governance_ingest.txt:816:    { "id": "OI-01", "description": "Hailo hardware integration incomplete", "status": "OPEN" },
+PH6_SOURCE/builds/governance_ingest.txt:817:    { "id": "OI-03", "description": "Real Pi-to-Pi live transfer not yet fully certified", "status": "OPEN" }
+PH6_SOURCE/builds/governance_ingest.txt:843:## 7. OPEN ITEM REGISTER
+PH6_SOURCE/builds/governance_ingest.txt:847:| OI-01 | Hailo hardware integration              | OPEN   | Yes (STOP-SHIP)    | Hardware run + integration report         |
+PH6_SOURCE/builds/governance_ingest.txt:848:| OI-03 | Real Pi-to-Pi live transfer             | OPEN   | Yes (STOP-SHIP)    | Transfer log + replay proof               |
+PH6_SOURCE/builds/governance_ingest.txt:851:**HRG9 is CLOSED. Do not regenerate HRG9 artifacts. Do not list HRG9 as STOP-SHIP.**
+PH6_SOURCE/builds/governance_ingest.txt:939:> "OI-01 and OI-03 are OPEN STOP-SHIP gates. This patch does not close them. Human closure required."
+PH6_SOURCE/builds/governance_ingest.txt:964:- [ ] OI-01 and OI-03 remain OPEN unless human-authorized closure evidence is provided.
+PH6_SOURCE/builds/governance_ingest.txt:984:│  STOP-SHIP gates:          OI-01, OI-03              │
+PH6_SOURCE/builds/governance_ingest.txt:1067:   - STOP-SHIP rules
+PH6_SOURCE/builds/governance_ingest.txt:1325:  AI_ENTRY_INDEX.md           HRG9 OPEN → CLOSED
+PH6_SOURCE/builds/governance_ingest.txt:1760:  - do not claim the gap is resolved based on partial evidence
+PH6_SOURCE/builds/governance_ingest.txt:1767:STOP-SHIP gates (OI-01, OI-03):
+PH6_SOURCE/builds/governance_ingest.txt:1815:DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence
+PH6_SOURCE/builds/governance_ingest.txt:1853:│  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   │
+PH6_SOURCE/builds/governance_ingest.txt:2280:| OI-01      | Hailo wiring deferred pending new Raspberry Pi 5          | HIGH     | Yes       | Hardware installed and verified        | OPEN   |
+PH6_SOURCE/builds/governance_ingest.txt:2281:| OI-03      | Real Pi-to-Pi live transfer not yet remotely verified     | CRITICAL | Yes       | Second Pi transfer with hash continuity | OPEN  |
+PH6_SOURCE/builds/governance_ingest.txt:2976:Violation of any containment rule triggers DRIFT_FAIL.
+PH6_SOURCE/builds/governance_ingest.txt:3109:# 10. DRIFT_FAIL Triggers
+PH6_SOURCE/builds/governance_ingest.txt:3111:Declare DRIFT_FAIL if any of the following occur:
+PH6_SOURCE/builds/governance_ingest.txt:3252:STOP-SHIP: OI-01 (Hailo hardware-gated) and OI-03 (real Pi-to-Pi transfer not verified).
+PH6_SOURCE/builds/governance_ingest.txt:3399:OI-01:                OPEN / STOP-SHIP — Hailo hardware-gated
+PH6_SOURCE/builds/governance_ingest.txt:3400:OI-03:                OPEN / STOP-SHIP — Real Pi-to-Pi transfer not yet certified
+PH6_SOURCE/builds/governance_ingest.txt:3453:- Update the gap register for non-STOP-SHIP items when evidence is confirmed
+PH6_SOURCE/builds/governance_ingest.txt:3524:- A STOP-SHIP item is closed
+PH6_SOURCE/builds/governance_ingest.txt:3526:- A new STOP-SHIP item is added
+PH6_SOURCE/builds/governance_ingest.txt:3617:## Current STOP-SHIP Items
+PH6_SOURCE/builds/governance_ingest.txt:3723:open STOP-SHIP:    OI-01, OI-03 (hardware-gated; do not falsely close)
+PH6_SOURCE/builds/governance_ingest.txt:3883:Status:       OPEN — awaiting second Pi 5
+PH6_SOURCE/builds/governance_ingest.txt:3893:OI-03 is a STOP-SHIP gate. The loopback variant was proven (commit a95e552).
+PH6_SOURCE/builds/governance_ingest.txt:4051:OI-03: OPEN
+PH6_SOURCE/builds/governance_ingest.txt:4398:OPEN ITEMS:
+PH6_SOURCE/builds/governance_ingest.txt:4450:Every open item must appear in OPEN ITEMS.
+PH6_SOURCE/builds/governance_ingest.txt:4556:Production clearance requires all campaigns and STOP-SHIP gates closed
+PH6_SOURCE/builds/governance_ingest.txt:4568:OPEN ITEMS:          HARDWARE / RUNTIME / ENDURANCE EVIDENCE REQUIRED
+PH6_SOURCE/builds/governance_ingest.txt:4585:| Campaign | Gap Closed                  | Closes STOP-SHIP | Evidence Class  | Status |
+PH6_SOURCE/builds/governance_ingest.txt:4587:| EVC-01   | crash_receipt_continuity    | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/governance_ingest.txt:4588:| EVC-02   | long_run_chain_behavior     | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/governance_ingest.txt:4589:| EVC-03   | remote_transfer_chain       | OI-03            | HARDWARE_RUNTIME | OPEN  |
+PH6_SOURCE/builds/governance_ingest.txt:4590:| EVC-04   | verdict_metric_payload_replay | No             | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/governance_ingest.txt:4591:| EVC-05   | production_clearance        | —                | HUMAN_REVIEW    | OPEN   |
+PH6_SOURCE/builds/governance_ingest.txt:4674:**Closes STOP-SHIP:** OI-03
+PH6_SOURCE/builds/governance_ingest.txt:4773:Any prerequisite not met. Any open STOP-SHIP gate. AI claims production
+PH6_SOURCE/builds/governance_ingest.txt:4795:## Open STOP-SHIP Gates
+PH6_SOURCE/builds/governance_ingest.txt:4799:| OI-01 | Hailo hardware integration incomplete | Hardware run + report | OPEN |
+PH6_SOURCE/builds/governance_ingest.txt:4800:| OI-03 | Real Pi-to-Pi live transfer not yet certified | EVC-03 | OPEN |
+PH6_SOURCE/builds/governance_ingest.txt:4825:    "production_clearance_note": "Production clearance may not be declared until all campaigns and STOP-SHIP gates are closed by human-reviewed evidence."
+PH6_SOURCE/builds/governance_ingest.txt:4907:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/builds/governance_ingest.txt:4908:      "status_note": "OI-03 Phases 1 (RSYNC priority zero), 2 (result-set hash identity), and 3 (local readiness runner) all passed in local mode. Remote Pi-to-Pi transfer still required. OI-03 remains STOP-SHIP until remote test passes.",
+PH6_SOURCE/builds/governance_ingest.txt:4994:      "status": "OPEN",
+PH6_SOURCE/builds/governance_ingest.txt:4996:      "objective": "Human-conducted gate review after all prior campaigns pass and all STOP-SHIP items are closed. This is the only path to production clearance. No software artifact, unit test, or AI output may substitute for this review.",
+PH6_SOURCE/builds/governance_ingest.txt:5027:      "fail_condition": "Any prerequisite not met. Any open STOP-SHIP gate. AI claims production clearance without human review.",
+PH6_SOURCE/builds/governance_ingest.txt:5041:      "status": "OPEN"
+PH6_SOURCE/builds/governance_ingest.txt:5047:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/builds/governance_ingest.txt:5048:      "status_note": "Local phases 1-3 passed. Remote network-bound transfer is the remaining required evidence. STOP-SHIP classification unchanged until remote pass."
+PH6_SOURCE/builds/governance_ingest.txt:5085:             Updates require human authorization for STOP-SHIP items.
+PH6_SOURCE/builds/governance_ingest.txt:5086:             AI may update status of OPEN/DEFERRED non-STOP-SHIP items only.
+PH6_SOURCE/builds/governance_ingest.txt:5093:| Gap ID                         | Status    | STOP-SHIP? | Evidence Required                          | Closure Authority    | Closure File / Commit            |
+PH6_SOURCE/builds/governance_ingest.txt:5095:| OI-01                         | OPEN      | YES        | Hailo hardware run + integration report     | Human only           | TBD                              |
+PH6_SOURCE/builds/governance_ingest.txt:5096:| OI-03                         | OPEN      | YES        | Real Pi-to-Pi transfer log + replay proof   | Human only           | TBD                              |
+PH6_SOURCE/builds/governance_ingest.txt:5100:| 300-frame coherence run       | OPEN      | No         | Campaign 01 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01   |
+PH6_SOURCE/builds/governance_ingest.txt:5101:| Advisory expansion (Swarm)    | OPEN      | No         | Campaign 01B receipt; C01 must close first  | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01B  |
+PH6_SOURCE/builds/governance_ingest.txt:5102:| Pi-to-Pi live transfer        | OPEN      | YES        | Campaign 02 receipt (satisfies OI-03)       | Human + Campaign 02  | EVIDENCE_CAMPAIGNS/CAMPAIGN_02   |
+PH6_SOURCE/builds/governance_ingest.txt:5104:| GAP-16B: USB disconnect       | OPEN      | No         | Isolation test: video-only 5+ min           | Human after evidence | EVIDENCE_CAMPAIGNS/GAPS/GAP-16   |
+PH6_SOURCE/builds/governance_ingest.txt:5105:| Resource pressure RSYNC       | OPEN      | No         | Campaign 03 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_03   |
+PH6_SOURCE/builds/governance_ingest.txt:5106:| Crash recovery                | OPEN      | No         | Campaign 04 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_04   |
+PH6_SOURCE/builds/governance_ingest.txt:5107:| Replay parity                 | OPEN      | No         | Campaign 05 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_05   |
+PH6_SOURCE/builds/governance_ingest.txt:5115:| OPEN     | Gap exists; evidence not yet collected                                   |
+PH6_SOURCE/builds/governance_ingest.txt:5122:## STOP-SHIP Rules
+PH6_SOURCE/builds/governance_ingest.txt:5124:STOP-SHIP gaps (OI-01, OI-03) cannot be closed by:
+PH6_SOURCE/builds/governance_ingest.txt:5150:### For non-STOP-SHIP gaps
+PH6_SOURCE/builds/governance_ingest.txt:5153:### For STOP-SHIP gaps (OI-01, OI-03)
+PH6_SOURCE/builds/governance_ingest.txt:5157:Add a row with Status = OPEN, note evidence required and closure authority.
+PH6_SOURCE/builds/validation_ingest.txt:59:| **DRIFT_FAIL** | Architectural violation state — halt and audit | failure, error, mismatch |
+PH6_SOURCE/builds/validation_ingest.txt:60:| **HRG9** | The production-clearance hardware replay evidence gate — CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |
+PH6_SOURCE/builds/validation_ingest.txt:61:| **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |
+PH6_SOURCE/builds/validation_ingest.txt:91:DRIFT_FAIL
+PH6_SOURCE/builds/validation_ingest.txt:189:      "status": "OPEN",
+PH6_SOURCE/builds/validation_ingest.txt:196:      "status": "OPEN",
+PH6_SOURCE/builds/validation_ingest.txt:432:      "certification_implication": "STOP-SHIP — PH6-CERT run is invalid. Certification cannot proceed.",
+PH6_SOURCE/builds/validation_ingest.txt:476:        "STOP-SHIP gate is open (OI-01, OI-03) — noted for traceability, does not block AI session work",
+PH6_SOURCE/builds/validation_ingest.txt:494:      "No open STOP-SHIP gates (OI-01, OI-03) unless formally waived"
+PH6_SOURCE/builds/validation_ingest.txt:816:    { "id": "OI-01", "description": "Hailo hardware integration incomplete", "status": "OPEN" },
+PH6_SOURCE/builds/validation_ingest.txt:817:    { "id": "OI-03", "description": "Real Pi-to-Pi live transfer not yet fully certified", "status": "OPEN" }
+PH6_SOURCE/builds/validation_ingest.txt:843:## 7. OPEN ITEM REGISTER
+PH6_SOURCE/builds/validation_ingest.txt:847:| OI-01 | Hailo hardware integration              | OPEN   | Yes (STOP-SHIP)    | Hardware run + integration report         |
+PH6_SOURCE/builds/validation_ingest.txt:848:| OI-03 | Real Pi-to-Pi live transfer             | OPEN   | Yes (STOP-SHIP)    | Transfer log + replay proof               |
+PH6_SOURCE/builds/validation_ingest.txt:851:**HRG9 is CLOSED. Do not regenerate HRG9 artifacts. Do not list HRG9 as STOP-SHIP.**
+PH6_SOURCE/builds/validation_ingest.txt:939:> "OI-01 and OI-03 are OPEN STOP-SHIP gates. This patch does not close them. Human closure required."
+PH6_SOURCE/builds/validation_ingest.txt:964:- [ ] OI-01 and OI-03 remain OPEN unless human-authorized closure evidence is provided.
+PH6_SOURCE/builds/validation_ingest.txt:984:│  STOP-SHIP gates:          OI-01, OI-03              │
+PH6_SOURCE/builds/validation_ingest.txt:1067:   - STOP-SHIP rules
+PH6_SOURCE/builds/validation_ingest.txt:1325:  AI_ENTRY_INDEX.md           HRG9 OPEN → CLOSED
+PH6_SOURCE/builds/validation_ingest.txt:1760:  - do not claim the gap is resolved based on partial evidence
+PH6_SOURCE/builds/validation_ingest.txt:1767:STOP-SHIP gates (OI-01, OI-03):
+PH6_SOURCE/builds/validation_ingest.txt:1815:DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence
+PH6_SOURCE/builds/validation_ingest.txt:1853:│  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   │
+PH6_SOURCE/builds/validation_ingest.txt:2280:| OI-01      | Hailo wiring deferred pending new Raspberry Pi 5          | HIGH     | Yes       | Hardware installed and verified        | OPEN   |
+PH6_SOURCE/builds/validation_ingest.txt:2281:| OI-03      | Real Pi-to-Pi live transfer not yet remotely verified     | CRITICAL | Yes       | Second Pi transfer with hash continuity | OPEN  |
+PH6_SOURCE/builds/validation_ingest.txt:2976:Violation of any containment rule triggers DRIFT_FAIL.
+PH6_SOURCE/builds/validation_ingest.txt:3109:# 10. DRIFT_FAIL Triggers
+PH6_SOURCE/builds/validation_ingest.txt:3111:Declare DRIFT_FAIL if any of the following occur:
+PH6_SOURCE/builds/validation_ingest.txt:3252:STOP-SHIP: OI-01 (Hailo hardware-gated) and OI-03 (real Pi-to-Pi transfer not verified).
+PH6_SOURCE/builds/validation_ingest.txt:3399:OI-01:                OPEN / STOP-SHIP — Hailo hardware-gated
+PH6_SOURCE/builds/validation_ingest.txt:3400:OI-03:                OPEN / STOP-SHIP — Real Pi-to-Pi transfer not yet certified
+PH6_SOURCE/builds/validation_ingest.txt:3453:- Update the gap register for non-STOP-SHIP items when evidence is confirmed
+PH6_SOURCE/builds/validation_ingest.txt:3524:- A STOP-SHIP item is closed
+PH6_SOURCE/builds/validation_ingest.txt:3526:- A new STOP-SHIP item is added
+PH6_SOURCE/builds/validation_ingest.txt:3617:## Current STOP-SHIP Items
+PH6_SOURCE/builds/validation_ingest.txt:3723:open STOP-SHIP:    OI-01, OI-03 (hardware-gated; do not falsely close)
+PH6_SOURCE/builds/validation_ingest.txt:3883:Status:       OPEN — awaiting second Pi 5
+PH6_SOURCE/builds/validation_ingest.txt:3893:OI-03 is a STOP-SHIP gate. The loopback variant was proven (commit a95e552).
+PH6_SOURCE/builds/validation_ingest.txt:4051:OI-03: OPEN
+PH6_SOURCE/builds/validation_ingest.txt:4398:OPEN ITEMS:
+PH6_SOURCE/builds/validation_ingest.txt:4450:Every open item must appear in OPEN ITEMS.
+PH6_SOURCE/builds/validation_ingest.txt:4556:Production clearance requires all campaigns and STOP-SHIP gates closed
+PH6_SOURCE/builds/validation_ingest.txt:4568:OPEN ITEMS:          HARDWARE / RUNTIME / ENDURANCE EVIDENCE REQUIRED
+PH6_SOURCE/builds/validation_ingest.txt:4585:| Campaign | Gap Closed                  | Closes STOP-SHIP | Evidence Class  | Status |
+PH6_SOURCE/builds/validation_ingest.txt:4587:| EVC-01   | crash_receipt_continuity    | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/validation_ingest.txt:4588:| EVC-02   | long_run_chain_behavior     | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/validation_ingest.txt:4589:| EVC-03   | remote_transfer_chain       | OI-03            | HARDWARE_RUNTIME | OPEN  |
+PH6_SOURCE/builds/validation_ingest.txt:4590:| EVC-04   | verdict_metric_payload_replay | No             | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/validation_ingest.txt:4591:| EVC-05   | production_clearance        | —                | HUMAN_REVIEW    | OPEN   |
+PH6_SOURCE/builds/validation_ingest.txt:4674:**Closes STOP-SHIP:** OI-03
+PH6_SOURCE/builds/validation_ingest.txt:4773:Any prerequisite not met. Any open STOP-SHIP gate. AI claims production
+PH6_SOURCE/builds/validation_ingest.txt:4795:## Open STOP-SHIP Gates
+PH6_SOURCE/builds/validation_ingest.txt:4799:| OI-01 | Hailo hardware integration incomplete | Hardware run + report | OPEN |
+PH6_SOURCE/builds/validation_ingest.txt:4800:| OI-03 | Real Pi-to-Pi live transfer not yet certified | EVC-03 | OPEN |
+PH6_SOURCE/builds/validation_ingest.txt:4825:    "production_clearance_note": "Production clearance may not be declared until all campaigns and STOP-SHIP gates are closed by human-reviewed evidence."
+PH6_SOURCE/builds/validation_ingest.txt:4907:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/builds/validation_ingest.txt:4908:      "status_note": "OI-03 Phases 1 (RSYNC priority zero), 2 (result-set hash identity), and 3 (local readiness runner) all passed in local mode. Remote Pi-to-Pi transfer still required. OI-03 remains STOP-SHIP until remote test passes.",
+PH6_SOURCE/builds/validation_ingest.txt:4994:      "status": "OPEN",
+PH6_SOURCE/builds/validation_ingest.txt:4996:      "objective": "Human-conducted gate review after all prior campaigns pass and all STOP-SHIP items are closed. This is the only path to production clearance. No software artifact, unit test, or AI output may substitute for this review.",
+PH6_SOURCE/builds/validation_ingest.txt:5027:      "fail_condition": "Any prerequisite not met. Any open STOP-SHIP gate. AI claims production clearance without human review.",
+PH6_SOURCE/builds/validation_ingest.txt:5041:      "status": "OPEN"
+PH6_SOURCE/builds/validation_ingest.txt:5047:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/builds/validation_ingest.txt:5048:      "status_note": "Local phases 1-3 passed. Remote network-bound transfer is the remaining required evidence. STOP-SHIP classification unchanged until remote pass."
+PH6_SOURCE/builds/validation_ingest.txt:5081:Status:       OPEN
+PH6_SOURCE/builds/validation_ingest.txt:5288:- [ ] All CRAM-A writes completed (no partial writes, no orphaned tmp files)
+PH6_SOURCE/builds/validation_ingest.txt:5365:Status:        OPEN
+PH6_SOURCE/builds/validation_ingest.txt:5592:C01B does not close any STOP-SHIP gap directly. It provides:
+PH6_SOURCE/builds/validation_ingest.txt:5622:Status:       OPEN
+PH6_SOURCE/builds/validation_ingest.txt:5722:- Any partial CRAM-A write remained incomplete
+PH6_SOURCE/builds/validation_ingest.txt:5763:Status:       OPEN
+PH6_SOURCE/builds/validation_ingest.txt:5889:Status:       OPEN
+PH6_SOURCE/builds/validation_ingest.txt:5901:a run, CRAM-A state remains consistent: no partial authoritative commits,
+PH6_SOURCE/builds/validation_ingest.txt:5920:Verify no partial authoritative commit exists.
+PH6_SOURCE/builds/validation_ingest.txt:5921:Verify tmp files are either complete or abandoned (not partially renamed).
+PH6_SOURCE/builds/validation_ingest.txt:5947:- tmp files that exist without corresponding final files → partial write (FAIL)
+PH6_SOURCE/builds/validation_ingest.txt:5996:- [ ] No partial authoritative CRAM-A commit found in any scenario
+PH6_SOURCE/builds/validation_ingest.txt:6008:- Any partial authoritative commit found (tmp renamed but hash missing)
+PH6_SOURCE/builds/validation_ingest.txt:6036:Status:       OPEN
+PH6_SOURCE/builds/validation_ingest.txt:6606:{"audit_chain_note":"PENDING — audit.py not yet promoted to canonical path","audit_chain_verified":false,"authority":"NONE","blake2b_content_match":true,"blake2b_count_match":true,"cram_file_count_match":true,"dest_blake2b_count":206,"dest_cram_file_count":206,"dest_result_set_hash":"a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660","dest_verdict_log_hash":"b72a6d9a4dc37b91486fb1cbaeb6d6010b2ab92e64109be9ca7c47eec123bea8","doctrine":"A transferred hash only has evidentiary weight after the export path proves it cannot be starved. Phase 1 precedes Phase 2.","failure_reasons":[],"generated_at_utc":"20260516T084619Z","mismatch_count":0,"node":"jackjack","phase":"PHASE_2_HASH_TRANSFER","pipeline_packets":300,"result_set_hash_match":true,"rsync_exit_code":0,"rsync_ok":true,"run_id":"96d62df2-6829-4613-87e4-2e74658886e9","schema":"ph6.oi03.hash_transfer.v1","source_blake2b_count":206,"source_cram_file_count":206,"source_result_set_hash":"a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660","source_verdict_log_hash":"b72a6d9a4dc37b91486fb1cbaeb6d6010b2ab92e64109be9ca7c47eec123bea8","status":"PASS","verdict_log_hash_match":true,"work_dir":"/home/jack/ph6/cram_pu/runtime/oi03_phase2_20260516T084619Z"}
+PH6_SOURCE/builds/validation_ingest.txt:6612:{"audit_chain_note":"PENDING — G8 audit.py promotion required","audit_chain_verified":false,"authority":"NONE","blake2b_marker_match":true,"cram_file_count_match":true,"destination_node":"local","failure_reasons":[],"frames":300,"generated_at_utc":"20260516T084757Z","human_review_required":true,"lane2_authority_leak":false,"load_ratio":0.9963,"lock_prohibited":true,"lock_state":"PRE_LOCK_CANDIDATE","mismatch_count":0,"node":"jackjack","phase":"PHASE_3_PI_TO_PI_READINESS","remote_compare_note":null,"remote_mode":false,"result_set_hash_match":true,"rsync_baseline_s":0.0806,"rsync_blocked":false,"rsync_loaded_s":0.0803,"rsync_priority_verified":true,"run_id":"04f98369-c30f-4dc1-8c39-e2f4e81bd1b4","schema":"ph6.oi03.pi_to_pi_readiness.v1","source_node":"pi5-worker","status":"PASS_LOCAL","verdict_log_hash_match":true,"work_dir":"/home/jack/ph6/cram_pu/runtime/oi03_phase3_20260516T084757Z"}
+PH6_SOURCE/builds/forensic_ingest.txt:59:| **DRIFT_FAIL** | Architectural violation state — halt and audit | failure, error, mismatch |
+PH6_SOURCE/builds/forensic_ingest.txt:60:| **HRG9** | The production-clearance hardware replay evidence gate — CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |
+PH6_SOURCE/builds/forensic_ingest.txt:61:| **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |
+PH6_SOURCE/builds/forensic_ingest.txt:91:DRIFT_FAIL
+PH6_SOURCE/builds/forensic_ingest.txt:189:      "status": "OPEN",
+PH6_SOURCE/builds/forensic_ingest.txt:196:      "status": "OPEN",
+PH6_SOURCE/builds/forensic_ingest.txt:432:      "certification_implication": "STOP-SHIP — PH6-CERT run is invalid. Certification cannot proceed.",
+PH6_SOURCE/builds/forensic_ingest.txt:476:        "STOP-SHIP gate is open (OI-01, OI-03) — noted for traceability, does not block AI session work",
+PH6_SOURCE/builds/forensic_ingest.txt:494:      "No open STOP-SHIP gates (OI-01, OI-03) unless formally waived"
+PH6_SOURCE/builds/forensic_ingest.txt:816:    { "id": "OI-01", "description": "Hailo hardware integration incomplete", "status": "OPEN" },
+PH6_SOURCE/builds/forensic_ingest.txt:817:    { "id": "OI-03", "description": "Real Pi-to-Pi live transfer not yet fully certified", "status": "OPEN" }
+PH6_SOURCE/builds/forensic_ingest.txt:843:## 7. OPEN ITEM REGISTER
+PH6_SOURCE/builds/forensic_ingest.txt:847:| OI-01 | Hailo hardware integration              | OPEN   | Yes (STOP-SHIP)    | Hardware run + integration report         |
+PH6_SOURCE/builds/forensic_ingest.txt:848:| OI-03 | Real Pi-to-Pi live transfer             | OPEN   | Yes (STOP-SHIP)    | Transfer log + replay proof               |
+PH6_SOURCE/builds/forensic_ingest.txt:851:**HRG9 is CLOSED. Do not regenerate HRG9 artifacts. Do not list HRG9 as STOP-SHIP.**
+PH6_SOURCE/builds/forensic_ingest.txt:939:> "OI-01 and OI-03 are OPEN STOP-SHIP gates. This patch does not close them. Human closure required."
+PH6_SOURCE/builds/forensic_ingest.txt:964:- [ ] OI-01 and OI-03 remain OPEN unless human-authorized closure evidence is provided.
+PH6_SOURCE/builds/forensic_ingest.txt:984:│  STOP-SHIP gates:          OI-01, OI-03              │
+PH6_SOURCE/builds/forensic_ingest.txt:1067:   - STOP-SHIP rules
+PH6_SOURCE/builds/forensic_ingest.txt:1325:  AI_ENTRY_INDEX.md           HRG9 OPEN → CLOSED
+PH6_SOURCE/builds/forensic_ingest.txt:1760:  - do not claim the gap is resolved based on partial evidence
+PH6_SOURCE/builds/forensic_ingest.txt:1767:STOP-SHIP gates (OI-01, OI-03):
+PH6_SOURCE/builds/forensic_ingest.txt:1815:DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence
+PH6_SOURCE/builds/forensic_ingest.txt:1853:│  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   │
+PH6_SOURCE/builds/forensic_ingest.txt:2280:| OI-01      | Hailo wiring deferred pending new Raspberry Pi 5          | HIGH     | Yes       | Hardware installed and verified        | OPEN   |
+PH6_SOURCE/builds/forensic_ingest.txt:2281:| OI-03      | Real Pi-to-Pi live transfer not yet remotely verified     | CRITICAL | Yes       | Second Pi transfer with hash continuity | OPEN  |
+PH6_SOURCE/builds/forensic_ingest.txt:2976:Violation of any containment rule triggers DRIFT_FAIL.
+PH6_SOURCE/builds/forensic_ingest.txt:3109:# 10. DRIFT_FAIL Triggers
+PH6_SOURCE/builds/forensic_ingest.txt:3111:Declare DRIFT_FAIL if any of the following occur:
+PH6_SOURCE/builds/forensic_ingest.txt:3466:DRIFT_FAIL triggers
+PH6_SOURCE/builds/forensic_ingest.txt:3489:STOP-SHIP criteria
+PH6_SOURCE/builds/forensic_ingest.txt:3498:STOP-SHIP
+PH6_SOURCE/builds/forensic_ingest.txt:3499:HRG9 OPEN / EVIDENCE BLOCKED
+PH6_SOURCE/builds/forensic_ingest.txt:3565:| DRIFT_FAIL      | Canon violation requiring stop and resolution                                       |
+PH6_SOURCE/builds/forensic_ingest.txt:3633:DRIFT_FAIL
+PH6_SOURCE/builds/forensic_ingest.txt:3669:[OPEN]
+PH6_SOURCE/builds/forensic_ingest.txt:3670:[EVIDENCE BLOCKED]
+PH6_SOURCE/builds/forensic_ingest.txt:3672:[STOP-SHIP]
+PH6_SOURCE/builds/forensic_ingest.txt:3684:HRG9 remains OPEN / EVIDENCE BLOCKED.
+PH6_SOURCE/builds/forensic_ingest.txt:3685:Production remains STOP-SHIP.
+PH6_SOURCE/builds/forensic_ingest.txt:3767:DRIFT_FAIL
+PH6_SOURCE/builds/forensic_ingest.txt:3816:[ ] STOP-SHIP status preserved if evidence missing
+PH6_SOURCE/builds/forensic_ingest.txt:3826:DRIFT_FAIL
+PH6_SOURCE/builds/forensic_ingest.txt:4075:Violation condition: `DRIFT_FAIL`
+PH6_SOURCE/builds/forensic_ingest.txt:4349:## 15. DRIFT_FAIL CONDITIONS
+PH6_SOURCE/builds/forensic_ingest.txt:4363:DRIFT_FAIL
+PH6_SOURCE/builds/forensic_ingest.txt:4771:STOP-SHIP
+PH6_SOURCE/builds/forensic_ingest.txt:4832:# 13. STOP-SHIP CONDITIONS
+PH6_SOURCE/builds/forensic_ingest.txt:4834:## SYSTEM REMAINS STOP-SHIP IF:
+PH6_SOURCE/builds/forensic_ingest.txt:4847:HRG9 is CLOSED. Do not treat HRG9 as a current STOP-SHIP reason.
+PH6_SOURCE/builds/forensic_ingest.txt:4849:Current STOP-SHIP reasons (only):
+PH6_SOURCE/builds/forensic_ingest.txt:5057:STOP-SHIP
+PH6_SOURCE/builds/forensic_ingest.txt:5089:9. stale HRG9-OPEN references (HRG9 is CLOSED at 2ef5fd6 — flag any doc treating it as missing or blocking)
+PH6_SOURCE/builds/forensic_ingest.txt:5138:STOP-SHIP: OI-01 hardware-gated, OI-03 real Pi-to-Pi not yet verified.
+PH6_SOURCE/builds/forensic_ingest.txt:5185:Status: ACTIVE — STOP-SHIP (OI-01 hardware-gated, OI-03 real Pi-to-Pi not yet verified; HRG9 CLOSED at 2ef5fd6)
+PH6_SOURCE/builds/forensic_ingest.txt:5518:Deviation = DRIFT_FAIL.
+PH6_SOURCE/builds/forensic_ingest.txt:5669:## 24. DRIFT_FAIL CONDITIONS
+PH6_SOURCE/builds/forensic_ingest.txt:5671:Emit DRIFT_FAIL if:
+PH6_SOURCE/builds/forensic_ingest.txt:5701:**STATUS: OPEN / EVIDENCE BLOCKED**
+PH6_SOURCE/builds/forensic_ingest.txt:5703:STOP-SHIP remains active until ALL pass:
+PH6_SOURCE/builds/forensic_ingest.txt:5715:## 27. CURRENT OPEN GAPS
+PH6_SOURCE/builds/forensic_ingest.txt:5719:| MRAM-S advisory schema population   | OPEN   |
+PH6_SOURCE/builds/forensic_ingest.txt:5720:| Scientific metadata schema          | OPEN   |
+PH6_SOURCE/builds/forensic_ingest.txt:5721:| HRG9 closure                        | OPEN   |
+PH6_SOURCE/builds/forensic_ingest.txt:5722:| audit.py authority_hash defect      | OPEN   |
+PH6_SOURCE/builds/forensic_ingest.txt:5723:| Resource-cage compliance population | OPEN   |
+PH6_SOURCE/builds/forensic_ingest.txt:5724:| Drift Gate verification             | OPEN   |
+PH6_SOURCE/builds/forensic_ingest.txt:5738:| Production        | STOP-SHIP               |
+PH6_SOURCE/builds/forensic_ingest.txt:5739:| HRG9              | OPEN / EVIDENCE BLOCKED |
+PH6_SOURCE/builds/forensic_ingest.txt:5779:Do not clear STOP-SHIP until OI-01 and OI-03 are verified (HRG9 already closed at 2ef5fd6).
+PH6_SOURCE/builds/forensic_ingest.txt:6000:  "release_verdict": "STOP_SHIP_PENDING_PRODUCTION_CLEARANCE",
+PH6_SOURCE/builds/forensic_ingest.txt:6452:## 12. Living CRAM DRIFT_FAIL Rule
+PH6_SOURCE/builds/forensic_ingest.txt:6455:Declare DRIFT_FAIL if:
+PH6_SOURCE/builds/forensic_ingest.txt:6943:| 5     | 04_OPEN_GATES.md          |
+PH6_SOURCE/builds/forensic_ingest.txt:6958:* active STOP-SHIP gates
+PH6_SOURCE/builds/forensic_ingest.txt:7107:## Current STOP-SHIP Items
+PH6_SOURCE/builds/forensic_ingest.txt:7559:| 5     | 04_OPEN_GATES.md          |
+PH6_SOURCE/builds/forensic_ingest.txt:7574:* active STOP-SHIP gates
+PH6_SOURCE/builds/forensic_ingest.txt:7723:## Current STOP-SHIP Items
+PH6_SOURCE/builds/forensic_ingest.txt:8197:| S-08 | Human sign-off on manifest completeness | OPEN |
+PH6_SOURCE/builds/forensic_ingest.txt:8198:| S-09 | Governance manifest version reviewed for completeness | OPEN |
+PH6_SOURCE/builds/forensic_ingest.txt:8413:Replay parity failure is a DRIFT_FAIL event and blocks C01.
+PH6_SOURCE/builds/forensic_ingest.txt:8556:| TODO / FIXME markers | Observational only; no authority relevance unless adjacent to a violation |
+PH6_SOURCE/builds/forensic_ingest.txt:8668:CRITICAL means: STOP-SHIP. Commit blocked. Certification run invalid.
+PH6_SOURCE/builds/forensic_ingest.txt:8680:| CRITICAL | Cert run invalid — STOP-SHIP | Resolve only; no waiver path |
+PH6_SOURCE/builds/forensic_ingest.txt:8689:* No open STOP-SHIP gates (OI-01, OI-03) unless formally waived
+PH6_SOURCE/builds/forensic_ingest.txt:8713:| TODO / FIXME markers (no adjacent violation) | Observational; intent markers are not violations |
+PH6_SOURCE/builds/forensic_ingest.txt:9181:## 9. Token DRIFT_FAIL Additions
+PH6_SOURCE/builds/forensic_ingest.txt:9183:Add these to the master Living CRAM DRIFT_FAIL list:
+PH6_SOURCE/builds/forensic_ingest.txt:9186:Declare DRIFT_FAIL if:
+PH6_SOURCE/builds/forensic_ingest.txt:10327:Expected: DRIFT_FAIL advisory contamination flag.
+PH6_SOURCE/builds/forensic_ingest.txt:10584:breach must produce DRIFT_FAIL.
+PH6_SOURCE/builds/forensic_ingest.txt:10750:Declare DRIFT_FAIL if:
+PH6_SOURCE/builds/forensic_ingest.txt:10944:Status:    OPEN
+PH6_SOURCE/builds/forensic_ingest.txt:10964:# 4. STOP-SHIP ITEMS
+PH6_SOURCE/builds/forensic_ingest.txt:11005:- closure from partial evidence
+PH6_SOURCE/builds/forensic_ingest.txt:11087:OI-01:  OPEN / STOP-SHIP / Hailo hardware-gated
+PH6_SOURCE/builds/forensic_ingest.txt:11088:OI-03:  OPEN / STOP-SHIP / real Pi-to-Pi transfer not verified
+PH6_SOURCE/builds/forensic_ingest.txt:11560:    open_gates = [g for g in gates if g.get("status") == "OPEN"]
+PH6_SOURCE/builds/forensic_ingest.txt:11563:        "detail": f"{len(open_gates)} open STOP-SHIP gate(s): {[g['id'] for g in open_gates]}",
+PH6_SOURCE/builds/forensic_ingest.txt:11565:        "note": "STOP-SHIP gates are informational in preflight — they block production release, not AI session work",
+PH6_SOURCE/builds/forensic_ingest.txt:13514:        if gate.get("status") == "OPEN":
+PH6_SOURCE/builds/forensic_ingest.txt:13517:            add("stop_ship", f"{gid} is OPEN STOP-SHIP — hardware-gated",
+PH6_SOURCE/builds/forensic_ingest.txt:13561:    return section_header(4, "OPEN GAPS REGISTER") + _read(_GAP_REGISTER)
+PH6_SOURCE/builds/forensic_ingest.txt:13602:        "  DRIFT: claiming a STOP-SHIP gate is closed without evidence\n",
+PH6_SOURCE/builds/forensic_ingest.txt:13959:        if gate.get("status") == "OPEN":
+PH6_SOURCE/builds/forensic_ingest.txt:13962:            add(f"LA-STOP-{gid}", f"{gid} is OPEN STOP-SHIP — not closeable by software", "G8",
+PH6_SOURCE/builds/forensic_ingest.txt:13968:        [r"HRG9\s+(?:is\s+)?(?:OPEN|open)",
+PH6_SOURCE/builds/forensic_ingest.txt:13969:         r"HRG9.*(?:STOP-SHIP|stop.ship|still\s+open)"],
+PH6_SOURCE/builds/forensic_ingest.txt:14047:    (r"(?:soft|weak|partial|approximate)\s+authority",
+PH6_SOURCE/builds/forensic_ingest.txt:14421:Shows what is OPEN, what prerequisites are blocking, and what is required to proceed.
+PH6_SOURCE/builds/forensic_ingest.txt:14502:    open_campaigns   = [c for c in campaigns if c["status"] == "OPEN"]
+PH6_SOURCE/builds/forensic_ingest.txt:14503:    closed_campaigns = [c for c in campaigns if c["status"] != "OPEN"]
+PH6_SOURCE/builds/forensic_ingest.txt:14504:    stop_ship_open   = [g for g in matrix.get("open_stop_ship_gates", []) if g["status"] == "OPEN"]
+PH6_SOURCE/builds/forensic_ingest.txt:14553:    print("  OPEN EVIDENCE GAPS:")
+PH6_SOURCE/builds/forensic_ingest.txt:14665:STOP-SHIP: OI-01 (Hailo hardware-gated) and OI-03 (real Pi-to-Pi transfer not verified).
+PH6_SOURCE/builds/forensic_ingest.txt:14812:OI-01:                OPEN / STOP-SHIP — Hailo hardware-gated
+PH6_SOURCE/builds/forensic_ingest.txt:14813:OI-03:                OPEN / STOP-SHIP — Real Pi-to-Pi transfer not yet certified
+PH6_SOURCE/builds/forensic_ingest.txt:14866:- Update the gap register for non-STOP-SHIP items when evidence is confirmed
+PH6_SOURCE/builds/forensic_ingest.txt:14937:- A STOP-SHIP item is closed
+PH6_SOURCE/builds/forensic_ingest.txt:14939:- A new STOP-SHIP item is added
+PH6_SOURCE/builds/forensic_ingest.txt:15030:## Current STOP-SHIP Items
+PH6_SOURCE/builds/forensic_ingest.txt:15136:open STOP-SHIP:    OI-01, OI-03 (hardware-gated; do not falsely close)
+PH6_SOURCE/builds/forensic_ingest.txt:15296:Status:       OPEN — awaiting second Pi 5
+PH6_SOURCE/builds/forensic_ingest.txt:15306:OI-03 is a STOP-SHIP gate. The loopback variant was proven (commit a95e552).
+PH6_SOURCE/builds/forensic_ingest.txt:15464:OI-03: OPEN
+PH6_SOURCE/builds/forensic_ingest.txt:15811:OPEN ITEMS:
+PH6_SOURCE/builds/forensic_ingest.txt:15863:Every open item must appear in OPEN ITEMS.
+PH6_SOURCE/builds/forensic_ingest.txt:15969:Production clearance requires all campaigns and STOP-SHIP gates closed
+PH6_SOURCE/builds/forensic_ingest.txt:15981:OPEN ITEMS:          HARDWARE / RUNTIME / ENDURANCE EVIDENCE REQUIRED
+PH6_SOURCE/builds/forensic_ingest.txt:15998:| Campaign | Gap Closed                  | Closes STOP-SHIP | Evidence Class  | Status |
+PH6_SOURCE/builds/forensic_ingest.txt:16000:| EVC-01   | crash_receipt_continuity    | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/forensic_ingest.txt:16001:| EVC-02   | long_run_chain_behavior     | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/forensic_ingest.txt:16002:| EVC-03   | remote_transfer_chain       | OI-03            | HARDWARE_RUNTIME | OPEN  |
+PH6_SOURCE/builds/forensic_ingest.txt:16003:| EVC-04   | verdict_metric_payload_replay | No             | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/forensic_ingest.txt:16004:| EVC-05   | production_clearance        | —                | HUMAN_REVIEW    | OPEN   |
+PH6_SOURCE/builds/forensic_ingest.txt:16087:**Closes STOP-SHIP:** OI-03
+PH6_SOURCE/builds/forensic_ingest.txt:16186:Any prerequisite not met. Any open STOP-SHIP gate. AI claims production
+PH6_SOURCE/builds/forensic_ingest.txt:16208:## Open STOP-SHIP Gates
+PH6_SOURCE/builds/forensic_ingest.txt:16212:| OI-01 | Hailo hardware integration incomplete | Hardware run + report | OPEN |
+PH6_SOURCE/builds/forensic_ingest.txt:16213:| OI-03 | Real Pi-to-Pi live transfer not yet certified | EVC-03 | OPEN |
+PH6_SOURCE/builds/forensic_ingest.txt:16238:    "production_clearance_note": "Production clearance may not be declared until all campaigns and STOP-SHIP gates are closed by human-reviewed evidence."
+PH6_SOURCE/builds/forensic_ingest.txt:16320:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/builds/forensic_ingest.txt:16321:      "status_note": "OI-03 Phases 1 (RSYNC priority zero), 2 (result-set hash identity), and 3 (local readiness runner) all passed in local mode. Remote Pi-to-Pi transfer still required. OI-03 remains STOP-SHIP until remote test passes.",
+PH6_SOURCE/builds/forensic_ingest.txt:16407:      "status": "OPEN",
+PH6_SOURCE/builds/forensic_ingest.txt:16409:      "objective": "Human-conducted gate review after all prior campaigns pass and all STOP-SHIP items are closed. This is the only path to production clearance. No software artifact, unit test, or AI output may substitute for this review.",
+PH6_SOURCE/builds/forensic_ingest.txt:16440:      "fail_condition": "Any prerequisite not met. Any open STOP-SHIP gate. AI claims production clearance without human review.",
+PH6_SOURCE/builds/forensic_ingest.txt:16454:      "status": "OPEN"
+PH6_SOURCE/builds/forensic_ingest.txt:16460:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/builds/forensic_ingest.txt:16461:      "status_note": "Local phases 1-3 passed. Remote network-bound transfer is the remaining required evidence. STOP-SHIP classification unchanged until remote pass."
+PH6_SOURCE/builds/forensic_ingest.txt:16498:             Updates require human authorization for STOP-SHIP items.
+PH6_SOURCE/builds/forensic_ingest.txt:16499:             AI may update status of OPEN/DEFERRED non-STOP-SHIP items only.
+PH6_SOURCE/builds/forensic_ingest.txt:16506:| Gap ID                         | Status    | STOP-SHIP? | Evidence Required                          | Closure Authority    | Closure File / Commit            |
+PH6_SOURCE/builds/forensic_ingest.txt:16508:| OI-01                         | OPEN      | YES        | Hailo hardware run + integration report     | Human only           | TBD                              |
+PH6_SOURCE/builds/forensic_ingest.txt:16509:| OI-03                         | OPEN      | YES        | Real Pi-to-Pi transfer log + replay proof   | Human only           | TBD                              |
+PH6_SOURCE/builds/forensic_ingest.txt:16513:| 300-frame coherence run       | OPEN      | No         | Campaign 01 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01   |
+PH6_SOURCE/builds/forensic_ingest.txt:16514:| Advisory expansion (Swarm)    | OPEN      | No         | Campaign 01B receipt; C01 must close first  | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01B  |
+PH6_SOURCE/builds/forensic_ingest.txt:16515:| Pi-to-Pi live transfer        | OPEN      | YES        | Campaign 02 receipt (satisfies OI-03)       | Human + Campaign 02  | EVIDENCE_CAMPAIGNS/CAMPAIGN_02   |
+PH6_SOURCE/builds/forensic_ingest.txt:16517:| GAP-16B: USB disconnect       | OPEN      | No         | Isolation test: video-only 5+ min           | Human after evidence | EVIDENCE_CAMPAIGNS/GAPS/GAP-16   |
+PH6_SOURCE/builds/forensic_ingest.txt:16518:| Resource pressure RSYNC       | OPEN      | No         | Campaign 03 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_03   |
+PH6_SOURCE/builds/forensic_ingest.txt:16519:| Crash recovery                | OPEN      | No         | Campaign 04 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_04   |
+PH6_SOURCE/builds/forensic_ingest.txt:16520:| Replay parity                 | OPEN      | No         | Campaign 05 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_05   |
+PH6_SOURCE/builds/forensic_ingest.txt:16528:| OPEN     | Gap exists; evidence not yet collected                                   |
+PH6_SOURCE/builds/forensic_ingest.txt:16535:## STOP-SHIP Rules
+PH6_SOURCE/builds/forensic_ingest.txt:16537:STOP-SHIP gaps (OI-01, OI-03) cannot be closed by:
+PH6_SOURCE/builds/forensic_ingest.txt:16563:### For non-STOP-SHIP gaps
+PH6_SOURCE/builds/forensic_ingest.txt:16566:### For STOP-SHIP gaps (OI-01, OI-03)
+PH6_SOURCE/builds/forensic_ingest.txt:16570:Add a row with Status = OPEN, note evidence required and closure authority.
+PH6_SOURCE/builds/forensic_ingest.txt:16816:Status:       OPEN
+PH6_SOURCE/builds/forensic_ingest.txt:17023:- [ ] All CRAM-A writes completed (no partial writes, no orphaned tmp files)
+PH6_SOURCE/builds/forensic_ingest.txt:17100:Status:        OPEN
+PH6_SOURCE/builds/forensic_ingest.txt:17327:C01B does not close any STOP-SHIP gap directly. It provides:
+PH6_SOURCE/builds/forensic_ingest.txt:17357:Status:       OPEN
+PH6_SOURCE/builds/forensic_ingest.txt:17457:- Any partial CRAM-A write remained incomplete
+PH6_SOURCE/builds/forensic_ingest.txt:17498:Status:       OPEN
+PH6_SOURCE/builds/forensic_ingest.txt:17624:Status:       OPEN
+PH6_SOURCE/builds/forensic_ingest.txt:17636:a run, CRAM-A state remains consistent: no partial authoritative commits,
+PH6_SOURCE/builds/forensic_ingest.txt:17655:Verify no partial authoritative commit exists.
+PH6_SOURCE/builds/forensic_ingest.txt:17656:Verify tmp files are either complete or abandoned (not partially renamed).
+PH6_SOURCE/builds/forensic_ingest.txt:17682:- tmp files that exist without corresponding final files → partial write (FAIL)
+PH6_SOURCE/builds/forensic_ingest.txt:17731:- [ ] No partial authoritative CRAM-A commit found in any scenario
+PH6_SOURCE/builds/forensic_ingest.txt:17743:- Any partial authoritative commit found (tmp renamed but hash missing)
+PH6_SOURCE/builds/forensic_ingest.txt:17771:Status:       OPEN
+PH6_SOURCE/builds/forensic_ingest.txt:18341:{"audit_chain_note":"PENDING — audit.py not yet promoted to canonical path","audit_chain_verified":false,"authority":"NONE","blake2b_content_match":true,"blake2b_count_match":true,"cram_file_count_match":true,"dest_blake2b_count":206,"dest_cram_file_count":206,"dest_result_set_hash":"a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660","dest_verdict_log_hash":"b72a6d9a4dc37b91486fb1cbaeb6d6010b2ab92e64109be9ca7c47eec123bea8","doctrine":"A transferred hash only has evidentiary weight after the export path proves it cannot be starved. Phase 1 precedes Phase 2.","failure_reasons":[],"generated_at_utc":"20260516T084619Z","mismatch_count":0,"node":"jackjack","phase":"PHASE_2_HASH_TRANSFER","pipeline_packets":300,"result_set_hash_match":true,"rsync_exit_code":0,"rsync_ok":true,"run_id":"96d62df2-6829-4613-87e4-2e74658886e9","schema":"ph6.oi03.hash_transfer.v1","source_blake2b_count":206,"source_cram_file_count":206,"source_result_set_hash":"a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660","source_verdict_log_hash":"b72a6d9a4dc37b91486fb1cbaeb6d6010b2ab92e64109be9ca7c47eec123bea8","status":"PASS","verdict_log_hash_match":true,"work_dir":"/home/jack/ph6/cram_pu/runtime/oi03_phase2_20260516T084619Z"}
+PH6_SOURCE/builds/forensic_ingest.txt:18347:{"audit_chain_note":"PENDING — G8 audit.py promotion required","audit_chain_verified":false,"authority":"NONE","blake2b_marker_match":true,"cram_file_count_match":true,"destination_node":"local","failure_reasons":[],"frames":300,"generated_at_utc":"20260516T084757Z","human_review_required":true,"lane2_authority_leak":false,"load_ratio":0.9963,"lock_prohibited":true,"lock_state":"PRE_LOCK_CANDIDATE","mismatch_count":0,"node":"jackjack","phase":"PHASE_3_PI_TO_PI_READINESS","remote_compare_note":null,"remote_mode":false,"result_set_hash_match":true,"rsync_baseline_s":0.0806,"rsync_blocked":false,"rsync_loaded_s":0.0803,"rsync_priority_verified":true,"run_id":"04f98369-c30f-4dc1-8c39-e2f4e81bd1b4","schema":"ph6.oi03.pi_to_pi_readiness.v1","source_node":"pi5-worker","status":"PASS_LOCAL","verdict_log_hash_match":true,"work_dir":"/home/jack/ph6/cram_pu/runtime/oi03_phase3_20260516T084757Z"}
+PH6_SOURCE/builds/forensic_ingest.txt:18485:STOP_SHIP_RECOMMENDATION = LIFT HRG9 STOP-SHIP ONLY
+PH6_SOURCE/builds/forensic_ingest.txt:18629:## STOP-SHIP Decision
+PH6_SOURCE/builds/forensic_ingest.txt:18633:STOP_SHIP_RECOMMENDATION = LIFT HRG9 STOP-SHIP ONLY
+PH6_SOURCE/builds/forensic_ingest.txt:18638:Production is STOP-SHIP for reasons other than HRG9 (OI-01 hardware gate, OI-03 two-Pi).
+PH6_SOURCE/builds/forensic_ingest.txt:18715:  "stop_ship_recommendation": "LIFT HRG9 STOP-SHIP ONLY \u2014 all required checks PASS, no FAIL-level findings",
+PH6_SOURCE/builds/forensic_ingest.txt:19195:| Drift Gate scan               | PENDING               |
+PH6_SOURCE/builds/forensic_ingest.txt:19196:| Six-book compatibility review | PENDING               |
+PH6_SOURCE/builds/forensic_ingest.txt:19197:| Repo audit schema validation  | PENDING               |
+PH6_SOURCE/builds/forensic_ingest.txt:19198:| Canon routing review          | PENDING               |
+PH6_SOURCE/builds/forensic_ingest.txt:19212:| CDG-1.0 governance layer       | NEW / PENDING SEAL     |
+PH6_SOURCE/builds/forensic_ingest.txt:19214:| Production release             | STOP-SHIP (OI-01 hardware-gated, OI-03 real Pi-to-Pi not verified; HRG9 CLOSED at 2ef5fd6) |
+PH6_SOURCE/builds/forensic_ingest.txt:19220:The phrase "STOP-SHIP pending HRG9" used in prior session output was stale.
+PH6_SOURCE/builds/forensic_ingest.txt:19222:Current STOP-SHIP reasons: OI-01 (Hailo hardware-gated) and OI-03 (real Pi-to-Pi transfer not verified).
+PH6_SOURCE/builds/forensic_ingest.txt:19470:| STOP-SHIP        | constitutional veto         |
+PH6_SOURCE/builds/forensic_ingest.txt:19550:| HRG doctrine   | STOP-SHIP authority    |
+PH6_SOURCE/builds/forensic_ingest.txt:19562:| Drift Gate scan            | PENDING             |
+PH6_SOURCE/builds/forensic_ingest.txt:19563:| Canon compatibility review | PENDING             |
+PH6_SOURCE/builds/forensic_ingest.txt:19609:Status: ACTIVE — STOP-SHIP UNTIL HRG9 CLOSURE
+PH6_SOURCE/builds/forensic_ingest.txt:19704:RECOVERY_SWEEP / DRIFT_FAIL
+PH6_SOURCE/builds/forensic_ingest.txt:19848:Production remains STOP-SHIP until all above exist and pass.
+PH6_SOURCE/builds/forensic_ingest.txt:19893:8. Prepare HRG9 closure artifacts but leave production STOP-SHIP until evidence passes.
+PH6_SOURCE/builds/full_canon_ingest.txt:59:| **DRIFT_FAIL** | Architectural violation state — halt and audit | failure, error, mismatch |
+PH6_SOURCE/builds/full_canon_ingest.txt:60:| **HRG9** | The production-clearance hardware replay evidence gate — CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |
+PH6_SOURCE/builds/full_canon_ingest.txt:61:| **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |
+PH6_SOURCE/builds/full_canon_ingest.txt:91:DRIFT_FAIL
+PH6_SOURCE/builds/full_canon_ingest.txt:189:      "status": "OPEN",
+PH6_SOURCE/builds/full_canon_ingest.txt:196:      "status": "OPEN",
+PH6_SOURCE/builds/full_canon_ingest.txt:432:      "certification_implication": "STOP-SHIP — PH6-CERT run is invalid. Certification cannot proceed.",
+PH6_SOURCE/builds/full_canon_ingest.txt:476:        "STOP-SHIP gate is open (OI-01, OI-03) — noted for traceability, does not block AI session work",
+PH6_SOURCE/builds/full_canon_ingest.txt:494:      "No open STOP-SHIP gates (OI-01, OI-03) unless formally waived"
+PH6_SOURCE/builds/full_canon_ingest.txt:816:    { "id": "OI-01", "description": "Hailo hardware integration incomplete", "status": "OPEN" },
+PH6_SOURCE/builds/full_canon_ingest.txt:817:    { "id": "OI-03", "description": "Real Pi-to-Pi live transfer not yet fully certified", "status": "OPEN" }
+PH6_SOURCE/builds/full_canon_ingest.txt:843:## 7. OPEN ITEM REGISTER
+PH6_SOURCE/builds/full_canon_ingest.txt:847:| OI-01 | Hailo hardware integration              | OPEN   | Yes (STOP-SHIP)    | Hardware run + integration report         |
+PH6_SOURCE/builds/full_canon_ingest.txt:848:| OI-03 | Real Pi-to-Pi live transfer             | OPEN   | Yes (STOP-SHIP)    | Transfer log + replay proof               |
+PH6_SOURCE/builds/full_canon_ingest.txt:851:**HRG9 is CLOSED. Do not regenerate HRG9 artifacts. Do not list HRG9 as STOP-SHIP.**
+PH6_SOURCE/builds/full_canon_ingest.txt:939:> "OI-01 and OI-03 are OPEN STOP-SHIP gates. This patch does not close them. Human closure required."
+PH6_SOURCE/builds/full_canon_ingest.txt:964:- [ ] OI-01 and OI-03 remain OPEN unless human-authorized closure evidence is provided.
+PH6_SOURCE/builds/full_canon_ingest.txt:984:│  STOP-SHIP gates:          OI-01, OI-03              │
+PH6_SOURCE/builds/full_canon_ingest.txt:1067:   - STOP-SHIP rules
+PH6_SOURCE/builds/full_canon_ingest.txt:1325:  AI_ENTRY_INDEX.md           HRG9 OPEN → CLOSED
+PH6_SOURCE/builds/full_canon_ingest.txt:1760:  - do not claim the gap is resolved based on partial evidence
+PH6_SOURCE/builds/full_canon_ingest.txt:1767:STOP-SHIP gates (OI-01, OI-03):
+PH6_SOURCE/builds/full_canon_ingest.txt:1815:DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence
+PH6_SOURCE/builds/full_canon_ingest.txt:1853:│  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   │
+PH6_SOURCE/builds/full_canon_ingest.txt:2280:| OI-01      | Hailo wiring deferred pending new Raspberry Pi 5          | HIGH     | Yes       | Hardware installed and verified        | OPEN   |
+PH6_SOURCE/builds/full_canon_ingest.txt:2281:| OI-03      | Real Pi-to-Pi live transfer not yet remotely verified     | CRITICAL | Yes       | Second Pi transfer with hash continuity | OPEN  |
+PH6_SOURCE/builds/full_canon_ingest.txt:2976:Violation of any containment rule triggers DRIFT_FAIL.
+PH6_SOURCE/builds/full_canon_ingest.txt:3109:# 10. DRIFT_FAIL Triggers
+PH6_SOURCE/builds/full_canon_ingest.txt:3111:Declare DRIFT_FAIL if any of the following occur:
+PH6_SOURCE/builds/full_canon_ingest.txt:3466:DRIFT_FAIL triggers
+PH6_SOURCE/builds/full_canon_ingest.txt:3489:STOP-SHIP criteria
+PH6_SOURCE/builds/full_canon_ingest.txt:3498:STOP-SHIP
+PH6_SOURCE/builds/full_canon_ingest.txt:3499:HRG9 OPEN / EVIDENCE BLOCKED
+PH6_SOURCE/builds/full_canon_ingest.txt:3565:| DRIFT_FAIL      | Canon violation requiring stop and resolution                                       |
+PH6_SOURCE/builds/full_canon_ingest.txt:3633:DRIFT_FAIL
+PH6_SOURCE/builds/full_canon_ingest.txt:3669:[OPEN]
+PH6_SOURCE/builds/full_canon_ingest.txt:3670:[EVIDENCE BLOCKED]
+PH6_SOURCE/builds/full_canon_ingest.txt:3672:[STOP-SHIP]
+PH6_SOURCE/builds/full_canon_ingest.txt:3684:HRG9 remains OPEN / EVIDENCE BLOCKED.
+PH6_SOURCE/builds/full_canon_ingest.txt:3685:Production remains STOP-SHIP.
+PH6_SOURCE/builds/full_canon_ingest.txt:3767:DRIFT_FAIL
+PH6_SOURCE/builds/full_canon_ingest.txt:3816:[ ] STOP-SHIP status preserved if evidence missing
+PH6_SOURCE/builds/full_canon_ingest.txt:3826:DRIFT_FAIL
+PH6_SOURCE/builds/full_canon_ingest.txt:4075:Violation condition: `DRIFT_FAIL`
+PH6_SOURCE/builds/full_canon_ingest.txt:4349:## 15. DRIFT_FAIL CONDITIONS
+PH6_SOURCE/builds/full_canon_ingest.txt:4363:DRIFT_FAIL
+PH6_SOURCE/builds/full_canon_ingest.txt:4771:STOP-SHIP
+PH6_SOURCE/builds/full_canon_ingest.txt:4832:# 13. STOP-SHIP CONDITIONS
+PH6_SOURCE/builds/full_canon_ingest.txt:4834:## SYSTEM REMAINS STOP-SHIP IF:
+PH6_SOURCE/builds/full_canon_ingest.txt:4847:HRG9 is CLOSED. Do not treat HRG9 as a current STOP-SHIP reason.
+PH6_SOURCE/builds/full_canon_ingest.txt:4849:Current STOP-SHIP reasons (only):
+PH6_SOURCE/builds/full_canon_ingest.txt:5057:STOP-SHIP
+PH6_SOURCE/builds/full_canon_ingest.txt:5089:9. stale HRG9-OPEN references (HRG9 is CLOSED at 2ef5fd6 — flag any doc treating it as missing or blocking)
+PH6_SOURCE/builds/full_canon_ingest.txt:5138:STOP-SHIP: OI-01 hardware-gated, OI-03 real Pi-to-Pi not yet verified.
+PH6_SOURCE/builds/full_canon_ingest.txt:5185:Status: ACTIVE — STOP-SHIP (OI-01 hardware-gated, OI-03 real Pi-to-Pi not yet verified; HRG9 CLOSED at 2ef5fd6)
+PH6_SOURCE/builds/full_canon_ingest.txt:5518:Deviation = DRIFT_FAIL.
+PH6_SOURCE/builds/full_canon_ingest.txt:5669:## 24. DRIFT_FAIL CONDITIONS
+PH6_SOURCE/builds/full_canon_ingest.txt:5671:Emit DRIFT_FAIL if:
+PH6_SOURCE/builds/full_canon_ingest.txt:5701:**STATUS: OPEN / EVIDENCE BLOCKED**
+PH6_SOURCE/builds/full_canon_ingest.txt:5703:STOP-SHIP remains active until ALL pass:
+PH6_SOURCE/builds/full_canon_ingest.txt:5715:## 27. CURRENT OPEN GAPS
+PH6_SOURCE/builds/full_canon_ingest.txt:5719:| MRAM-S advisory schema population   | OPEN   |
+PH6_SOURCE/builds/full_canon_ingest.txt:5720:| Scientific metadata schema          | OPEN   |
+PH6_SOURCE/builds/full_canon_ingest.txt:5721:| HRG9 closure                        | OPEN   |
+PH6_SOURCE/builds/full_canon_ingest.txt:5722:| audit.py authority_hash defect      | OPEN   |
+PH6_SOURCE/builds/full_canon_ingest.txt:5723:| Resource-cage compliance population | OPEN   |
+PH6_SOURCE/builds/full_canon_ingest.txt:5724:| Drift Gate verification             | OPEN   |
+PH6_SOURCE/builds/full_canon_ingest.txt:5738:| Production        | STOP-SHIP               |
+PH6_SOURCE/builds/full_canon_ingest.txt:5739:| HRG9              | OPEN / EVIDENCE BLOCKED |
+PH6_SOURCE/builds/full_canon_ingest.txt:5779:Do not clear STOP-SHIP until OI-01 and OI-03 are verified (HRG9 already closed at 2ef5fd6).
+PH6_SOURCE/builds/full_canon_ingest.txt:6000:  "release_verdict": "STOP_SHIP_PENDING_PRODUCTION_CLEARANCE",
+PH6_SOURCE/builds/full_canon_ingest.txt:6452:## 12. Living CRAM DRIFT_FAIL Rule
+PH6_SOURCE/builds/full_canon_ingest.txt:6455:Declare DRIFT_FAIL if:
+PH6_SOURCE/builds/full_canon_ingest.txt:6943:| 5     | 04_OPEN_GATES.md          |
+PH6_SOURCE/builds/full_canon_ingest.txt:6958:* active STOP-SHIP gates
+PH6_SOURCE/builds/full_canon_ingest.txt:7107:## Current STOP-SHIP Items
+PH6_SOURCE/builds/full_canon_ingest.txt:7559:| 5     | 04_OPEN_GATES.md          |
+PH6_SOURCE/builds/full_canon_ingest.txt:7574:* active STOP-SHIP gates
+PH6_SOURCE/builds/full_canon_ingest.txt:7723:## Current STOP-SHIP Items
+PH6_SOURCE/builds/full_canon_ingest.txt:8197:| S-08 | Human sign-off on manifest completeness | OPEN |
+PH6_SOURCE/builds/full_canon_ingest.txt:8198:| S-09 | Governance manifest version reviewed for completeness | OPEN |
+PH6_SOURCE/builds/full_canon_ingest.txt:8413:Replay parity failure is a DRIFT_FAIL event and blocks C01.
+PH6_SOURCE/builds/full_canon_ingest.txt:8556:| TODO / FIXME markers | Observational only; no authority relevance unless adjacent to a violation |
+PH6_SOURCE/builds/full_canon_ingest.txt:8668:CRITICAL means: STOP-SHIP. Commit blocked. Certification run invalid.
+PH6_SOURCE/builds/full_canon_ingest.txt:8680:| CRITICAL | Cert run invalid — STOP-SHIP | Resolve only; no waiver path |
+PH6_SOURCE/builds/full_canon_ingest.txt:8689:* No open STOP-SHIP gates (OI-01, OI-03) unless formally waived
+PH6_SOURCE/builds/full_canon_ingest.txt:8713:| TODO / FIXME markers (no adjacent violation) | Observational; intent markers are not violations |
+PH6_SOURCE/builds/full_canon_ingest.txt:9181:## 9. Token DRIFT_FAIL Additions
+PH6_SOURCE/builds/full_canon_ingest.txt:9183:Add these to the master Living CRAM DRIFT_FAIL list:
+PH6_SOURCE/builds/full_canon_ingest.txt:9186:Declare DRIFT_FAIL if:
+PH6_SOURCE/builds/full_canon_ingest.txt:10327:Expected: DRIFT_FAIL advisory contamination flag.
+PH6_SOURCE/builds/full_canon_ingest.txt:10584:breach must produce DRIFT_FAIL.
+PH6_SOURCE/builds/full_canon_ingest.txt:10750:Declare DRIFT_FAIL if:
+PH6_SOURCE/builds/full_canon_ingest.txt:10944:Status:    OPEN
+PH6_SOURCE/builds/full_canon_ingest.txt:10964:# 4. STOP-SHIP ITEMS
+PH6_SOURCE/builds/full_canon_ingest.txt:11005:- closure from partial evidence
+PH6_SOURCE/builds/full_canon_ingest.txt:11087:OI-01:  OPEN / STOP-SHIP / Hailo hardware-gated
+PH6_SOURCE/builds/full_canon_ingest.txt:11088:OI-03:  OPEN / STOP-SHIP / real Pi-to-Pi transfer not verified
+PH6_SOURCE/builds/full_canon_ingest.txt:11560:    open_gates = [g for g in gates if g.get("status") == "OPEN"]
+PH6_SOURCE/builds/full_canon_ingest.txt:11563:        "detail": f"{len(open_gates)} open STOP-SHIP gate(s): {[g['id'] for g in open_gates]}",
+PH6_SOURCE/builds/full_canon_ingest.txt:11565:        "note": "STOP-SHIP gates are informational in preflight — they block production release, not AI session work",
+PH6_SOURCE/builds/full_canon_ingest.txt:13514:        if gate.get("status") == "OPEN":
+PH6_SOURCE/builds/full_canon_ingest.txt:13517:            add("stop_ship", f"{gid} is OPEN STOP-SHIP — hardware-gated",
+PH6_SOURCE/builds/full_canon_ingest.txt:13561:    return section_header(4, "OPEN GAPS REGISTER") + _read(_GAP_REGISTER)
+PH6_SOURCE/builds/full_canon_ingest.txt:13602:        "  DRIFT: claiming a STOP-SHIP gate is closed without evidence\n",
+PH6_SOURCE/builds/full_canon_ingest.txt:13959:        if gate.get("status") == "OPEN":
+PH6_SOURCE/builds/full_canon_ingest.txt:13962:            add(f"LA-STOP-{gid}", f"{gid} is OPEN STOP-SHIP — not closeable by software", "G8",
+PH6_SOURCE/builds/full_canon_ingest.txt:13968:        [r"HRG9\s+(?:is\s+)?(?:OPEN|open)",
+PH6_SOURCE/builds/full_canon_ingest.txt:13969:         r"HRG9.*(?:STOP-SHIP|stop.ship|still\s+open)"],
+PH6_SOURCE/builds/full_canon_ingest.txt:14047:    (r"(?:soft|weak|partial|approximate)\s+authority",
+PH6_SOURCE/builds/full_canon_ingest.txt:14421:Shows what is OPEN, what prerequisites are blocking, and what is required to proceed.
+PH6_SOURCE/builds/full_canon_ingest.txt:14502:    open_campaigns   = [c for c in campaigns if c["status"] == "OPEN"]
+PH6_SOURCE/builds/full_canon_ingest.txt:14503:    closed_campaigns = [c for c in campaigns if c["status"] != "OPEN"]
+PH6_SOURCE/builds/full_canon_ingest.txt:14504:    stop_ship_open   = [g for g in matrix.get("open_stop_ship_gates", []) if g["status"] == "OPEN"]
+PH6_SOURCE/builds/full_canon_ingest.txt:14553:    print("  OPEN EVIDENCE GAPS:")
+PH6_SOURCE/builds/full_canon_ingest.txt:14665:STOP-SHIP: OI-01 (Hailo hardware-gated) and OI-03 (real Pi-to-Pi transfer not verified).
+PH6_SOURCE/builds/full_canon_ingest.txt:14812:OI-01:                OPEN / STOP-SHIP — Hailo hardware-gated
+PH6_SOURCE/builds/full_canon_ingest.txt:14813:OI-03:                OPEN / STOP-SHIP — Real Pi-to-Pi transfer not yet certified
+PH6_SOURCE/builds/full_canon_ingest.txt:14866:- Update the gap register for non-STOP-SHIP items when evidence is confirmed
+PH6_SOURCE/builds/full_canon_ingest.txt:14937:- A STOP-SHIP item is closed
+PH6_SOURCE/builds/full_canon_ingest.txt:14939:- A new STOP-SHIP item is added
+PH6_SOURCE/builds/full_canon_ingest.txt:15030:## Current STOP-SHIP Items
+PH6_SOURCE/builds/full_canon_ingest.txt:15136:open STOP-SHIP:    OI-01, OI-03 (hardware-gated; do not falsely close)
+PH6_SOURCE/builds/full_canon_ingest.txt:15296:Status:       OPEN — awaiting second Pi 5
+PH6_SOURCE/builds/full_canon_ingest.txt:15306:OI-03 is a STOP-SHIP gate. The loopback variant was proven (commit a95e552).
+PH6_SOURCE/builds/full_canon_ingest.txt:15464:OI-03: OPEN
+PH6_SOURCE/builds/full_canon_ingest.txt:15811:OPEN ITEMS:
+PH6_SOURCE/builds/full_canon_ingest.txt:15863:Every open item must appear in OPEN ITEMS.
+PH6_SOURCE/builds/full_canon_ingest.txt:15969:Production clearance requires all campaigns and STOP-SHIP gates closed
+PH6_SOURCE/builds/full_canon_ingest.txt:15981:OPEN ITEMS:          HARDWARE / RUNTIME / ENDURANCE EVIDENCE REQUIRED
+PH6_SOURCE/builds/full_canon_ingest.txt:15998:| Campaign | Gap Closed                  | Closes STOP-SHIP | Evidence Class  | Status |
+PH6_SOURCE/builds/full_canon_ingest.txt:16000:| EVC-01   | crash_receipt_continuity    | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/full_canon_ingest.txt:16001:| EVC-02   | long_run_chain_behavior     | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/full_canon_ingest.txt:16002:| EVC-03   | remote_transfer_chain       | OI-03            | HARDWARE_RUNTIME | OPEN  |
+PH6_SOURCE/builds/full_canon_ingest.txt:16003:| EVC-04   | verdict_metric_payload_replay | No             | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/full_canon_ingest.txt:16004:| EVC-05   | production_clearance        | —                | HUMAN_REVIEW    | OPEN   |
+PH6_SOURCE/builds/full_canon_ingest.txt:16087:**Closes STOP-SHIP:** OI-03
+PH6_SOURCE/builds/full_canon_ingest.txt:16186:Any prerequisite not met. Any open STOP-SHIP gate. AI claims production
+PH6_SOURCE/builds/full_canon_ingest.txt:16208:## Open STOP-SHIP Gates
+PH6_SOURCE/builds/full_canon_ingest.txt:16212:| OI-01 | Hailo hardware integration incomplete | Hardware run + report | OPEN |
+PH6_SOURCE/builds/full_canon_ingest.txt:16213:| OI-03 | Real Pi-to-Pi live transfer not yet certified | EVC-03 | OPEN |
+PH6_SOURCE/builds/full_canon_ingest.txt:16238:    "production_clearance_note": "Production clearance may not be declared until all campaigns and STOP-SHIP gates are closed by human-reviewed evidence."
+PH6_SOURCE/builds/full_canon_ingest.txt:16320:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/builds/full_canon_ingest.txt:16321:      "status_note": "OI-03 Phases 1 (RSYNC priority zero), 2 (result-set hash identity), and 3 (local readiness runner) all passed in local mode. Remote Pi-to-Pi transfer still required. OI-03 remains STOP-SHIP until remote test passes.",
+PH6_SOURCE/builds/full_canon_ingest.txt:16407:      "status": "OPEN",
+PH6_SOURCE/builds/full_canon_ingest.txt:16409:      "objective": "Human-conducted gate review after all prior campaigns pass and all STOP-SHIP items are closed. This is the only path to production clearance. No software artifact, unit test, or AI output may substitute for this review.",
+PH6_SOURCE/builds/full_canon_ingest.txt:16440:      "fail_condition": "Any prerequisite not met. Any open STOP-SHIP gate. AI claims production clearance without human review.",
+PH6_SOURCE/builds/full_canon_ingest.txt:16454:      "status": "OPEN"
+PH6_SOURCE/builds/full_canon_ingest.txt:16460:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/builds/full_canon_ingest.txt:16461:      "status_note": "Local phases 1-3 passed. Remote network-bound transfer is the remaining required evidence. STOP-SHIP classification unchanged until remote pass."
+PH6_SOURCE/builds/full_canon_ingest.txt:16498:             Updates require human authorization for STOP-SHIP items.
+PH6_SOURCE/builds/full_canon_ingest.txt:16499:             AI may update status of OPEN/DEFERRED non-STOP-SHIP items only.
+PH6_SOURCE/builds/full_canon_ingest.txt:16506:| Gap ID                         | Status    | STOP-SHIP? | Evidence Required                          | Closure Authority    | Closure File / Commit            |
+PH6_SOURCE/builds/full_canon_ingest.txt:16508:| OI-01                         | OPEN      | YES        | Hailo hardware run + integration report     | Human only           | TBD                              |
+PH6_SOURCE/builds/full_canon_ingest.txt:16509:| OI-03                         | OPEN      | YES        | Real Pi-to-Pi transfer log + replay proof   | Human only           | TBD                              |
+PH6_SOURCE/builds/full_canon_ingest.txt:16513:| 300-frame coherence run       | OPEN      | No         | Campaign 01 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01   |
+PH6_SOURCE/builds/full_canon_ingest.txt:16514:| Advisory expansion (Swarm)    | OPEN      | No         | Campaign 01B receipt; C01 must close first  | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01B  |
+PH6_SOURCE/builds/full_canon_ingest.txt:16515:| Pi-to-Pi live transfer        | OPEN      | YES        | Campaign 02 receipt (satisfies OI-03)       | Human + Campaign 02  | EVIDENCE_CAMPAIGNS/CAMPAIGN_02   |
+PH6_SOURCE/builds/full_canon_ingest.txt:16517:| GAP-16B: USB disconnect       | OPEN      | No         | Isolation test: video-only 5+ min           | Human after evidence | EVIDENCE_CAMPAIGNS/GAPS/GAP-16   |
+PH6_SOURCE/builds/full_canon_ingest.txt:16518:| Resource pressure RSYNC       | OPEN      | No         | Campaign 03 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_03   |
+PH6_SOURCE/builds/full_canon_ingest.txt:16519:| Crash recovery                | OPEN      | No         | Campaign 04 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_04   |
+PH6_SOURCE/builds/full_canon_ingest.txt:16520:| Replay parity                 | OPEN      | No         | Campaign 05 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_05   |
+PH6_SOURCE/builds/full_canon_ingest.txt:16528:| OPEN     | Gap exists; evidence not yet collected                                   |
+PH6_SOURCE/builds/full_canon_ingest.txt:16535:## STOP-SHIP Rules
+PH6_SOURCE/builds/full_canon_ingest.txt:16537:STOP-SHIP gaps (OI-01, OI-03) cannot be closed by:
+PH6_SOURCE/builds/full_canon_ingest.txt:16563:### For non-STOP-SHIP gaps
+PH6_SOURCE/builds/full_canon_ingest.txt:16566:### For STOP-SHIP gaps (OI-01, OI-03)
+PH6_SOURCE/builds/full_canon_ingest.txt:16570:Add a row with Status = OPEN, note evidence required and closure authority.
+PH6_SOURCE/builds/full_canon_ingest.txt:16816:Status:       OPEN
+PH6_SOURCE/builds/full_canon_ingest.txt:17023:- [ ] All CRAM-A writes completed (no partial writes, no orphaned tmp files)
+PH6_SOURCE/builds/full_canon_ingest.txt:17100:Status:        OPEN
+PH6_SOURCE/builds/full_canon_ingest.txt:17327:C01B does not close any STOP-SHIP gap directly. It provides:
+PH6_SOURCE/builds/full_canon_ingest.txt:17357:Status:       OPEN
+PH6_SOURCE/builds/full_canon_ingest.txt:17457:- Any partial CRAM-A write remained incomplete
+PH6_SOURCE/builds/full_canon_ingest.txt:17498:Status:       OPEN
+PH6_SOURCE/builds/full_canon_ingest.txt:17624:Status:       OPEN
+PH6_SOURCE/builds/full_canon_ingest.txt:17636:a run, CRAM-A state remains consistent: no partial authoritative commits,
+PH6_SOURCE/builds/full_canon_ingest.txt:17655:Verify no partial authoritative commit exists.
+PH6_SOURCE/builds/full_canon_ingest.txt:17656:Verify tmp files are either complete or abandoned (not partially renamed).
+PH6_SOURCE/builds/full_canon_ingest.txt:17682:- tmp files that exist without corresponding final files → partial write (FAIL)
+PH6_SOURCE/builds/full_canon_ingest.txt:17731:- [ ] No partial authoritative CRAM-A commit found in any scenario
+PH6_SOURCE/builds/full_canon_ingest.txt:17743:- Any partial authoritative commit found (tmp renamed but hash missing)
+PH6_SOURCE/builds/full_canon_ingest.txt:17771:Status:       OPEN
+PH6_SOURCE/builds/full_canon_ingest.txt:18341:{"audit_chain_note":"PENDING — audit.py not yet promoted to canonical path","audit_chain_verified":false,"authority":"NONE","blake2b_content_match":true,"blake2b_count_match":true,"cram_file_count_match":true,"dest_blake2b_count":206,"dest_cram_file_count":206,"dest_result_set_hash":"a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660","dest_verdict_log_hash":"b72a6d9a4dc37b91486fb1cbaeb6d6010b2ab92e64109be9ca7c47eec123bea8","doctrine":"A transferred hash only has evidentiary weight after the export path proves it cannot be starved. Phase 1 precedes Phase 2.","failure_reasons":[],"generated_at_utc":"20260516T084619Z","mismatch_count":0,"node":"jackjack","phase":"PHASE_2_HASH_TRANSFER","pipeline_packets":300,"result_set_hash_match":true,"rsync_exit_code":0,"rsync_ok":true,"run_id":"96d62df2-6829-4613-87e4-2e74658886e9","schema":"ph6.oi03.hash_transfer.v1","source_blake2b_count":206,"source_cram_file_count":206,"source_result_set_hash":"a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660","source_verdict_log_hash":"b72a6d9a4dc37b91486fb1cbaeb6d6010b2ab92e64109be9ca7c47eec123bea8","status":"PASS","verdict_log_hash_match":true,"work_dir":"/home/jack/ph6/cram_pu/runtime/oi03_phase2_20260516T084619Z"}
+PH6_SOURCE/builds/full_canon_ingest.txt:18347:{"audit_chain_note":"PENDING — G8 audit.py promotion required","audit_chain_verified":false,"authority":"NONE","blake2b_marker_match":true,"cram_file_count_match":true,"destination_node":"local","failure_reasons":[],"frames":300,"generated_at_utc":"20260516T084757Z","human_review_required":true,"lane2_authority_leak":false,"load_ratio":0.9963,"lock_prohibited":true,"lock_state":"PRE_LOCK_CANDIDATE","mismatch_count":0,"node":"jackjack","phase":"PHASE_3_PI_TO_PI_READINESS","remote_compare_note":null,"remote_mode":false,"result_set_hash_match":true,"rsync_baseline_s":0.0806,"rsync_blocked":false,"rsync_loaded_s":0.0803,"rsync_priority_verified":true,"run_id":"04f98369-c30f-4dc1-8c39-e2f4e81bd1b4","schema":"ph6.oi03.pi_to_pi_readiness.v1","source_node":"pi5-worker","status":"PASS_LOCAL","verdict_log_hash_match":true,"work_dir":"/home/jack/ph6/cram_pu/runtime/oi03_phase3_20260516T084757Z"}
+PH6_SOURCE/builds/full_canon_ingest.txt:18485:STOP_SHIP_RECOMMENDATION = LIFT HRG9 STOP-SHIP ONLY
+PH6_SOURCE/builds/full_canon_ingest.txt:18629:## STOP-SHIP Decision
+PH6_SOURCE/builds/full_canon_ingest.txt:18633:STOP_SHIP_RECOMMENDATION = LIFT HRG9 STOP-SHIP ONLY
+PH6_SOURCE/builds/full_canon_ingest.txt:18638:Production is STOP-SHIP for reasons other than HRG9 (OI-01 hardware gate, OI-03 two-Pi).
+PH6_SOURCE/builds/full_canon_ingest.txt:18715:  "stop_ship_recommendation": "LIFT HRG9 STOP-SHIP ONLY \u2014 all required checks PASS, no FAIL-level findings",
+PH6_SOURCE/builds/full_canon_ingest.txt:19195:| Drift Gate scan               | PENDING               |
+PH6_SOURCE/builds/full_canon_ingest.txt:19196:| Six-book compatibility review | PENDING               |
+PH6_SOURCE/builds/full_canon_ingest.txt:19197:| Repo audit schema validation  | PENDING               |
+PH6_SOURCE/builds/full_canon_ingest.txt:19198:| Canon routing review          | PENDING               |
+PH6_SOURCE/builds/full_canon_ingest.txt:19212:| CDG-1.0 governance layer       | NEW / PENDING SEAL     |
+PH6_SOURCE/builds/full_canon_ingest.txt:19214:| Production release             | STOP-SHIP (OI-01 hardware-gated, OI-03 real Pi-to-Pi not verified; HRG9 CLOSED at 2ef5fd6) |
+PH6_SOURCE/builds/full_canon_ingest.txt:19220:The phrase "STOP-SHIP pending HRG9" used in prior session output was stale.
+PH6_SOURCE/builds/full_canon_ingest.txt:19222:Current STOP-SHIP reasons: OI-01 (Hailo hardware-gated) and OI-03 (real Pi-to-Pi transfer not verified).
+PH6_SOURCE/builds/full_canon_ingest.txt:19470:| STOP-SHIP        | constitutional veto         |
+PH6_SOURCE/builds/full_canon_ingest.txt:19550:| HRG doctrine   | STOP-SHIP authority    |
+PH6_SOURCE/builds/full_canon_ingest.txt:19562:| Drift Gate scan            | PENDING             |
+PH6_SOURCE/builds/full_canon_ingest.txt:19563:| Canon compatibility review | PENDING             |
+PH6_SOURCE/builds/full_canon_ingest.txt:19609:Status: ACTIVE — STOP-SHIP UNTIL HRG9 CLOSURE
+PH6_SOURCE/builds/full_canon_ingest.txt:19704:RECOVERY_SWEEP / DRIFT_FAIL
+PH6_SOURCE/builds/full_canon_ingest.txt:19848:Production remains STOP-SHIP until all above exist and pass.
+PH6_SOURCE/builds/full_canon_ingest.txt:19893:8. Prepare HRG9 closure artifacts but leave production STOP-SHIP until evidence passes.
+PH6_SOURCE/builds/engineering_ingest.txt:59:| **DRIFT_FAIL** | Architectural violation state — halt and audit | failure, error, mismatch |
+PH6_SOURCE/builds/engineering_ingest.txt:60:| **HRG9** | The production-clearance hardware replay evidence gate — CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |
+PH6_SOURCE/builds/engineering_ingest.txt:61:| **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |
+PH6_SOURCE/builds/engineering_ingest.txt:91:DRIFT_FAIL
+PH6_SOURCE/builds/engineering_ingest.txt:189:      "status": "OPEN",
+PH6_SOURCE/builds/engineering_ingest.txt:196:      "status": "OPEN",
+PH6_SOURCE/builds/engineering_ingest.txt:432:      "certification_implication": "STOP-SHIP — PH6-CERT run is invalid. Certification cannot proceed.",
+PH6_SOURCE/builds/engineering_ingest.txt:476:        "STOP-SHIP gate is open (OI-01, OI-03) — noted for traceability, does not block AI session work",
+PH6_SOURCE/builds/engineering_ingest.txt:494:      "No open STOP-SHIP gates (OI-01, OI-03) unless formally waived"
+PH6_SOURCE/builds/engineering_ingest.txt:816:    { "id": "OI-01", "description": "Hailo hardware integration incomplete", "status": "OPEN" },
+PH6_SOURCE/builds/engineering_ingest.txt:817:    { "id": "OI-03", "description": "Real Pi-to-Pi live transfer not yet fully certified", "status": "OPEN" }
+PH6_SOURCE/builds/engineering_ingest.txt:843:## 7. OPEN ITEM REGISTER
+PH6_SOURCE/builds/engineering_ingest.txt:847:| OI-01 | Hailo hardware integration              | OPEN   | Yes (STOP-SHIP)    | Hardware run + integration report         |
+PH6_SOURCE/builds/engineering_ingest.txt:848:| OI-03 | Real Pi-to-Pi live transfer             | OPEN   | Yes (STOP-SHIP)    | Transfer log + replay proof               |
+PH6_SOURCE/builds/engineering_ingest.txt:851:**HRG9 is CLOSED. Do not regenerate HRG9 artifacts. Do not list HRG9 as STOP-SHIP.**
+PH6_SOURCE/builds/engineering_ingest.txt:939:> "OI-01 and OI-03 are OPEN STOP-SHIP gates. This patch does not close them. Human closure required."
+PH6_SOURCE/builds/engineering_ingest.txt:964:- [ ] OI-01 and OI-03 remain OPEN unless human-authorized closure evidence is provided.
+PH6_SOURCE/builds/engineering_ingest.txt:984:│  STOP-SHIP gates:          OI-01, OI-03              │
+PH6_SOURCE/builds/engineering_ingest.txt:1067:   - STOP-SHIP rules
+PH6_SOURCE/builds/engineering_ingest.txt:1325:  AI_ENTRY_INDEX.md           HRG9 OPEN → CLOSED
+PH6_SOURCE/builds/engineering_ingest.txt:1760:  - do not claim the gap is resolved based on partial evidence
+PH6_SOURCE/builds/engineering_ingest.txt:1767:STOP-SHIP gates (OI-01, OI-03):
+PH6_SOURCE/builds/engineering_ingest.txt:1815:DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence
+PH6_SOURCE/builds/engineering_ingest.txt:1853:│  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   │
+PH6_SOURCE/builds/engineering_ingest.txt:2280:| OI-01      | Hailo wiring deferred pending new Raspberry Pi 5          | HIGH     | Yes       | Hardware installed and verified        | OPEN   |
+PH6_SOURCE/builds/engineering_ingest.txt:2281:| OI-03      | Real Pi-to-Pi live transfer not yet remotely verified     | CRITICAL | Yes       | Second Pi transfer with hash continuity | OPEN  |
+PH6_SOURCE/builds/engineering_ingest.txt:2976:Violation of any containment rule triggers DRIFT_FAIL.
+PH6_SOURCE/builds/engineering_ingest.txt:3109:# 10. DRIFT_FAIL Triggers
+PH6_SOURCE/builds/engineering_ingest.txt:3111:Declare DRIFT_FAIL if any of the following occur:
+PH6_SOURCE/builds/engineering_ingest.txt:3466:DRIFT_FAIL triggers
+PH6_SOURCE/builds/engineering_ingest.txt:3489:STOP-SHIP criteria
+PH6_SOURCE/builds/engineering_ingest.txt:3498:STOP-SHIP
+PH6_SOURCE/builds/engineering_ingest.txt:3499:HRG9 OPEN / EVIDENCE BLOCKED
+PH6_SOURCE/builds/engineering_ingest.txt:3565:| DRIFT_FAIL      | Canon violation requiring stop and resolution                                       |
+PH6_SOURCE/builds/engineering_ingest.txt:3633:DRIFT_FAIL
+PH6_SOURCE/builds/engineering_ingest.txt:3669:[OPEN]
+PH6_SOURCE/builds/engineering_ingest.txt:3670:[EVIDENCE BLOCKED]
+PH6_SOURCE/builds/engineering_ingest.txt:3672:[STOP-SHIP]
+PH6_SOURCE/builds/engineering_ingest.txt:3684:HRG9 remains OPEN / EVIDENCE BLOCKED.
+PH6_SOURCE/builds/engineering_ingest.txt:3685:Production remains STOP-SHIP.
+PH6_SOURCE/builds/engineering_ingest.txt:3767:DRIFT_FAIL
+PH6_SOURCE/builds/engineering_ingest.txt:3816:[ ] STOP-SHIP status preserved if evidence missing
+PH6_SOURCE/builds/engineering_ingest.txt:3826:DRIFT_FAIL
+PH6_SOURCE/builds/engineering_ingest.txt:4075:Violation condition: `DRIFT_FAIL`
+PH6_SOURCE/builds/engineering_ingest.txt:4349:## 15. DRIFT_FAIL CONDITIONS
+PH6_SOURCE/builds/engineering_ingest.txt:4363:DRIFT_FAIL
+PH6_SOURCE/builds/engineering_ingest.txt:4771:STOP-SHIP
+PH6_SOURCE/builds/engineering_ingest.txt:4832:# 13. STOP-SHIP CONDITIONS
+PH6_SOURCE/builds/engineering_ingest.txt:4834:## SYSTEM REMAINS STOP-SHIP IF:
+PH6_SOURCE/builds/engineering_ingest.txt:4847:HRG9 is CLOSED. Do not treat HRG9 as a current STOP-SHIP reason.
+PH6_SOURCE/builds/engineering_ingest.txt:4849:Current STOP-SHIP reasons (only):
+PH6_SOURCE/builds/engineering_ingest.txt:5057:STOP-SHIP
+PH6_SOURCE/builds/engineering_ingest.txt:5089:9. stale HRG9-OPEN references (HRG9 is CLOSED at 2ef5fd6 — flag any doc treating it as missing or blocking)
+PH6_SOURCE/builds/engineering_ingest.txt:5138:STOP-SHIP: OI-01 hardware-gated, OI-03 real Pi-to-Pi not yet verified.
+PH6_SOURCE/builds/engineering_ingest.txt:5185:Status: ACTIVE — STOP-SHIP (OI-01 hardware-gated, OI-03 real Pi-to-Pi not yet verified; HRG9 CLOSED at 2ef5fd6)
+PH6_SOURCE/builds/engineering_ingest.txt:5518:Deviation = DRIFT_FAIL.
+PH6_SOURCE/builds/engineering_ingest.txt:5669:## 24. DRIFT_FAIL CONDITIONS
+PH6_SOURCE/builds/engineering_ingest.txt:5671:Emit DRIFT_FAIL if:
+PH6_SOURCE/builds/engineering_ingest.txt:5701:**STATUS: OPEN / EVIDENCE BLOCKED**
+PH6_SOURCE/builds/engineering_ingest.txt:5703:STOP-SHIP remains active until ALL pass:
+PH6_SOURCE/builds/engineering_ingest.txt:5715:## 27. CURRENT OPEN GAPS
+PH6_SOURCE/builds/engineering_ingest.txt:5719:| MRAM-S advisory schema population   | OPEN   |
+PH6_SOURCE/builds/engineering_ingest.txt:5720:| Scientific metadata schema          | OPEN   |
+PH6_SOURCE/builds/engineering_ingest.txt:5721:| HRG9 closure                        | OPEN   |
+PH6_SOURCE/builds/engineering_ingest.txt:5722:| audit.py authority_hash defect      | OPEN   |
+PH6_SOURCE/builds/engineering_ingest.txt:5723:| Resource-cage compliance population | OPEN   |
+PH6_SOURCE/builds/engineering_ingest.txt:5724:| Drift Gate verification             | OPEN   |
+PH6_SOURCE/builds/engineering_ingest.txt:5738:| Production        | STOP-SHIP               |
+PH6_SOURCE/builds/engineering_ingest.txt:5739:| HRG9              | OPEN / EVIDENCE BLOCKED |
+PH6_SOURCE/builds/engineering_ingest.txt:5779:Do not clear STOP-SHIP until OI-01 and OI-03 are verified (HRG9 already closed at 2ef5fd6).
+PH6_SOURCE/builds/engineering_ingest.txt:6000:  "release_verdict": "STOP_SHIP_PENDING_PRODUCTION_CLEARANCE",
+PH6_SOURCE/builds/engineering_ingest.txt:6452:## 12. Living CRAM DRIFT_FAIL Rule
+PH6_SOURCE/builds/engineering_ingest.txt:6455:Declare DRIFT_FAIL if:
+PH6_SOURCE/builds/engineering_ingest.txt:6943:| 5     | 04_OPEN_GATES.md          |
+PH6_SOURCE/builds/engineering_ingest.txt:6958:* active STOP-SHIP gates
+PH6_SOURCE/builds/engineering_ingest.txt:7107:## Current STOP-SHIP Items
+PH6_SOURCE/builds/engineering_ingest.txt:7559:| 5     | 04_OPEN_GATES.md          |
+PH6_SOURCE/builds/engineering_ingest.txt:7574:* active STOP-SHIP gates
+PH6_SOURCE/builds/engineering_ingest.txt:7723:## Current STOP-SHIP Items
+PH6_SOURCE/builds/engineering_ingest.txt:8197:| S-08 | Human sign-off on manifest completeness | OPEN |
+PH6_SOURCE/builds/engineering_ingest.txt:8198:| S-09 | Governance manifest version reviewed for completeness | OPEN |
+PH6_SOURCE/builds/engineering_ingest.txt:8413:Replay parity failure is a DRIFT_FAIL event and blocks C01.
+PH6_SOURCE/builds/engineering_ingest.txt:8556:| TODO / FIXME markers | Observational only; no authority relevance unless adjacent to a violation |
+PH6_SOURCE/builds/engineering_ingest.txt:8668:CRITICAL means: STOP-SHIP. Commit blocked. Certification run invalid.
+PH6_SOURCE/builds/engineering_ingest.txt:8680:| CRITICAL | Cert run invalid — STOP-SHIP | Resolve only; no waiver path |
+PH6_SOURCE/builds/engineering_ingest.txt:8689:* No open STOP-SHIP gates (OI-01, OI-03) unless formally waived
+PH6_SOURCE/builds/engineering_ingest.txt:8713:| TODO / FIXME markers (no adjacent violation) | Observational; intent markers are not violations |
+PH6_SOURCE/builds/engineering_ingest.txt:9181:## 9. Token DRIFT_FAIL Additions
+PH6_SOURCE/builds/engineering_ingest.txt:9183:Add these to the master Living CRAM DRIFT_FAIL list:
+PH6_SOURCE/builds/engineering_ingest.txt:9186:Declare DRIFT_FAIL if:
+PH6_SOURCE/builds/engineering_ingest.txt:10327:Expected: DRIFT_FAIL advisory contamination flag.
+PH6_SOURCE/builds/engineering_ingest.txt:10584:breach must produce DRIFT_FAIL.
+PH6_SOURCE/builds/engineering_ingest.txt:10750:Declare DRIFT_FAIL if:
+PH6_SOURCE/builds/engineering_ingest.txt:10944:Status:    OPEN
+PH6_SOURCE/builds/engineering_ingest.txt:10964:# 4. STOP-SHIP ITEMS
+PH6_SOURCE/builds/engineering_ingest.txt:11005:- closure from partial evidence
+PH6_SOURCE/builds/engineering_ingest.txt:11087:OI-01:  OPEN / STOP-SHIP / Hailo hardware-gated
+PH6_SOURCE/builds/engineering_ingest.txt:11088:OI-03:  OPEN / STOP-SHIP / real Pi-to-Pi transfer not verified
+PH6_SOURCE/builds/engineering_ingest.txt:11560:    open_gates = [g for g in gates if g.get("status") == "OPEN"]
+PH6_SOURCE/builds/engineering_ingest.txt:11563:        "detail": f"{len(open_gates)} open STOP-SHIP gate(s): {[g['id'] for g in open_gates]}",
+PH6_SOURCE/builds/engineering_ingest.txt:11565:        "note": "STOP-SHIP gates are informational in preflight — they block production release, not AI session work",
+PH6_SOURCE/builds/engineering_ingest.txt:13514:        if gate.get("status") == "OPEN":
+PH6_SOURCE/builds/engineering_ingest.txt:13517:            add("stop_ship", f"{gid} is OPEN STOP-SHIP — hardware-gated",
+PH6_SOURCE/builds/engineering_ingest.txt:13561:    return section_header(4, "OPEN GAPS REGISTER") + _read(_GAP_REGISTER)
+PH6_SOURCE/builds/engineering_ingest.txt:13602:        "  DRIFT: claiming a STOP-SHIP gate is closed without evidence\n",
+PH6_SOURCE/builds/engineering_ingest.txt:13959:        if gate.get("status") == "OPEN":
+PH6_SOURCE/builds/engineering_ingest.txt:13962:            add(f"LA-STOP-{gid}", f"{gid} is OPEN STOP-SHIP — not closeable by software", "G8",
+PH6_SOURCE/builds/engineering_ingest.txt:13968:        [r"HRG9\s+(?:is\s+)?(?:OPEN|open)",
+PH6_SOURCE/builds/engineering_ingest.txt:13969:         r"HRG9.*(?:STOP-SHIP|stop.ship|still\s+open)"],
+PH6_SOURCE/builds/engineering_ingest.txt:14047:    (r"(?:soft|weak|partial|approximate)\s+authority",
+PH6_SOURCE/builds/engineering_ingest.txt:14421:Shows what is OPEN, what prerequisites are blocking, and what is required to proceed.
+PH6_SOURCE/builds/engineering_ingest.txt:14502:    open_campaigns   = [c for c in campaigns if c["status"] == "OPEN"]
+PH6_SOURCE/builds/engineering_ingest.txt:14503:    closed_campaigns = [c for c in campaigns if c["status"] != "OPEN"]
+PH6_SOURCE/builds/engineering_ingest.txt:14504:    stop_ship_open   = [g for g in matrix.get("open_stop_ship_gates", []) if g["status"] == "OPEN"]
+PH6_SOURCE/builds/engineering_ingest.txt:14553:    print("  OPEN EVIDENCE GAPS:")
+PH6_SOURCE/builds/engineering_ingest.txt:14665:STOP-SHIP: OI-01 (Hailo hardware-gated) and OI-03 (real Pi-to-Pi transfer not verified).
+PH6_SOURCE/builds/engineering_ingest.txt:14812:OI-01:                OPEN / STOP-SHIP — Hailo hardware-gated
+PH6_SOURCE/builds/engineering_ingest.txt:14813:OI-03:                OPEN / STOP-SHIP — Real Pi-to-Pi transfer not yet certified
+PH6_SOURCE/builds/engineering_ingest.txt:14866:- Update the gap register for non-STOP-SHIP items when evidence is confirmed
+PH6_SOURCE/builds/engineering_ingest.txt:14937:- A STOP-SHIP item is closed
+PH6_SOURCE/builds/engineering_ingest.txt:14939:- A new STOP-SHIP item is added
+PH6_SOURCE/builds/engineering_ingest.txt:15030:## Current STOP-SHIP Items
+PH6_SOURCE/builds/engineering_ingest.txt:15136:open STOP-SHIP:    OI-01, OI-03 (hardware-gated; do not falsely close)
+PH6_SOURCE/builds/engineering_ingest.txt:15296:Status:       OPEN — awaiting second Pi 5
+PH6_SOURCE/builds/engineering_ingest.txt:15306:OI-03 is a STOP-SHIP gate. The loopback variant was proven (commit a95e552).
+PH6_SOURCE/builds/engineering_ingest.txt:15464:OI-03: OPEN
+PH6_SOURCE/builds/engineering_ingest.txt:15811:OPEN ITEMS:
+PH6_SOURCE/builds/engineering_ingest.txt:15863:Every open item must appear in OPEN ITEMS.
+PH6_SOURCE/builds/engineering_ingest.txt:15969:Production clearance requires all campaigns and STOP-SHIP gates closed
+PH6_SOURCE/builds/engineering_ingest.txt:15981:OPEN ITEMS:          HARDWARE / RUNTIME / ENDURANCE EVIDENCE REQUIRED
+PH6_SOURCE/builds/engineering_ingest.txt:15998:| Campaign | Gap Closed                  | Closes STOP-SHIP | Evidence Class  | Status |
+PH6_SOURCE/builds/engineering_ingest.txt:16000:| EVC-01   | crash_receipt_continuity    | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/engineering_ingest.txt:16001:| EVC-02   | long_run_chain_behavior     | No               | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/engineering_ingest.txt:16002:| EVC-03   | remote_transfer_chain       | OI-03            | HARDWARE_RUNTIME | OPEN  |
+PH6_SOURCE/builds/engineering_ingest.txt:16003:| EVC-04   | verdict_metric_payload_replay | No             | RUNTIME         | OPEN   |
+PH6_SOURCE/builds/engineering_ingest.txt:16004:| EVC-05   | production_clearance        | —                | HUMAN_REVIEW    | OPEN   |
+PH6_SOURCE/builds/engineering_ingest.txt:16087:**Closes STOP-SHIP:** OI-03
+PH6_SOURCE/builds/engineering_ingest.txt:16186:Any prerequisite not met. Any open STOP-SHIP gate. AI claims production
+PH6_SOURCE/builds/engineering_ingest.txt:16208:## Open STOP-SHIP Gates
+PH6_SOURCE/builds/engineering_ingest.txt:16212:| OI-01 | Hailo hardware integration incomplete | Hardware run + report | OPEN |
+PH6_SOURCE/builds/engineering_ingest.txt:16213:| OI-03 | Real Pi-to-Pi live transfer not yet certified | EVC-03 | OPEN |
+PH6_SOURCE/builds/engineering_ingest.txt:16238:    "production_clearance_note": "Production clearance may not be declared until all campaigns and STOP-SHIP gates are closed by human-reviewed evidence."
+PH6_SOURCE/builds/engineering_ingest.txt:16320:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/builds/engineering_ingest.txt:16321:      "status_note": "OI-03 Phases 1 (RSYNC priority zero), 2 (result-set hash identity), and 3 (local readiness runner) all passed in local mode. Remote Pi-to-Pi transfer still required. OI-03 remains STOP-SHIP until remote test passes.",
+PH6_SOURCE/builds/engineering_ingest.txt:16407:      "status": "OPEN",
+PH6_SOURCE/builds/engineering_ingest.txt:16409:      "objective": "Human-conducted gate review after all prior campaigns pass and all STOP-SHIP items are closed. This is the only path to production clearance. No software artifact, unit test, or AI output may substitute for this review.",
+PH6_SOURCE/builds/engineering_ingest.txt:16440:      "fail_condition": "Any prerequisite not met. Any open STOP-SHIP gate. AI claims production clearance without human review.",
+PH6_SOURCE/builds/engineering_ingest.txt:16454:      "status": "OPEN"
+PH6_SOURCE/builds/engineering_ingest.txt:16460:      "status": "PASS_LOCAL / REMOTE_PENDING",
+PH6_SOURCE/builds/engineering_ingest.txt:16461:      "status_note": "Local phases 1-3 passed. Remote network-bound transfer is the remaining required evidence. STOP-SHIP classification unchanged until remote pass."
+PH6_SOURCE/builds/engineering_ingest.txt:16498:             Updates require human authorization for STOP-SHIP items.
+PH6_SOURCE/builds/engineering_ingest.txt:16499:             AI may update status of OPEN/DEFERRED non-STOP-SHIP items only.
+PH6_SOURCE/builds/engineering_ingest.txt:16506:| Gap ID                         | Status    | STOP-SHIP? | Evidence Required                          | Closure Authority    | Closure File / Commit            |
+PH6_SOURCE/builds/engineering_ingest.txt:16508:| OI-01                         | OPEN      | YES        | Hailo hardware run + integration report     | Human only           | TBD                              |
+PH6_SOURCE/builds/engineering_ingest.txt:16509:| OI-03                         | OPEN      | YES        | Real Pi-to-Pi transfer log + replay proof   | Human only           | TBD                              |
+PH6_SOURCE/builds/engineering_ingest.txt:16513:| 300-frame coherence run       | OPEN      | No         | Campaign 01 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01   |
+PH6_SOURCE/builds/engineering_ingest.txt:16514:| Advisory expansion (Swarm)    | OPEN      | No         | Campaign 01B receipt; C01 must close first  | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01B  |
+PH6_SOURCE/builds/engineering_ingest.txt:16515:| Pi-to-Pi live transfer        | OPEN      | YES        | Campaign 02 receipt (satisfies OI-03)       | Human + Campaign 02  | EVIDENCE_CAMPAIGNS/CAMPAIGN_02   |
+PH6_SOURCE/builds/engineering_ingest.txt:16517:| GAP-16B: USB disconnect       | OPEN      | No         | Isolation test: video-only 5+ min           | Human after evidence | EVIDENCE_CAMPAIGNS/GAPS/GAP-16   |
+PH6_SOURCE/builds/engineering_ingest.txt:16518:| Resource pressure RSYNC       | OPEN      | No         | Campaign 03 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_03   |
+PH6_SOURCE/builds/engineering_ingest.txt:16519:| Crash recovery                | OPEN      | No         | Campaign 04 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_04   |
+PH6_SOURCE/builds/engineering_ingest.txt:16520:| Replay parity                 | OPEN      | No         | Campaign 05 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_05   |
+PH6_SOURCE/builds/engineering_ingest.txt:16528:| OPEN     | Gap exists; evidence not yet collected                                   |
+PH6_SOURCE/builds/engineering_ingest.txt:16535:## STOP-SHIP Rules
+PH6_SOURCE/builds/engineering_ingest.txt:16537:STOP-SHIP gaps (OI-01, OI-03) cannot be closed by:
+PH6_SOURCE/builds/engineering_ingest.txt:16563:### For non-STOP-SHIP gaps
+PH6_SOURCE/builds/engineering_ingest.txt:16566:### For STOP-SHIP gaps (OI-01, OI-03)
+PH6_SOURCE/builds/engineering_ingest.txt:16570:Add a row with Status = OPEN, note evidence required and closure authority.
+ph6/ssmt/failure_injection.py:6:FI-SSMT-02: tmp write crash (partial write)
+ph6/ssmt/failure_injection.py:7:FI-SSMT-03: audit log partial write (fsync failure)
+ph6/ssmt/failure_injection.py:35:def partial_write(truncate_at: int = 10):
+ph6/ssmt/tests/test_failure_injection.py:5:    disk_full, partial_write, fsync_failure,
+ph6/ssmt/tests/test_failure_injection.py:43:def test_fi01_disk_full_leaves_no_partial_audit_file(tmp_path):
+ph6/ssmt/tests/test_failure_injection.py:55:# ── FI-SSMT-02: partial write (tmp crash) ───────────────────────────────────
+ph6/ssmt/tests/test_failure_injection.py:57:def test_fi02_partial_write_produces_invalid_json(tmp_path):
+ph6/ssmt/tests/test_failure_injection.py:60:        with partial_write(truncate_at=5):
+ph6/ssmt/tests/test_failure_injection.py:70:def test_fi02_scheduler_survives_partial_write(tmp_path):
+ph6/cram_pu/evc01_crash_simulation.py:10:  S2: Crash mid-write (partial receipt line) → verifier must detect parse error
+ph6/cram_pu/evc01_crash_simulation.py:94:# ── Scenario S2: Crash mid-write — partial receipt line ───────────────────────
+ph6/cram_pu/evc01_crash_simulation.py:98:    Simulate crash mid-write: truncate the last receipt line to partial JSON.
+ph6/cram_pu/evc01_crash_simulation.py:190:        log.write_bytes(b"\n".join(lines[:2]) + b"\n" + b'{"partial":true' + b"\n")
+ph6/cram_pu/vrc.py:19:  - declare production clearance (OI-01, OI-03 remain open STOP-SHIP)
+ph6/cram_pu/vrc.py:292:    OI-01 and OI-03 remain open STOP-SHIP gates.
+ph6/cram_pu/validation_runs/20260517T061511Z_c11_6000_30fps_absorption/campaign_manifest.json:12:  "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW."
+ph6/cram_pu/validation_runs/20260517T061511Z_c11_6000_30fps_absorption/final_report.md:5:**Overall:** `PASS`  **State:** `PASS_PENDING_REVIEW`  **Closed:** `false`
+ph6/cram_pu/validation_runs/20260517T061511Z_c11_6000_30fps_absorption/final_report.md:31:- State: `PASS_PENDING_REVIEW`
+ph6/cram_pu/validation_runs/20260517T064235Z_C13_24000_variable_speed_information_stress/c13_campaign_manifest.json:68:  "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW."
+ph6/cram_pu/validation_runs/20260517T065826Z_C13_24000_variable_speed_information_stress/c13_final_report.md:5:**Overall:** `PASS`  **State:** `PASS_PENDING_REVIEW`  **Closed:** `false`
+ph6/cram_pu/validation_runs/20260517T065826Z_C13_24000_variable_speed_information_stress/c13_final_report.md:39:- State: `PASS_PENDING_REVIEW`
+ph6/cram_pu/validation_runs/20260517T065826Z_C13_24000_variable_speed_information_stress/c13_campaign_manifest.json:68:  "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW."
+ph6/cram_pu/validation_runs/20260517T055650Z_C09_12000_staged_endurance/c09_campaign_manifest.json:41:  "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW."
+ph6/cram_pu/validation_runs/20260517T055650Z_C09_12000_staged_endurance/c09_final_report.md:5:**Overall:** `PASS`  **Campaign State:** `PASS_PENDING_REVIEW`  **Closed:** `false`
+ph6/cram_pu/validation_runs/20260517T055650Z_C09_12000_staged_endurance/c09_final_report.md:47:- Campaign state: `PASS_PENDING_REVIEW`
+ph6/cram_pu/validation_runs/20260517T050752Z_C08_3600_staged/campaign_result_summary.json:6:  "state": "PASS_PENDING_REVIEW",
+ph6/cram_pu/validation_runs/20260517T050752Z_C08_3600_staged/campaign_result_summary.json:68:  "production_clearance_status": "NOT_DECLARED — maximum result is LOCAL_PI_EVIDENCE_SET_COMPLETE_PENDING_REVIEW. Production clearance requires EVC-05 human gate review.",
+ph6/cram_pu/validation_runs/20260517T063357Z_C13_24000_variable_speed_information_stress/c13_interruption_receipt.json:7:  "interrupted_phase": "A",
+ph6/cram_pu/validation_runs/20260517T063357Z_C13_24000_variable_speed_information_stress/c13_interruption_receipt.json:13:  "preservation_rule": "Do not delete. Partial evidence is valid. Re-run required for PASS_PENDING_REVIEW.",
+ph6/cram_pu/validation_runs/20260517T063357Z_C13_24000_variable_speed_information_stress/c13_campaign_manifest.json:68:  "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW."
+ph6/cram_pu/validation_runs/20260517T061511Z_c12_3000_50fps_absorption/campaign_manifest.json:12:  "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW."
+ph6/cram_pu/validation_runs/20260517T061511Z_c12_3000_50fps_absorption/final_report.md:5:**Overall:** `PASS`  **State:** `PASS_PENDING_REVIEW`  **Closed:** `false`
+ph6/cram_pu/validation_runs/20260517T061511Z_c12_3000_50fps_absorption/final_report.md:31:- State: `PASS_PENDING_REVIEW`
+ph6/cram_pu/validation_runs/20260517T063840Z_C13_24000_variable_speed_information_stress/c13_interruption_receipt.json:7:  "interrupted_phase": "A",
+ph6/cram_pu/validation_runs/20260517T063840Z_C13_24000_variable_speed_information_stress/c13_interruption_receipt.json:13:  "preservation_rule": "Do not delete. Partial evidence is valid. Re-run required for PASS_PENDING_REVIEW.",
+ph6/cram_pu/validation_runs/20260517T063840Z_C13_24000_variable_speed_information_stress/c13_campaign_manifest.json:68:  "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW."
+ph6/cram_pu/validation_runs/20260517T061511Z_c10_6000_15fps_absorption/campaign_manifest.json:12:  "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW."
+ph6/cram_pu/validation_runs/20260517T061511Z_c10_6000_15fps_absorption/final_report.md:5:**Overall:** `PASS`  **State:** `PASS_PENDING_REVIEW`  **Closed:** `false`
+ph6/cram_pu/validation_runs/20260517T061511Z_c10_6000_15fps_absorption/final_report.md:31:- State: `PASS_PENDING_REVIEW`
+ph6/cram_pu/runtime/oi03_phase3_20260516T084757Z/phase3_receipt.json:1:{"audit_chain_note":"PENDING — G8 audit.py promotion required","audit_chain_verified":false,"authority":"NONE","blake2b_marker_match":true,"cram_file_count_match":true,"destination_node":"local","failure_reasons":[],"frames":300,"generated_at_utc":"20260516T084757Z","human_review_required":true,"lane2_authority_leak":false,"load_ratio":0.9963,"lock_prohibited":true,"lock_state":"PRE_LOCK_CANDIDATE","mismatch_count":0,"node":"jackjack","phase":"PHASE_3_PI_TO_PI_READINESS","remote_compare_note":null,"remote_mode":false,"result_set_hash_match":true,"rsync_baseline_s":0.0806,"rsync_blocked":false,"rsync_loaded_s":0.0803,"rsync_priority_verified":true,"run_id":"04f98369-c30f-4dc1-8c39-e2f4e81bd1b4","schema":"ph6.oi03.pi_to_pi_readiness.v1","source_node":"pi5-worker","status":"PASS_LOCAL","verdict_log_hash_match":true,"work_dir":"/home/jack/ph6/cram_pu/runtime/oi03_phase3_20260516T084757Z"}
+ph6/cram_pu/tools/replay_parity_proof.py:113:        status = "PASS" if parity else "DRIFT_FAIL"
+ph6/cram_pu/tools/replay_parity_proof.py:118:    verdict  = "REPLAY_PARITY_PASS" if all_pass else "REPLAY_PARITY_DRIFT_FAIL"
+ph6/cram_pu/tools/replay_parity_proof.py:163:        print("\nDRIFT_FAIL — schema promotion blocked.")
+ph6/cram_pu/runtime/oi03_phase2_20260516T084619Z/phase2_receipt.json:1:{"audit_chain_note":"PENDING — audit.py not yet promoted to canonical path","audit_chain_verified":false,"authority":"NONE","blake2b_content_match":true,"blake2b_count_match":true,"cram_file_count_match":true,"dest_blake2b_count":206,"dest_cram_file_count":206,"dest_result_set_hash":"a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660","dest_verdict_log_hash":"b72a6d9a4dc37b91486fb1cbaeb6d6010b2ab92e64109be9ca7c47eec123bea8","doctrine":"A transferred hash only has evidentiary weight after the export path proves it cannot be starved. Phase 1 precedes Phase 2.","failure_reasons":[],"generated_at_utc":"20260516T084619Z","mismatch_count":0,"node":"jackjack","phase":"PHASE_2_HASH_TRANSFER","pipeline_packets":300,"result_set_hash_match":true,"rsync_exit_code":0,"rsync_ok":true,"run_id":"96d62df2-6829-4613-87e4-2e74658886e9","schema":"ph6.oi03.hash_transfer.v1","source_blake2b_count":206,"source_cram_file_count":206,"source_result_set_hash":"a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660","source_verdict_log_hash":"b72a6d9a4dc37b91486fb1cbaeb6d6010b2ab92e64109be9ca7c47eec123bea8","status":"PASS","verdict_log_hash_match":true,"work_dir":"/home/jack/ph6/cram_pu/runtime/oi03_phase2_20260516T084619Z"}
+ph6/cram_pu/schemas/canonical.py:31:    "DRIFT_FAIL",
+ph6/cram_pu/logs/20260517T055650Z_C09_12000_staged_endurance/c09_run.log:28:State: PASS_PENDING_REVIEW  Closed: false
+ph6/cram_pu/tools/run_oi03_phase2_hash_transfer.py:24:  Any mismatch keeps OI-03 OPEN.
+ph6/cram_pu/tools/run_oi03_phase2_hash_transfer.py:360:        # Audit chain: not yet wired in this pipeline — noted as PENDING
+ph6/cram_pu/tools/run_oi03_phase2_hash_transfer.py:362:        "audit_chain_note":         "PENDING — audit.py not yet promoted to canonical path",
+ph6/cram_pu/tools/run_c09_12000_frame_campaign.py:242:        "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW.",
+ph6/cram_pu/tools/run_c09_12000_frame_campaign.py:388:    state   = "PASS_PENDING_REVIEW" if overall == "PASS" else "FAIL_EVIDENCE_PRESERVED"
+ph6/cram_pu/tools/run_c10_c11_c12_absorption_campaigns.py:538:            "closure_rule":   "Maximum automatic result: PASS_PENDING_REVIEW.",
+ph6/cram_pu/tools/run_c10_c11_c12_absorption_campaigns.py:552:    state   = "PASS_PENDING_REVIEW" if overall == "PASS" else "FAIL_EVIDENCE_PRESERVED"
+ph6/cram_pu/tools/run_oi03_pi_to_pi_transfer.py:383:        remote_compare_note = "PENDING — remote hash comparison requires SSH read access"
+ph6/cram_pu/tools/run_oi03_pi_to_pi_transfer.py:463:        "audit_chain_note":         "PENDING — G8 audit.py promotion required",
+ph6/cram_pu/tools/run_c13_variable_speed_information_stress.py:498:        "closure_rule":    "Maximum automatic result: PASS_PENDING_REVIEW.",
+ph6/cram_pu/tools/run_c13_variable_speed_information_stress.py:734:    state   = "PASS_PENDING_REVIEW" if overall == "PASS" else "FAIL_EVIDENCE_PRESERVED"

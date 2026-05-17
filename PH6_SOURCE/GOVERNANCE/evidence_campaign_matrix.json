@@ -693,6 +693,105 @@
         "artifact_hashes.blake2b",
         "final_report.md"
       ]
+    },
+    {
+      "campaign_id": "C13",
+      "name": "24,000-Frame Variable-Speed Variable-Information Stress Validation",
+      "closure_status": "PASS_PENDING_REVIEW",
+      "closed": false,
+      "maximum_automatic_result": "PASS_PENDING_REVIEW",
+      "total_frames": 24000,
+      "phases": [
+        {
+          "phase": "A",
+          "frames": 4000,
+          "target_fps": 15,
+          "frame_size": 1200,
+          "info_load": "HIGH"
+        },
+        {
+          "phase": "B",
+          "frames": 4000,
+          "target_fps": null,
+          "frame_size": 900,
+          "info_load": "MEDIUM_HIGH"
+        },
+        {
+          "phase": "C",
+          "frames": 4000,
+          "target_fps": 30,
+          "frame_size": 600,
+          "info_load": "REGULAR"
+        },
+        {
+          "phase": "D",
+          "frames": 2000,
+          "target_fps": null,
+          "frame_size": 2400,
+          "info_load": "MAX_SAFE"
+        },
+        {
+          "phase": "E",
+          "frames": 2000,
+          "target_fps": 5,
+          "frame_size": 2400,
+          "info_load": "MAX_SAFE"
+        },
+        {
+          "phase": "F",
+          "frames": 4000,
+          "target_fps": 30,
+          "frame_size": 600,
+          "info_load": "REGULAR"
+        },
+        {
+          "phase": "G",
+          "frames": 4000,
+          "target_fps": 60,
+          "frame_size": 2400,
+          "info_load": "MAX_SAFE"
+        }
+      ],
+      "mode": "variable_speed_variable_information_stress",
+      "purpose": "Prove PH6 handles changing frame rate and payload density while PSEUDO remains deterministic, bounded, replayable, and isolated.",
+      "runner": "ph6/cram_pu/tools/run_c13_variable_speed_information_stress.py",
+      "owned_gaps": [
+        "PSEUDO_FAMILY_STRESS",
+        "VARIABLE_RATE_VALIDATION",
+        "HIGH_DENSITY_ABSORPTION"
+      ],
+      "pass_conditions": [
+        "all_24000_frames_complete",
+        "replay_parity_pass_all_phases",
+        "rsync_not_blocked_any_phase",
+        "lane2_zero_violations_all_phases",
+        "no_critical_failures",
+        "pseudo_family_all_pass"
+      ],
+      "production_clearance_effect": "NONE",
+      "required_artifacts": [
+        "c13_campaign_manifest.json",
+        "c13_phase_A_slow_high_info_receipt.json",
+        "c13_phase_B_fast_medium_high_info_receipt.json",
+        "c13_phase_C_regular_baseline_receipt.json",
+        "c13_phase_D_max_fast_max_info_receipt.json",
+        "c13_phase_E_slowest_max_info_receipt.json",
+        "c13_phase_F_regular_recovery_receipt.json",
+        "c13_phase_G_60fps_max_info_receipt.json",
+        "c13_information_absorption_summary.json",
+        "c13_speed_vs_information_summary.json",
+        "c13_pseudo_family_receipt.json",
+        "c13_replay_parity_receipt.json",
+        "c13_rsync_nonblocking_receipt.json",
+        "c13_lane2_isolation_receipt.json",
+        "c13_failure_register.json",
+        "c13_result_set_hash.txt",
+        "c13_artifact_hashes.blake2b",
+        "c13_final_report.md",
+        "c13_resource_trace.jsonl",
+        "c13_queue_trace.jsonl",
+        "c13_phase_cooldowns.jsonl"
+      ]
     }
   ],
   "closure_requirements": {

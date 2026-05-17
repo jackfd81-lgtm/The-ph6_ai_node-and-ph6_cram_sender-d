@@ -1,0 +1,45 @@
+{
+  "schema": "ph6.governance.tooling_health_report.v1",
+  "generated_at_utc": "2026-05-17T07:30:00Z",
+  "compile_check": {
+    "command": "python3 -m compileall ph6 PH6_SOURCE",
+    "result": "PASS",
+    "syntax_errors": 0,
+    "files_checked": [
+      "ph6/cram_pu/evc01_crash_simulation.py",
+      "ph6/cram_pu/evc04_live_payload_replay.py",
+      "ph6/cram_pu/run_4pass_system_test.py",
+      "ph6/cram_pu/run_two_pi_transfer_test.py",
+      "ph6/cram_pu/tests/test_closure_patches.py",
+      "ph6/cram_pu/tests/test_ingest_receipt_chain.py",
+      "ph6/cram_pu/tests/test_vrc.py",
+      "ph6/cram_pu/tok_soso_isolation_proof.py",
+      "ph6/cram_pu/tools/replay_parity_proof.py",
+      "ph6/cram_pu/tools/run_c09_12000_frame_campaign.py",
+      "ph6/cram_pu/tools/run_c10_c11_c12_absorption_campaigns.py",
+      "ph6/cram_pu/tools/run_c13_variable_speed_information_stress.py",
+      "ph6/cram_pu/tools/run_oi03_phase1_rsync_priority.py",
+      "ph6/cram_pu/tools/run_oi03_phase2_hash_transfer.py",
+      "ph6/cram_pu/tools/run_oi03_pi_to_pi_transfer.py",
+      "ph6/cram_pu/tools/run_tok_leak_001.py",
+      "ph6/ssmt/tests/test_soso_contract.py",
+      "ph6/ssmt/tests/test_ssmt_boundaries.py",
+      "PH6_SOURCE/CERTIFICATION/audit_patched.py",
+      "PH6_SOURCE/TOOLS/ai_preflight_check.py",
+      "PH6_SOURCE/TOOLS/governance_drift_scan.py",
+      "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "PH6_SOURCE/TOOLS/ph6_ingest_compiler.py",
+      "PH6_SOURCE/TOOLS/ph6_ingest_verify.py",
+      "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "PH6_SOURCE/TOOLS/ph6_receipt_chain_verify.py",
+      "PH6_SOURCE/TOOLS/ph6_session_start.py"
+    ]
+  },
+  "overall_result": "PASS",
+  "open_items": [],
+  "advisory": [
+    "campaign-runner scripts for OI-03 Pi-to-Pi transfer remain unexecuted (hardware-gated — second Pi required)",
+    "run_4pass_system_test.py and run_two_pi_transfer_test.py require two-node setup"
+  ]
+}

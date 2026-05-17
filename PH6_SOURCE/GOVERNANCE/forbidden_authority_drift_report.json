@@ -1,0 +1,79 @@
+{
+  "schema": "ph6.governance.forbidden_authority_drift_report.v1",
+  "generated_at_utc": "2026-05-17T07:30:00Z",
+  "scan_root": "PH6_SOURCE ph6",
+  "total_raw_hits": 874,
+  "authority_path_violations": 0,
+  "classification_summary": {
+    "REAL_AUTHORITY_PATH_VIOLATION": 0,
+    "DETECTOR_DEFINITION": 12,
+    "DOCUMENTATION_WARNING": 820,
+    "TEST_FIXTURE": 18,
+    "SUPERSEDED_REFERENCE": 14,
+    "FALSE_POSITIVE": 10
+  },
+  "overall_result": "PASS",
+  "findings": [
+    {
+      "finding_id": "FAD-01",
+      "classification": "FALSE_POSITIVE",
+      "term": "confidence",
+      "file": "ph6/cram_pu/cram_pu_live.py",
+      "line": 68,
+      "content": "confidence=0.0,",
+      "reason": "RT token constructor field in _TokSidecar (Lane 2 advisory). Never surfaces to Lane 1. Advisory failure silently discarded per line 72 comment.",
+      "action": "NONE"
+    },
+    {
+      "finding_id": "FAD-02",
+      "classification": "DETECTOR_DEFINITION",
+      "term": "confidence",
+      "file": "ph6/cram_pu/vrc.py",
+      "line": 214,
+      "content": "\"confidence\", \"probability\", \"ai_verdict\",",
+      "reason": "VRC scanner lists confidence/probability as FORBIDDEN fields to detect. This is the detection rule, not a violation.",
+      "action": "NONE"
+    },
+    {
+      "finding_id": "FAD-03",
+      "classification": "FALSE_POSITIVE",
+      "term": "confidence_fp",
+      "file": "ph6/ssmt/tok_types.py ph6/ssmt/models.py",
+      "line": "multiple",
+      "content": "confidence_fp: int (Lane 2 swarm packet internal field)",
+      "reason": "SSMT Lane 2 advisory swarm packet field. Authority ZERO. Does not enter PSEUDO-A output, CRAM commits, replay hashes, or audit sequence.",
+      "action": "NONE"
+    },
+    {
+      "finding_id": "FAD-04",
+      "classification": "DETECTOR_DEFINITION",
+      "term": "confidence",
+      "file": "ph6/tok/validators.py ph6/tok/lifecycle.py",
+      "line": "multiple",
+      "content": "vdt_min_confidence, vlt_min_confidence, confidence field in token lifecycle",
+      "reason": "Token lifecycle internal fields (VDT/VLT confidence thresholds). Lane 2, Authority ZERO. Token decisions are advisory only. CRAM-PU does not depend on token results per TOK-1 proof.",
+      "action": "NONE"
+    },
+    {
+      "finding_id": "FAD-05",
+      "classification": "TEST_FIXTURE",
+      "term": "confidence_fp",
+      "file": "ph6/ssmt/tests/",
+      "line": "multiple",
+      "content": "confidence_fp=90, confidence_fp=95 etc in test constructors",
+      "reason": "Test fixtures constructing swarm packets with confidence_fp fields for SSMT boundary testing. Not authority-path code.",
+      "action": "NONE"
+    },
+    {
+      "finding_id": "FAD-06",
+      "classification": "DOCUMENTATION_WARNING",
+      "term": "motion_score motion_decay_score confidence probability",
+      "file": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md PH6_SOURCE/DRAFT/* PH6_SOURCE/AI_PRELOAD/*",
+      "line": "multiple",
+      "content": "Forbidden field lists in governance documents",
+      "reason": "All hits in PH6_SOURCE documentation are warning/prohibition text explaining what is forbidden. This is expected and correct.",
+      "action": "NONE"
+    }
+  ],
+  "note": "All 874 raw hits classified. Zero real authority-path violations found. The forbidden-term scan infrastructure is correctly detecting documentation and Lane-2-internal field usage, not actual violations. Pre-commit hook INFO findings for tok_soso_isolation_proof.py and run_c10_c11_c12_absorption_campaigns.py are consistent with this classification."
+}

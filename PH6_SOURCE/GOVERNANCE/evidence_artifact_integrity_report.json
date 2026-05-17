@@ -1,0 +1,121 @@
+{
+  "schema": "ph6.governance.evidence_artifact_integrity_report.v1",
+  "generated_at_utc": "2026-05-17T07:30:00Z",
+  "total_validation_run_dirs": 22,
+  "total_artifact_files_indexed": 21966,
+  "campaign_checks": [
+    {
+      "campaign_id": "C08_3600_STAGED_LOCAL_PI",
+      "run_stamp": "20260517T050752Z",
+      "run_dir": "ph6/cram_pu/validation_runs/20260517T050752Z_C08_3600_staged",
+      "schema_generation": "older (pre-manifest runner)",
+      "has_campaign_manifest": false,
+      "has_result_summary": true,
+      "has_result_set_hash": false,
+      "has_artifact_hashes": true,
+      "has_final_report": false,
+      "has_failure_register": false,
+      "replay_receipt": "embedded in campaign_result_summary.json",
+      "segments_passed": ["FAST", "REGULAR_CRAM", "FAST_CRAM"],
+      "integrity_status": "PASS_OLDER_SCHEMA",
+      "note": "C08 used an older runner before the manifest/final-report standard. Result summary contains all critical fields including result_set_hash per segment. Not a failure — schema evolution noted.",
+      "recommended_action": "ELIGIBLE_FOR_HUMAN_REVIEW"
+    },
+    {
+      "campaign_id": "C09_12000_STAGED_LOCAL_PI",
+      "run_stamp": "20260517T055650Z",
+      "run_dir": "ph6/cram_pu/validation_runs/20260517T055650Z_C09_12000_staged_endurance",
+      "has_campaign_manifest": true,
+      "has_result_set_hash": true,
+      "has_artifact_hashes": true,
+      "has_final_report": true,
+      "has_failure_register": true,
+      "phase_receipts": 9,
+      "integrity_status": "COMPLETE",
+      "recommended_action": "ELIGIBLE_FOR_HUMAN_REVIEW"
+    },
+    {
+      "campaign_id": "C10_6000_15FPS_SLOW_ABSORPTION",
+      "run_stamp": "20260517T061511Z",
+      "run_dir": "ph6/cram_pu/validation_runs/20260517T061511Z_c10_6000_15fps_absorption",
+      "has_campaign_manifest": true,
+      "has_result_set_hash": true,
+      "has_artifact_hashes": true,
+      "has_final_report": true,
+      "has_failure_register": true,
+      "phase_receipts": 7,
+      "integrity_status": "COMPLETE",
+      "recommended_action": "ELIGIBLE_FOR_HUMAN_REVIEW"
+    },
+    {
+      "campaign_id": "C11_6000_30FPS_STANDARD_ABSORPTION",
+      "run_stamp": "20260517T061511Z",
+      "run_dir": "ph6/cram_pu/validation_runs/20260517T061511Z_c11_6000_30fps_absorption",
+      "has_campaign_manifest": true,
+      "has_result_set_hash": true,
+      "has_artifact_hashes": true,
+      "has_final_report": true,
+      "has_failure_register": true,
+      "phase_receipts": 7,
+      "integrity_status": "COMPLETE",
+      "recommended_action": "ELIGIBLE_FOR_HUMAN_REVIEW"
+    },
+    {
+      "campaign_id": "C12_3000_50FPS_HIGH_RATE_ABSORPTION",
+      "run_stamp": "20260517T061511Z",
+      "run_dir": "ph6/cram_pu/validation_runs/20260517T061511Z_c12_3000_50fps_absorption",
+      "has_campaign_manifest": true,
+      "has_result_set_hash": true,
+      "has_artifact_hashes": true,
+      "has_final_report": true,
+      "has_failure_register": true,
+      "phase_receipts": 7,
+      "integrity_status": "COMPLETE",
+      "recommended_action": "ELIGIBLE_FOR_HUMAN_REVIEW"
+    },
+    {
+      "campaign_id": "C13_24000_VARIABLE_SPEED_INFORMATION_STRESS",
+      "run_stamp": "20260517T065826Z",
+      "run_dir": "ph6/cram_pu/validation_runs/20260517T065826Z_C13_24000_variable_speed_information_stress",
+      "has_campaign_manifest": true,
+      "has_result_set_hash": true,
+      "has_artifact_hashes": true,
+      "has_final_report": true,
+      "has_failure_register": true,
+      "phase_receipts": 11,
+      "additional_receipts": ["c13_pseudo_family_receipt.json", "c13_replay_parity_receipt.json", "c13_rsync_nonblocking_receipt.json", "c13_lane2_isolation_receipt.json"],
+      "integrity_status": "COMPLETE",
+      "recommended_action": "ELIGIBLE_FOR_HUMAN_REVIEW"
+    }
+  ],
+  "interrupted_partial_runs": [
+    {
+      "run_stamp": "20260517T063357Z",
+      "campaign": "C13",
+      "frames_completed": 741,
+      "evidence_commit": "db574d96d",
+      "status": "PRESERVED_PARTIAL_EVIDENCE"
+    },
+    {
+      "run_stamp": "20260517T063840Z",
+      "campaign": "C13",
+      "frames_completed": 924,
+      "evidence_commit": "db574d96d",
+      "status": "PRESERVED_PARTIAL_EVIDENCE"
+    },
+    {
+      "run_stamp": "20260517T064235Z",
+      "campaign": "C13",
+      "frames_completed": 14000,
+      "phases_completed": ["A", "B", "C", "D"],
+      "evidence_commit": "faffdb5b5",
+      "status": "PRESERVED_PARTIAL_EVIDENCE"
+    }
+  ],
+  "tmp_files_found": [
+    "frame_filter/logs/live_run.tmp",
+    "frame_filter/logs/run_20260429_215052/hot/run_log.tmp"
+  ],
+  "tmp_file_action": "NOT_DELETED — require human confirmation; likely frame_filter runtime hot log, not evidence",
+  "overall_result": "PASS"
+}

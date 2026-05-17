@@ -1,0 +1,64 @@
+{
+  "schema": "ph6.governance.pseudo_family_boundary_audit.v1",
+  "generated_at_utc": "2026-05-17T07:30:00Z",
+  "authority_law": "Only PSEUDO-A may issue PASS/DROP.",
+  "family_members": {
+    "PSEUDO_M": {
+      "role": "Pseudo-Mathematics — deterministic metric computation",
+      "fields_emitted": ["entropy_fp", "laplacian_var_fp", "motion_fraction_fp"],
+      "issues_pass_drop": false,
+      "mutates_thresholds": false,
+      "mutates_evidence_packet": false,
+      "mutates_cram_commits": false,
+      "mutates_replay_hashes": false,
+      "mutates_audit_sequence": false,
+      "blocks_rsync": false,
+      "boundary_status": "PASS",
+      "evidence": "All three fields are fixed-point integers. Schema: ph6.metrics.fixedpoint.v1. Verified across C08-C13 phase receipts."
+    },
+    "PSEUDO_A": {
+      "role": "Pseudo-Assembly Theory — PASS/DROP authority",
+      "issues_pass_drop": true,
+      "authority_gate": "PASS_DROP_AUTHORITY",
+      "uses_metrics_from": "PSEUDO_M only",
+      "contamination_from_lane2": false,
+      "contamination_from_tokens": false,
+      "contamination_from_soso": false,
+      "boundary_status": "PASS",
+      "evidence": "PSEUDO-A verdict path verified in crash_replay.py. Lane 2 violation count tracked and confirmed zero across all C08-C13 runs."
+    },
+    "PSEUDO_PREDICTIVE": {
+      "role": "Pseudo-Predictive — advisory/diagnostic only",
+      "issues_pass_drop": false,
+      "mutates_authority_path": false,
+      "boundary_status": "PASS",
+      "evidence": "Predictive window (_PRED_WINDOW=100 in C13 runner) used for phase-transition diagnostic only. Does not alter verdict."
+    },
+    "PSEUDO_SCI": {
+      "role": "Pseudo-SCI — observability sideband only",
+      "issues_pass_drop": false,
+      "mutates_authority_path": false,
+      "boundary_status": "PASS",
+      "evidence": "SCI sideband produces advisory output only. Verified in SSMT boundary test suite."
+    }
+  },
+  "campaign_evidence": {
+    "C08": {"pseudo_family": "PASS", "pseudo_m_violations": 0, "pseudo_a_violations": 0},
+    "C09": {"pseudo_family": "PASS", "pseudo_m_violations": 0, "pseudo_a_violations": 0},
+    "C10": {"pseudo_family": "PASS", "pseudo_m_violations": 0, "pseudo_a_violations": 0},
+    "C11": {"pseudo_family": "PASS", "pseudo_m_violations": 0, "pseudo_a_violations": 0},
+    "C12": {"pseudo_family": "PASS", "pseudo_m_violations": 0, "pseudo_a_violations": 0},
+    "C13": {
+      "pseudo_family": "PASS",
+      "pseudo_m_violations": 0,
+      "pseudo_a_violations": 0,
+      "phases_verified": ["A", "B", "C", "D", "E", "F", "G"]
+    }
+  },
+  "overall_result": "PASS",
+  "forbidden_term_findings_in_code": {
+    "confidence_fp_in_ssmt": "FALSE_POSITIVE — Lane 2 advisory swarm internal field, Authority ZERO",
+    "confidence_in_tok_lifecycle": "FALSE_POSITIVE — Token VDT/VLT internal lifecycle threshold, Authority ZERO",
+    "confidence_in_cram_pu_live": "FALSE_POSITIVE — RT token constructor field in _TokSidecar, never surfaces to Lane 1"
+  }
+}

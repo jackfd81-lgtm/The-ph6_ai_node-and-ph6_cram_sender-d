@@ -1,0 +1,154 @@
+{
+  "schema": "ph6.governance.whole_system_architecture_risk_register.v1",
+  "generated_at_utc": "2026-05-17T07:30:00Z",
+  "audit_context": "Post-C13 whole-system architecture search",
+  "risks": [
+    {
+      "risk_id": "RSK-01",
+      "category": "Evidence Closure",
+      "title": "C13 missing from closure_status.json (pre-audit)",
+      "severity": "CRITICAL",
+      "status": "FIXED",
+      "evidence": "C13 committed at 11813cfc3 with PASS_PENDING_REVIEW but not registered in closure_status.json",
+      "affected_files": ["PH6_SOURCE/GOVERNANCE/closure_status.json"],
+      "campaign_relation": "C13",
+      "recommended_action": "Fixed: C13_24000_VARIABLE_SPEED_INFORMATION_STRESS added as PASS_PENDING_REVIEW",
+      "closure_eligibility": "FIXED_IN_THIS_AUDIT"
+    },
+    {
+      "risk_id": "RSK-02",
+      "category": "Governance State",
+      "title": "C13 closure_status=OPEN in campaign matrix (pre-audit)",
+      "severity": "HIGH",
+      "status": "FIXED",
+      "evidence": "evidence_campaign_matrix.json showed C13 as OPEN after completion",
+      "affected_files": ["PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json"],
+      "campaign_relation": "C13",
+      "recommended_action": "Fixed: updated to PASS_PENDING_REVIEW",
+      "closure_eligibility": "FIXED_IN_THIS_AUDIT"
+    },
+    {
+      "risk_id": "RSK-03",
+      "category": "Hardware-Gated Work",
+      "title": "OI-01 Hailo hardware integration open STOP-SHIP",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "evidence": "OI-01 documented as STOP-SHIP in PH6_SOURCE/00_AI_AGENT_READ_FIRST.md. No Hailo Pi 5 hardware available.",
+      "affected_files": ["ph6/cram_pu/tools/run_oi03_*.py (for OI-03 analog)"],
+      "campaign_relation": "OI-01",
+      "recommended_action": "BLOCKED_BY_HARDWARE — requires Hailo Pi 5 module",
+      "closure_eligibility": "BLOCKED_BY_HARDWARE"
+    },
+    {
+      "risk_id": "RSK-04",
+      "category": "OI-03 Cross-Node Work",
+      "title": "OI-03 Pi-to-Pi live transfer open STOP-SHIP",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "evidence": "OI-03 documented as STOP-SHIP. OI-03 Phase 1+2 scripts exist. Phase 3 (live two-Pi) requires two-node network setup.",
+      "affected_files": [
+        "ph6/cram_pu/tools/run_oi03_phase1_rsync_priority.py",
+        "ph6/cram_pu/tools/run_oi03_phase2_hash_transfer.py",
+        "ph6/cram_pu/tools/run_oi03_pi_to_pi_transfer.py"
+      ],
+      "campaign_relation": "OI-03",
+      "recommended_action": "BLOCKED_BY_REMOTE_NODE — requires two-Pi setup",
+      "closure_eligibility": "BLOCKED_BY_REMOTE_NODE"
+    },
+    {
+      "risk_id": "RSK-05",
+      "category": "Life CRAM / CRAM-PU Open Work",
+      "title": "Life CRAM campaigns not yet run",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "evidence": "LIFE-CRAM-PU-1, TOK-LIFE-1, SOSO-LIFE-1 all show state=OPEN in closure_status.json",
+      "affected_files": ["PH6_SOURCE/GOVERNANCE/closure_status.json"],
+      "campaign_relation": "LIFE-CRAM-PU-1 TOK-LIFE-1 SOSO-LIFE-1",
+      "recommended_action": "READY_FOR_TARGETED_FIX — requires life-stream session with real camera",
+      "closure_eligibility": "REQUIRES_RERUN"
+    },
+    {
+      "risk_id": "RSK-06",
+      "category": "Evidence Closure",
+      "title": "C08 uses older artifact schema (pre-manifest runner)",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "evidence": "C08 run dir has campaign_result_summary.json but no campaign_manifest.json, final_report.md, or failure_register.json. All critical fields present in summary. Schema evolved after C08.",
+      "affected_files": ["ph6/cram_pu/validation_runs/20260517T050752Z_C08_3600_staged/"],
+      "campaign_relation": "C08",
+      "recommended_action": "ELIGIBLE_FOR_HUMAN_REVIEW — result_set_hash and replay verified; schema gap is historical not evidentiary",
+      "closure_eligibility": "ELIGIBLE_FOR_HUMAN_REVIEW"
+    },
+    {
+      "risk_id": "RSK-07",
+      "category": "Evidence Closure",
+      "title": "C07-C13 all PASS_PENDING_REVIEW — awaiting human reviewer sign-off",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "evidence": "reviewer=null, reviewed_at_utc=null for all active campaigns",
+      "affected_files": ["PH6_SOURCE/GOVERNANCE/closure_status.json"],
+      "campaign_relation": "C07 C08 C09 C10 C11 C12 C13 TOK-1 SOSO-1",
+      "recommended_action": "ELIGIBLE_FOR_HUMAN_REVIEW",
+      "closure_eligibility": "ELIGIBLE_FOR_HUMAN_REVIEW"
+    },
+    {
+      "risk_id": "RSK-08",
+      "category": "Documentation / Canon Drift",
+      "title": "C01-C06 FC01 in campaign matrix as OPEN backlog — may mislead audit scans",
+      "severity": "LOW",
+      "status": "OPEN",
+      "evidence": "17 campaigns in matrix; C01-C06 and FC01 predate C07 and were never executed in the current evidence sequence",
+      "affected_files": ["PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json"],
+      "campaign_relation": "C01 C02 C03 C04 C05 C06 FC01",
+      "recommended_action": "ELIGIBLE_FOR_HUMAN_REVIEW — classify as superseded or schedule execution",
+      "closure_eligibility": "ELIGIBLE_FOR_HUMAN_REVIEW"
+    },
+    {
+      "risk_id": "RSK-09",
+      "category": "Tooling / Script Health",
+      "title": ".tmp files in frame_filter/logs not deleted",
+      "severity": "LOW",
+      "status": "PENDING",
+      "evidence": "frame_filter/logs/live_run.tmp and run_log.tmp present; likely runtime hot-logs from older frame_filter session",
+      "affected_files": [
+        "frame_filter/logs/live_run.tmp",
+        "frame_filter/logs/run_20260429_215052/hot/run_log.tmp"
+      ],
+      "campaign_relation": "None",
+      "recommended_action": "READY_FOR_TARGETED_FIX — confirm non-evidence then delete",
+      "closure_eligibility": "READY_FOR_TARGETED_FIX"
+    },
+    {
+      "risk_id": "RSK-10",
+      "category": "PSEUDO Family Stability",
+      "title": "PSEUDO family boundary audit PASS across C08-C13",
+      "severity": "INFO",
+      "status": "CLOSED_INFO",
+      "evidence": "All 6 campaigns show pseudo_m_violations=0, pseudo_a_violations=0, lane2_violation_count=0",
+      "campaign_relation": "C08 C09 C10 C11 C12 C13",
+      "recommended_action": "NO_ACTION",
+      "closure_eligibility": "NOT_APPLICABLE"
+    },
+    {
+      "risk_id": "RSK-11",
+      "category": "Production-Clearance Blockers",
+      "title": "Production clearance NOT declared — two STOP-SHIP gates open",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "evidence": "OI-01 and OI-03 are STOP-SHIP gates per PH6 doctrine. HRG9 is CLOSED. Production requires OI-01 and OI-03 closure.",
+      "affected_files": ["PH6_SOURCE/GOVERNANCE/closure_status.json"],
+      "campaign_relation": "OI-01 OI-03",
+      "recommended_action": "BLOCKED_BY_HARDWARE and BLOCKED_BY_REMOTE_NODE",
+      "closure_eligibility": "BLOCKED_BY_HARDWARE"
+    }
+  ],
+  "risk_count_by_severity": {
+    "CRITICAL": 1,
+    "HIGH": 4,
+    "MEDIUM": 3,
+    "LOW": 2,
+    "INFO": 1
+  },
+  "risks_fixed_this_audit": ["RSK-01", "RSK-02"],
+  "production_clearance_status": "NOT_DECLARED"
+}

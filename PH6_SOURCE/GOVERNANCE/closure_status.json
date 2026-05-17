@@ -394,7 +394,7 @@
         "closure_decision",
         "closed_at_utc"
       ],
-      "evidence_commit": "pending",
+      "evidence_commit": "36da92c68",
       "run_stamp_utc": "20260517T061511Z",
       "target_fps": 15,
       "actual_fps": 15.0,
@@ -425,7 +425,7 @@
         "closure_decision",
         "closed_at_utc"
       ],
-      "evidence_commit": "pending",
+      "evidence_commit": "36da92c68",
       "run_stamp_utc": "20260517T061511Z",
       "target_fps": 30,
       "actual_fps": 30.0,
@@ -456,7 +456,7 @@
         "closure_decision",
         "closed_at_utc"
       ],
-      "evidence_commit": "pending",
+      "evidence_commit": "36da92c68",
       "run_stamp_utc": "20260517T061511Z",
       "target_fps": 50,
       "actual_fps": 50.0,
@@ -468,6 +468,44 @@
       "rsync_non_blocking": "PASS",
       "lane2_isolation": "PASS",
       "critical_failures": 0,
+      "hrg9_status": "CANDIDATE_EVIDENCE_ONLY",
+      "production_clearance_status": "NOT_DECLARED"
+    },
+    "C13_24000_VARIABLE_SPEED_INFORMATION_STRESS": {
+      "campaign_id": "C13_24000_VARIABLE_SPEED_INFORMATION_STRESS",
+      "name": "24,000-Frame Variable-Speed Variable-Information Stress Validation",
+      "state": "PASS_PENDING_REVIEW",
+      "closed": false,
+      "reviewer": null,
+      "reviewed_at_utc": null,
+      "closure_decision": null,
+      "closed_at_utc": null,
+      "review_required": true,
+      "required_before_closed": [
+        "reviewer",
+        "reviewed_at_utc",
+        "closure_decision",
+        "closed_at_utc"
+      ],
+      "evidence_commit": "11813cfc3",
+      "run_stamp_utc": "20260517T065826Z",
+      "total_frames_configured": 24000,
+      "total_frames_completed": 24000,
+      "total_fps": 22.7,
+      "total_duration_seconds": 1057.6,
+      "total_bytes": 32400000,
+      "phases_passed": ["A", "B", "C", "D", "E", "F", "G"],
+      "phase_fps": {
+        "A": 15.0, "B": 126.1, "C": 30.0, "D": 107.3,
+        "E": 5.0, "F": 30.0, "G": 60.0
+      },
+      "pseudo_family": "PASS",
+      "replay_parity": "PASS",
+      "rsync_non_blocking": "PASS",
+      "lane2_isolation": "PASS",
+      "critical_failures": 0,
+      "degradation_detected": true,
+      "degradation_note": "By design: first 12K FPS=27.8 vs last 12K FPS=16.7; Phase E at 5 FPS is intentional slowest load.",
       "hrg9_status": "CANDIDATE_EVIDENCE_ONLY",
       "production_clearance_status": "NOT_DECLARED"
     }

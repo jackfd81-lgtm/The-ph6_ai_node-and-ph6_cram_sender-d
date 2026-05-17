@@ -1,0 +1,124 @@
+{
+  "schema": "ph6.governance.open_material_register.v1",
+  "generated_at_utc": "2026-05-17T07:30:00Z",
+  "total_raw_grep_hits": 1134,
+  "classified_findings": [
+    {
+      "finding_id": "OM-01",
+      "classification": "CRITICAL",
+      "file": "PH6_SOURCE/GOVERNANCE/closure_status.json (pre-fix)",
+      "matched_term": "C13 missing from closure_status.json",
+      "reason": "C13 completed at commit 11813cfc3 but had no entry in closure_status.json. Fixed in this audit: C13_24000_VARIABLE_SPEED_INFORMATION_STRESS added as PASS_PENDING_REVIEW.",
+      "status": "FIXED",
+      "evidence_rerun_required": false,
+      "human_review_required": true
+    },
+    {
+      "finding_id": "OM-02",
+      "classification": "HIGH",
+      "file": "PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json (pre-fix)",
+      "matched_term": "C13 closure_status=OPEN",
+      "reason": "C13 was completed and committed but matrix showed OPEN. Fixed in this audit: updated to PASS_PENDING_REVIEW.",
+      "status": "FIXED",
+      "evidence_rerun_required": false,
+      "human_review_required": true
+    },
+    {
+      "finding_id": "OM-03",
+      "classification": "HIGH",
+      "file": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "matched_term": "OI-01 OPEN STOP-SHIP",
+      "reason": "OI-01 (Hailo hardware integration) remains open. Hardware-gated: requires second Pi 5 with Hailo module. Cannot be closed by software campaign.",
+      "status": "OPEN",
+      "recommended_action": "BLOCKED_BY_HARDWARE",
+      "evidence_rerun_required": false,
+      "human_review_required": true
+    },
+    {
+      "finding_id": "OM-04",
+      "classification": "HIGH",
+      "file": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "matched_term": "OI-03 OPEN STOP-SHIP",
+      "reason": "OI-03 (Real Pi-to-Pi live transfer) remains open. Hardware-gated: requires two-Pi network setup and live transfer run.",
+      "status": "OPEN",
+      "recommended_action": "BLOCKED_BY_REMOTE_NODE",
+      "evidence_rerun_required": false,
+      "human_review_required": true
+    },
+    {
+      "finding_id": "OM-05",
+      "classification": "MEDIUM",
+      "file": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "matched_term": "LIFE-CRAM-PU-1 state=OPEN",
+      "reason": "Living CRAM-PU isolation campaign not yet run. Requires separate live-stream session evidence.",
+      "status": "OPEN",
+      "recommended_action": "READY_FOR_TARGETED_FIX",
+      "evidence_rerun_required": true,
+      "human_review_required": true
+    },
+    {
+      "finding_id": "OM-06",
+      "classification": "MEDIUM",
+      "file": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "matched_term": "TOK-LIFE-1 SOSO-LIFE-1 state=OPEN",
+      "reason": "Life CRAM token and SoSo advisory isolation campaigns not yet run. Require Life CRAM session with live token/SoSo enabled.",
+      "status": "OPEN",
+      "recommended_action": "READY_FOR_TARGETED_FIX",
+      "evidence_rerun_required": true,
+      "human_review_required": true
+    },
+    {
+      "finding_id": "OM-07",
+      "classification": "MEDIUM",
+      "file": "PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json",
+      "matched_term": "C01-C06 FC01 closure_status=OPEN",
+      "reason": "Earlier campaigns C01-C06 and FC01 are in the matrix as OPEN backlog. These predate the current active campaign sequence (C07+). Not failures — backlog tracking.",
+      "status": "OPEN",
+      "recommended_action": "ELIGIBLE_FOR_HUMAN_REVIEW",
+      "evidence_rerun_required": false,
+      "human_review_required": true,
+      "note": "C07 through C13 have all been run and are PASS_PENDING_REVIEW. C01-C06 represent the pre-C07 evidence roadmap."
+    },
+    {
+      "finding_id": "OM-08",
+      "classification": "INFO",
+      "file": "ph6/cram_pu/validation_runs/*interruption_receipt* and partial runs",
+      "matched_term": "interrupted partial evidence",
+      "reason": "Three interrupted C13 partial runs exist (063357Z, 063840Z, 064235Z) and are committed as preserved partial evidence per doctrine. Not deletable.",
+      "status": "PRESERVED",
+      "recommended_action": "NO_ACTION",
+      "evidence_rerun_required": false,
+      "human_review_required": false
+    },
+    {
+      "finding_id": "OM-09",
+      "classification": "LOW",
+      "file": "frame_filter/logs/live_run.tmp frame_filter/logs/.../run_log.tmp",
+      "matched_term": ".tmp files",
+      "reason": "Two .tmp files found in frame_filter/logs. Likely runtime hot-log from frame_filter system. Not evidence. Not deleted pending confirmation.",
+      "status": "PENDING_REVIEW",
+      "recommended_action": "READY_FOR_TARGETED_FIX — confirm non-evidence then delete",
+      "evidence_rerun_required": false,
+      "human_review_required": true
+    },
+    {
+      "finding_id": "OM-10",
+      "classification": "FALSE_POSITIVE",
+      "file": "PH6_SOURCE documents — all hits for OPEN PENDING FAIL STOP-SHIP DRIFT_FAIL in governance docs",
+      "matched_term": "OPEN PENDING STOP-SHIP DRIFT_FAIL in doc text",
+      "reason": "All hits in PH6_SOURCE/*.md governance and preload docs are governance vocabulary definitions, not new open items.",
+      "status": "FALSE_POSITIVE",
+      "recommended_action": "NONE"
+    }
+  ],
+  "summary": {
+    "CRITICAL": 1,
+    "HIGH": 2,
+    "MEDIUM": 3,
+    "LOW": 1,
+    "INFO": 1,
+    "FALSE_POSITIVE": 1
+  },
+  "all_critical_resolved": true,
+  "stop_ship_gates_open": ["OI-01", "OI-03"]
+}
