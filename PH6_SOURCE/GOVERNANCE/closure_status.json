@@ -1,0 +1,41 @@
+{
+  "schema": "ph6.campaign_closure_status.v1",
+  "generated_at_utc": "2026-05-17T04:54:49Z",
+  "commit": "2346d14",
+  "campaigns": {
+    "C07": {
+      "campaign_id": "C07",
+      "name": "Governance Drift Validation",
+      "state": "PASS_PENDING_REVIEW",
+      "closed": false,
+      "reason": "Source-only governance drift scan passed with zero findings, but reviewer sign-off and full closure package are not yet complete.",
+      "executed_command": "python3 PH6_SOURCE/TOOLS/governance_drift_scan.py --scan-root PH6_SOURCE --governance-dir PH6_SOURCE/GOVERNANCE --project-root . --report-out PH6_SOURCE/GOVERNANCE/governance_scan_source_only.json",
+      "scan_root_used": "PH6_SOURCE",
+      "schema_validation_result": {
+        "json_valid": true,
+        "schema": "ph6.governance.drift_report.v1",
+        "overall_result": "PASS",
+        "critical_count": 0,
+        "high_count": 0,
+        "warn_count": 0,
+        "total_findings": 0
+      },
+      "evidence_artifacts": [
+        "PH6_SOURCE/GOVERNANCE/governance_scan_source_only.json"
+      ],
+      "artifact_hashes": {
+        "PH6_SOURCE/GOVERNANCE/governance_scan_source_only.json": "blake2b256:506cc46b511afcc3ccaee0885d17cc462cbd23593a26a2c058f3826877029407"
+      },
+      "reviewer": null,
+      "reviewed_at_utc": null,
+      "closure_decision": null,
+      "closed_at_utc": null,
+      "required_before_closed": [
+        "reviewer",
+        "reviewed_at_utc",
+        "closure_decision",
+        "closed_at_utc"
+      ]
+    }
+  }
+}
