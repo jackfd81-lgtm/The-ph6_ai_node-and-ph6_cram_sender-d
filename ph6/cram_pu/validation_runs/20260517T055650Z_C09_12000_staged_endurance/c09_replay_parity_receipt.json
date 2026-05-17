@@ -1,0 +1,26 @@
+{
+  "schema": "ph6.c09_replay_parity_receipt.v1",
+  "campaign_id": "C09",
+  "generated_at_utc": "2026-05-17T05:57:58Z",
+  "hash_parity": "MATCH",
+  "unique_hashes": [
+    "445c769cb78aa7eadcfabe55218a0935461eb19d0f79b8b5fb22b6fa4042934b"
+  ],
+  "per_phase_hash": {
+    "A": "445c769cb78aa7eadcfabe55218a0935461eb19d0f79b8b5fb22b6fa4042934b",
+    "B": "445c769cb78aa7eadcfabe55218a0935461eb19d0f79b8b5fb22b6fa4042934b",
+    "C": "445c769cb78aa7eadcfabe55218a0935461eb19d0f79b8b5fb22b6fa4042934b",
+    "D": "445c769cb78aa7eadcfabe55218a0935461eb19d0f79b8b5fb22b6fa4042934b",
+    "E": "445c769cb78aa7eadcfabe55218a0935461eb19d0f79b8b5fb22b6fa4042934b",
+    "F": "445c769cb78aa7eadcfabe55218a0935461eb19d0f79b8b5fb22b6fa4042934b"
+  },
+  "per_phase_replay_verdict": {
+    "A": "PASS",
+    "B": "PASS",
+    "C": "PASS",
+    "D": "PASS",
+    "E": "PASS",
+    "F": "PASS"
+  },
+  "overall": "PASS"
+}

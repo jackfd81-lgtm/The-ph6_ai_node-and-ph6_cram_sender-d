@@ -37,7 +37,6 @@
         "closed_at_utc"
       ]
     },
-
     "TOK-1": {
       "campaign_id": "TOK-1",
       "name": "Token Advisory Isolation Validation",
@@ -45,16 +44,8 @@
       "closed": false,
       "evidence_commit": "pending",
       "run_stamp_utc": "20260517T052301Z",
-      "evidence_artifacts": [
-        "ph6/cram_pu/validation_runs/20260517T052301Z_TOK1_SOSO1_isolation/tok_soso_isolation_receipt.json",
-        "ph6/cram_pu/validation_runs/20260517T052301Z_TOK1_SOSO1_isolation/tok_on/manifest.json",
-        "ph6/cram_pu/validation_runs/20260517T052301Z_TOK1_SOSO1_isolation/tok_off/manifest.json"
-      ],
-      "artifact_hashes": {
-        "tok_soso_isolation_receipt.json": "blake2b256:cc0cff73732ff97b46efbe4dfd2418ee645df6cc007d8aff734ed1e231d2e670",
-        "tok_on/manifest.json":            "blake2b256:6e205d389bd9dde313d1707f482df1f954dff509126d081cc54d6521132b927e",
-        "tok_off/manifest.json":           "blake2b256:94c2791ab97effecc4691e83c3dbbd7c268d4c91cc4ec699ea82f81ab0481882"
-      },
+      "evidence_artifacts": [],
+      "artifact_hashes": {},
       "proofs_all_pass": true,
       "hash_parity_tok_on_vs_off": "MATCH",
       "result_set_hash": "a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660",
@@ -97,11 +88,8 @@
         "/var/ph6/cram-rv",
         "/var/ph6/audit/sequence",
         "/var/ph6/export"
-      ],
-      "evidence_artifacts": [],
-      "artifact_hashes": {}
+      ]
     },
-
     "SOSO-1": {
       "campaign_id": "SOSO-1",
       "name": "SoSo Advisory Drift-Control Isolation Validation",
@@ -109,12 +97,8 @@
       "closed": false,
       "evidence_commit": "pending",
       "run_stamp_utc": "20260517T052301Z",
-      "evidence_artifacts": [
-        "ph6/cram_pu/validation_runs/20260517T052301Z_TOK1_SOSO1_isolation/tok_soso_isolation_receipt.json"
-      ],
-      "artifact_hashes": {
-        "tok_soso_isolation_receipt.json": "blake2b256:cc0cff73732ff97b46efbe4dfd2418ee645df6cc007d8aff734ed1e231d2e670"
-      },
+      "evidence_artifacts": [],
+      "artifact_hashes": {},
       "proofs_all_pass": true,
       "reviewer": null,
       "reviewed_at_utc": null,
@@ -157,11 +141,8 @@
         "/var/ph6/cram-rv",
         "/var/ph6/audit/sequence",
         "/var/ph6/export"
-      ],
-      "evidence_artifacts": [],
-      "artifact_hashes": {}
+      ]
     },
-
     "C08_3600_STAGED_LOCAL_PI": {
       "campaign_id": "C08_3600_STAGED_LOCAL_PI",
       "name": "3600-Frame Staged Local Pi Evidence Campaign",
@@ -173,7 +154,11 @@
       "total_frames_observed": 3600,
       "cross_segment_result_set_hash": "ed74de8d14e71a19cf74ed9e9ed9c1b57fd3bbf403ef895edb4835940f03ad4f",
       "cross_segment_hash_parity": "MATCH",
-      "segments_passed": ["FAST", "REGULAR_CRAM", "FAST_CRAM"],
+      "segments_passed": [
+        "FAST",
+        "REGULAR_CRAM",
+        "FAST_CRAM"
+      ],
       "replay_parity": "PASS",
       "rsync_non_blocking": "PASS",
       "lane2_isolation": "PASS",
@@ -199,7 +184,6 @@
         "closed_at_utc"
       ]
     },
-
     "LIFE-CRAM-PU-1": {
       "campaign_id": "LIFE-CRAM-PU-1",
       "name": "Living CRAM-PU Departure Arrival Verdict Commit Replay Validation",
@@ -228,7 +212,6 @@
       "evidence_artifacts": [],
       "artifact_hashes": {}
     },
-
     "TOK-LIFE-1": {
       "campaign_id": "TOK-LIFE-1",
       "name": "Life CRAM Token Advisory Isolation Validation",
@@ -257,21 +240,38 @@
         "token_promotion_fails_closed",
         "expired_tokens_do_not_affect_lane1"
       ],
-      "allowed_write_roots": ["/var/ph6/mram-s/tokens/"],
+      "allowed_write_roots": [
+        "/var/ph6/mram-s/tokens/"
+      ],
       "forbidden_write_roots": [
-        "/var/ph6/cram-0", "/var/ph6/cram-a", "/var/ph6/cram-r", "/var/ph6/cram-rv",
-        "/var/ph6/audit/sequence", "/var/ph6/export",
-        "/var/ph6/life-cram/departure", "/var/ph6/life-cram/arrival",
-        "/var/ph6/life-cram/verdict", "/var/ph6/life-cram/commit", "/var/ph6/life-cram/replay"
+        "/var/ph6/cram-0",
+        "/var/ph6/cram-a",
+        "/var/ph6/cram-r",
+        "/var/ph6/cram-rv",
+        "/var/ph6/audit/sequence",
+        "/var/ph6/export",
+        "/var/ph6/life-cram/departure",
+        "/var/ph6/life-cram/arrival",
+        "/var/ph6/life-cram/verdict",
+        "/var/ph6/life-cram/commit",
+        "/var/ph6/life-cram/replay"
       ],
       "forbidden_authority_fields": [
-        "verdict", "result", "pass", "drop", "authority_hash", "event_seq",
-        "threshold_override", "lane1_decision", "continuity_status", "commit_status", "replay_status"
+        "verdict",
+        "result",
+        "pass",
+        "drop",
+        "authority_hash",
+        "event_seq",
+        "threshold_override",
+        "lane1_decision",
+        "continuity_status",
+        "commit_status",
+        "replay_status"
       ],
       "evidence_artifacts": [],
       "artifact_hashes": {}
     },
-
     "SOSO-LIFE-1": {
       "campaign_id": "SOSO-LIFE-1",
       "name": "Life CRAM SoSo Advisory Drift-Control Isolation Validation",
@@ -301,19 +301,45 @@
         "slow_soso_does_not_block_rsync",
         "slow_soso_does_not_block_replay"
       ],
-      "allowed_write_roots": ["/var/ph6/mram-s/soso/"],
+      "allowed_write_roots": [
+        "/var/ph6/mram-s/soso/"
+      ],
       "forbidden_write_roots": [
-        "/var/ph6/cram-0", "/var/ph6/cram-a", "/var/ph6/cram-r", "/var/ph6/cram-rv",
-        "/var/ph6/audit/sequence", "/var/ph6/export",
-        "/var/ph6/life-cram/departure", "/var/ph6/life-cram/arrival",
-        "/var/ph6/life-cram/verdict", "/var/ph6/life-cram/commit", "/var/ph6/life-cram/replay"
+        "/var/ph6/cram-0",
+        "/var/ph6/cram-a",
+        "/var/ph6/cram-r",
+        "/var/ph6/cram-rv",
+        "/var/ph6/audit/sequence",
+        "/var/ph6/export",
+        "/var/ph6/life-cram/departure",
+        "/var/ph6/life-cram/arrival",
+        "/var/ph6/life-cram/verdict",
+        "/var/ph6/life-cram/commit",
+        "/var/ph6/life-cram/replay"
       ],
       "forbidden_authority_fields": [
-        "verdict", "result", "pass", "drop", "authority_hash", "event_seq",
-        "threshold_override", "lane1_decision", "continuity_status", "commit_status", "replay_status"
+        "verdict",
+        "result",
+        "pass",
+        "drop",
+        "authority_hash",
+        "event_seq",
+        "threshold_override",
+        "lane1_decision",
+        "continuity_status",
+        "commit_status",
+        "replay_status"
       ],
       "evidence_artifacts": [],
       "artifact_hashes": {}
     }
+  },
+  "C09": {
+    "state": "PASS_PENDING_REVIEW",
+    "closed": false,
+    "reviewer": null,
+    "reviewed_at_utc": null,
+    "closure_decision": null,
+    "closed_at_utc": null
   }
 }

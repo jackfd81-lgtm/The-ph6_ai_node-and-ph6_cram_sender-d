@@ -1,0 +1,45 @@
+{
+  "schema": "ph6.c09_throughput_summary.v1",
+  "campaign_id": "C09",
+  "generated_at_utc": "2026-05-17T05:57:58Z",
+  "total_frames_configured": 12000,
+  "total_frames_completed": 12000,
+  "total_duration_seconds": 67.61,
+  "total_frames_per_second": 177.48,
+  "avg_fps_by_mode": {
+    "FAST": 182.67,
+    "REGULAR_CRAM": 184.37,
+    "FAST_CRAM": 184.79
+  },
+  "fastest_mode": "FAST_CRAM",
+  "slowest_mode": "FAST",
+  "fast_vs_regular_cram_delta_pct": -0.9,
+  "fast_cram_vs_regular_cram_delta_pct": 0.2,
+  "fast_cram_vs_fast_delta_pct": 1.2,
+  "first_6000_fps": 182.95,
+  "second_6000_fps": 184.9,
+  "phase_fps": {
+    "A": 180.01,
+    "B": 183.73,
+    "C": 185.2,
+    "D": 185.33,
+    "E": 185.0,
+    "F": 184.39
+  },
+  "phase_p95_ms": {
+    "A": 7.7043,
+    "B": 7.5702,
+    "C": 7.375,
+    "D": 7.43,
+    "E": 7.3603,
+    "F": 7.448
+  },
+  "phase_p99_ms": {
+    "A": 10.2728,
+    "B": 8.9109,
+    "C": 8.551,
+    "D": 8.5435,
+    "E": 8.0567,
+    "F": 8.4341
+  }
+}

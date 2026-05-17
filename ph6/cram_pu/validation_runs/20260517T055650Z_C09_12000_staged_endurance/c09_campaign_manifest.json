@@ -1,0 +1,42 @@
+{
+  "schema": "ph6.evidence_campaign_run.v1",
+  "campaign_id": "C09",
+  "run_stamp_utc": "20260517T055650Z",
+  "commit": "423676d",
+  "total_frames": 12000,
+  "phases": [
+    {
+      "phase": "A",
+      "mode": "FAST",
+      "frames": 2000
+    },
+    {
+      "phase": "B",
+      "mode": "REGULAR_CRAM",
+      "frames": 2000
+    },
+    {
+      "phase": "C",
+      "mode": "FAST_CRAM",
+      "frames": 2000
+    },
+    {
+      "phase": "D",
+      "mode": "FAST",
+      "frames": 2000
+    },
+    {
+      "phase": "E",
+      "mode": "REGULAR_CRAM",
+      "frames": 2000
+    },
+    {
+      "phase": "F",
+      "mode": "FAST_CRAM",
+      "frames": 2000
+    }
+  ],
+  "authority_rule": "Lane 1 decides. Lane 2 advises.",
+  "ram_rule": "RAM accelerates only. Durable CRAM authority preserved.",
+  "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW."
+}

@@ -357,11 +357,31 @@
         "RSYNC_PRIORITY_ZERO"
       ],
       "minimum_frames": 3600,
-      "node_scope": ["single_pi_local"],
+      "node_scope": [
+        "single_pi_local"
+      ],
       "segments": [
-        {"segment": "A", "mode": "FAST",         "frames": 1200, "start": 1,    "end": 1200},
-        {"segment": "B", "mode": "REGULAR_CRAM", "frames": 1200, "start": 1201, "end": 2400},
-        {"segment": "C", "mode": "FAST_CRAM",    "frames": 1200, "start": 2401, "end": 3600}
+        {
+          "segment": "A",
+          "mode": "FAST",
+          "frames": 1200,
+          "start": 1,
+          "end": 1200
+        },
+        {
+          "segment": "B",
+          "mode": "REGULAR_CRAM",
+          "frames": 1200,
+          "start": 1201,
+          "end": 2400
+        },
+        {
+          "segment": "C",
+          "mode": "FAST_CRAM",
+          "frames": 1200,
+          "start": 2401,
+          "end": 3600
+        }
       ],
       "mode_mapping_note": "Current runner (cram_pu_live.py) has no --mode flag. Segments distinguished by separate run dirs and campaign metadata labels only. Behavioral mode difference is architectural intent; implementation is identical processing path in this version.",
       "commands": [
@@ -412,7 +432,9 @@
       "name": "Living CRAM-PU Departure Arrival Verdict Commit Replay Validation",
       "category": "life_cram",
       "purpose": "Prove the full CRAM-PU authority chain: departure → arrival → PSEUDO verdict → CRAM commit → replay proof.",
-      "owned_gaps": ["LIFE_CRAM_AUTHORITY_CHAIN"],
+      "owned_gaps": [
+        "LIFE_CRAM_AUTHORITY_CHAIN"
+      ],
       "authority": "CRAM-PU",
       "lane": 1,
       "maximum_result_without_review": "PASS_PENDING_REVIEW",
@@ -445,7 +467,9 @@
       "name": "Life CRAM Token Advisory Isolation Validation",
       "category": "life_cram_advisory_isolation",
       "purpose": "Prove tokens write only to MRAM-S and cannot affect Life CRAM Lane 1 authority chain.",
-      "owned_gaps": ["LIFE_CRAM_TOKEN_ISOLATION"],
+      "owned_gaps": [
+        "LIFE_CRAM_TOKEN_ISOLATION"
+      ],
       "authority": "ZERO",
       "lane": 2,
       "allowed_write_root": "/var/ph6/mram-s/tokens/",
@@ -459,13 +483,91 @@
       "name": "Life CRAM SoSo Advisory Drift-Control Isolation Validation",
       "purpose": "Prove SoSo writes only to MRAM-S and cannot affect Life CRAM Lane 1 authority chain.",
       "category": "life_cram_advisory_isolation",
-      "owned_gaps": ["LIFE_CRAM_SOSO_ISOLATION"],
+      "owned_gaps": [
+        "LIFE_CRAM_SOSO_ISOLATION"
+      ],
       "authority": "ZERO",
       "lane": 2,
       "allowed_write_root": "/var/ph6/mram-s/soso/",
       "maximum_result_without_review": "PASS_PENDING_REVIEW",
       "production_clearance_effect": "NONE",
       "closure_status": "OPEN",
+      "closed": false
+    },
+    {
+      "campaign_id": "C09",
+      "name": "12,000-Frame Staged Endurance and Throughput Validation",
+      "purpose": "Prove sustained PH6 behavior across all three modes over 12,000 frames. Measure FPS and p50/p95/p99 latency per phase. Compare first 6,000 vs second 6,000 for degradation.",
+      "owned_gaps": [
+        "OPERATIONAL_COHERENCE",
+        "FAST_CRAM",
+        "CRAM_RV",
+        "REPLAY_PARITY",
+        "RSYNC_PRIORITY_ZERO"
+      ],
+      "minimum_frames": 12000,
+      "phases": [
+        {
+          "phase": "A",
+          "mode": "FAST",
+          "frames": 2000
+        },
+        {
+          "phase": "B",
+          "mode": "REGULAR_CRAM",
+          "frames": 2000
+        },
+        {
+          "phase": "C",
+          "mode": "FAST_CRAM",
+          "frames": 2000
+        },
+        {
+          "phase": "D",
+          "mode": "FAST",
+          "frames": 2000
+        },
+        {
+          "phase": "E",
+          "mode": "REGULAR_CRAM",
+          "frames": 2000
+        },
+        {
+          "phase": "F",
+          "mode": "FAST_CRAM",
+          "frames": 2000
+        }
+      ],
+      "runner": "ph6/cram_pu/tools/run_c09_12000_frame_campaign.py",
+      "required_artifacts": [
+        "c09_campaign_manifest.json",
+        "c09_phase_A_fast_receipt.json",
+        "c09_phase_B_regular_cram_receipt.json",
+        "c09_phase_C_fast_cram_receipt.json",
+        "c09_phase_D_fast_receipt.json",
+        "c09_phase_E_regular_cram_receipt.json",
+        "c09_phase_F_fast_cram_receipt.json",
+        "c09_throughput_summary.json",
+        "c09_replay_parity_receipt.json",
+        "c09_rsync_nonblocking_receipt.json",
+        "c09_lane2_isolation_receipt.json",
+        "c09_failure_register.json",
+        "c09_result_set_hash.txt",
+        "c09_artifact_hashes.blake2b",
+        "c09_final_report.md"
+      ],
+      "pass_conditions": [
+        "all_12000_frames_complete",
+        "result_set_hash_parity_match_across_phases",
+        "replay_parity_pass",
+        "rsync_not_blocked_any_phase",
+        "lane2_zero_violations",
+        "no_critical_failures",
+        "verdict_vocabulary_pass_drop_only"
+      ],
+      "maximum_automatic_result": "PASS_PENDING_REVIEW",
+      "production_clearance_effect": "NONE",
+      "closure_status": "PASS_PENDING_REVIEW",
       "closed": false
     }
   ],
