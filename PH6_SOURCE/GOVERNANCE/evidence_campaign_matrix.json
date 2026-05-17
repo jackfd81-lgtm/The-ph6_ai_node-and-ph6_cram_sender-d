@@ -1,0 +1,383 @@
+{
+  "schema": "ph6.evidence_campaign_matrix.v1",
+  "document_id": "PH6-GOV-EVIDENCE-CAMPAIGN-MATRIX-1.0",
+  "status": "ACTIVE_INDEX",
+  "classification": "GOVERNANCE_INDEX_NOT_EVIDENCE",
+  "evidence_status": "NO_CLOSURE_GRANTED_BY_THIS_FILE",
+  "boundary_rule": "This matrix defines proof obligations only. It is not evidence and may not close any campaign.",
+  "default_campaign_state": "OPEN",
+  "authority_rule": "Lane 1 decides. Lane 2 advises.",
+  "closure_rule": "No gap may close without a named campaign, executable command, required artifacts, schema validation, governance scan PASS, and reproducible evidence.",
+  "minimum_valid_frames": 300,
+  "manual_stop_under_minimum_frames": "INVALID",
+  "exception": "A run under 300 frames is valid only if the system crashes or fails before 300 frames.",
+  "global_pass_conditions": [
+    "governance_drift_scan_PASS",
+    "schema_validation_PASS",
+    "audit_chain_valid",
+    "authority_hash_present",
+    "event_seq_present",
+    "no_lane2_authority_leakage",
+    "rsync_not_blocked",
+    "cram_markers_valid",
+    "no_forbidden_terms_in_authority_artifacts"
+  ],
+  "global_required_artifacts": [
+    "run_manifest.json",
+    "audit.jsonl",
+    "governance_scan.json",
+    "schema_validation_report.json",
+    "closure_status.json"
+  ],
+  "campaigns": [
+    {
+      "campaign_id": "C01",
+      "name": "300 Frame Full Stack Operational Coherence",
+      "purpose": "Prove that PH6 operates coherently across ingest, PSEUDO, CRAM writes, audit, replay support, RSYNC, and governance for at least 300 frames.",
+      "owned_gaps": [
+        "GAP-16",
+        "OPERATIONAL_COHERENCE"
+      ],
+      "minimum_frames": 300,
+      "lane_scope": [
+        "Lane 1",
+        "Lane 2 isolation check",
+        "Lane 5 RSYNC"
+      ],
+      "commands": [
+        "python3 -m ph6.cram_pu.cram_pu_live --frames 300 --emit-run-manifest",
+        "python3 -m ph6.governance.governance_drift_scan --root . --json-out governance_scan.json",
+        "python3 -m ph6.cert.validate_run_artifacts --run-dir <RUN_DIR>"
+      ],
+      "required_artifacts": [
+        "run_manifest.json",
+        "audit.jsonl",
+        "cram_store/",
+        "schema_validation_report.json",
+        "governance_scan.json",
+        "closure_status.json"
+      ],
+      "pass_conditions": [
+        "frame_count >= 300",
+        "manual_stop == false",
+        "PSEUDO emits PASS/DROP only",
+        "all verdict records match locked schema",
+        "CRAM-A objects with .blake2b are valid",
+        "CRAM-R records preserve DROP reasons",
+        "audit chain validates",
+        "governance scan PASS"
+      ],
+      "fail_conditions": [
+        "frame_count < 300 without crash/failure",
+        "missing audit.jsonl",
+        "missing authority_hash",
+        "missing event_seq",
+        "non_PASS_DROP_verdict",
+        "Lane 2 writes to CRAM",
+        "RSYNC blocked"
+      ],
+      "closure_status": "OPEN"
+    },
+    {
+      "campaign_id": "C02",
+      "name": "OI-03 Real Pi-to-Pi Transfer Validation",
+      "purpose": "Prove cross-node transfer preserves BLAKE2b continuity, audit identity, and evidence integrity between PH6 nodes.",
+      "owned_gaps": [
+        "OI-03"
+      ],
+      "minimum_frames": 300,
+      "node_scope": [
+        "source_pi",
+        "destination_pi"
+      ],
+      "commands": [
+        "python3 -m ph6.transfer.prepare_transfer_manifest --run-dir <RUN_DIR>",
+        "rsync -a --checksum <SOURCE> <DESTINATION>",
+        "python3 -m ph6.transfer.verify_transfer_manifest --source <SOURCE_MANIFEST> --dest <DEST_DIR>"
+      ],
+      "required_artifacts": [
+        "transfer_manifest_source.json",
+        "transfer_manifest_destination.json",
+        "transfer_verification_report.json",
+        "pre_transfer_hashes.json",
+        "post_transfer_hashes.json",
+        "rsync_log.txt"
+      ],
+      "pass_conditions": [
+        "all source BLAKE2b hashes equal destination BLAKE2b hashes",
+        "object count preserved",
+        "audit chain preserved",
+        "no missing .blake2b markers",
+        "transfer verification PASS"
+      ],
+      "fail_conditions": [
+        "hash mismatch",
+        "missing object",
+        "missing .blake2b marker",
+        "audit discontinuity",
+        "rsync failure"
+      ],
+      "closure_status": "OPEN"
+    },
+    {
+      "campaign_id": "C03",
+      "name": "RSYNC Non-Blocking Under Load",
+      "purpose": "Prove RSYNC remains Priority Zero while Lane 1 and Lane 2 workloads are active.",
+      "owned_gaps": [
+        "RSYNC_PRIORITY_ZERO",
+        "NEVER_BLOCKS_RSYNC"
+      ],
+      "minimum_frames": 300,
+      "commands": [
+        "python3 -m ph6.tests.run_rsync_under_load --frames 300 --lane2-load enabled",
+        "python3 -m ph6.rsync.verify_rsync_health --run-dir <RUN_DIR>"
+      ],
+      "required_artifacts": [
+        "rsync_health_report.json",
+        "rsync_log.txt",
+        "load_profile.json",
+        "run_manifest.json",
+        "audit.jsonl"
+      ],
+      "pass_conditions": [
+        "rsync_blocked == false",
+        "rsync process not starved",
+        "Lane 2 yields under load",
+        "export path remains available",
+        "no advisory workload delays export"
+      ],
+      "fail_conditions": [
+        "rsync_blocked == true",
+        "export starvation detected",
+        "Lane 2 consumes protected resources",
+        "RSYNC service crash"
+      ],
+      "closure_status": "OPEN"
+    },
+    {
+      "campaign_id": "C04",
+      "name": "Crash Recovery and CRAM Integrity",
+      "purpose": "Prove crash recovery preserves authoritative state and rejects incomplete CRAM-A records without assumption repair.",
+      "owned_gaps": [
+        "CRASH_RECOVERY",
+        "CRAM_INTEGRITY"
+      ],
+      "minimum_frames": 300,
+      "commands": [
+        "python3 -m ph6.tests.crash_recovery_campaign --frames 300 --fault-profile powerloss",
+        "python3 -m ph6.cram.verify_cram_integrity --run-dir <RUN_DIR>",
+        "python3 -m ph6.audit.verify_audit_chain --audit <RUN_DIR>/audit.jsonl"
+      ],
+      "required_artifacts": [
+        "crash_profile.json",
+        "recovery_report.json",
+        "cram_integrity_report.json",
+        "audit_chain_report.json",
+        "orphan_tmp_report.json"
+      ],
+      "pass_conditions": [
+        "no incomplete CRAM-A record treated as authority",
+        "missing .blake2b means non-authoritative",
+        "tmp files removed or quarantined",
+        "audit chain resumes correctly",
+        "no advisory output used in recovery"
+      ],
+      "fail_conditions": [
+        "partial record promoted",
+        "missing .blake2b accepted",
+        "recovery invents evidence",
+        "audit chain break",
+        "Lane 2 recovery influence"
+      ],
+      "closure_status": "OPEN"
+    },
+    {
+      "campaign_id": "C05",
+      "name": "Replay Parity and GAP-16 Closure",
+      "purpose": "Prove replay recomputation produces identical verdicts, fixed-point metrics, schema identity, metric scale, and result hash.",
+      "owned_gaps": [
+        "GAP-16",
+        "REPLAY_PARITY"
+      ],
+      "minimum_frames": 300,
+      "commands": [
+        "python3 -m ph6.replay.build_replay_manifest --run-dir <RUN_DIR>",
+        "python3 -m ph6.replay.verify_replay_manifest --manifest <RUN_DIR>/replay_manifest.json"
+      ],
+      "required_artifacts": [
+        "replay_manifest.json",
+        "replay_verification_receipt.json",
+        "result_set_hash.txt",
+        "replay_mismatch_report.json"
+      ],
+      "pass_conditions": [
+        "mismatch_count == 0",
+        "payload_hash matches",
+        "verdict matches",
+        "entropy_fp matches",
+        "laplacian_var_fp matches",
+        "motion_fraction_fp matches",
+        "metric_schema == ph6.metrics.fixedpoint.v1",
+        "metric_scale == 10000"
+      ],
+      "fail_conditions": [
+        "any replay mismatch",
+        "metric scale mismatch",
+        "schema mismatch",
+        "missing replay receipt",
+        "input_hash used as substitute for replay payload"
+      ],
+      "closure_status": "OPEN"
+    },
+    {
+      "campaign_id": "C06",
+      "name": "Lane 2 Authority Isolation",
+      "purpose": "Prove SoSo, TOK, AI, and Swarm remain advisory-only and cannot influence Lane 1, CRAM tiers, PSEUDO thresholds, audit authority, or replay results.",
+      "owned_gaps": [
+        "LANE2_AUTHORITY_ZERO",
+        "SOSO_ISOLATION",
+        "TOK_ISOLATION",
+        "SWARM_CONTAINMENT"
+      ],
+      "minimum_frames": 300,
+      "commands": [
+        "python3 -m ph6.tests.lane2_isolation_campaign --frames 300 --soso enabled --tok enabled --ai-advisory enabled",
+        "python3 -m ph6.governance.verify_authority_boundaries --run-dir <RUN_DIR>"
+      ],
+      "required_artifacts": [
+        "lane2_isolation_report.json",
+        "mram_s_artifacts_report.json",
+        "authority_boundary_report.json",
+        "forbidden_write_scan.json"
+      ],
+      "pass_conditions": [
+        "Lane 2 writes only to MRAM-S",
+        "no Lane 2 PASS/DROP fields",
+        "no advisory data inside EvidencePacket",
+        "no threshold mutation",
+        "no CRAM-0/CRAM-A/CRAM-R writes from Lane 2",
+        "replay valid with Lane 2 disabled"
+      ],
+      "fail_conditions": [
+        "Lane 2 writes CRAM",
+        "AI emits verdict",
+        "SoSo emits verdict",
+        "TOK influences replay",
+        "Swarm runs outside disabled/advisory boundary",
+        "advisory field appears in authority artifact"
+      ],
+      "closure_status": "OPEN"
+    },
+    {
+      "campaign_id": "C07",
+      "name": "Governance Drift Validation",
+      "purpose": "Prove repository and generated artifacts obey PH6 governance registries, schema locks, forbidden terms, and severity policy.",
+      "owned_gaps": [
+        "GOVERNANCE_DRIFT",
+        "SCHEMA_LOCK",
+        "FORBIDDEN_TERMS"
+      ],
+      "minimum_frames": 0,
+      "commands": [
+        "python3 PH6_SOURCE/TOOLS/ai_preflight_check.py --root . --json-out ai_preflight_report.json",
+        "python3 PH6_SOURCE/TOOLS/governance_drift_scan.py --root . --json-out governance_scan.json"
+      ],
+      "required_artifacts": [
+        "ai_preflight_report.json",
+        "governance_scan.json",
+        "schema_lock_report.json",
+        "forbidden_terms_report.json"
+      ],
+      "pass_conditions": [
+        "ai_preflight PASS",
+        "governance_drift_scan PASS",
+        "no CRITICAL findings",
+        "no HIGH findings",
+        "locked schema names unchanged",
+        "forbidden fields absent from authority artifacts"
+      ],
+      "fail_conditions": [
+        "CRITICAL finding",
+        "HIGH finding",
+        "schema drift without version bump",
+        "forbidden term in authority path",
+        "hardcoded forbidden metric registry in generator code"
+      ],
+      "closure_status": "OPEN"
+    },
+    {
+      "campaign_id": "FC01",
+      "name": "FAST CRAM Replay Payload Preservation",
+      "purpose": "Prove FAST CRAM uses RAM only as bounded acceleration while preserving replay-capable source bytes durably in CRAM-RV.",
+      "owned_gaps": [
+        "FAST_CRAM",
+        "CRAM_RV",
+        "REPLAY_PAYLOAD_PRESERVATION"
+      ],
+      "minimum_frames": 300,
+      "commands": [
+        "python3 -m ph6.fast_cram.run_fast_cram_campaign --frames 300 --preserve-replay-payloads",
+        "python3 -m ph6.replay.verify_replay_payloads --run-dir <RUN_DIR>"
+      ],
+      "required_artifacts": [
+        "fast_cram_run_manifest.json",
+        "cram_rv_payload_manifest.json",
+        "replay_payload_receipts.jsonl",
+        "fast_cram_overflow_report.json",
+        "replay_verification_receipt.json"
+      ],
+      "pass_conditions": [
+        "RAM buffer bounded",
+        "overflow policy explicit",
+        "no RAM artifact treated as authority",
+        "CRAM-RV payload_count == frame_count",
+        "all payload_hash values valid",
+        "replay verification PASS",
+        "mismatch_count == 0"
+      ],
+      "fail_conditions": [
+        "RAM-only evidence claim",
+        "missing CRAM-RV payload",
+        "unbounded RAM queue",
+        "overflow behavior undefined",
+        "input_hash substituted for payload preservation",
+        "replay mismatch"
+      ],
+      "closure_status": "OPEN"
+    }
+  ],
+  "closure_requirements": {
+    "allowed_campaign_states": [
+      "OPEN",
+      "READY_TO_RUN",
+      "RUNNING",
+      "FAILED",
+      "BLOCKED",
+      "PASS_PENDING_REVIEW",
+      "CLOSED"
+    ],
+    "initial_state": "OPEN",
+    "closed_requires_artifacts": true,
+    "matrix_closes_campaigns": false,
+    "closed_requires": [
+      "campaign_id",
+      "executed_command",
+      "run_id",
+      "artifact_paths",
+      "schema_validation_PASS",
+      "governance_scan_PASS",
+      "audit_chain_PASS",
+      "reproducibility_statement",
+      "reviewer",
+      "closed_at_utc"
+    ],
+    "forbidden_closure_basis": [
+      "documentation_only",
+      "architectural_confidence",
+      "manual_claim",
+      "summary_without_artifacts",
+      "partial_run_under_300_frames",
+      "advisory_output"
+    ]
+  }
+}

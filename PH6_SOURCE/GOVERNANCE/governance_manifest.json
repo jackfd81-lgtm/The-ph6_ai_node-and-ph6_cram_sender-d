@@ -89,7 +89,8 @@
     "ai_preflight_check":         "PH6_SOURCE/TOOLS/ai_preflight_check.py",
     "governance_drift_scan":      "PH6_SOURCE/TOOLS/governance_drift_scan.py",
     "pre_commit_hook_template":   "PH6_SOURCE/TOOLS/pre-commit.ph6-governance.example",
-    "install_precommit_hook":     "PH6_SOURCE/TOOLS/install_precommit_hook.sh"
+    "install_precommit_hook":     "PH6_SOURCE/TOOLS/install_precommit_hook.sh",
+    "evidence_campaign_matrix":   "PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json"
   },
 
   "doctrine_files": {

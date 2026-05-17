@@ -1,0 +1,39 @@
+{
+  "schema": "ph6.governance.drift_report.v1",
+  "scan_root": "/home/jack",
+  "governance_dir": "/home/jack/PH6_SOURCE/GOVERNANCE",
+  "generated_at_utc": "2026-05-17T04:54:30Z",
+  "overall_result": "FAIL_CRITICAL",
+  "critical_count": 2,
+  "high_count": 0,
+  "warn_count": 0,
+  "total_findings": 2,
+  "summary_by_check": {
+    "forbidden_terms": {
+      "count": 2,
+      "severity": "CRITICAL"
+    }
+  },
+  "findings": [
+    {
+      "check": "forbidden_terms",
+      "severity": "CRITICAL",
+      "entry_id": "FT-01",
+      "term": "motion_score",
+      "file": "/home/jack/ph6_cram_lane1_evidence_chain_test.py",
+      "line": 40,
+      "content": "\"motion_score\",",
+      "reason": "Retired metric field. Canonical replacement is motion_fraction. Evidence with this field is non-canonical and replay-invalid."
+    },
+    {
+      "check": "forbidden_terms",
+      "severity": "CRITICAL",
+      "entry_id": "FT-02",
+      "term": "motion_decay_score",
+      "file": "/home/jack/ph6_cram_lane1_evidence_chain_test.py",
+      "line": 41,
+      "content": "\"motion_decay_score\",",
+      "reason": "Retired metric field. Canonical replacement is motion_fraction. Evidence with this field is non-canonical and replay-invalid."
+    }
+  ]
+}

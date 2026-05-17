@@ -48,11 +48,26 @@ SCHEMA_ID = "ph6.governance.drift_report.v1"
 
 SKIP_DIRS = {"__pycache__", ".git", "*.pyc", "node_modules", "dist", "build"}
 SKIP_FILE_PREFIXES = {"test_"}
-SKIP_PATHS_CONTAINING = {"__pycache__", ".git/", "validation_runs/"}
+SKIP_PATHS_CONTAINING = {
+    "__pycache__",
+    ".git/",
+    "validation_runs/",
+    # Package caches and virtual environments (not PH6 source)
+    "/.cache/",
+    "/.hermes/",
+    "/oi-env/",
+    "/venv/",
+    "/lib/python",
+    ".platformio/",
+    # Backup and recovery archives (not active source)
+    "PH6_LOCAL_BACKUPS",
+    "PH6_RECOVERY",
+}
 
 # Governance files are the authoritative source of forbidden term definitions.
 # Scanning them for those terms would be self-defeating; exclude them.
-GOVERNANCE_SKIP_FRAGMENTS = {"/GOVERNANCE/"}
+# Failure-injection test vectors deliberately contain forbidden terms to prove rejection.
+GOVERNANCE_SKIP_FRAGMENTS = {"/GOVERNANCE/", "/failure_injection/"}
 
 # In markdown, lines in prohibition-context tables or FORBIDDEN/NEVER lists
 # are definitional references, not drift violations.
@@ -119,6 +134,12 @@ def _should_skip(p: Path) -> bool:
     s = str(p)
     for fragment in SKIP_PATHS_CONTAINING:
         if fragment in s:
+            return True
+    for fragment in GOVERNANCE_SKIP_FRAGMENTS:
+        if fragment in s:
+            return True
+    for prefix in SKIP_FILE_PREFIXES:
+        if p.name.startswith(prefix):
             return True
     return False
 
