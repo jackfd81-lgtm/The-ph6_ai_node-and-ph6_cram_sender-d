@@ -1,0 +1,16 @@
+{
+  "schema": "ph6.c13_replay_parity_receipt.v1",
+  "campaign_id": "C13",
+  "generated_at_utc": "2026-05-17T07:16:03Z",
+  "overall": "PASS",
+  "per_phase_verdict": {
+    "A": "PASS",
+    "B": "PASS",
+    "C": "PASS",
+    "D": "PASS",
+    "E": "PASS",
+    "F": "PASS",
+    "G": "PASS"
+  },
+  "campaign_result_set_hash": "a8dd06259681b349032068dd377ac2ab6b5a88bf56b33752e17adc06b529a538"
+}

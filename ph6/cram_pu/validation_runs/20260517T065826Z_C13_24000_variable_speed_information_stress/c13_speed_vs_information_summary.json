@@ -1,0 +1,50 @@
+{
+  "schema": "ph6.c13_speed_vs_information_summary.v1",
+  "campaign_id": "C13",
+  "generated_at_utc": "2026-05-17T07:16:03Z",
+  "first_12000_fps": 27.8,
+  "last_12000_fps": 16.67,
+  "degradation_observed": true,
+  "comparisons": {
+    "A_slow_high_vs_E_slowest_max_fps": {
+      "phase_A": 15.0,
+      "phase_E": 5.0,
+      "delta_pct": -66.67
+    },
+    "A_slow_high_vs_E_slowest_max_bps": {
+      "phase_A": 18000.77,
+      "phase_E": 12005.77,
+      "delta_pct": -33.3
+    },
+    "C_regular_vs_F_recovery_p95_ms": {
+      "phase_C": 11.8039,
+      "phase_F": 11.0848,
+      "delta_pct": -6.09
+    },
+    "C_regular_vs_F_recovery_fps": {
+      "phase_C": 30.01,
+      "phase_F": 30.01,
+      "delta_pct": 0.0
+    },
+    "B_fast_vs_D_max_fast_bpf": {
+      "phase_B": 900.0,
+      "phase_D": 2400.0,
+      "delta_pct": 166.67
+    },
+    "B_fast_vs_D_max_fast_fps": {
+      "phase_B": 126.1,
+      "phase_D": 107.34,
+      "delta_pct": -14.88
+    },
+    "D_max_fast_vs_G_60fps_bps": {
+      "phase_D": 257605.34,
+      "phase_G": 144022.35,
+      "delta_pct": -44.09
+    },
+    "D_max_fast_vs_G_60fps_fps": {
+      "phase_D": 107.34,
+      "phase_G": 60.01,
+      "delta_pct": -44.09
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "ph6.evidence_campaign_run.v1",
+  "campaign_id": "C13",
+  "campaign_name": "C13_24000_VARIABLE_SPEED_INFORMATION_STRESS",
+  "run_stamp_utc": "2026-05-17T06:58:26Z",
+  "commit": "36da92c68",
+  "total_frames": 24000,
+  "phases": [
+    {
+      "phase": "A",
+      "name": "slow_high_info",
+      "frames": 4000,
+      "target_fps": 15,
+      "frame_size": 1200,
+      "info_load": "HIGH"
+    },
+    {
+      "phase": "B",
+      "name": "fast_medium_high_info",
+      "frames": 4000,
+      "target_fps": null,
+      "frame_size": 900,
+      "info_load": "MEDIUM_HIGH"
+    },
+    {
+      "phase": "C",
+      "name": "regular_baseline",
+      "frames": 4000,
+      "target_fps": 30,
+      "frame_size": 600,
+      "info_load": "REGULAR"
+    },
+    {
+      "phase": "D",
+      "name": "max_fast_max_info",
+      "frames": 2000,
+      "target_fps": null,
+      "frame_size": 2400,
+      "info_load": "MAX_SAFE"
+    },
+    {
+      "phase": "E",
+      "name": "slowest_max_info",
+      "frames": 2000,
+      "target_fps": 5,
+      "frame_size": 2400,
+      "info_load": "MAX_SAFE"
+    },
+    {
+      "phase": "F",
+      "name": "regular_recovery",
+      "frames": 4000,
+      "target_fps": 30,
+      "frame_size": 600,
+      "info_load": "REGULAR"
+    },
+    {
+      "phase": "G",
+      "name": "60fps_max_info",
+      "frames": 4000,
+      "target_fps": 60,
+      "frame_size": 2400,
+      "info_load": "MAX_SAFE"
+    }
+  ],
+  "authority_rule": "Lane 1 decides. Lane 2 advises.",
+  "pseudo_rule": "PSEUDO-A only issues PASS/DROP. Predictive/SCI advisory/sideband.",
+  "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW."
+}

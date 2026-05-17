@@ -1,0 +1,7 @@
+{
+  "schema": "ph6.c13_failure_register.v1",
+  "campaign_id": "C13",
+  "generated_at_utc": "2026-05-17T07:16:03Z",
+  "failures": [],
+  "total_critical": 0
+}

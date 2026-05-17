@@ -1,0 +1,15 @@
+{
+  "schema": "ph6.c13_rsync_nonblocking_receipt.v1",
+  "campaign_id": "C13",
+  "generated_at_utc": "2026-05-17T07:16:03Z",
+  "overall": "PASS",
+  "per_phase_blocked": {
+    "A": false,
+    "B": false,
+    "C": false,
+    "D": false,
+    "E": false,
+    "F": false,
+    "G": false
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "ph6.c13_information_absorption_summary.v1",
+  "campaign_id": "C13",
+  "generated_at_utc": "2026-05-17T07:16:03Z",
+  "total_frames_completed": 24000,
+  "total_frames_configured": 24000,
+  "total_duration_seconds": 1057.58,
+  "overall_fps": 22.69,
+  "overall_bytes_processed": 32400000,
+  "overall_bytes_per_second": 30635.91,
+  "overall_bytes_per_frame": 1350.0,
+  "highest_actual_fps_phase": "B",
+  "highest_bytes_per_frame_phase": "D",
+  "highest_bytes_per_second_phase": "D",
+  "replay_parity_status": "PASS",
+  "rsync_status": "PASS",
+  "lane2_isolation_status": "PASS",
+  "critical_failure_count": 0,
+  "per_phase": {
+    "A": {
+      "bytes_per_frame": 1200.0,
+      "bytes_per_second": 18000.77,
+      "actual_fps": 15.0,
+      "avg_idi": 0.3661
+    },
+    "B": {
+      "bytes_per_frame": 900.0,
+      "bytes_per_second": 113488.91,
+      "actual_fps": 126.1,
+      "avg_idi": 0.3662
+    },
+    "C": {
+      "bytes_per_frame": 600.0,
+      "bytes_per_second": 18003.62,
+      "actual_fps": 30.01,
+      "avg_idi": 0.3659
+    },
+    "D": {
+      "bytes_per_frame": 2400.0,
+      "bytes_per_second": 257605.34,
+      "actual_fps": 107.34,
+      "avg_idi": 0.3663
+    },
+    "E": {
+      "bytes_per_frame": 2400.0,
+      "bytes_per_second": 12005.77,
+      "actual_fps": 5.0,
+      "avg_idi": 0.3663
+    },
+    "F": {
+      "bytes_per_frame": 600.0,
+      "bytes_per_second": 18003.76,
+      "actual_fps": 30.01,
+      "avg_idi": 0.3659
+    },
+    "G": {
+      "bytes_per_frame": 2400.0,
+      "bytes_per_second": 144022.35,
+      "actual_fps": 60.01,
+      "avg_idi": 0.3661
+    }
+  }
+}

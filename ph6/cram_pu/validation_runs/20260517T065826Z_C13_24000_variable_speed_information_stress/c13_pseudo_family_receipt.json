@@ -1,0 +1,54 @@
+{
+  "schema": "ph6.c13_pseudo_family_receipt.v1",
+  "campaign_id": "C13",
+  "generated_at_utc": "2026-05-17T07:16:03Z",
+  "overall": "PASS",
+  "per_phase": {
+    "A": {
+      "pseudo_m": "PASS",
+      "pseudo_a": "PASS",
+      "pseudo_pred": "PASS",
+      "pseudo_sci": "PASS"
+    },
+    "B": {
+      "pseudo_m": "PASS",
+      "pseudo_a": "PASS",
+      "pseudo_pred": "PASS",
+      "pseudo_sci": "PASS"
+    },
+    "C": {
+      "pseudo_m": "PASS",
+      "pseudo_a": "PASS",
+      "pseudo_pred": "PASS",
+      "pseudo_sci": "PASS"
+    },
+    "D": {
+      "pseudo_m": "PASS",
+      "pseudo_a": "PASS",
+      "pseudo_pred": "PASS",
+      "pseudo_sci": "PASS"
+    },
+    "E": {
+      "pseudo_m": "PASS",
+      "pseudo_a": "PASS",
+      "pseudo_pred": "PASS",
+      "pseudo_sci": "PASS"
+    },
+    "F": {
+      "pseudo_m": "PASS",
+      "pseudo_a": "PASS",
+      "pseudo_pred": "PASS",
+      "pseudo_sci": "PASS"
+    },
+    "G": {
+      "pseudo_m": "PASS",
+      "pseudo_a": "PASS",
+      "pseudo_pred": "PASS",
+      "pseudo_sci": "PASS"
+    }
+  },
+  "all_deterministic": true,
+  "all_bounded": true,
+  "all_replayable": true,
+  "all_isolated": true
+}
