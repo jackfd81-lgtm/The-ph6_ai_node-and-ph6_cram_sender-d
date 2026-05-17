@@ -36,6 +36,106 @@
         "closure_decision",
         "closed_at_utc"
       ]
+    },
+
+    "TOK-1": {
+      "campaign_id": "TOK-1",
+      "name": "Token Advisory Isolation Validation",
+      "state": "OPEN",
+      "closed": false,
+      "reviewer": null,
+      "reviewed_at_utc": null,
+      "closure_decision": null,
+      "closed_at_utc": null,
+      "lane": 2,
+      "authority": "ZERO",
+      "storage": "MRAM-S only",
+      "replay_dependency": "FORBIDDEN",
+      "pass_drop_authority": "FORBIDDEN",
+      "cram_mutation_authority": "FORBIDDEN",
+      "rsync_blocking_authority": "FORBIDDEN",
+      "required_proofs": [
+        "tokens_write_only_to_mram_s",
+        "tokens_have_authority_zero",
+        "tokens_do_not_emit_pass_drop",
+        "cram_does_not_depend_on_tokens",
+        "replay_passes_without_tokens",
+        "token_promotion_fails_closed",
+        "expired_tokens_do_not_affect_lane1"
+      ],
+      "forbidden_authority_fields": [
+        "verdict",
+        "result",
+        "pass",
+        "drop",
+        "authority_hash",
+        "event_seq",
+        "threshold_override"
+      ],
+      "allowed_write_roots": [
+        "/var/ph6/mram-s/tokens/"
+      ],
+      "forbidden_write_roots": [
+        "/var/ph6/cram-0",
+        "/var/ph6/cram-a",
+        "/var/ph6/cram-r",
+        "/var/ph6/cram-rv",
+        "/var/ph6/audit/sequence",
+        "/var/ph6/export"
+      ],
+      "evidence_artifacts": [],
+      "artifact_hashes": {}
+    },
+
+    "SOSO-1": {
+      "campaign_id": "SOSO-1",
+      "name": "SoSo Advisory Drift-Control Isolation Validation",
+      "state": "OPEN",
+      "closed": false,
+      "reviewer": null,
+      "reviewed_at_utc": null,
+      "closure_decision": null,
+      "closed_at_utc": null,
+      "lane": 2,
+      "authority": "ZERO",
+      "storage": "MRAM-S only",
+      "replay_dependency": "FORBIDDEN",
+      "pass_drop_authority": "FORBIDDEN",
+      "cram_mutation_authority": "FORBIDDEN",
+      "rsync_blocking_authority": "FORBIDDEN",
+      "required_proofs": [
+        "soso_write_only_to_mram_s",
+        "soso_has_authority_zero",
+        "soso_does_not_emit_pass_drop",
+        "soso_does_not_change_thresholds",
+        "soso_does_not_mutate_cram",
+        "replay_passes_with_soso_disabled",
+        "slow_soso_does_not_block_lane1",
+        "slow_soso_does_not_block_rsync"
+      ],
+      "forbidden_authority_fields": [
+        "verdict",
+        "result",
+        "pass",
+        "drop",
+        "authority_hash",
+        "event_seq",
+        "threshold_override",
+        "lane1_decision"
+      ],
+      "allowed_write_roots": [
+        "/var/ph6/mram-s/soso/"
+      ],
+      "forbidden_write_roots": [
+        "/var/ph6/cram-0",
+        "/var/ph6/cram-a",
+        "/var/ph6/cram-r",
+        "/var/ph6/cram-rv",
+        "/var/ph6/audit/sequence",
+        "/var/ph6/export"
+      ],
+      "evidence_artifacts": [],
+      "artifact_hashes": {}
     }
   }
 }
