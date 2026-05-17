@@ -406,6 +406,67 @@
       "closure_status": "PASS_PENDING_REVIEW",
       "evidence_commit": "65c2540",
       "run_stamp_utc": "20260517T050752Z"
+    },
+    {
+      "campaign_id": "LIFE-CRAM-PU-1",
+      "name": "Living CRAM-PU Departure Arrival Verdict Commit Replay Validation",
+      "category": "life_cram",
+      "purpose": "Prove the full CRAM-PU authority chain: departure → arrival → PSEUDO verdict → CRAM commit → replay proof.",
+      "owned_gaps": ["LIFE_CRAM_AUTHORITY_CHAIN"],
+      "authority": "CRAM-PU",
+      "lane": 1,
+      "maximum_result_without_review": "PASS_PENDING_REVIEW",
+      "production_clearance_effect": "NONE",
+      "minimum_frames": 300,
+      "required_artifacts": [
+        "departure_log.jsonl",
+        "arrival_log.jsonl",
+        "verdict_log.jsonl",
+        "cram_store/cram_*.json",
+        "cram_store/cram_*.json.blake2b",
+        "replay_receipt.json",
+        "manifest.json"
+      ],
+      "pass_conditions": [
+        "departure_arrival_hash_match",
+        "pseudo_verdict_pass_drop_only",
+        "cram_commit_marker_present",
+        "blake2b_authority_hash_present",
+        "result_set_hash_reproduces",
+        "tokens_disabled_replay_passes",
+        "soso_disabled_replay_passes",
+        "rsync_not_blocked"
+      ],
+      "closure_status": "OPEN",
+      "closed": false
+    },
+    {
+      "campaign_id": "TOK-LIFE-1",
+      "name": "Life CRAM Token Advisory Isolation Validation",
+      "category": "life_cram_advisory_isolation",
+      "purpose": "Prove tokens write only to MRAM-S and cannot affect Life CRAM Lane 1 authority chain.",
+      "owned_gaps": ["LIFE_CRAM_TOKEN_ISOLATION"],
+      "authority": "ZERO",
+      "lane": 2,
+      "allowed_write_root": "/var/ph6/mram-s/tokens/",
+      "maximum_result_without_review": "PASS_PENDING_REVIEW",
+      "production_clearance_effect": "NONE",
+      "closure_status": "OPEN",
+      "closed": false
+    },
+    {
+      "campaign_id": "SOSO-LIFE-1",
+      "name": "Life CRAM SoSo Advisory Drift-Control Isolation Validation",
+      "purpose": "Prove SoSo writes only to MRAM-S and cannot affect Life CRAM Lane 1 authority chain.",
+      "category": "life_cram_advisory_isolation",
+      "owned_gaps": ["LIFE_CRAM_SOSO_ISOLATION"],
+      "authority": "ZERO",
+      "lane": 2,
+      "allowed_write_root": "/var/ph6/mram-s/soso/",
+      "maximum_result_without_review": "PASS_PENDING_REVIEW",
+      "production_clearance_effect": "NONE",
+      "closure_status": "OPEN",
+      "closed": false
     }
   ],
   "closure_requirements": {

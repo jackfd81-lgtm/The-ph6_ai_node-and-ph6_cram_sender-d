@@ -1,0 +1,77 @@
+{
+  "schema": "ph6.tok_soso_isolation_receipt.v1",
+  "generated_at_utc": "2026-05-17T05:23:04Z",
+  "overall_result": "PASS",
+  "n_frames": 300,
+  "result_set_hash_tok_on": "a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660",
+  "result_set_hash_tok_off": "a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660",
+  "hash_parity": "MATCH",
+  "tok1_campaign": "TOK-1",
+  "soso1_campaign": "SOSO-1",
+  "proofs": {
+    "replay_passes_without_tokens": {
+      "result": "PASS",
+      "detail": "hash_on=a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660 hash_off=a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660 match=True"
+    },
+    "tokens_write_only_to_mram_s": {
+      "result": "PASS",
+      "detail": "mram_s/swarms/tokens/ present; no tok files in cram_store"
+    },
+    "tokens_have_authority_zero": {
+      "result": "PASS",
+      "detail": "No token authority fields in Lane 1 artifacts"
+    },
+    "tokens_do_not_emit_pass_drop": {
+      "result": "PASS",
+      "detail": "No verdict/PASS/DROP in token-adjacent Lane 1 records"
+    },
+    "cram_does_not_depend_on_tokens": {
+      "result": "PASS",
+      "detail": "CRAM objects contain no token field references"
+    },
+    "token_promotion_fails_closed": {
+      "result": "PASS",
+      "detail": "Structural: _TokSidecar wraps all token operations in try/except; exceptions are swallowed and never propagate to Lane 1 verdict or CRAM path"
+    },
+    "expired_tokens_do_not_affect_lane1": {
+      "result": "PASS",
+      "detail": "result_set_hash identical with TOK=ON and TOK=OFF (a80b1463f1729c5c...); token state cannot retroactively change deterministic Lane 1 hash"
+    },
+    "soso_write_only_to_mram_s": {
+      "result": "PASS",
+      "detail": "All SoSo records in mram_s/swarms/S*.json only"
+    },
+    "soso_has_authority_zero": {
+      "result": "PASS",
+      "detail": "All MRAM-S advisory records have authority=NONE"
+    },
+    "soso_does_not_emit_pass_drop": {
+      "result": "PASS",
+      "detail": "No verdict/pass/drop fields in any MRAM-S advisory record"
+    },
+    "soso_does_not_change_thresholds": {
+      "result": "PASS",
+      "detail": "Structural: PSEUDO gate thresholds are compile-time constants in verdict_logger; SoSo advisory state is read-only input to the advisory field; no threshold write path exists"
+    },
+    "soso_does_not_mutate_cram": {
+      "result": "PASS",
+      "detail": "CRAM objects have authority=LANE_1 only; MRAM-S has authority=NONE only; no cross-contamination detected"
+    },
+    "replay_passes_with_soso_disabled": {
+      "result": "PASS",
+      "detail": "result_set_hash hashes only frame_id+verdict sequence; soso_advisory embedded in verdict record but excluded from hash input; hash_on=a80b1463f1729c5c... == hash_off=a80b1463f1729c5c...: True"
+    },
+    "slow_soso_does_not_block_lane1": {
+      "result": "PASS",
+      "detail": "Structural: MRAM-S advisory write (step 6) executes after CRAM commit (step 4/5) in the frame loop; advisory path cannot block or delay Lane 1 verdict or commit"
+    },
+    "slow_soso_does_not_block_rsync": {
+      "result": "PASS",
+      "detail": "TOK=ON: blocked_by=None; RSYNC queue written after advisory loop; cannot be blocked by advisory"
+    }
+  },
+  "run_dirs": {
+    "tok_on": "ph6/cram_pu/validation_runs/20260517T052301Z_TOK1_SOSO1_isolation/tok_on",
+    "tok_off": "ph6/cram_pu/validation_runs/20260517T052301Z_TOK1_SOSO1_isolation/tok_off"
+  }
+}

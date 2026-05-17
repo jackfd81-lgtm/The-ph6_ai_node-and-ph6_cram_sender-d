@@ -41,8 +41,23 @@
     "TOK-1": {
       "campaign_id": "TOK-1",
       "name": "Token Advisory Isolation Validation",
-      "state": "OPEN",
+      "state": "PASS_PENDING_REVIEW",
       "closed": false,
+      "evidence_commit": "pending",
+      "run_stamp_utc": "20260517T052301Z",
+      "evidence_artifacts": [
+        "ph6/cram_pu/validation_runs/20260517T052301Z_TOK1_SOSO1_isolation/tok_soso_isolation_receipt.json",
+        "ph6/cram_pu/validation_runs/20260517T052301Z_TOK1_SOSO1_isolation/tok_on/manifest.json",
+        "ph6/cram_pu/validation_runs/20260517T052301Z_TOK1_SOSO1_isolation/tok_off/manifest.json"
+      ],
+      "artifact_hashes": {
+        "tok_soso_isolation_receipt.json": "blake2b256:cc0cff73732ff97b46efbe4dfd2418ee645df6cc007d8aff734ed1e231d2e670",
+        "tok_on/manifest.json":            "blake2b256:6e205d389bd9dde313d1707f482df1f954dff509126d081cc54d6521132b927e",
+        "tok_off/manifest.json":           "blake2b256:94c2791ab97effecc4691e83c3dbbd7c268d4c91cc4ec699ea82f81ab0481882"
+      },
+      "proofs_all_pass": true,
+      "hash_parity_tok_on_vs_off": "MATCH",
+      "result_set_hash": "a80b1463f1729c5c24301b5b4a9ed8efff1e400c17857d837f8eb4e5943e1660",
       "reviewer": null,
       "reviewed_at_utc": null,
       "closure_decision": null,
@@ -90,8 +105,17 @@
     "SOSO-1": {
       "campaign_id": "SOSO-1",
       "name": "SoSo Advisory Drift-Control Isolation Validation",
-      "state": "OPEN",
+      "state": "PASS_PENDING_REVIEW",
       "closed": false,
+      "evidence_commit": "pending",
+      "run_stamp_utc": "20260517T052301Z",
+      "evidence_artifacts": [
+        "ph6/cram_pu/validation_runs/20260517T052301Z_TOK1_SOSO1_isolation/tok_soso_isolation_receipt.json"
+      ],
+      "artifact_hashes": {
+        "tok_soso_isolation_receipt.json": "blake2b256:cc0cff73732ff97b46efbe4dfd2418ee645df6cc007d8aff734ed1e231d2e670"
+      },
+      "proofs_all_pass": true,
       "reviewer": null,
       "reviewed_at_utc": null,
       "closure_decision": null,
@@ -174,6 +198,122 @@
         "closure_decision",
         "closed_at_utc"
       ]
+    },
+
+    "LIFE-CRAM-PU-1": {
+      "campaign_id": "LIFE-CRAM-PU-1",
+      "name": "Living CRAM-PU Departure Arrival Verdict Commit Replay Validation",
+      "state": "OPEN",
+      "closed": false,
+      "reviewer": null,
+      "reviewed_at_utc": null,
+      "closure_decision": null,
+      "closed_at_utc": null,
+      "authority": "CRAM-PU",
+      "lane": 1,
+      "closed_only_by_human_review": true,
+      "required_proofs": [
+        "departure_record_exists",
+        "arrival_record_exists",
+        "departure_arrival_hash_match",
+        "pseudo_verdict_record_exists",
+        "cram_commit_marker_exists",
+        "blake2b_authority_hash_exists",
+        "replay_proof_exists",
+        "result_set_hash_reproduces",
+        "tokens_disabled_replay_passes",
+        "soso_disabled_replay_passes",
+        "rsync_nonblocking_preserved"
+      ],
+      "evidence_artifacts": [],
+      "artifact_hashes": {}
+    },
+
+    "TOK-LIFE-1": {
+      "campaign_id": "TOK-LIFE-1",
+      "name": "Life CRAM Token Advisory Isolation Validation",
+      "state": "OPEN",
+      "closed": false,
+      "reviewer": null,
+      "reviewed_at_utc": null,
+      "closure_decision": null,
+      "closed_at_utc": null,
+      "lane": 2,
+      "authority": "ZERO",
+      "replay_dependency": "FORBIDDEN",
+      "pass_drop_authority": "FORBIDDEN",
+      "cram_mutation_authority": "FORBIDDEN",
+      "rsync_blocking_authority": "FORBIDDEN",
+      "required_proofs": [
+        "tokens_write_only_to_mram_s",
+        "tokens_have_authority_zero",
+        "tokens_do_not_emit_pass_drop",
+        "tokens_do_not_modify_departure_records",
+        "tokens_do_not_modify_arrival_records",
+        "tokens_do_not_modify_verdict_records",
+        "tokens_do_not_modify_cram_commits",
+        "cram_pu_does_not_depend_on_tokens",
+        "replay_passes_without_tokens",
+        "token_promotion_fails_closed",
+        "expired_tokens_do_not_affect_lane1"
+      ],
+      "allowed_write_roots": ["/var/ph6/mram-s/tokens/"],
+      "forbidden_write_roots": [
+        "/var/ph6/cram-0", "/var/ph6/cram-a", "/var/ph6/cram-r", "/var/ph6/cram-rv",
+        "/var/ph6/audit/sequence", "/var/ph6/export",
+        "/var/ph6/life-cram/departure", "/var/ph6/life-cram/arrival",
+        "/var/ph6/life-cram/verdict", "/var/ph6/life-cram/commit", "/var/ph6/life-cram/replay"
+      ],
+      "forbidden_authority_fields": [
+        "verdict", "result", "pass", "drop", "authority_hash", "event_seq",
+        "threshold_override", "lane1_decision", "continuity_status", "commit_status", "replay_status"
+      ],
+      "evidence_artifacts": [],
+      "artifact_hashes": {}
+    },
+
+    "SOSO-LIFE-1": {
+      "campaign_id": "SOSO-LIFE-1",
+      "name": "Life CRAM SoSo Advisory Drift-Control Isolation Validation",
+      "state": "OPEN",
+      "closed": false,
+      "reviewer": null,
+      "reviewed_at_utc": null,
+      "closure_decision": null,
+      "closed_at_utc": null,
+      "lane": 2,
+      "authority": "ZERO",
+      "replay_dependency": "FORBIDDEN",
+      "pass_drop_authority": "FORBIDDEN",
+      "cram_mutation_authority": "FORBIDDEN",
+      "rsync_blocking_authority": "FORBIDDEN",
+      "required_proofs": [
+        "soso_write_only_to_mram_s",
+        "soso_has_authority_zero",
+        "soso_does_not_emit_pass_drop",
+        "soso_does_not_change_thresholds",
+        "soso_does_not_mutate_departure_records",
+        "soso_does_not_mutate_arrival_records",
+        "soso_does_not_mutate_verdict_records",
+        "soso_does_not_mutate_cram_commits",
+        "replay_passes_with_soso_disabled",
+        "slow_soso_does_not_block_cram_pu",
+        "slow_soso_does_not_block_rsync",
+        "slow_soso_does_not_block_replay"
+      ],
+      "allowed_write_roots": ["/var/ph6/mram-s/soso/"],
+      "forbidden_write_roots": [
+        "/var/ph6/cram-0", "/var/ph6/cram-a", "/var/ph6/cram-r", "/var/ph6/cram-rv",
+        "/var/ph6/audit/sequence", "/var/ph6/export",
+        "/var/ph6/life-cram/departure", "/var/ph6/life-cram/arrival",
+        "/var/ph6/life-cram/verdict", "/var/ph6/life-cram/commit", "/var/ph6/life-cram/replay"
+      ],
+      "forbidden_authority_fields": [
+        "verdict", "result", "pass", "drop", "authority_hash", "event_seq",
+        "threshold_override", "lane1_decision", "continuity_status", "commit_status", "replay_status"
+      ],
+      "evidence_artifacts": [],
+      "artifact_hashes": {}
     }
   }
 }
