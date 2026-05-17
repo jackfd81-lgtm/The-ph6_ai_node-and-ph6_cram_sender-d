@@ -1,0 +1,17 @@
+{
+  "schema": "ph6.pseudo_predictive_receipt.v1",
+  "campaign_id": "C11",
+  "generated_at_utc": "2026-05-17T06:25:14Z",
+  "overall": "PASS",
+  "advisory_frames_written": 6000,
+  "verdict_authority": false,
+  "threshold_mutation": false,
+  "evidence_packet_mutation": false,
+  "cram_tier_mutation": false,
+  "replay_dependency": false,
+  "audit_mutation": false,
+  "authority_hash_mutation": false,
+  "rsync_mutation": false,
+  "confined_to_mram_s": true,
+  "violations": []
+}

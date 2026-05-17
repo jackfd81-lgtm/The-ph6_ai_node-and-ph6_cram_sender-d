@@ -1,0 +1,7 @@
+{
+  "schema": "ph6.rsync_nonblocking_receipt.v1",
+  "campaign_id": "C10",
+  "generated_at_utc": "2026-05-17T06:21:53Z",
+  "overall": "PASS",
+  "rsync_blocked": false
+}

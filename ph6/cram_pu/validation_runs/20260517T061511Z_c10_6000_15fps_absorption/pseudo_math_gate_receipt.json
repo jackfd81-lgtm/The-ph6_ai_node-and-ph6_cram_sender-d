@@ -1,0 +1,14 @@
+{
+  "schema": "ph6.pseudo_math_gate_receipt.v1",
+  "campaign_id": "C10",
+  "generated_at_utc": "2026-05-17T06:21:53Z",
+  "overall": "PASS",
+  "samples_checked": 5,
+  "violations": [],
+  "entropy_gated": true,
+  "laplacian_gated": true,
+  "motion_fraction_gated": false,
+  "fixed_point_scale": 10000,
+  "no_raw_floats_in_authority_path": true,
+  "deterministic": true
+}

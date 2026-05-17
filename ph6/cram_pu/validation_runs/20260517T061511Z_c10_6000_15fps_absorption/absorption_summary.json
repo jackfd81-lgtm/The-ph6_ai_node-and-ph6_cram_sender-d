@@ -1,0 +1,23 @@
+{
+  "schema": "ph6.absorption_summary.v1",
+  "campaign_id": "C10",
+  "generated_at_utc": "2026-05-17T06:21:53Z",
+  "target_fps": 15,
+  "actual_fps": 15.0,
+  "configured_frames": 6000,
+  "completed_frames": 6000,
+  "duration_seconds": 399.9394,
+  "total_input_bytes": 7200000,
+  "avg_frame_size_bytes": 1200.0,
+  "min_frame_size_bytes": 1200,
+  "max_frame_size_bytes": 1200,
+  "bytes_per_second": 18002.73,
+  "bytes_per_frame": 1200.0,
+  "pass_count": 4114,
+  "drop_count": 1886,
+  "error_count": 0,
+  "avg_frame_latency_ms": 8.8316,
+  "p50_frame_latency_ms": 9.1671,
+  "p95_frame_latency_ms": 11.8738,
+  "p99_frame_latency_ms": 14.0266
+}

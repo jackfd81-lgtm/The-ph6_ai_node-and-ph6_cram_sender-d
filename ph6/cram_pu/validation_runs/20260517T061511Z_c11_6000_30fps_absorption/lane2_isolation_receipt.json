@@ -1,0 +1,7 @@
+{
+  "schema": "ph6.lane2_isolation_receipt.v1",
+  "campaign_id": "C11",
+  "generated_at_utc": "2026-05-17T06:25:14Z",
+  "overall": "PASS",
+  "lane2_violation_count": 0
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "ph6.evidence_campaign_run.v1",
+  "campaign_id": "C10",
+  "mode": "controlled_slow_absorption",
+  "run_stamp_utc": "2026-05-17T06:15:11Z",
+  "commit": "26ce41e2",
+  "target_fps": 15,
+  "frames": 6000,
+  "frame_size": 1200,
+  "authority_rule": "Lane 1 decides. Lane 2 advises.",
+  "pseudo_rule": "PSEUDO-A only issues PASS/DROP. Predictive/SCI advisory/sideband.",
+  "closure_rule": "Maximum automatic result: PASS_PENDING_REVIEW."
+}

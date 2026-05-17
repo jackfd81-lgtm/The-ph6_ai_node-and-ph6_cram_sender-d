@@ -569,6 +569,130 @@
       "production_clearance_effect": "NONE",
       "closure_status": "PASS_PENDING_REVIEW",
       "closed": false
+    },
+    {
+      "campaign_id": "C10",
+      "name": "6000-Frame 15 FPS Slow Controlled Absorption Validation",
+      "closure_status": "PASS_PENDING_REVIEW",
+      "closed": false,
+      "maximum_automatic_result": "PASS_PENDING_REVIEW",
+      "target_fps": 15,
+      "minimum_frames": 6000,
+      "frame_size_bytes": 1200,
+      "mode": "controlled_slow_absorption",
+      "purpose": "Measure maximum data absorbed per frame at slow bounded input rate. Verify PSEUDO family stability at 15 FPS.",
+      "runner": "ph6/cram_pu/tools/run_c10_c11_c12_absorption_campaigns.py",
+      "owned_gaps": [
+        "PSEUDO_FAMILY_ABSORPTION",
+        "CONTROLLED_RATE_VALIDATION"
+      ],
+      "pass_conditions": [
+        "all_6000_frames_complete",
+        "replay_parity_pass",
+        "rsync_not_blocked",
+        "lane2_zero_violations",
+        "no_critical_failures",
+        "pseudo_family_all_pass"
+      ],
+      "production_clearance_effect": "NONE",
+      "required_artifacts": [
+        "campaign_manifest.json",
+        "absorption_summary.json",
+        "pseudo_family_receipt.json",
+        "pseudo_math_gate_receipt.json",
+        "pseudo_predictive_receipt.json",
+        "pseudo_assembly_receipt.json",
+        "replay_parity_receipt.json",
+        "rsync_nonblocking_receipt.json",
+        "lane2_isolation_receipt.json",
+        "failure_register.json",
+        "result_set_hash.txt",
+        "artifact_hashes.blake2b",
+        "final_report.md"
+      ]
+    },
+    {
+      "campaign_id": "C11",
+      "name": "6000-Frame 30 FPS Standard Controlled Absorption Validation",
+      "closure_status": "PASS_PENDING_REVIEW",
+      "closed": false,
+      "maximum_automatic_result": "PASS_PENDING_REVIEW",
+      "target_fps": 30,
+      "minimum_frames": 6000,
+      "frame_size_bytes": 600,
+      "mode": "controlled_standard_absorption",
+      "purpose": "Measure maximum data absorbed per frame at standard real-time rate. Verify PSEUDO family stability at 30 FPS.",
+      "runner": "ph6/cram_pu/tools/run_c10_c11_c12_absorption_campaigns.py",
+      "owned_gaps": [
+        "PSEUDO_FAMILY_ABSORPTION",
+        "CONTROLLED_RATE_VALIDATION"
+      ],
+      "pass_conditions": [
+        "all_6000_frames_complete",
+        "replay_parity_pass",
+        "rsync_not_blocked",
+        "lane2_zero_violations",
+        "no_critical_failures",
+        "pseudo_family_all_pass"
+      ],
+      "production_clearance_effect": "NONE",
+      "required_artifacts": [
+        "campaign_manifest.json",
+        "absorption_summary.json",
+        "pseudo_family_receipt.json",
+        "pseudo_math_gate_receipt.json",
+        "pseudo_predictive_receipt.json",
+        "pseudo_assembly_receipt.json",
+        "replay_parity_receipt.json",
+        "rsync_nonblocking_receipt.json",
+        "lane2_isolation_receipt.json",
+        "failure_register.json",
+        "result_set_hash.txt",
+        "artifact_hashes.blake2b",
+        "final_report.md"
+      ]
+    },
+    {
+      "campaign_id": "C12",
+      "name": "3000-Frame 50 FPS High-Rate Absorption Stress Validation",
+      "closure_status": "PASS_PENDING_REVIEW",
+      "closed": false,
+      "maximum_automatic_result": "PASS_PENDING_REVIEW",
+      "target_fps": 50,
+      "minimum_frames": 3000,
+      "frame_size_bytes": 300,
+      "mode": "high_rate_absorption_stress",
+      "purpose": "Measure maximum data absorbed per frame under high-rate stress. Verify PSEUDO family stability at 50 FPS.",
+      "runner": "ph6/cram_pu/tools/run_c10_c11_c12_absorption_campaigns.py",
+      "owned_gaps": [
+        "PSEUDO_FAMILY_ABSORPTION",
+        "CONTROLLED_RATE_VALIDATION",
+        "HIGH_RATE_STRESS"
+      ],
+      "pass_conditions": [
+        "all_3000_frames_complete",
+        "replay_parity_pass",
+        "rsync_not_blocked",
+        "lane2_zero_violations",
+        "no_critical_failures",
+        "pseudo_family_all_pass"
+      ],
+      "production_clearance_effect": "NONE",
+      "required_artifacts": [
+        "campaign_manifest.json",
+        "absorption_summary.json",
+        "pseudo_family_receipt.json",
+        "pseudo_math_gate_receipt.json",
+        "pseudo_predictive_receipt.json",
+        "pseudo_assembly_receipt.json",
+        "replay_parity_receipt.json",
+        "rsync_nonblocking_receipt.json",
+        "lane2_isolation_receipt.json",
+        "failure_register.json",
+        "result_set_hash.txt",
+        "artifact_hashes.blake2b",
+        "final_report.md"
+      ]
     }
   ],
   "closure_requirements": {

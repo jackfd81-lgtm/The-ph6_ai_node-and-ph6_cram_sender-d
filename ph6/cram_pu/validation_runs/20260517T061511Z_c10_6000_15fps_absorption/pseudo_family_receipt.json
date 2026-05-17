@@ -1,0 +1,15 @@
+{
+  "schema": "ph6.pseudo_family_receipt.v1",
+  "campaign_id": "C10",
+  "generated_at_utc": "2026-05-17T06:21:53Z",
+  "overall": "PASS",
+  "pseudo_m_overall": "PASS",
+  "pseudo_a_overall": "PASS",
+  "pseudo_predictive_overall": "PASS",
+  "pseudo_sci_overall": "PASS",
+  "pseudo_sci_violations": 0,
+  "all_deterministic": true,
+  "all_bounded": true,
+  "all_replayable": true,
+  "all_isolated": true
+}
