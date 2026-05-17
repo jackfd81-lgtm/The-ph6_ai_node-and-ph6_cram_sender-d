@@ -1,0 +1,1 @@
+{"advisory_only":true,"audit_mutation":false,"authority":"NONE","avg_entropy_fp":51597,"cram_mutation":false,"entropy_trend":"STABLE","frame_id":9805,"rsync_mutation":false,"schema":"ph6.pseudo_predictive.advisory.v1","stability_fraction_fp":6900,"threshold_mutation":false,"verdict_authority":false,"window_size":100}
