@@ -1,0 +1,39 @@
+{
+  "schema": "ph6.evidence_campaign_run.v1",
+  "campaign_id": "C08_3600_STAGED_LOCAL_PI",
+  "run_stamp_utc": "20260517T050752Z",
+  "commit": "e0529b1",
+  "total_frames": 3600,
+  "runner": "ph6.cram_pu.cram_pu_live",
+  "runner_flag_note": "Runner has no --mode flag. Segments distinguished by separate run dirs and campaign metadata labels. Mode distinction is architectural intent; implementation is identical processing path in this version.",
+  "segments": [
+    {
+      "segment": "A",
+      "mode": "FAST",
+      "start_frame": 1,
+      "end_frame": 1200,
+      "expected_frames": 1200,
+      "run_dir": "ph6/cram_pu/validation_runs/20260517T050752Z_C08_3600_staged/segment_A_FAST"
+    },
+    {
+      "segment": "B",
+      "mode": "REGULAR_CRAM",
+      "start_frame": 1201,
+      "end_frame": 2400,
+      "expected_frames": 1200,
+      "run_dir": "ph6/cram_pu/validation_runs/20260517T050752Z_C08_3600_staged/segment_B_REGULAR_CRAM"
+    },
+    {
+      "segment": "C",
+      "mode": "FAST_CRAM",
+      "start_frame": 2401,
+      "end_frame": 3600,
+      "expected_frames": 1200,
+      "run_dir": "ph6/cram_pu/validation_runs/20260517T050752Z_C08_3600_staged/segment_C_FAST_CRAM"
+    }
+  ],
+  "authority_rule": "Lane 1 decides. Lane 2 advises.",
+  "ram_rule": "RAM may accelerate FAST CRAM but may not replace durable CRAM authority.",
+  "closure_rule": "This run may produce candidate evidence only. Campaign closure requires validation, artifact hashes, review, and closure_status update.",
+  "governance_preflight": "PH6_SOURCE/GOVERNANCE/governance_scan_source_only_pre_3600.json"
+}
