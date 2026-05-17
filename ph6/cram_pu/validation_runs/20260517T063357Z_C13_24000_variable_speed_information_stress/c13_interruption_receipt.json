@@ -1,0 +1,19 @@
+{
+  "schema": "ph6.c13_interruption_receipt.v1",
+  "campaign_id": "C13",
+  "run_stamp_utc": "20260517T063357Z",
+  "interruption_utc": "2026-05-17T06:41:15Z",
+  "interruption_cause": "OPERATOR_STOP",
+  "interrupted_phase": "A",
+  "phase_A_frames_completed": 741,
+  "total_frames_configured": 24000,
+  "frames_completed_at_stop": 741,
+  "state": "INTERRUPTED_EVIDENCE_PRESERVED",
+  "closed": false,
+  "preservation_rule": "Do not delete. Partial evidence is valid. Re-run required for PASS_PENDING_REVIEW.",
+  "artifacts_present": [
+    "c13_campaign_manifest.json",
+    "c13_queue_trace.jsonl",
+    "c13_resource_trace.jsonl"
+  ]
+}

@@ -1,0 +1,14 @@
+{"cram_queue_depth":109,"frame_id":76,"mram_s_queue_depth":76,"pred_queue_depth":75,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":75,"timestamp_utc":"2026-05-17T06:34:02Z"}
+{"cram_queue_depth":211,"frame_id":151,"mram_s_queue_depth":151,"pred_queue_depth":150,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":150,"timestamp_utc":"2026-05-17T06:34:07Z"}
+{"cram_queue_depth":315,"frame_id":227,"mram_s_queue_depth":227,"pred_queue_depth":226,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":226,"timestamp_utc":"2026-05-17T06:34:12Z"}
+{"cram_queue_depth":419,"frame_id":303,"mram_s_queue_depth":303,"pred_queue_depth":302,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":302,"timestamp_utc":"2026-05-17T06:34:17Z"}
+{"cram_queue_depth":523,"frame_id":379,"mram_s_queue_depth":379,"pred_queue_depth":378,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":378,"timestamp_utc":"2026-05-17T06:34:22Z"}
+{"cram_queue_depth":629,"frame_id":455,"mram_s_queue_depth":455,"pred_queue_depth":454,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":454,"timestamp_utc":"2026-05-17T06:34:27Z"}
+{"cram_queue_depth":733,"frame_id":530,"mram_s_queue_depth":530,"pred_queue_depth":529,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":529,"timestamp_utc":"2026-05-17T06:34:32Z"}
+{"cram_queue_depth":835,"frame_id":606,"mram_s_queue_depth":606,"pred_queue_depth":605,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":605,"timestamp_utc":"2026-05-17T06:34:37Z"}
+{"cram_queue_depth":937,"frame_id":681,"mram_s_queue_depth":681,"pred_queue_depth":680,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":680,"timestamp_utc":"2026-05-17T06:34:42Z"}
+{"cram_queue_depth":1041,"frame_id":757,"mram_s_queue_depth":757,"pred_queue_depth":756,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":756,"timestamp_utc":"2026-05-17T06:34:48Z"}
+{"cram_queue_depth":1145,"frame_id":832,"mram_s_queue_depth":832,"pred_queue_depth":831,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":831,"timestamp_utc":"2026-05-17T06:34:53Z"}
+{"cram_queue_depth":1247,"frame_id":907,"mram_s_queue_depth":907,"pred_queue_depth":906,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":906,"timestamp_utc":"2026-05-17T06:34:58Z"}
+{"cram_queue_depth":1353,"frame_id":983,"mram_s_queue_depth":983,"pred_queue_depth":982,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":982,"timestamp_utc":"2026-05-17T06:35:03Z"}
+{"cram_queue_depth":1455,"frame_id":1058,"mram_s_queue_depth":1058,"pred_queue_depth":1057,"rsync_queue_depth":0,"schema":"ph6.queue_depth_snapshot.v1","sci_queue_depth":1057,"timestamp_utc":"2026-05-17T06:35:08Z"}
