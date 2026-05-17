@@ -2,27 +2,34 @@
 """
 PH6 EVC-02 — Long-Run Receipt Chain Behavior
 
-Runs a deterministic 300-frame CRAM ingest session using the production
+Runs a deterministic CRAM ingest session using the production
 IngestReceiptLogger, CRAMWriter, VerdictLogger, and chain verifier.
 
 Pass criteria:
-  - 300+ frames ingested
+  - frames ingested >= --frames
   - ingest receipt chain intact: chain_intact = true
   - event_seq monotonically 1..N with no gaps
   - VRC-1.0 certifies cleanly (result_set_hash present and stable)
   - Payloads and verdict records preserved for EVC-04
 
 Output:
-  validation_runs/evc02_<timestamp>/
+  <run-dir>/
     ingest_receipt_log.jsonl   (receipt chain)
     verdict_log.jsonl          (for EVC-04 replay comparison)
     cram_*.json                (CRAM commit records)
     ph6.vrc_receipt.v1.json    (certification)
     ph6.evc02_receipt.v1.json  (evidence receipt)
+
+CLI:
+  python evc02_long_run.py [--frames N] [--run-dir PATH] [--live]
+
+  --live: validate an existing run directory instead of generating payloads.
+          --run-dir must point to a directory containing ingest_receipt_log.jsonl.
 """
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -61,65 +68,82 @@ def _make_payload(frame_id: int, seed: int) -> bytes:
     return bytes([(h[j % 32] % 180) + 25 for j in range(300)])
 
 
-def run_evc02() -> dict:
-    now      = _utc_now()
-    slug     = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    run_dir  = HERE / "validation_runs" / f"evc02_{slug}"
+def run_evc02(
+    frames: int = TARGET_FRAMES,
+    run_dir: Path | None = None,
+    live: bool = False,
+) -> dict:
+    now  = _utc_now()
+    slug = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+
+    if run_dir is None:
+        run_dir = HERE / "validation_runs" / f"evc02_{slug}"
+    run_dir = Path(run_dir)
     run_dir.mkdir(parents=True, exist_ok=True)
 
-    # Initialise components
-    receipt_logger = IngestReceiptLogger(run_dir)
-    verdict_logger = VerdictLogger(run_dir / "verdict_log.jsonl")
-    cram_writer    = CRAMWriter(run_dir)
-    shed_logger    = SheddingLogger(CRAMPaths(cram_store=run_dir))
-
-    accepted = dropped = 0
-    prev_payload: bytes | None = None
-    t0 = time.monotonic()
-
-    print(f"\n  EVC-02: {TARGET_FRAMES}-frame run  (seed={SEED})")
+    print(f"\n  EVC-02: {frames}-frame run  (seed={SEED}{'  [live]' if live else ''})")
     print(f"  Run dir: {run_dir}")
 
-    for frame_id in range(1, TARGET_FRAMES + 1):
-        payload      = _make_payload(frame_id, SEED)
-        payload_hash = _blake2b(payload)
+    if not live:
+        receipt_logger = IngestReceiptLogger(run_dir)
+        verdict_logger = VerdictLogger(run_dir / "verdict_log.jsonl")
+        cram_writer    = CRAMWriter(run_dir)
+        shed_logger    = SheddingLogger(CRAMPaths(cram_store=run_dir))
 
-        # Lane-1: emit verdict
-        verdict_rec  = verdict_logger.log(frame_id, payload, payload_hash)
-        verdict      = verdict_rec["verdict"]
+        accepted = dropped = 0
+        t0 = time.monotonic()
 
-        # Emit arrived receipt
-        receipt_logger.arrived(frame_id=frame_id, payload_hash=payload_hash)
+        for frame_id in range(1, frames + 1):
+            payload      = _make_payload(frame_id, SEED)
+            payload_hash = _blake2b(payload)
 
-        if verdict == "PASS":
-            cram_rec = cram_writer.commit(frame_id, payload_hash, verdict_rec)
-            receipt_logger.accepted(frame_id=frame_id, cram_hash=cram_rec["cram_hash"])
-            accepted += 1
-        else:
-            shed_logger.log(frame_id, "PSEUDO-A/entropy_low_or_blur",
-                            f"frame {frame_id} DROP: {verdict_rec.get('reasons')}")
-            receipt_logger.dropped(frame_id=frame_id, payload_hash=payload_hash)
-            dropped += 1
+            verdict_rec  = verdict_logger.log(frame_id, payload, payload_hash)
+            verdict      = verdict_rec["verdict"]
 
-        prev_payload = payload
+            receipt_logger.arrived(frame_id=frame_id, payload_hash=payload_hash)
 
-        if frame_id % 50 == 0:
-            print(f"  ... frame {frame_id:>3}  accepted={accepted}  dropped={dropped}")
+            if verdict == "PASS":
+                cram_rec = cram_writer.commit(frame_id, payload_hash, verdict_rec)
+                receipt_logger.accepted(frame_id=frame_id, cram_hash=cram_rec["cram_hash"])
+                accepted += 1
+            else:
+                shed_logger.log(frame_id, "PSEUDO-A/entropy_low_or_blur",
+                                f"frame {frame_id} DROP: {verdict_rec.get('reasons')}")
+                receipt_logger.dropped(frame_id=frame_id, payload_hash=payload_hash)
+                dropped += 1
 
-    elapsed = time.monotonic() - t0
+            if frame_id % 50 == 0:
+                print(f"  ... frame {frame_id:>3}  accepted={accepted}  dropped={dropped}")
+
+        elapsed = time.monotonic() - t0
+
+    else:
+        # Live mode: count frames from existing receipt log, skip generation
+        t0 = time.monotonic()
+        receipt_log_path = run_dir / "ingest_receipt_log.jsonl"
+        accepted = dropped = 0
+        if receipt_log_path.exists():
+            for line in receipt_log_path.read_text().splitlines():
+                if not line.strip():
+                    continue
+                evt = json.loads(line).get("event_type", "")
+                if evt == "INGEST_ACCEPTED":
+                    accepted += 1
+                elif evt == "INGEST_DROPPED":
+                    dropped += 1
+        frames = accepted + dropped
+        elapsed = time.monotonic() - t0
+        print(f"  Live mode: {accepted} accepted + {dropped} dropped = {frames} frames")
 
     # Verify receipt chain
     chain_report = verify_receipt_chain(run_dir / "ingest_receipt_log.jsonl")
 
-    # Check event_seq monotonicity (max seq should equal receipt count)
     receipt_count  = chain_report["receipt_count"]
-    expected_total = TARGET_FRAMES * 3  # arrived + (accepted or dropped) per frame = 2, but arrived + accepted + dropped varies
-    # Actually: each frame emits arrived + (accepted XOR dropped) = 2 receipts
-    expected_total = TARGET_FRAMES * 2
+    expected_total = frames * 2  # arrived + (accepted XOR dropped) per frame
 
     # VRC-1.0 certification
-    vrc_receipt    = certify(run_dir)
-    vrc_path       = run_dir / "ph6.vrc_receipt.v1.json"
+    vrc_receipt = certify(run_dir)
+    vrc_path    = run_dir / "ph6.vrc_receipt.v1.json"
     vrc_path.write_text(_canonical(vrc_receipt) + "\n")
 
     passed = (
@@ -129,13 +153,12 @@ def run_evc02() -> dict:
         and chain_report.get("error_count", 0) == 0
     )
 
-    # Seal evidence receipt
     body = {
         "schema":              "ph6.evc02_receipt.v1",
         "campaign_id":         "EVC-02",
         "campaign_name":       "Long-Run Receipt Chain Behavior",
         "overall_status":      "PASS" if passed else "FAIL",
-        "frames_run":          TARGET_FRAMES,
+        "frames_run":          frames,
         "frames_accepted":     accepted,
         "frames_dropped":      dropped,
         "receipts_emitted":    receipt_count,
@@ -146,7 +169,8 @@ def run_evc02() -> dict:
         "result_set_hash":     vrc_receipt.get("result_set_hash"),
         "vrc_failure_count":   vrc_receipt["failure_count"],
         "elapsed_s":           round(elapsed, 3),
-        "seed":                SEED,
+        "seed":                SEED if not live else None,
+        "live":                live,
         "run_dir":             str(run_dir),
         "vrc_receipt_path":    str(vrc_path),
         "authority":           "VERIFY_ONLY",
@@ -155,7 +179,7 @@ def run_evc02() -> dict:
         "evc04_payload_note":  (
             "Payloads are deterministically reproducible from seed=42 + frame_id. "
             "EVC-04 payload replay can re-derive identical bytes without storing them."
-        ),
+        ) if not live else None,
         "production_clearance": False,
         "open_stop_ship_gates": ["OI-01", "OI-03"],
         "timestamp_utc":       now,
@@ -171,7 +195,16 @@ def run_evc02() -> dict:
 
 
 def main() -> None:
-    result = run_evc02()
+    ap = argparse.ArgumentParser(description="EVC-02: Long-Run Receipt Chain Behavior")
+    ap.add_argument("--frames", type=int, default=TARGET_FRAMES,
+                    help=f"number of frames to generate (default: {TARGET_FRAMES})")
+    ap.add_argument("--run-dir", type=Path, default=None,
+                    help="output directory (default: auto-generated under validation_runs/)")
+    ap.add_argument("--live", action="store_true",
+                    help="validate an existing run directory; --run-dir must point to it")
+    args = ap.parse_args()
+
+    result = run_evc02(frames=args.frames, run_dir=args.run_dir, live=args.live)
     print()
     print(f"  Overall:        {result['overall_status']}")
     print(f"  Frames:         {result['frames_run']} "

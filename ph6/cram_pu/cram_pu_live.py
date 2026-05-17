@@ -77,6 +77,18 @@ class _TokSidecar:
         return len(self._store.rt_store)
 
 
+def _write_payload_bin(payloads_dir: Path, frame_id: int, payload: bytes) -> None:
+    """Persist live payload bytes for replay verification (GAP-16)."""
+    payloads_dir.mkdir(parents=True, exist_ok=True)
+    path = payloads_dir / f"frame_{frame_id:010d}.bin"
+    fd = os.open(str(path), os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o644)
+    try:
+        os.write(fd, payload)
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+
+
 def _atomic_write_json(path: Path, record: dict) -> None:
     """write(tmp) → fsync(fd) → rename → fsync(dir)"""
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -119,8 +131,9 @@ def run(n_packets: int = 10, base_dir: Path | None = None,
     if base_dir is None:
         base_dir = HERE / "runtime" / f"run_{ts}"
 
-    cram_store = base_dir / "cram_store"
-    mram_s_dir = base_dir / "mram_s" / "swarms"
+    cram_store   = base_dir / "cram_store"
+    payloads_dir = cram_store / "payloads"
+    mram_s_dir   = base_dir / "mram_s" / "swarms"
     cram_store.mkdir(parents=True, exist_ok=True)
     mram_s_dir.mkdir(parents=True, exist_ok=True)
 
@@ -142,8 +155,9 @@ def run(n_packets: int = 10, base_dir: Path | None = None,
         # 1. Departure
         dep = departure_logger.log(frame_id, payload)
 
-        # 2. Arrival — verify hash
+        # 2. Arrival — verify hash; persist payload for replay (GAP-16)
         arr = arrival_logger.log(frame_id, payload, dep["payload_hash"])
+        _write_payload_bin(payloads_dir, frame_id, payload)
         if arr["transfer_status"] != "OK":
             print(f"  WARNING: frame {frame_id} HASH_MISMATCH on arrival",
                   file=sys.stderr)
@@ -233,8 +247,9 @@ def run(n_packets: int = 10, base_dir: Path | None = None,
             "shedding_log":  str(paths.shedding_log),
             "rsync_queue":   str(paths.rsync_queue),
         },
-        "cram_store": str(cram_store),
-        "mram_s":     str(mram_s_dir),
+        "cram_store":   str(cram_store),
+        "payloads_dir": str(payloads_dir),
+        "mram_s":       str(mram_s_dir),
         "counts":           counts,
         "schema_ok":        len(schema_errors) == 0,
         "replay_verdict":   report.verdict,
