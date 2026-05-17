@@ -344,6 +344,66 @@
         "replay mismatch"
       ],
       "closure_status": "OPEN"
+    },
+    {
+      "campaign_id": "C08",
+      "name": "3600-Frame Staged Local Pi Evidence Campaign",
+      "purpose": "Prove sustained deterministic operation across FAST, REGULAR_CRAM, and FAST_CRAM modes for 3600 frames on a single Pi. Candidate evidence for C01/C03/C05/FC01 — not a substitute for Pi-to-Pi (C02) or crash recovery (C04).",
+      "owned_gaps": [
+        "OPERATIONAL_COHERENCE",
+        "FAST_CRAM",
+        "CRAM_RV",
+        "REPLAY_PARITY",
+        "RSYNC_PRIORITY_ZERO"
+      ],
+      "minimum_frames": 3600,
+      "node_scope": ["single_pi_local"],
+      "segments": [
+        {"segment": "A", "mode": "FAST",         "frames": 1200, "start": 1,    "end": 1200},
+        {"segment": "B", "mode": "REGULAR_CRAM", "frames": 1200, "start": 1201, "end": 2400},
+        {"segment": "C", "mode": "FAST_CRAM",    "frames": 1200, "start": 2401, "end": 3600}
+      ],
+      "mode_mapping_note": "Current runner (cram_pu_live.py) has no --mode flag. Segments distinguished by separate run dirs and campaign metadata labels only. Behavioral mode difference is architectural intent; implementation is identical processing path in this version.",
+      "commands": [
+        "python3 -m ph6.cram_pu.cram_pu_live --packets 1200 --run-dir <RUN_DIR>/segment_A_FAST",
+        "python3 -m ph6.cram_pu.cram_pu_live --packets 1200 --run-dir <RUN_DIR>/segment_B_REGULAR_CRAM",
+        "python3 -m ph6.cram_pu.cram_pu_live --packets 1200 --run-dir <RUN_DIR>/segment_C_FAST_CRAM"
+      ],
+      "required_artifacts": [
+        "<RUN_DIR>/campaign_metadata.json",
+        "<RUN_DIR>/segment_A_FAST/",
+        "<RUN_DIR>/segment_B_REGULAR_CRAM/",
+        "<RUN_DIR>/segment_C_FAST_CRAM/",
+        "<RUN_DIR>/campaign_result_summary.json",
+        "<RUN_DIR>/artifact_hashes.txt",
+        "PH6_SOURCE/GOVERNANCE/governance_scan_source_only_pre_3600.json"
+      ],
+      "pass_conditions": [
+        "all_3600_frames_complete",
+        "no_manual_stop",
+        "verdict_vocabulary_PASS_DROP_only",
+        "motion_fraction_fp_canonical_metric",
+        "lane2_writes_mram_s_only",
+        "rsync_not_blocked",
+        "audit_chain_valid",
+        "result_set_hash_present",
+        "replay_parity_verified",
+        "cram_rv_payloads_durable",
+        "governance_preflight_pass"
+      ],
+      "fail_conditions": [
+        "any_segment_short_of_expected_frames",
+        "manual_stop",
+        "forbidden_verdict_term",
+        "forbidden_metric_field",
+        "lane2_writes_cram",
+        "rsync_blocked",
+        "audit_chain_break",
+        "replay_mismatch"
+      ],
+      "hrg9_note": "This campaign may produce HRG9 candidate evidence. It does not close HRG9. HRG9 requires P1/P2/P3 vector parity and hrg9_replay_parity_receipt.json.",
+      "production_clearance_note": "Maximum result is LOCAL_PI_EVIDENCE_SET_COMPLETE_PENDING_REVIEW. Production clearance requires EVC-05 human gate review.",
+      "closure_status": "OPEN"
     }
   ],
   "closure_requirements": {
