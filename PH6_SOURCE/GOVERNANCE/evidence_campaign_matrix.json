@@ -403,7 +403,9 @@
       ],
       "hrg9_note": "This campaign may produce HRG9 candidate evidence. It does not close HRG9. HRG9 requires P1/P2/P3 vector parity and hrg9_replay_parity_receipt.json.",
       "production_clearance_note": "Maximum result is LOCAL_PI_EVIDENCE_SET_COMPLETE_PENDING_REVIEW. Production clearance requires EVC-05 human gate review.",
-      "closure_status": "OPEN"
+      "closure_status": "PASS_PENDING_REVIEW",
+      "evidence_commit": "65c2540",
+      "run_stamp_utc": "20260517T050752Z"
     }
   ],
   "closure_requirements": {

@@ -136,6 +136,44 @@
       ],
       "evidence_artifacts": [],
       "artifact_hashes": {}
+    },
+
+    "C08_3600_STAGED_LOCAL_PI": {
+      "campaign_id": "C08_3600_STAGED_LOCAL_PI",
+      "name": "3600-Frame Staged Local Pi Evidence Campaign",
+      "state": "PASS_PENDING_REVIEW",
+      "closed": false,
+      "evidence_commit": "65c2540",
+      "run_stamp_utc": "20260517T050752Z",
+      "total_frames_expected": 3600,
+      "total_frames_observed": 3600,
+      "cross_segment_result_set_hash": "ed74de8d14e71a19cf74ed9e9ed9c1b57fd3bbf403ef895edb4835940f03ad4f",
+      "cross_segment_hash_parity": "MATCH",
+      "segments_passed": ["FAST", "REGULAR_CRAM", "FAST_CRAM"],
+      "replay_parity": "PASS",
+      "rsync_non_blocking": "PASS",
+      "lane2_isolation": "PASS",
+      "audit_chain": "PASS",
+      "cram_rv_payload_preservation": "PASS",
+      "governance_preflight": "PASS",
+      "review_required": true,
+      "reviewer": null,
+      "reviewed_at_utc": null,
+      "closure_decision": null,
+      "closed_at_utc": null,
+      "hrg9_status": "CANDIDATE_EVIDENCE_ONLY",
+      "production_clearance_status": "NOT_DECLARED",
+      "evidence_artifacts": [
+        "ph6/cram_pu/validation_runs/20260517T050752Z_C08_3600_staged/campaign_result_summary.json",
+        "ph6/cram_pu/validation_runs/20260517T050752Z_C08_3600_staged/campaign_metadata.json",
+        "ph6/cram_pu/validation_runs/20260517T050752Z_C08_3600_staged/artifact_hashes.txt"
+      ],
+      "required_before_closed": [
+        "reviewer",
+        "reviewed_at_utc",
+        "closure_decision",
+        "closed_at_utc"
+      ]
     }
   }
 }
