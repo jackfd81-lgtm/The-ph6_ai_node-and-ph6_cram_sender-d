@@ -332,14 +332,51 @@
       ],
       "evidence_artifacts": [],
       "artifact_hashes": {}
+    },
+    "C09_12000_STAGED_LOCAL_PI": {
+      "campaign_id": "C09_12000_STAGED_LOCAL_PI",
+      "name": "12,000-Frame Staged Endurance and Throughput Validation",
+      "state": "PASS_PENDING_REVIEW",
+      "closed": false,
+      "reviewer": null,
+      "reviewed_at_utc": null,
+      "closure_decision": null,
+      "closed_at_utc": null,
+      "review_required": true,
+      "required_before_closed": [
+        "reviewer",
+        "reviewed_at_utc",
+        "closure_decision",
+        "closed_at_utc"
+      ],
+      "evidence_commit": "85e7c1e9",
+      "run_stamp_utc": "20260517T055650Z",
+      "total_frames_configured": 12000,
+      "total_frames_completed": 12000,
+      "total_fps": 177.48,
+      "total_duration_seconds": 67.61,
+      "avg_fps_by_mode": {
+        "FAST": 182.67,
+        "FAST_CRAM": 184.79,
+        "REGULAR_CRAM": 184.37
+      },
+      "result_set_hash_parity": "MATCH",
+      "per_phase_hash": "445c769cb78aa7eadcfabe55218a0935461eb19d0f79b8b5fb22b6fa4042934b",
+      "per_phase_replay_verdict": "PASS",
+      "replay_parity": "PASS",
+      "rsync_non_blocking": "PASS",
+      "lane2_isolation": "PASS",
+      "critical_failures": 0,
+      "hrg9_status": "CANDIDATE_EVIDENCE_ONLY",
+      "production_clearance_status": "NOT_DECLARED",
+      "phases_passed": [
+        "A_FAST",
+        "B_REGULAR_CRAM",
+        "C_FAST_CRAM",
+        "D_FAST",
+        "E_REGULAR_CRAM",
+        "F_FAST_CRAM"
+      ]
     }
-  },
-  "C09": {
-    "state": "PASS_PENDING_REVIEW",
-    "closed": false,
-    "reviewer": null,
-    "reviewed_at_utc": null,
-    "closure_decision": null,
-    "closed_at_utc": null
   }
 }
