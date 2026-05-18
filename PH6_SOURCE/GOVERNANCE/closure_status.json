@@ -281,7 +281,8 @@
         "PHASE_03_FAST_CRAM": "PASS"
       },
       "phases": 3,
-      "production_clearance_status": "CANDIDATE_NOT_DECLARED",
+      "production_clearance_declaration_id": "PH6-PROD-CLEAR-2026-05-18-001",
+      "production_clearance_status": "DECLARED_BY_OPERATOR",
       "replay_parity": "PASS",
       "required_before_production": [
         "operator_production_clearance_declaration"
@@ -821,10 +822,12 @@
   "generated_at_utc": "2026-05-17T04:54:49Z",
   "last_reviewer": "Jack Disla",
   "last_updated_utc": "2026-05-18T08:50:40Z",
-  "production_clearance": "CANDIDATE_NOT_DECLARED \u2014 EVC-05 closed by Jack Disla 2026-05-18. Operator production clearance declaration is still required. This status does not constitute production approval.",
-  "production_clearance_declared": false,
-  "production_clearance_declared_at_utc": null,
-  "production_clearance_reviewer": null,
-  "production_clearance_status": "CANDIDATE_NOT_DECLARED",
+  "production_clearance": "DECLARED \u2014 PH6-PROD-CLEAR-2026-05-18-001. Single-node PH6/CRAM instrument on main_pi is cleared for production operation within defined scope only. Cross-node rsync transfer to jackjack (192.168.254.189) is cleared only as export/hash-continuity verification. Hailo, multi-writer CRAM, distributed authority, remote PASS/DROP authority, remote CRAM-A write authority, Kubernetes CRAM-A storage, and Lane 2 authority remain not cleared.",
+  "production_clearance_declaration_id": "PH6-PROD-CLEAR-2026-05-18-001",
+  "production_clearance_declared": true,
+  "production_clearance_declared_at_utc": "2026-05-18T08:50:40Z",
+  "production_clearance_reviewer": "Jack Disla",
+  "production_clearance_scope": "Single-node PH6/CRAM evidence instrument \u2014 Lane 1 deterministic ingest, measurement, PASS/DROP authority, preservation, replay certification, and export/hash-continuity verification. Cross-node rsync transfer to jackjack (192.168.254.189) is included only as export/hash-continuity verification. It does not grant distributed authority, remote PASS/DROP authority, or multi-writer CRAM authority.",
+  "production_clearance_status": "DECLARED",
   "schema": "ph6.campaign_closure_status.v1"
 }

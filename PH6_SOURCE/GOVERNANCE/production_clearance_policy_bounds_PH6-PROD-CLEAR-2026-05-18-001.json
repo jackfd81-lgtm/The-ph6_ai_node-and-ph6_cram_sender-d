@@ -1,0 +1,37 @@
+{
+  "cleared": {
+    "cram_0_raw_intake": true,
+    "cram_a_authoritative_store": true,
+    "cram_r_reject_vault": true,
+    "cross_node_rsync_hash_continuity": true,
+    "pseudo_a_pass_drop_authority": true,
+    "pseudo_m_measurement": true,
+    "single_node_lane1": true,
+    "vrc_replay_certification": true
+  },
+  "cleared_scope": "single-node main_pi plus export/hash-continuity RSYNC to jackjack",
+  "declaration_id": "PH6-PROD-CLEAR-2026-05-18-001",
+  "doctrine_guardrails": [
+    "Cross-node rsync is export/hash-continuity verification only.",
+    "Cross-node rsync does not grant distributed authority.",
+    "Cross-node rsync does not grant remote PASS/DROP authority.",
+    "Cross-node rsync does not grant remote CRAM-A write authority.",
+    "Lane 2 remains Authority ZERO.",
+    "PSEUDO-A remains sole PASS/DROP authority."
+  ],
+  "generated_at_utc": "2026-05-18T09:37:43.008772Z",
+  "not_cleared": {
+    "ai_authority": true,
+    "distributed_authority": true,
+    "hailo_integration": true,
+    "kubernetes_cram_a_storage": true,
+    "lane2_authority": true,
+    "multi_writer_cram": true,
+    "remote_cram_a_write_authority": true,
+    "remote_pass_drop_authority": true,
+    "soso_authority": true,
+    "swarm_authority": true,
+    "token_authority": true
+  },
+  "schema": "ph6.production_clearance_policy_bounds.v1"
+}

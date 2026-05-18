@@ -1,0 +1,91 @@
+{
+  "clearance_class": "HUMAN_OPERATOR_DECLARATION",
+  "cleared_for": [
+    "CRAM-0 raw intake",
+    "PSEUDO-M deterministic measurement",
+    "PSEUDO-A PASS/DROP authority",
+    "CRAM-A authoritative evidence store",
+    "CRAM-R deterministic reject vault",
+    "VRC-1.0 replay certification",
+    "Cross-node rsync transfer with hash continuity verification"
+  ],
+  "declaration_id": "PH6-PROD-CLEAR-2026-05-18-001",
+  "declared_at_utc": "2026-05-18T08:50:40Z",
+  "declared_by": "Jack Disla",
+  "distributed_authority": "NOT_CLEARED",
+  "evidence_basis": {
+    "C07": {
+      "commit": "a26c111c25",
+      "description": "Governance drift validation",
+      "state": "CLOSED"
+    },
+    "EVC-05": {
+      "campaign_result_set_hash": "blake2b256:3cf901a9db7c416d4344892be5e75aa17ced04bc6e3b1ea97b001288be5a846c",
+      "commit": "9deda5b1ab",
+      "frames": 1800,
+      "lane_isolation": "PASS",
+      "phase_results": {
+        "PHASE_01_FAST": "PASS",
+        "PHASE_02_REGULAR": "PASS",
+        "PHASE_03_FAST_CRAM": "PASS"
+      },
+      "phases": 3,
+      "replay_parity": "PASS",
+      "rsync_sovereignty": "PASS",
+      "state": "CLOSED"
+    },
+    "OI-01": {
+      "reason": "Hailo deferred to future hardware revision",
+      "state": "DESCOPED"
+    },
+    "OI-03A": {
+      "commit": "1c1a430e47",
+      "frames": 300,
+      "mismatches": 0,
+      "state": "CLOSED"
+    },
+    "OI-03B": {
+      "commit": "e445e7a3be",
+      "frames": 1200,
+      "mismatches": 0,
+      "state": "CLOSED"
+    },
+    "OI-03C": {
+      "commit": "2e42ce3705",
+      "frames": 3600,
+      "mismatches": 0,
+      "state": "CLOSED"
+    }
+  },
+  "generated_at_utc": "2026-05-18T09:37:43.008772Z",
+  "hailo_integration": "DESCOPED",
+  "head_commit": "9deda5b1ab",
+  "invariants_confirmed": [
+    "Capture everything",
+    "Preserve it exactly",
+    "Measure deterministically",
+    "Interpret separately",
+    "Prove everything",
+    "Lane 1 decides",
+    "Lane 2 advises only",
+    "RSYNC export remains sovereign"
+  ],
+  "lane2_authority": "ZERO \u2014 confirmed. No Lane 2 system may issue PASS/DROP, modify thresholds, write CRAM-A, promote rejects, assign sequence authority, or block RSYNC.",
+  "maximum_automatic_result_before_declaration": "PASS_PENDING_REVIEW",
+  "multi_writer_cram": "NOT_CLEARED",
+  "node": "main_pi",
+  "not_cleared_for": [
+    "Hailo hardware integration (OI-01 \u2014 DESCOPED, future revision)",
+    "Multi-writer CRAM",
+    "Distributed authority",
+    "Remote PASS/DROP authority",
+    "Remote CRAM-A write authority",
+    "Kubernetes CRAM-A storage",
+    "Lane 2 authority of any kind"
+  ],
+  "operator_statement": "I, Jack Disla, have reviewed the evidence campaigns and governance records listed above. The single-node PH6/CRAM instrument on main_pi is cleared for production operation within the defined scope. OI-01 is descoped. Cross-node rsync transfer to jackjack is cleared only for export/hash-continuity verification. Distributed authority, remote PASS/DROP authority, remote CRAM-A write authority, multi-writer CRAM, Kubernetes CRAM-A storage, Hailo integration, and Lane 2 authority are not proven and are not claimed.",
+  "production_clearance": "DECLARED",
+  "rsync_sovereignty": "CONFIRMED \u2014 nothing blocked export in any campaign.",
+  "schema": "ph6.production_clearance_declaration.v1",
+  "scope": "Single-node PH6/CRAM evidence instrument \u2014 Lane 1 deterministic ingest, measurement, PASS/DROP authority, preservation, replay certification, and export/hash-continuity verification. Cross-node rsync transfer to jackjack (192.168.254.189) is included only as export/hash-continuity verification. It does not grant distributed authority, remote PASS/DROP authority, or multi-writer CRAM authority."
+}
