@@ -281,7 +281,7 @@
         "PHASE_03_FAST_CRAM": "PASS"
       },
       "phases": 3,
-      "production_clearance_status": "NOT_DECLARED",
+      "production_clearance_status": "CANDIDATE_NOT_DECLARED",
       "replay_parity": "PASS",
       "required_before_production": [
         "operator_production_clearance_declaration"
@@ -821,7 +821,10 @@
   "generated_at_utc": "2026-05-17T04:54:49Z",
   "last_reviewer": "Jack Disla",
   "last_updated_utc": "2026-05-18T08:50:40Z",
-  "production_clearance": "CANDIDATE \u2014 all local evidence campaigns closed. Operator production clearance declaration required to proceed.",
-  "production_clearance_status": "CANDIDATE",
+  "production_clearance": "CANDIDATE_NOT_DECLARED \u2014 EVC-05 closed by Jack Disla 2026-05-18. Operator production clearance declaration is still required. This status does not constitute production approval.",
+  "production_clearance_declared": false,
+  "production_clearance_declared_at_utc": null,
+  "production_clearance_reviewer": null,
+  "production_clearance_status": "CANDIDATE_NOT_DECLARED",
   "schema": "ph6.campaign_closure_status.v1"
 }
