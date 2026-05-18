@@ -793,6 +793,64 @@
         "c13_phase_cooldowns.jsonl"
       ]
     }
+    ,
+    {
+      "campaign_id": "LCC-01",
+      "name": "Life CRAM Real-Camera Live Stream Validation",
+      "category": "life_cram_real_camera",
+      "purpose": "Prove the full CRAM-PU authority chain (departure → arrival → PSEUDO verdict → CRAM commit → replay proof) using a real USB camera as the live frame source.",
+      "owned_gaps": [
+        "LIFE_CRAM_AUTHORITY_CHAIN",
+        "REAL_CAMERA_INGEST"
+      ],
+      "authority": "CRAM-PU",
+      "lane": 1,
+      "real_source": true,
+      "device": "/dev/video0",
+      "maximum_result_without_review": "PASS_PENDING_REVIEW",
+      "production_clearance_effect": "NONE",
+      "levels": [
+        {
+          "level": "LCC-01A",
+          "name": "Smoke test",
+          "frames": 300,
+          "state": "PASS_PENDING_REVIEW",
+          "evidence_commit": "bd95f3ffe",
+          "result_set_hash": "blake2b256:3b98033bd0b3a08aa7d22d72e625719a9c729f883155b69686dd8f7c751c5afd",
+          "run_dir": "ph6/cram_pu/validation_runs/lcc01_smoke_test_20260518T070336Z"
+        },
+        {
+          "level": "LCC-01B",
+          "name": "Standard run",
+          "frames": 1200,
+          "state": "PASS_PENDING_REVIEW",
+          "evidence_commit": "239835c69",
+          "result_set_hash": "blake2b256:f7347f27b9079ff0e5952fa9a2adbea0e51483e9da67639ab0e6eca1a8a9b63e",
+          "run_dir": "ph6/cram_pu/validation_runs/lcc01_B_20260518T070900Z"
+        },
+        {
+          "level": "LCC-01C",
+          "name": "Full evidence run",
+          "frames": 3600,
+          "state": "PASS_PENDING_REVIEW",
+          "evidence_commit": "fb51f2e88",
+          "result_set_hash": "blake2b256:5d182bf064800a55b946ab180f4af2d622460d6d05d4dd834f2d85277f92c0aa",
+          "run_dir": "ph6/cram_pu/validation_runs/lcc01_C_20260518T071915Z"
+        }
+      ],
+      "pass_conditions": [
+        "departure_arrival_hash_match",
+        "pseudo_verdict_pass_drop_only",
+        "cram_commit_marker_present",
+        "blake2b_authority_hash_present",
+        "result_set_hash_reproduces",
+        "rsync_not_blocked",
+        "authority_leakage_zero",
+        "schema_valid"
+      ],
+      "closure_status": "PASS_PENDING_REVIEW",
+      "closed": false
+    }
   ],
   "closure_requirements": {
     "allowed_campaign_states": [
