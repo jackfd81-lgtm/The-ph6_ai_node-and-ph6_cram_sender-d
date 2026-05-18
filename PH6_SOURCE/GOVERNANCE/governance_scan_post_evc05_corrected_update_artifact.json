@@ -1,0 +1,13 @@
+{
+  "schema": "ph6.governance.drift_report.v1",
+  "scan_root": "/home/jack/PH6_SOURCE",
+  "governance_dir": "/home/jack/PH6_SOURCE/GOVERNANCE",
+  "generated_at_utc": "2026-05-18T09:35:19Z",
+  "overall_result": "PASS",
+  "critical_count": 0,
+  "high_count": 0,
+  "warn_count": 0,
+  "total_findings": 0,
+  "summary_by_check": {},
+  "findings": []
+}

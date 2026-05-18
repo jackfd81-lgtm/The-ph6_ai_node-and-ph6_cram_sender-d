@@ -1,0 +1,39 @@
+{
+  "backup_committed": false,
+  "correction_required": true,
+  "corrective_commit": "37c62a2fff",
+  "doctrine_preserved": true,
+  "evc05_final_state": {
+    "closed": true,
+    "closed_at_utc": "2026-05-18T08:50:40Z",
+    "production_clearance_status": "CANDIDATE_NOT_DECLARED",
+    "reviewer": "Jack Disla",
+    "state": "CLOSED"
+  },
+  "evidence_artifacts_changed": false,
+  "files_changed_by_correction": [
+    "PH6_SOURCE/GOVERNANCE/closure_status.json",
+    "PH6_SOURCE/GOVERNANCE/governance_scan_post_evc05_closure_correction.json"
+  ],
+  "generated_at_utc": "2026-05-18T09:34:54.157191Z",
+  "governance_scan_after_correction": {
+    "critical": 0,
+    "high": 0,
+    "result": "PASS",
+    "warn": 0
+  },
+  "lane_authority_changed": false,
+  "operator_action_still_required": true,
+  "patch_scope": "EVC-05 corrected closure status and production-clearance non-declaration",
+  "prior_closure_commit": "46aba55168",
+  "production_clearance_effect": "NOT_DECLARED",
+  "production_clearance_final_state": {
+    "production_clearance_declared": false,
+    "production_clearance_declared_at_utc": null,
+    "production_clearance_reviewer": null,
+    "production_clearance_status": "CANDIDATE_NOT_DECLARED",
+    "production_clearance_text": "CANDIDATE_NOT_DECLARED \u2014 EVC-05 closed by Jack Disla 2026-05-18. Operator production clearance declaration is still required. This status does not constitute production approval."
+  },
+  "result_set_hash_changed": false,
+  "schema": "ph6.evc05.corrected_closure_update.v1"
+}
