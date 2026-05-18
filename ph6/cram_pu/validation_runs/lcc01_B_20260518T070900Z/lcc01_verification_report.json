@@ -1,0 +1,33 @@
+{
+  "schema": "ph6.lcc01_verification_report.v1",
+  "campaign_id": "LCC-01",
+  "run_dir": "ph6/cram_pu/validation_runs/lcc01_B_20260518T070900Z",
+  "timestamp_utc": "2026-05-18T07:10:04Z",
+  "artifacts_missing": [],
+  "camera_real_source": true,
+  "frames_done": 1200,
+  "result_set_hash_ok": true,
+  "result_set_hash_stored": "f7347f27b9079ff0e5952fa9a2adbea0e51483e9da67639ab0e6eca1a8a9b63e",
+  "result_set_hash_recomputed": "f7347f27b9079ff0e5952fa9a2adbea0e51483e9da67639ab0e6eca1a8a9b63e",
+  "replay": {
+    "schema": "ph6.lcc01_replay_report.v1",
+    "timestamp_utc": "2026-05-18T07:10:12Z",
+    "ok": true,
+    "total": 1200,
+    "mismatches": [],
+    "hash_not_found": [],
+    "decode_failures": []
+  },
+  "cram_chain": {
+    "ok": true,
+    "total_commits": 1200,
+    "errors": []
+  },
+  "authority_leakage_scan_pass": true,
+  "rsync_pass": true,
+  "findings": [],
+  "ok": true,
+  "verdict": "PASS",
+  "state": "PASS_PENDING_REVIEW",
+  "closed": false
+}
