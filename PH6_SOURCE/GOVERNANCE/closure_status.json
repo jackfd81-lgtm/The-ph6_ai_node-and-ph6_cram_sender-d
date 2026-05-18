@@ -6,8 +6,8 @@
     "C07": {
       "campaign_id": "C07",
       "name": "Governance Drift Validation",
-      "state": "PASS_PENDING_REVIEW",
-      "closed": false,
+      "state": "CLOSED",
+      "closed": true,
       "reason": "Source-only governance drift scan passed with zero findings, but reviewer sign-off and full closure package are not yet complete.",
       "executed_command": "python3 PH6_SOURCE/TOOLS/governance_drift_scan.py --scan-root PH6_SOURCE --governance-dir PH6_SOURCE/GOVERNANCE --project-root . --report-out PH6_SOURCE/GOVERNANCE/governance_scan_source_only.json",
       "scan_root_used": "PH6_SOURCE",
@@ -26,10 +26,10 @@
       "artifact_hashes": {
         "PH6_SOURCE/GOVERNANCE/governance_scan_source_only.json": "blake2b256:506cc46b511afcc3ccaee0885d17cc462cbd23593a26a2c058f3826877029407"
       },
-      "reviewer": null,
-      "reviewed_at_utc": null,
-      "closure_decision": null,
-      "closed_at_utc": null,
+      "reviewer": "Jack Disla",
+      "reviewed_at_utc": "2026-05-18T08:50:40Z",
+      "closure_decision": "CLOSED",
+      "closed_at_utc": "2026-05-18T08:50:40Z",
       "required_before_closed": [
         "reviewer",
         "reviewed_at_utc",
@@ -473,9 +473,9 @@
     },
     "OI-03A": {
       "campaign_id": "OI-03A",
-      "name": "Cross-Node Transfer Proof — Mini Real-Evidence (300 frames)",
-      "state": "PASS_PENDING_REVIEW",
-      "closed": false,
+      "name": "Cross-Node Transfer Proof \u2014 Mini Real-Evidence (300 frames)",
+      "state": "CLOSED",
+      "closed": true,
       "category": "cross_node_transfer",
       "level": "OI-03A",
       "parent_campaign": "OI-03",
@@ -485,25 +485,45 @@
       "target_node": "jackjack (192.168.254.189)",
       "transfer_method": "rsync",
       "frames": 300,
-      "artifact_hash_check": {"files_checked": 1214, "mismatches": 0, "missing": 0, "result": "PASS"},
-      "cram_chain_check": {"records_checked": 300, "chain_ok": 300, "chain_fail": 0, "result": "PASS"},
-      "departure_arrival_check": {"frames_checked": 300, "matched": 300, "mismatched": 0, "result": "PASS"},
+      "artifact_hash_check": {
+        "files_checked": 1214,
+        "mismatches": 0,
+        "missing": 0,
+        "result": "PASS"
+      },
+      "cram_chain_check": {
+        "records_checked": 300,
+        "chain_ok": 300,
+        "chain_fail": 0,
+        "result": "PASS"
+      },
+      "departure_arrival_check": {
+        "frames_checked": 300,
+        "matched": 300,
+        "mismatched": 0,
+        "result": "PASS"
+      },
       "result_set_hash": "blake2b256:3b98033bd0b3a08aa7d22d72e625719a9c729f883155b69686dd8f7c751c5afd",
       "cross_node_cram_integrity": "PASS",
       "hash_faithful_transfer": "PASS",
-      "reviewer": null,
-      "reviewed_at_utc": null,
-      "closure_decision": null,
-      "closed_at_utc": null,
+      "reviewer": "Jack Disla",
+      "reviewed_at_utc": "2026-05-18T08:50:40Z",
+      "closure_decision": "CLOSED",
+      "closed_at_utc": "2026-05-18T08:50:40Z",
       "production_clearance_status": "NOT_DECLARED",
       "maximum_automatic_result": "PASS_PENDING_REVIEW",
-      "required_before_closed": ["reviewer", "reviewed_at_utc", "closure_decision", "closed_at_utc"]
+      "required_before_closed": [
+        "reviewer",
+        "reviewed_at_utc",
+        "closure_decision",
+        "closed_at_utc"
+      ]
     },
     "OI-03B": {
       "campaign_id": "OI-03B",
-      "name": "Cross-Node Transfer Proof — Standard (1200 frames)",
-      "state": "PASS_PENDING_REVIEW",
-      "closed": false,
+      "name": "Cross-Node Transfer Proof \u2014 Standard (1200 frames)",
+      "state": "CLOSED",
+      "closed": true,
       "category": "cross_node_transfer",
       "level": "OI-03B",
       "parent_campaign": "OI-03",
@@ -513,25 +533,45 @@
       "target_node": "jackjack (192.168.254.189)",
       "transfer_method": "rsync",
       "frames": 1200,
-      "artifact_hash_check": {"files_checked": 4814, "mismatches": 0, "missing": 0, "result": "PASS"},
-      "cram_chain_check": {"records_checked": 1200, "chain_ok": 1200, "chain_fail": 0, "result": "PASS"},
-      "departure_arrival_check": {"frames_checked": 1200, "matched": 1200, "mismatched": 0, "result": "PASS"},
+      "artifact_hash_check": {
+        "files_checked": 4814,
+        "mismatches": 0,
+        "missing": 0,
+        "result": "PASS"
+      },
+      "cram_chain_check": {
+        "records_checked": 1200,
+        "chain_ok": 1200,
+        "chain_fail": 0,
+        "result": "PASS"
+      },
+      "departure_arrival_check": {
+        "frames_checked": 1200,
+        "matched": 1200,
+        "mismatched": 0,
+        "result": "PASS"
+      },
       "result_set_hash": "blake2b256:f7347f27b9079ff0e5952fa9a2adbea0e51483e9da67639ab0e6eca1a8a9b63e",
       "cross_node_cram_integrity": "PASS",
       "hash_faithful_transfer": "PASS",
-      "reviewer": null,
-      "reviewed_at_utc": null,
-      "closure_decision": null,
-      "closed_at_utc": null,
+      "reviewer": "Jack Disla",
+      "reviewed_at_utc": "2026-05-18T08:50:40Z",
+      "closure_decision": "CLOSED",
+      "closed_at_utc": "2026-05-18T08:50:40Z",
       "production_clearance_status": "NOT_DECLARED",
       "maximum_automatic_result": "PASS_PENDING_REVIEW",
-      "required_before_closed": ["reviewer", "reviewed_at_utc", "closure_decision", "closed_at_utc"]
+      "required_before_closed": [
+        "reviewer",
+        "reviewed_at_utc",
+        "closure_decision",
+        "closed_at_utc"
+      ]
     },
     "OI-03C": {
       "campaign_id": "OI-03C",
-      "name": "Cross-Node Transfer Proof — Full Evidence Run (3600 frames)",
-      "state": "PASS_PENDING_REVIEW",
-      "closed": false,
+      "name": "Cross-Node Transfer Proof \u2014 Full Evidence Run (3600 frames)",
+      "state": "CLOSED",
+      "closed": true,
       "category": "cross_node_transfer",
       "level": "OI-03C",
       "parent_campaign": "OI-03",
@@ -541,19 +581,39 @@
       "target_node": "jackjack (192.168.254.189)",
       "transfer_method": "rsync",
       "frames": 3600,
-      "artifact_hash_check": {"files_checked": 14414, "mismatches": 0, "missing": 0, "result": "PASS"},
-      "cram_chain_check": {"records_checked": 3600, "chain_ok": 3600, "chain_fail": 0, "result": "PASS"},
-      "departure_arrival_check": {"frames_checked": 3600, "matched": 3600, "mismatched": 0, "result": "PASS"},
+      "artifact_hash_check": {
+        "files_checked": 14414,
+        "mismatches": 0,
+        "missing": 0,
+        "result": "PASS"
+      },
+      "cram_chain_check": {
+        "records_checked": 3600,
+        "chain_ok": 3600,
+        "chain_fail": 0,
+        "result": "PASS"
+      },
+      "departure_arrival_check": {
+        "frames_checked": 3600,
+        "matched": 3600,
+        "mismatched": 0,
+        "result": "PASS"
+      },
       "result_set_hash": "blake2b256:5d182bf064800a55b946ab180f4af2d622460d6d05d4dd834f2d85277f92c0aa",
       "cross_node_cram_integrity": "PASS",
       "hash_faithful_transfer": "PASS",
-      "reviewer": null,
-      "reviewed_at_utc": null,
-      "closure_decision": null,
-      "closed_at_utc": null,
+      "reviewer": "Jack Disla",
+      "reviewed_at_utc": "2026-05-18T08:50:40Z",
+      "closure_decision": "CLOSED",
+      "closed_at_utc": "2026-05-18T08:50:40Z",
       "production_clearance_status": "NOT_DECLARED",
       "maximum_automatic_result": "PASS_PENDING_REVIEW",
-      "required_before_closed": ["reviewer", "reviewed_at_utc", "closure_decision", "closed_at_utc"]
+      "required_before_closed": [
+        "reviewer",
+        "reviewed_at_utc",
+        "closure_decision",
+        "closed_at_utc"
+      ]
     },
     "LCC-01A": {
       "campaign_id": "LCC-01A",
@@ -692,10 +752,23 @@
       "total_fps": 22.7,
       "total_duration_seconds": 1057.6,
       "total_bytes": 32400000,
-      "phases_passed": ["A", "B", "C", "D", "E", "F", "G"],
+      "phases_passed": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
       "phase_fps": {
-        "A": 15.0, "B": 126.1, "C": 30.0, "D": 107.3,
-        "E": 5.0, "F": 30.0, "G": 60.0
+        "A": 15.0,
+        "B": 126.1,
+        "C": 30.0,
+        "D": 107.3,
+        "E": 5.0,
+        "F": 30.0,
+        "G": 60.0
       },
       "pseudo_family": "PASS",
       "replay_parity": "PASS",
@@ -706,6 +779,21 @@
       "degradation_note": "By design: first 12K FPS=27.8 vs last 12K FPS=16.7; Phase E at 5 FPS is intentional slowest load.",
       "hrg9_status": "CANDIDATE_EVIDENCE_ONLY",
       "production_clearance_status": "NOT_DECLARED"
+    },
+    "OI-01": {
+      "campaign_id": "OI-01",
+      "name": "Hailo Hardware Integration",
+      "state": "DESCOPED",
+      "closed": true,
+      "closure_decision": "DESCOPED",
+      "descope_reason": "Hailo hardware integration deferred to future hardware revision. Does not block single-node or cross-node evidence certification. Descoped by operator decision 2026-05-18.",
+      "reviewer": "Jack Disla",
+      "reviewed_at_utc": "2026-05-18T08:50:40Z",
+      "closed_at_utc": "2026-05-18T08:50:40Z",
+      "production_clearance_impact": "NONE \u2014 descoped by operator decision"
     }
-  }
+  },
+  "last_updated_utc": "2026-05-18T08:50:40Z",
+  "last_reviewer": "Jack Disla",
+  "production_clearance": "CANDIDATE \u2014 EVC-05 human gate review required"
 }
