@@ -1,0 +1,4 @@
+{"disk_free_mb":1703576,"frame_id":0,"load_avg_1m":0.21,"memory_available_mb":6025,"memory_total_mb":8062,"memory_used_mb":2037,"schema":"ph6.resource_snapshot.v1","temperature_celsius":49.6,"timestamp_utc":"2026-05-18T08:10:16Z"}
+{"disk_free_mb":1703570,"frame_id":101,"load_avg_1m":0.27,"memory_available_mb":5966,"memory_total_mb":8062,"memory_used_mb":2096,"schema":"ph6.resource_snapshot.v1","temperature_celsius":47.4,"timestamp_utc":"2026-05-18T08:10:21Z"}
+{"disk_free_mb":1703565,"frame_id":201,"load_avg_1m":0.41,"memory_available_mb":6012,"memory_total_mb":8062,"memory_used_mb":2050,"schema":"ph6.resource_snapshot.v1","temperature_celsius":47.95,"timestamp_utc":"2026-05-18T08:10:26Z"}
+{"disk_free_mb":1703559,"frame_id":-1,"load_avg_1m":0.78,"memory_available_mb":6203,"memory_total_mb":8062,"memory_used_mb":1859,"schema":"ph6.resource_snapshot.v1","temperature_celsius":47.95,"timestamp_utc":"2026-05-18T08:10:31Z"}

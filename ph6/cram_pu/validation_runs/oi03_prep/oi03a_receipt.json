@@ -1,0 +1,39 @@
+{
+  "artifact_hash_check": {
+    "files_checked": 1214,
+    "mismatches": 0,
+    "missing": 0,
+    "result": "PASS"
+  },
+  "campaign_id": "OI-03A",
+  "capture_result": "PASS",
+  "closed": false,
+  "cram_chain_check": {
+    "chain_fail": 0,
+    "chain_ok": 300,
+    "records_checked": 300,
+    "result": "PASS"
+  },
+  "created_utc": "2026-05-18T08:13:23.913377+00:00",
+  "cross_node_cram_integrity": "PASS",
+  "departure_arrival_check": {
+    "frames_checked": 300,
+    "matched": 300,
+    "mismatched": 0,
+    "result": "PASS"
+  },
+  "frames": 300,
+  "hash_faithful_transfer": "PASS",
+  "name": "Mini Real-Evidence Cross-Node Transfer Proof (300 frames)",
+  "oi03_closed": false,
+  "production_clearance": "NOT_DECLARED",
+  "result_set_hash": "blake2b256:3b98033bd0b3a08aa7d22d72e625719a9c729f883155b69686dd8f7c751c5afd",
+  "result_set_hash_continuity": "PASS",
+  "run_dir_dest": "/home/jack/ph6_oi03_receive/oi03a_20260518T081014Z",
+  "run_dir_source": "ph6/cram_pu/validation_runs/oi03a_20260518T081014Z",
+  "schema": "ph6.oi03a.receipt.v1",
+  "source_node": "main_pi",
+  "status": "PASS_PENDING_REVIEW",
+  "target_node": "jackjack (192.168.254.189)",
+  "transfer_method": "rsync"
+}
