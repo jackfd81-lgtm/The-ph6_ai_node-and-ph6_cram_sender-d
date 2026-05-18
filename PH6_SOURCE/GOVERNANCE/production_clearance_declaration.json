@@ -1,0 +1,57 @@
+{
+  "schema": "ph6.production_clearance_declaration.v1",
+  "declaration_id": "PH6-PROD-CLEAR-2026-05-18-001",
+  "declared_by": "Jack Disla",
+  "declared_at_utc": "2026-05-18T08:50:40Z",
+  "node": "main_pi",
+
+  "scope": "Single-node PH6/CRAM evidence instrument — Lane 1 deterministic ingest, measurement, and preservation. Cross-node rsync transfer to jackjack (192.168.254.189) included in scope.",
+
+  "cleared_for": [
+    "CRAM-0 raw intake",
+    "PSEUDO-M deterministic measurement",
+    "PSEUDO-A PASS/DROP authority",
+    "CRAM-A authoritative evidence store",
+    "CRAM-R deterministic reject vault",
+    "VRC-1.0 replay certification",
+    "Cross-node rsync transfer with hash continuity verification"
+  ],
+
+  "not_cleared_for": [
+    "Hailo hardware integration (OI-01 — DESCOPED, future revision)",
+    "Multi-writer CRAM",
+    "Distributed authority",
+    "Kubernetes CRAM-A storage",
+    "Lane 2 authority of any kind"
+  ],
+
+  "evidence_basis": {
+    "C07":    { "state": "CLOSED", "commit": "a26c111c25", "description": "Governance drift validation" },
+    "OI-03A": { "state": "CLOSED", "commit": "1c1a430e47", "frames": 300,  "mismatches": 0 },
+    "OI-03B": { "state": "CLOSED", "commit": "e445e7a3be", "frames": 1200, "mismatches": 0 },
+    "OI-03C": { "state": "CLOSED", "commit": "2e42ce3705", "frames": 3600, "mismatches": 0 },
+    "EVC-05": { "state": "CLOSED", "commit": "9deda5b1ab", "frames": 1800, "phases": 3,
+                "phase_results": {
+                  "PHASE_01_FAST":      "PASS",
+                  "PHASE_02_REGULAR":   "PASS",
+                  "PHASE_03_FAST_CRAM": "PASS"
+                }
+    },
+    "OI-01":  { "state": "DESCOPED", "reason": "Hailo deferred to future hardware revision" }
+  },
+
+  "invariants_confirmed": [
+    "Capture everything",
+    "Preserve it exactly",
+    "Measure deterministically",
+    "Interpret separately",
+    "Prove everything"
+  ],
+
+  "lane2_authority": "ZERO — confirmed. No Lane 2 system may issue PASS/DROP.",
+  "rsync_sovereignty": "CONFIRMED — nothing blocked export in any campaign.",
+  "production_clearance": "DECLARED",
+  "head_commit": "9deda5b1ab",
+
+  "operator_statement": "I, Jack Disla, have reviewed the evidence campaigns and governance records listed above. The single-node PH6/CRAM instrument on main_pi is cleared for production operation within the defined scope. OI-01 is descoped. Distributed authority is not proven and not claimed."
+}
