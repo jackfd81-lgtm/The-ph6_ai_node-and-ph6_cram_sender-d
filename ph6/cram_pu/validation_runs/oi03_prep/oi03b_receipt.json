@@ -1,0 +1,35 @@
+{
+  "artifact_hash_check": {
+    "files_checked": 4814,
+    "mismatches": 0,
+    "missing": 0,
+    "result": "PASS"
+  },
+  "campaign_id": "OI-03B",
+  "closed": false,
+  "cram_chain_check": {
+    "chain_fail": 0,
+    "chain_ok": 1200,
+    "records_checked": 1200,
+    "result": "PASS"
+  },
+  "created_utc": "2026-05-18T08:27:28.001366+00:00",
+  "cross_node_cram_integrity": "PASS",
+  "departure_arrival_check": {
+    "frames_checked": 1200,
+    "matched": 1200,
+    "mismatched": 0,
+    "result": "PASS"
+  },
+  "frames": 1200,
+  "name": "Cross-Node Transfer Proof (1200 frames)",
+  "oi03_closed": false,
+  "production_clearance": "NOT_DECLARED",
+  "result_set_hash": "blake2b256:f7347f27b9079ff0e5952fa9a2adbea0e51483e9da67639ab0e6eca1a8a9b63e",
+  "result_set_hash_continuity": "PASS",
+  "schema": "ph6.oi03b.receipt.v1",
+  "source_node": "main_pi",
+  "status": "PASS_PENDING_REVIEW",
+  "target_node": "jackjack (192.168.254.189)",
+  "transfer_method": "rsync"
+}
