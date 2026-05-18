@@ -795,6 +795,60 @@
     }
     ,
     {
+      "campaign_id": "OI-03",
+      "name": "Cross-Node Real-Evidence Transfer Proof",
+      "category": "cross_node_transfer",
+      "purpose": "Prove distributed deterministic evidence continuity: BLAKE2b hash identity, CRAM chain independent re-derivation, and dep/arr continuity preserved across nodes via rsync.",
+      "owned_gaps": ["OI-03"],
+      "authority": "CRAM-PU",
+      "lane": 1,
+      "source_node": "main_pi",
+      "target_node": "jackjack (192.168.254.189)",
+      "transfer_method": "rsync",
+      "maximum_result_without_review": "PASS_PENDING_REVIEW",
+      "production_clearance_effect": "NONE",
+      "distributed_authority_proven": false,
+      "multi_writer_cram_proven": false,
+      "levels": [
+        {
+          "level": "OI-03A",
+          "name": "Mini real-evidence transfer",
+          "frames": 300,
+          "artifacts": 1214,
+          "state": "PASS_PENDING_REVIEW",
+          "evidence_commit": "1c1a430e47",
+          "result_set_hash": "blake2b256:3b98033bd0b3a08aa7d22d72e625719a9c729f883155b69686dd8f7c751c5afd"
+        },
+        {
+          "level": "OI-03B",
+          "name": "Standard transfer",
+          "frames": 1200,
+          "artifacts": 4814,
+          "state": "PASS_PENDING_REVIEW",
+          "evidence_commit": "e445e7a3be",
+          "result_set_hash": "blake2b256:f7347f27b9079ff0e5952fa9a2adbea0e51483e9da67639ab0e6eca1a8a9b63e"
+        },
+        {
+          "level": "OI-03C",
+          "name": "Full evidence transfer",
+          "frames": 3600,
+          "artifacts": 14414,
+          "state": "PASS_PENDING_REVIEW",
+          "evidence_commit": "2e42ce3705",
+          "result_set_hash": "blake2b256:5d182bf064800a55b946ab180f4af2d622460d6d05d4dd834f2d85277f92c0aa"
+        }
+      ],
+      "pass_conditions": [
+        "artifact_hash_faithful_transfer",
+        "cram_chain_independently_re_derived_on_receiver",
+        "departure_arrival_continuity_preserved",
+        "result_set_hash_matches_source",
+        "zero_mismatches_zero_missing"
+      ],
+      "closure_status": "PASS_PENDING_REVIEW",
+      "closed": false
+    },
+    {
       "campaign_id": "LCC-01",
       "name": "Life CRAM Real-Camera Live Stream Validation",
       "category": "life_cram_real_camera",
