@@ -1,0 +1,38 @@
+{
+  "campaign_id": "EVC-05",
+  "campaign_label": "evc05_20260518T090015Z",
+  "device": "/dev/video0",
+  "frames_per_phase": 600,
+  "generated_utc": "2026-05-18T09:02:09.276046+00:00",
+  "git_commit": "a26c111c256e1c372046c50335b8c5c0f9cc4edc",
+  "mode_note": "FAST, REGULAR, and FAST_CRAM are phase labels for EVC-05 over the current shared Life CRAM execution path. This campaign verifies phased continuity, artifact completeness, replay parity, RSYNC sovereignty, Lane isolation, governance capture, and campaign receipt generation. It does not claim behavioral divergence between modes unless future implementation introduces mode-specific execution semantics.",
+  "phases": [
+    {
+      "frames": 600,
+      "phase_dir": "ph6/cram_pu/validation_runs/evc05_20260518T090015Z/phase_01_fast",
+      "phase_id": "PHASE_01_FAST",
+      "phase_label": "FAST",
+      "phase_pass": true,
+      "result_set_hash": "blake2b256:6674815dfc16668df5b6d7aaad7da641688bb6cdb0aeaf2e88a5d95f8a63e726"
+    },
+    {
+      "frames": 600,
+      "phase_dir": "ph6/cram_pu/validation_runs/evc05_20260518T090015Z/phase_02_regular",
+      "phase_id": "PHASE_02_REGULAR",
+      "phase_label": "REGULAR",
+      "phase_pass": true,
+      "result_set_hash": "blake2b256:6674815dfc16668df5b6d7aaad7da641688bb6cdb0aeaf2e88a5d95f8a63e726"
+    },
+    {
+      "frames": 600,
+      "phase_dir": "ph6/cram_pu/validation_runs/evc05_20260518T090015Z/phase_03_fast_cram",
+      "phase_id": "PHASE_03_FAST_CRAM",
+      "phase_label": "FAST_CRAM",
+      "phase_pass": true,
+      "result_set_hash": "blake2b256:6674815dfc16668df5b6d7aaad7da641688bb6cdb0aeaf2e88a5d95f8a63e726"
+    }
+  ],
+  "real_source": true,
+  "schema": "ph6.evc05.manifest.v1",
+  "total_frames": 1800
+}

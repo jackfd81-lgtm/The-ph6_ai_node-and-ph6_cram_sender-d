@@ -1,0 +1,25 @@
+{
+  "campaign_id": "EVC-05",
+  "generated_utc": "2026-05-18T09:02:09.275707+00:00",
+  "isolation_pass": true,
+  "lane2_authority_rule": "Lane 2 advises. Authority ZERO.",
+  "phases": [
+    {
+      "lane2_violations": 0,
+      "leakage_scan_pass": true,
+      "phase_id": "PHASE_01_FAST"
+    },
+    {
+      "lane2_violations": 0,
+      "leakage_scan_pass": true,
+      "phase_id": "PHASE_02_REGULAR"
+    },
+    {
+      "lane2_violations": 0,
+      "leakage_scan_pass": true,
+      "phase_id": "PHASE_03_FAST_CRAM"
+    }
+  ],
+  "schema": "ph6.evc05.lane_isolation_report.v1",
+  "total_lane2_violations": 0
+}

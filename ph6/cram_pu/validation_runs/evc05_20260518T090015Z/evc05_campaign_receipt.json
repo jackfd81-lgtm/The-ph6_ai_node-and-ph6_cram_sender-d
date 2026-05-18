@@ -1,0 +1,61 @@
+{
+  "all_required_artifacts_present": false,
+  "campaign_id": "EVC-05",
+  "campaign_label": "evc05_20260518T090015Z",
+  "campaign_pass": false,
+  "campaign_result_set_hash": "blake2b256:3cf901a9db7c416d4344892be5e75aa17ced04bc6e3b1ea97b001288be5a846c",
+  "closed": false,
+  "frames_per_phase": 600,
+  "generated_utc": "2026-05-18T09:02:09.276260+00:00",
+  "git_commit": "a26c111c256e1c372046c50335b8c5c0f9cc4edc",
+  "lane_isolation_pass": true,
+  "maximum_automatic_result": "PASS_PENDING_REVIEW",
+  "missing_artifacts": [
+    "evc05_campaign_receipt.json"
+  ],
+  "mode_note": "FAST, REGULAR, and FAST_CRAM are phase labels for EVC-05 over the current shared Life CRAM execution path. This campaign verifies phased continuity, artifact completeness, replay parity, RSYNC sovereignty, Lane isolation, governance capture, and campaign receipt generation. It does not claim behavioral divergence between modes unless future implementation introduces mode-specific execution semantics.",
+  "phases": [
+    {
+      "frames": 600,
+      "phase_id": "PHASE_01_FAST",
+      "phase_label": "FAST",
+      "phase_pass": true,
+      "result_set_hash": "blake2b256:6674815dfc16668df5b6d7aaad7da641688bb6cdb0aeaf2e88a5d95f8a63e726"
+    },
+    {
+      "frames": 600,
+      "phase_id": "PHASE_02_REGULAR",
+      "phase_label": "REGULAR",
+      "phase_pass": true,
+      "result_set_hash": "blake2b256:6674815dfc16668df5b6d7aaad7da641688bb6cdb0aeaf2e88a5d95f8a63e726"
+    },
+    {
+      "frames": 600,
+      "phase_id": "PHASE_03_FAST_CRAM",
+      "phase_label": "FAST_CRAM",
+      "phase_pass": true,
+      "result_set_hash": "blake2b256:6674815dfc16668df5b6d7aaad7da641688bb6cdb0aeaf2e88a5d95f8a63e726"
+    }
+  ],
+  "phases_pass": true,
+  "production_clearance": "NOT_DECLARED",
+  "replay_parity": true,
+  "required_artifacts": [
+    "evc05_manifest.json",
+    "evc05_replay_receipt.json",
+    "evc05_lane_isolation_report.json",
+    "evc05_rsync_integrity_report.json",
+    "evc05_governance_snapshot.json",
+    "evc05_campaign_receipt.json",
+    "evc05_result_set_hash.txt",
+    "phase_01_fast_receipt.json",
+    "phase_02_regular_receipt.json",
+    "phase_03_fast_cram_receipt.json"
+  ],
+  "reviewed_at_utc": null,
+  "reviewer": null,
+  "rsync_sovereignty_pass": true,
+  "schema": "ph6.evc05.campaign_receipt.v1",
+  "state": "PASS_PENDING_REVIEW",
+  "total_frames": 1800
+}

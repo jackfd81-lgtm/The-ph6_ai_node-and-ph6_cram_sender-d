@@ -1,0 +1,30 @@
+{
+  "all_phases_pass": true,
+  "campaign_id": "EVC-05",
+  "generated_utc": "2026-05-18T09:02:09.275553+00:00",
+  "phases": [
+    {
+      "frames": 600,
+      "phase_id": "PHASE_01_FAST",
+      "phase_label": "FAST",
+      "replay_verdict": "PASS",
+      "result_set_hash": "blake2b256:6674815dfc16668df5b6d7aaad7da641688bb6cdb0aeaf2e88a5d95f8a63e726"
+    },
+    {
+      "frames": 600,
+      "phase_id": "PHASE_02_REGULAR",
+      "phase_label": "REGULAR",
+      "replay_verdict": "PASS",
+      "result_set_hash": "blake2b256:6674815dfc16668df5b6d7aaad7da641688bb6cdb0aeaf2e88a5d95f8a63e726"
+    },
+    {
+      "frames": 600,
+      "phase_id": "PHASE_03_FAST_CRAM",
+      "phase_label": "FAST_CRAM",
+      "replay_verdict": "PASS",
+      "result_set_hash": "blake2b256:6674815dfc16668df5b6d7aaad7da641688bb6cdb0aeaf2e88a5d95f8a63e726"
+    }
+  ],
+  "result_set_hashes_deterministic": false,
+  "schema": "ph6.evc05.replay_receipt.v1"
+}

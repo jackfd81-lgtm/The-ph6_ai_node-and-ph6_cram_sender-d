@@ -1,0 +1,13 @@
+{
+  "block_devices": "NAME        UUID                                 FSTYPE   SIZE MOUNTPOINT\nloop0                                            swap       2G \nsda                                                     953.9G \n\u251c\u2500sda1      0D58-6978                            vfat     512M \n\u2514\u2500sda2      e634e0a4-a958-46cb-abad-862d2102573f ext4   953.4G \nzram0       d925c9bd-91cc-4818-b590-68f188757494 swap       2G [SWAP]\nnvme0n1                                                   1.8T \n\u251c\u2500nvme0n1p1 0D58-6978                            vfat     512M /boot/firmware\n\u2514\u2500nvme0n1p2 e634e0a4-a958-46cb-abad-862d2102573f ext4     1.8T /",
+  "captured_utc": "2026-05-18T09:00:15.881566+00:00",
+  "disk_state": "Filesystem      Size  Used Avail Use% Mounted on\nudev            3.9G     0  3.9G   0% /dev\ntmpfs           1.6G   14M  1.6G   1% /run\n/dev/nvme0n1p2  1.8T   96G  1.7T   6% /\ntmpfs           4.0G     0  4.0G   0% /dev/shm\ntmpfs           5.0M   64K  5.0M   2% /run/lock\ntmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-journald.service\ntmpfs           4.0G  6.5M  4.0G   1% /tmp\n/dev/nvme0n1p1  505M   65M  440M  13% /boot/firmware\ntmpfs           1.0M     0  1.0M   0% /run/credentials/getty@tty1.service\ntmpfs           1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyAMA10.service\ntmpfs           807M   48K  807M   1% /run/user/1000",
+  "git_branch": "main",
+  "git_commit": "a26c111c256e1c372046c50335b8c5c0f9cc4edc",
+  "governance_closure_hash": "blake2b256:9d78ef2ba34e1241345394a0607eb0ebf8a8b3bf82fc4dedae13484e8600715f",
+  "governance_matrix_hash": "blake2b256:0a7436ac9fb9d226c8f4daa02acbde6e27884ca0ad148cce9221eef33e139b8c",
+  "hostname": "jackjack",
+  "kernel": "Linux 6.12.75+rpt-rpi-2712 aarch64",
+  "python_version": "3.13.5 (main, Jun 25 2025, 18:55:22) [GCC 14.2.0]",
+  "schema": "ph6.evc05.environment_snapshot.v1"
+}

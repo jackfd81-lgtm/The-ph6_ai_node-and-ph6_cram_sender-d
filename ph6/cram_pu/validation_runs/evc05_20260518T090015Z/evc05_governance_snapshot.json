@@ -1,0 +1,12 @@
+{
+  "campaign_id": "EVC-05",
+  "generated_utc": "2026-05-18T09:02:09.275951+00:00",
+  "git_branch": "main",
+  "git_commit": "a26c111c256e1c372046c50335b8c5c0f9cc4edc",
+  "governance_closure_hash": "blake2b256:9d78ef2ba34e1241345394a0607eb0ebf8a8b3bf82fc4dedae13484e8600715f",
+  "governance_matrix_hash": "blake2b256:0a7436ac9fb9d226c8f4daa02acbde6e27884ca0ad148cce9221eef33e139b8c",
+  "hostname": "jackjack",
+  "kernel": "Linux 6.12.75+rpt-rpi-2712 aarch64",
+  "python_version": "3.13.5 (main, Jun 25 2025, 18:55:22) [GCC 14.2.0]",
+  "schema": "ph6.evc05.governance_snapshot.v1"
+}

@@ -1,0 +1,25 @@
+{
+  "any_blocked": false,
+  "campaign_id": "EVC-05",
+  "generated_utc": "2026-05-18T09:02:09.275836+00:00",
+  "phases": [
+    {
+      "phase_id": "PHASE_01_FAST",
+      "rsync_blocked_by": null,
+      "rsync_pass": true
+    },
+    {
+      "phase_id": "PHASE_02_REGULAR",
+      "rsync_blocked_by": null,
+      "rsync_pass": true
+    },
+    {
+      "phase_id": "PHASE_03_FAST_CRAM",
+      "rsync_blocked_by": null,
+      "rsync_pass": true
+    }
+  ],
+  "rsync_priority": "ZERO \u2014 export sovereignty guaranteed",
+  "schema": "ph6.evc05.rsync_integrity_report.v1",
+  "sovereignty_pass": true
+}
