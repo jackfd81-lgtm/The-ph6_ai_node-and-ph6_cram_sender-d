@@ -1,0 +1,1 @@
+{"backend":"V4L2","device":"/dev/video0","device_index":0,"height_px":480,"opened_utc":"2026-05-18T07:07:02Z","real_source":true,"schema":"ph6.camera_inventory.v1","stated_fps":30.0,"width_px":640}

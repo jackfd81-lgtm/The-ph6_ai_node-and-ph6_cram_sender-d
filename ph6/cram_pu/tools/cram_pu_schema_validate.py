@@ -61,7 +61,8 @@ def _check_arrival(rec: dict, idx: int) -> List[str]:
 def _check_verdict(rec: dict, idx: int) -> List[str]:
     errs = []
     pfx  = f"verdict[{idx}]"
-    if rec.get("schema") not in ("ph6.pseudo_verdict.v1", "ph6.pseudo_verdict.v2"):
+    if rec.get("schema") not in ("ph6.pseudo_verdict.v1", "ph6.pseudo_verdict.v2",
+                                  "ph6.pseudo_verdict.camera.v1"):
         errs.append(f"{pfx} schema mismatch: {rec.get('schema')!r}")
     if not isinstance(rec.get("frame_id"), int):
         errs.append(f"{pfx} frame_id missing or not int")
