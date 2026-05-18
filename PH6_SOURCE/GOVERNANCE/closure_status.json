@@ -791,9 +791,36 @@
       "reviewed_at_utc": "2026-05-18T08:50:40Z",
       "closed_at_utc": "2026-05-18T08:50:40Z",
       "production_clearance_impact": "NONE \u2014 descoped by operator decision"
+    },
+    "EVC-05": {
+      "campaign_id": "EVC-05",
+      "name": "Production-Grade Phased Life CRAM Campaign",
+      "state": "CLOSED",
+      "closed": true,
+      "evidence_commit": "9deda5b1ab",
+      "frames": 1800,
+      "phases": 3,
+      "phase_results": {
+        "PHASE_01_FAST": "PASS",
+        "PHASE_02_REGULAR": "PASS",
+        "PHASE_03_FAST_CRAM": "PASS"
+      },
+      "replay_parity": "PASS",
+      "lane_isolation": "PASS",
+      "rsync_sovereignty": "PASS",
+      "campaign_result_set_hash": "blake2b256:3cf901a9db7c416d4344892be5e75aa17ced04bc6e3b1ea97b001288be5a846c",
+      "reviewer": "Jack Disla",
+      "reviewed_at_utc": "2026-05-18T08:50:40Z",
+      "closure_decision": "CLOSED",
+      "closed_at_utc": "2026-05-18T08:50:40Z",
+      "production_clearance_status": "NOT_DECLARED",
+      "maximum_automatic_result": "PASS_PENDING_REVIEW",
+      "required_before_production": [
+        "operator_production_clearance_declaration"
+      ]
     }
   },
   "last_updated_utc": "2026-05-18T08:50:40Z",
   "last_reviewer": "Jack Disla",
-  "production_clearance": "CANDIDATE \u2014 EVC-05 human gate review required"
+  "production_clearance": "CANDIDATE \u2014 all local evidence campaigns closed. Operator production clearance declaration required to proceed."
 }
