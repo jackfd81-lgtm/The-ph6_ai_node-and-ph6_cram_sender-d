@@ -3,10 +3,11 @@ PH6 NODE ASSIGNMENT -- JACKJACK
 ================================================================================
 Classification : CANON -- Constitutional Infrastructure
 Node           : jackjack
-Designation    : PH6-L2-ADVISORY-01
+Designation    : PH6-L2-CAN-ADVISORY-01
 Authority      : ZERO
 Status         : OPERATIONAL -- DEGRADED
-Version        : JAK-1.0
+Version        : JAK-1.1
+See also       : JACKJACK_AI_ADVISORY_INTEGRATION.md (JAI-1.0)
 Date           : 2026-05-19
 ================================================================================
 
@@ -87,8 +88,12 @@ ALLOWED RESPONSIBILITIES
   - observability
   - metrics visualization
   - motion-map experimentation
-  - non-authoritative AI
+  - non-authoritative AI (Claude/Klaw advisory console)
   - ingest shadow analysis
+  - CAN bus frame ingestion (GPIO/SPI -- PCIe-independent)
+  - CAN frame decoding and correlation
+  - CAN telemetry advisory analysis
+  - vehicle sensor-bus observation (advisory only)
 
 ================================================================================
 FORBIDDEN RESPONSIBILITIES
@@ -96,6 +101,7 @@ FORBIDDEN RESPONSIBILITIES
 
   - CRAM-A authority
   - PASS/DROP adjudication
+  - vehicle control authority (CAN telemetry is observational only)
   - authoritative replay sealing
   - sequence issuance
   - deterministic verdict generation
