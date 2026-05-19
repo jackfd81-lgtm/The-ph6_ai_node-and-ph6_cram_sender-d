@@ -3,9 +3,10 @@ PH6 DOCUMENTATION GOVERNANCE DOCTRINE
 ================================================================================
 Classification : CANON -- Book II / Book III
 Authority      : FULL
-Version        : DGD-1.0
+Version        : DGD-1.1
 Scope          : All PH6 canon files, governance documents, certification
-                 artifacts, and AI-ingest corpus materials
+                 artifacts, AI-ingest corpus materials, and AI preload
+                 context intended for model context window ingestion
 ================================================================================
 
 ================================================================================
@@ -230,6 +231,55 @@ classification from the table above. Unclassified assertions are drafts,
 not canon.
 
 ================================================================================
+PRINCIPLE 7 -- FORMAT IS GOVERNANCE -- MATCH STRUCTURE TO TARGET RENDERER
+================================================================================
+
+Format is not presentation. Format is part of governance.
+
+Structure must be matched to the cognitive and interpretive properties of the
+target renderer.
+
+Renderers are cognitive environments.
+The governance problem is identical across all of them:
+  preserve intended meaning across interpretation layers.
+
+Renderer table:
+
+  Renderer                    Optimal Structure         Governance Goal
+  --------------------------  ------------------------  --------------------------
+  Human operator              ==== dividers             spatial scanning stability
+  Plaintext terminal          ==== dividers             delimiter rigidity
+  OCR / long-term archive     ==== dividers             stable spatial structure
+  AI context window           markdown # hierarchy      semantic chunking
+  Retrieval / embedding       markdown # hierarchy      adjacency + chunk locality
+  Drift-resistant AI preload  instruction markdown      instruction persistence
+
+Rule: before writing any PH6 document, identify the primary renderer target.
+Then apply the structure that preserves meaning in that environment.
+
+Note on P5:
+  Principle 5 is the correct rule for the human/terminal/archive renderer class.
+  Principle 7 is the generalization that explains why P5 is correct for that class,
+  and extends the same logic to other renderer targets including model context windows.
+  P5 and P7 are not in conflict -- P5 is a specific application of P7.
+
+Generalized form:
+  Structure must survive interpretation.
+
+This principle applies to:
+  - canon formatting (P5 -- human/terminal target)
+  - AI preload structure (model context window target)
+  - semantic chunking design (retrieval engine target)
+  - section ordering and adjacency (all targets)
+  - terminology stability (all targets)
+
+DGD-1.1 retrospective:
+  The ==== divider convention (P5) and the markdown preload convention
+  are both correct. They serve different renderer targets.
+  Both are instances of this principle.
+  The apparent difference in format style is the principle working as intended.
+
+================================================================================
 RUNTIME <-> DOCUMENTATION INVARIANT SYMMETRY
 ================================================================================
 
@@ -283,6 +333,7 @@ SUMMARY TABLE
   P4          Encode invariants, not just restrictions
   P5          Structure must survive markdown stripping and terminal rendering
   P6          Classify every assertion -- no unclassified canon statements
+  P7          Format is governance -- match structure to target renderer
 
 ================================================================================
 ARCHITECTURAL INSIGHT
@@ -307,5 +358,5 @@ At that point:
   documentation engineering = systems engineering
 
 ================================================================================
-END -- DOCUMENTATION GOVERNANCE DOCTRINE DGD-1.0
+END -- DOCUMENTATION GOVERNANCE DOCTRINE DGD-1.1
 ================================================================================
