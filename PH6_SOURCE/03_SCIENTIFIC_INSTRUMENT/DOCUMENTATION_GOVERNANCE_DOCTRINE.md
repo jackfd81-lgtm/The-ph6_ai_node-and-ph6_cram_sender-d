@@ -230,6 +230,48 @@ classification from the table above. Unclassified assertions are drafts,
 not canon.
 
 ================================================================================
+RUNTIME <-> DOCUMENTATION INVARIANT SYMMETRY
+================================================================================
+
+Runtime invariants and documentation invariants are homologous systems.
+
+The same underlying philosophy governs both:
+
+  Preserve stable truth through degradation, failure,
+  partial retrieval, and adversarial drift.
+
+Symmetry table:
+
+  Runtime Property      Documentation Property    Invariant Preserved
+  ------------------    ----------------------    --------------------------------
+  crash-consistent      format-resilient          survives unexpected termination
+  replay-equivalent     interpretation-stable     identical input -> identical output
+  deterministic         ambiguity-bounded         one valid reading, not multiple
+  authority-safe        canon-safe                cannot be misused to claim false authority
+  atomic write          semantic integrity        unit of truth is complete or absent
+
+Consequences:
+
+1. Format-proofing is not cosmetic.
+   Format resilience = semantic survivability under degradation.
+   Directly analogous to crash consistency under power failure.
+
+2. The doctrine itself obeys doctrine.
+   DGD-1.0 is written using the same invariant discipline it defines.
+   That is the correct architectural posture: recursive self-application.
+
+3. This table creates a shared vocabulary between runtime and canon.
+   Future doctrine may express "semantic corruption," "canon replay failure,"
+   "interpretive drift," and "documentation integrity boundary" as architectural
+   terms -- not metaphors -- because the symmetry formally establishes the
+   relationship.
+
+4. AI retrieval stability.
+   AI systems reason through structural symmetry. This table provides a stable
+   anchor: documentation handling must obey the same invariants as runtime
+   evidence handling.
+
+================================================================================
 SUMMARY TABLE
 ================================================================================
 
