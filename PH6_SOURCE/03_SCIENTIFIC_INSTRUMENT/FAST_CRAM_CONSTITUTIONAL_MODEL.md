@@ -244,12 +244,36 @@ SYSTEM MUST NEVER:
   - allow export starvation
 
 ================================================================================
-FORBIDDEN FIELDS
+MOTION FIELD DOCTRINE
 ================================================================================
 
-  FORBIDDEN : motion_score
-  FORBIDDEN : motion_decay_score
-  CANONICAL : motion_fraction
+NONCANONICAL FIELD NAMES (do not use):
+  motion_score
+  motion_decay_score
+
+CANONICAL MOTION METRIC:
+  motion_fraction
+
+Motion analysis itself is REQUIRED.
+
+PH6 explicitly permits:
+  - deterministic motion measurement
+  - movement persistence analysis
+  - motion continuity analysis
+  - bounded motion classification
+  - velocity estimation
+  - motion topology
+  - multi-frame movement analysis
+  - deterministic temporal tracking
+
+What is forbidden:
+  - ambiguous scoring terminology
+  - probabilistic motion authority
+  - undefined semantic scoring
+  - non-replayable motion interpretation
+
+Motion measurement is mandatory.
+Ambiguous motion authority terminology is forbidden.
 
 ================================================================================
 CANONICAL STATEMENT
