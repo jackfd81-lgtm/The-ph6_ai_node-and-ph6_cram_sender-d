@@ -1,299 +1,280 @@
-# PH6 FAST CRAM CONSTITUTIONAL MODEL
-# Classification: CANON — Book II / Book III
-# Ingest order: after 00_READ_FIRST, after Book 0, after Book I
-# Authority: FULL
-# Version: SMI-1.1
+================================================================================
+PH6 FAST CRAM CONSTITUTIONAL MODEL
+================================================================================
+Classification : CANON — Book II / Book III
+Ingest order   : 00_READ_FIRST -> Book 0 -> Book I -> THIS FILE -> Book III
+Authority      : FULL
+Version        : SMI-1.2
+================================================================================
 
-# ── SESSION PRECHECK ──────────────────────────────────────────────────────────
-#
-# Before touching any code, Claude Code must confirm:
-#
-#   [ ] Lane 1 authority boundaries understood
-#   [ ] FAST CRAM ≠ final authority
-#   [ ] PSEUDO-A is the ONLY source of PASS/DROP
-#   [ ] Lane 2 authority = ZERO
-#   [ ] RSYNC = Priority Zero, never blocked
-#   [ ] motion_fraction is canonical (NOT motion_score, NOT motion_decay_score)
-#
-# If uncertain about any item: STOP. Do not proceed. Do not autocorrect.
+================================================================================
+SESSION PRECHECK -- READ BEFORE TOUCHING ANY CODE
+================================================================================
 
-# ── CORE RULE ─────────────────────────────────────────────────────────────────
+Before any action, confirm ALL of the following:
+
+  [1] Lane 1 authority boundaries understood
+  [2] FAST CRAM is NOT final authority
+  [3] PSEUDO-A is the ONLY source of PASS/DROP
+  [4] Lane 2 authority = ZERO -- no exceptions
+  [5] RSYNC = Priority Zero -- never blocked under any condition
+  [6] Canonical field = motion_fraction
+      FORBIDDEN: motion_score | motion_decay_score
+
+If uncertain about ANY item:
+  STOP. Do not proceed. Do not assume. Do not autocorrect.
+
+================================================================================
+CORE RULE
+================================================================================
 
 FAST CRAM exists so the Tricorder does not lose speed.
-FAST CRAM preserves continuity of capture — NOT final truth.
+FAST CRAM preserves continuity of capture -- NOT final truth.
 
-Final truth requires:
-  deterministic adjudication  (PSEUDO-A)
-  + authoritative seal        (SLOW CRAM)
+Final truth requires TWO things:
+  (1) deterministic adjudication  ->  PSEUDO-A
+  (2) authoritative seal          ->  SLOW CRAM
 
-FAST CRAM IS:   governed staging lane
-                bounded acceleration layer
-                replay-visible buffer
-                pre-authority preservation system
+FAST CRAM IS:
+  - governed staging lane
+  - bounded acceleration layer
+  - replay-visible buffer
+  - pre-authority preservation system
 
-FAST CRAM IS NOT: final authority
-                  proof-complete storage
-                  PASS/DROP authority
-                  authoritative evidence truth
+FAST CRAM IS NOT:
+  - final authority
+  - proof-complete storage
+  - PASS/DROP authority
+  - authoritative evidence truth
 
-# ── PIPELINE ─────────────────────────────────────────────────────────────────
+================================================================================
+PIPELINE -- CORRECT ORDER
+================================================================================
 
-FAST Capture
-    → FAST CRAM staging        [PRE-AUTHORITY — PENDING_SEAL]
-    → PSEUDO-M measurement     [deterministic metrics only]
-    → PSEUDO-A adjudication    [PASS or DROP — sole authority]
-    → SLOW CRAM seal           [CRAM-A or CRAM-R — final authority]
-    → RSYNC export             [Priority Zero — never blocked]
+  FAST Capture
+      |
+      v
+  FAST CRAM staging         [state: PENDING_SEAL -- PRE-AUTHORITY]
+      |
+      v
+  PSEUDO-M measurement      [deterministic metrics only -- no authority]
+      |
+      v
+  PSEUDO-A adjudication     [issues: PASS or DROP -- sole authority]
+      |
+      v
+  SLOW CRAM seal            [CRAM-A (PASS) or CRAM-R (DROP) -- final authority]
+      |
+      v
+  RSYNC export              [Priority Zero -- never blocked]
 
-NOT:
-    capture → immediate full proof seal → then measurement
+WRONG ORDER (forbidden):
+  capture -> immediate full proof seal -> then measurement
 
-# ── LANE TABLE ───────────────────────────────────────────────────────────────
+================================================================================
+LANE TABLE
+================================================================================
 
-Lane F   FAST Capture       Grab frames/sensors rapidly          NONE
-Lane FC  FAST CRAM          Stage evidence quickly               PRE-AUTHORITY
-Lane P   PSEUDO             Measure + PASS/DROP                  AUTHORITATIVE DECISION
-Lane SC  SLOW CRAM          Atomic seal + authoritative store    FINAL AUTHORITY STORAGE
-Lane 2   Advisory/SoSo/TOK  Mapping / continuity / clustering   ZERO
-Lane 5   RSYNC              Export continuity                    PRIORITY ZERO
+  Lane    Name                  Job                                   Authority
+  ------  --------------------  ------------------------------------  --------------------
+  F       FAST Capture          Grab frames/sensors rapidly           NONE
+  FC      FAST CRAM             Stage evidence quickly                PRE-AUTHORITY
+  P       PSEUDO                Measure + PASS/DROP                   AUTHORITATIVE DECISION
+  SC      SLOW CRAM             Atomic seal + authoritative store     FINAL AUTHORITY STORAGE
+  2       Advisory/SoSo/TOK     Mapping / continuity / clustering     ZERO
+  5       RSYNC                 Export continuity                     PRIORITY ZERO
 
-# ── STATUS STATES ─────────────────────────────────────────────────────────────
+================================================================================
+OBJECT STATUS STATES
+================================================================================
 
-CAPTURED       Sensor observed signal
-STAGED         FAST CRAM preserved object
-PENDING_SEAL   Awaiting authority-safe seal
-MEASURED       PSEUDO-M completed metrics
-ADJUDICATED    PASS/DROP issued by PSEUDO-A
-SEALED_PASS    Final CRAM-A authority object
-SEALED_DROP    Final CRAM-R reject object
-EXPORTED       RSYNC completed
-LOST_UNSEALED  Crash occurred before authority-safe seal
+  CAPTURED        Sensor observed signal
+  STAGED          FAST CRAM preserved object
+  PENDING_SEAL    Awaiting authority-safe seal
+  MEASURED        PSEUDO-M completed metrics
+  ADJUDICATED     PASS/DROP issued by PSEUDO-A
+  SEALED_PASS     Final CRAM-A authority object
+  SEALED_DROP     Final CRAM-R reject object
+  EXPORTED        RSYNC completed
+  LOST_UNSEALED   Crash occurred before authority-safe seal
 
-# ── PSEUDO CONSTRAINTS ────────────────────────────────────────────────────────
+================================================================================
+PSEUDO CONSTRAINTS
+================================================================================
 
-PSEUDO-M computes:
-  entropy_fp        (Shannon entropy, fixed-point)
-  laplacian_var_fp  (Laplacian variance, fixed-point)
-  motion_fraction   (canonical field — NOT motion_score, NOT motion_decay_score)
+PSEUDO-M computes (all fixed-point, no raw floats):
+  entropy_fp        Shannon entropy
+  laplacian_var_fp  Laplacian variance
+  motion_fraction   CANONICAL -- NOT motion_score, NOT motion_decay_score
 
 PSEUDO-A issues:
-  PASS  or  DROP  — nothing else
+  PASS  or  DROP  -- nothing else, ever
 
-PSEUDO invariants:
-  deterministic only
-  no probabilistic authority
-  thresholds fixed at design time — replay-stable
-  no ML adjudication
-  no advisory override
-  identical input → identical verdict — always
+PSEUDO invariants (all must hold):
+  - deterministic only
+  - no probabilistic authority
+  - thresholds fixed at design time -- replay-stable
+  - no ML adjudication
+  - no advisory override
+  - identical input -> identical verdict, always
 
-# ── FAST CRAM: ALLOWED ────────────────────────────────────────────────────────
+================================================================================
+FAST CRAM -- ALLOWED vs FORBIDDEN
+================================================================================
 
-  capture rapidly
-  stage frames
-  preserve short-window evidence
-  absorb burst ingest pressure
-  queue deterministic work
-  temporarily use RAM acceleration
-  feed SLOW CRAM
-  degrade gracefully under overload
+ALLOWED:
+  - capture rapidly
+  - stage frames
+  - preserve short-window evidence
+  - absorb burst ingest pressure
+  - queue deterministic work
+  - temporarily use RAM acceleration
+  - feed SLOW CRAM
+  - degrade gracefully under overload
 
-# ── FAST CRAM: FORBIDDEN ──────────────────────────────────────────────────────
+FORBIDDEN:
+  - claim final authority
+  - bypass PSEUDO-A
+  - finalize CRAM-A directly
+  - rewrite sealed evidence
+  - suppress unsealed loss
+  - violate replay guarantees
+  - allow Lane 2 authority influence
+  - block RSYNC
 
-  claim final authority
-  bypass PSEUDO-A
-  finalize CRAM-A directly
-  rewrite sealed evidence
-  suppress unsealed loss
-  violate replay guarantees
-  allow Lane 2 authority influence
-  block RSYNC
+================================================================================
+SLOW CRAM SEAL CONTRACT
+================================================================================
 
-# ── SLOW CRAM SEAL CONTRACT ───────────────────────────────────────────────────
-
-PASS → CRAM-A:
-  full atomic write contract
-  write(tmp) → fsync(file) → rename() → fsync(dir)
+PASS path -> CRAM-A:
+  write(tmp) -> fsync(file) -> rename() -> fsync(dir)   [atomic -- never skip]
   BLAKE2b-256 authority marker (.blake2b)
-  canonical JSON serialization
+  canonical JSON serialization (sort_keys=True, ensure_ascii=False, allow_nan=False)
   authoritative metadata emission
-  audit receipt generation (event_seq + authority_hash required)
+  audit receipt generation (event_seq + authority_hash -- both required)
   replay continuity preservation
 
-DROP → CRAM-R:
-  same atomic contract
-  verdict = DROP sealed permanently
+DROP path -> CRAM-R:
+  same atomic write contract
+  verdict = DROP sealed permanently, never mutable
 
-# ── AUDIT SCHEMA ─────────────────────────────────────────────────────────────
+Violation of atomic write contract invalidates authoritative trust.
 
-Required fields (ph6.audit_event.v1):
-  schema
-  event_seq        (monotonic, process-safe)
-  event_type
-  object_id
-  event_hash       (BLAKE2b-256 of body excluding event_hash)
-  prev_event_hash  (GENESIS for first event)
-  authority_hash   (BLAKE2b-256 of Lane-1 verdict payload
-                    OR ZERO_HASH sentinel for Lane-2 events)
-  ts
+================================================================================
+AUDIT SCHEMA -- ph6.audit_event.v1
+================================================================================
 
-Schema sealed with: additionalProperties: false
+Required fields (additionalProperties: false -- no extras permitted):
 
-Lane-2 events: authority_hash = "0" * 64 (ZERO_HASH sentinel)
-Lane-2 events are recorded but structurally distinguished.
+  schema           "ph6.audit_event.v1"
+  event_seq        monotonic integer, process-safe
+  event_type       e.g. FRAME_VERDICT / PROMOTE / DROP
+  object_id        canonical CRAM object identifier
+  event_hash       BLAKE2b-256 of body (excluding event_hash itself)
+  prev_event_hash  BLAKE2b-256 of previous event, or "GENESIS" for first
+  authority_hash   BLAKE2b-256 of Lane-1 verdict payload
+                   OR "0" * 64 (ZERO_HASH) for Lane-2/advisory events
+  ts               UTC ISO-8601
 
-# ── RSYNC SOVEREIGNTY ─────────────────────────────────────────────────────────
+Lane-2 events: authority_hash = ZERO_HASH sentinel
+Lane-2 events are recorded in chain but structurally distinguished.
+Missing authority_hash = schema violation = raise ValueError immediately.
 
-RSYNC = Priority Zero. Nothing may block it.
+================================================================================
+RSYNC SOVEREIGNTY
+================================================================================
 
-Under pressure, these yield:
-  Lane 2 / SoSo / TOK / clustering / analytics
-  replay analysis / token mapping / rendering / indexing
+RSYNC = Priority Zero. Nothing may block it. Not:
+  AI / SoSo / TOK / Swarm / rendering / indexing /
+  dashboards / analytics / clip generation / thermal analysis
+
+Under pressure, ALL of the above yield to RSYNC.
 
 RSYNC must preserve:
-  hash continuity
-  authority integrity
-  replay consistency
+  - hash continuity
+  - authority integrity
+  - replay consistency
 
-RSYNC may never mutate authoritative evidence.
+RSYNC may NEVER mutate authoritative evidence.
 
-# ── RECOVERY DOCTRINE ────────────────────────────────────────────────────────
+================================================================================
+RECOVERY DOCTRINE
+================================================================================
 
 After crash or power loss:
-  sealed evidence     → remains authoritative
-  staged evidence     → reclassified, not promoted
-  replay              → reconstruction may occur
-  audit chain         → must expose recovery state
+  sealed evidence   ->  remains authoritative, unchanged
+  staged evidence   ->  reclassified -- never promoted to authority
+  audit chain       ->  must expose recovery state honestly
+  replay            ->  reconstruction may occur from sealed evidence only
 
 Governing recovery question:
   "What is provably true after failure?"
 
 Unsealed evidence is NEVER treated as proven evidence.
 
-# ── OPERATING MODES ──────────────────────────────────────────────────────────
+================================================================================
+OPERATING MODES
+================================================================================
 
-LIVE FAST       Maximum acquisition speed
-FAST CRAM       Fast staging + deferred sealing
-STRICT CRAM     Immediate atomic authority writes (forensic mode)
-RECOVERY        Reconcile staged vs sealed truth after crash
-EXPORT PRIORITY Advisory work yields to RSYNC
-DEGRADED        Preserve capture + export first; advisory last
+  LIVE FAST        Maximum acquisition speed
+  FAST CRAM        Fast staging + deferred sealing
+  STRICT CRAM      Immediate atomic authority writes (forensic mode)
+  RECOVERY         Reconcile staged vs sealed truth after crash
+  EXPORT PRIORITY  Advisory work yields to RSYNC
+  DEGRADED         Preserve capture + export first; everything else last
 
-# ── DETERMINISTIC RULES ───────────────────────────────────────────────────────
+================================================================================
+DETERMINISTIC RULES
+================================================================================
 
 SYSTEM MUST:
-  produce repeatable verdicts
-  preserve replay equivalence
-  maintain explicit authority boundaries
-  preserve sequence monotonicity
-  expose crash state honestly
-  separate staging from proof
+  - produce repeatable verdicts
+  - preserve replay equivalence
+  - maintain explicit authority boundaries
+  - preserve sequence monotonicity
+  - expose crash state honestly
+  - separate staging from proof
 
 SYSTEM MUST NEVER:
-  silently promote staged data into authority truth
-  allow AI to issue PASS/DROP
-  mutate sealed evidence
-  allow advisory outputs into Lane P
-  permit hidden post-seal mutation
-  allow export starvation
+  - silently promote staged data into authority truth
+  - allow AI to issue PASS/DROP
+  - mutate sealed evidence
+  - allow advisory outputs into Lane P
+  - permit hidden post-seal mutation
+  - allow export starvation
 
-# ── SCIENTIFIC INSTRUMENT DOCTRINE ───────────────────────────────────────────
+================================================================================
+FORBIDDEN FIELDS
+================================================================================
 
-PH6 is fundamentally a deterministic scientific instrument.
+  FORBIDDEN : motion_score
+  FORBIDDEN : motion_decay_score
+  CANONICAL : motion_fraction
 
-Priority hierarchy:
-  1. Measurement validity
-  2. Deterministic reproducibility
-  3. Chain-of-custody integrity
-  4. Replay equivalence
-  5. Advisory interpretation
+================================================================================
+CANONICAL STATEMENT
+================================================================================
 
-The Tricorder preserves:
-  measurable signal
-  deterministic metrics
-  replayable evidence states
-  mathematically explainable adjudication
+  FAST Capture    acquires reality.
+  FAST CRAM       preserves speed.
+  PSEUDO          determines truth.
+  SLOW CRAM       preserves proof.
+  Lane 2          advises without authority.
+  RSYNC           preserves sovereignty.
 
-Not beliefs.
+================================================================================
+CONFLICT RESOLUTION RULE
+================================================================================
 
-# ── FAST vs STRICT DOCTRINE ──────────────────────────────────────────────────
+  Newest explicit instruction
+  -> Clearest technical source
+  -> Safest default
 
-STRICT CRAM optimizes for:
-  immediate proof certainty
-  maximum atomic integrity
-  minimum ambiguity
-  Cost: reduced throughput, increased latency
+  Book doctrine overrides implementation.
+  Certification proves doctrine.
+  Certification may NOT redefine doctrine.
 
-FAST CRAM optimizes for:
-  live responsiveness
-  burst absorption
-  field continuity
-  high-rate acquisition
-  Cost: temporary uncertainty window, bounded crash-loss risk
-
-This tradeoff is lawful because PH6 explicitly distinguishes:
-  observed ≠ sealed
-
-# ── ADVISORY DOCTRINE ────────────────────────────────────────────────────────
-
-Lane 2 exists for:
-  continuity estimation
-  mapping
-  topology assistance
-  clustering
-  operator guidance
-  post-analysis
-
-Lane 2 does NOT exist for:
-  authority
-  adjudication
-  evidence sealing
-  replay truth mutation
-  deterministic gate override
-
-All Lane 2 outputs are advisory artifacts only.
-Authority remains exclusively inside Lane P + SLOW CRAM.
-
-# ── RAM CLARIFICATION ────────────────────────────────────────────────────────
-
-RAM may be used for:
-  bounded buffering
-  ingest acceleration
-  temporary queues
-  replay assistance
-  short-lived staging
-
-RAM is NOT authority storage.
-
-Loss of RAM-backed staged data before seal is lawful only if:
-  detectable
-  auditable
-  never falsely represented as sealed evidence
-
-# ── FORBIDDEN FIELDS ─────────────────────────────────────────────────────────
-
-FORBIDDEN:  motion_score
-FORBIDDEN:  motion_decay_score
-CANONICAL:  motion_fraction
-
-# ── CANONICAL STATEMENT ───────────────────────────────────────────────────────
-
-FAST Capture    acquires reality.
-FAST CRAM       preserves speed.
-PSEUDO          determines truth.
-SLOW CRAM       preserves proof.
-Lane 2          advises without authority.
-RSYNC           preserves sovereignty.
-
-# ── CONFLICT RULE ─────────────────────────────────────────────────────────────
-
-Newest explicit instruction
-→ Clearest technical source
-→ Safest default
-
-Book doctrine overrides implementation.
-Certification proves doctrine.
-Certification may NOT redefine doctrine.
-
-# END FAST CRAM CONSTITUTIONAL MODEL
-# Next read: Book III — Boundary Containment Annex (what is forbidden)
+================================================================================
+END -- FAST CRAM CONSTITUTIONAL MODEL
+Next read: Book III -- Boundary Containment Annex (what is forbidden)
+================================================================================
