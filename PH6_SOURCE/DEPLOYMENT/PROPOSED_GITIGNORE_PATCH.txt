@@ -1,0 +1,59 @@
+# PH6 / CRAM — Proposed .gitignore additions
+# Generated: 2026-05-28T07:05:00Z
+# Status: PROPOSED — do not apply automatically
+# Review: operator must approve before applying to .gitignore
+
+# ----- SAFE TO IGNORE (no source code risk) -----
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# PlatformIO ESP32 build cache
+.platformio/
+
+# Tool caches (browser / playwright / uv / camoufox)
+.cache/
+
+# npm package cache
+.npm/
+
+# Backup and recovery archives (per PH6 archive doctrine)
+PH6_LOCAL_BACKUPS/
+PH6_RECOVERY/
+
+# PH6 runtime evidence output (volatile, large, never authoritative in git)
+ph6/cram_pu/runtime/
+ph6/cram_pu/validation_runs/
+ph6/validation_runs/
+validation_runs/
+cram_pu_live_1_0/runtime/
+
+# Run log directories with media output
+frame_filter/logs/
+
+# Download artifacts
+Downloads/
+
+# Large media (tar archives from run outputs)
+*.tar.gz
+
+# ----- NEEDS_REVIEW BEFORE IGNORING -----
+# These contain a mix of source scripts and media artifacts.
+# Do not add until operator confirms which files (if any) to commit first.
+
+# ph6_usb_camera_tests/    # contains ph6_extended_stability_test.py + ph6_gap16b_isolation.py — commit sources first
+# ph6_video_tests/          # contains mkv video + possibly scripts
+# ph6_esp32cam_tests/       # may contain governance evidence scripts
+# ph6_esp32cam_validation/  # may contain evidence tools
+# ph6_iphone_ingest/        # unknown — classify first
+# ph6_smi11_drop/           # unknown — classify first
+# usb3_nvme_calibration/    # may be evidence artifacts
+
+# ----- DO NOT ADD -----
+# These must remain tracked or classified individually:
+# PH6_SOURCE/CAMPAIGNS/     — SHOULD_COMMIT
+# PH6_SOURCE/CERTIFICATION/ — SHOULD_COMMIT (source only; add __pycache__ rule above)
+# PH6_SOURCE/builds/        — SHOULD_COMMIT
+# *.mp4                     — some clips may be attached evidence (review individually)
