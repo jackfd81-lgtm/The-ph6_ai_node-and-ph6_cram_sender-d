@@ -22,6 +22,14 @@ All schemas below are LOCKED. Version bump required for any change.
 
 ---
 
+## Lane 1 — Measurement Provenance
+
+| Schema ID | Version | Authority | Notes |
+|-----------|---------|-----------|-------|
+| `ph6.acquisition.provenance.v1` | 1 | MEASUREMENT_PROVENANCE | Replay-critical acquisition conditions companion to CRAM-A |
+
+---
+
 ## Lane 1 — Authority (PASS/DROP)
 
 | Schema ID | Version | Authority | Notes |

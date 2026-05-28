@@ -12,8 +12,20 @@
       "version": "1",
       "lane": 0,
       "authority": "NONE",
-      "required_fields": ["schema", "frame_id", "payload_hash", "hash_algorithm", "media_type", "size_bytes", "departure_timestamp", "authority"],
-      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "required_fields": [
+        "schema",
+        "frame_id",
+        "payload_hash",
+        "hash_algorithm",
+        "media_type",
+        "size_bytes",
+        "departure_timestamp",
+        "authority"
+      ],
+      "forbidden_fields": [
+        "motion_score",
+        "motion_decay_score"
+      ],
       "hash_algorithm_field": "BLAKE2b-256",
       "locked": true,
       "notes": "Sensor departure packet — Lane 0 origin, no PASS/DROP"
@@ -23,8 +35,19 @@
       "version": "1",
       "lane": 0,
       "authority": "NONE",
-      "required_fields": ["schema", "frame_id", "payload_hash", "hash_algorithm", "transfer_status", "arrival_timestamp", "authority"],
-      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "required_fields": [
+        "schema",
+        "frame_id",
+        "payload_hash",
+        "hash_algorithm",
+        "transfer_status",
+        "arrival_timestamp",
+        "authority"
+      ],
+      "forbidden_fields": [
+        "motion_score",
+        "motion_decay_score"
+      ],
       "hash_algorithm_field": "BLAKE2b-256",
       "locked": true,
       "notes": "Sensor arrival packet — Lane 0 transit, no PASS/DROP"
@@ -34,9 +57,24 @@
       "version": "1",
       "lane": 1,
       "authority": "LANE_1",
-      "required_fields": ["schema", "frame_id", "verdict", "metrics", "input_hash", "hash_algorithm", "authority", "soso_advisory"],
-      "forbidden_fields": ["motion_score", "motion_decay_score"],
-      "allowed_verdict_values": ["PASS", "DROP"],
+      "required_fields": [
+        "schema",
+        "frame_id",
+        "verdict",
+        "metrics",
+        "input_hash",
+        "hash_algorithm",
+        "authority",
+        "soso_advisory"
+      ],
+      "forbidden_fields": [
+        "motion_score",
+        "motion_decay_score"
+      ],
+      "allowed_verdict_values": [
+        "PASS",
+        "DROP"
+      ],
       "hash_algorithm_field": "BLAKE2b-256",
       "locked": true,
       "notes": "PSEUDO deterministic verdict — sole PASS/DROP issuer alongside CRAM"
@@ -46,9 +84,24 @@
       "version": "1",
       "lane": 1,
       "authority": "LANE_1",
-      "required_fields": ["schema", "frame_id", "payload_hash", "hash_algorithm", "verdict", "authority", "prev_cram_hash", "cram_hash"],
-      "forbidden_fields": ["motion_score", "motion_decay_score"],
-      "allowed_verdict_values": ["PASS", "DROP"],
+      "required_fields": [
+        "schema",
+        "frame_id",
+        "payload_hash",
+        "hash_algorithm",
+        "verdict",
+        "authority",
+        "prev_cram_hash",
+        "cram_hash"
+      ],
+      "forbidden_fields": [
+        "motion_score",
+        "motion_decay_score"
+      ],
+      "allowed_verdict_values": [
+        "PASS",
+        "DROP"
+      ],
       "hash_algorithm_field": "BLAKE2b-256",
       "locked": true,
       "notes": "CRAM atomic commit — authoritative evidence substrate entry"
@@ -58,7 +111,13 @@
       "version": "1",
       "lane": 1,
       "authority": "LANE_1",
-      "required_fields": ["schema", "frame_id", "policy_ref", "reason", "authority"],
+      "required_fields": [
+        "schema",
+        "frame_id",
+        "policy_ref",
+        "reason",
+        "authority"
+      ],
       "forbidden_fields": [],
       "hash_algorithm_field": "BLAKE2b-256",
       "locked": true,
@@ -69,8 +128,23 @@
       "version": "1",
       "lane": 1,
       "authority": "LANE_1",
-      "required_fields": ["schema", "event_seq", "event_type", "object_id", "event_hash", "prev_event_hash", "authority_hash", "timestamp_utc", "node_id", "stage", "status"],
-      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "required_fields": [
+        "schema",
+        "event_seq",
+        "event_type",
+        "object_id",
+        "event_hash",
+        "prev_event_hash",
+        "authority_hash",
+        "timestamp_utc",
+        "node_id",
+        "stage",
+        "status"
+      ],
+      "forbidden_fields": [
+        "motion_score",
+        "motion_decay_score"
+      ],
       "hash_algorithm_field": "BLAKE2b-256",
       "locked": true,
       "notes": "Lane-1 audit chain — atomic, fsync-guaranteed, hash-chained"
@@ -80,8 +154,22 @@
       "version": "1",
       "lane": 2,
       "authority": "NONE",
-      "required_fields": ["schema", "event_type", "object_id", "authority_hash", "authority", "lane", "ts", "event_seq", "prev_event_hash", "event_hash"],
-      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "required_fields": [
+        "schema",
+        "event_type",
+        "object_id",
+        "authority_hash",
+        "authority",
+        "lane",
+        "ts",
+        "event_seq",
+        "prev_event_hash",
+        "event_hash"
+      ],
+      "forbidden_fields": [
+        "motion_score",
+        "motion_decay_score"
+      ],
       "authority_hash_value": "0000000000000000000000000000000000000000000000000000000000000000",
       "locked": true,
       "notes": "Lane-2 advisory audit — authority_hash is always 64 zeros (ZERO authority sentinel)"
@@ -91,8 +179,15 @@
       "version": "1",
       "lane": 2,
       "authority": "NONE",
-      "required_fields": ["schema", "advisory_result"],
-      "forbidden_fields": ["verdict", "motion_score", "motion_decay_score"],
+      "required_fields": [
+        "schema",
+        "advisory_result"
+      ],
+      "forbidden_fields": [
+        "verdict",
+        "motion_score",
+        "motion_decay_score"
+      ],
       "locked": true,
       "notes": "MRAM-S advisory output — must never emit verdict field"
     },
@@ -101,8 +196,18 @@
       "version": "1",
       "lane": 2,
       "authority": "NONE",
-      "required_fields": ["schema", "event_type", "object_id", "lane", "authority"],
-      "forbidden_fields": ["verdict", "motion_score", "motion_decay_score"],
+      "required_fields": [
+        "schema",
+        "event_type",
+        "object_id",
+        "lane",
+        "authority"
+      ],
+      "forbidden_fields": [
+        "verdict",
+        "motion_score",
+        "motion_decay_score"
+      ],
       "locked": true,
       "notes": "SSMT Lane-2 advisory audit — Authority ZERO"
     },
@@ -111,8 +216,16 @@
       "version": "1",
       "lane": 2,
       "authority": "NONE",
-      "required_fields": ["schema", "advisory_result"],
-      "forbidden_fields": ["verdict", "result", "motion_score", "motion_decay_score"],
+      "required_fields": [
+        "schema",
+        "advisory_result"
+      ],
+      "forbidden_fields": [
+        "verdict",
+        "result",
+        "motion_score",
+        "motion_decay_score"
+      ],
       "locked": true,
       "notes": "TOK advisory — must use advisory_result, never result or verdict"
     },
@@ -121,8 +234,13 @@
       "version": "1",
       "lane": 1,
       "authority": "LANE_1",
-      "required_fields": ["schema"],
-      "forbidden_fields": ["motion_score", "motion_decay_score"],
+      "required_fields": [
+        "schema"
+      ],
+      "forbidden_fields": [
+        "motion_score",
+        "motion_decay_score"
+      ],
       "locked": true,
       "notes": "CRAM-PU run receipt"
     },
@@ -131,7 +249,9 @@
       "version": "1",
       "lane": 5,
       "authority": "EXPORT_SOVEREIGN",
-      "required_fields": ["schema"],
+      "required_fields": [
+        "schema"
+      ],
       "forbidden_fields": [],
       "locked": true,
       "notes": "Lane 5 export queue — RSYNC Priority Zero, nothing may block"
@@ -142,9 +262,16 @@
       "lane": 0,
       "authority": "GOVERNANCE",
       "required_fields": [
-        "schema", "version", "canonical_hash_algorithm", "canonical_commit_marker",
-        "lane2_authority", "rsync_priority", "minimum_valid_test_frames",
-        "forbidden_fields", "stop_ship_gates", "lane_authority_map"
+        "schema",
+        "version",
+        "canonical_hash_algorithm",
+        "canonical_commit_marker",
+        "lane2_authority",
+        "rsync_priority",
+        "minimum_valid_test_frames",
+        "forbidden_fields",
+        "stop_ship_gates",
+        "lane_authority_map"
       ],
       "forbidden_fields": [],
       "locked": true,
@@ -155,7 +282,16 @@
       "version": "1",
       "lane": 2,
       "authority": "NONE",
-      "required_fields": ["schema", "scan_root", "generated_at_utc", "critical_count", "high_count", "warn_count", "overall_result", "findings"],
+      "required_fields": [
+        "schema",
+        "scan_root",
+        "generated_at_utc",
+        "critical_count",
+        "high_count",
+        "warn_count",
+        "overall_result",
+        "findings"
+      ],
       "forbidden_fields": [],
       "locked": true,
       "notes": "Output schema for governance_drift_scan.py"
@@ -165,7 +301,12 @@
       "version": "1",
       "lane": 2,
       "authority": "NONE",
-      "required_fields": ["schema", "generated_at_utc", "overall_result", "checks"],
+      "required_fields": [
+        "schema",
+        "generated_at_utc",
+        "overall_result",
+        "checks"
+      ],
       "forbidden_fields": [],
       "locked": true,
       "notes": "Output schema for ai_preflight_check.py"
@@ -175,10 +316,50 @@
       "version": "1",
       "lane": 2,
       "authority": "NONE",
-      "required_fields": ["schema", "advisory_result"],
-      "forbidden_fields": ["verdict", "result", "motion_score", "motion_decay_score"],
+      "required_fields": [
+        "schema",
+        "advisory_result"
+      ],
+      "forbidden_fields": [
+        "verdict",
+        "result",
+        "motion_score",
+        "motion_decay_score"
+      ],
       "locked": true,
       "notes": "SoSo-family advisory output — must use advisory_result, never verdict or result"
+    },
+    {
+      "schema_id": "ph6.acquisition.provenance.v1",
+      "version": "1",
+      "lane": 1,
+      "authority": "MEASUREMENT_PROVENANCE",
+      "required_fields": [
+        "schema_version",
+        "sensor_id",
+        "firmware_id",
+        "sensor_mode",
+        "processing_state",
+        "illumination_state",
+        "timing_source",
+        "sync_source",
+        "capture_timestamp_utc",
+        "operational_envelope_id",
+        "transformation_disclosure",
+        "observer_contamination_flags",
+        "provenance_hash"
+      ],
+      "forbidden_fields": [
+        "motion_score",
+        "motion_decay_score",
+        "verdict",
+        "result",
+        "advisory_result"
+      ],
+      "hash_algorithm_field": "BLAKE2b-256",
+      "provenance_hash_contract": "blake2b256(canonical_json(record_without_provenance_hash))",
+      "locked": true,
+      "notes": "Acquisition provenance — replay-critical companion to CRAM-A. Captures sensor mode, firmware, illumination, timing, operational envelope, transformation disclosure, and observer contamination flags. Provenance_hash is self-verifying. Doctrine: Scientific Integrity Expansion v2.1 §§ 0.1, 2.6, 5.4."
     }
   ]
 }
