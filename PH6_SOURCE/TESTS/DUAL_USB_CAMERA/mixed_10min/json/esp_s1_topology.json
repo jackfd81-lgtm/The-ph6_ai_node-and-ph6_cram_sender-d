@@ -1,0 +1,42 @@
+{
+  "topology_type": "ESP_S1_ADVISORY_CONTEXT",
+  "topology_id": "ESP_S1_LANE2_ADVISORY",
+  "generated_utc": "2026-06-04T10:37:43Z",
+  "node_id": "ESP_S1",
+  "node_type": "SENSOR_NODE",
+  "assigned_role": "WIFI_SENSOR_CONTEXT",
+  "lane_assignment": "Lane-2",
+  "firmware": "MicroPython ESP32_GENERIC v1.22.2",
+  "firmware_sha256": "fcbacb25bc307dda7bea93fdd760fc161b12987b22f416553f745b2c92247962",
+  "network": {
+    "ip": "192.168.254.194",
+    "ssid": "Frontier0205",
+    "subnet": "192.168.254.0/24",
+    "pi5_ip": "192.168.254.188"
+  },
+  "endpoints": {
+    "/health": "Node identity and runtime availability",
+    "/sensor": "PH6_ESP_SENSOR_NODE_V1 advisory JSON"
+  },
+  "governance": {
+    "authority": "ZERO",
+    "advisory_only": true,
+    "issues_verdicts": false,
+    "writes_cram": false,
+    "can_block_rsync": false,
+    "lane1_isolated": true,
+    "replay_required": false,
+    "rsync_blocking": false,
+    "aio10_dependency": false,
+    "ready_for_live_ingestion": false
+  },
+  "integration_path": [
+    "ESP_S1",
+    "esp_advisory_scraper.py",
+    "esp_s1_sensor_status.jsonl",
+    "SoSo correlation (future)",
+    "AIO-10 post-run advisory context (future)"
+  ],
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null
+}

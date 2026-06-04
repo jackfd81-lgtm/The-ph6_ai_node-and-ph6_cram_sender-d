@@ -1,0 +1,29 @@
+{
+  "token_type": "ADVISORY_CONTEXT_NODE",
+  "token_id": "ESP_S1_TOKEN_v1",
+  "node_id": "ESP_S1",
+  "generated_utc": "2026-06-04T10:37:43Z",
+  "authority": "ZERO",
+  "advisory_only": true,
+  "lane": "Lane-2",
+  "issues_verdicts": false,
+  "writes_cram": false,
+  "can_block_rsync": false,
+  "lane1_isolated": true,
+  "replay_required": false,
+  "rsync_blocking": false,
+  "soso_role": "environmental_continuity_context",
+  "token_scope": "advisory_sidecar_only",
+  "negative_capabilities": {
+    "no_pass_drop": true,
+    "no_cram_a_write": true,
+    "no_cram_r_write": true,
+    "no_rsync_control": true,
+    "no_lane1_access": true,
+    "no_replay_authority": true,
+    "no_aio10_stop": true,
+    "no_deterministic_variable_mutation": true
+  },
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null
+}

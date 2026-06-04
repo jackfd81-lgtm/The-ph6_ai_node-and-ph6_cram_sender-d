@@ -1,0 +1,19 @@
+{
+  "snapshot_type": "ESP_S1_HEALTH",
+  "schema_id": "PH6_ESP_SENSOR_NODE_V1",
+  "node_id": "ESP_S1",
+  "snapshot_utc": "2026-06-04T10:37:43Z",
+  "node": "ESP_S1",
+  "status": "NODE_REACHABLE",
+  "rssi_dbm": -48,
+  "heartbeat": 3,
+  "uptime_s": 911.2,
+  "free_mem": 144480,
+  "wifi_connected": true,
+  "authority": "ZERO",
+  "advisory_only": true,
+  "issues_verdicts": false,
+  "writes_cram": false,
+  "can_block_rsync": false,
+  "note": "Point-in-time health snapshot captured during ESP_S1 commissioning. Not an evidence record."
+}
