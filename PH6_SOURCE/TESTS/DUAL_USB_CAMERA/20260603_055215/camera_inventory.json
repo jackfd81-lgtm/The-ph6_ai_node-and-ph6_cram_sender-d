@@ -1,0 +1,65 @@
+{
+  "inventory_utc": "2026-06-03T05:52:15Z",
+  "cameras": [
+    {
+      "label": "CAMERA_A",
+      "node_primary": "/dev/video0",
+      "node_secondary": "/dev/video1",
+      "name": "DV20_USB",
+      "usb_id": "4c4a:4a55",
+      "manufacturer": "Jieli Technology",
+      "bus": "USB 2.0 (xhci-hcd.1)",
+      "formats": {
+        "MJPG": [
+          "640x480@30fps",
+          "640x480@10fps",
+          "1280x720@30fps",
+          "1280x720@10fps"
+        ],
+        "YUYV": [
+          "640x480@10fps",
+          "320x240@30fps",
+          "320x240@10fps"
+        ]
+      },
+      "safe_baseline": "640x480@15fps MJPG",
+      "max_mjpg": "1280x720@30fps",
+      "notes": "Limited YUYV; /dev/video1 has no formats (metadata/control only)"
+    },
+    {
+      "label": "CAMERA_B",
+      "node_primary": "/dev/video2",
+      "node_secondary": "/dev/video3",
+      "name": "STREAMING_CAM",
+      "usb_id": "0c45:636b",
+      "manufacturer": "Microdia",
+      "bus": "USB 2.0 (xhci-hcd.0)",
+      "formats": {
+        "MJPG": [
+          "1920x1080@30fps",
+          "1280x1024@30fps",
+          "1280x960@30fps",
+          "1280x720@30fps",
+          "1024x768@30fps",
+          "848x480@30fps",
+          "800x600@30fps",
+          "640x480@30fps",
+          "320x240@30fps",
+          "176x144@30fps",
+          "160x120@30fps"
+        ],
+        "YUYV": [
+          "640x480@30fps",
+          "1920x1080@5fps",
+          "1280x720@10fps"
+        ]
+      },
+      "safe_baseline": "640x480@15fps MJPG",
+      "max_mjpg": "1920x1080@30fps",
+      "notes": "Highly capable; /dev/video3 has no formats (metadata/control only)"
+    }
+  ],
+  "stable_mapping_note": "Mapping confirmed by USB-ID and udevadm. video0/video2 are the real capture streams. video1/video3 are metadata/control nodes with no capture formats.",
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null
+}

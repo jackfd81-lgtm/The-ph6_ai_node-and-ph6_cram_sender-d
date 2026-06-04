@@ -58,3 +58,6 @@ build/
 # Env
 .env
 *.log
+
+# ESP_S1 advisory sidecar log — runtime only, not evidence
+PH6_SOURCE/TESTS/DUAL_USB_CAMERA/mixed_10min/json/esp_s1_sensor_status.jsonl

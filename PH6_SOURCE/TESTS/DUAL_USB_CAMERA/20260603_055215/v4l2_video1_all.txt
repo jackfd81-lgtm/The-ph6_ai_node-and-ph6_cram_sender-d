@@ -1,0 +1,34 @@
+Driver Info:
+	Driver name      : uvcvideo
+	Card type        : USB Composite Device: DV20 USB 
+	Bus info         : usb-xhci-hcd.1-2
+	Driver version   : 6.12.75
+	Capabilities     : 0x84a00001
+		Video Capture
+		Metadata Capture
+		Streaming
+		Extended Pix Format
+		Device Capabilities
+	Device Caps      : 0x04a00000
+		Metadata Capture
+		Streaming
+		Extended Pix Format
+Media Driver Info:
+	Driver name      : uvcvideo
+	Model            : USB Composite Device: DV20 USB 
+	Serial           : 
+	Bus info         : usb-xhci-hcd.1-2
+	Media version    : 6.12.75
+	Hardware revision: 0x00000100 (256)
+	Driver version   : 6.12.75
+Interface Info:
+	ID               : 0x03000005
+	Type             : V4L Video
+Entity Info:
+	ID               : 0x00000004 (4)
+	Name             : USB Composite Device: DV20 USB 
+	Function         : V4L2 I/O
+Priority: 2
+Format Metadata Capture:
+	Sample Format   : 'UVCH' (UVC Payload Header Metadata)
+	Buffer Size     : 10240

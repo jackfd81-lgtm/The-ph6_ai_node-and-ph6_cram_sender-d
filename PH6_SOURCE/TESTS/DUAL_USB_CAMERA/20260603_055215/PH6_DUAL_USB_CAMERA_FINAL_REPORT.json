@@ -1,0 +1,25 @@
+{
+  "report": "PH6_DUAL_USB_CAMERA_FINAL_REPORT",
+  "generated_utc": "2026-06-03T00:00:00Z",
+  "camera_a": {
+    "label": "CAMERA_A_RECOMMENDED_PRIMARY",
+    "node": "/dev/video0",
+    "usb_id": "4c4a:4a55"
+  },
+  "camera_b": {
+    "label": "CAMERA_B_RECOMMENDED_CONTEXT",
+    "node": "/dev/video2",
+    "usb_id": "0c45:636b"
+  },
+  "dual_operation_verdict": "DUAL_CAMERA_OPERATION_HOLD",
+  "smoke_verdict": "SMOKE_HOLD",
+  "usb_bandwidth_ok": true,
+  "same_vision_drop_rate_a": 0.0008,
+  "same_vision_drop_rate_b": 1.0,
+  "complementary_resolution_b_actual": "1280x720",
+  "recommended_primary": "DV20_USB",
+  "recommended_context": "STREAMING_CAM",
+  "proposed_by": "claude-code-lane2",
+  "proposed_at_utc": "2026-06-03T00:00:00Z",
+  "ratified_by": null
+}

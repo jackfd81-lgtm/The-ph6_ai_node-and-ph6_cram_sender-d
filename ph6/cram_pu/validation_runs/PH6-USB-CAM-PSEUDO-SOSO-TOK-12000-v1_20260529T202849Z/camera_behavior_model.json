@@ -1,0 +1,47 @@
+{
+  "blur": {
+    "count": 12000,
+    "max": 2877.1115,
+    "mean": 248.6099,
+    "min": 0.0,
+    "p50": 174.6843,
+    "p95": 801.3441,
+    "std": 403.5433
+  },
+  "brightness": {
+    "count": 12000,
+    "max": 244.9535,
+    "mean": 97.6325,
+    "min": 0.0,
+    "p50": 116.8262,
+    "p95": 129.8254,
+    "std": 35.0582
+  },
+  "capture_delta_ms": {
+    "count": 11999,
+    "max": 238.459,
+    "mean": 66.6692,
+    "min": 10.551,
+    "p50": 67.939,
+    "p95": 68.142,
+    "std": 2.6749
+  },
+  "drift_events": 3083,
+  "frames_analyzed": 12000,
+  "motion": {
+    "count": 12000,
+    "max": 1.0,
+    "mean": 0.0351,
+    "min": 0.0,
+    "p50": 0.0051,
+    "p95": 0.2034,
+    "std": 0.0851
+  },
+  "soso_state_counts": {
+    "DRIFTING": 504,
+    "RESET_SUSPECTED": 6,
+    "STABLE": 8952,
+    "UNSTABLE": 173,
+    "WATCH": 2365
+  }
+}

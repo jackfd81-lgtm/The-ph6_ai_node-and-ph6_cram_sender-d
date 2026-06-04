@@ -1,0 +1,35 @@
+{
+  "node_id": "ESP_S1",
+  "node_type": "SENSOR_NODE",
+  "assigned_role": "WIFI_SENSOR_CONTEXT",
+  "lane_assignment": "Lane 2 / SoSo Continuity Context",
+  "authority_level": "ZERO",
+  "behavioral_rules": {
+    "advisory_only": true,
+    "replay_required": false,
+    "rsync_blocking": false,
+    "allow_offline_fallback": true,
+    "connection_timeout_seconds": 20.0
+  },
+  "telemetry_schema": {
+    "schema_id": "PH6_ESP_SENSOR_NODE_V1",
+    "endpoints": {
+      "/health": "Returns node identity and runtime availability",
+      "/sensor": "Returns structural JSON dictionary metrics"
+    },
+    "expected_fields": [
+      "heartbeat_seq",
+      "uptime_ms",
+      "rssi_dbm",
+      "free_mem"
+    ]
+  },
+  "integration_status": {
+    "firmware_current": "MicroPython ESP32_GENERIC v1.22.2",
+    "firmware_target": "MicroPython ESP32_GENERIC v1.22.2",
+    "firmware_sha256": "fcbacb25bc307dda7bea93fdd760fc161b12987b22f416553f745b2c92247962",
+    "node_ip": "192.168.254.194",
+    "live_aio10_dependency": false,
+    "ready_for_live_ingestion": false
+  }
+}

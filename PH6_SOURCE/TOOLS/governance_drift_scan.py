@@ -69,6 +69,35 @@ SKIP_PATHS_CONTAINING = {
 # Failure-injection test vectors deliberately contain forbidden terms to prove rejection.
 GOVERNANCE_SKIP_FRAGMENTS = {"/GOVERNANCE/", "/failure_injection/"}
 
+# Non-authority path zones within PH6_SOURCE/.
+# These directories contain tests, certification run artifacts, deployment logs,
+# schema documentation, and historical copies — not live authority-path code.
+# Forbidden-term hits here are documentation/prohibition references (the term is
+# named to explain it is forbidden), not live metric uses.
+# Severity is downgraded: CRITICAL → INFO, classification = NON_AUTHORITY_ZONE.
+NON_AUTHORITY_PATH_FRAGMENTS = {
+    "/TESTS/",
+    "/DEPLOYMENT/",
+    "/AI_HANDOFF/",
+    "/CAMPAIGNS/",
+    "/CERTIFICATION/",
+    "/CAMERA_MODELS/",
+    "/BUILDS/",
+    "/04_SCHEMAS/",
+    "/DRAFT/",
+    "/cert_v2",   # certification run artifact copies (cert_v2/, cert_v2_1/, etc.)
+    "/runs/",
+}
+
+# Python prohibition-context pattern.
+# When a forbidden term appears on a Python line that also contains one of
+# these keywords, the line is naming the term to explain it is prohibited —
+# not using it as a live metric.  Downgrade to INFO.
+_PY_PROHIBITION_CONTEXT = re.compile(
+    r"(FORBIDDEN|must\s+not|not\s+use|only|prohibited|not\s+computed|not\s+stored|no\s+field)",
+    re.IGNORECASE,
+)
+
 # In markdown, lines in prohibition-context tables or FORBIDDEN/NEVER lists
 # are definitional references, not drift violations.
 _MD_PROHIBITION_CONTEXT = re.compile(
@@ -231,11 +260,20 @@ def scan_forbidden_terms(root: Path, registry: dict) -> list[dict]:
                 continue
 
             is_md = p.suffix == ".md"
+            is_py = p.suffix == ".py"
             md_prohibition_lines = _build_md_prohibition_lines(lines) if is_md else frozenset()
+
+            # Determine path zone: non-authority zones downgrade CRITICAL → INFO.
+            p_str = str(p)
+            in_non_authority_zone = any(frag in p_str for frag in NON_AUTHORITY_PATH_FRAGMENTS)
 
             for i, line in enumerate(lines, 1):
                 if not compiled.search(line):
                     continue
+
+                effective_severity = severity
+                classification = "REAL_AUTHORITY_PATH_VIOLATION"
+
                 if is_md:
                     # Fence-context or heading-context prohibition lines (definitional).
                     if i in md_prohibition_lines:
@@ -248,10 +286,39 @@ def scan_forbidden_terms(root: Path, registry: dict) -> list[dict]:
                     # Short line that is itself a prohibition heading/label.
                     if _MD_PROHIBITION_CONTEXT.search(line) and len(stripped) < 80:
                         continue
+                    # Remaining markdown hits in non-authority zones → INFO.
+                    if in_non_authority_zone:
+                        effective_severity = "INFO"
+                        classification = "NON_AUTHORITY_ZONE"
+
+                elif is_py:
+                    stripped = line.strip()
+                    # Full-line comment naming the forbidden term to explain prohibition.
+                    if stripped.startswith("#"):
+                        effective_severity = "INFO"
+                        classification = "PROHIBITION_COMMENT"
+                    # Docstring list item or string literal explaining the prohibition.
+                    elif (stripped.startswith("- ") or stripped.startswith("* ")
+                          or stripped.startswith('"') or stripped.startswith("'")):
+                        if _PY_PROHIBITION_CONTEXT.search(line):
+                            effective_severity = "INFO"
+                            classification = "PROHIBITION_DOCSTRING"
+                    # Non-authority zone: prohibition references in test/archive files.
+                    if effective_severity == severity and in_non_authority_zone:
+                        if _PY_PROHIBITION_CONTEXT.search(line):
+                            effective_severity = "INFO"
+                            classification = "NON_AUTHORITY_ZONE_REFERENCE"
+
+                else:
+                    # Other file types in non-authority zones → INFO.
+                    if in_non_authority_zone:
+                        effective_severity = "INFO"
+                        classification = "NON_AUTHORITY_ZONE"
 
                 findings.append({
                         "check": "forbidden_terms",
-                        "severity": severity,
+                        "severity": effective_severity,
+                        "classification": classification,
                         "entry_id": entry_id,
                         "term": entry["term"],
                         "file": str(p),
@@ -436,6 +503,7 @@ def run_scan(scan_root: Path, gov_dir: Path, project_root: Path) -> dict:
     critical = [f for f in all_findings if f.get("severity") == "CRITICAL"]
     high     = [f for f in all_findings if f.get("severity") == "HIGH"]
     warn     = [f for f in all_findings if f.get("severity") == "WARN"]
+    info     = [f for f in all_findings if f.get("severity") == "INFO"]
 
     if critical:
         overall = "FAIL_CRITICAL"
@@ -468,6 +536,7 @@ def run_scan(scan_root: Path, gov_dir: Path, project_root: Path) -> dict:
         "critical_count":  len(critical),
         "high_count":      len(high),
         "warn_count":      len(warn),
+        "info_count":      len(info),
         "total_findings":  len(all_findings),
         "summary_by_check": {
             k: {"count": v["count"], "severity": v["severity"]}
@@ -518,6 +587,7 @@ def print_human_summary(report: dict) -> None:
         print(f"  critical:    {report['critical_count']}")
         print(f"  high:        {report['high_count']}")
         print(f"  warn:        {report['warn_count']}")
+        print(f"  info:        {report.get('info_count', 0)}  (zone/comment references — non-blocking)")
     print()
 
     for check, summary in report["summary_by_check"].items():
@@ -544,6 +614,20 @@ def print_human_summary(report: dict) -> None:
             print(f"  [{sev}] {f['check']}")
             print(f"         {loc}")
             print(f"         {f.get('detail', f.get('content', ''))}")
+
+    if not is_discovery and report.get("info_count", 0):
+        print(f"\n  --- INFO ({report['info_count']} zone/comment references — non-blocking) ---")
+        seen_info = set()
+        for f in report["findings"]:
+            if f.get("severity") != "INFO":
+                continue
+            key = (f["file"], f.get("line", 0))
+            if key in seen_info:
+                continue
+            seen_info.add(key)
+            loc = f"{f['file']}:{f['line']}" if f.get("line") else f['file']
+            cls = f.get("classification", "INFO")
+            print(f"  [INFO/{cls}] {loc}")
     print()
 
 

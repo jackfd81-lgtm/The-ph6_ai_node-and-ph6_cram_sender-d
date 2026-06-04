@@ -1,0 +1,37 @@
+Bus 001 Device 013: ID 0c45:636b Microdia Streaming Camera
+Negotiated speed: High Speed (480Mbps)
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               2.01
+--
+  idVendor           0x0c45 Microdia
+  idProduct          0x636b Streaming Camera
+  bcdDevice            1.00
+  iManufacturer           2 SONix Technology Co., Ltd.
+  iProduct                1 Streaming Camera
+  iSerial                 3 SN0001
+--
+Bus 003 Device 002: ID 4c4a:4a55 Jieli Technology USB Composite Device
+Negotiated speed: High Speed (480Mbps)
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               2.00
+--
+  idVendor           0x4c4a Jieli Technology
+  idProduct          0x4a55 USB Composite Device
+  bcdDevice            1.00
+  iManufacturer           1 Jieli Technology
+  iProduct                2 USB Composite Device
+  iSerial                 0 
+  bNumConfigurations      1
+  Configuration Descriptor:
+    bLength                 9
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 013: ID 0c45:636b Microdia Streaming Camera
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 4c4a:4a55 Jieli Technology USB Composite Device
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 004 Device 002: ID 1de1:e101 Actions Microelectronics Co. AM8180

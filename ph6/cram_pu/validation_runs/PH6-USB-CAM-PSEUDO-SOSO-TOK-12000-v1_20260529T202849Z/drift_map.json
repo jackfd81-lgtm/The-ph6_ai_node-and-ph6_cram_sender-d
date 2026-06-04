@@ -1,0 +1,1736 @@
+{
+  "events_sample": [
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 4,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 5,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "timestamp_jitter"
+      ],
+      "frame": 6,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 7,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 8,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 9,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 10,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 11,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 12,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 13,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 14,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 15,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 16,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 17,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 18,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 19,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 20,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 21,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 22,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 23,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 72,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 80,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 87,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 88,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 89,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 90,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 91,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 92,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 93,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 94,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 95,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 131,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 132,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 133,
+      "observed_change": "MOTION_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 144,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 145,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 146,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 154,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 157,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 159,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 161,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 164,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 168,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 174,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 175,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 178,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 181,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 191,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 193,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 197,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 198,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 199,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 201,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 202,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 212,
+      "observed_change": "MOTION_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 213,
+      "observed_change": "MOTION_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 214,
+      "observed_change": "MOTION_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 215,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 217,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 218,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 223,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 227,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 231,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 240,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 245,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 246,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 247,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 248,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 249,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 250,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 251,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 252,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 253,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 254,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 255,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 256,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 261,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 262,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 263,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 267,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 268,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "timestamp_jitter"
+      ],
+      "frame": 283,
+      "observed_change": "TIMESTAMP_JITTER",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 308,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 309,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 343,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 344,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 345,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 346,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 347,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 348,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 349,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 350,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 351,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 352,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 353,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 354,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 355,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 356,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 361,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 379,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 380,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 381,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 382,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 383,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 400,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 401,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 402,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 403,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 404,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 405,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 406,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 407,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "motion_change"
+      ],
+      "frame": 408,
+      "observed_change": "BLUR_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "motion_change"
+      ],
+      "frame": 409,
+      "observed_change": "BLUR_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "motion_change"
+      ],
+      "frame": 410,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "motion_change"
+      ],
+      "frame": 411,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 412,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 413,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 414,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 415,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 447,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "motion_change"
+      ],
+      "frame": 448,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 449,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 450,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 460,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 461,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 462,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 463,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 464,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 465,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 466,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 467,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 468,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 469,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 470,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 479,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 480,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 503,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 504,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 505,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 506,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 507,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 508,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 509,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 511,
+      "observed_change": "MOTION_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 512,
+      "observed_change": "MOTION_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 527,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 528,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 542,
+      "observed_change": "MOTION_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 543,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 544,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 566,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 567,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 576,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 577,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift"
+      ],
+      "frame": 578,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 579,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 580,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 581,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 582,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 612,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 613,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 614,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 615,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 616,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 617,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 618,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 619,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 621,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 622,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 631,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 639,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 640,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 674,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 675,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 676,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 677,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 678,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 679,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 680,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift"
+      ],
+      "frame": 681,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 695,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 696,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 697,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "motion_change"
+      ],
+      "frame": 698,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 699,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "motion_change"
+      ],
+      "frame": 700,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift",
+        "motion_change"
+      ],
+      "frame": 701,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 714,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 715,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 716,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 717,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "blur_shift"
+      ],
+      "frame": 724,
+      "observed_change": "BLUR_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 727,
+      "observed_change": "MOTION_CHANGE",
+      "state": "DRIFTING"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 728,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 729,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "motion_change"
+      ],
+      "frame": 730,
+      "observed_change": "MOTION_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 781,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "WATCH"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 782,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "UNSTABLE"
+    },
+    {
+      "flags": [
+        "luma_shift",
+        "motion_change"
+      ],
+      "frame": 783,
+      "observed_change": "BRIGHTNESS_CHANGE",
+      "state": "DRIFTING"
+    }
+  ],
+  "flag_counts": {
+    "blur_shift": 1198,
+    "duplicate_frame": 10,
+    "luma_shift": 1696,
+    "motion_change": 1218,
+    "pseudo_drop_observed": 67,
+    "reset_signal": 6,
+    "timestamp_jitter": 10
+  },
+  "total_drift_events": 3083
+}
