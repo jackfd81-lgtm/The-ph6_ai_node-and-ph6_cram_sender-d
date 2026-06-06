@@ -1,9 +1,9 @@
 {
   "manifest_type": "schema_manifest",
-  "generated_at_utc": "2026-06-06T12:33:01.638303+00:00",
+  "generated_at_utc": "2026-06-06T14:11:22.015939+00:00",
   "proposed_by": "claude-code-lane2",
   "ratified_by": null,
-  "schema_count": 31,
+  "schema_count": 38,
   "schemas": [
     {
       "path": "SCHEMAS/ai/ai_authority_request.schema.json",
@@ -27,6 +27,13 @@
       "size_bytes": 2676
     },
     {
+      "path": "SCHEMAS/ai/ai_transform_record_v2.schema.json",
+      "schema_id": "https://ph6.local/schemas/ai/ai_transform_record_v2",
+      "title": "PH6 AI Transform Record v2 (Extended with PSEUDO/SoSo request fields)",
+      "hash": "c2114a55852ec1933229d22d962c8d402577122327aa7fef9a38563ac8e8cfa4",
+      "size_bytes": 2965
+    },
+    {
       "path": "SCHEMAS/audit/chain_of_custody_record.schema.json",
       "schema_id": "https://ph6.local/schemas/audit/chain_of_custody_record_v1",
       "title": "PH6 Chain of Custody Record v1",
@@ -39,6 +46,13 @@
       "title": "PH6 Operator Ratification Record v1",
       "hash": "a0cbbd3ee4dd1833ada90c4f26f06a4d85823627fe29d1a1591e3c28afd1f272",
       "size_bytes": 1664
+    },
+    {
+      "path": "SCHEMAS/evidence/chain_block.schema.json",
+      "schema_id": "https://ph6.local/schemas/evidence/chain_block_v1",
+      "title": "PH6 Evidence Chain Block v1",
+      "hash": "7869ae864b27e20d912631445080e7f78c1909f735d813587703f08f154e16e1",
+      "size_bytes": 1908
     },
     {
       "path": "SCHEMAS/evidence/cram0_record.schema.json",
@@ -67,6 +81,13 @@
       "title": "PH6 Evidence Object v1",
       "hash": "6db1dd218548e6b878727bb8bafc08925fbe45bff25a500ac080410d981c1382",
       "size_bytes": 1702
+    },
+    {
+      "path": "SCHEMAS/evidence/pseudo_measurement.schema.json",
+      "schema_id": "https://ph6.local/schemas/evidence/pseudo_measurement_v1",
+      "title": "PH6 PSEUDO Measurement v1",
+      "hash": "57f8f4ca0ad3bcc99cd2bbe67e554a6e86599a763e0c640f13983b34e162d843",
+      "size_bytes": 1610
     },
     {
       "path": "SCHEMAS/memory/living_memory_record.schema.json",
@@ -193,6 +214,34 @@
       "title": "PH6 Sensor Profile v1",
       "hash": "9f7556170260ffc04accf3359bc8fd2abb7908111fb0a50778c11f40be3a27da",
       "size_bytes": 1490
+    },
+    {
+      "path": "SCHEMAS/soso/advisory_manifest.schema.json",
+      "schema_id": "https://ph6.local/schemas/soso/advisory_manifest_v1",
+      "title": "PH6 Advisory Manifest v1",
+      "hash": "cf210a845f0c9f8283269401227c1418dddd5cf76f8307ab2d9f96c8bad383f4",
+      "size_bytes": 2160
+    },
+    {
+      "path": "SCHEMAS/soso/advisory_merkle_manifest.schema.json",
+      "schema_id": "https://ph6.local/schemas/soso/advisory_merkle_manifest_v1",
+      "title": "PH6 Advisory Merkle Manifest v1",
+      "hash": "7ef482400270733998fc13da7b228c92de6a342cd1f165ae97301ae7f43b3ed1",
+      "size_bytes": 1134
+    },
+    {
+      "path": "SCHEMAS/soso/cognitive_stratigraphy_layer.schema.json",
+      "schema_id": "https://ph6.local/schemas/soso/cognitive_stratigraphy_layer_v1",
+      "title": "PH6 Cognitive Stratigraphy Layer v1",
+      "hash": "eb2a38bf2cfdcc96029c6b0e4d0d76a62bd5033ffa13717966f2e2c0404416f5",
+      "size_bytes": 1703
+    },
+    {
+      "path": "SCHEMAS/soso/soso_continuity_block.schema.json",
+      "schema_id": "https://ph6.local/schemas/soso/soso_continuity_block_v1",
+      "title": "PH6 SoSo Continuity Block v1",
+      "hash": "b7e8878db4838f182eae73891ef81bdecc6b68af54d938b6df4a5284c09a04d4",
+      "size_bytes": 1757
     },
     {
       "path": "SCHEMAS/tokens/dissent_token.schema.json",

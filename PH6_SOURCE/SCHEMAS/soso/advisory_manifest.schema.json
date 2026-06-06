@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/soso/advisory_manifest_v1",
+  "title": "PH6 Advisory Manifest v1",
+  "description": "Lane 2 advisory execution provenance record. Authority ZERO. Does not claim system authority.",
+  "type": "object",
+  "required": [
+    "schema_id", "trace_seq", "prev_trace_hash", "trace_hash",
+    "timestamp_utc", "drift_index", "drift_status",
+    "excavation_summary", "authority_compliance_flag"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.advisory.manifest.v1" },
+    "trace_seq": { "type": "integer", "minimum": 0 },
+    "prev_trace_hash": {
+      "type": "string",
+      "pattern": "^(GENESIS|[a-f0-9]{64})$"
+    },
+    "trace_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256. Computed from chain fields only — timestamp excluded for replay stability."
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z$",
+      "description": "Wall-clock. NOT included in trace_hash."
+    },
+    "drift_index": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+    "drift_status": {
+      "type": "string",
+      "enum": ["STABLE", "WATCH", "ELEVATED", "HIGH", "CRITICAL"]
+    },
+    "excavation_summary": {
+      "type": "object",
+      "required": ["stratigrapher_layers_processed", "minimum_capacity_assumptions_count"],
+      "properties": {
+        "stratigrapher_layers_processed": { "type": "integer" },
+        "minimum_capacity_assumptions_count": {
+          "type": "integer",
+          "description": "MCI: lower = fewer assumptions = stronger reconstruction."
+        },
+        "mci_score": {
+          "type": "number",
+          "minimum": 0.0,
+          "description": "Computed MCI: assumptions / max(recovered_nodes, 1)."
+        }
+      },
+      "additionalProperties": false
+    },
+    "authority_compliance_flag": { "type": "boolean", "const": true },
+    "authority": { "type": "string", "const": "ADVISORY_ZERO" },
+    "degraded_mode": { "type": "string" }
+  },
+  "additionalProperties": false
+}

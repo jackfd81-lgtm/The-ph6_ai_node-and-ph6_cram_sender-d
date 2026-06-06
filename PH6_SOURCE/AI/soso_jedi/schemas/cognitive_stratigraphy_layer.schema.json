@@ -1,0 +1,27 @@
+{
+  "$comment": "Local reference copy. Authoritative schema: PH6_SOURCE/SCHEMAS/soso/cognitive_stratigraphy_layer.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/soso/cognitive_stratigraphy_layer_v1",
+  "title": "PH6 Cognitive Stratigraphy Layer v1",
+  "description": "One chronological sediment layer in the cognitive stratigraphy model. Authority ZERO.",
+  "type": "object",
+  "required": [
+    "schema_id", "layer_id", "parent_layer_id", "continuity_hash",
+    "branch_count", "recovered_nodes", "reasoning_fossil_signatures"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.cognitive.stratigraphy.layer.v1" },
+    "layer_id": { "type": "integer", "minimum": 0 },
+    "parent_layer_id": { "type": "integer", "minimum": -1 },
+    "continuity_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "branch_count": { "type": "integer", "minimum": 0 },
+    "recovered_nodes": { "type": "integer", "minimum": 0 },
+    "reasoning_fossil_signatures": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+    },
+    "mci_score": { "type": "number" },
+    "authority": { "type": "string", "const": "ADVISORY_ZERO" }
+  },
+  "additionalProperties": false
+}

@@ -1,9 +1,9 @@
 {
   "manifest_type": "governance_doc_manifest",
-  "generated_at_utc": "2026-06-06T12:33:01.638303+00:00",
+  "generated_at_utc": "2026-06-06T14:11:22.015939+00:00",
   "proposed_by": "claude-code-lane2",
   "ratified_by": null,
-  "doc_count": 29,
+  "doc_count": 30,
   "docs": [
     {
       "path": "GOVERNANCE/NEXT_SESSION_RESUME_2026-05-18.md",
@@ -64,6 +64,11 @@
       "path": "GOVERNANCE/ai/PH6_AI_CONTAINMENT_DOCTRINE.md",
       "hash": "4410c27eb4080507734016140e2d79b4d8226ec4337bc67daa581dd787015caa",
       "size_bytes": 3884
+    },
+    {
+      "path": "GOVERNANCE/ai/PH6_BOOK_V_AUTHORITY_BOUNDARY.md",
+      "hash": "8812316659bd585d0d59b18fc96a9dbc2e6f3d4b9b53150f05e392654a29021b",
+      "size_bytes": 3521
     },
     {
       "path": "GOVERNANCE/authority/PH6_AUTHORITY_HIERARCHY.md",

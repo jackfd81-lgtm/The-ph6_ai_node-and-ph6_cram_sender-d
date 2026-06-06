@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/soso/advisory_merkle_manifest_v1",
+  "title": "PH6 Advisory Merkle Manifest v1",
+  "description": "Lane 2 Merkle tree over advisory trace records. Proves inclusion only — does not convey authority.",
+  "type": "object",
+  "required": ["schema_id", "manifest_id", "merkle_root_hash", "trace_count", "ordered_leaf_hashes"],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.advisory.merkle.manifest.v1" },
+    "manifest_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256 of this manifest."
+    },
+    "merkle_root_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256 Merkle root over ordered_leaf_hashes."
+    },
+    "trace_count": { "type": "integer", "minimum": 1 },
+    "ordered_leaf_hashes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "authority": { "type": "string", "const": "ADVISORY_ZERO" }
+  },
+  "additionalProperties": false
+}
