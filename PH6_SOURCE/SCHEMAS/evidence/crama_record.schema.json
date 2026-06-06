@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/evidence/crama_record_v1",
+  "title": "PH6 CRAM-A Accepted Evidence Record v1",
+  "description": "Accepted PASS evidence record. Immutable after write. .blake2b marker written last.",
+  "type": "object",
+  "required": [
+    "schema_id", "crama_id", "evidence_id", "pseudo_a_verdict_id",
+    "canonical_hash", "blake2b_marker_written", "immutable_after_utc"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.crama.record.v1" },
+    "crama_id": { "type": "string" },
+    "evidence_id": { "type": "string" },
+    "pseudo_a_verdict_id": { "type": "string" },
+    "canonical_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 canonical hash of evidence packet"
+    },
+    "blake2b_marker_written": {
+      "type": "boolean",
+      "description": "Written LAST after all other files are durable. True = sealed."
+    },
+    "immutable_after_utc": { "type": "string", "format": "date-time" },
+    "replay_certified": { "type": "boolean" },
+    "replay_certification_id": { "type": ["string", "null"] },
+    "export_receipt_id": { "type": ["string", "null"] },
+    "operator_review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED"]
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

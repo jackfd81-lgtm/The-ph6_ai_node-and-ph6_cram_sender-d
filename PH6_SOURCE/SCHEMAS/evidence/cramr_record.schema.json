@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/evidence/cramr_record_v1",
+  "title": "PH6 CRAM-R Rejected Evidence Record v1",
+  "description": "Rejected DROP evidence. Immutable. NO .blake2b marker — ever. Used for failure analysis and negative corpus.",
+  "type": "object",
+  "required": [
+    "schema_id", "cramr_id", "evidence_id", "pseudo_a_verdict_id",
+    "drop_reason", "failure_class", "blake2b_marker_written"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.cramr.record.v1" },
+    "cramr_id": { "type": "string" },
+    "evidence_id": { "type": "string" },
+    "pseudo_a_verdict_id": { "type": "string" },
+    "drop_reason": { "type": "string" },
+    "failure_class": {
+      "type": "string",
+      "enum": [
+        "THRESHOLD_NOT_MET", "HASH_MISMATCH", "REPLAY_FAILURE",
+        "SENSOR_READ_FAILURE", "FRAME_DROP", "GATE_TRIGGERED",
+        "ENVIRONMENTAL_DISQUALIFICATION", "OPERATOR_OVERRIDE"
+      ]
+    },
+    "blake2b_marker_written": {
+      "type": "boolean",
+      "const": false,
+      "description": "INVARIANT: CRAM-R NEVER has a .blake2b marker. Always false. If true: RuntimeError + INVARIANT VIOLATION."
+    },
+    "usable_for_negative_corpus": {
+      "type": "boolean",
+      "description": "Whether this DROP record may be used as AI negative training corpus"
+    },
+    "canonical_hash": { "type": ["string", "null"] },
+    "immutable_after_utc": { "type": "string", "format": "date-time" },
+    "operator_review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

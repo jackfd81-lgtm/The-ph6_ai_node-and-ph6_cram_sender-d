@@ -1,0 +1,161 @@
+{
+  "schema": "ph6.governance.courtroom_evidence_readiness.v1",
+  "generated_at_utc": "2026-06-06T10:45:00Z",
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null,
+  "authority": "ZERO",
+  "note": "Evidence readiness matrix for prototype-stage PH6. Not claiming courtroom admissibility. This is a gap analysis and design target.",
+  "standard_reference": "Federal Rule of Evidence 702; NIST SP 800-86; ISO/IEC 17025",
+
+  "readiness_categories": [
+    {
+      "category": "operator_identity",
+      "description": "Who operated the system at time of evidence capture",
+      "required_fields": ["operator_id", "login_timestamp_utc", "hostname", "session_id"],
+      "current_state": "PARTIAL",
+      "current_evidence": "hostname in run manifest; no formal operator_id or login record",
+      "gap": "No operator identity field in run_status.json or CRAM packets",
+      "action": "Add operator_id to run_status.json and session boot record"
+    },
+    {
+      "category": "device_identity",
+      "description": "What hardware was used — serial numbers, camera IDs, firmware versions",
+      "required_fields": ["device_serial", "camera_id_A", "camera_id_B", "firmware_version", "pi_model"],
+      "current_state": "PARTIAL",
+      "current_evidence": "hostname and model in session boot; dual camera roles established",
+      "gap": "No serialized hardware manifest in run artifacts; camera serials not captured",
+      "action": "Add hardware_manifest.json per run including lsusb, v4l2-ctl output"
+    },
+    {
+      "category": "method_version",
+      "description": "What test method was used and which version",
+      "required_fields": ["method_id", "method_version", "registry_entry_id", "git_head"],
+      "current_state": "PARTIAL",
+      "current_evidence": "test_registry.json provides method_id and command; run_status.json records label",
+      "gap": "No method_version field; git HEAD not recorded in run artifacts",
+      "action": "Add method_version and git_head to run_status.json"
+    },
+    {
+      "category": "script_hash",
+      "description": "Cryptographic hash of the test script at time of execution",
+      "required_fields": ["script_path", "script_blake2b", "script_sha256"],
+      "current_state": "NOT_PRESENT",
+      "current_evidence": "Script path recorded in run_status.json; hash not captured",
+      "gap": "Script could be modified after execution without detection",
+      "action": "Hash test script at preflight time; record in run_status.json"
+    },
+    {
+      "category": "config_hash",
+      "description": "Hash of configuration parameters affecting measurement output",
+      "required_fields": ["config_path", "config_blake2b"],
+      "current_state": "NOT_PRESENT",
+      "current_evidence": "No config file currently separate from script",
+      "gap": "Runtime parameters not independently hashed",
+      "action": "Define config structure per test method; hash at preflight"
+    },
+    {
+      "category": "sensor_calibration_state",
+      "description": "Camera focus, exposure, known limitations at time of capture",
+      "required_fields": ["focus_mode", "exposure_mode", "brightness_baseline", "entropy_baseline", "known_limitations"],
+      "current_state": "PARTIAL",
+      "current_evidence": "brightness and entropy parsed from stdout; Camera B=PRIMARY_MEASUREMENT established",
+      "gap": "No structured calibration record; focus mode not captured; no uncertainty statement",
+      "action": "Add calibration_state to run artifacts with v4l2-ctl exposure/focus values"
+    },
+    {
+      "category": "raw_artifact_manifest",
+      "description": "Inventory of all files produced with hashes and sizes",
+      "required_fields": ["artifact_path", "artifact_blake2b", "artifact_sha256", "artifact_size_bytes", "artifact_timestamp_utc"],
+      "current_state": "PARTIAL",
+      "current_evidence": "artifacts list in run_status.json; no hashes of output files",
+      "gap": "Output files listed but not hashed; manifest not independently signed",
+      "action": "Add hash of each artifact to run_status.json at test completion"
+    },
+    {
+      "category": "cram_chain",
+      "description": "CRAM event chain from ingest through PASS/DROP to export",
+      "required_fields": ["cram_event_chain", "frame_count", "pass_count", "drop_count", "blake2b_marker_present", "export_record"],
+      "current_state": "PRESENT",
+      "current_evidence": "CRAM audit chain in audit.jsonl; CRAM-A .blake2b marker; RSYNC export mandatory",
+      "gap": "Export verification receipt not always present in desktop run artifacts",
+      "action": "Link CRAM export receipt to test run artifact directory"
+    },
+    {
+      "category": "replay_result",
+      "description": "Evidence that the same input produces the same output (reproducibility)",
+      "required_fields": ["replay_hash_match", "replay_timestamp", "original_hash", "replay_hash"],
+      "current_state": "PRESENT",
+      "current_evidence": "REPLAY_PARITY check in CRAM internal harness; documented in test reports",
+      "gap": "Replay not run as standard step in every production test run",
+      "action": "Include replay verification in method validation records"
+    },
+    {
+      "category": "error_rate",
+      "description": "DROP rate, read failures, frame loss, sensor drift during acquisition",
+      "required_fields": ["drop_rate", "read_failure_count", "frame_loss_count", "sensor_drift_indicators"],
+      "current_state": "PARTIAL",
+      "current_evidence": "motion_fraction and frame counts parsed from stdout; DROP verdicts recorded",
+      "gap": "No structured error_rate summary field in run artifacts",
+      "action": "Add error_rate section to run completion record"
+    },
+    {
+      "category": "known_limitations",
+      "description": "Documented constraints on measurement reliability and scope",
+      "required_fields": ["scope_bounds", "environmental_bounds", "known_failure_modes", "exclusions"],
+      "current_state": "PARTIAL",
+      "current_evidence": "Production clearance declaration bounds scope; certification docs note camera limitations",
+      "gap": "Known limitations not systematically included in every run artifact",
+      "action": "Add known_limitations section to test registry entries and run artifacts"
+    },
+    {
+      "category": "ai_advisory_boundary",
+      "description": "Clear separation between deterministic PSEUDO measurement and AI/SoSo advisory output",
+      "required_fields": ["measurement_source", "interpretation_source", "advisory_label", "authority_statement"],
+      "current_state": "PRESENT",
+      "current_evidence": "Lane-1/Lane-2 boundary enforced; PASS/DROP only from Lane-1; SoSo labeled PROPOSED; Authority:ZERO in status bar",
+      "gap": "Boundary enforced in code but not always explicitly stated in run artifacts",
+      "action": "Add authority_statement field to every run artifact JSON"
+    },
+    {
+      "category": "report_generation",
+      "description": "Human-readable and machine-readable summary of the test run",
+      "required_fields": ["human_report_path", "json_report_path", "report_hash"],
+      "current_state": "PARTIAL",
+      "current_evidence": "Markdown and JSON reports generated for certification runs; not for every run type",
+      "gap": "Report generation not standardized across all test registry entries",
+      "action": "Standardize report format and require both human/JSON for all registered tests"
+    },
+    {
+      "category": "chain_of_custody",
+      "description": "Unbroken record from acquisition through preservation to report",
+      "required_fields": ["acquisition_timestamp", "preservation_timestamp", "transfer_log", "custody_events"],
+      "current_state": "PARTIAL",
+      "current_evidence": "CRAM audit chain; session timestamps; run_status.json; git history (code history only — NOT evidence authority)",
+      "gap": "No unified chain-of-custody document that links all custody events in one artifact",
+      "action": "Add custody_chain.json per run linking acquisition → preservation → export → report",
+      "storage_doctrine_note": "Git history records code history, not evidence custody. The chain of custody must be established by CRAM audit chain, storage manifests, and export records. Evidence authority must be backend-agnostic and must survive without git in production."
+    }
+  ],
+  "storage_doctrine": {
+    "statement": "Git is the prototype source/version-control layer. It is not the final production evidence-storage authority.",
+    "evidence_authority_sources": [
+      "CRAM chain",
+      "artifact manifests",
+      "canonical hashes (BLAKE2b-256)",
+      "replay records",
+      "operator logs",
+      "chain-of-custody records"
+    ],
+    "rule": "Evidence authority must be backend-agnostic. Any storage layer may fail or be unavailable; the CRAM chain and manifests must remain the authoritative record regardless."
+  },
+
+  "summary": {
+    "PRESENT": 3,
+    "PARTIAL": 9,
+    "NOT_PRESENT": 2,
+    "total_categories": 14,
+    "prototype_grade": "PARTIAL_READINESS",
+    "blocking_gaps": 0,
+    "note": "No gaps are currently blocking prototype operation. All gaps are improvements toward professional evidence readiness for a future finished device."
+  }
+}

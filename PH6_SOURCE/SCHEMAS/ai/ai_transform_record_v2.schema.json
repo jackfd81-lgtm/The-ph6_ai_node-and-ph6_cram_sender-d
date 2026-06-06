@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ai/ai_transform_record_v2",
+  "title": "PH6 AI Transform Record v2 (Extended with PSEUDO/SoSo request fields)",
+  "description": "Extends v1 with PSEUDO/SoSo request tracking, response objects, and explicit CRAM immutability const. authority_level const enforces ADVISORY_ZERO. cannot_replace_cram const enforces evidence isolation.",
+  "type": "object",
+  "required": [
+    "schema_id", "transform_id", "model_id", "model_version",
+    "source_evidence_hash", "source_evidence_unchanged",
+    "authority_level", "cannot_replace_cram",
+    "requested_by", "requested_from_pseudo", "requested_from_soso",
+    "transform_reason", "transform_type",
+    "input_hash", "output_hash",
+    "pseudo_response", "soso_response",
+    "executed_at_utc", "proposed_by", "ratified_by"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.ai.transform_record.v2" },
+    "transform_id": { "type": "string" },
+    "model_id": { "type": "string" },
+    "model_version": { "type": "string" },
+    "source_evidence_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256 of source evidence."
+    },
+    "source_evidence_unchanged": {
+      "type": "boolean",
+      "const": true
+    },
+    "authority_level": {
+      "type": "string",
+      "const": "ADVISORY_ZERO"
+    },
+    "cannot_replace_cram": {
+      "type": "boolean",
+      "const": true
+    },
+    "requested_by": { "type": "string" },
+    "requested_from_pseudo": { "type": "boolean" },
+    "requested_from_soso": { "type": "boolean" },
+    "transform_reason": { "type": "string" },
+    "transform_type": {
+      "type": "string",
+      "enum": [
+        "SUMMARY", "ANNOTATION", "PATTERN_DETECTION", "ANOMALY_DETECTION",
+        "COMPARISON", "CONTEXT_ADDITION", "POSIT_GENERATION",
+        "DISSENT_GENERATION", "LEARNING_CORPUS_PREPARATION",
+        "MEMORY_COMPRESSION", "TOPOLOGY_INFERENCE"
+      ]
+    },
+    "input_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256 of transform input."
+    },
+    "output_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256 of transform output."
+    },
+    "pseudo_response": {
+      "type": "object",
+      "description": "PSEUDO authority response object, if this transform was requested from PSEUDO."
+    },
+    "soso_response": {
+      "type": "object",
+      "description": "SoSo topology response object, if this transform was requested from SoSo."
+    },
+    "executed_at_utc": { "type": "string", "format": "date-time" },
+    "proposed_by": { "type": "string" },
+    "ratified_by": { "type": ["string", "null"] },
+    "v1_superseded": {
+      "type": "boolean",
+      "description": "True when this record supersedes a v1 transform record for the same evidence."
+    }
+  },
+  "additionalProperties": false
+}

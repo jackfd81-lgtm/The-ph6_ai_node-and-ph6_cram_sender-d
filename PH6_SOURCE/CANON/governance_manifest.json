@@ -1,0 +1,154 @@
+{
+  "manifest_type": "governance_doc_manifest",
+  "generated_at_utc": "2026-06-06T12:33:01.638303+00:00",
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null,
+  "doc_count": 29,
+  "docs": [
+    {
+      "path": "GOVERNANCE/NEXT_SESSION_RESUME_2026-05-18.md",
+      "hash": "7adce5d3ac1cbcbd7dcc2e17383fe03c878e604fd205c00db4b3e5740d412e2a",
+      "size_bytes": 1356
+    },
+    {
+      "path": "GOVERNANCE/PH6-MODULAR-VALIDATION-HARNESS-TRANSITION-2026-05-28.md",
+      "hash": "326fee888dfeb10ef5229a22ebff933d9efb6a65b68c6042077310e283b807f0",
+      "size_bytes": 5189
+    },
+    {
+      "path": "GOVERNANCE/PH6_AI_DECISION_REVIEW_AND_HALLUCINATION_CONTROL.md",
+      "hash": "e7eb7210f947a403b8f377613dd67e605bd9754dfa9f78c665790f5f53908da2",
+      "size_bytes": 6243
+    },
+    {
+      "path": "GOVERNANCE/PH6_AUTHORITY_MODE_HIERARCHY.md",
+      "hash": "de88e0e81bbde24d5f74cd75d99141d2a12da275db06c5dc3eb0a2373be96524",
+      "size_bytes": 5752
+    },
+    {
+      "path": "GOVERNANCE/PH6_COURTROOM_EVIDENCE_READINESS.md",
+      "hash": "0d77d44cabfe95001ce92e6613bf2a4503785c4a72f4ff89f47fd02cf4bd720f",
+      "size_bytes": 7111
+    },
+    {
+      "path": "GOVERNANCE/PH6_LIVING_MEMORY_TOKEN_RETENTION_POLICY.md",
+      "hash": "fd3ccfe09413f336de05be91ff2a76752c8685f39d111f1d31f7d5319952dea4",
+      "size_bytes": 7181
+    },
+    {
+      "path": "GOVERNANCE/PH6_PRODUCTION_CLEARANCE_SEAL_2026-05-18.md",
+      "hash": "567859315559aee46709cba35a9a39f3edf12c79d62e123d408af885a0d5547f",
+      "size_bytes": 3010
+    },
+    {
+      "path": "GOVERNANCE/PH6_STANDARDS_CROSSWALK.md",
+      "hash": "3b44af6c09aa27e05232f046f8bd70c1ee2ad1d6514c2963681b84a4936a0094",
+      "size_bytes": 6297
+    },
+    {
+      "path": "GOVERNANCE/PH6_TOKEN_MEMORY_AI_DERIVED_EVIDENCE_DOCTRINE.md",
+      "hash": "0b544e2b7f370a27cac262f0dfc0b1baacbb2c2796ae77f430ad0f64969e5b74",
+      "size_bytes": 8153
+    },
+    {
+      "path": "GOVERNANCE/RATIFICATION_CHECKLIST.md",
+      "hash": "5f4ee284cb326e24bff4e9e910a9c4ebd0a073fecee029a6a7e1e83ff0f993f7",
+      "size_bytes": 3818
+    },
+    {
+      "path": "GOVERNANCE/SENSOR_INGEST_AUTHORITY_SEPARATION.md",
+      "hash": "ae942c1d159a5906184593855d59c9242928017daaf313992034dd6ed9200f1e",
+      "size_bytes": 4261
+    },
+    {
+      "path": "GOVERNANCE/ai/PH6_AI_CONTAINMENT_DOCTRINE.md",
+      "hash": "4410c27eb4080507734016140e2d79b4d8226ec4337bc67daa581dd787015caa",
+      "size_bytes": 3884
+    },
+    {
+      "path": "GOVERNANCE/authority/PH6_AUTHORITY_HIERARCHY.md",
+      "hash": "89832850b3be75e991ec096a7e58374c92d7e33d3796d64f90ba0e30b7d5d292",
+      "size_bytes": 3462
+    },
+    {
+      "path": "GOVERNANCE/evc05_corrected_closure_update_37c62a2fff.md",
+      "hash": "ad077b59234050b9d347883f8d632e684496f24a675d95c3b5168135c750a31d",
+      "size_bytes": 1556
+    },
+    {
+      "path": "GOVERNANCE/evidence_artifact_integrity_report.md",
+      "hash": "51aff72c699d98429d4fb395884257a3849d655f774f063a6cbd8dd7b51cd7ef",
+      "size_bytes": 1664
+    },
+    {
+      "path": "GOVERNANCE/forbidden_authority_drift_report.md",
+      "hash": "84fd383fa1e4260c9bd7ebf8bc73c6a1f3f4dc091fb202e032fc4ec388ac66d7",
+      "size_bytes": 1634
+    },
+    {
+      "path": "GOVERNANCE/info_hit_delta_report.md",
+      "hash": "8772a1e0867d3220c07ee686c526b3631ed43931abe916524c2ac6a8bae9da57",
+      "size_bytes": 2875
+    },
+    {
+      "path": "GOVERNANCE/open_material_register.md",
+      "hash": "afcf7a1c80e29d5582bf5945c9a9dd1fe832c62a46121b96c11a90770744981f",
+      "size_bytes": 1640
+    },
+    {
+      "path": "GOVERNANCE/ph6_full_alignment_audit_report.md",
+      "hash": "34ccbbc55799da952692c8bba73ea12258e8d5527df95ae6dd9ff6fb570a6713",
+      "size_bytes": 73885
+    },
+    {
+      "path": "GOVERNANCE/ph6_system_status_report.md",
+      "hash": "c63759f29900b25121b7c9bf6ab438edf48c2354a861090299daf66ddfe23c79",
+      "size_bytes": 953
+    },
+    {
+      "path": "GOVERNANCE/production_clearance_declaration_PH6-PROD-CLEAR-2026-05-18-001.md",
+      "hash": "94306dbc0fb8f0716afd403c96d65b2f6e54db88cca9bcfe2096e40e31c937aa",
+      "size_bytes": 2633
+    },
+    {
+      "path": "GOVERNANCE/pseudo_family_boundary_audit.md",
+      "hash": "1caafe7ff4ca5fb0577863cb553fe9a0d81506150ff483abfecf39ab83b375bb",
+      "size_bytes": 1537
+    },
+    {
+      "path": "GOVERNANCE/scan_hit_classification_report.md",
+      "hash": "20f86012dfb2428c64d87b768f70998fc084459d2ef19bfb561f5e1b2bad6a00",
+      "size_bytes": 1325
+    },
+    {
+      "path": "GOVERNANCE/scientific/PH6_SCIENTIFIC_EVIDENCE_INSTRUMENT_DOCTRINE.md",
+      "hash": "48314081b29c29aae57f1afcfd3f7a5332338dbc25483d9bf926e879e2c3e85c",
+      "size_bytes": 4498
+    },
+    {
+      "path": "GOVERNANCE/storage/PH6_CRAM_LANE_DOCTRINE.md",
+      "hash": "5e926bfde754246b3af98ce38c71c1e9465d2b035bf44e438528fa62d2d0af15",
+      "size_bytes": 3491
+    },
+    {
+      "path": "GOVERNANCE/tokens/PH6_TOKEN_TOPOLOGY_DOCTRINE.md",
+      "hash": "fad562ba66cd3010d378d5656c0a256323042865e1fe5a04af76a03b174d7d0c",
+      "size_bytes": 3995
+    },
+    {
+      "path": "GOVERNANCE/tooling_health_report.md",
+      "hash": "5e80307ef3bf97100375ee82e2d09a5479ca2c6faade1ea5a59c92f6ce50c78a",
+      "size_bytes": 833
+    },
+    {
+      "path": "GOVERNANCE/whole_system_architect_search_summary.md",
+      "hash": "8370ec3781ee2998526f82f4d0f6147a622aa333e762a7806025a1e46588564d",
+      "size_bytes": 5624
+    },
+    {
+      "path": "GOVERNANCE/whole_system_architecture_risk_register.md",
+      "hash": "e671d9a6152a6cf4de29967a22775a5eb7f30326624b599473f932fe4ab95cd1",
+      "size_bytes": 1878
+    }
+  ]
+}

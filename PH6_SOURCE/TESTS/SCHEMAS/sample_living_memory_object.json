@@ -1,0 +1,22 @@
+{
+  "schema_id": "ph6.living_memory_object.v1",
+  "memory_id": "mem_20260606_001",
+  "created_at_utc": "2026-06-06T10:00:00Z",
+  "memory_tier": "M4_AI_ADVISORY",
+  "source_cram_ids": ["cram_run_20260606_001"],
+  "source_pseudo_ids": ["pseudo_verdict_20260606_001"],
+  "source_soso_ids": [],
+  "source_token_ids": ["tok_20260606_001"],
+  "source_ai_request_ids": [],
+  "source_transform_ids": [],
+  "claim_summary": "Camera B provided a stable measurement baseline during run 20260606_001.",
+  "claim_class": "INFERRED",
+  "retention_reason": "Supports continuity mapping for future runs.",
+  "retention_risk": "LOW",
+  "decay_policy": "MEDIUM_TERM",
+  "review_status": "PENDING",
+  "canonical_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "superseded_by": null,
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null
+}

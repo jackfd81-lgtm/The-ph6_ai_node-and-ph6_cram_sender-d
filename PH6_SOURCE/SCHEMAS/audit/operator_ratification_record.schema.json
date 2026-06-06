@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/audit/operator_ratification_record_v1",
+  "title": "PH6 Operator Ratification Record v1",
+  "description": "Records an operator ratification decision. The AI does not ratify. The operator does.",
+  "type": "object",
+  "required": [
+    "schema_id", "ratification_id", "ratified_artifact_id",
+    "ratified_artifact_type", "operator_id", "ratified_at_utc",
+    "prior_status", "new_status", "ratification_hash"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.audit.operator_ratification.v1" },
+    "ratification_id": { "type": "string" },
+    "ratified_artifact_id": { "type": "string" },
+    "ratified_artifact_type": {
+      "type": "string",
+      "enum": [
+        "GOVERNANCE_DOC", "SCHEMA", "EVIDENCE_RECORD", "CRAM_RECORD",
+        "REPLAY_CERTIFICATION", "AI_DECISION_REVIEW", "MEMORY_OBJECT",
+        "DISSENT_TOKEN", "TOKEN_RECORD", "SENSOR_PROFILE", "POSIT",
+        "AI_TRANSFORM_RECORD", "CHAIN_OF_CUSTODY"
+      ]
+    },
+    "operator_id": { "type": "string" },
+    "ratified_at_utc": { "type": "string", "format": "date-time" },
+    "prior_status": { "type": "string" },
+    "new_status": {
+      "type": "string",
+      "enum": ["RATIFIED", "DISPUTED", "PENDING"]
+    },
+    "ratification_note": { "type": "string" },
+    "ratification_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of this ratification record"
+    },
+    "ai_ratification_permitted": {
+      "type": "boolean",
+      "const": false,
+      "description": "AI may never ratify. Always false."
+    }
+  },
+  "additionalProperties": false
+}

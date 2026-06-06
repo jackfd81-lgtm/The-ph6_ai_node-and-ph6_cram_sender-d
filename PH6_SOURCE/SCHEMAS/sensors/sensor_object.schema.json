@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/sensors/sensor_object_v1",
+  "title": "PH6 Sensor Object v1",
+  "description": "Sensor identity, class, hardware, firmware, and profile references.",
+  "type": "object",
+  "required": [
+    "schema_id", "sensor_id", "sensor_class", "device_path",
+    "authority_profile", "metadata_profile"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.sensor.object.v1" },
+    "sensor_id": { "type": "string" },
+    "sensor_class": {
+      "type": "string",
+      "enum": [
+        "CLASS_OPTICAL", "CLASS_AUDIO", "CLASS_THERMAL", "CLASS_RF",
+        "CLASS_IMU", "CLASS_ENVIRONMENTAL", "CLASS_BIOLOGICAL",
+        "CLASS_POWER", "CLASS_NETWORK", "CLASS_OPERATOR_INPUT",
+        "CLASS_SYNTHETIC_TEST_SIGNAL"
+      ]
+    },
+    "device_path": { "type": "string" },
+    "driver_version": { "type": ["string", "null"] },
+    "firmware_version": { "type": ["string", "null"] },
+    "hardware_serial": { "type": ["string", "null"] },
+    "bus_identity": { "type": ["string", "null"] },
+    "calibration_profile_id": { "type": ["string", "null"] },
+    "normalization_profile_id": { "type": ["string", "null"] },
+    "measurement_profile_id": { "type": ["string", "null"] },
+    "replay_profile_id": { "type": ["string", "null"] },
+    "certification_profile_id": { "type": ["string", "null"] },
+    "failure_profile_id": { "type": ["string", "null"] },
+    "drift_profile_id": { "type": ["string", "null"] },
+    "authority_profile": {
+      "type": "string",
+      "description": "Which authority level this sensor feeds into"
+    },
+    "metadata_profile": {
+      "type": "object",
+      "description": "Acquisition environment metadata captured at sensor registration"
+    },
+    "registered_at_utc": { "type": "string", "format": "date-time" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

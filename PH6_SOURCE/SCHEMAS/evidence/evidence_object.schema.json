@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/evidence/evidence_object_v1",
+  "title": "PH6 Evidence Object v1",
+  "description": "Base evidence record. Covers any CRAM lane. Links sensor, hash, and authority status.",
+  "type": "object",
+  "required": [
+    "schema_id", "evidence_id", "cram_lane", "source_sensor_id",
+    "capture_timestamp_utc", "raw_hash", "canonical_hash", "authority_status"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.evidence.object.v1" },
+    "evidence_id": { "type": "string" },
+    "cram_lane": {
+      "type": "string",
+      "enum": ["CRAM_0", "CRAM_A", "CRAM_R", "MRAM_S"]
+    },
+    "source_sensor_id": { "type": "string" },
+    "capture_timestamp_utc": { "type": "string", "format": "date-time" },
+    "raw_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of raw sensor output"
+    },
+    "canonical_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of canonicalized evidence packet"
+    },
+    "authority_status": {
+      "type": "string",
+      "enum": ["RAW_INTAKE", "PASS", "DROP", "ADVISORY_ONLY", "PENDING_ADJUDICATION"]
+    },
+    "pseudo_m_result_id": { "type": ["string", "null"] },
+    "pseudo_a_verdict_id": { "type": ["string", "null"] },
+    "replay_certified": { "type": "boolean" },
+    "replay_certification_id": { "type": ["string", "null"] },
+    "operator_review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    },
+    "notes": { "type": "string" },
+    "proposed_by": { "type": "string" },
+    "ratified_by": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

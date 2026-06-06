@@ -272,7 +272,10 @@ def scan_forbidden_terms(root: Path, registry: dict) -> list[dict]:
                     continue
 
                 effective_severity = severity
-                classification = "REAL_AUTHORITY_PATH_VIOLATION"
+                # Classification is determined after all downgrade logic runs.
+                # AUTHORITY_PATH_VIOLATION is only assigned when severity stays CRITICAL.
+                # Downgraded findings get a specific descriptive classification.
+                classification = None
 
                 if is_md:
                     # Fence-context or heading-context prohibition lines (definitional).
@@ -314,6 +317,14 @@ def scan_forbidden_terms(root: Path, registry: dict) -> list[dict]:
                     if in_non_authority_zone:
                         effective_severity = "INFO"
                         classification = "NON_AUTHORITY_ZONE"
+
+                # Assign final classification if not already set by a specific rule.
+                # Only genuine unmitigated violations in authority paths are AUTHORITY_PATH_VIOLATION.
+                if classification is None:
+                    if effective_severity == "CRITICAL":
+                        classification = "AUTHORITY_PATH_VIOLATION"
+                    else:
+                        classification = "AUTHORITY_PATH_REFERENCE"
 
                 findings.append({
                         "check": "forbidden_terms",
@@ -559,6 +570,10 @@ def _apply_discovery_mode(report: dict) -> dict:
         if f.get("severity") not in ("PASS", "INFO"):
             f["severity"] = "INFO"
             info_count += 1
+            # Reclassify: AUTHORITY_PATH_VIOLATION in discovery mode means
+            # "detected in authority path but assessment is deferred/non-blocking"
+            if f.get("classification") == "AUTHORITY_PATH_VIOLATION":
+                f["classification"] = "AUTHORITY_PATH_REFERENCE"
     for check in report["summary_by_check"]:
         if report["summary_by_check"][check]["severity"] not in ("PASS",):
             report["summary_by_check"][check]["severity"] = "INFO"
@@ -634,7 +649,12 @@ def print_human_summary(report: dict) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser(description="PH6 Governance Drift Scanner")
     default_gov = str(Path(__file__).resolve().parent.parent / "GOVERNANCE")
-    ap.add_argument("--scan-root",      default=".",      help="Directory tree to scan (default: cwd)")
+    # Default scan root: PH6_SOURCE (parent of TOOLS/) when that directory exists.
+    # Never default to /home/jack; ph6/ simulation constants produce false CRITICALs.
+    _script_ph6source = Path(__file__).resolve().parent.parent
+    _default_scan = str(_script_ph6source) if _script_ph6source.is_dir() else "."
+    ap.add_argument("--scan-root",      default=_default_scan,
+                    help="Directory tree to scan (default: PH6_SOURCE alongside this script)")
     ap.add_argument("--governance-dir", default=default_gov, help="Path to GOVERNANCE dir")
     ap.add_argument("--project-root",   default=None,     help="Project root for manifest file resolution (default: cwd)")
     ap.add_argument("--report-out",     help="Write JSON report to this file")
@@ -654,6 +674,18 @@ def main() -> int:
     gov_dir      = Path(args.governance_dir).resolve()
     # project_root is where manifest paths are anchored (repo root), NOT scan_root.
     project_root = Path(args.project_root).resolve() if args.project_root else Path.cwd()
+
+    # Warn when scanning outside the canonical PH6_SOURCE root.
+    _canonical = (_script_ph6source.resolve() if _script_ph6source.is_dir()
+                  else None)
+    if _canonical and scan_root != _canonical and not scan_root.is_relative_to(_canonical):
+        print(
+            f"WARNING: non-canonical scan root '{scan_root}'.\n"
+            "         Results may include false positives from ph6/ simulation constants\n"
+            "         that are outside PH6_SOURCE. Use --scan-root /home/jack/PH6_SOURCE\n"
+            "         for the authoritative governance check.",
+            file=sys.stderr,
+        )
 
     report = run_scan(scan_root, gov_dir, project_root)
 

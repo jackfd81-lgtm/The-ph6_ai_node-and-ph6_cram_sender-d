@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/replay/replay_certification_record_v1",
+  "title": "PH6 Replay Certification Record v1",
+  "description": "Certifies that replaying evidence produces identical results. Required for CRAM-A certification.",
+  "type": "object",
+  "required": [
+    "schema_id", "replay_id", "original_evidence_id", "original_verdict_id",
+    "replay_class", "same_evidence", "same_config", "same_code_hash",
+    "same_thresholds", "metrics_match", "verdict_match", "hash_match",
+    "certification_status", "replayed_at_utc"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.replay.certification_record.v1" },
+    "replay_id": { "type": "string" },
+    "original_evidence_id": { "type": "string" },
+    "original_verdict_id": { "type": "string" },
+    "replay_class": {
+      "type": "string",
+      "enum": [
+        "REPLAY_FRAME", "REPLAY_AUDIO", "REPLAY_SENSOR_PACKET",
+        "REPLAY_MEASUREMENT", "REPLAY_VERDICT", "REPLAY_HASH",
+        "REPLAY_EXPORT", "REPLAY_AI_DERIVATIVE_REFERENCE"
+      ]
+    },
+    "same_evidence": { "type": "boolean" },
+    "same_config": { "type": "boolean" },
+    "same_code_hash": { "type": "boolean" },
+    "same_thresholds": { "type": "boolean" },
+    "same_normalization": { "type": "boolean" },
+    "metrics_match": { "type": "boolean" },
+    "verdict_match": { "type": "boolean" },
+    "hash_match": { "type": "boolean" },
+    "certification_status": {
+      "type": "string",
+      "enum": ["CERTIFIED", "FAILED", "PENDING", "DEGRADED"]
+    },
+    "replayed_at_utc": { "type": "string", "format": "date-time" },
+    "original_hash": { "type": "string" },
+    "replay_hash": { "type": "string" },
+    "delta_summary": {
+      "type": "string",
+      "description": "Summary of any differences found; empty string if none"
+    },
+    "gap_register_entry_id": { "type": ["string", "null"] },
+    "operator_review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    }
+  },
+  "additionalProperties": false
+}

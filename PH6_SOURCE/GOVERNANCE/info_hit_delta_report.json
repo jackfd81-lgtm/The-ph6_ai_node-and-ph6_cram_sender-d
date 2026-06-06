@@ -1,0 +1,136 @@
+{
+  "schema": "ph6.governance.info_delta_report.v1",
+  "generated_at_utc": "2026-06-06T10:30:00Z",
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null,
+  "scan_root": "/home/jack/PH6_SOURCE",
+  "previous_baseline_info_count": 7,
+  "previous_baseline_note": "Baseline was from /home/jack full scan; those 7 hits were all in ph6/ (simulation constants, test guards). They do not appear in PH6_SOURCE-scoped scan.",
+  "current_info_count": 27,
+  "delta": 27,
+  "delta_note": "Delta is a scope change, not a real violation growth. Old 7 came from ph6/ which is outside PH6_SOURCE. New 27 are from PH6_SOURCE test scripts and schema.",
+  "findings": [
+    {
+      "classification": "DOCUMENTATION_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/ph6_dual_camera_certification_v2_1.py",
+      "line": 29,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction ONLY — motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Docstring documents prohibition. Not a usage. Non-blocking."
+    },
+    {
+      "classification": "DOCUMENTATION_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/ph6_dual_camera_certification_v2.py",
+      "line": 22,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction only — motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Docstring documents prohibition. Not a usage. Non-blocking."
+    },
+    {
+      "classification": "DOCUMENTATION_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/ph6_dual_camera_role_eval.py",
+      "line": 14,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction only; motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Docstring documents prohibition. Not a usage. Non-blocking."
+    },
+    {
+      "classification": "DOCUMENTATION_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/ph6_esp_cam_soso_context_3000_v1.py",
+      "line": 11,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction only — motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Docstring documents prohibition. Not a usage. Non-blocking."
+    },
+    {
+      "classification": "DOCUMENTATION_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/ph6_dual_camera_audio_campaign.py",
+      "line": 11,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction only; motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Docstring documents prohibition. Not a usage. Non-blocking."
+    },
+    {
+      "classification": "DOCUMENTATION_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/dual_camera_test.py",
+      "line": 14,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction only; motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Docstring documents prohibition. Not a usage. Non-blocking."
+    },
+    {
+      "classification": "TEST_REFERENCE",
+      "file": "TESTS/CAMERA_BENCHMARK/stage4_area_math_scan.py",
+      "line": 37,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "No field named motion_score or motion_decay_score is computed or stored",
+      "rationale": "Comment explicitly denies usage. Non-blocking."
+    },
+    {
+      "classification": "TEST_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/cert_v2_1/20260603_075929/scripts/ph6_dual_camera_certification_v2_1.py",
+      "line": 29,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction ONLY — motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Run artifact copy of canonical test script. Same prohibition docstring. Non-blocking."
+    },
+    {
+      "classification": "TEST_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/cert_v2_1/20260603_080725/scripts/ph6_dual_camera_certification_v2_1.py",
+      "line": 29,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction ONLY — motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Run artifact copy. Non-blocking."
+    },
+    {
+      "classification": "TEST_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/cert_v2_1/20260603_081434/scripts/ph6_dual_camera_certification_v2_1.py",
+      "line": 29,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction ONLY — motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Run artifact copy. Non-blocking."
+    },
+    {
+      "classification": "TEST_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/cert_v2_1/20260603_080946/scripts/ph6_dual_camera_certification_v2_1.py",
+      "line": 29,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction ONLY — motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Run artifact copy. Non-blocking."
+    },
+    {
+      "classification": "TEST_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/cert_v2_1/20260603_081044/scripts/ph6_dual_camera_certification_v2_1.py",
+      "line": 29,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction ONLY — motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Run artifact copy. Non-blocking."
+    },
+    {
+      "classification": "TEST_REFERENCE",
+      "file": "TESTS/DUAL_USB_CAMERA/cert_v2_1/20260603_080831/scripts/ph6_dual_camera_certification_v2_1.py",
+      "line": 29,
+      "terms": ["motion_score", "motion_decay_score"],
+      "content": "- motion_fraction ONLY — motion_score / motion_decay_score FORBIDDEN",
+      "rationale": "Run artifact copy. Non-blocking."
+    },
+    {
+      "classification": "DOCUMENTATION_REFERENCE",
+      "file": "04_SCHEMAS/PH6-MEASUREMENT-ONTOLOGY-SCHEMA-v1.0.md",
+      "line": 585,
+      "terms": ["adaptive_threshold"],
+      "content": "\"adaptive_threshold\",",
+      "rationale": "Schema ontology document listing term in forbidden-terms vocabulary. Not a runtime usage. Non-blocking."
+    }
+  ],
+  "summary": {
+    "DOCUMENTATION_REFERENCE": 7,
+    "TEST_REFERENCE": 7,
+    "DETECTOR_REFERENCE": 0,
+    "LEGACY_REFERENCE": 0,
+    "CLEANUP_RECOMMENDED": 0
+  },
+  "verdict": "ALL_NON_BLOCKING",
+  "blocking_count": 0,
+  "note": "None of the 27 INFO hits touch live authority, verdict, CRAM, canon, replay, or audit mutation logic. No cleanup action required. Baseline INFO count for PH6_SOURCE scan should be updated to 27."
+}

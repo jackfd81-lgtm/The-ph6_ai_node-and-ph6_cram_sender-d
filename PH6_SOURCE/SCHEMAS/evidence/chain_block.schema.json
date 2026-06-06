@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/evidence/chain_block_v1",
+  "title": "PH6 Evidence Chain Block v1",
+  "description": "Lane 1 sovereign evidence packet with blockchain-style chaining. seq + prev_hash + canon_hash establish ordering independent of timestamp. Hash width (64 hex) is BLAKE2b-256 — pattern is width-only, does not imply SHA-256.",
+  "type": "object",
+  "required": [
+    "schema_id", "packet_type", "direction", "temp_class", "ttl_s",
+    "created_at", "seq", "authority_tag", "prev_hash", "payload_hash", "canon_hash"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.evidence.chain_block.v1" },
+    "packet_type": { "type": "string" },
+    "direction": {
+      "type": "string",
+      "enum": ["INGEST", "EGRESS"]
+    },
+    "temp_class": { "type": "string" },
+    "ttl_s": { "type": "integer", "minimum": 0 },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Temporal context only. Authoritative ordering is derived from seq + prev_hash."
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Monotonic sequence number. Primary ordering authority per Section 1.3 Time Authority Doctrine."
+    },
+    "authority_tag": {
+      "type": "string",
+      "const": "LANE_1_SOVEREIGN"
+    },
+    "prev_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256 of previous block. Width 64 hex. SHA-256 forbidden for authority fields."
+    },
+    "payload_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256 of raw payload bytes."
+    },
+    "canon_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256 canonical authority hash of this block."
+    }
+  },
+  "additionalProperties": false
+}

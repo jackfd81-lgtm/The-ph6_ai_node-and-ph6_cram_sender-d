@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/sensors/sensor_profile_v1",
+  "title": "PH6 Sensor Profile v1",
+  "description": "Calibration and normalization profile for a sensor. Required before evidence certification.",
+  "type": "object",
+  "required": [
+    "schema_id", "profile_id", "sensor_id", "profile_type",
+    "created_at_utc", "profile_hash"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.sensor.profile.v1" },
+    "profile_id": { "type": "string" },
+    "sensor_id": { "type": "string" },
+    "profile_type": {
+      "type": "string",
+      "enum": [
+        "CALIBRATION", "NORMALIZATION", "MEASUREMENT",
+        "REPLAY", "CERTIFICATION", "FAILURE", "DRIFT"
+      ]
+    },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "profile_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of this profile content"
+    },
+    "profile_version": { "type": "string" },
+    "parameters": {
+      "type": "object",
+      "description": "Profile-specific parameters (exposure, focus, thresholds, etc.)"
+    },
+    "valid_from_utc": { "type": ["string", "null"] },
+    "valid_until_utc": { "type": ["string", "null"] },
+    "validated_by": { "type": ["string", "null"] },
+    "operator_review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/evidence/cram0_record_v1",
+  "title": "PH6 CRAM-0 Raw Intake Record v1",
+  "description": "Raw sensor intake before PSEUDO measurement. Preserved before interpretation.",
+  "type": "object",
+  "required": [
+    "schema_id", "cram0_id", "source_sensor_id", "capture_timestamp_utc",
+    "raw_artifact_path", "raw_hash", "pre_interpretation_state"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.cram0.record.v1" },
+    "cram0_id": { "type": "string" },
+    "source_sensor_id": { "type": "string" },
+    "capture_timestamp_utc": { "type": "string", "format": "date-time" },
+    "raw_artifact_path": { "type": "string" },
+    "raw_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of raw sensor output before any normalization"
+    },
+    "pre_interpretation_state": {
+      "type": "string",
+      "description": "Sensor state at capture time (e.g., focus_mode, exposure_mode)"
+    },
+    "ai_mutation_permitted": {
+      "type": "boolean",
+      "const": false,
+      "description": "AI may not mutate CRAM-0. Always false."
+    },
+    "blake2b_marker_written": {
+      "type": "boolean",
+      "description": "No authority marker on CRAM-0. Always false at intake.",
+      "const": false
+    },
+    "linked_pseudo_m_id": { "type": ["string", "null"] },
+    "sensor_profile_version": { "type": ["string", "null"] },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

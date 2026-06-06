@@ -1,0 +1,846 @@
+{
+  "artifact_integrity": {
+    "artifact_inventory_count": 426413,
+    "logs_dir_exists": true,
+    "missing_artifact_classes": [],
+    "required_artifact_name_counts": {
+      "artifact_hashes.blake2b": 3,
+      "campaign_manifest.json": 3,
+      "failure_register.json": 3,
+      "final_report.md": 3,
+      "result_set_hash.txt": 16
+    },
+    "sample_artifacts": [
+      "ph6/cram_pu/validation_runs/evc01_20260516T110400Z.json",
+      "ph6/cram_pu/validation_runs/lcc01_A_20260518T070659Z/rsync_observation.json",
+      "ph6/cram_pu/validation_runs/lcc01_A_20260518T070659Z/lcc01_resource_trace.jsonl",
+      "ph6/cram_pu/validation_runs/lcc01_A_20260518T070659Z/authority_leakage_scan.json",
+      "ph6/cram_pu/validation_runs/lcc01_A_20260518T070659Z/camera_inventory.json",
+      "ph6/cram_pu/validation_runs/lcc01_A_20260518T070659Z/lcc01_verification_report.json",
+      "ph6/cram_pu/validation_runs/lcc01_A_20260518T070659Z/lcc01_final_manifest.json",
+      "ph6/cram_pu/validation_runs/lcc01_A_20260518T070659Z/result_set_hash.txt",
+      "ph6/cram_pu/validation_runs/lcc01_A_20260518T070659Z/lcc01_session_manifest.json",
+      "ph6/cram_pu/validation_runs/evc04_20260516T213359Z/ph6.evc04_receipt.v1.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000029.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000006.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/ingest_receipt_log.jsonl",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000029.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000011.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000013.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000010.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000023.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000017.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000007.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000010.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000019.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000028.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/ph6.vrc_receipt.v1.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000022.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000022.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000016.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000018.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000011.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000015.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000014.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000002.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000013.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000008.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000017.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000020.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000012.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000001.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000004.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000009.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000025.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/ph6.evc02_receipt.v1.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000027.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000008.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000005.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000021.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000001.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000018.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000002.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000019.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000027.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000016.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/ingest_receipt_seq.txt",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000004.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000026.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000030.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000006.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000024.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000012.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000005.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000020.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000024.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000003.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/verdict_log.jsonl",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000009.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000007.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000030.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000026.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000021.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000015.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000023.json.blake2b",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000025.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000014.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000028.json",
+      "ph6/cram_pu/validation_runs/evc02_20260516T214858Z/cram_0000000003.json",
+      "ph6/cram_pu/validation_runs/20260517T052301Z_TOK1_SOSO1_isolation/tok_soso_isolation_receipt.json",
+      "ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/rsync_observation.json",
+      "ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/lcc01_resource_trace.jsonl",
+      "ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/authority_leakage_scan.json",
+      "ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/oi03b_source_hashes.json",
+      "ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/camera_inventory.json",
+      "ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/lcc01_final_manifest.json",
+      "ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/result_set_hash.txt",
+      "ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/lcc01_session_manifest.json",
+      "ph6/cram_pu/validation_runs/20260506T111731Z/PH6_4_PASS_SYSTEM_REPORT.md",
+      "ph6/cram_pu/validation_runs/lcc01_B_20260518T070900Z/rsync_observation.json",
+      "ph6/cram_pu/validation_runs/lcc01_B_20260518T070900Z/lcc01_resource_trace.jsonl",
+      "ph6/cram_pu/validation_runs/lcc01_B_20260518T070900Z/authority_leakage_scan.json",
+      "ph6/cram_pu/validation_runs/lcc01_B_20260518T070900Z/camera_inventory.json",
+      "ph6/cram_pu/validation_runs/lcc01_B_20260518T070900Z/lcc01_verification_report.json",
+      "ph6/cram_pu/validation_runs/lcc01_B_20260518T070900Z/lcc01_final_manifest.json",
+      "ph6/cram_pu/validation_runs/lcc01_B_20260518T070900Z/result_set_hash.txt",
+      "ph6/cram_pu/validation_runs/lcc01_B_20260518T070900Z/lcc01_session_manifest.json",
+      "ph6/cram_pu/validation_runs/evc04_20260516T214915Z/ph6.evc04_receipt.v1.json",
+      "ph6/cram_pu/validation_runs/20260517T061511Z_c11_6000_30fps_absorption/artifact_hashes.blake2b",
+      "ph6/cram_pu/validation_runs/20260517T061511Z_c11_6000_30fps_absorption/replay_parity_receipt.json",
+      "ph6/cram_pu/validation_runs/20260517T061511Z_c11_6000_30fps_absorption/failure_register.json",
+      "ph6/cram_pu/validation_runs/20260517T061511Z_c11_6000_30fps_absorption/pseudo_family_receipt.json",
+      "ph6/cram_pu/validation_runs/20260517T061511Z_c11_6000_30fps_absorption/campaign_manifest.json",
+      "ph6/cram_pu/validation_runs/20260517T061511Z_c11_6000_30fps_absorption/pseudo_math_gate_receipt.json"
+    ],
+    "validation_runs_dir_exists": true
+  },
+  "campaign_integrity": {
+    "campaign_count": 20,
+    "campaign_states": {
+      "C07": {
+        "closed": true,
+        "state": "CLOSED"
+      },
+      "C08_3600_STAGED_LOCAL_PI": {
+        "closed": false,
+        "state": "PASS_PENDING_REVIEW"
+      },
+      "C09_12000_STAGED_LOCAL_PI": {
+        "closed": false,
+        "state": "PASS_PENDING_REVIEW"
+      },
+      "C10_6000_15FPS_SLOW_ABSORPTION": {
+        "closed": false,
+        "state": "PASS_PENDING_REVIEW"
+      },
+      "C11_6000_30FPS_STANDARD_ABSORPTION": {
+        "closed": false,
+        "state": "PASS_PENDING_REVIEW"
+      },
+      "C12_3000_50FPS_HIGH_RATE_ABSORPTION": {
+        "closed": false,
+        "state": "PASS_PENDING_REVIEW"
+      },
+      "C13_24000_VARIABLE_SPEED_INFORMATION_STRESS": {
+        "closed": false,
+        "state": "PASS_PENDING_REVIEW"
+      },
+      "EVC-05": {
+        "closed": true,
+        "state": "CLOSED"
+      },
+      "LCC-01A": {
+        "closed": false,
+        "state": "PASS_PENDING_REVIEW"
+      },
+      "LCC-01B": {
+        "closed": false,
+        "state": "PASS_PENDING_REVIEW"
+      },
+      "LCC-01C": {
+        "closed": false,
+        "state": "PASS_PENDING_REVIEW"
+      },
+      "LIFE-CRAM-PU-1": {
+        "closed": false,
+        "state": "OPEN"
+      },
+      "OI-01": {
+        "closed": true,
+        "state": "DESCOPED"
+      },
+      "OI-03A": {
+        "closed": true,
+        "state": "CLOSED"
+      },
+      "OI-03B": {
+        "closed": true,
+        "state": "CLOSED"
+      },
+      "OI-03C": {
+        "closed": true,
+        "state": "CLOSED"
+      },
+      "SOSO-1": {
+        "closed": false,
+        "state": "PASS_PENDING_REVIEW"
+      },
+      "SOSO-LIFE-1": {
+        "closed": false,
+        "state": "OPEN"
+      },
+      "TOK-1": {
+        "closed": false,
+        "state": "PASS_PENDING_REVIEW"
+      },
+      "TOK-LIFE-1": {
+        "closed": false,
+        "state": "OPEN"
+      }
+    },
+    "campaigns_block_exists": true,
+    "known_campaigns_present": {
+      "C09_12000_STAGED_LOCAL_PI": true,
+      "C10_6000_15FPS_SLOW_ABSORPTION": true,
+      "C11_6000_30FPS_STANDARD_ABSORPTION": true,
+      "C12_3000_50FPS_HIGH_RATE_ABSORPTION": true,
+      "C13": true
+    },
+    "misplaced_campaign_top_level_entries": [],
+    "unauthorized_closed_states": []
+  },
+  "evidence_deleted": false,
+  "generated_at_utc": "2026-05-29T19:57:49+00:00",
+  "governance": {
+    "closure_status_error": "",
+    "closure_status_json_valid": true,
+    "evidence_campaign_matrix_error": "",
+    "evidence_campaign_matrix_json_valid": true
+  },
+  "overall_status": "PASS_WITH_WARNINGS",
+  "recommended_next_action": "Review warnings, classify scan hits, and decide whether targeted fixes are needed.",
+  "repository": {
+    "git_available": true,
+    "git_dirty_status": "A  PH6_SOURCE/GOVERNANCE/ph6_system_status_report.json\nA  PH6_SOURCE/GOVERNANCE/ph6_system_status_report.md\nA  PH6_SOURCE/GOVERNANCE/scan_hit_classification_report.json\nA  PH6_SOURCE/GOVERNANCE/scan_hit_classification_report.md\nA  ph6/cram_pu/tools/ph6_classify_scan_hits.py\nA  ph6/cram_pu/tools/ph6_system_status_check.py\n?? .ph6_session_context\n?? .platformio/\n?? CLAUDE.md\n?? PH6_INTERNAL_SYSTEM_TEST_20260529T181514Z.md\n?? PH6_INTERNAL_SYSTEM_TEST_20260529T181538Z.md\n?? PH6_INTERNAL_SYSTEM_TEST_20260529T182054Z.md\n?? PH6_LOCAL_BACKUPS/\n?? PH6_RECOVERY/\n?? PH6_SOURCE/00_AI_AGENT_READ_FIRST.md\n?? PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt\n?? PH6_SOURCE/CAMPAIGNS/\n?? PH6_SOURCE/CERTIFICATION/\n?? PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md\n?? PH6_SOURCE/GOVERNANCE/governance_scan_pre_C09.json\n?? PH6_SOURCE/builds/\n?? apply_closure_patch.py\n?? apply_evc05_closure.py\n?? apply_production_clearance_declaration.py\n?? cram_pu_live_1_0/runtime/\n?? esp32cam_fw/\n?? esp32cam_ingest_300.py\n?? esp32cam_test.jpg\n?? ph6/audit.py\n?? ph6/cram_pu/evc04_live_payload_replay.py\n?? ph6/cram_pu/run_evc02.sh\n?? ph6/cram_pu/run_evc04_live_replay.sh\n?? ph6/cram_pu/run_evc04_replay.sh\n?? ph6/cram_pu/runtime/oi03_phase1_20260516T084449Z/\n?? ph6/cram_pu/runtime/oi03_phase2_20260516T084619Z/\n?? ph6/cram_pu/runtime/oi03_phase3_20260516T084757Z/\n?? ph6/cram_pu/runtime/run_20260506T102907Z/\n?? ph6/cram_pu/runtime/run_20260506T103247Z/\n?? ph6/cram_pu/runtime/run_20260515T100522Z/\n?? ph6/cram_pu/runtime/run_20260516T083606Z/\n?? ph6/cram_pu/runtime/run_20260516T083740Z/\n?? ph6/cram_pu/runtime/run_20260516T214325Z/\n?? ph6/cram_pu/runtime/run_20260516T215224Z/\n?? ph6/cram_pu/runtime/tok_leak_001_20260516T083748Z_tok_off/\n?? ph6/cram_pu/runtime/tok_leak_001_20260516T083748Z_tok_on/\n?? ph6/cram_pu/runtime/two_pi_20260506T111235Z/\n?? ph6/cram_pu/validation_runs/20260506T111731Z/\n?? ph6/cram_pu/validation_runs/evc02_20260516T214858Z/\n?? ph6/cram_pu/validation_runs/evc02_20260516T214907Z/\n?? ph6/cram_pu/validation_runs/evc04_20260516T212620Z/\n?? ph6/cram_pu/validation_runs/evc04_20260516T213359Z/\n?? ph6/cram_pu/validation_runs/evc04_20260516T213410Z/\n?? ph6/cram_pu/validation_runs/evc04_20260516T214340Z/\n?? ph6/cram_pu/validation_runs/evc04_20260516T214915Z/\n?? ph6/cram_pu/validation_runs/lcc01_C_20260518T071209Z/\n?? ph6/cram_pu/validation_runs/lcc01_smoke_test/\n?? ph6/cram_pu/validation_runs/lcc01_smoke_test_20260518T070047Z/\n?? ph6/validation_runs/\n?? ph6_claude_boot.sh\n?? ph6_console.py\n?? ph6_esp32cam_tests/\n?? ph6_esp32cam_validation/\n?? ph6_iphone_ingest/\n?? ph6_smi11_drop/\n?? ph6_usb_camera_tests/audio_test_20260515T095839Z/chunk_0000.wav\n?? ph6_usb_camera_tests/audio_test_20260515T095839Z/chunk_0030.wav\n?? ph6_usb_camera_tests/audio_test_20260515T095839Z/chunk_0060.wav\n?? ph6_usb_camera_tests/audio_test_20260515T095839Z/chunk_0090.wav\n?? ph6_usb_camera_tests/audio_test_20260515T095839Z/chunk_0120.wav\n?? ph6_usb_camera_tests/audio_test_20260515T095839Z/chunk_0150.wav\n?? ph6_usb_camera_tests/audio_test_20260515T095839Z/chunk_0179.wav\n?? ph6_usb_camera_tests/audio_test_20260515T095839Z/raw_capture.wav\n?? ph6_usb_camera_tests/av_contention_20260515T100154Z/\n?? ph6_usb_camera_tests/av_contention_20260515T100841Z/audio_capture.wav\n?? ph6_usb_camera_tests/gap16_r2_20260515T101657Z/audio_capture.wav\n?? ph6_usb_camera_tests/gap16b_isolation_20260515T102608Z/\n?? ph6_usb_camera_tests/ph6_extended_stability_test.py\n?? ph6_usb_camera_tests/ph6_gap16b_isolation.py\n?? ph6_usb_camera_tests/usb_test_20260514T225126Z/\n?? ph6_usb_camera_tests/usb_test_20260514T225142Z/\n?? ph6_usb_camera_tests/usb_test_20260514T225157Z/\n?? ph6_usb_camera_tests/usb_test_20260529T182238Z/\n?? ph6_usb_camera_tests/usb_test_20260529T182417Z/\n?? ph6_usb_camera_tests/usb_test_20260529T191118Z/\n?? ph6_usb_camera_tests/usb_test_20260529T195516Z/\n?? ph6_video_tests/\n?? usb3_nvme_calibration/\n?? validation_runs/",
+    "git_error": null,
+    "git_head": "af436c9c19",
+    "root": "/home/jack"
+  },
+  "scans": {
+    "forbidden_authority_drift_hit_count": 300,
+    "forbidden_authority_drift_sample": [
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 35,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "7. No AI/ML may issue PASS or DROP."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 71,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "- Allow Lane 2, SoSo, TOK, Swarm, or any external AI to affect PASS/DROP authority."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 74,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "- Use `motion_score` or `motion_decay_score` (deprecated and forbidden)."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 99,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "| `SoSo / TOK / Swarm / SSMT`      | Yes             | Authority ZERO only; no escalation to PASS/DROP          |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 192,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "\"forbidden_fields\": [\"motion_score\", \"motion_decay_score\"],"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 253,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "- `motion_score`"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 254,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "- `motion_decay_score`"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 260,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "- `confidence-based PASS`"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 269,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "> \"The SoSo module may emit advisory drift metrics to MRAM-S, but these outputs must not affect PASS/DROP.\""
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 273,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "> \"SoSo can help determine whether a frame should PASS.\""
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 283,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "> \"The patch updates SoSo and PSEUDO to use the same confidence score.\""
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 324,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "- [ ] No forbidden fields (`motion_score`, `motion_decay_score`) were introduced."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 356,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "\u2502  Forbidden fields:         motion_score              \u2502"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 357,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "\u2502                            motion_decay_score        \u2502"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 23,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| SoSo-family enforcement       | ACTIVE    | No         | Drift scan pass + implementation tests      | Repo governance      | Current commit series            |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 410,
+        "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+        "text": "confidence verdict"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 411,
+        "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+        "text": "probability verdict"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 102,
+        "path": "PH6_SOURCE/AI_ENTRY_INDEX.md",
+        "text": "RESULT:     LOCAL EVIDENCE-CHAIN PASS"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 111,
+        "path": "PH6_SOURCE/AI_ENTRY_INDEX.md",
+        "text": "SoSo Authority ZERO             PASS"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 112,
+        "path": "PH6_SOURCE/AI_ENTRY_INDEX.md",
+        "text": "SoSo no PASS/DROP contamination PASS"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 21,
+        "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+        "text": "No AI or advisory system may issue PASS or DROP."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 35,
+        "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+        "text": "7. No AI/ML may issue PASS or DROP."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 163,
+        "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+        "text": "| `motion_fraction`       | motion_score, motion_decay_score            |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 94,
+        "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+        "text": "`FORBIDDEN_MOTION_FIELDS=frozenset({\"motion_score\",\"motion_decay_score\"})`."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 172,
+        "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+        "text": "6. `motion_fraction` is the only permitted motion metric. `motion_score` / `motion_decay_score` = FORBIDDEN."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 99,
+        "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+        "text": "- use motion_score or motion_decay_score (deprecated and forbidden)"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 172,
+        "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+        "text": "DRIFT SIGNAL: using a forbidden field (motion_score, motion_decay_score)"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 112,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "- use motion_score or motion_decay_score (deprecated and forbidden)"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 185,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "DRIFT SIGNAL: using a forbidden field (motion_score, motion_decay_score)"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 390,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "\"2\":   { \"name\": \"AI / SoSo / TOK / Swarm\",  \"authority\": \"ZERO\",              \"pass_drop\": false },"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 422,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "\"motion_score\","
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 423,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "\"motion_decay_score\""
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 483,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "\"seal_status\": \"UNSEALED \u2014 manifest v1.2 adds ph6.soso.advisory.v1 schema lock and SoSo family contract doctrine; requires drift scan pass before seal review\","
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 505,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "\"term\": \"motion_score\","
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 511,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "\"scan_pattern\": \"motion_score\","
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 516,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "\"term\": \"motion_decay_score\","
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 522,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "\"scan_pattern\": \"motion_decay_score\","
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 815,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "- Authority boundary crossed (Lane 2 influencing PASS/DROP)"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 816,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "- SoSo advisory containing verdict, result, pass, or drop fields"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 832,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "6. Allows Lane 2 / SoSo / AI to influence PASS/DROP in response to degradation"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 917,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "7. No AI/ML may issue PASS or DROP."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 953,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "- Allow Lane 2, SoSo, TOK, Swarm, or any external AI to affect PASS/DROP authority."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 956,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "- Use `motion_score` or `motion_decay_score` (deprecated and forbidden)."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 981,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "| `SoSo / TOK / Swarm / SSMT`      | Yes             | Authority ZERO only; no escalation to PASS/DROP          |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 1074,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "\"forbidden_fields\": [\"motion_score\", \"motion_decay_score\"],"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 1135,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "- `motion_score`"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 1136,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "- `motion_decay_score`"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 1142,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "- `confidence-based PASS`"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 1151,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "> \"The SoSo module may emit advisory drift metrics to MRAM-S, but these outputs must not affect PASS/DROP.\""
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 1155,
+        "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+        "text": "> \"SoSo can help determine whether a frame should PASS.\""
+      }
+    ],
+    "open_material_hit_count": 300,
+    "open_material_sample": [
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 84,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "- Treat HRG9 as open. HRG9 is CLOSED (commit `2ef5fd6`). Do not regenerate HRG9 artifacts."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 186,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "{ \"id\": \"OI-01\", \"description\": \"Hailo hardware integration incomplete\", \"status\": \"OPEN\" },"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 187,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "{ \"id\": \"OI-03\", \"description\": \"Real Pi-to-Pi live transfer not yet fully certified\", \"status\": \"OPEN\" }"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 213,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "## 7. OPEN ITEM REGISTER"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 217,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "| OI-01 | Hailo hardware integration              | OPEN   | Yes (STOP-SHIP)    | Hardware run + integration report         |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 218,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "| OI-03 | Real Pi-to-Pi live transfer             | OPEN   | Yes (STOP-SHIP)    | Transfer log + replay proof               |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 221,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "**HRG9 is CLOSED. Do not regenerate HRG9 artifacts. Do not list HRG9 as STOP-SHIP.**"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 309,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "> \"OI-01 and OI-03 are OPEN STOP-SHIP gates. This patch does not close them. Human closure required.\""
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 329,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "- [ ] Test count is not below 300 frames unless a failure occurred before the threshold was reached."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 333,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "- [ ] HRG9 is not listed as open or regenerated."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 334,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "- [ ] OI-01 and OI-03 remain OPEN unless human-authorized closure evidence is provided."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 354,
+        "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+        "text": "\u2502  STOP-SHIP gates:          OI-01, OI-03              \u2502"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 42,
+        "path": "PH6_SOURCE/00_AI_ACTION_INDEX.md",
+        "text": "Do not propose changes if the drift scan fails. Report the failure and stop."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 82,
+        "path": "PH6_SOURCE/00_AI_ACTION_INDEX.md",
+        "text": "## Current STOP-SHIP Items"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 94,
+        "path": "PH6_SOURCE/00_AI_ACTION_INDEX.md",
+        "text": "## Closed Items \u2014 Do Not Reopen"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 188,
+        "path": "PH6_SOURCE/00_AI_ACTION_INDEX.md",
+        "text": "open STOP-SHIP:    OI-01, OI-03 (hardware-gated; do not falsely close)"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 8,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "Purpose:     Single authoritative register for all open, closed, and deferred gaps."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 9,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "Updates require human authorization for STOP-SHIP items."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 10,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "AI may update status of OPEN/DEFERRED non-STOP-SHIP items only."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 17,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| Gap ID                         | Status    | STOP-SHIP? | Evidence Required                          | Closure Authority    | Closure File / Commit            |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 19,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| OI-01                         | OPEN      | YES        | Hailo hardware run + integration report     | Human only           | TBD                              |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 20,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| OI-03                         | OPEN      | YES        | Real Pi-to-Pi transfer log + replay proof   | Human only           | TBD                              |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 24,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| 300-frame coherence run       | OPEN      | No         | Campaign 01 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01   |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 25,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| Advisory expansion (Swarm)    | OPEN      | No         | Campaign 01B receipt; C01 must close first  | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01B  |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 26,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| Pi-to-Pi live transfer        | OPEN      | YES        | Campaign 02 receipt (satisfies OI-03)       | Human + Campaign 02  | EVIDENCE_CAMPAIGNS/CAMPAIGN_02   |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 28,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| GAP-16B: USB disconnect       | OPEN      | No         | Isolation test: video-only 5+ min           | Human after evidence | EVIDENCE_CAMPAIGNS/GAPS/GAP-16   |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 29,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| Resource pressure RSYNC       | OPEN      | No         | Campaign 03 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_03   |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 30,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| Crash recovery                | OPEN      | No         | Campaign 04 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_04   |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 31,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| Replay parity                 | OPEN      | No         | Campaign 05 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_05   |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 39,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| OPEN     | Gap exists; evidence not yet collected                                   |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 41,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| DEFERRED | Intentionally deferred pending real-world evidence; not blocking         |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 42,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "| CLOSED   | Closure evidence exists; immutable; do not reopen without human decision |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 46,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "## STOP-SHIP Rules"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 48,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "STOP-SHIP gaps (OI-01, OI-03) cannot be closed by:"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 66,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "- Reopen HRG9 for any reason"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 68,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "If any document currently lists HRG9 as open, that document contains an error and must be patched."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 74,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "### For non-STOP-SHIP gaps"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 77,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "### For STOP-SHIP gaps (OI-01, OI-03)"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 81,
+        "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+        "text": "Add a row with Status = OPEN, note evidence required and closure authority."
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 19,
+        "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+        "text": "| **CRAM-R** | DROP reject vault \u2014 authoritative negative-result corpus | reject store, failed store |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 29,
+        "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+        "text": "| **DROP** | Sole negative verdict from PSEUDO-A | reject, fail, deny, negative, invalid |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 43,
+        "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+        "text": "| **DRIFT_FAIL** | Architectural violation state \u2014 halt and audit | failure, error, mismatch |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 44,
+        "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+        "text": "| **HRG9** | The production-clearance hardware replay evidence gate \u2014 CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 45,
+        "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+        "text": "| **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 75,
+        "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+        "text": "DRIFT_FAIL"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 298,
+        "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+        "text": "DRIFT_FAIL triggers"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 321,
+        "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+        "text": "STOP-SHIP criteria"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 330,
+        "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+        "text": "STOP-SHIP"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 331,
+        "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+        "text": "HRG9 OPEN / EVIDENCE BLOCKED"
+      },
+      {
+        "classification": "CLASSIFICATION_REQUIRED",
+        "line": 397,
+        "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+        "text": "| DRIFT_FAIL      | Canon violation requiring stop and resolution                                       |"
+      }
+    ]
+  },
+  "schema": "ph6.system_status_report.v1",
+  "tooling": {
+    "compileall_result": {
+      "ran": true,
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": " 'ph6/cram_pu/validation_runs/lcc01_smoke_test_20260518T070336Z/mram_s/swarms/tokens'...\nListing 'ph6/cram_pu/validation_runs/oi03_prep'...\nListing 'ph6/cram_pu/validation_runs/oi03a_20260518T081014Z'...\nListing 'ph6/cram_pu/validation_runs/oi03a_20260518T081014Z/cram_store'...\nListing 'ph6/cram_pu/validation_runs/oi03a_20260518T081014Z/cram_store/payloads'...\nListing 'ph6/cram_pu/validation_runs/oi03a_20260518T081014Z/mram_s'...\nListing 'ph6/cram_pu/validation_runs/oi03a_20260518T081014Z/mram_s/swarms'...\nListing 'ph6/cram_pu/validation_runs/oi03a_20260518T081014Z/mram_s/swarms/tokens'...\nListing 'ph6/cram_pu/validation_runs/oi03b_20260518T082042Z'...\nListing 'ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/cram_store'...\nListing 'ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/cram_store/payloads'...\nListing 'ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/mram_s'...\nListing 'ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/mram_s/swarms'...\nListing 'ph6/cram_pu/validation_runs/oi03b_20260518T082042Z/mram_s/swarms/tokens'...\nListing 'ph6/cram_pu/validation_runs/oi03c_20260518T082956Z'...\nListing 'ph6/cram_pu/validation_runs/oi03c_20260518T082956Z/cram_store'...\nListing 'ph6/cram_pu/validation_runs/oi03c_20260518T082956Z/cram_store/payloads'...\nListing 'ph6/cram_pu/validation_runs/oi03c_20260518T082956Z/mram_s'...\nListing 'ph6/cram_pu/validation_runs/oi03c_20260518T082956Z/mram_s/swarms'...\nListing 'ph6/cram_pu/validation_runs/oi03c_20260518T082956Z/mram_s/swarms/tokens'...\nListing 'ph6/cram_pu/validation_runs/qst01_pre_oi03_20260518T073023Z_local_sanity'...\nListing 'ph6/cram_pu/validation_runs/qst01_pre_oi03_20260518T073023Z_local_sanity/cram_store'...\nListing 'ph6/cram_pu/validation_runs/qst01_pre_oi03_20260518T073023Z_local_sanity/cram_store/payloads'...\nListing 'ph6/cram_pu/validation_runs/qst01_pre_oi03_20260518T073023Z_local_sanity/mram_s'...\nListing 'ph6/cram_pu/validation_runs/qst01_pre_oi03_20260518T073023Z_local_sanity/mram_s/swarms'...\nListing 'ph6/cram_pu/validation_runs/qst01_pre_oi03_20260518T073023Z_local_sanity/mram_s/swarms/tokens'...\nListing 'ph6/ssmt'...\nListing 'ph6/ssmt/examples'...\nListing 'ph6/ssmt/schemas'...\nListing 'ph6/ssmt/tests'...\nListing 'ph6/tok'...\nListing 'ph6/tok/tests'...\nListing 'ph6/validation_runs'...\nListing 'ph6/validation_runs/cram_lane1_evidence_chain_20260515T104618Z'...\nListing 'ph6/validation_runs/cram_lane1_evidence_chain_20260515T104618Z/audit'...\nListing 'ph6/validation_runs/cram_lane1_evidence_chain_20260515T104618Z/cram_fast'...\nListing 'ph6/validation_runs/cram_lane1_evidence_chain_20260515T104618Z/mram_s'...\nListing 'ph6/validation_runs/cram_lane1_evidence_chain_20260515T104618Z/mram_s/soso'...\nListing 'ph6/validation_runs/fast_cram_20260515T103846Z'...\nListing 'ph6/validation_runs/fast_cram_20260515T103846Z/cram_fast'...\nListing 'ph6/validation_runs/fast_cram_20260515T103846Z/mram_s'...\nListing 'ph6/validation_runs/fast_cram_20260515T103846Z/mram_s/soso'...\nListing 'PH6_SOURCE'...\nListing 'PH6_SOURCE/00_READ_FIRST'...\nListing 'PH6_SOURCE/03_CAMPAIGNS'...\nListing 'PH6_SOURCE/03_SCIENTIFIC_INSTRUMENT'...\nListing 'PH6_SOURCE/04_SCHEMAS'...\nListing 'PH6_SOURCE/06_HANDOFF'...\nListing 'PH6_SOURCE/AI_HANDOFF'...\nListing 'PH6_SOURCE/AI_PRELOAD'...\nListing 'PH6_SOURCE/ARCHIVE'...\nListing 'PH6_SOURCE/CAMPAIGNS'...\nListing 'PH6_SOURCE/CAMPAIGNS/LIFE_CRAM'...\nListing 'PH6_SOURCE/CERTIFICATION'...\nListing 'PH6_SOURCE/DEPLOYMENT'...\nListing 'PH6_SOURCE/DRAFT'...\nListing 'PH6_SOURCE/EVIDENCE_CAMPAIGNS'...\nListing 'PH6_SOURCE/EVIDENCE_CAMPAIGNS/GAPS'...\nListing 'PH6_SOURCE/EVIDENCE_CAMPAIGNS/RECEIPTS'...\nListing 'PH6_SOURCE/EXPERIMENTAL'...\nListing 'PH6_SOURCE/GOVERNANCE'...\nListing 'PH6_SOURCE/HRG9_CLOSURE'...\nListing 'PH6_SOURCE/IMPLEMENTATION'...\nListing 'PH6_SOURCE/NODE_ASSIGNMENTS'...\nListing 'PH6_SOURCE/SUPERSEDED'...\nListing 'PH6_SOURCE/TOOLS'...\nListing 'PH6_SOURCE/VALIDATION'...\nListing 'PH6_SOURCE/builds'...\nListing 'PH6_SOURCE/builds/receipts'...\nListing 'scripts'..."
+    }
+  }
+}

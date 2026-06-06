@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ph6_ai_transform_record_v1",
+  "title": "PH6 AI Transform Record v1",
+  "description": "Records an AI-derived secondary artifact. AI transforms are never primary evidence.",
+  "type": "object",
+  "required": [
+    "schema_id", "transform_id", "created_at_utc",
+    "source_cram_ids", "source_pseudo_ids", "source_soso_ids", "input_token_ids",
+    "requested_by", "request_reason", "transform_type", "transform_parameters",
+    "output_artifact_ids", "output_hashes",
+    "authority_status", "may_replace_primary_evidence", "review_status"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.ai_transform_record.v1" },
+    "transform_id": { "type": "string" },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "source_cram_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Original CRAM evidence this transform is derived from"
+    },
+    "source_pseudo_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source_soso_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "input_token_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "requested_by": { "type": "string" },
+    "request_reason": { "type": "string" },
+    "transform_type": {
+      "type": "string",
+      "enum": [
+        "IMAGE_ENHANCEMENT", "AUDIO_ENHANCEMENT", "VIDEO_ENHANCEMENT",
+        "DERIVED_METRIC", "COMPOSITE_ARTIFACT", "ANNOTATION",
+        "SUMMARY", "CLASSIFICATION_OVERLAY"
+      ]
+    },
+    "transform_parameters": {
+      "type": "object",
+      "description": "Free-form parameters used in the transform"
+    },
+    "output_artifact_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "output_hashes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "BLAKE2b-256 hashes of each output artifact"
+    },
+    "authority_status": {
+      "type": "string",
+      "const": "SECONDARY_DERIVED_EVIDENCE_ONLY"
+    },
+    "may_replace_primary_evidence": {
+      "type": "boolean",
+      "const": false
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED"]
+    },
+    "proposed_by": { "type": "string" },
+    "ratified_by": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

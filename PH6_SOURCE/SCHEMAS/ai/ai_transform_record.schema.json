@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ai/ai_transform_record_v1",
+  "title": "PH6 AI Transform Record v1 (Extended)",
+  "description": "Records an AI transformation of evidence. SECONDARY_DERIVED_EVIDENCE_ONLY. May not replace primary evidence.",
+  "type": "object",
+  "required": [
+    "schema_id", "transform_id", "model_id", "model_version",
+    "source_evidence_id", "source_evidence_unchanged",
+    "authority_status", "may_replace_primary_evidence",
+    "transform_type", "input_hash", "output_hash",
+    "executed_at_utc", "proposed_by", "ratified_by"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.ai.transform_record.v1" },
+    "transform_id": { "type": "string" },
+    "model_id": {
+      "type": "string",
+      "description": "Full model identifier, e.g. claude-sonnet-4-6"
+    },
+    "model_version": { "type": "string" },
+    "source_evidence_id": { "type": "string" },
+    "source_evidence_unchanged": {
+      "type": "boolean",
+      "const": true,
+      "description": "AI transform must not alter source evidence. Always true."
+    },
+    "authority_status": {
+      "type": "string",
+      "const": "SECONDARY_DERIVED_EVIDENCE_ONLY"
+    },
+    "may_replace_primary_evidence": {
+      "type": "boolean",
+      "const": false
+    },
+    "transform_type": {
+      "type": "string",
+      "enum": [
+        "SUMMARY", "ANNOTATION", "PATTERN_DETECTION", "ANOMALY_DETECTION",
+        "COMPARISON", "CONTEXT_ADDITION", "POSIT_GENERATION",
+        "DISSENT_GENERATION", "LEARNING_CORPUS_PREPARATION",
+        "MEMORY_COMPRESSION", "TOPOLOGY_INFERENCE"
+      ]
+    },
+    "input_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of input evidence"
+    },
+    "output_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of transform output"
+    },
+    "executed_at_utc": { "type": "string", "format": "date-time" },
+    "proposed_by": { "type": "string" },
+    "ratified_by": { "type": ["string", "null"] },
+    "linked_pseudo_m_id": { "type": ["string", "null"] },
+    "linked_pseudo_a_id": { "type": ["string", "null"] },
+    "ai_contribution_signature": {
+      "type": "object",
+      "description": "Required signature block for all AI output",
+      "required": ["proposed_by", "proposed_at_utc", "api_call_log_ref", "ratified_by"],
+      "properties": {
+        "proposed_by": { "type": "string" },
+        "proposed_at_utc": { "type": "string" },
+        "api_call_log_ref": { "type": "string" },
+        "ratified_by": { "type": ["string", "null"] }
+      }
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

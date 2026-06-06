@@ -1,0 +1,226 @@
+{
+  "manifest_type": "schema_manifest",
+  "generated_at_utc": "2026-06-06T12:33:01.638303+00:00",
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null,
+  "schema_count": 31,
+  "schemas": [
+    {
+      "path": "SCHEMAS/ai/ai_authority_request.schema.json",
+      "schema_id": "https://ph6.local/schemas/ai/ai_authority_request_v1",
+      "title": "PH6 AI Authority Request v1",
+      "hash": "ba2bceb2049567e74a70eaa38bfccc88b75d4af680596271bfb2fe4080b67e02",
+      "size_bytes": 1714
+    },
+    {
+      "path": "SCHEMAS/ai/ai_decision_review.schema.json",
+      "schema_id": "https://ph6.local/schemas/ai/ai_decision_review_v1",
+      "title": "PH6 AI Decision Review v1",
+      "hash": "0d03a469de6b25c266eb2fe130f031e388d2003ceabb4988e4720fc98b0df44a",
+      "size_bytes": 1953
+    },
+    {
+      "path": "SCHEMAS/ai/ai_transform_record.schema.json",
+      "schema_id": "https://ph6.local/schemas/ai/ai_transform_record_v1",
+      "title": "PH6 AI Transform Record v1 (Extended)",
+      "hash": "220cd691f668a6bc950cff21121a473e2d6bed672ca97623833f72967fb87672",
+      "size_bytes": 2676
+    },
+    {
+      "path": "SCHEMAS/audit/chain_of_custody_record.schema.json",
+      "schema_id": "https://ph6.local/schemas/audit/chain_of_custody_record_v1",
+      "title": "PH6 Chain of Custody Record v1",
+      "hash": "05e18884eb68b95e1ec3494e2ddec411a80d08e5437ca1ad181dad29c7fbb9c1",
+      "size_bytes": 2637
+    },
+    {
+      "path": "SCHEMAS/audit/operator_ratification_record.schema.json",
+      "schema_id": "https://ph6.local/schemas/audit/operator_ratification_record_v1",
+      "title": "PH6 Operator Ratification Record v1",
+      "hash": "a0cbbd3ee4dd1833ada90c4f26f06a4d85823627fe29d1a1591e3c28afd1f272",
+      "size_bytes": 1664
+    },
+    {
+      "path": "SCHEMAS/evidence/cram0_record.schema.json",
+      "schema_id": "https://ph6.local/schemas/evidence/cram0_record_v1",
+      "title": "PH6 CRAM-0 Raw Intake Record v1",
+      "hash": "1ca6919e15cb4410428e2a1206cca8b06a25de501ade84955fcbec7d46bd81c1",
+      "size_bytes": 1529
+    },
+    {
+      "path": "SCHEMAS/evidence/crama_record.schema.json",
+      "schema_id": "https://ph6.local/schemas/evidence/crama_record_v1",
+      "title": "PH6 CRAM-A Accepted Evidence Record v1",
+      "hash": "96b793e1e05c797de484bcee1a7bd286bc5493bb8966cef6575bbd7fb52abcdb",
+      "size_bytes": 1377
+    },
+    {
+      "path": "SCHEMAS/evidence/cramr_record.schema.json",
+      "schema_id": "https://ph6.local/schemas/evidence/cramr_record_v1",
+      "title": "PH6 CRAM-R Rejected Evidence Record v1",
+      "hash": "de949dfbde51454be047a6dc18afbbd56e49fd723256f3e9b15e2f64a64bd936",
+      "size_bytes": 1702
+    },
+    {
+      "path": "SCHEMAS/evidence/evidence_object.schema.json",
+      "schema_id": "https://ph6.local/schemas/evidence/evidence_object_v1",
+      "title": "PH6 Evidence Object v1",
+      "hash": "6db1dd218548e6b878727bb8bafc08925fbe45bff25a500ac080410d981c1382",
+      "size_bytes": 1702
+    },
+    {
+      "path": "SCHEMAS/memory/living_memory_record.schema.json",
+      "schema_id": "https://ph6.local/schemas/memory/living_memory_record_v1",
+      "title": "PH6 Living Memory Record v1",
+      "hash": "f6a1122e70a87cdb38bbe3b086baddf568977d0cf75393aa0969eebeb2888eec",
+      "size_bytes": 2151
+    },
+    {
+      "path": "SCHEMAS/memory/mrams_memory_object.schema.json",
+      "schema_id": "https://ph6.local/schemas/memory/mrams_memory_object_v1",
+      "title": "PH6 MRAM-S Memory Object v1",
+      "hash": "25cee9e142533c98bec11f104062859d06d4869bab84dea59bd6f1245bc6d916",
+      "size_bytes": 2213
+    },
+    {
+      "path": "SCHEMAS/ph6_ai_authority_request_v1.schema.json",
+      "schema_id": "https://ph6.local/schemas/ph6_ai_authority_request_v1",
+      "title": "PH6 AI Authority Request v1",
+      "hash": "4944370b9b8f3c41ee7257371d991afba262e2f7c0e6f2d9c3354a85fa2a8e1e",
+      "size_bytes": 1630
+    },
+    {
+      "path": "SCHEMAS/ph6_ai_decision_review_v1.schema.json",
+      "schema_id": "https://ph6.local/schemas/ph6_ai_decision_review_v1",
+      "title": "PH6 AI Decision Review Record v1",
+      "hash": "6c60fae7192a83466a514955a27952e41cae18c3e01dd92aeb033de8a2422992",
+      "size_bytes": 3023
+    },
+    {
+      "path": "SCHEMAS/ph6_ai_transform_record_v1.schema.json",
+      "schema_id": "https://ph6.local/schemas/ph6_ai_transform_record_v1",
+      "title": "PH6 AI Transform Record v1",
+      "hash": "89e808980a88b32c1edb94c8b8f5c749e20a94ad82d991c28a4574fd5051934c",
+      "size_bytes": 2443
+    },
+    {
+      "path": "SCHEMAS/ph6_authority_response_v1.schema.json",
+      "schema_id": "https://ph6.local/schemas/ph6_authority_response_v1",
+      "title": "PH6 Authority Response v1",
+      "hash": "6bb25b385acc420cbb79e07beb15d7f690be9ac8a0bbf41690b76eae819e1f3b",
+      "size_bytes": 1592
+    },
+    {
+      "path": "SCHEMAS/ph6_dissent_token_v1.schema.json",
+      "schema_id": "https://ph6.local/schemas/ph6_dissent_token_v1",
+      "title": "PH6 Dissent Token v1",
+      "hash": "98d8b5a814723a1490be16df220895b239ab8fe1e1236fffa85fb2e8d5d53f9d",
+      "size_bytes": 1582
+    },
+    {
+      "path": "SCHEMAS/ph6_living_memory_object_v1.schema.json",
+      "schema_id": "https://ph6.local/schemas/ph6_living_memory_object_v1",
+      "title": "PH6 Living Memory Object v1",
+      "hash": "7dd67b622334c5c047c4bcf2c109b10fe426c5676a5f856bd987f1e521d11e86",
+      "size_bytes": 2419
+    },
+    {
+      "path": "SCHEMAS/ph6_neuro_map_v1.schema.json",
+      "schema_id": "https://ph6.local/schemas/ph6_neuro_map_v1",
+      "title": "PH6 Neuro Map v1",
+      "hash": "8cb404facfc006191ec1e28d621429d87d9b13e17b3e1ac2aab93387c012fa01",
+      "size_bytes": 1980
+    },
+    {
+      "path": "SCHEMAS/ph6_posit_v1.schema.json",
+      "schema_id": "https://ph6.local/schemas/ph6_posit_v1",
+      "title": "PH6 Posit Record v1",
+      "hash": "f9d60bc3fc44cbc31def69d1ee42a6852d892ae8b26bbef2c3430930bfb9f821",
+      "size_bytes": 1808
+    },
+    {
+      "path": "SCHEMAS/ph6_token_compression_record_v1.schema.json",
+      "schema_id": "https://ph6.local/schemas/ph6_token_compression_record_v1",
+      "title": "PH6 Token Compression Record v1",
+      "hash": "3cc70b620995e381a03020cfcc90d4c2dd244d38ccd8a16365fa029e27803406",
+      "size_bytes": 1870
+    },
+    {
+      "path": "SCHEMAS/ph6_token_v1.schema.json",
+      "schema_id": "https://ph6.local/schemas/ph6_token_v1",
+      "title": "PH6 Token Record v1",
+      "hash": "1f02af8d20531810989cac3086a8e9723baefe52c6846fd7b6106b967ce9d95e",
+      "size_bytes": 1948
+    },
+    {
+      "path": "SCHEMAS/replay/replay_certification_record.schema.json",
+      "schema_id": "https://ph6.local/schemas/replay/replay_certification_record_v1",
+      "title": "PH6 Replay Certification Record v1",
+      "hash": "bb98f6a2483098f9e25e016aba52f1a1e69e40f0d7277107d3da80cddc5ad191",
+      "size_bytes": 2099
+    },
+    {
+      "path": "SCHEMAS/replay/replay_failure_record.schema.json",
+      "schema_id": "https://ph6.local/schemas/replay/replay_failure_record_v1",
+      "title": "PH6 Replay Failure Record v1",
+      "hash": "71626ad60de225121197d79718b3d7c93daefc3a56c47b6a7f877fe93a3b8898",
+      "size_bytes": 1545
+    },
+    {
+      "path": "SCHEMAS/sensors/failure_profile.schema.json",
+      "schema_id": "https://ph6.local/schemas/sensors/failure_profile_v1",
+      "title": "PH6 Sensor Failure Profile v1",
+      "hash": "2b0dbd613da494d998a265611ba1d3c3c462016aeb6c2b329a6be4e15c77e1ef",
+      "size_bytes": 1538
+    },
+    {
+      "path": "SCHEMAS/sensors/measurement_profile.schema.json",
+      "schema_id": "https://ph6.local/schemas/sensors/measurement_profile_v1",
+      "title": "PH6 Measurement Profile v1",
+      "hash": "b25ccdb69a7a9d0dbd447c79e0effb57c0349934e19eb877743c6ed8aa9fc74b",
+      "size_bytes": 1881
+    },
+    {
+      "path": "SCHEMAS/sensors/sensor_object.schema.json",
+      "schema_id": "https://ph6.local/schemas/sensors/sensor_object_v1",
+      "title": "PH6 Sensor Object v1",
+      "hash": "031d1bb436b1abfcec259e8b833273a1f3f039b077bf8336216f60107b919f42",
+      "size_bytes": 1931
+    },
+    {
+      "path": "SCHEMAS/sensors/sensor_profile.schema.json",
+      "schema_id": "https://ph6.local/schemas/sensors/sensor_profile_v1",
+      "title": "PH6 Sensor Profile v1",
+      "hash": "9f7556170260ffc04accf3359bc8fd2abb7908111fb0a50778c11f40be3a27da",
+      "size_bytes": 1490
+    },
+    {
+      "path": "SCHEMAS/tokens/dissent_token.schema.json",
+      "schema_id": "https://ph6.local/schemas/tokens/dissent_token_v1",
+      "title": "PH6 Dissent Token v1",
+      "hash": "c477c0b1850d2a0afb4ec6f12d251d297873458250e36d873cd4b6fdd7ad8b5a",
+      "size_bytes": 1800
+    },
+    {
+      "path": "SCHEMAS/tokens/token_compression_record.schema.json",
+      "schema_id": "https://ph6.local/schemas/tokens/token_compression_record_v1",
+      "title": "PH6 Token Compression Record v1 (TCR)",
+      "hash": "064727f79c78f9ea4a1b3c06d62f577d4a7039afe247fb8d75aff9beeb2b1d30",
+      "size_bytes": 1470
+    },
+    {
+      "path": "SCHEMAS/tokens/token_record.schema.json",
+      "schema_id": "https://ph6.local/schemas/tokens/token_record_v1",
+      "title": "PH6 Token Record v1 (Extended)",
+      "hash": "0528ed1bd6219c8aba706d297d4b11485861dc7afaed81268ade204159cf618c",
+      "size_bytes": 2269
+    },
+    {
+      "path": "SCHEMAS/tokens/token_topology_graph.schema.json",
+      "schema_id": "https://ph6.local/schemas/tokens/token_topology_graph_v1",
+      "title": "PH6 Token Topology Graph v1",
+      "hash": "6ee75b3d481f9183b22a8fa4b2bb759d9824e336bd4cefe1830728042f01ebea",
+      "size_bytes": 1800
+    }
+  ]
+}

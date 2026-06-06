@@ -1,0 +1,31 @@
+{
+  "schema_id": "ph6.ai_decision_review.v1",
+  "answer_id": "adr_20260606_001",
+  "created_at_utc": "2026-06-06T10:00:00Z",
+  "mode": "EXPERIMENTAL",
+  "model_identity": {
+    "model_name": "claude-sonnet-4-6",
+    "session_id": "session_20260606_001",
+    "api_call_log_ref": "ph6_lane2_20260606",
+    "context_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "evidence_inputs": ["cram_run_20260606_001"],
+  "soso_inputs": ["soso_map_20260606_001"],
+  "token_inputs": ["tok_20260606_001"],
+  "claims": [
+    {
+      "claim_text": "Camera B brightness is within normal range.",
+      "claim_class": "FACTUAL",
+      "source_ids": ["cram_run_20260606_001"],
+      "derivation_note": "Directly from parsed brightness field."
+    }
+  ],
+  "uncertainty_flags": [],
+  "hallucination_risk_flags": [],
+  "output_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "review_status": "PENDING",
+  "authority_note": "ADVISORY_ONLY_AUTHORITY_ZERO",
+  "prior_answer_id": null,
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null
+}

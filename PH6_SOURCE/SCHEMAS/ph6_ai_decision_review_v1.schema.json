@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ph6_ai_decision_review_v1",
+  "title": "PH6 AI Decision Review Record v1",
+  "description": "Records an AI advisory output with evidence inputs, claims, hallucination-risk flags, and review status.",
+  "type": "object",
+  "required": [
+    "schema_id", "answer_id", "created_at_utc", "mode",
+    "model_identity", "evidence_inputs", "soso_inputs", "token_inputs",
+    "claims", "uncertainty_flags", "hallucination_risk_flags",
+    "output_hash", "review_status"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.ai_decision_review.v1" },
+    "answer_id": { "type": "string" },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "mode": {
+      "type": "string",
+      "enum": ["LEGAL", "SCIENTIFIC", "EXPERIMENTAL", "THEORETICAL"]
+    },
+    "model_identity": {
+      "type": "object",
+      "required": ["model_name", "session_id"],
+      "properties": {
+        "model_name": { "type": "string" },
+        "session_id": { "type": "string" },
+        "api_call_log_ref": { "type": "string" },
+        "context_hash": { "type": "string" }
+      }
+    },
+    "evidence_inputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "CRAM evidence IDs provided to the AI"
+    },
+    "soso_inputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "SoSo map IDs provided to the AI"
+    },
+    "token_inputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Token IDs provided as context"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim_text", "claim_class"],
+        "properties": {
+          "claim_text": { "type": "string" },
+          "claim_class": {
+            "type": "string",
+            "enum": ["FACTUAL", "INFERRED", "THEORETICAL", "UNSUPPORTED", "HALLUCINATION_RISK"]
+          },
+          "source_ids": { "type": "array", "items": { "type": "string" } },
+          "derivation_note": { "type": "string" }
+        }
+      }
+    },
+    "uncertainty_flags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "hallucination_risk_flags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "NO_EVIDENCE_LINK", "CONTEXT_MISMATCH", "OUT_OF_SCOPE",
+          "MODEL_UNCERTAINTY", "CONTRADICTION_WITH_PSEUDO", "STALE_CONTEXT"
+        ]
+      }
+    },
+    "output_hash": { "type": "string", "description": "BLAKE2b-256 of AI output text" },
+    "review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    },
+    "authority_note": {
+      "type": "string",
+      "const": "ADVISORY_ONLY_AUTHORITY_ZERO"
+    },
+    "prior_answer_id": { "type": ["string", "null"] },
+    "proposed_by": { "type": "string" },
+    "ratified_by": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

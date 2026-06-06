@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/evidence/pseudo_measurement_v1",
+  "title": "PH6 PSEUDO Measurement v1",
+  "description": "Deterministic PSEUDO-M measurement record. measurement_id and execution_hash are BLAKE2b-256. Width-64 hex pattern is not SHA-256.",
+  "type": "object",
+  "required": [
+    "schema_id", "measurement_id", "source_evidence_hash",
+    "metric_value", "threshold_bounds", "verdict", "execution_hash"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.pseudo_measurement.v1" },
+    "measurement_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256 derived deterministically from source_hash + metric + schema_id + version."
+    },
+    "source_evidence_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256 of source evidence input."
+    },
+    "metric_value": { "type": "number" },
+    "threshold_bounds": {
+      "type": "array",
+      "prefixItems": [{ "type": "number" }, { "type": "number" }],
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "Fixed at design time. Must not change at runtime (replay-stability invariant)."
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["PASS", "DROP"]
+    },
+    "execution_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "BLAKE2b-256 of execution context string (source_hash:metric:thresholds:version)."
+    },
+    "execution_version": { "type": "string" }
+  },
+  "additionalProperties": false
+}

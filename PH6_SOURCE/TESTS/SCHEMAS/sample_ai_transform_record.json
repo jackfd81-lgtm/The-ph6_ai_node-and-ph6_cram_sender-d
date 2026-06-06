@@ -1,0 +1,25 @@
+{
+  "schema_id": "ph6.ai_transform_record.v1",
+  "transform_id": "transform_20260606_001",
+  "created_at_utc": "2026-06-06T10:00:00Z",
+  "source_cram_ids": ["cram_run_20260606_001"],
+  "source_pseudo_ids": [],
+  "source_soso_ids": [],
+  "input_token_ids": ["tok_20260606_001"],
+  "requested_by": "claude-code-lane2",
+  "request_reason": "Enhance Camera B frame for visual clarity in evidence review.",
+  "transform_type": "IMAGE_ENHANCEMENT",
+  "transform_parameters": {
+    "method": "contrast_normalization",
+    "strength": 0.8
+  },
+  "output_artifact_ids": ["artifact_enhanced_20260606_001"],
+  "output_hashes": [
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "authority_status": "SECONDARY_DERIVED_EVIDENCE_ONLY",
+  "may_replace_primary_evidence": false,
+  "review_status": "PENDING",
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null
+}

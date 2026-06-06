@@ -1,0 +1,4238 @@
+{
+  "classification_counts": {
+    "DETECTOR_DEFINITION": 104,
+    "DOCUMENTATION_WARNING": 425,
+    "FALSE_POSITIVE": 0,
+    "REAL_AUTHORITY_PATH_VIOLATION": 0,
+    "SUPERSEDED_REFERENCE": 70,
+    "TEST_FIXTURE": 1
+  },
+  "classified_hits": [
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 84,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "- Treat HRG9 as open. HRG9 is CLOSED (commit `2ef5fd6`). Do not regenerate HRG9 artifacts."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 186,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "{ \"id\": \"OI-01\", \"description\": \"Hailo hardware integration incomplete\", \"status\": \"OPEN\" },"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 187,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "{ \"id\": \"OI-03\", \"description\": \"Real Pi-to-Pi live transfer not yet fully certified\", \"status\": \"OPEN\" }"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 213,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "## 7. OPEN ITEM REGISTER"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 217,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "| OI-01 | Hailo hardware integration              | OPEN   | Yes (STOP-SHIP)    | Hardware run + integration report         |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 218,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "| OI-03 | Real Pi-to-Pi live transfer             | OPEN   | Yes (STOP-SHIP)    | Transfer log + replay proof               |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 221,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "**HRG9 is CLOSED. Do not regenerate HRG9 artifacts. Do not list HRG9 as STOP-SHIP.**"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 309,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "> \"OI-01 and OI-03 are OPEN STOP-SHIP gates. This patch does not close them. Human closure required.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 329,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "- [ ] Test count is not below 300 frames unless a failure occurred before the threshold was reached."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 333,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "- [ ] HRG9 is not listed as open or regenerated."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 334,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "- [ ] OI-01 and OI-03 remain OPEN unless human-authorized closure evidence is provided."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 354,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "open_material",
+      "text": "\u2502  STOP-SHIP gates:          OI-01, OI-03              \u2502"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 42,
+      "path": "PH6_SOURCE/00_AI_ACTION_INDEX.md",
+      "scan_type": "open_material",
+      "text": "Do not propose changes if the drift scan fails. Report the failure and stop."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 82,
+      "path": "PH6_SOURCE/00_AI_ACTION_INDEX.md",
+      "scan_type": "open_material",
+      "text": "## Current STOP-SHIP Items"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 94,
+      "path": "PH6_SOURCE/00_AI_ACTION_INDEX.md",
+      "scan_type": "open_material",
+      "text": "## Closed Items \u2014 Do Not Reopen"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 188,
+      "path": "PH6_SOURCE/00_AI_ACTION_INDEX.md",
+      "scan_type": "open_material",
+      "text": "open STOP-SHIP:    OI-01, OI-03 (hardware-gated; do not falsely close)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 8,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "Purpose:     Single authoritative register for all open, closed, and deferred gaps."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 9,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "Updates require human authorization for STOP-SHIP items."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 10,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "AI may update status of OPEN/DEFERRED non-STOP-SHIP items only."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 17,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| Gap ID                         | Status    | STOP-SHIP? | Evidence Required                          | Closure Authority    | Closure File / Commit            |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 19,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| OI-01                         | OPEN      | YES        | Hailo hardware run + integration report     | Human only           | TBD                              |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 20,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| OI-03                         | OPEN      | YES        | Real Pi-to-Pi transfer log + replay proof   | Human only           | TBD                              |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 24,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| 300-frame coherence run       | OPEN      | No         | Campaign 01 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 25,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| Advisory expansion (Swarm)    | OPEN      | No         | Campaign 01B receipt; C01 must close first  | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01B  |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 26,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| Pi-to-Pi live transfer        | OPEN      | YES        | Campaign 02 receipt (satisfies OI-03)       | Human + Campaign 02  | EVIDENCE_CAMPAIGNS/CAMPAIGN_02   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 28,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| GAP-16B: USB disconnect       | OPEN      | No         | Isolation test: video-only 5+ min           | Human after evidence | EVIDENCE_CAMPAIGNS/GAPS/GAP-16   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 29,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| Resource pressure RSYNC       | OPEN      | No         | Campaign 03 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_03   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 30,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| Crash recovery                | OPEN      | No         | Campaign 04 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_04   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 31,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| Replay parity                 | OPEN      | No         | Campaign 05 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_05   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 39,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| OPEN     | Gap exists; evidence not yet collected                                   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 41,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| DEFERRED | Intentionally deferred pending real-world evidence; not blocking         |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 42,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "| CLOSED   | Closure evidence exists; immutable; do not reopen without human decision |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 46,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "## STOP-SHIP Rules"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 48,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "STOP-SHIP gaps (OI-01, OI-03) cannot be closed by:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 66,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "- Reopen HRG9 for any reason"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 68,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "If any document currently lists HRG9 as open, that document contains an error and must be patched."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 74,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "### For non-STOP-SHIP gaps"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 77,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "### For STOP-SHIP gaps (OI-01, OI-03)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 81,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "open_material",
+      "text": "Add a row with Status = OPEN, note evidence required and closure authority."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 19,
+      "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+      "scan_type": "open_material",
+      "text": "| **CRAM-R** | DROP reject vault \u2014 authoritative negative-result corpus | reject store, failed store |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 29,
+      "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+      "scan_type": "open_material",
+      "text": "| **DROP** | Sole negative verdict from PSEUDO-A | reject, fail, deny, negative, invalid |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 43,
+      "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+      "scan_type": "open_material",
+      "text": "| **DRIFT_FAIL** | Architectural violation state \u2014 halt and audit | failure, error, mismatch |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 44,
+      "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+      "scan_type": "open_material",
+      "text": "| **HRG9** | The production-clearance hardware replay evidence gate \u2014 CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 45,
+      "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+      "scan_type": "open_material",
+      "text": "| **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 75,
+      "path": "PH6_SOURCE/GLOSSARY_LOCK.md",
+      "scan_type": "open_material",
+      "text": "DRIFT_FAIL"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 298,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "DRIFT_FAIL triggers"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 321,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "STOP-SHIP criteria"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 330,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "STOP-SHIP"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 331,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "HRG9 OPEN / EVIDENCE BLOCKED"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 397,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "| DRIFT_FAIL      | Canon violation requiring stop and resolution                                       |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 443,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "invent missing doctrine"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 457,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "silently close open gaps"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 465,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "DRIFT_FAIL"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 500,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "[MISSING]"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 501,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "[OPEN]"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 502,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "[EVIDENCE BLOCKED]"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 503,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "[NEEDS CONFIRMATION]"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 504,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "[STOP-SHIP]"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 509,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "Never hide missing items."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 516,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "HRG9 remains OPEN / EVIDENCE BLOCKED."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 517,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "Production remains STOP-SHIP."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 599,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "DRIFT_FAIL"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 648,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "[ ] STOP-SHIP status preserved if evidence missing"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 655,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "If any item fails:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 658,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "DRIFT_FAIL"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 695,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "open_material",
+      "text": "invent missing doctrine"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 81,
+      "path": "PH6_SOURCE/AI_ENTRY_INDEX.md",
+      "scan_type": "open_material",
+      "text": "## Current Open Items"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 84,
+      "path": "PH6_SOURCE/AI_ENTRY_INDEX.md",
+      "scan_type": "open_material",
+      "text": "STOP-SHIP: OI-01 (Hailo hardware-gated) and OI-03 (real Pi-to-Pi transfer not verified)."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 85,
+      "path": "PH6_SOURCE/AI_ENTRY_INDEX.md",
+      "scan_type": "open_material",
+      "text": "HRG9: CLOSED at commit 2ef5fd6. Do not reopen."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 87,
+      "path": "PH6_SOURCE/AI_ENTRY_INDEX.md",
+      "scan_type": "open_material",
+      "text": "Open gaps (do not close without evidence):"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 92,
+      "path": "PH6_SOURCE/AI_ENTRY_INDEX.md",
+      "scan_type": "open_material",
+      "text": "- CDG-1.0 (Book VI) pending Drift Gate seal"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 49,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+      "scan_type": "open_material",
+      "text": "OI-01:                OPEN / STOP-SHIP \u2014 Hailo hardware-gated"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 50,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+      "scan_type": "open_material",
+      "text": "OI-03:                OPEN / STOP-SHIP \u2014 Real Pi-to-Pi transfer not yet certified"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 103,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+      "scan_type": "open_material",
+      "text": "- Update the gap register for non-STOP-SHIP items when evidence is confirmed"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 118,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+      "scan_type": "open_material",
+      "text": "- Reopen or regenerate HRG9 artifacts"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 158,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+      "scan_type": "open_material",
+      "text": "| `DROP`                  | reject, fail, filter                        |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 174,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+      "scan_type": "open_material",
+      "text": "- A STOP-SHIP item is closed"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 176,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+      "scan_type": "open_material",
+      "text": "- A new STOP-SHIP item is added"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 50,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "SSH-controlled only. Hostname conflict with Pi 5 \u2014 rename to `jackjack2` is pending (ZERO2W)."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 80,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "(even in comments or frozenset definitions) trigger FAIL_CRITICAL there."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 100,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "20 checks / 5 phases. Exit 0 = PASS, exit 1 = FAIL. Writes report atomically to"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 141,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "**Open items:**"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 145,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "| OI-01 | DESCOPED | `GAP_REGISTER_v3.0.md` still shows OPEN/STOP-SHIP \u2014 Jack must update |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 147,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "| OI-C1 | OPEN | C1 rounding: Banker's vs ROUND_HALF_AWAY_FROM_ZERO \u2014 blocks fixed-point hash |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 148,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "| ZERO2W | OPEN | Hostname conflict \u2014 rename 192.168.254.189 to jackjack2 |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 150,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "| DRIFT-GATE | OPEN | `ph6/governance/drift_gate.py` missing \u2014 hooks fall back silently |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 151,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "| PUSH-1 | OPEN | 8 commits ahead of origin |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 153,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "**Pending untracked docs (not yet committed):**"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 171,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "5. PASS/DROP are the only permitted verdict tokens. No ACCEPT/REJECT/OK/FAIL in verdict fields."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 184,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "1. **Commit pending docs** \u2014 6 untracked files listed in \u00a75 awaiting staging + approval"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 228,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "open_material",
+      "text": "If any check fails: **stop and surface to operator before doing any code work.**"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 66,
+      "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "scan_type": "open_material",
+      "text": "If a document says a gap is CLOSED but the runtime shows it open: the gap is open."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 101,
+      "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "scan_type": "open_material",
+      "text": "- suppress failures"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 116,
+      "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "scan_type": "open_material",
+      "text": "- do not claim the gap is resolved based on partial evidence"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 123,
+      "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "scan_type": "open_material",
+      "text": "STOP-SHIP gates (OI-01, OI-03):"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 143,
+      "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "scan_type": "open_material",
+      "text": "When producing failure records, use CFC-1.0 format:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 147,
+      "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "scan_type": "open_material",
+      "text": "\"failure_class\": \"G2\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 148,
+      "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "scan_type": "open_material",
+      "text": "\"failure_family\": \"Governance\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 171,
+      "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "scan_type": "open_material",
+      "text": "DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 209,
+      "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "scan_type": "open_material",
+      "text": "\u2502  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   \u2502"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 79,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "If a document says a gap is CLOSED but the runtime shows it open: the gap is open."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 114,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "- suppress failures"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 129,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "- do not claim the gap is resolved based on partial evidence"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 136,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "STOP-SHIP gates (OI-01, OI-03):"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 156,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "When producing failure records, use CFC-1.0 format:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 160,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"failure_class\": \"G2\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 161,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"failure_family\": \"Governance\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 184,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 222,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\u2502  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   \u2502"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 287,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| **CRAM-R** | DROP reject vault \u2014 authoritative negative-result corpus | reject store, failed store |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 297,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| **DROP** | Sole negative verdict from PSEUDO-A | reject, fail, deny, negative, invalid |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 311,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| **DRIFT_FAIL** | Architectural violation state \u2014 halt and audit | failure, error, mismatch |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 312,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| **HRG9** | The production-clearance hardware replay evidence gate \u2014 CLOSED at commit 2ef5fd6; remaining STOP-SHIP is OI-01 and OI-03 | hardware gate, replay gate |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 313,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| **STOP-SHIP** | Production is not cleared. Do not deploy. | held, pending, not ready |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 343,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "DRIFT_FAIL"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 370,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "# Machine-readable authority manifest: lane model, forbidden fields, stop-ship gates, schema version."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 441,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"status\": \"OPEN\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 448,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"status\": \"OPEN\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 681,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"validator_result\": \"FAIL\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 682,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"workflow_behavior\": \"Fail immediately. No further checks required.\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 684,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"certification_implication\": \"STOP-SHIP \u2014 PH6-CERT run is invalid. Certification cannot proceed.\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 696,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"validator_result\": \"FAIL\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 697,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"workflow_behavior\": \"Fail after full scan completes.\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 702,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"Governance manifest file missing or unreadable\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 704,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"Lane authority map entry malformed or missing required fields\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 728,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"STOP-SHIP gate is open (OI-01, OI-03) \u2014 noted for traceability, does not block AI session work\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 737,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"1\": \"FAIL \u2014 CRITICAL findings present\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 738,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"2\": \"FAIL \u2014 HIGH findings present, no CRITICAL\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 746,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"No open STOP-SHIP gates (OI-01, OI-03) unless formally waived\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 757,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "# Doctrine: sensor degradation vs authority failure. Derived from GAP-16."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 759,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "# PH6 Doctrine: Sensor Ingest Degradation vs Authority Logic Failure"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 774,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Sensor ingest degradation shall not be classified as an authority failure unless"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 790,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "frame timing. Failures here are **input quality problems**."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 807,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Lane 1 is the deterministic CRAM + PSEUDO path. Failures here are **authority defects**."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 812,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "- CRAM write contract violated (missing .blake2b marker, torn file, hash mismatch)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 866,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "PH6 authority logic did not fail."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 871,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "## Glossary Additions (pending GLOSSARY_LOCK update)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 875,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| **Lane 0** | Physical sensor layer \u2014 camera, microphone, USB transport, frame timing. Not an authority layer. Failures here are sensor ingest degradation, not authority defects. |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 876,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| **Sensor ingest degradation** | Reduction in sensor data quality, completeness, or reliability at Lane 0. Must be recorded; does not automatically constitute an authority failure. |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 966,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "- Treat HRG9 as open. HRG9 is CLOSED (commit `2ef5fd6`). Do not regenerate HRG9 artifacts."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1068,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "{ \"id\": \"OI-01\", \"description\": \"Hailo hardware integration incomplete\", \"status\": \"OPEN\" },"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1069,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "{ \"id\": \"OI-03\", \"description\": \"Real Pi-to-Pi live transfer not yet fully certified\", \"status\": \"OPEN\" }"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1095,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "## 7. OPEN ITEM REGISTER"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1099,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| OI-01 | Hailo hardware integration              | OPEN   | Yes (STOP-SHIP)    | Hardware run + integration report         |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1100,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| OI-03 | Real Pi-to-Pi live transfer             | OPEN   | Yes (STOP-SHIP)    | Transfer log + replay proof               |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1103,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "**HRG9 is CLOSED. Do not regenerate HRG9 artifacts. Do not list HRG9 as STOP-SHIP.**"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1191,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "> \"OI-01 and OI-03 are OPEN STOP-SHIP gates. This patch does not close them. Human closure required.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1211,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "- [ ] Test count is not below 300 frames unless a failure occurred before the threshold was reached."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1215,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "- [ ] HRG9 is not listed as open or regenerated."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1216,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "- [ ] OI-01 and OI-03 remain OPEN unless human-authorized closure evidence is provided."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1236,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\u2502  STOP-SHIP gates:          OI-01, OI-03              \u2502"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1319,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "- STOP-SHIP rules"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1577,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "AI_ENTRY_INDEX.md           HRG9 OPEN \u2192 CLOSED"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1648,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "* emit structured failures"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1658,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "* regenerate missing truth"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1660,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "* suppress failures"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1718,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "If any fail: VALIDATION RUN INVALID."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1737,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"failure_count\": 0,"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1774,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Required RDD failure format (CFC code: G2):"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1778,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"failure_class\": \"G2\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1779,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"failure_family\": \"Governance\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1790,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Implementation: `ph6/cfc.make_rdd_failure()`"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1794,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "## CANONICAL FAILURE CLASSIFICATION (CFC-1.0)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1798,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "### Failure Families"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1962,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "If a document says a gap is CLOSED but the runtime shows it open: the gap is open."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1997,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "- suppress failures"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2012,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "- do not claim the gap is resolved based on partial evidence"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2019,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "STOP-SHIP gates (OI-01, OI-03):"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2039,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "When producing failure records, use CFC-1.0 format:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2043,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"failure_class\": \"G2\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2044,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"failure_family\": \"Governance\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2067,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "DRIFT SIGNAL: claiming a STOP-SHIP gate is closed without evidence"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2105,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\u2502  STOP-SHIP:        OI-01, OI-03 (hardware-gated)   \u2502"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2288,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "invent missing doctrine"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2503,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Open gaps must remain open until closed by evidence."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2532,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| OI-01      | Hailo wiring deferred pending new Raspberry Pi 5          | HIGH     | Yes       | Hardware installed and verified        | OPEN   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2533,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| OI-03      | Real Pi-to-Pi live transfer not yet remotely verified     | CRITICAL | Yes       | Second Pi transfer with hash continuity | OPEN  |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2540,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "If evidence is missing, write:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2543,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "[MISSING]"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2549,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "[NEEDS CONFIRMATION]"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2558,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Never silently fill missing doctrine."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2753,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "[ ] Open gaps remain open unless evidence closes them"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3228,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Violation of any containment rule triggers DRIFT_FAIL."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3306,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "FAIL condition: any forbidden field present, or advisory_result absent."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3316,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "FAIL condition: Lane-1 verdict generation is gated on SoSo output,"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3330,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "FAIL condition: any write to a CRAM tier."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3340,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "FAIL condition: any SoSo-origin content in EvidencePacket."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3350,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "FAIL condition: replay result differs based on SoSo output presence."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3361,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "# 10. DRIFT_FAIL Triggers"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3363,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Declare DRIFT_FAIL if any of the following occur:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3416,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Files missing:   0"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3524,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"forbidden_if\": \"metric_schema field missing from verdict records\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3554,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"assertion\": \"OI-01 is OPEN STOP-SHIP \u2014 hardware-gated\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3562,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"assertion\": \"OI-03 is OPEN STOP-SHIP \u2014 hardware-gated\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3572,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "\"forbidden_if\": \"HRG9 listed as open or regenerated\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3680,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "SECTION 04: OPEN GAPS REGISTER"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3689,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Purpose:     Single authoritative register for all open, closed, and deferred gaps."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3690,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Updates require human authorization for STOP-SHIP items."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3691,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "AI may update status of OPEN/DEFERRED non-STOP-SHIP items only."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3698,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| Gap ID                         | Status    | STOP-SHIP? | Evidence Required                          | Closure Authority    | Closure File / Commit            |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3700,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| OI-01                         | OPEN      | YES        | Hailo hardware run + integration report     | Human only           | TBD                              |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3701,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| OI-03                         | OPEN      | YES        | Real Pi-to-Pi transfer log + replay proof   | Human only           | TBD                              |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3705,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| 300-frame coherence run       | OPEN      | No         | Campaign 01 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3706,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| Advisory expansion (Swarm)    | OPEN      | No         | Campaign 01B receipt; C01 must close first  | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_01B  |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3707,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| Pi-to-Pi live transfer        | OPEN      | YES        | Campaign 02 receipt (satisfies OI-03)       | Human + Campaign 02  | EVIDENCE_CAMPAIGNS/CAMPAIGN_02   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3709,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| GAP-16B: USB disconnect       | OPEN      | No         | Isolation test: video-only 5+ min           | Human after evidence | EVIDENCE_CAMPAIGNS/GAPS/GAP-16   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3710,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| Resource pressure RSYNC       | OPEN      | No         | Campaign 03 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_03   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3711,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| Crash recovery                | OPEN      | No         | Campaign 04 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_04   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3712,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| Replay parity                 | OPEN      | No         | Campaign 05 receipt                         | Campaign closure     | EVIDENCE_CAMPAIGNS/CAMPAIGN_05   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3720,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| OPEN     | Gap exists; evidence not yet collected                                   |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3722,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| DEFERRED | Intentionally deferred pending real-world evidence; not blocking         |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3723,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "| CLOSED   | Closure evidence exists; immutable; do not reopen without human decision |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3727,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "## STOP-SHIP Rules"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3729,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "STOP-SHIP gaps (OI-01, OI-03) cannot be closed by:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3747,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "- Reopen HRG9 for any reason"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3749,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "If any document currently lists HRG9 as open, that document contains an error and must be patched."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3755,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "### For non-STOP-SHIP gaps"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3758,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "### For STOP-SHIP gaps (OI-01, OI-03)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3762,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Add a row with Status = OPEN, note evidence required and closure authority."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3779,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "Using a forbidden term in an authority path is a G3 (Governance) failure."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3965,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "open_material",
+      "text": "DRIFT: claiming a STOP-SHIP gate is closed without evidence"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 125,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_CLAUDE_TERMINAL_PRELOAD_v1.0.md",
+      "scan_type": "open_material",
+      "text": "PCIe failure does not affect CAN telemetry functionality."
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 155,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "results.append(finding(f\"GOV_{name}\", \"FAIL\", \"CRITICAL\", p,"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 161,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "results.append(finding(f\"GOV_{name}\", \"FAIL\", \"CRITICAL\", p,"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 162,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "\"required governance file MISSING\"))"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 226,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "return [finding(\"CLOSURE_STATUS_VALID\", \"FAIL\", \"CRITICAL\", path,"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 237,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "\"PASS\" if evc_closed else \"FAIL\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 247,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "\"FAIL\" if (forbidden_hit or declared_true) else \"PASS\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 266,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "missing = [f for f in [\"reviewer\", \"reviewed_at_utc\", \"closure_decision\", \"closed_at_utc\"]"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 268,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "if missing:"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 269,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "results.append(finding(f\"CAMPAIGN_CLOSURE_FIELDS_{cid}\", \"FAIL\", \"HIGH\", path,"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 270,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "f\"{cid} closed without required fields: {missing}\"))"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 342,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "\"PASS\" if atomic.exists() else \"FAIL\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 380,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "missing_classes = expected_classes - classes_found"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 381,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "if missing_classes:"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 382,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "findings_out.append(finding(\"TEST_CLASSES_MISSING\", \"WARN\", \"WARN\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 384,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "f\"no tests found for categories: {sorted(missing_classes)}\"))"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 545,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "severities = [f[\"severity\"] for f in findings if f[\"status\"] in {\"FAIL\", \"WARN\"}]"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 547,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "fail_count     = statuses.count(\"FAIL\")"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 556,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "if any(f[\"status\"] == \"FAIL\" for f in domain_fs):"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 557,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "return \"FAIL\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 565,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "drift_scan_result = \"PASS\" if c[\"rc\"] == 0 else \"FAIL\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 576,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "\"DOCTRINE_ALIGNED\":           \"PASS\" if not any(f[\"status\"]==\"FAIL\" for f in findings"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 577,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "if \"BOOK\" in f[\"id\"]) else \"FAIL\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 578,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "\"GOVERNANCE_ALIGNED\":         \"PASS\" if not any(f[\"status\"]==\"FAIL\" for f in closure_findings) else \"FAIL\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 579,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "\"ARCHITECTURE_ALIGNED\":       \"PASS\" if not any(f[\"status\"]==\"FAIL\" for f in arch_findings) else \"WARN\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 580,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "\"TEST_ALIGNED\":               \"PASS\" if tests_pass else (\"WARN\" if tests_pass is None else \"FAIL\"),"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 581,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "\"FUNCTIONALLY_COHERENT\":      \"PASS\" if not any(f[\"status\"]==\"FAIL\" for f in findings"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 585,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "\"OVERALL\":                    \"DRIFT_FAIL\" if critical_count > 0 or fail_count > 0"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 599,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "\"fail_count\": fail_count,"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 618,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "icon = \"\u2713\" if v in {\"PASS\", \"FALSE\"} else (\"\u2717\" if v in {\"FAIL\", \"DRIFT_FAIL\"} else \"\u26a0\")"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 628,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "icon = {\"PASS\":\"\u2713\",\"FAIL\":\"\u2717\",\"WARN\":\"\u26a0\"}.get(f[\"status\"], \"?\")"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 657,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "f\"FAIL={fail_count}  WARN={warn_count}  \""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 662,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "if fail_count > 0:"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 663,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "print(\"\\n  FAILED FINDINGS:\")"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 665,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "open_material",
+      "text": "if f[\"status\"] == \"FAIL\":"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 17,
+      "path": "PH6_SOURCE/TOOLS/install_precommit_hook.sh",
+      "scan_type": "open_material",
+      "text": "set -euo pipefail"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 6,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "Shows what is OPEN, what prerequisites are blocking, and what is required to proceed."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 42,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "with open(_MATRIX_PATH, \"r\", encoding=\"utf-8\") as f:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 55,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "f\"  Closes stop-ship: {c.get('closes_stop_ship', False)}\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 58,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "lines.append(f\"  Stop-ship closed: {c['stop_ship_gate_closed']}\")"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 73,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "remaining = c.get(\"remains_open\", [])"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 75,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "lines.append(f\"  Remains open:     {', '.join(remaining)}\")"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 87,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "open_campaigns   = [c for c in campaigns if c[\"status\"] == \"OPEN\"]"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 88,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "closed_campaigns = [c for c in campaigns if c[\"status\"] != \"OPEN\"]"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 89,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "stop_ship_open   = [g for g in matrix.get(\"open_stop_ship_gates\", []) if g[\"status\"] == \"OPEN\"]"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 95,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "\"campaigns_open\":           len(open_campaigns),"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 97,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "\"stop_ship_gates_open\":     len(stop_ship_open),"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 100,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "\"open_campaigns\":           [c[\"campaign_id\"] for c in open_campaigns],"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 101,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "\"open_stop_ship_gates\":     [g[\"id\"] for g in stop_ship_open],"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 102,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "\"open_evidence_gaps\":       matrix.get(\"current_open_evidence_gaps\", []),"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 130,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "print(f\"  Campaigns open:         {report['campaigns_open']}\")"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 132,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "print(f\"  Open stop-ship gates:   {', '.join(report['open_stop_ship_gates']) or 'none'}\")"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 138,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "print(\"  OPEN EVIDENCE GAPS:\")"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 139,
+      "path": "PH6_SOURCE/TOOLS/ph6_evidence_campaign_report.py",
+      "scan_type": "open_material",
+      "text": "for gap in report.get(\"open_evidence_gaps\", []):"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 29,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "open_material",
+      "text": "\"drift_status\": \"PASS|WARN|FAIL\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 67,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "open_material",
+      "text": "with open(path, \"r\", encoding=\"utf-8\") as f:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 115,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "open_material",
+      "text": "\"anchor_error\": f\"Invalid or missing receipt at {receipt_path}\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 257,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "open_material",
+      "text": "# Stop-ship assertions"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 259,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "open_material",
+      "text": "if gate.get(\"status\") == \"OPEN\":"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 262,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "open_material",
+      "text": "add(f\"LA-STOP-{gid}\", f\"{gid} is OPEN STOP-SHIP \u2014 not closeable by software\", \"G8\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 268,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "open_material",
+      "text": "[r\"HRG9\\s+(?:is\\s+)?(?:OPEN|open)\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 269,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "open_material",
+      "text": "r\"HRG9.*(?:STOP-SHIP|stop.ship|still\\s+open)\"],"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 347,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "open_material",
+      "text": "(r\"(?:soft|weak|partial|approximate)\\s+authority\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 405,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "open_material",
+      "text": "drift_status = \"FAIL\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 13,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "04 \u2014 Open Gaps Register     (from GAP_REGISTER)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 79,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "with open(path, \"r\", encoding=\"utf-8\") as f:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 243,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "add(\"schema\", \"metric_schema = ph6.metrics.fixedpoint.v1\",      \"S2\", \"metric_schema field missing from verdict records\", \"verdict_logger.py\")"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 251,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "# Stop-ship assertions"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 254,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "if gate.get(\"status\") == \"OPEN\":"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 257,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "add(\"stop_ship\", f\"{gid} is OPEN STOP-SHIP \u2014 hardware-gated\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 262,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "\"HRG9 listed as open or regenerated\", \"governance_manifest.json\")"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 300,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "\"\"\"Open Gaps Register.\"\"\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 301,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "return section_header(4, \"OPEN GAPS REGISTER\") + _read(_GAP_REGISTER)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 311,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "\"Using a forbidden term in an authority path is a G3 (Governance) failure.\\n\\n\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 342,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "\"  DRIFT: claiming a STOP-SHIP gate is closed without evidence\\n\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 421,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "open_material",
+      "text": "with open(out_path, \"w\", encoding=\"utf-8\") as f:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 12,
+      "path": "PH6_SOURCE/TOOLS/ai_preflight_check.py",
+      "scan_type": "open_material",
+      "text": "3. Stop-ship gates (informational \u2014 does not block unless UNKNOWN gate found)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 21,
+      "path": "PH6_SOURCE/TOOLS/ai_preflight_check.py",
+      "scan_type": "open_material",
+      "text": "1 \u2014 PREFLIGHT FAIL (one or more CRITICAL checks failed)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 62,
+      "path": "PH6_SOURCE/TOOLS/ai_preflight_check.py",
+      "scan_type": "open_material",
+      "text": "missing = [name for name, p in required.items() if not p.exists()]"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 35,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "7. No AI/ML may issue PASS or DROP."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 71,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "- Allow Lane 2, SoSo, TOK, Swarm, or any external AI to affect PASS/DROP authority."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 74,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "- Use `motion_score` or `motion_decay_score` (deprecated and forbidden)."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 99,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "| `SoSo / TOK / Swarm / SSMT`      | Yes             | Authority ZERO only; no escalation to PASS/DROP          |"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 192,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 253,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "- `motion_score`"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 254,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "- `motion_decay_score`"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 260,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "- `confidence-based PASS`"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 269,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "> \"The SoSo module may emit advisory drift metrics to MRAM-S, but these outputs must not affect PASS/DROP.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 273,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "> \"SoSo can help determine whether a frame should PASS.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 283,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "> \"The patch updates SoSo and PSEUDO to use the same confidence score.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 324,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "- [ ] No forbidden fields (`motion_score`, `motion_decay_score`) were introduced."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 356,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "\u2502  Forbidden fields:         motion_score              \u2502"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 357,
+      "path": "PH6_SOURCE/00_AI_AGENT_READ_FIRST.md",
+      "scan_type": "forbidden_authority",
+      "text": "\u2502                            motion_decay_score        \u2502"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 23,
+      "path": "PH6_SOURCE/GAP_REGISTER_v3.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "| SoSo-family enforcement       | ACTIVE    | No         | Drift scan pass + implementation tests      | Repo governance      | Current commit series            |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 410,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "confidence verdict"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 411,
+      "path": "PH6_SOURCE/00_READ_FIRST_AAI_INGEST_INSTRUCTIONS_v2.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "probability verdict"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 102,
+      "path": "PH6_SOURCE/AI_ENTRY_INDEX.md",
+      "scan_type": "forbidden_authority",
+      "text": "RESULT:     LOCAL EVIDENCE-CHAIN PASS"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 111,
+      "path": "PH6_SOURCE/AI_ENTRY_INDEX.md",
+      "scan_type": "forbidden_authority",
+      "text": "SoSo Authority ZERO             PASS"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 112,
+      "path": "PH6_SOURCE/AI_ENTRY_INDEX.md",
+      "scan_type": "forbidden_authority",
+      "text": "SoSo no PASS/DROP contamination PASS"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 21,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+      "scan_type": "forbidden_authority",
+      "text": "No AI or advisory system may issue PASS or DROP."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 35,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+      "scan_type": "forbidden_authority",
+      "text": "7. No AI/ML may issue PASS or DROP."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 163,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_MODEL_HANDOFF_CURRENT.md",
+      "scan_type": "forbidden_authority",
+      "text": "| `motion_fraction`       | motion_score, motion_decay_score            |"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 94,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "forbidden_authority",
+      "text": "`FORBIDDEN_MOTION_FIELDS=frozenset({\"motion_score\",\"motion_decay_score\"})`."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 172,
+      "path": "PH6_SOURCE/AI_HANDOFF/PH6_HANDOFF_20260528T083030Z.md",
+      "scan_type": "forbidden_authority",
+      "text": "6. `motion_fraction` is the only permitted motion metric. `motion_score` / `motion_decay_score` = FORBIDDEN."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 99,
+      "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "scan_type": "forbidden_authority",
+      "text": "- use motion_score or motion_decay_score (deprecated and forbidden)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 172,
+      "path": "PH6_SOURCE/AI_PRELOAD/00_READ_FIRST_AI_INGEST_PROTOCOL.md",
+      "scan_type": "forbidden_authority",
+      "text": "DRIFT SIGNAL: using a forbidden field (motion_score, motion_decay_score)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 112,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "- use motion_score or motion_decay_score (deprecated and forbidden)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 185,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "DRIFT SIGNAL: using a forbidden field (motion_score, motion_decay_score)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 390,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"2\":   { \"name\": \"AI / SoSo / TOK / Swarm\",  \"authority\": \"ZERO\",              \"pass_drop\": false },"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 422,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 423,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 483,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"seal_status\": \"UNSEALED \u2014 manifest v1.2 adds ph6.soso.advisory.v1 schema lock and SoSo family contract doctrine; requires drift scan pass before seal review\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 505,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 511,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"scan_pattern\": \"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 516,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"motion_decay_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 522,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"scan_pattern\": \"motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 815,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "- Authority boundary crossed (Lane 2 influencing PASS/DROP)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 816,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "- SoSo advisory containing verdict, result, pass, or drop fields"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 832,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "6. Allows Lane 2 / SoSo / AI to influence PASS/DROP in response to degradation"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 917,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "7. No AI/ML may issue PASS or DROP."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 953,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "- Allow Lane 2, SoSo, TOK, Swarm, or any external AI to affect PASS/DROP authority."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 956,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "- Use `motion_score` or `motion_decay_score` (deprecated and forbidden)."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 981,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "| `SoSo / TOK / Swarm / SSMT`      | Yes             | Authority ZERO only; no escalation to PASS/DROP          |"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 1074,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1135,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "- `motion_score`"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1136,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "- `motion_decay_score`"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1142,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "- `confidence-based PASS`"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1151,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "> \"The SoSo module may emit advisory drift metrics to MRAM-S, but these outputs must not affect PASS/DROP.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1155,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "> \"SoSo can help determine whether a frame should PASS.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1165,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "> \"The patch updates SoSo and PSEUDO to use the same confidence score.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1206,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "- [ ] No forbidden fields (`motion_score`, `motion_decay_score`) were introduced."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1238,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\u2502  Forbidden fields:         motion_score              \u2502"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1239,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\u2502                            motion_decay_score        \u2502"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1361,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "Authority is not distributed by intelligence, confidence,"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1431,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "Authority is not distributed by intelligence, confidence,"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 1995,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "- use motion_score or motion_decay_score (deprecated and forbidden)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2068,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "DRIFT SIGNAL: using a forbidden field (motion_score, motion_decay_score)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2392,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "confidence"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2393,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "probability"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2491,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "| Lane 2 authority = ZERO       | AI approved PASS                | D1             |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2493,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "| `motion_score` forbidden      | Runtime emits `motion_score`    | D1             |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2509,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "confidence"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 2536,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "| GAP-AUTH   | Lane 2 authority leakage must be continuously checked     | CRITICAL | Watch     | Drift scan PASS                        | WATCH  |"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 2785,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 2796,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 2807,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 2819,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 2842,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 2853,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 2864,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"verdict\", \"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 2874,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"verdict\", \"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 2884,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"verdict\", \"result\", \"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 2894,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 2948,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"verdict\", \"result\", \"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3027,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "motion_score"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3028,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "motion_decay_score"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3166,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "motion_score"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3167,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "motion_decay_score"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3174,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "`motion_score` and `motion_decay_score` are globally forbidden deprecated fields."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3255,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "motion_score"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3256,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "motion_decay_score"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 3274,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"verdict\", \"result\", \"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3366,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "A SoSo-family system emits PASS or DROP."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3436,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_if\": \"AI claims PASS/DROP authority\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 3474,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Field 'motion_score' is FORBIDDEN in all authoritative records\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 3476,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_if\": \"field 'motion_score' appears in verdict or CRAM record\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3482,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Field 'motion_decay_score' is FORBIDDEN in all authoritative records\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3484,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_if\": \"field 'motion_decay_score' appears in verdict or CRAM record\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3492,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_if\": \"motion_score or motion_decay_score used\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3586,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Schema 'ph6.raw_departure.v1' forbids fields: motion_score, motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3594,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Schema 'ph6.raw_arrival.v1' forbids fields: motion_score, motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3602,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Schema 'ph6.pseudo_verdict.v1' forbids fields: motion_score, motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3610,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Schema 'ph6.cram_commit.v1' forbids fields: motion_score, motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3618,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Schema 'ph6.cram_audit.v1' forbids fields: motion_score, motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3626,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Schema 'ph6.audit_event.v1' forbids fields: motion_score, motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3634,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Schema 'ph6.mram_s.advisory.v1' forbids fields: verdict, motion_score, motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3642,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Schema 'ph6.ssmt.audit_event.v1' forbids fields: verdict, motion_score, motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3650,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Schema 'ph6.tok.advisory_event.v1' forbids fields: verdict, result, motion_score, motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3658,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Schema 'ph6.cram_pu.receipt.v1' forbids fields: motion_score, motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3666,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"assertion\": \"Schema 'ph6.soso.advisory.v1' forbids fields: verdict, result, motion_score, motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3704,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "| SoSo-family enforcement       | ACTIVE    | No         | Drift scan pass + implementation tests      | Repo governance      | Current commit series            |"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 3795,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 3801,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"scan_pattern\": \"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 3806,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"motion_decay_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 3812,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "\"scan_pattern\": \"motion_decay_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 3966,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt",
+      "scan_type": "forbidden_authority",
+      "text": "DRIFT: using forbidden metric fields (motion_score, motion_decay_score)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 23,
+      "path": "PH6_SOURCE/AI_PRELOAD/PH6_CLAUDE_TERMINAL_PRELOAD_v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "- AI-issued PASS/DROP"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 247,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "forbidden_authority",
+      "text": "\"FAIL\" if (forbidden_hit or declared_true) else \"PASS\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 272,
+      "path": "PH6_SOURCE/TOOLS/ph6_full_alignment_audit.py",
+      "scan_type": "forbidden_authority",
+      "text": "results.append(finding(f\"CAMPAIGN_CLOSURE_FIELDS_{cid}\", \"PASS\", \"INFO\", path,"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 203,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "forbidden_authority",
+      "text": "[r\"(?:AI|Lane\\s*2|advisory|SoSo|swarm|token)\\s+(?:issued?|approved?|decided?)\\s+(?:PASS|DROP)\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 208,
+      "path": "PH6_SOURCE/TOOLS/ph6_drift_scanner.py",
+      "scan_type": "forbidden_authority",
+      "text": "[r\"(?:SoSo|swarm|AI|Claude|Gemini|GPT|token)\\s+(?:issued?|emits?|produces?|generates?)\\s+(?:PASS|DROP)\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 227,
+      "path": "PH6_SOURCE/TOOLS/ph6_pack_generator.py",
+      "scan_type": "forbidden_authority",
+      "text": "add(\"authority\", \"Lane 2 authority = ZERO\",           \"G5\", \"AI claims PASS/DROP authority\", \"governance_manifest.json\")"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 217,
+      "path": "PH6_SOURCE/TOOLS/ai_preflight_check.py",
+      "scan_type": "forbidden_authority",
+      "text": "overall = \"FAIL\" if critical_fails else \"PASS\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 320,
+      "path": "PH6_SOURCE/TOOLS/governance_drift_scan.py",
+      "scan_type": "forbidden_authority",
+      "text": "\"detail\": \"Lane-2 source emitting verdict PASS/DROP without authority qualifier \u2014 potential authority leakage\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 20,
+      "path": "PH6_SOURCE/00_READ_FIRST/CLAUDE_RUNTIME_PRIMER_v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "Lane 2 forbidden: CRAM-A, CRAM-R, CRAM-0, PASS, DROP, verdict fields"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 38,
+      "path": "PH6_SOURCE/00_READ_FIRST/CLAUDE_RUNTIME_PRIMER_v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "INV-11  No campaign PASS without artifacts"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 75,
+      "path": "PH6_SOURCE/00_READ_FIRST/CLAUDE_TERMINAL_OPERATIONAL_PACK_v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "PH6 becomes evidence-backed only after all five campaigns PASS:"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 205,
+      "path": "PH6_SOURCE/00_READ_FIRST/CLAUDE_TERMINAL_OPERATIONAL_PACK_v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "replay/hash-chain verification passed"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 246,
+      "path": "PH6_SOURCE/DRAFT/PH6-CLAUDE-PATCH-HANDOFF-1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "Production remains STOP-SHIP until all above exist and pass."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 88,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-SSMT-CERT-PATCH-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "- Used by S2 to reduce confidence."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 93,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-SSMT-CERT-PATCH-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "- Used by S2 to improve continuity confidence."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 141,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-SSMT-CERT-PATCH-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "- VLT increases continuity confidence."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 159,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-SSMT-CERT-PATCH-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "S2/S5/S8 may modify advisory confidence."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 185,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-SSMT-CERT-PATCH-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "Forbidden: PASS probability or verdict field appears."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 217,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-SSMT-CERT-PATCH-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "[ ] No SSMT packet contains PASS/DROP/verdict"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 222,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-SSMT-CERT-PATCH-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "[ ] VDT affects only drift_score/confidence_fp"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 223,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-SSMT-CERT-PATCH-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "[ ] VLT affects only stability/confidence_fp"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 225,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-SSMT-CERT-PATCH-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "[ ] Failure injection suite passes (FI-TOK-SSMT-01 through 06)"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 9,
+      "path": "PH6_SOURCE/DRAFT/PH6-PSEUDO-SOSO-JEDI-UPDATE-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "Authority Rule: PSEUDO-A remains sole PASS/DROP authority."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 93,
+      "path": "PH6_SOURCE/DRAFT/PH6-PSEUDO-SOSO-JEDI-UPDATE-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "No confidence."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 94,
+      "path": "PH6_SOURCE/DRAFT/PH6-PSEUDO-SOSO-JEDI-UPDATE-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "No probability."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 333,
+      "path": "PH6_SOURCE/DRAFT/PH6-PSEUDO-SOSO-JEDI-UPDATE-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "AI may not affect PASS/DROP."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 362,
+      "path": "PH6_SOURCE/DRAFT/PH6-PSEUDO-SOSO-JEDI-UPDATE-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "SoSo emits PASS or DROP."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 366,
+      "path": "PH6_SOURCE/DRAFT/PH6-PSEUDO-SOSO-JEDI-UPDATE-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "AI emits PASS or DROP."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 10,
+      "path": "PH6_SOURCE/DRAFT/PH6-SYSTEM-OVERVIEW-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "Authority Rule: PSEUDO-A remains sole PASS/DROP authority."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 105,
+      "path": "PH6_SOURCE/DRAFT/PH6-SYSTEM-OVERVIEW-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "| **Lane-2 Isolation**          | SoSo/JEDI cannot affect PASS/DROP          | Required                 |"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 141,
+      "path": "PH6_SOURCE/DRAFT/PH6-SYSTEM-OVERVIEW-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "Failure injection: 8/8 PASS"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 240,
+      "path": "PH6_SOURCE/DRAFT/PH6-SYSTEM-OVERVIEW-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "\"failure_injection_passed\": 8,"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 274,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-PRELOAD-PACK-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "confidence"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 275,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-PRELOAD-PACK-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "probability"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 373,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-PRELOAD-PACK-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "| Lane 2 authority = ZERO       | AI approved PASS                | D1             |"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 375,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-PRELOAD-PACK-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "| `motion_score` forbidden      | Runtime emits `motion_score`    | D1             |"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 391,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-PRELOAD-PACK-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "confidence"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 418,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-PRELOAD-PACK-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "| GAP-AUTH   | Lane 2 authority leakage must be continuously checked     | CRITICAL | Watch     | Drift scan PASS                        | WATCH  |"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 195,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 196,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_decay_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 375,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "scan_type": "forbidden_authority",
+      "text": "AI-issued PASS/DROP"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 575,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 576,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_decay_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 597,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "scan_type": "forbidden_authority",
+      "text": "5. motion_score drift"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 598,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "scan_type": "forbidden_authority",
+      "text": "6. motion_decay_score drift"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 639,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 640,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-CORE-v3.0-STABLE.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_decay_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 138,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-MASTER-UPDATE-1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "confidence: float"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 157,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-MASTER-UPDATE-1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "confidence: float"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 181,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-MASTER-UPDATE-1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "mean_confidence: float"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 348,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-MASTER-UPDATE-1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "- minimum confidence"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 391,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOK-MASTER-UPDATE-1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "- excessive confidence variance"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 195,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-INGEST-STACK-1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "No probability"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 197,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-INGEST-STACK-1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "No confidence weighting"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 241,
+      "path": "PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "- no probability"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 296,
+      "path": "PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "- no confidence scores"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 499,
+      "path": "PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "- AI emits PASS/DROP"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 529,
+      "path": "PH6_SOURCE/DRAFT/PH6-MASTER-AI-INGEST-6.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "STOP-SHIP remains active until ALL pass:"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 108,
+      "path": "PH6_SOURCE/DRAFT/PH6-CDG-1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "Authority is not distributed by intelligence, confidence,"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 178,
+      "path": "PH6_SOURCE/DRAFT/PH6-CDG-1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "Authority is not distributed by intelligence, confidence,"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 235,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md",
+      "scan_type": "forbidden_authority",
+      "text": "* AI PASS/DROP authority"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 350,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md",
+      "scan_type": "forbidden_authority",
+      "text": "* motion_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 351,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md",
+      "scan_type": "forbidden_authority",
+      "text": "* motion_decay_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 9,
+      "path": "PH6_SOURCE/DRAFT/PH6-LIVING-CRAM-PSEUDO-SOSO-JEDI-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "Authority Rule: PSEUDO-A remains sole PASS/DROP authority."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 246,
+      "path": "PH6_SOURCE/DRAFT/PH6-LIVING-CRAM-PSEUDO-SOSO-JEDI-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "AI may not affect PASS/DROP."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 257,
+      "path": "PH6_SOURCE/DRAFT/PH6-LIVING-CRAM-PSEUDO-SOSO-JEDI-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "SoSo emits PASS or DROP."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 261,
+      "path": "PH6_SOURCE/DRAFT/PH6-LIVING-CRAM-PSEUDO-SOSO-JEDI-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "AI emits PASS or DROP."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 42,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOKENS-LIVING-CRAM-v1.1.md",
+      "scan_type": "forbidden_authority",
+      "text": "Tokens may not affect PASS/DROP."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 316,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOKENS-LIVING-CRAM-v1.1.md",
+      "scan_type": "forbidden_authority",
+      "text": "A token issues PASS."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 318,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOKENS-LIVING-CRAM-v1.1.md",
+      "scan_type": "forbidden_authority",
+      "text": "A token issues DROP."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 389,
+      "path": "PH6_SOURCE/DRAFT/PH6-TOKENS-LIVING-CRAM-v1.1.md",
+      "scan_type": "forbidden_authority",
+      "text": "Tokens may not issue PASS or DROP."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 235,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md",
+      "scan_type": "forbidden_authority",
+      "text": "* AI PASS/DROP authority"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 350,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md",
+      "scan_type": "forbidden_authority",
+      "text": "* motion_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 351,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md",
+      "scan_type": "forbidden_authority",
+      "text": "* motion_decay_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 825,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md",
+      "scan_type": "forbidden_authority",
+      "text": "Preflight (ai_preflight_check.py):    PASS"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 944,
+      "path": "PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.2-CANDIDATE.md",
+      "scan_type": "forbidden_authority",
+      "text": "| S-10 | No FAIL_CRITICAL or FAIL_HIGH findings at time of seal | PASS (current) |"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 102,
+      "path": "PH6_SOURCE/DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 103,
+      "path": "PH6_SOURCE/DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_decay_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 110,
+      "path": "PH6_SOURCE/DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "`motion_score` and `motion_decay_score` are globally forbidden deprecated fields."
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 191,
+      "path": "PH6_SOURCE/DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_score"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 192,
+      "path": "PH6_SOURCE/DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_decay_score"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 210,
+      "path": "PH6_SOURCE/DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "\"forbidden_fields\": [\"verdict\", \"result\", \"motion_score\", \"motion_decay_score\"],"
+    },
+    {
+      "classification": "SUPERSEDED_REFERENCE",
+      "line": 302,
+      "path": "PH6_SOURCE/DRAFT/PH6-SOSO-FAMILY-CONTRACT-v1.0.md",
+      "scan_type": "forbidden_authority",
+      "text": "A SoSo-family system emits PASS or DROP."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 67,
+      "path": "PH6_SOURCE/03_CAMPAIGNS/C01_RUNTIME_CARD.md",
+      "scan_type": "forbidden_authority",
+      "text": "No forbidden fields: motion_score, motion_decay_score"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 101,
+      "path": "PH6_SOURCE/HRG9_CLOSURE/hrg9_final_summary.md",
+      "scan_type": "forbidden_authority",
+      "text": "| Lane 2 / SoSo / TOK / MRAM-S: Authority ZERO | PASS |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 12,
+      "path": "PH6_SOURCE/HRG9_CLOSURE/hrg9_authority_boundary_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"detail\": \"test_ssmt_never_has_authority PASS; canon linter lane2_authority_leakage PASS; 4-pass authority_isolation.json all PASS (lane2_leakage=0)\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 14,
+      "path": "PH6_SOURCE/HRG9_CLOSURE/hrg9_authority_boundary_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"tok_soso_mrams_pass_drop_check\": {"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 16,
+      "path": "PH6_SOURCE/HRG9_CLOSURE/hrg9_authority_boundary_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"detail\": \"TOK, SoSo, MRAM-S have authority=NONE in all advisory outputs. No PASS/DROP verdict fields emitted by advisory lanes. canon linter PASS on lane2 check.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 20,
+      "path": "PH6_SOURCE/HRG9_CLOSURE/hrg9_authority_boundary_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"detail\": \"CRAMWriter authority=LANE_1 on all commits. MRAM-S writes to its own store only (advisory). Confirmed by authority_isolation.json (verdict_auth_lane1=true, advisory_auth_none=true) across all 4 passes.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 24,
+      "path": "PH6_SOURCE/HRG9_CLOSURE/hrg9_authority_boundary_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"detail\": \"export_report.json: rsync_blocked=false, advisory_cannot_block_export=true across all 4 passes. RSYNC Priority Zero / Never Blocks RSYNC invariant intact.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 14,
+      "path": "PH6_SOURCE/HRG9_CLOSURE/hrg9_timestamp_fixedpoint_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"detail\": \"Canon linter check_float_timestamp_in_authority_paths: PASS. No time.time() found in any authority path.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 42,
+      "path": "PH6_SOURCE/HRG9_CLOSURE/hrg9_timestamp_fixedpoint_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"detail\": \"Canon linter check_old_float_metric_fields: PASS. All production verdict and replay paths use _fp suffix consistently.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 23,
+      "path": "PH6_SOURCE/HRG9_CLOSURE/hrg9_replay_parity_receipt.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"advisory_independence\": \"SoSo advisory state NOT used in replay \\u2014 verified by authority_isolation.json pass_1+pass_2\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 77,
+      "path": "PH6_SOURCE/04_SCHEMAS/ACTIVE_SCHEMA_INDEX.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_score"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 78,
+      "path": "PH6_SOURCE/04_SCHEMAS/ACTIVE_SCHEMA_INDEX.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_decay_score"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 103,
+      "path": "PH6_SOURCE/04_SCHEMAS/PH6-ACQUISITION-PROVENANCE-SCHEMA-v1.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_score"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 104,
+      "path": "PH6_SOURCE/04_SCHEMAS/PH6-ACQUISITION-PROVENANCE-SCHEMA-v1.md",
+      "scan_type": "forbidden_authority",
+      "text": "motion_decay_score"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 174,
+      "path": "PH6_SOURCE/NODE_ASSIGNMENTS/PI_ZERO_2W_SENTINEL_NODE.md",
+      "scan_type": "forbidden_authority",
+      "text": "- If spigot service fails: frames pass through unfiltered (fail-open)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 175,
+      "path": "PH6_SOURCE/NODE_ASSIGNMENTS/PI_ZERO_2W_SENTINEL_NODE.md",
+      "scan_type": "forbidden_authority",
+      "text": "- Fail-open is constitutional -- false-safe is better than silent DROP"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 28,
+      "path": "PH6_SOURCE/NODE_ASSIGNMENTS/JETSON_NANO_ADVISORY_ACCELERATOR.md",
+      "scan_type": "forbidden_authority",
+      "text": "AI acceleration hardware may NEVER issue PASS/DROP authority."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 72,
+      "path": "PH6_SOURCE/NODE_ASSIGNMENTS/JETSON_NANO_ADVISORY_ACCELERATOR.md",
+      "scan_type": "forbidden_authority",
+      "text": "AI inference -> may never gate PASS/DROP"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 57,
+      "path": "PH6_SOURCE/GOVERNANCE/SENSOR_INGEST_AUTHORITY_SEPARATION.md",
+      "scan_type": "forbidden_authority",
+      "text": "- Authority boundary crossed (Lane 2 influencing PASS/DROP)"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 58,
+      "path": "PH6_SOURCE/GOVERNANCE/SENSOR_INGEST_AUTHORITY_SEPARATION.md",
+      "scan_type": "forbidden_authority",
+      "text": "- SoSo advisory containing verdict, result, pass, or drop fields"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 74,
+      "path": "PH6_SOURCE/GOVERNANCE/SENSOR_INGEST_AUTHORITY_SEPARATION.md",
+      "scan_type": "forbidden_authority",
+      "text": "6. Allows Lane 2 / SoSo / AI to influence PASS/DROP in response to degradation"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 41,
+      "path": "PH6_SOURCE/GOVERNANCE/NEXT_SESSION_RESUME_2026-05-18.md",
+      "scan_type": "forbidden_authority",
+      "text": "- PSEUDO-A remains PASS/DROP authority."
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 22,
+      "path": "PH6_SOURCE/GOVERNANCE/governance_scan.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 25,
+      "path": "PH6_SOURCE/GOVERNANCE/governance_scan.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"content\": \"\\\"motion_score\\\",\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 32,
+      "path": "PH6_SOURCE/GOVERNANCE/governance_scan.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"motion_decay_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 35,
+      "path": "PH6_SOURCE/GOVERNANCE/governance_scan.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"content\": \"\\\"motion_decay_score\\\",\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 23,
+      "path": "PH6_SOURCE/GOVERNANCE/whole_system_architect_search_summary.md",
+      "scan_type": "forbidden_authority",
+      "text": "| SOSO-1 | isolation | PASS_PENDING_REVIEW | 423676d25 |"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 85,
+      "path": "PH6_SOURCE/GOVERNANCE/whole_system_architect_search_summary.md",
+      "scan_type": "forbidden_authority",
+      "text": "- `confidence_fp` in SSMT/TOK code is Lane 2 advisory internal metric (Authority ZERO)."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 86,
+      "path": "PH6_SOURCE/GOVERNANCE/whole_system_architect_search_summary.md",
+      "scan_type": "forbidden_authority",
+      "text": "- `confidence=0.0` in `_TokSidecar` is RT token constructor field, never surfaces to Lane 1."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 93,
+      "path": "PH6_SOURCE/GOVERNANCE/whole_system_architect_search_summary.md",
+      "scan_type": "forbidden_authority",
+      "text": "All six campaigns C08-C13 verified: pseudo_m_violations=0, pseudo_a_violations=0, lane2_violation_count=0 across every phase. PSEUDO-A is the sole PASS/DROP authority. No contamination from Lane 2, tokens, or SoSo into the verdict path."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 111,
+      "path": "PH6_SOURCE/GOVERNANCE/whole_system_architect_search_summary.md",
+      "scan_type": "forbidden_authority",
+      "text": "- C07, C08, C09, C10, C11, C12, C13, TOK-1, SOSO-1 \u2014 all PASS_PENDING_REVIEW"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 20,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"confidence\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 23,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"content\": \"confidence=0.0,\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 30,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"confidence\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 33,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"content\": \"\\\"confidence\\\", \\\"probability\\\", \\\"ai_verdict\\\",\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 34,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"reason\": \"VRC scanner lists confidence/probability as FORBIDDEN fields to detect. This is the detection rule, not a violation.\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 40,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"confidence_fp\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 43,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"content\": \"confidence_fp: int (Lane 2 swarm packet internal field)\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 50,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"confidence\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 53,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"content\": \"vdt_min_confidence, vlt_min_confidence, confidence field in token lifecycle\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 54,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"reason\": \"Token lifecycle internal fields (VDT/VLT confidence thresholds). Lane 2, Authority ZERO. Token decisions are advisory only. CRAM-PU does not depend on token results per TOK-1 proof.\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 60,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"confidence_fp\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 63,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"content\": \"confidence_fp=90, confidence_fp=95 etc in test constructors\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 64,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"reason\": \"Test fixtures constructing swarm packets with confidence_fp fields for SSMT boundary testing. Not authority-path code.\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 70,
+      "path": "PH6_SOURCE/GOVERNANCE/forbidden_authority_drift_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"term\": \"motion_score motion_decay_score confidence probability\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 38,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"audit_chain\": \"PASS\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 303,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"cram_chain_result\": \"PASS\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 341,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"cram_chain_result\": \"PASS\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 379,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"cram_chain_result\": \"PASS\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 429,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"tokens_disabled_replay_passes\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 430,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"soso_disabled_replay_passes\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 476,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"hash_faithful_transfer\": \"PASS\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 524,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"hash_faithful_transfer\": \"PASS\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 572,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"hash_faithful_transfer\": \"PASS\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 613,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"threshold_override\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 632,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"soso_does_not_emit_pass_drop\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 665,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"threshold_override\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 691,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"soso_does_not_emit_pass_drop\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 727,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"threshold_override\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 746,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"tokens_do_not_emit_pass_drop\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 779,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"threshold_override\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 805,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"tokens_do_not_emit_pass_drop\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 825,
+      "path": "PH6_SOURCE/GOVERNANCE/closure_status.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"production_clearance\": \"DECLARED \\u2014 PH6-PROD-CLEAR-2026-05-18-001. Single-node PH6/CRAM instrument on main_pi is cleared for production operation within defined scope only. Cross-node rsync transfer to jackjack (192.168.254.189) is cleared only as export/hash-continuity verification. Hailo, multi-writer CRAM, distributed authority, remote PASS/DROP authority, remote CRAM-A write authority, Kubernetes CRAM-A storage, and Lane 2 authority remain not cleared.\","
+    },
+    {
+      "classification": "TEST_FIXTURE",
+      "line": 43,
+      "path": "PH6_SOURCE/GOVERNANCE/evc05_corrected_closure_update_37c62a2fff.md",
+      "scan_type": "forbidden_authority",
+      "text": "- PSEUDO-A remains sole PASS/DROP authority."
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 26,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 27,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 48,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 49,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 71,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 72,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 98,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 99,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 145,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 146,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 170,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 171,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 188,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 189,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 208,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 209,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 226,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 227,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 241,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 242,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 326,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 327,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\""
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 353,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 354,
+      "path": "PH6_SOURCE/GOVERNANCE/schema_lock_registry.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"motion_decay_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 7,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"stdout\": \"37c62a2fff governance: tighten EVC-05 closure status; production remains undeclared\\n46aba55168 governance: Jack Disla \\u2014 EVC-05 closed; production clearance candidate (hardened patch)\\nf19d32ddd5 evidence: EVC-05 review closure pending authority signature\\n579ae14a42 governance: Jack Disla \\u2014 EVC-05 closed; production clearance candidate\\n9deda5b1ab evidence: EVC-05 production-grade phased Life CRAM campaign PASS_PENDING_REVIEW\\na26c111c25 governance: Jack Disla review closur"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 13,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"stdout\": \"?? .platformio/\\n?? PH6_LOCAL_BACKUPS/\\n?? PH6_RECOVERY/\\n?? PH6_SOURCE/00_AI_AGENT_READ_FIRST.md\\n?? PH6_SOURCE/AI_PRELOAD/PH6_AI_PRELOAD_PACK_v1.0.txt\\n?? PH6_SOURCE/CAMPAIGNS/\\n?? PH6_SOURCE/CERTIFICATION/\\n?? PH6_SOURCE/DRAFT/PH6-AI-INGEST-v1.1-CANDIDATE.md\\n?? PH6_SOURCE/GOVERNANCE/closure_status.json.bak.20260518T091137Z\\n?? PH6_SOURCE/GOVERNANCE/governance_scan_from_full_alignment_audit.json\\n?? PH6_SOURCE/GOVERNANCE/governance_scan_pre_C09.json\\n?? PH6_SOURCE/GOVERNANCE/ph6_fu"
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 31,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"stdout\": \"============================= test session starts ==============================\\ncollected 114 items\\n\\nph6/cram_pu/tests/test_canonical_schemas.py ............................ [ 24%]\\n...                                                                      [ 27%]\\nph6/cram_pu/tests/test_closure_patches.py ..................             [ 42%]\\nph6/cram_pu/tests/test_crash_replay.py ................................. [ 71%]\\n....                                                        "
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 38,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"stdout\": \"============================= test session starts ==============================\\ncollected 52 items\\n\\nph6/ssmt/tests/test_audit_log.py .....                                   [  9%]\\nph6/ssmt/tests/test_failure_injection.py .............                   [ 34%]\\nph6/ssmt/tests/test_hash_chain.py ........                               [ 50%]\\nph6/ssmt/tests/test_no_authority_leakage.py ..                           [ 53%]\\nph6/ssmt/tests/test_replay_independence.py .                 "
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 226,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"message\": \"possible forbidden pattern: motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 233,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"message\": \"possible forbidden pattern: motion_decay_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 240,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"message\": \"possible forbidden pattern: motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 247,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"message\": \"possible forbidden pattern: motion_decay_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 268,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"message\": \"possible forbidden pattern: motion_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 275,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"message\": \"possible forbidden pattern: motion_decay_score\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 289,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"message\": \"possible forbidden pattern: motion_score\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 64,
+      "path": "PH6_SOURCE/GOVERNANCE/production_clearance_declaration_PH6-PROD-CLEAR-2026-05-18-001.md",
+      "scan_type": "forbidden_authority",
+      "text": "- PSEUDO-A remains sole PASS/DROP authority."
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 74,
+      "path": "PH6_SOURCE/GOVERNANCE/production_clearance_declaration_PH6-PROD-CLEAR-2026-05-18-001.md",
+      "scan_type": "forbidden_authority",
+      "text": "I, Jack Disla, have reviewed the evidence campaigns and governance records listed above. The single-node PH6/CRAM instrument on main_pi is cleared for production operation within the defined scope. OI-01 is descoped. Cross-node rsync transfer to jackjack is cleared only for export/hash-continuity verification. Distributed authority, remote PASS/DROP authority, remote CRAM-A write authority, multi-writer CRAM, Kubernetes CRAM-A storage, Hailo integration, and Lane 2 authority are not proven and a"
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 294,
+      "path": "PH6_SOURCE/GOVERNANCE/ingest_classification.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"description\": \"PH6-EVC-1.0 Evidence Validation Campaign Matrix \u2014 five campaigns (EVC-01 to EVC-05) with pass conditions, required artifacts, closure rules, stop-ship gate linkage.\""
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 10,
+      "path": "PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"closure_rule\": \"No gap may close without a named campaign, executable command, required artifacts, schema validation, governance scan PASS, and reproducible evidence.\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 255,
+      "path": "PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"no Lane 2 PASS/DROP fields\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 292,
+      "path": "PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"ai_preflight PASS\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 458,
+      "path": "PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"tokens_disabled_replay_passes\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 459,
+      "path": "PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"soso_disabled_replay_passes\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 929,
+      "path": "PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"audit_chain_PASS\","
+    },
+    {
+      "classification": "DOCUMENTATION_WARNING",
+      "line": 936,
+      "path": "PH6_SOURCE/GOVERNANCE/evidence_campaign_matrix.json",
+      "scan_type": "forbidden_authority",
+      "text": "\"architectural_confidence\","
+    },
+    {
+      "classification": "DETECTOR_DEFINITION",
+      "line": 147,
+      "path": "PH6_SOURCE/GOVERNANCE/ph6_full_alignment_audit_report.md",
+      "scan_type": "forbidden_authority",
+      "text": "- possible forbidden pattern: motion_score"
+    }
+  ],
+  "evidence_deleted": false,
+  "forbidden_authority_classification_counts": {
+    "DETECTOR_DEFINITION": 70,
+    "DOCUMENTATION_WARNING": 159,
+    "FALSE_POSITIVE": 0,
+    "REAL_AUTHORITY_PATH_VIOLATION": 0,
+    "SUPERSEDED_REFERENCE": 70,
+    "TEST_FIXTURE": 1
+  },
+  "forbidden_authority_hit_count": 300,
+  "generated_at_utc": "2026-05-29T19:48:45+00:00",
+  "hit_cap_per_scan": 300,
+  "open_material_classification_counts": {
+    "DETECTOR_DEFINITION": 34,
+    "DOCUMENTATION_WARNING": 266,
+    "FALSE_POSITIVE": 0,
+    "REAL_AUTHORITY_PATH_VIOLATION": 0,
+    "SUPERSEDED_REFERENCE": 0,
+    "TEST_FIXTURE": 0
+  },
+  "open_material_hit_count": 300,
+  "real_authority_path_violations": [],
+  "recommended_next_action": "No action required on scan hits. All classified as INFO-level (DOCUMENTATION_WARNING, DETECTOR_DEFINITION, TEST_FIXTURE, FALSE_POSITIVE). Proceed to operator review of classification report.",
+  "required_fixes": [],
+  "schema": "ph6.scan_hit_classification_report.v1",
+  "total_hits_reviewed": 600
+}

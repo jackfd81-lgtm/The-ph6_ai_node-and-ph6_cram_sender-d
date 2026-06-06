@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/memory/mrams_memory_object_v1",
+  "title": "PH6 MRAM-S Memory Object v1",
+  "description": "Advisory memory object stored in MRAM-S. Authority ZERO. Append-only. Never modifies evidence.",
+  "type": "object",
+  "required": [
+    "schema_id", "memory_id", "memory_tier", "claim_class",
+    "content_hash", "created_at_utc", "authority_level",
+    "may_modify_cram", "may_modify_evidence"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.memory.mrams_object.v1" },
+    "memory_id": { "type": "string" },
+    "memory_tier": {
+      "type": "string",
+      "enum": [
+        "M0_RAW", "M1_MEASURED", "M2_CONTEXTUAL", "M3_TOKENIZED",
+        "M4_AI_ADVISORY", "M5_RATIFIED", "M6_DOCTRINE"
+      ]
+    },
+    "claim_class": {
+      "type": "string",
+      "enum": ["FACTUAL", "INFERRED", "THEORETICAL", "UNSUPPORTED", "HALLUCINATION_RISK"]
+    },
+    "content": { "type": "object" },
+    "content_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of content"
+    },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "authority_level": {
+      "type": "integer",
+      "const": 0,
+      "description": "MRAM-S authority is always ZERO"
+    },
+    "may_modify_cram": {
+      "type": "boolean",
+      "const": false,
+      "description": "MRAM-S may never modify any CRAM lane"
+    },
+    "may_modify_evidence": {
+      "type": "boolean",
+      "const": false,
+      "description": "MRAM-S may never modify evidence"
+    },
+    "retention_risk": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    },
+    "decay_policy": {
+      "type": "string",
+      "enum": ["PERMANENT", "SESSION", "CONFIGURABLE", "OPERATOR_GATED"]
+    },
+    "linked_evidence_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "linked_token_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "superseded_by": { "type": ["string", "null"] },
+    "operator_review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ph6_ai_authority_request_v1",
+  "title": "PH6 AI Authority Request v1",
+  "description": "Records an AI request to PSEUDO or SoSo for measurement data, verdicts, or continuity maps.",
+  "type": "object",
+  "required": [
+    "schema_id", "request_id", "created_at_utc", "ai_session_id",
+    "target", "source_cram_ids", "source_token_ids",
+    "request_type", "question", "reason", "expected_output", "authority_boundary"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.ai_authority_request.v1" },
+    "request_id": { "type": "string" },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "ai_session_id": { "type": "string" },
+    "target": {
+      "type": "string",
+      "enum": ["PSEUDO", "SOSO"]
+    },
+    "source_cram_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source_token_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "request_type": {
+      "type": "string",
+      "enum": [
+        "MEASUREMENT", "VERDICT", "THRESHOLD", "HASH", "REPLAY_STATUS",
+        "CONTRADICTION_CHECK", "CONTINUITY_MAP", "DRIFT_WARNING",
+        "TOKEN_LOSS_WARNING", "REHYDRATION_CANDIDATE"
+      ]
+    },
+    "question": { "type": "string" },
+    "reason": { "type": "string" },
+    "expected_output": { "type": "string" },
+    "authority_boundary": {
+      "type": "string",
+      "const": "AI_REQUESTS_ONLY_MAY_NOT_REVISE_AUTHORITY"
+    },
+    "response_id": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

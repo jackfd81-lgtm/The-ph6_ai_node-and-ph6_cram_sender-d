@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ai/ai_authority_request_v1",
+  "title": "PH6 AI Authority Request v1",
+  "description": "A formal AI request for operator or PSEUDO authority action. The AI may not self-grant authority.",
+  "type": "object",
+  "required": [
+    "schema_id", "request_id", "requesting_model_id", "request_type",
+    "evidence_basis", "requested_action", "requested_at_utc",
+    "authority_required", "operator_decision"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.ai.authority_request.v1" },
+    "request_id": { "type": "string" },
+    "requesting_model_id": { "type": "string" },
+    "request_type": {
+      "type": "string",
+      "enum": [
+        "VERDICT_REVIEW", "THRESHOLD_ADJUSTMENT", "MEMORY_PROMOTION",
+        "POSIT_RATIFICATION", "DISSENT_ESCALATION", "OPERATOR_DECISION",
+        "SCHEMA_EXTENSION", "GOVERNANCE_UPDATE"
+      ]
+    },
+    "evidence_basis": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Evidence IDs supporting this request"
+    },
+    "requested_action": { "type": "string" },
+    "requested_at_utc": { "type": "string", "format": "date-time" },
+    "authority_required": {
+      "type": "string",
+      "enum": ["OPERATOR", "PSEUDO_M", "PSEUDO_A", "PSEUDO_SCI"]
+    },
+    "operator_decision": {
+      "type": ["string", "null"],
+      "enum": ["APPROVED", "DENIED", "DEFERRED", null]
+    },
+    "operator_decision_at_utc": { "type": ["string", "null"] },
+    "operator_decision_note": { "type": "string" },
+    "ai_self_grant_permitted": {
+      "type": "boolean",
+      "const": false
+    }
+  },
+  "additionalProperties": false
+}

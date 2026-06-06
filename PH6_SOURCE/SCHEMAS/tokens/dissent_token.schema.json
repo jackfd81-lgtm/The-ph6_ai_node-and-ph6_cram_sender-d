@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/tokens/dissent_token_v1",
+  "title": "PH6 Dissent Token v1",
+  "description": "Records a disagreement between AI/SoSo/operator and PSEUDO authority. PSEUDO remains controlling.",
+  "type": "object",
+  "required": [
+    "schema_id", "dissent_id", "dissent_class", "conflict_type",
+    "pseudo_verdict_id", "dissenting_party", "dissent_rationale",
+    "blocking_status", "created_at_utc"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.token.dissent_token.v1" },
+    "dissent_id": { "type": "string" },
+    "dissent_class": { "type": "string" },
+    "conflict_type": {
+      "type": "string",
+      "enum": [
+        "AI_VS_PSEUDO", "AI_VS_SOSO", "SOSO_VS_PSEUDO",
+        "OPERATOR_VS_AI", "OPERATOR_VS_PSEUDO", "PSEUDO_CONTRADICTION"
+      ]
+    },
+    "pseudo_verdict_id": {
+      "type": "string",
+      "description": "The PSEUDO verdict this token dissents from"
+    },
+    "pseudo_remains_controlling": {
+      "type": "boolean",
+      "const": true,
+      "description": "PSEUDO is always controlling authority regardless of dissent"
+    },
+    "dissenting_party": { "type": "string" },
+    "dissent_rationale": { "type": "string" },
+    "evidence_cited_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "blocking_status": {
+      "type": "string",
+      "enum": ["BLOCKING", "NON_BLOCKING", "RESOLVED"]
+    },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "resolved_at_utc": { "type": ["string", "null"] },
+    "resolution_note": { "type": "string" },
+    "operator_review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    }
+  },
+  "additionalProperties": false
+}
