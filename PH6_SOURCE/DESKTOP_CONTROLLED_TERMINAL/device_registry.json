@@ -1,0 +1,7 @@
+{
+  "schema": "ph6.desktop.device_registry.v1",
+  "authority": "ZERO",
+  "non_authoritative": true,
+  "note": "Operational/advisory device list only. Entries here never grant CRAM, PSEUDO, or authority-chain trust. New entries default to STATUS: UNVERIFIED and require operator review before use in any approved test.",
+  "devices": []
+}

@@ -102,12 +102,39 @@ def _sep(char: str = "─", width: int = 52) -> None:
     print(_c("gray", char * width))
 
 
+def _prototype_notice() -> None:
+    """PH6_DESKTOP_CLASS3_PROTOTYPE_DOCTRINE_v1.2.md Section 3 — required operator notice."""
+    _sep("─")
+    print(_c("bold",   "  PH6 Prototype Notice"))
+    print()
+    print(_c("gray",   "  This workstation is a prototype development cockpit."))
+    print()
+    print(_c("gray",   "  Primary development authority:"))
+    print(_c("cyan",   "    Class 1 Cloud / Claude Terminal"))
+    print()
+    print(_c("gray",   "  Primary operational authority:"))
+    print(_c("cyan",   "    Class 2 SSH Terminal"))
+    print()
+    print(_c("gray",   "  Desktop functions are limited to approved prototype capabilities."))
+    _sep("─")
+
+
+def _prototype_footer() -> None:
+    """PH6_DESKTOP_CLASS3_PROTOTYPE_DOCTRINE_v1.2.md Section 10 — required permanent footer."""
+    print(_c("gray", "  Desktop Status:   Experimental Development Platform"))
+    print(_c("gray", "  Authority:        ZERO"))
+    print(_c("gray", "  Lane Impact:      None"))
+    print(_c("gray", "  Current Maturity: Early Operational Prototype"))
+    _sep("─")
+
+
 def _header(title: str) -> None:
     print()
     _sep("═")
     print(_c("bold", f"  {title}"))
     _sep("═")
     print()
+    _prototype_footer()
 
 
 def _subheader(title: str) -> None:
@@ -437,6 +464,109 @@ def panel_sensors() -> None:
     _pause()
 
 
+# ── Panel: Device Manager ─────────────────────────────────────────────────────
+#
+# PH6 Workstation Hierarchy (embedded per operator directive — keep this note in
+# every Desktop / Device Manager / Test Center patch; see also
+# PH6_DESKTOP_CLASS3_PROTOTYPE_DOCTRINE_v1.1.md):
+#
+#   1. Cloud / Claude Terminal      — Primary development authority
+#   2. SSH Terminal                 — Primary operational device authority
+#   3. Desktop Prototype Interface  — Class 3 prototype cockpit, Authority: ZERO, Not Primary
+#
+# Desktop may assist, display, launch approved tests, and review data.
+# Desktop does not replace Cloud Terminal or SSH Terminal.
+#
+# Registry rule: every new device enters as STATUS: UNVERIFIED. Registration is
+# non-authoritative — it never grants CRAM, PSEUDO, or authority-chain trust.
+# A device becomes usable only after probe success, characterization test,
+# report generation, operator review, and a clean governance scan.
+
+_DEVICE_REGISTRY_JSON = Path(__file__).parent / "device_registry.json"
+_DEVICE_TYPES = (
+    "camera", "microphone", "usb", "i2c", "serial",
+    "network_node", "pi_node", "esp_node", "storage",
+)
+
+
+def _device_registry_load() -> dict:
+    reg = _read_json(_DEVICE_REGISTRY_JSON)
+    if not reg or "devices" not in reg:
+        reg = {
+            "schema": "ph6.desktop.device_registry.v1",
+            "authority": "ZERO",
+            "non_authoritative": True,
+            "devices": [],
+        }
+    return reg
+
+
+def _device_registry_save(reg: dict) -> None:
+    _DEVICE_REGISTRY_JSON.write_text(json.dumps(reg, indent=2))
+
+
+def panel_device_manager() -> None:
+    _header("DEVICE MANAGER")
+    _log("panel_device_manager")
+    print(_c("gray", "  Non-authoritative registry — Authority: ZERO."))
+    print(_c("gray", "  New devices default to STATUS: UNVERIFIED until probed and operator-reviewed.\n"))
+
+    reg = _device_registry_load()
+    devices = reg.get("devices", [])
+
+    _subheader(f"Registered Devices ({len(devices)})")
+    if devices:
+        for d in devices:
+            status = d.get("status", "UNVERIFIED")
+            color  = "green" if status == "VERIFIED" else "yellow"
+            print(f"  {_c(color, status):<18} {d.get('device_type', '?'):<14} "
+                  f"{d.get('label', '(unlabeled)')}  [{d.get('device_id', '?')}]")
+    else:
+        print(_badge("devices", "NONE_REGISTERED"))
+
+    if _ACCESS_MODE != "CONTROL":
+        print(_c("gray", "\n  [monitor mode] Add Device disabled — requires CONTROL."))
+        _pause()
+        return
+
+    print()
+    try:
+        choice = input("  Add a device? (y/N): ").strip().lower()
+    except (KeyboardInterrupt, EOFError):
+        choice = ""
+
+    if choice == "y":
+        try:
+            label = input("  Device label: ").strip()
+            print(f"  Device type ({', '.join(_DEVICE_TYPES)}):")
+            dtype = input("  > ").strip().lower()
+        except (KeyboardInterrupt, EOFError):
+            label, dtype = "", ""
+
+        if not label or dtype not in _DEVICE_TYPES:
+            print(_c("yellow", "\n  Cancelled — label is required and type must be one of the listed values."))
+        else:
+            entry = {
+                "device_id": f"{dtype}_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}",
+                "label": label,
+                "device_type": dtype,
+                "status": "UNVERIFIED",
+                "registered_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "registered_by": "desktop_operator",
+                "probe_result": None,
+                "characterization_report": None,
+                "operator_reviewed": False,
+            }
+            devices.append(entry)
+            reg["devices"] = devices
+            _device_registry_save(reg)
+            _log("device_registered", f"id={entry['device_id']} status=UNVERIFIED")
+            print(_c("green", f"\n  Registered: {entry['device_id']}  "
+                              f"(status=UNVERIFIED — pending probe + operator review)"))
+
+    _pause()
+
+
 # ── Panel: Run PH6 Test ───────────────────────────────────────────────────────
 
 def panel_run_test() -> None:
@@ -466,6 +596,77 @@ def panel_run_test() -> None:
         print(f"  {line}")
 
     _log("ph6_internal_test", f"rc={rc}")
+    _pause()
+
+
+# ── Panel: Test Breakdown Viewer ──────────────────────────────────────────────
+#
+# Read-only artifact viewer. Desktop displays PSEUDO-produced results — it
+# never computes, generates, or alters PASS/DROP verdicts, and never writes
+# to any test artifact, report, or authority path.
+
+_TEST_REGISTRY_JSON = Path(__file__).parent / "test_registry.json"
+
+_BREAKDOWN_FIELDS = (
+    "test_id", "id", "device_id", "started_at", "start_time", "ended_at",
+    "end_time", "duration_s", "duration", "command", "input_files",
+    "output_files", "frames_captured", "samples_captured", "pass_count",
+    "drop_count", "warnings", "errors", "artifacts", "report_path",
+    "governance_status", "verdict", "status",
+)
+
+
+def _registered_tests() -> list[dict]:
+    raw = _read_json(_TEST_REGISTRY_JSON)
+    if isinstance(raw, list):
+        return raw
+    if isinstance(raw, dict):
+        return raw.get("tests", [])
+    return []
+
+
+def panel_test_breakdown() -> None:
+    _header("TEST BREAKDOWN VIEWER")
+    _log("panel_test_breakdown")
+    print(_c("gray", "  Read-only. Desktop displays PSEUDO-produced results only —"))
+    print(_c("gray", "  it does not generate PASS/DROP and does not write artifact files.\n"))
+
+    tests = _registered_tests()
+    if not tests:
+        print(_badge("registered tests", "NONE_FOUND"))
+        _pause()
+        return
+
+    for entry in tests:
+        test_id  = entry.get("id", "?")
+        glob_pat = entry.get("artifact_glob")
+        _subheader(f"{entry.get('label', test_id)}  [{test_id}]")
+        print(f"  {_c('gray', 'command')}: {entry.get('command', '?')}")
+
+        if not glob_pat:
+            print(_badge("artifact_glob", "NOT_DEFINED"))
+            continue
+
+        matches = sorted(HOME.glob(glob_pat))
+        if not matches:
+            print(_badge("artifacts", "NOT_FOUND"))
+            continue
+
+        latest = matches[-1]
+        print(f"  {_c('gray', 'latest artifact')}: {latest.relative_to(HOME)}")
+        data = _read_json(latest)
+        if not data:
+            print(_badge("artifact", "UNREADABLE"))
+            continue
+
+        shown = 0
+        for key in _BREAKDOWN_FIELDS:
+            if key in data:
+                print(_badge(f"  {key}", str(data[key])[:80]))
+                shown += 1
+        if shown == 0:
+            print(_c("gray", "  (no recognized breakdown fields in this artifact)"))
+
     _pause()
 
 
@@ -673,6 +874,392 @@ def panel_topology() -> None:
             print(f"  {_c('cyan', f.name):<40} node={node_id} status={status}")
     else:
         print(_badge("  discovered topology files", "NOT_FOUND"))
+
+    _pause()
+
+
+# ── Panel: Evidence Review Center ─────────────────────────────────────────────
+#
+# Read-only consolidated review of current and previous evidence artifacts:
+# video/image/sensor/CRAM/PSEUDO/SoSo/token/governance/topology/replay/report/
+# log files. Desktop only displays what Lane-1 already produced — it never
+# writes to the artifact under review, never generates PASS/DROP, and never
+# mutates CRAM, PSEUDO, SoSo, or EvidencePacket records.
+#
+# Cloud/Claude Terminal first. SSH Terminal second. Desktop Prototype
+# Interface third. Desktop may assist, display, launch approved tests, and
+# review data. Desktop does not replace Cloud Terminal or SSH Terminal.
+
+_EVIDENCE_SEARCH_ROOTS = (
+    HOME / "PH6_SOURCE/TESTS",
+    Path(__file__).parent / "reports",
+    Path(__file__).parent / "logs",
+    HOME / "PH6_SOURCE/REPORTS",
+    HOME / "PH6_SOURCE/GOVERNANCE",
+    HOME / "PH6_SOURCE/TOPOLOGY",
+    Path("/var/ph6/cram-0"),
+    Path("/var/ph6/cram-a"),
+    Path("/var/ph6/cram-r"),
+    Path("/var/ph6/mram-s"),
+    Path("/var/ph6/audit"),
+    Path("/var/ph6/export"),
+)
+
+_EVIDENCE_VIDEO_EXT = (".mp4", ".avi", ".mov", ".mkv", ".webm", ".h264", ".raw")
+_EVIDENCE_IMAGE_EXT = (".jpg", ".jpeg", ".png", ".bmp", ".webp")
+_EVIDENCE_TEXT_EXT  = (".json", ".md", ".txt", ".log", ".csv")
+_EVIDENCE_EXTENSIONS = _EVIDENCE_VIDEO_EXT + _EVIDENCE_IMAGE_EXT + _EVIDENCE_TEXT_EXT
+
+_EVIDENCE_SUMMARY_FIELDS = _BREAKDOWN_FIELDS + (
+    "summary", "result", "node", "node_id", "schema", "authority",
+    "generated_at", "captured_at",
+)
+
+# Per-class breakdown fields (Patch 1.3). Desktop only ever echoes these
+# values back from the artifact on disk — it never computes, infers, or
+# fabricates them.
+_SENSOR_BREAKDOWN_FIELDS = (
+    "timestamp", "device_id", "sensor_type", "sample_count", "fps",
+    "dropped_frames", "temperature", "light", "motion", "audio_level",
+    "error_count", "warning_count",
+)
+_CRAM_BREAKDOWN_FIELDS = (
+    "cram_tier", "tier", "object_id", "id", "sequence", "source_path",
+    "hash", "blake2b", "sha256", "size", "verdict", "veto_reasons",
+    "commit_marker", ".blake2b",
+)
+_PSEUDO_BREAKDOWN_FIELDS = (
+    "verdict", "entropy", "laplacian_variance", "motion_fraction",
+    "reasons", "policy_version", "threshold_profile", "gate_profile",
+)
+_SOSO_BREAKDOWN_FIELDS = (
+    "continuity_id", "topology_refs", "source_object_ids",
+    "advisory_status", "relationship_graph",
+)
+_TOKEN_BREAKDOWN_FIELDS = (
+    "token_id", "token_type", "refs", "created_at", "authority",
+    "decay", "stability",
+)
+
+_TEST_DIR_PATTERN = re.compile(r"^\d{8}_\d{6}")
+
+# RT / VDT / VLT / AVLT token classes (PH6 Token Doctrine). Matches
+# bounded prefixes like "rt_", "vdt-", "avlt." but not incidental
+# substrings such as "report" (which contains "rt" unbounded).
+_TOKEN_NAME_PATTERN = re.compile(r"(?:^|[_.\-])(?:rt|vdt|vlt|avlt)(?:[_.\-]|$)")
+
+
+def _classify_evidence_artifact(path: Path) -> str:
+    """Classify by extension first, then by name keyword. Order matters —
+    more specific PH6 vocabulary (cram/pseudo/soso/...) is checked before
+    generic report/log fallbacks."""
+    name = path.name.lower()
+    ext  = path.suffix.lower()
+
+    if ext in _EVIDENCE_VIDEO_EXT:
+        return "VIDEO"
+    if ext in _EVIDENCE_IMAGE_EXT:
+        return "IMAGE"
+    if "cram" in name or "evidencepacket" in name or "replay_manifest" in name:
+        return "CRAM"
+    if "pseudo" in name:
+        return "PSEUDO"
+    if "soso" in name:
+        return "SOSO"
+    if "token" in name or _TOKEN_NAME_PATTERN.search(name):
+        return "TOKEN"
+    if "governance" in name or "drift" in name:
+        return "GOVERNANCE"
+    if "topology" in name:
+        return "TOPOLOGY"
+    if "replay" in name:
+        return "REPLAY"
+    if "sensor" in name:
+        return "SENSOR"
+    if ext == ".log" or "log" in name:
+        return "LOG"
+    if "report" in name or ext == ".md":
+        return "REPORT"
+    return "UNKNOWN"
+
+
+def _collect_evidence_artifacts(max_per_root: int = 200, max_total: int = 400) -> list[dict]:
+    """Read-only directory walk. Skips missing/unreadable roots safely.
+    Never opens for write; only stat()s and records metadata + class."""
+    found: list[dict] = []
+    for root in _EVIDENCE_SEARCH_ROOTS:
+        try:
+            if not root.exists() or not root.is_dir():
+                continue
+        except OSError:
+            continue
+
+        count = 0
+        try:
+            for p in root.rglob("*"):
+                if count >= max_per_root or len(found) >= max_total:
+                    break
+                try:
+                    if not p.is_file() or p.suffix.lower() not in _EVIDENCE_EXTENSIONS:
+                        continue
+                    st = p.stat()
+                except OSError:
+                    continue
+                found.append({
+                    "path":  p,
+                    "size":  st.st_size,
+                    "mtime": st.st_mtime,
+                    "class": _classify_evidence_artifact(p),
+                })
+                count += 1
+        except (OSError, PermissionError):
+            continue
+
+    found.sort(key=lambda e: e["mtime"], reverse=True)
+    return found
+
+
+def _evidence_relpath(path: Path) -> Path | str:
+    try:
+        return path.relative_to(HOME)
+    except ValueError:
+        return path
+
+
+def _playback_hint(path: Path) -> str:
+    """Return a display-only suggested operator command. Desktop never
+    executes this — it is text shown to the operator, who launches it
+    themselves on their own workstation if they choose to."""
+    ext = path.suffix.lower()
+    if ext in _EVIDENCE_VIDEO_EXT:
+        return f'xdg-open "{path}"   (or: ffplay "{path}")'
+    if ext in _EVIDENCE_IMAGE_EXT:
+        return f'xdg-open "{path}"   (or: feh "{path}")'
+    return f'xdg-open "{path}"'
+
+
+def _render_class_breakdown(klass: str, data: dict) -> None:
+    """Echo recognized fields for a known evidence class. Values are read
+    verbatim from the artifact — Desktop never computes or fabricates a
+    verdict, threshold, or advisory state."""
+    if not isinstance(data, dict) or not data:
+        print(_c("gray", "  (no parsable breakdown fields)"))
+        return
+
+    fields = {
+        "SENSOR": _SENSOR_BREAKDOWN_FIELDS,
+        "CRAM":   _CRAM_BREAKDOWN_FIELDS,
+        "PSEUDO": _PSEUDO_BREAKDOWN_FIELDS,
+        "SOSO":   _SOSO_BREAKDOWN_FIELDS,
+        "TOKEN":  _TOKEN_BREAKDOWN_FIELDS,
+    }.get(klass, _EVIDENCE_SUMMARY_FIELDS)
+
+    shown = 0
+    for key in fields:
+        if key in data:
+            print(_badge(f"  {key}", str(data[key])[:100]))
+            shown += 1
+    if shown == 0:
+        keys = list(data.keys())[:8]
+        print(_c("gray", f"  (no recognized {klass} fields — top-level keys: {', '.join(keys)})"))
+
+    if klass == "SOSO":
+        print(_c("yellow", "  ADVISORY ONLY  ·  AUTHORITY ZERO"))
+    elif klass == "TOKEN":
+        print(_c("yellow", "  MRAM-S ONLY  ·  AUTHORITY ZERO"))
+
+
+def _evidence_test_group_key(path: Path) -> str:
+    """Find the nearest ancestor directory that looks like a test-run
+    folder (YYYYMMDD_HHMMSS...). Falls back to the immediate parent name
+    so every artifact still lands in some group."""
+    for parent in path.parents:
+        if _TEST_DIR_PATTERN.match(parent.name):
+            return parent.name
+    return path.parent.name or "ungrouped"
+
+
+def _group_evidence_by_test(artifacts: list[dict]) -> list[dict]:
+    """Group artifacts by inferred test run, newest run first. Pure
+    read-only aggregation over already-collected metadata — no filesystem
+    writes, no verdicts, no authority data."""
+    groups: dict[str, dict] = {}
+    order: list[str] = []
+    for entry in artifacts:
+        key = _evidence_test_group_key(entry["path"])
+        if key not in groups:
+            groups[key] = {
+                "test_id": key,
+                "artifacts": [],
+                "counts": {},
+                "first_mtime": entry["mtime"],
+                "last_mtime": entry["mtime"],
+            }
+            order.append(key)
+        g = groups[key]
+        g["artifacts"].append(entry)
+        g["counts"][entry["class"]] = g["counts"].get(entry["class"], 0) + 1
+        g["first_mtime"] = min(g["first_mtime"], entry["mtime"])
+        g["last_mtime"]  = max(g["last_mtime"], entry["mtime"])
+    return sorted((groups[k] for k in order), key=lambda g: g["last_mtime"], reverse=True)
+
+
+def _render_evidence_test_timeline(groups: list[dict]) -> None:
+    _subheader(f"Test Timeline ({len(groups)} runs found, newest first)")
+    for i, g in enumerate(groups[:15], 1):
+        start = datetime.fromtimestamp(g["first_mtime"], tz=timezone.utc).strftime("%Y-%m-%d %H:%M:%SZ")
+        end   = datetime.fromtimestamp(g["last_mtime"],  tz=timezone.utc).strftime("%Y-%m-%d %H:%M:%SZ")
+        c = g["counts"]
+        print(f"  {i:>2}. {_c('cyan', g['test_id'])}")
+        print(f"      start={start}  end={end}  artifacts={len(g['artifacts'])}")
+        print(f"      video={c.get('VIDEO',0)} image={c.get('IMAGE',0)} sensor={c.get('SENSOR',0)} "
+              f"cram={c.get('CRAM',0)} pseudo={c.get('PSEUDO',0)} soso={c.get('SOSO',0)} "
+              f"token={c.get('TOKEN',0)} logs={c.get('LOG',0)} reports={c.get('REPORT',0)}")
+
+
+def _preview_evidence_artifact(entry: dict) -> None:
+    """Read-only preview. Opens the file for reading only — never writes,
+    never mutates, never fabricates a verdict."""
+    path  = entry["path"]
+    klass = entry["class"]
+    ts    = datetime.fromtimestamp(entry["mtime"], tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    print(f"\n  {_c('gray', 'path')}: {_evidence_relpath(path)}")
+    print(_badge("class",        klass))
+    print(_badge("size_bytes",   str(entry["size"])))
+    print(_badge("modified_utc", ts))
+
+    if klass == "VIDEO":
+        print(_badge("extension", path.suffix))
+        print(_badge("playback",  "PENDING"))
+        print(_c("gray", "  Suggested operator command (display only — Desktop does not launch it):"))
+        print(_c("cyan", f"    {_playback_hint(path)}"))
+        return
+
+    if klass == "IMAGE":
+        print(_badge("extension", path.suffix))
+        print(_badge("preview",   "PENDING"))
+        print(_c("gray", "  Suggested operator command (display only — Desktop does not launch it):"))
+        print(_c("cyan", f"    {_playback_hint(path)}"))
+        return
+
+    if path.suffix.lower() == ".json":
+        data = _read_json(path)
+        if not data:
+            print(_badge("artifact", "UNREADABLE_OR_EMPTY"))
+            return
+        if klass in ("SENSOR", "CRAM", "PSEUDO", "SOSO", "TOKEN"):
+            _render_class_breakdown(klass, data)
+        else:
+            shown = 0
+            for key in _EVIDENCE_SUMMARY_FIELDS:
+                if key in data:
+                    print(_badge(f"  {key}", str(data[key])[:100]))
+                    shown += 1
+            if shown == 0 and isinstance(data, dict):
+                keys = list(data.keys())[:8]
+                print(_c("gray", f"  (no recognized summary fields — top-level keys: {', '.join(keys)})"))
+        return
+
+    if path.suffix.lower() in _EVIDENCE_TEXT_EXT:
+        try:
+            lines = path.read_text(errors="replace").splitlines()
+        except Exception:
+            print(_badge("artifact", "UNREADABLE"))
+            return
+        tail = lines[-20:]
+        print(_c("gray", f"  (showing last {len(tail)} of {len(lines)} lines — read-only)"))
+        for line in tail:
+            print(f"  {line[:140]}")
+        return
+
+    print(_c("gray", "  No preview available for this file type."))
+
+
+def panel_evidence_review() -> None:
+    _header("EVIDENCE PLAYBACK + BREAKDOWN CENTER")
+    _log("panel_evidence_review")
+    print(_c("gray", "  Read-only review, breakdown, and playback-hint center for current"))
+    print(_c("gray", "  and previous evidence. Desktop never writes to a reviewed file,"))
+    print(_c("gray", "  never generates PASS/DROP, and never mutates CRAM/PSEUDO/SoSo data.\n"))
+
+    artifacts = _collect_evidence_artifacts()
+    if not artifacts:
+        print(_badge("evidence artifacts", "NONE_FOUND"))
+        print(_c("gray", "\n  No known PH6 artifact roots were reachable from this host."))
+        _pause()
+        return
+
+    groups = _group_evidence_by_test(artifacts)
+
+    _subheader("Filter")
+    print("   1. Latest test")
+    print("   2. Previous tests")
+    print("   3. All artifacts")
+    print("   4. By device")
+    print("   5. By artifact class")
+    print("   6. By date modified")
+    try:
+        f_choice = input("  Select filter (Enter = All artifacts): ").strip()
+    except (KeyboardInterrupt, EOFError):
+        f_choice = ""
+
+    shown: list[dict] = []
+    if f_choice == "1" and groups:
+        shown = groups[0]["artifacts"][:25]
+        _subheader(f"Latest Test — {groups[0]['test_id']}  ({len(shown)} of {len(groups[0]['artifacts'])} shown)")
+    elif f_choice == "2" and len(groups) > 1:
+        for g in groups[1:]:
+            shown.extend(g["artifacts"])
+        shown = shown[:25]
+        _subheader(f"Previous Tests — {len(groups) - 1} runs  ({len(shown)} artifacts shown)")
+    elif f_choice == "4":
+        try:
+            needle = input("  device_id / path contains: ").strip().lower()
+        except (KeyboardInterrupt, EOFError):
+            needle = ""
+        shown = [e for e in artifacts if needle and needle in str(e["path"]).lower()][:25]
+        _subheader(f"By Device — '{needle}'  ({len(shown)} shown)")
+    elif f_choice == "5":
+        known = "/".join(sorted({a["class"] for a in artifacts}))
+        try:
+            klass_filter = input(f"  class ({known}): ").strip().upper()
+        except (KeyboardInterrupt, EOFError):
+            klass_filter = ""
+        shown = [e for e in artifacts if e["class"] == klass_filter][:25]
+        _subheader(f"By Class — {klass_filter or '(none selected)'}  ({len(shown)} shown)")
+    else:
+        shown = artifacts[:25]
+        label = "By Date Modified" if f_choice == "6" else "All Artifacts"
+        _subheader(f"{label} — newest {len(shown)} of {len(artifacts)}")
+        _render_evidence_test_timeline(groups)
+
+    if not shown:
+        print(_badge("filtered artifacts", "NONE_FOUND"))
+        _pause()
+        return
+
+    print()
+    for i, entry in enumerate(shown, 1):
+        ts  = datetime.fromtimestamp(entry["mtime"], tz=timezone.utc).strftime("%Y-%m-%d %H:%M:%SZ")
+        rel = _evidence_relpath(entry["path"])
+        print(f"  {i:>2}. {_c('cyan', entry['class']):<9} {ts}  {entry['size']:>10}B  {rel}")
+
+    print()
+    try:
+        choice = input("  Preview/breakdown which # (Enter to skip): ").strip()
+    except (KeyboardInterrupt, EOFError):
+        choice = ""
+
+    if choice:
+        try:
+            idx = int(choice) - 1
+            if 0 <= idx < len(shown):
+                _preview_evidence_artifact(shown[idx])
+            else:
+                print(_c("yellow", "  Invalid selection."))
+        except ValueError:
+            print(_c("yellow", "  Invalid selection."))
 
     _pause()
 
@@ -1322,17 +1909,20 @@ _MAIN_MENU = [
     ("System Dashboard",   panel_dashboard),
     ("Camera Diagnostics", panel_camera),
     ("Sensor Diagnostics", panel_sensors),
+    ("Device Manager",     panel_device_manager),
     ("Run PH6 Test",       panel_run_test),
+    ("Test Breakdown",     panel_test_breakdown),
     ("PSEUDO Results",     panel_pseudo),
     ("SoSo Results",       panel_soso),
     ("Token Results",      panel_tokens),
     ("Live-vs-Simulator",  panel_live_vs_sim),
     ("Reports",            panel_reports),
     ("Topology",           panel_topology),
+    ("Evidence Playback + Breakdown", panel_evidence_review),
     ("Governance Center",  panel_governance),
     ("Realtime Mode",      panel_realtime),
 ]
-_EXIT_ITEM = 13
+_EXIT_ITEM = len(_MAIN_MENU) + 1
 
 
 def main() -> None:
@@ -1342,6 +1932,7 @@ def main() -> None:
     _sep("═")
     print(_c("bold", f"  PH6 Desktop Controlled Terminal v{VERSION}"))
     _sep("─")
+    _prototype_notice()
 
     if lock_result == "CLAUDE":
         print(_c("yellow", "  CLAUDE SESSION ACTIVE — Desktop in MONITOR_ONLY mode"))
@@ -1369,6 +1960,7 @@ def main() -> None:
             _sep("═")
             print(_c("bold", f"  PH6 Desktop Controlled Terminal v{VERSION}"))
             print(_c("gray", f"  Controller: {controller}  Mode: {mode_str}  Lane-2 Authority: ZERO"))
+            print(_c("gray", "  Class 1 Cloud/Claude Terminal = primary  ·  Class 2 SSH Terminal = second  ·  Class 3 Desktop = prototype, Authority ZERO"))
             _sep("─")
             for i, (label, _) in enumerate(_MAIN_MENU, 1):
                 marker = _c("cyan", "⊛") if label == "Governance Center" else " "
