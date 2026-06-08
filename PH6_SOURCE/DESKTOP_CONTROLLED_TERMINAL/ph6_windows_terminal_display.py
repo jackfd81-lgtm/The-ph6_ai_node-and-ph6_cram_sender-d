@@ -323,8 +323,8 @@ def _collect_cameras() -> list[Row]:
             rows.append((0, d.name, "PRESENT", _CP_OK))
     else:
         rows.append((0, "video devices", "NONE_FOUND", _CP_WARN))
-    rows.append(("HDR", "Dual-Camera Results"))
-    cert_dirs = sorted((HOME / "PH6_SOURCE/TESTS/DUAL_USB_CAMERA").glob("cert_v2_1/*/"))
+    rows.append(("HDR", "Multi-Camera Test Results"))
+    cert_dirs = sorted((HOME / "PH6_SOURCE/TESTS/DUAL_USB_CAMERA").glob("cert_v2_1/*/"))  # historical path retained for compatibility — label only is renamed
     if cert_dirs:
         for d in cert_dirs[-3:]:
             rpt = d / "ph6_dual_camera_certification_report.json"
@@ -595,6 +595,18 @@ def _fb_is_safe(path: Path) -> bool:
     return all(part not in FORBIDDEN_PARTS for part in resolved.parts)
 
 
+_TEXT_BYTES = bytes(range(32, 127)) + b"\n\r\t\f\b"
+
+
+def _looks_binary(data: bytes) -> bool:
+    if not data:
+        return False
+    if b"\x00" in data:
+        return True
+    nontext = sum(1 for b in data if b not in _TEXT_BYTES and b < 32)
+    return (nontext / len(data)) > 0.30
+
+
 def _fb_read_preview(path: Path) -> list[str]:
     MAX = 200
     try:
@@ -603,7 +615,13 @@ def _fb_read_preview(path: Path) -> list[str]:
                 return json.dumps(json.loads(path.read_bytes()), indent=2).splitlines()[:MAX]
             except Exception:
                 pass
-        return path.read_text(errors="replace").splitlines()[:MAX]
+        raw = path.read_bytes()
+        if _looks_binary(raw):
+            return ["[BINARY OR NON-TEXT ARTIFACT]",
+                    f"path: {path}",
+                    f"size_bytes: {len(raw)}",
+                    "preview disabled"]
+        return raw.decode("utf-8", errors="replace").splitlines()[:MAX]
     except PermissionError:
         return ["[Permission denied]"]
     except Exception as e:
@@ -930,9 +948,18 @@ class PH6WindowsDisplay:
     def _cp(self, pair: int | None) -> int:
         return curses.color_pair(pair) if pair is not None else 0
 
+    @staticmethod
+    def _safe_display_text(value: Any) -> str:
+        if value is None:
+            return ""
+        text = str(value)
+        text = text.replace("\x00", "␀")
+        return "".join(ch if ch.isprintable() or ch in "\t\n\r" else "�" for ch in text)
+
     def _put(self, row: int, col: int, text: str,
              attr: int = 0, maxw: int = 9999) -> None:
         try:
+            text = self._safe_display_text(text)
             self.scr.addstr(row, col, text[:maxw], attr if attr is not None else 0)
         except curses.error:
             pass
@@ -1142,8 +1169,10 @@ class PH6WindowsDisplay:
         row(f"  Label:   {st.get('label','?')}", None)
         row(f"  Status:  {status}    rc:{st.get('returncode','?')}",
             self._cp(_CP_OK) if status == "PASS" else self._cp(_CP_ERR))
-        row(f"  Started: {st.get('started_at','?')[:19]}", None)
-        row(f"  Ended:   {st.get('ended_at','?')[:19]}", None)
+        started_at = st.get("started_at") or "?"
+        ended_at = st.get("ended_at") or "RUNNING / NOT ENDED"
+        row(f"  Started: {str(started_at)[:19]}", None)
+        row(f"  Ended:   {str(ended_at)[:19]}", None)
 
         y += 1
         row("  Parsed Results", self._cp(_CP_HDR) | curses.A_BOLD)
