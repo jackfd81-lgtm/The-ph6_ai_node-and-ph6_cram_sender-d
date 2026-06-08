@@ -26,6 +26,7 @@ import os
 import sys
 import threading
 import time
+from datetime import datetime, timezone
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -358,11 +359,75 @@ def result_md_block(r: CaptureResult) -> str:
 # Camera Presence Gate — must pass before any test phase runs
 # ---------------------------------------------------------------------------
 
+# USB kernel log patterns that indicate hardware instability
+_USB_RESET_PATTERNS = [
+    "USB disconnect",
+    "reset high-speed USB device",
+    "Cannot enable",
+    "Maybe the USB cable is bad",
+    "device descriptor read error",
+    "unable to enumerate USB device",
+    "ENODEV",
+]
+
+_MAX_GATE_RETRIES = 3
+
+
+def _run_detection_commands(logs_dir: Path) -> dict[str, str]:
+    """
+    Run system detection commands and save each output to logs_dir.
+    Returns mapping of label → output string.
+    """
+    import subprocess
+
+    commands = {
+        "lsusb":          (["lsusb"],                         "presence_gate_lsusb.txt"),
+        "lsusb_tree":     (["lsusb", "-t"],                   "presence_gate_lsusb_tree.txt"),
+        "v4l2_devices":   (["v4l2-ctl", "--list-devices"],    "presence_gate_v4l2_devices.txt"),
+        "video_nodes":    (["ls", "-l", "/dev/video"],        "presence_gate_video_nodes.txt"),
+        "dmesg_tail":     (["dmesg"],                         "presence_gate_dmesg_tail.txt"),
+    }
+
+    outputs: dict[str, str] = {}
+    for label, (cmd, fname) in commands.items():
+        try:
+            if label == "video_nodes":
+                # ls -l /dev/video* requires shell glob
+                result = subprocess.run(
+                    "ls -l /dev/video*", shell=True, capture_output=True, text=True, timeout=10
+                )
+            elif label == "dmesg_tail":
+                result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+                # keep only last 120 lines for the gate record; save full log
+                lines = result.stdout.splitlines()
+                result_text = "\n".join(lines[-120:])
+                (logs_dir / fname).write_text(result.stdout)
+                outputs[label] = result_text
+                continue
+            else:
+                result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+            text = result.stdout + result.stderr
+            (logs_dir / fname).write_text(text)
+            outputs[label] = text
+        except Exception as exc:
+            outputs[label] = f"ERROR: {exc}"
+            (logs_dir / fname).write_text(outputs[label])
+
+    return outputs
+
+
+def _scan_usb_resets(dmesg_text: str) -> list[str]:
+    """Return list of matched USB-instability lines from dmesg output."""
+    hits = []
+    for line in dmesg_text.splitlines():
+        if any(pat in line for pat in _USB_RESET_PATTERNS):
+            hits.append(line.strip())
+    return hits
+
+
 def _probe_camera(node: str, name: str) -> dict:
     """
     Hard check: node exists, V4L2 opens, and at least 3 frames read cleanly.
-    Returns a dict with keys: node, name, node_exists, open_ok, frames_read,
-    gate_pass, failure_reason.
     """
     result: dict = {
         "node": node,
@@ -372,38 +437,48 @@ def _probe_camera(node: str, name: str) -> dict:
         "frames_read": 0,
         "gate_pass": False,
         "failure_reason": "",
+        "hold_label": "",
     }
 
     if not os.path.exists(node):
         result["failure_reason"] = f"device_node_absent: {node} not in /dev"
+        result["hold_label"] = (
+            "CAMERA_A_MISSING_HOLD" if name == CAMERA_A_NAME else "CAMERA_B_MISSING_HOLD"
+        )
         return result
     result["node_exists"] = True
 
     cap = cv2.VideoCapture(node, cv2.CAP_V4L2)
     if not cap.isOpened():
         result["failure_reason"] = f"v4l2_open_failed: could not open {node}"
+        result["hold_label"] = (
+            "CAMERA_A_MISSING_HOLD" if name == CAMERA_A_NAME else "CAMERA_B_MISSING_HOLD"
+        )
         return result
     result["open_ok"] = True
 
-    # Request a known-safe format before probing
     cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
     cap.set(cv2.CAP_PROP_FPS, 15)
 
-    for _ in range(5):          # attempt up to 5 reads; require 3 good frames
+    for _ in range(5):
         ret, frame = cap.read()
         if ret and frame is not None:
             result["frames_read"] += 1
         if result["frames_read"] >= 3:
             break
-
     cap.release()
 
     if result["frames_read"] < 3:
         result["failure_reason"] = (
-            f"insufficient_frames: read {result['frames_read']}/3 required "
+            f"insufficient_frames: read {result['frames_read']}/3 "
             f"(ENODEV / USB reset likely)"
+        )
+        result["hold_label"] = (
+            "CAMERA_A_USB_STABILITY_HOLD"
+            if name == CAMERA_A_NAME
+            else "CAMERA_B_USB_STABILITY_HOLD"
         )
         return result
 
@@ -411,43 +486,191 @@ def _probe_camera(node: str, name: str) -> dict:
     return result
 
 
-def camera_presence_gate(out_dir: Path) -> None:
-    """
-    Dual-camera presence gate. Runs before every test phase.
-    Writes camera_presence_gate.json to out_dir.
-    Calls sys.exit(1) if either camera fails — no test phase runs on a broken rig.
-    """
-    print("[GATE] Running dual-camera presence gate ...")
-    probe_a = _probe_camera(CAMERA_A_NODE, CAMERA_A_NAME)
-    probe_b = _probe_camera(CAMERA_B_NODE, CAMERA_B_NAME)
-
-    both_pass = probe_a["gate_pass"] and probe_b["gate_pass"]
-
-    gate_record = {
+def _write_gate_report(out_dir: Path, gate_status: str, probe_a: dict, probe_b: dict,
+                       usb_hits: list[str], attempt: int) -> None:
+    record = {
         "gate": "camera_presence_gate",
-        "gate_pass": both_pass,
+        "gate_status": gate_status,
+        "gate_pass": gate_status == "DUAL_CAMERA_PRESENCE_GATE_PASS",
+        "attempt": attempt,
         "camera_a": probe_a,
         "camera_b": probe_b,
+        "usb_reset_events_detected": len(usb_hits),
+        "usb_reset_lines": usb_hits[:20],  # cap to 20 lines in JSON
         "proposed_by": PROPOSED_BY,
         "proposed_at_utc": PROPOSED_AT,
         "ratified_by": None,
     }
-    write_json(out_dir / "camera_presence_gate.json", gate_record)
+    write_json(out_dir / "camera_presence_gate.json", record)
 
-    # Console summary
-    for probe in (probe_a, probe_b):
-        status = "PASS" if probe["gate_pass"] else "FAIL"
-        detail = probe["failure_reason"] if not probe["gate_pass"] else f"frames_read={probe['frames_read']}"
-        print(f"[GATE] {probe['name']} ({probe['node']}): {status}  {detail}")
+    # Derive per-camera status labels
+    a_status = "PRESENT" if probe_a["gate_pass"] else probe_a.get("hold_label", "HOLD")
+    b_status = "PRESENT" if probe_b["gate_pass"] else probe_b.get("hold_label", "HOLD")
+    stability_note = ""
+    if usb_hits:
+        stability_note = (
+            f"\n**USB instability events detected in dmesg**: {len(usb_hits)}\n\n"
+            + "\n".join(f"  `{h}`" for h in usb_hits[:10])
+        )
 
-    if not both_pass:
+    md = f"""# PH6 Dual USB Camera — Presence Gate Report
+**PROPOSED** — Hardware readiness gate. Not a PSEUDO-A frame verdict.
+
+## Gate Status
+
+**{gate_status}**
+
+| Camera | Node | Present | Capture Node Confirmed | Hold Label |
+|--------|------|---------|----------------------|------------|
+| CAMERA_A ({CAMERA_A_NAME}) | {probe_a['node']} | {probe_a['node_exists']} | {probe_a['open_ok']} | {probe_a.get('hold_label') or '—'} |
+| CAMERA_B ({CAMERA_B_NAME}) | {probe_b['node']} | {probe_b['node_exists']} | {probe_b['open_ok']} | {probe_b.get('hold_label') or '—'} |
+
+```
+CAMERA_A_PRESENT = {str(probe_a['node_exists']).lower()}
+CAMERA_B_PRESENT = {str(probe_b['node_exists']).lower()}
+CAMERA_A_CAPTURE_NODE_CONFIRMED = {str(probe_a['open_ok']).lower()}
+CAMERA_B_CAPTURE_NODE_CONFIRMED = {str(probe_b['open_ok']).lower()}
+```
+{stability_note}
+
+## Camera A
+
+- Node: `{probe_a['node']}`
+- Node exists: {probe_a['node_exists']}
+- V4L2 open: {probe_a['open_ok']}
+- Frames read: {probe_a['frames_read']} / 3 required
+- Gate pass: {probe_a['gate_pass']}
+- Failure reason: {probe_a['failure_reason'] or 'none'}
+
+## Camera B
+
+- Node: `{probe_b['node']}`
+- Node exists: {probe_b['node_exists']}
+- V4L2 open: {probe_b['open_ok']}
+- Frames read: {probe_b['frames_read']} / 3 required
+- Gate pass: {probe_b['gate_pass']}
+- Failure reason: {probe_b['failure_reason'] or 'none'}
+
+## Note
+
+This is a hardware readiness gate, not an authority verdict.
+`DUAL_CAMERA_PRESENCE_GATE_PASS` / `DUAL_CAMERA_PRESENCE_GATE_HOLD` labels
+are distinct from PSEUDO-A `PASS` / `DROP` frame verdicts.
+
+---
+*proposed_by: {PROPOSED_BY} | ratified_by: null*
+"""
+    (out_dir / "camera_presence_gate.md").write_text(md)
+
+
+def camera_presence_gate(out_dir: Path) -> None:
+    """
+    Dual-camera hardware presence gate.
+
+    Runs before every test phase. Checks:
+      1. System detection commands (lsusb, v4l2-ctl, dmesg) — saved to logs/
+      2. dmesg scanned for USB reset / instability events
+      3. Each camera node exists, opens under V4L2, and delivers ≥3 frames
+
+    If either camera fails: prints operator instructions, offers bounded retry
+    (max 3), writes gate report, then calls sys.exit(1).
+
+    Gate labels used (not PSEUDO-A verdicts):
+      DUAL_CAMERA_PRESENCE_GATE_PASS
+      DUAL_CAMERA_PRESENCE_GATE_HOLD
+      CAMERA_A_MISSING_HOLD
+      CAMERA_B_MISSING_HOLD
+      CAMERA_A_USB_STABILITY_HOLD
+      CAMERA_B_USB_STABILITY_HOLD
+      USB_CAMERA_STABILITY_HOLD
+    """
+    logs_dir = out_dir / "logs"
+    logs_dir.mkdir(exist_ok=True)
+
+    for attempt in range(1, _MAX_GATE_RETRIES + 2):  # +2: initial run + 3 retries
+        print(f"\n[GATE] === Dual-Camera Presence Gate — attempt {attempt} ===")
+
+        # Run and save detection commands
+        print("[GATE] Running detection commands ...")
+        det = _run_detection_commands(logs_dir)
+
+        # Scan dmesg for USB instability
+        usb_hits = _scan_usb_resets(det.get("dmesg_tail", ""))
+        if usb_hits:
+            print(f"[GATE] WARNING — {len(usb_hits)} USB instability event(s) in dmesg:")
+            for line in usb_hits[:5]:
+                print(f"       {line}")
+            if len(usb_hits) > 5:
+                print(f"       ... and {len(usb_hits) - 5} more (see logs/presence_gate_dmesg_tail.txt)")
+
+        # Probe each camera
+        probe_a = _probe_camera(CAMERA_A_NODE, CAMERA_A_NAME)
+        probe_b = _probe_camera(CAMERA_B_NODE, CAMERA_B_NAME)
+
+        for probe in (probe_a, probe_b):
+            status = "PASS" if probe["gate_pass"] else probe.get("hold_label", "HOLD")
+            detail = probe["failure_reason"] if not probe["gate_pass"] else f"frames_read={probe['frames_read']}"
+            print(f"[GATE] {probe['name']} ({probe['node']}): {status}  {detail}")
+
+        both_pass = probe_a["gate_pass"] and probe_b["gate_pass"]
+
+        # Determine overall gate status label
+        if both_pass:
+            gate_status = "DUAL_CAMERA_PRESENCE_GATE_PASS"
+        else:
+            if usb_hits:
+                gate_status = "USB_CAMERA_STABILITY_HOLD"
+            else:
+                gate_status = "DUAL_CAMERA_PRESENCE_GATE_HOLD"
+
+        _write_gate_report(out_dir, gate_status, probe_a, probe_b, usb_hits, attempt)
+
+        if both_pass:
+            print("[GATE] Both cameras present and capturable.")
+            print(f"[GATE] {gate_status} — proceeding to tests.")
+            return
+
+        # Gate failed — print operator instructions
         failed = [p for p in (probe_a, probe_b) if not p["gate_pass"]]
-        msg = "; ".join(f"{p['name']}: {p['failure_reason']}" for p in failed)
-        print(f"[GATE] HARD ABORT — {msg}")
-        print("[GATE] Fix hardware and re-run. No test phases will execute.")
-        sys.exit(1)
+        failed_names = ", ".join(p["name"] for p in failed)
 
-    print("[GATE] Both cameras present and capturable. Proceeding to tests.")
+        print(f"""
+[GATE] ============================================================
+[GATE] DUAL_CAMERA_PRESENCE_GATE = HOLD
+
+Only {sum(1 for p in (probe_a, probe_b) if p['gate_pass'])}/2 valid USB cameras detected.
+Missing or unstable: {failed_names}
+
+Recommended actions:
+  1. Unplug and reconnect Camera B.
+  2. Try a different USB port.
+  3. Replace the USB cable.
+  4. If the camera resets again, use a powered USB hub.
+  5. Re-run the presence gate before starting the test.
+
+No dual-camera test will run until both cameras are detected.
+[GATE] ============================================================""")
+
+        if attempt > _MAX_GATE_RETRIES:
+            break
+
+        # Offer retry
+        print(f"\n[GATE] Retry {attempt}/{_MAX_GATE_RETRIES}: reseat/reconnect both cameras.")
+        try:
+            input("[GATE] Press ENTER when ready to retry, or Ctrl+C to abort: ")
+        except KeyboardInterrupt:
+            print("\n[GATE] Aborted by operator.")
+            break
+        import time as _time
+        print("[GATE] Waiting 5 seconds ...")
+        _time.sleep(5)
+
+    # All retries exhausted or operator aborted
+    gate_status = "DUAL_CAMERA_PRESENCE_GATE_HOLD"
+    _write_gate_report(out_dir, gate_status, probe_a, probe_b, usb_hits, attempt)
+    print("[GATE] HARD ABORT — gate retries exhausted. Fix hardware and re-run.")
+    print("[GATE] Gate report written to camera_presence_gate.json / .md")
+    sys.exit(1)
 
 
 # ---------------------------------------------------------------------------
@@ -1014,8 +1237,22 @@ PROPOSED — Lane-2 advisory only.
 # Main
 # ---------------------------------------------------------------------------
 
+EVIDENCE_REPORT_NAMES = (
+    "PH6_DUAL_USB_CAMERA_FINAL_REPORT.json",
+    "dual_smoke_report.json",
+    "same_vision_test_report.json",
+    "opposite_role_test_report.json",
+    "complementary_test_report.json",
+)
+
+
 def main() -> None:
-    out_dir = Path("/home/jack/PH6_SOURCE/TESTS/DUAL_USB_CAMERA/20260603_055215")
+    run_id = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    out_dir = Path(f"/home/jack/PH6_SOURCE/TESTS/DUAL_USB_CAMERA/{run_id}")
+
+    if out_dir.exists() and any((out_dir / name).exists() for name in EVIDENCE_REPORT_NAMES):
+        raise RuntimeError(f"EVIDENCE_DIRECTORY_ALREADY_EXISTS: {out_dir}")
+
     out_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"[INIT] Output dir: {out_dir}")
