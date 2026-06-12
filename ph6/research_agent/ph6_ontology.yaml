@@ -1,0 +1,30 @@
+# PH6 Research Agent - scaffold ontology (test/smoke config)
+#
+# SCAFFOLD ONLY. This is sufficient to satisfy load_ontology_checked() and
+# run a smoke test against the dummy search sources. Replace with a
+# production ontology (real domains, search queries, weighting rationale)
+# before any non-dummy run.
+
+keep_threshold: 6.0
+
+ph6_weights:
+  Measurement: 0.10
+  Validation: 0.10
+  Preservation: 0.10
+  Continuity: 0.10
+  Methodology: 0.10
+  Epistemics: 0.10
+  Determinism: 0.10
+  Explainability: 0.10
+  EvidenceIntegrity: 0.10
+  OpenSourceAvailability: 0.05
+  ScientificCredibility: 0.05
+
+domains:
+  scaffold_domain:
+    min_score: 6.0
+    search_queries:
+      - "deterministic edge measurement framework"
+    sources:
+      - arxiv
+      - github
