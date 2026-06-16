@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/memory/living_memory_record_v1",
+  "title": "PH6 Living Memory Record v1",
+  "description": "Living memory = deterministic continuity. Records a forward audit event when memory is reviewed or updated. Old evidence not modified.",
+  "type": "object",
+  "required": [
+    "schema_id", "record_id", "source_memory_id", "review_event_type",
+    "tier_before", "tier_after", "forward_audit_event_created",
+    "one_way_circle_compliant", "created_at_utc"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.memory.living_memory_record.v1" },
+    "record_id": { "type": "string" },
+    "source_memory_id": { "type": "string" },
+    "review_event_type": {
+      "type": "string",
+      "enum": [
+        "TIER_PROMOTION", "TIER_DECAY", "COMPRESSION", "OPERATOR_RATIFICATION",
+        "AI_ANNOTATION", "CONTEXT_ADDITION", "REHYDRATION", "EXPIRY"
+      ]
+    },
+    "tier_before": {
+      "type": "string",
+      "enum": [
+        "M0_RAW", "M1_MEASURED", "M2_CONTEXTUAL", "M3_TOKENIZED",
+        "M4_AI_ADVISORY", "M5_RATIFIED", "M6_DOCTRINE"
+      ]
+    },
+    "tier_after": {
+      "type": "string",
+      "enum": [
+        "M0_RAW", "M1_MEASURED", "M2_CONTEXTUAL", "M3_TOKENIZED",
+        "M4_AI_ADVISORY", "M5_RATIFIED", "M6_DOCTRINE"
+      ]
+    },
+    "forward_audit_event_created": {
+      "type": "boolean",
+      "description": "One-Way Circle Rule: reviewing memory creates a new forward event, not a mutation"
+    },
+    "one_way_circle_compliant": {
+      "type": "boolean",
+      "description": "True if this record follows the One-Way Circle Rule (no retroactive evidence mutation)"
+    },
+    "old_evidence_modified": {
+      "type": "boolean",
+      "const": false,
+      "description": "One-Way Circle Rule: old evidence is never modified"
+    },
+    "triggered_by": { "type": "string" },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "linked_token_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

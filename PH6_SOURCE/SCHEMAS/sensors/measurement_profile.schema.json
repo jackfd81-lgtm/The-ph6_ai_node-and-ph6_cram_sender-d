@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/sensors/measurement_profile_v1",
+  "title": "PH6 Measurement Profile v1",
+  "description": "Measurement method, version, metrics, and replay parameters for a sensor class.",
+  "type": "object",
+  "required": [
+    "schema_id", "profile_id", "sensor_class", "method_id",
+    "method_version", "metric_outputs", "threshold_profile", "profile_hash"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.sensor.measurement_profile.v1" },
+    "profile_id": { "type": "string" },
+    "sensor_class": {
+      "type": "string",
+      "enum": [
+        "CLASS_OPTICAL", "CLASS_AUDIO", "CLASS_THERMAL", "CLASS_RF",
+        "CLASS_IMU", "CLASS_ENVIRONMENTAL", "CLASS_BIOLOGICAL",
+        "CLASS_POWER", "CLASS_NETWORK", "CLASS_OPERATOR_INPUT",
+        "CLASS_SYNTHETIC_TEST_SIGNAL"
+      ]
+    },
+    "method_id": { "type": "string" },
+    "method_version": { "type": "string" },
+    "metric_outputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Names of metrics this method produces"
+    },
+    "threshold_profile": {
+      "type": "object",
+      "description": "Fixed thresholds — must be set at design time, not runtime"
+    },
+    "hash_input_fields": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Fields included in canonical hash computation"
+    },
+    "replay_config": {
+      "type": "object",
+      "description": "Configuration required for deterministic replay"
+    },
+    "profile_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of this profile"
+    },
+    "validated_at_utc": { "type": ["string", "null"] },
+    "operator_review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED"]
+    }
+  },
+  "additionalProperties": false
+}

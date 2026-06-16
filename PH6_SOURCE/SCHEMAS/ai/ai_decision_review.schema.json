@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ai/ai_decision_review_v1",
+  "title": "PH6 AI Decision Review v1",
+  "description": "Structured review of an AI claim. Each claim classified. Hallucination-risk flags applied.",
+  "type": "object",
+  "required": [
+    "schema_id", "review_id", "model_id", "review_context",
+    "claims", "authority_note", "reviewed_at_utc"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.ai.decision_review.v1" },
+    "review_id": { "type": "string" },
+    "model_id": { "type": "string" },
+    "review_context": { "type": "string" },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["claim_id", "claim_text", "claim_class"],
+        "properties": {
+          "claim_id": { "type": "string" },
+          "claim_text": { "type": "string" },
+          "claim_class": {
+            "type": "string",
+            "enum": ["FACTUAL", "INFERRED", "THEORETICAL", "UNSUPPORTED", "HALLUCINATION_RISK"]
+          },
+          "evidence_link_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "hallucination_risk_flags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "NO_EVIDENCE_LINK", "CONTEXT_MISMATCH", "OUT_OF_SCOPE",
+                "MODEL_UNCERTAINTY", "CONTRADICTION_WITH_PSEUDO", "STALE_CONTEXT"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "authority_note": {
+      "type": "string",
+      "const": "ADVISORY_ONLY_AUTHORITY_ZERO"
+    },
+    "courtroom_safe": { "type": "boolean" },
+    "reviewed_at_utc": { "type": "string", "format": "date-time" },
+    "operator_review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    }
+  },
+  "additionalProperties": false
+}

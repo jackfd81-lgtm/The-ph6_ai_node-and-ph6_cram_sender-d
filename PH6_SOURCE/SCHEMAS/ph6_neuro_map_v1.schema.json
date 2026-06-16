@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ph6_neuro_map_v1",
+  "title": "PH6 Neuro Map v1",
+  "description": "AI-produced feature and relationship map. Advisory only. Authority ZERO.",
+  "type": "object",
+  "required": [
+    "schema_id", "neuro_map_id", "created_at_utc",
+    "source_ids", "feature_nodes", "edges", "map_hash", "authority_status"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.neuro_map.v1" },
+    "neuro_map_id": { "type": "string" },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "CRAM, PSEUDO, SoSo, or token IDs this map was derived from"
+    },
+    "feature_nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["node_id", "label"],
+        "properties": {
+          "node_id": { "type": "string" },
+          "label": { "type": "string" },
+          "source_id": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from_node", "to_node", "relationship"],
+        "properties": {
+          "from_node": { "type": "string" },
+          "to_node": { "type": "string" },
+          "relationship": { "type": "string" },
+          "weight": { "type": "number" }
+        }
+      }
+    },
+    "map_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of the map content"
+    },
+    "authority_status": {
+      "type": "string",
+      "const": "ADVISORY_ONLY_AUTHORITY_ZERO"
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    },
+    "proposed_by": { "type": "string" },
+    "ratified_by": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

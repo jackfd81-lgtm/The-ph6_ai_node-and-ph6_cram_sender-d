@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ph6_token_v1",
+  "title": "PH6 Token Record v1",
+  "description": "Generic PH6 token record covering governance token classes and low-level token physics.",
+  "type": "object",
+  "required": [
+    "schema_id", "token_id", "token_class", "created_at_utc",
+    "authority_level", "source_ids", "parent_token_ids",
+    "artifact_hash", "canonical_hash", "payload_hash",
+    "version", "supersedes", "superseded_by", "operator_review_status"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.token.v1" },
+    "token_id": { "type": "string" },
+    "token_class": {
+      "type": "string",
+      "enum": [
+        "CRAM_EVIDENCE_TOKEN", "PSEUDO_VERDICT_TOKEN", "SOSO_MAP_TOKEN",
+        "VERSION_TOKEN", "TOPOLOGY_TOKEN", "AI_REQUEST_TOKEN",
+        "AI_TRANSFORM_TOKEN", "MEMORY_TOKEN", "POSIT_TOKEN",
+        "DISSENT_TOKEN", "NEURO_MAP_TOKEN",
+        "RT", "VLT", "VDT", "RLT", "PLT", "AHT"
+      ]
+    },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "authority_level": { "type": "integer", "minimum": 0, "maximum": 7 },
+    "source_ids": { "type": "array", "items": { "type": "string" } },
+    "parent_token_ids": { "type": "array", "items": { "type": "string" } },
+    "artifact_hash": { "type": ["string", "null"] },
+    "canonical_hash": { "type": ["string", "null"] },
+    "payload_hash": { "type": ["string", "null"] },
+    "version": { "type": "string" },
+    "supersedes": { "type": ["string", "null"] },
+    "superseded_by": { "type": ["string", "null"] },
+    "operator_review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    },
+    "notes": { "type": "string" },
+    "proposed_by": { "type": "string" },
+    "proposed_at_utc": { "type": "string" },
+    "ratified_by": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

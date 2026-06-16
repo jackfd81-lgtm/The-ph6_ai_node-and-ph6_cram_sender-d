@@ -1,0 +1,16 @@
+{
+  "schema_id": "ph6.dissent_token.v1",
+  "dissent_id": "dissent_20260606_001",
+  "created_at_utc": "2026-06-06T10:00:00Z",
+  "conflict_type": "AI_VS_PSEUDO",
+  "source_ids": [
+    "adr_20260606_001",
+    "pseudo_verdict_20260606_001"
+  ],
+  "summary": "AI advisory suggested reviewing frame 42. PSEUDO verdict was PASS. PSEUDO remains controlling authority.",
+  "blocking_status": "NON_BLOCKING",
+  "authority_resolution": "PSEUDO remains controlling authority. AI suggestion recorded as advisory annotation.",
+  "resolved_at_utc": null,
+  "resolved_by": null,
+  "resolution_note": ""
+}

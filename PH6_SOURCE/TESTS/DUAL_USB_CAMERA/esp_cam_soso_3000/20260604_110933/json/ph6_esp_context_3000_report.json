@@ -1,0 +1,99 @@
+{
+  "schema_id": "PH6-ESP-CAM-SOSO-CONTEXT-3000-v1",
+  "run_id": "20260604_110933",
+  "generated_utc": "2026-06-04T11:14:44.459579+00:00",
+  "elapsed_s": 310.46,
+  "target_frames": 3000,
+  "target_fps": 15,
+  "camera_a": {
+    "device": "/dev/video0",
+    "role": "WIDE_CONTEXT",
+    "frames_attempted": 3000,
+    "frames_captured": 3000,
+    "pass_count": 2999,
+    "drop_count": 1,
+    "drop_rate": 0.0003,
+    "read_failure_count": 0,
+    "drop_reasons": {
+      "static": 1
+    },
+    "motion_fraction": {
+      "mean": 0.11416,
+      "min": 0.0,
+      "max": 0.301146
+    },
+    "entropy": {
+      "mean": 7.121558,
+      "min": 6.936302,
+      "max": 7.268232
+    },
+    "laplacian_var": {
+      "mean": 1434.054507,
+      "min": 1244.989939,
+      "max": 1550.950817
+    }
+  },
+  "camera_b": {
+    "device": "/dev/video2",
+    "role": "PRIMARY_MEASUREMENT",
+    "frames_attempted": 3000,
+    "frames_captured": 3000,
+    "pass_count": 2999,
+    "drop_count": 1,
+    "drop_rate": 0.0003,
+    "read_failure_count": 0,
+    "drop_reasons": {
+      "static": 1
+    },
+    "motion_fraction": {
+      "mean": 0.042209,
+      "min": 0.0,
+      "max": 0.091504
+    },
+    "entropy": {
+      "mean": 7.10894,
+      "min": 7.03595,
+      "max": 7.180557
+    },
+    "laplacian_var": {
+      "mean": 1155.088585,
+      "min": 1105.599283,
+      "max": 1214.651143
+    }
+  },
+  "esp_advisory_context": {
+    "authority": "ZERO",
+    "advisory_only": true,
+    "issues_verdicts": false,
+    "writes_cram": false,
+    "can_block_rsync": false,
+    "context_samples_total": 12,
+    "context_samples_reachable": 11,
+    "context_sample_failures": 1,
+    "esp_reachability_pct": 91.7,
+    "avg_rssi_dbm": -52.0,
+    "avg_free_mem": 139488.0,
+    "heartbeat_range": [
+      4,
+      15
+    ]
+  },
+  "governance_verification": {
+    "lane1_contamination": false,
+    "esp_pass_drop_issued": false,
+    "esp_cram_write": false,
+    "esp_replay_dependency": false,
+    "esp_rsync_interference": false,
+    "governance_violations": 0
+  },
+  "success_criteria": {
+    "frames_captured_pct": 100.0,
+    "esp_reachability_pct": 91.7,
+    "governance_violations": 0,
+    "lane1_contamination": 0,
+    "replay_integrity": "MATCH"
+  },
+  "final_status": "PH6_ESP_CONTEXT_VALIDATION_PASS",
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null
+}

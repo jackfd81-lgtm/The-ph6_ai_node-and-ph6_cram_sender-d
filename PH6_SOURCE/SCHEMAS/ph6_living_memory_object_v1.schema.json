@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ph6_living_memory_object_v1",
+  "title": "PH6 Living Memory Object v1",
+  "description": "A living evidence memory record. Append-only, stratified by tier, linked to CRAM/PSEUDO/SoSo sources.",
+  "type": "object",
+  "required": [
+    "schema_id", "memory_id", "created_at_utc", "memory_tier",
+    "source_cram_ids", "source_pseudo_ids", "source_soso_ids",
+    "source_token_ids", "source_ai_request_ids", "source_transform_ids",
+    "claim_summary", "claim_class", "retention_reason", "retention_risk",
+    "decay_policy", "review_status", "canonical_hash"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.living_memory_object.v1" },
+    "memory_id": { "type": "string" },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "memory_tier": {
+      "type": "string",
+      "enum": [
+        "M0_RAW", "M1_MEASURED", "M2_CONTEXTUAL",
+        "M3_TOKENIZED", "M4_AI_ADVISORY", "M5_RATIFIED", "M6_DOCTRINE"
+      ]
+    },
+    "source_cram_ids": { "type": "array", "items": { "type": "string" } },
+    "source_pseudo_ids": { "type": "array", "items": { "type": "string" } },
+    "source_soso_ids": { "type": "array", "items": { "type": "string" } },
+    "source_token_ids": { "type": "array", "items": { "type": "string" } },
+    "source_ai_request_ids": { "type": "array", "items": { "type": "string" } },
+    "source_transform_ids": { "type": "array", "items": { "type": "string" } },
+    "claim_summary": { "type": "string" },
+    "claim_class": {
+      "type": "string",
+      "enum": ["FACTUAL", "INFERRED", "THEORETICAL", "UNSUPPORTED", "HALLUCINATION_RISK"]
+    },
+    "retention_reason": { "type": "string" },
+    "retention_risk": {
+      "type": "string",
+      "enum": ["NONE", "LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    },
+    "decay_policy": {
+      "type": "string",
+      "enum": ["PERMANENT", "LONG_TERM", "MEDIUM_TERM", "OPERATOR_REVIEW_REQUIRED"]
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    },
+    "canonical_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of this memory record"
+    },
+    "superseded_by": { "type": ["string", "null"] },
+    "proposed_by": { "type": "string" },
+    "ratified_by": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

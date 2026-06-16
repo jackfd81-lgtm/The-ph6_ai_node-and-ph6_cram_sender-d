@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/tokens/token_compression_record_v1",
+  "title": "PH6 Token Compression Record v1 (TCR)",
+  "description": "Documents compression of a token chain. Compression class determines fidelity requirements.",
+  "type": "object",
+  "required": [
+    "schema_id", "tcr_id", "compression_class", "source_token_ids",
+    "compressed_token_id", "compression_hash", "created_at_utc",
+    "reversible", "operator_review_status"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.token.compression_record.v1" },
+    "tcr_id": { "type": "string" },
+    "compression_class": {
+      "type": "string",
+      "enum": ["LOSSLESS", "LOSSY_DECLARED", "LOSSY_SUMMARY"]
+    },
+    "source_token_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "compressed_token_id": { "type": "string" },
+    "compression_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of compression manifest"
+    },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "reversible": { "type": "boolean" },
+    "information_loss_declared": { "type": "string" },
+    "compression_ratio": { "type": ["number", "null"] },
+    "operator_review_status": {
+      "type": "string",
+      "enum": ["PENDING", "REVIEWED", "RATIFIED", "DISPUTED"]
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

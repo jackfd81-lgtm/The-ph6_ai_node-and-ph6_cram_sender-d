@@ -1,0 +1,43 @@
+{
+  "$comment": "Local reference copy. Authoritative schema: PH6_SOURCE/SCHEMAS/soso/soso_continuity_block.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/soso/soso_continuity_block_v1",
+  "title": "PH6 SoSo Continuity Block v1",
+  "description": "Lane 2 MRAM-S append-only continuity ledger block. Authority ZERO. Proves chain inclusion only.",
+  "type": "object",
+  "required": [
+    "schema_id", "continuity_seq", "prev_continuity_hash", "continuity_hash",
+    "soso_component", "timestamp_utc", "topology_payload"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.soso.continuity_block.v1" },
+    "continuity_seq": { "type": "integer", "minimum": 0 },
+    "prev_continuity_hash": {
+      "type": "string",
+      "pattern": "^(GENESIS|[a-f0-9]{64})$"
+    },
+    "continuity_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "soso_component": {
+      "type": "string",
+      "enum": ["OBSERVER", "HISTORIAN", "ARCHAEOLOGIST", "STORM", "SWARM", "JEDI"]
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z$"
+    },
+    "topology_payload": {
+      "type": "object",
+      "required": ["active_vertices", "edge_count"],
+      "properties": {
+        "active_vertices": { "type": "array", "items": { "type": "string" } },
+        "edge_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "authority": { "type": "string", "const": "ADVISORY_ZERO" },
+    "degraded_mode": { "type": "string" }
+  },
+  "additionalProperties": false
+}

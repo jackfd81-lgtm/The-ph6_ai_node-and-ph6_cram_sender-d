@@ -1,0 +1,18 @@
+{
+  "schema_id": "ph6.token.v1",
+  "token_id": "tok_20260606_001",
+  "token_class": "CRAM_EVIDENCE_TOKEN",
+  "created_at_utc": "2026-06-06T10:00:00Z",
+  "authority_level": 4,
+  "source_ids": ["cram_run_20260606_001"],
+  "parent_token_ids": [],
+  "artifact_hash": "014652358db408cf7977c3e99ab3cceb57ee01d7bf7c265daaaead625485a2d7",
+  "canonical_hash": "014652358db408cf7977c3e99ab3cceb57ee01d7bf7c265daaaead625485a2d7",
+  "payload_hash": null,
+  "version": "1.0.0",
+  "supersedes": null,
+  "superseded_by": null,
+  "operator_review_status": "PENDING",
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null
+}

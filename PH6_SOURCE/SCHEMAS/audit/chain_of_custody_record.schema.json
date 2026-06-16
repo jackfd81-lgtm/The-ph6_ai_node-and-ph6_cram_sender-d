@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/audit/chain_of_custody_record_v1",
+  "title": "PH6 Chain of Custody Record v1",
+  "description": "Per-run chain of custody from acquisition through preservation to export and review.",
+  "type": "object",
+  "required": [
+    "schema_id", "custody_id", "run_id",
+    "acquisition_event", "preservation_event",
+    "transfer_events", "custody_hash"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.audit.chain_of_custody.v1" },
+    "custody_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "acquisition_event": {
+      "type": "object",
+      "required": ["timestamp_utc", "sensor_id", "operator_context"],
+      "properties": {
+        "timestamp_utc": { "type": "string" },
+        "sensor_id": { "type": "string" },
+        "operator_context": { "type": "string" },
+        "cram0_id": { "type": "string" }
+      }
+    },
+    "preservation_event": {
+      "type": "object",
+      "required": ["timestamp_utc", "cram_lane"],
+      "properties": {
+        "timestamp_utc": { "type": "string" },
+        "cram_lane": { "type": "string" },
+        "crama_id": { "type": ["string", "null"] },
+        "cramr_id": { "type": ["string", "null"] },
+        "canonical_hash": { "type": "string" }
+      }
+    },
+    "transfer_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["timestamp_utc", "transfer_type", "destination"],
+        "properties": {
+          "timestamp_utc": { "type": "string" },
+          "transfer_type": { "type": "string" },
+          "destination": { "type": "string" },
+          "transfer_hash": { "type": "string" }
+        }
+      }
+    },
+    "export_event": {
+      "type": ["object", "null"],
+      "properties": {
+        "timestamp_utc": { "type": "string" },
+        "export_type": { "type": "string" },
+        "export_destination": { "type": "string" },
+        "export_hash": { "type": "string" }
+      }
+    },
+    "review_event": {
+      "type": ["object", "null"],
+      "properties": {
+        "timestamp_utc": { "type": "string" },
+        "reviewer_id": { "type": "string" },
+        "review_type": { "type": "string" },
+        "review_status": { "type": "string" }
+      }
+    },
+    "custody_hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of this custody record"
+    },
+    "storage_doctrine_note": {
+      "type": "string",
+      "const": "Git history records code history, not evidence custody. This record is the chain of custody authority."
+    }
+  },
+  "additionalProperties": false
+}

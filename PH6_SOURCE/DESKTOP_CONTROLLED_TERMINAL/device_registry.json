@@ -1,0 +1,53 @@
+{
+  "schema": "ph6.desktop.device_registry.v1",
+  "authority": "ZERO",
+  "non_authoritative": true,
+  "note": "Operational/advisory device list only. Entries here never grant CRAM, PSEUDO, or authority-chain trust. New entries default to STATUS: UNVERIFIED and require operator review before use in any approved test.",
+  "devices": [
+    {
+      "device_id": "pi_zero2w_sentinel_01",
+      "device_type": "raspberry_pi_zero_2w",
+      "role": "sentinel_artifact_monitor",
+      "authority": "ZERO",
+      "status": "UNVERIFIED",
+      "operator_reviewed": false,
+      "probe_result": null,
+      "allowed": [
+        "heartbeat check",
+        "network presence check",
+        "artifact folder count",
+        "latest modified artifact report",
+        "advisory status report"
+      ],
+      "forbidden": [
+        "PASS/DROP",
+        "CRAM mutation",
+        "PSEUDO threshold changes",
+        "authority-chain writes",
+        "governance/canon/replay modification"
+      ]
+    },
+    {
+      "device_id": "pico_sensor_node_01",
+      "device_type": "raspberry_pi_pico",
+      "role": "microcontroller_sensor_input_node",
+      "authority": "ZERO",
+      "status": "UNVERIFIED",
+      "operator_reviewed": false,
+      "probe_result": null,
+      "allowed": [
+        "serial presence check",
+        "USB VID/PID inventory if available",
+        "simple sensor sample test",
+        "test report generation"
+      ],
+      "forbidden": [
+        "PASS/DROP",
+        "CRAM mutation",
+        "PSEUDO threshold changes",
+        "authority-chain writes",
+        "governance/canon/replay modification"
+      ]
+    }
+  ]
+}

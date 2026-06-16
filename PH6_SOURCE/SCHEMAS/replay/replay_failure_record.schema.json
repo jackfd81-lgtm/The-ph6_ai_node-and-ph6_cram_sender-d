@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/replay/replay_failure_record_v1",
+  "title": "PH6 Replay Failure Record v1",
+  "description": "Documents a replay failure. Creates CRAM-R record, audit warning, and gap register entry.",
+  "type": "object",
+  "required": [
+    "schema_id", "failure_id", "replay_id", "original_evidence_id",
+    "failure_type", "failure_summary", "cram_r_record_id",
+    "gap_register_entry_id", "operator_review_required"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.replay.failure_record.v1" },
+    "failure_id": { "type": "string" },
+    "replay_id": { "type": "string" },
+    "original_evidence_id": { "type": "string" },
+    "failure_type": {
+      "type": "string",
+      "enum": [
+        "METRIC_MISMATCH", "VERDICT_MISMATCH", "HASH_MISMATCH",
+        "CONFIG_CHANGED", "CODE_CHANGED", "THRESHOLD_CHANGED",
+        "NORMALIZATION_CHANGED", "EVIDENCE_UNAVAILABLE", "ENGINE_ERROR"
+      ]
+    },
+    "failure_summary": { "type": "string" },
+    "cram_r_record_id": {
+      "type": "string",
+      "description": "CRAM-R record created for this replay failure"
+    },
+    "gap_register_entry_id": { "type": "string" },
+    "operator_review_required": { "type": "boolean", "const": true },
+    "detected_at_utc": { "type": "string", "format": "date-time" },
+    "delta_detail": {
+      "type": "object",
+      "description": "Specific fields that differed between original and replay"
+    }
+  },
+  "additionalProperties": false
+}

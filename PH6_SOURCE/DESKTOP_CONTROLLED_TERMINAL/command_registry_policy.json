@@ -1,0 +1,94 @@
+{
+  "schema": "ph6.desktop.command_registry_policy.v1",
+  "generated_at_utc": "2026-06-06T10:45:00Z",
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null,
+  "authority": "ZERO",
+  "version": "1.0",
+
+  "command_classes": {
+    "READ_ONLY": {
+      "description": "Commands that read state without modifying any file, process, or authority record",
+      "examples": ["git status --short", "cat", "ls", "python3 ph6-status checks"],
+      "desktop_allowed": true
+    },
+    "DIAGNOSTIC": {
+      "description": "Commands that probe system/device health without modifying state",
+      "examples": ["lsblk", "lsusb", "nvme smart-log", "python3 -m py_compile", "curl /health"],
+      "desktop_allowed": true
+    },
+    "TEST_RUN": {
+      "description": "Launch a registered test via test_registry.json with preflight and operator confirmation",
+      "examples": ["python3 ph6_dual_camera_certification_v2_1.py", "python3 ph6_internal_test.py"],
+      "desktop_allowed": true,
+      "requirements": ["entry must exist in test_registry.json", "preflight must pass", "no CLAUDE lock"]
+    },
+    "ARTIFACT_VIEW": {
+      "description": "Read-only inspection of test output files, logs, and reports",
+      "examples": ["read stdout.log", "read ph6_dual_camera_certification_report.json"],
+      "desktop_allowed": true
+    },
+    "RESTORE_SAFE": {
+      "description": "Restore of desktop/status interface files from a verified restore point with operator confirmation",
+      "examples": ["bash restore_desktop_last_good.sh"],
+      "desktop_allowed": true,
+      "requirements": ["manifest must exist", "operator must type RESTORE", "post-restore syntax checks required"]
+    },
+    "GIT_READ": {
+      "description": "Read-only git queries: status, log, diff — no writes, no staging, no commits",
+      "examples": ["git status --short", "git log --oneline", "git diff --stat"],
+      "desktop_allowed": true
+    },
+    "GIT_WRITE_MANUAL_ONLY": {
+      "description": "git add, commit, push — only via operator-confirmed manual steps, never automatic",
+      "examples": ["git add", "git commit", "git push"],
+      "desktop_allowed": false,
+      "desktop_future": "LATER — requires hard confirmation panel, never automatic"
+    },
+    "RESTORE_RISK": {
+      "description": "File mutations outside the restore-safe set — editing source files, overwriting configs",
+      "examples": ["vim ph6_windows_terminal_display.py", "overwrite test_registry.json"],
+      "desktop_allowed": false,
+      "desktop_future": "LATER — requires restore point + operator confirmation per file"
+    },
+    "AUTHORITY_FORBIDDEN": {
+      "description": "Any write to CRAM authority, canon, evidence chain, replay records, or governance doctrine",
+      "examples": ["write to CRAM-A", "write to canon docs", "modify audit.jsonl directly"],
+      "desktop_allowed": false,
+      "desktop_future": "NEVER from desktop. Authority writes require Lane-1 deterministic path only."
+    },
+    "TAKEOVER_FORBIDDEN": {
+      "description": "Unrestricted shell, autonomous agent execution, or Cloud Terminal replacement mode",
+      "examples": ["bash interactive shell", "autonomous script execution without registry", "subprocess.shell=True with user input"],
+      "desktop_allowed": false,
+      "desktop_future": "FUTURE ONLY — disabled by default; explicit operator enable required"
+    }
+  },
+
+  "desktop_allowed_summary": [
+    "READ_ONLY",
+    "DIAGNOSTIC",
+    "TEST_RUN",
+    "ARTIFACT_VIEW",
+    "RESTORE_SAFE",
+    "GIT_READ"
+  ],
+
+  "desktop_forbidden_summary": [
+    "GIT_WRITE_MANUAL_ONLY",
+    "RESTORE_RISK",
+    "AUTHORITY_FORBIDDEN",
+    "TAKEOVER_FORBIDDEN"
+  ],
+
+  "enforcement_note": "The test_registry.json controls what TEST_RUN commands are available. No command outside the registry may be launched from desktop Test Control. Preflight checks enforce this at runtime.",
+
+  "authority_boundary": {
+    "desktop_write_CRAM": "FORBIDDEN",
+    "desktop_write_canon": "FORBIDDEN",
+    "desktop_auto_commit": "FORBIDDEN",
+    "desktop_auto_push": "FORBIDDEN",
+    "desktop_issue_verdict": "FORBIDDEN",
+    "desktop_modify_governance": "FORBIDDEN"
+  }
+}

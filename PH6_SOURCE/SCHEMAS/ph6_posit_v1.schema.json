@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ph6_posit_v1",
+  "title": "PH6 Posit Record v1",
+  "description": "Structured hypothesis or theory. Not evidence. May not affect authority without PSEUDO validation.",
+  "type": "object",
+  "required": [
+    "schema_id", "posit_id", "created_at_utc",
+    "statement", "source_ids", "support_level", "mode",
+    "promotion_path", "may_affect_memory", "may_affect_authority"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.posit.v1" },
+    "posit_id": { "type": "string" },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "statement": { "type": "string" },
+    "source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Evidence or token IDs that support this posit"
+    },
+    "support_level": {
+      "type": "string",
+      "enum": [
+        "THEORETICAL",
+        "CANDIDATE",
+        "SUPPORTED_BY_EVIDENCE",
+        "VALIDATED_BY_PSEUDO"
+      ]
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["LEGAL", "SCIENTIFIC", "EXPERIMENTAL", "THEORETICAL"]
+    },
+    "promotion_path": {
+      "type": "string",
+      "description": "Describes what is required to promote this posit to higher support_level"
+    },
+    "may_affect_memory": {
+      "type": "boolean",
+      "description": "False unless explicitly promoted by operator to M5 or M6 memory tier"
+    },
+    "may_affect_authority": {
+      "type": "boolean",
+      "const": false,
+      "description": "A posit may never directly affect CRAM or PSEUDO authority"
+    },
+    "validated_by": { "type": ["string", "null"] },
+    "proposed_by": { "type": "string" },
+    "ratified_by": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

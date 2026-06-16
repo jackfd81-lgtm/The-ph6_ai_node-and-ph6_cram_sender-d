@@ -61,3 +61,7 @@ build/
 
 # ESP_S1 advisory sidecar log — runtime only, not evidence
 PH6_SOURCE/TESTS/DUAL_USB_CAMERA/mixed_10min/json/esp_s1_sensor_status.jsonl
+
+# ESP-CAM context run raw CRAM evidence — frame-by-frame JSONL, not committed
+PH6_SOURCE/TESTS/DUAL_USB_CAMERA/esp_cam_soso_3000/**/cram_*.jsonl
+PH6_SOURCE/TESTS/DUAL_USB_CAMERA/esp_cam_soso_3000/**/esp_s1_sensor_status.jsonl

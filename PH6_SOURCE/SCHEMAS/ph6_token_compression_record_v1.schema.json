@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ph6_token_compression_record_v1",
+  "title": "PH6 Token Compression Record v1",
+  "description": "Audit record for token compression. Preserves lineage even when content is reduced.",
+  "type": "object",
+  "required": [
+    "schema_id", "compression_id", "created_at_utc",
+    "input_token_ids", "output_token_id", "compression_method",
+    "loss_class", "preserved_fields", "lost_fields_declared",
+    "operator_review_required", "hash"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.token_compression_record.v1" },
+    "compression_id": { "type": "string" },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "input_token_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "output_token_id": { "type": "string" },
+    "compression_method": {
+      "type": "string",
+      "enum": ["MERGE", "SUMMARIZE", "DEDUPLICATE", "TRUNCATE_DECLARED"]
+    },
+    "loss_class": {
+      "type": "string",
+      "enum": ["LOSSLESS", "LOSSY_DECLARED", "LOSSY_SUMMARY"]
+    },
+    "preserved_fields": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Fields guaranteed to be present in output token"
+    },
+    "lost_fields_declared": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Fields removed from output token; must be explicit"
+    },
+    "operator_review_required": {
+      "type": "boolean",
+      "description": "True for any loss_class other than LOSSLESS"
+    },
+    "hash": {
+      "type": "string",
+      "description": "BLAKE2b-256 of this compression record"
+    },
+    "operator_reviewed_by": { "type": ["string", "null"] },
+    "proposed_by": { "type": "string" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,169 @@
+{
+  "schema": "ph6.governance.standards_crosswalk.v1",
+  "generated_at_utc": "2026-06-06T10:45:00Z",
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null,
+  "authority": "ZERO",
+  "note": "Maps PH6 internal concepts to professional/standards equivalents. PH6 is not claiming conformance. This crosswalk supports communication, future audit readiness, and professional alignment.",
+  "crosswalk": [
+    {
+      "ph6_concept": "CRAM",
+      "ph6_description": "Compressed Replay Archive and Manifest — preserves raw evidence packets, hashes, audit chain",
+      "professional_equivalent": "Evidence preservation container / digital forensic acquisition image",
+      "standards_reference": ["NIST SP 800-86", "SWGDE Best Practices for Digital Evidence Collection"],
+      "alignment_note": "CRAM mirrors forensic acquisition principles: integrity-preserved, hash-authenticated, chain-of-custody-tracked."
+    },
+    {
+      "ph6_concept": "Canon hash (BLAKE2b-256)",
+      "ph6_description": "Authority integrity digest — BLAKE2b-256 is the sole canonical hash; SHA-256 is compat sidecar only",
+      "professional_equivalent": "Integrity digest / cryptographic evidence seal",
+      "standards_reference": ["NIST SP 800-86", "NIST SP 800-101 Rev. 1"],
+      "alignment_note": "Hash-based integrity is standard forensic practice. BLAKE2b-256 provides strong integrity. SHA-256 sidecar preserves interoperability."
+    },
+    {
+      "ph6_concept": "PSEUDO deterministic measurement",
+      "ph6_description": "Lane-1 deterministic measurement producing PASS/DROP verdicts — replay-stable, authority-final",
+      "professional_equivalent": "Validated measurement method / deterministic test procedure",
+      "standards_reference": ["ISO/IEC 17025", "NIST AI RMF 1.0"],
+      "alignment_note": "ISO/IEC 17025 requires validated methods with known uncertainty. PSEUDO is the PH6 equivalent: fixed algorithm, reproducible output, bounded domain."
+    },
+    {
+      "ph6_concept": "SoSo / Lane-2 advisory",
+      "ph6_description": "Advisory AI interpretation layer — Authority ZERO, cannot issue PASS/DROP, cannot write canon",
+      "professional_equivalent": "Expert advisory / non-authoritative analysis / opinion layer",
+      "standards_reference": ["NIST AI RMF 1.0", "Federal Rule of Evidence 702"],
+      "alignment_note": "FRE 702 requires expert opinions to be distinguishable from fact. PH6's Lane-2/SoSo boundary enforces this: interpretation is labeled, not mixed with measurement."
+    },
+    {
+      "ph6_concept": "Token topology (RT/VDT/VLT/AVLT)",
+      "ph6_description": "Metadata taxonomy describing context, environment, and system state at acquisition time",
+      "professional_equivalent": "Evidence metadata / system context record / acquisition environment log",
+      "standards_reference": ["NIST SP 800-86", "SWGDE Best Practices for Digital Evidence Collection"],
+      "alignment_note": "Forensic standards require documenting acquisition environment. Token topology is the PH6 structured equivalent."
+    },
+    {
+      "ph6_concept": "Governance drift scan",
+      "ph6_description": "Automated scan of PH6_SOURCE for forbidden terms, schema violations, lane authority leakage",
+      "professional_equivalent": "Policy compliance check / configuration audit / security control assessment",
+      "standards_reference": ["NIST SP 800-53 Rev. 5", "NIST SP 800-218 SSDF"],
+      "alignment_note": "SSDF and 800-53 recommend automated policy and configuration checks. PH6 governance scan is a domain-specific implementation."
+    },
+    {
+      "ph6_concept": "Replay MATCH",
+      "ph6_description": "Deterministic replay verification — same input produces same hash output as original acquisition",
+      "professional_equivalent": "Reproducibility check / hash verification / forensic verification",
+      "standards_reference": ["ISO/IEC 17025", "NIST SP 800-86"],
+      "alignment_note": "ISO/IEC 17025 requires reproducibility of measurement methods. Replay MATCH is PH6's deterministic reproducibility control."
+    },
+    {
+      "ph6_concept": "Restore point",
+      "ph6_description": "Snapshot of known-good desktop/status interface files with manifest and restore script",
+      "professional_equivalent": "Change-control rollback / configuration baseline / system state snapshot",
+      "standards_reference": ["NIST SP 800-53 Rev. 5 CM (Configuration Management)", "NIST SP 800-218 SSDF"],
+      "alignment_note": "Configuration management families in 800-53 require rollback capability. PH6 restore points implement this for the desktop interface layer."
+    },
+    {
+      "ph6_concept": "Test registry (test_registry.json)",
+      "ph6_description": "Controlled catalog of registered test methods with commands, work directories, and artifact globs",
+      "professional_equivalent": "Controlled method catalog / standard operating procedure index",
+      "standards_reference": ["ISO/IEC 17025"],
+      "alignment_note": "ISO/IEC 17025 requires documented and controlled test methods. test_registry.json is the PH6 method catalog."
+    },
+    {
+      "ph6_concept": "PH6 Desktop cockpit",
+      "ph6_description": "Operator control surface — launches registered tests, monitors output, browses artifacts, shows status. Authority ZERO.",
+      "professional_equivalent": "Operator interface / monitoring station — not authority engine",
+      "standards_reference": ["NIST AI RMF 1.0", "CISA Secure by Design"],
+      "alignment_note": "The interface layer must not contaminate measurement authority. CISA Secure by Design: security built into the design, not bolted on. Desktop authority boundary enforces this."
+    },
+    {
+      "ph6_concept": "CRAM-A (PASS store)",
+      "ph6_description": "Authority store for PASS frames — .blake2b marker written last, immutable after sealing",
+      "professional_equivalent": "Evidence preservation store / write-once forensic archive",
+      "standards_reference": ["NIST SP 800-86", "SWGDE Best Practices for Digital Evidence Collection"],
+      "alignment_note": "Write-once, hash-authenticated storage mirrors forensic evidence preservation requirements."
+    },
+    {
+      "ph6_concept": "Audit event chain (audit.jsonl)",
+      "ph6_description": "Append-only JSONL audit trail with event hashes linking each entry to the prior",
+      "professional_equivalent": "Chain-of-custody log / tamper-evident audit trail",
+      "standards_reference": ["NIST SP 800-53 Rev. 5 AU (Audit and Accountability)", "NIST SP 800-86"],
+      "alignment_note": "Forensic standards require tamper-evident chain-of-custody logs. PH6 audit chain implements this with cryptographic linking."
+    },
+    {
+      "ph6_concept": "Git / version control",
+      "ph6_description": "Prototype source/version-control layer. Not the final production evidence-storage authority.",
+      "professional_equivalent": "Source code management / software configuration management",
+      "standards_reference": ["NIST SP 800-218 SSDF"],
+      "alignment_note": "Git answers: what code was running at this commit. CRAM answers: what was measured and preserved. Evidence authority comes from CRAM chain, manifests, hashes, replay records, and operator logs — not git commit history. Production PH6 must support storage backends independent of git."
+    }
+  ],
+  "storage_doctrine": {
+    "statement": "Git is the prototype source/version-control layer. It is not the final production evidence-storage authority.",
+    "evidence_authority_sources": [
+      "CRAM chain",
+      "artifact manifests",
+      "canonical hashes (BLAKE2b-256)",
+      "replay records",
+      "operator logs",
+      "storage manifests",
+      "chain-of-custody records"
+    ],
+    "storage_backends": [
+      {"type": "internal_ssd_nvme", "role": "Local primary evidence/device storage"},
+      {"type": "external_usb_ssd_nvme", "role": "Backup, export, field evidence storage"},
+      {"type": "cloud_object_storage", "role": "Remote archive, sync, disaster recovery"},
+      {"type": "git", "role": "Prototype source control; optional metadata/version layer only"},
+      {"type": "cram_store", "role": "PH6 evidence preservation layer (authority)"},
+      {"type": "offline_archive", "role": "Courtroom/evidence retention package"}
+    ],
+    "rule": "Production PH6 must support storage backends independent of git. Git may record metadata (script hash, git HEAD) as context but is not a required evidence link."
+  },
+  "referenced_standards": [
+    {
+      "id": "NIST SP 800-86",
+      "title": "Guide to Integrating Forensic Techniques into Incident Response",
+      "relevance": "Digital evidence lifecycle: preparation, collection, examination, analysis, reporting"
+    },
+    {
+      "id": "NIST SP 800-101 Rev. 1",
+      "title": "Guidelines on Mobile Device Forensics",
+      "relevance": "Preservation, acquisition, examination, analysis, and reporting of digital information"
+    },
+    {
+      "id": "SWGDE Best Practices for Digital Evidence Collection",
+      "title": "SWGDE Best Practices for Digital Evidence Collection",
+      "relevance": "Maintaining digital evidence integrity during collection"
+    },
+    {
+      "id": "ISO/IEC 17025",
+      "title": "General requirements for the competence of testing and calibration laboratories",
+      "relevance": "Validated methods, calibration records, measurement uncertainty, reproducibility"
+    },
+    {
+      "id": "NIST AI RMF 1.0",
+      "title": "Artificial Intelligence Risk Management Framework",
+      "relevance": "Trustworthy AI characteristics: valid, reliable, safe, accountable, transparent, explainable"
+    },
+    {
+      "id": "NIST SP 800-218",
+      "title": "Secure Software Development Framework (SSDF) Version 1.1",
+      "relevance": "Secure development practices: version control, review, reproducible builds, change approval"
+    },
+    {
+      "id": "NIST SP 800-53 Rev. 5",
+      "title": "Security and Privacy Controls for Information Systems and Organizations",
+      "relevance": "Control families: Audit/Accountability, Configuration Management, System Integrity, Supply Chain Risk"
+    },
+    {
+      "id": "FRE 702",
+      "title": "Federal Rule of Evidence 702 — Testimony by Expert Witnesses",
+      "relevance": "Expert opinion must be based on sufficient facts, reliable methods, and reliable application"
+    },
+    {
+      "id": "CISA Secure by Design",
+      "title": "CISA Secure by Design Guidance",
+      "relevance": "Security built into product design; responsibility in the product, not the end user"
+    }
+  ]
+}

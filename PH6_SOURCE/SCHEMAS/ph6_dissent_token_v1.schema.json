@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ph6.local/schemas/ph6_dissent_token_v1",
+  "title": "PH6 Dissent Token v1",
+  "description": "Records a disagreement between AI, SoSo, PSEUDO, or operator. Append-only. Blocks promotion, not evidence.",
+  "type": "object",
+  "required": [
+    "schema_id", "dissent_id", "created_at_utc",
+    "conflict_type", "source_ids", "summary",
+    "blocking_status", "authority_resolution"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "const": "ph6.dissent_token.v1" },
+    "dissent_id": { "type": "string" },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "conflict_type": {
+      "type": "string",
+      "enum": [
+        "AI_VS_PSEUDO",
+        "AI_VS_SOSO",
+        "SOSO_VS_PSEUDO",
+        "OPERATOR_VS_AI",
+        "OPERATOR_VS_PSEUDO",
+        "PSEUDO_CONTRADICTION"
+      ]
+    },
+    "source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs of conflicting records (AI answer, PSEUDO verdict, SoSo map, etc.)"
+    },
+    "summary": { "type": "string" },
+    "blocking_status": {
+      "type": "string",
+      "enum": ["BLOCKING", "NON_BLOCKING", "RESOLVED"]
+    },
+    "authority_resolution": {
+      "type": "string",
+      "description": "States which authority controls. Example: PSEUDO remains controlling authority."
+    },
+    "resolved_at_utc": { "type": ["string", "null"] },
+    "resolved_by": { "type": ["string", "null"] },
+    "resolution_note": { "type": "string" }
+  },
+  "additionalProperties": false
+}

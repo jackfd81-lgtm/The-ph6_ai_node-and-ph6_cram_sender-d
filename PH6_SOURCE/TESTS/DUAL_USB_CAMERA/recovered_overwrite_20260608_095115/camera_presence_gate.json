@@ -1,0 +1,34 @@
+{
+  "gate": "camera_presence_gate",
+  "gate_status": "DUAL_CAMERA_PRESENCE_GATE_PASS",
+  "gate_pass": true,
+  "attempt": 1,
+  "camera_a": {
+    "node": "/dev/video0",
+    "name": "DV20_USB",
+    "node_exists": true,
+    "open_ok": true,
+    "frames_read": 3,
+    "gate_pass": true,
+    "failure_reason": "",
+    "hold_label": ""
+  },
+  "camera_b": {
+    "node": "/dev/video2",
+    "name": "STREAMING_CAM",
+    "node_exists": true,
+    "open_ok": true,
+    "frames_read": 3,
+    "gate_pass": true,
+    "failure_reason": "",
+    "hold_label": ""
+  },
+  "usb_reset_events_detected": 2,
+  "usb_reset_lines": [
+    "[ 3768.536535] usb 3-1: USB disconnect, device number 2",
+    "[ 3771.402277] usb 3-1: USB disconnect, device number 3"
+  ],
+  "proposed_by": "claude-code-lane2",
+  "proposed_at_utc": "2026-06-03T00:00:00Z",
+  "ratified_by": null
+}
