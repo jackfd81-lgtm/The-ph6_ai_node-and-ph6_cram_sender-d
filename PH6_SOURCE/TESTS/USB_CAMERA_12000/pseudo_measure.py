@@ -41,7 +41,10 @@ ALL_DROP_REASONS = frozenset({
 })
 
 # Deterministic thresholds — immutable, never overridden by advisory layers
-_BLUR_DROP_LOW    = 5.0    # Laplacian variance below → EXTREME_BLUR
+_BLUR_DROP_LOW    = 0.3    # Laplacian variance below → EXTREME_BLUR
+                            # Calibrated for MJPEG 1280x720: LIGHT floor ~0.47,
+                            # calibration floor ~1.49 (BLUR_CAL_720p.json 2026-06-01)
+                            # Ratified by jack 2026-06-01
 _LUMA_BLACK_MAX   = 3.0    # mean luma below → EXTREME_BLACK_FRAME
 _LUMA_WHITE_MIN   = 252.0  # mean luma above → EXTREME_WHITE_FRAME
 _MOTION_PIX_DIFF  = 15     # pixel diff threshold for motion_fraction

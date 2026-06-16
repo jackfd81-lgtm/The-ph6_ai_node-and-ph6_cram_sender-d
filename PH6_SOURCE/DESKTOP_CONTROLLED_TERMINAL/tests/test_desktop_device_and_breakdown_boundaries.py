@@ -31,13 +31,20 @@ class TestDeviceRegistryDefaultsUnverified(unittest.TestCase):
     def setUp(self):
         self.mod = _load_terminal_module()
 
-    def test_seed_registry_file_is_non_authoritative_and_empty(self):
+    def test_seed_registry_file_is_non_authoritative_with_unverified_devices(self):
         reg_path = Path(__file__).resolve().parents[1] / "device_registry.json"
         self.assertTrue(reg_path.exists(), "device_registry.json missing")
         reg = json.loads(reg_path.read_text())
         self.assertEqual(reg.get("authority"), "ZERO")
         self.assertTrue(reg.get("non_authoritative") is True)
-        self.assertEqual(reg.get("devices"), [])
+        # Phase B onboarding populates the registry with UNVERIFIED Authority
+        # ZERO entries (Zero 2W sentinel, Pico sensor node) — every entry,
+        # whatever its origin, must default to UNVERIFIED / unreviewed.
+        for entry in reg.get("devices", []):
+            self.assertEqual(entry.get("status"), "UNVERIFIED")
+            self.assertEqual(entry.get("authority"), "ZERO")
+            self.assertFalse(entry.get("operator_reviewed"))
+            self.assertIsNone(entry.get("probe_result"))
 
     def test_new_device_registration_defaults_to_unverified(self, tmp_path=None):
         import tempfile

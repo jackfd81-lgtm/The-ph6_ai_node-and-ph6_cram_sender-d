@@ -396,8 +396,8 @@ def panel_camera() -> None:
     else:
         print(_badge("devices found", "NONE"))
 
-    _subheader("Recent Dual-Camera Test")
-    test_dir = HOME / "PH6_SOURCE/TESTS/DUAL_USB_CAMERA"
+    _subheader("Recent Multi-Camera Test")
+    test_dir = HOME / "PH6_SOURCE/TESTS/DUAL_USB_CAMERA"  # historical path retained for compatibility — label only is renamed
     if test_dir.exists():
         json_files = sorted(test_dir.rglob("*.json"))[-3:]
         if json_files:
@@ -976,6 +976,8 @@ def _classify_evidence_artifact(path: Path) -> str:
         return "REPLAY"
     if "sensor" in name:
         return "SENSOR"
+    if "reflection_manifest" in name or "reflection-manifest" in name:
+        return "REFLECTION"
     if ext == ".log" or "log" in name:
         return "LOG"
     if "report" in name or ext == ".md":
@@ -1147,6 +1149,14 @@ def _preview_evidence_artifact(entry: dict) -> None:
         data = _read_json(path)
         if not data:
             print(_badge("artifact", "UNREADABLE_OR_EMPTY"))
+            return
+        if klass == "REFLECTION":
+            try:
+                from ph6.reflection.render import render_reflection_summary_lines
+                for line in render_reflection_summary_lines(data):
+                    print(f"  {line}")
+            except ValueError:
+                print(_badge("artifact", "UNRECOGNIZED_REFLECTION_SCHEMA"))
             return
         if klass in ("SENSOR", "CRAM", "PSEUDO", "SOSO", "TOKEN"):
             _render_class_breakdown(klass, data)
