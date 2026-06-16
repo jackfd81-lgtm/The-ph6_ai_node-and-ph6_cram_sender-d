@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -123,6 +124,82 @@ def replay_tok_chain(
 # Translation helpers
 # ---------------------------------------------------------------------------
 
+def _validate_er1b_spatial(
+    observation: Dict[str, Any],
+) -> Tuple[Dict[str, Any], List[str]]:
+    """
+    Validate and extract ER-1B spatial fields from a VDT_PROMOTED_TO_VLT payload.
+
+    Returns (valid_fields, notes). Malformed fields are excluded and noted.
+    Temporal fields (first_seen_ms, last_seen_ms) are validated but NOT
+    included in valid_fields — excluded from source_object per ER-1B temporal
+    policy (not yet proven stable for topology hash purposes).
+
+    Validation policy:
+      object_class  : non-empty string
+      centroid      : list of exactly 2 finite numbers
+      bbox          : list of exactly 4 finite numbers; w and h must be >= 0
+      support_count : integer >= 0
+      first_seen_ms : integer; first_seen_ms <= last_seen_ms required
+      last_seen_ms  : integer; validated with first_seen_ms
+    """
+    valid: Dict[str, Any] = {}
+    notes: List[str] = []
+
+    oc = observation.get("object_class")
+    if oc is not None:
+        if isinstance(oc, str) and oc.strip():
+            valid["object_class"] = oc
+        else:
+            notes.append(f"object_class rejected: {oc!r}")
+
+    centroid = observation.get("centroid")
+    if centroid is not None:
+        if (
+            isinstance(centroid, list) and len(centroid) == 2
+            and all(isinstance(v, (int, float)) and math.isfinite(float(v)) for v in centroid)
+        ):
+            valid["centroid_x"] = float(centroid[0])
+            valid["centroid_y"] = float(centroid[1])
+        else:
+            notes.append(f"centroid rejected: {centroid!r}")
+
+    bbox = observation.get("bbox")
+    if bbox is not None:
+        if (
+            isinstance(bbox, list) and len(bbox) == 4
+            and all(isinstance(v, (int, float)) and math.isfinite(float(v)) for v in bbox)
+        ):
+            bw, bh = float(bbox[2]), float(bbox[3])
+            if bw >= 0 and bh >= 0:
+                valid["bbox_x"] = float(bbox[0])
+                valid["bbox_y"] = float(bbox[1])
+                valid["bbox_w"] = bw
+                valid["bbox_h"] = bh
+            else:
+                notes.append(f"bbox rejected: w={bw} or h={bh} is negative")
+        else:
+            notes.append(f"bbox rejected: {bbox!r}")
+
+    sc = observation.get("support_count")
+    if sc is not None:
+        if isinstance(sc, int) and sc >= 0:
+            valid["support_count"] = sc
+        else:
+            notes.append(f"support_count rejected: {sc!r}")
+
+    # Temporal fields: validate but exclude from source_object per ER-1B policy
+    first_ms = observation.get("first_seen_ms")
+    last_ms = observation.get("last_seen_ms")
+    if first_ms is not None or last_ms is not None:
+        if not (isinstance(first_ms, int) and isinstance(last_ms, int) and first_ms <= last_ms):
+            notes.append(
+                f"temporal fields rejected: first={first_ms!r}, last={last_ms!r}"
+            )
+
+    return valid, notes
+
+
 def vlt_observation_to_source(
     observation: Dict[str, Any],
 ) -> Tuple[str, Dict[str, Any]]:
@@ -130,14 +207,26 @@ def vlt_observation_to_source(
     Translate a VLT promotion payload into a (source_object_id, source_object)
     pair for build_reference_tokens() in topology_mapper.
 
+    ER-1B: when spatial fields are present (object_class, centroid, bbox,
+    support_count), they are validated and merged into source_object, producing
+    richer topology nodes. Legacy events without spatial fields degrade to the
+    minimal 2-field source_object (cram_ref_hash, vlt_prefix). Temporal fields
+    (first_seen_ms, last_seen_ms) are validated but excluded from source_object
+    per ER-1B temporal policy.
+
     Only topology-safe, non-forbidden field names are exposed in source_object.
     """
     vlt_id = observation.get("vlt_token_id", "unknown_vlt")
     cram_ref = observation.get("cram_ref_hash", "unknown_cram_ref")
-    source_object = {
-        "cram_ref": cram_ref[:16],
+
+    source_object: Dict[str, Any] = {
+        "cram_ref_hash": cram_ref,      # full hash (ER-1B; was cram_ref[:16] in ER-1A)
         "vlt_prefix": vlt_id[:16],
     }
+
+    spatial, _notes = _validate_er1b_spatial(observation)
+    source_object.update(spatial)
+
     return vlt_id, source_object
 
 
@@ -235,7 +324,7 @@ def reconstruct_topology(
     topo_hash = canonical_topology_hash(token_map)
 
     metadata: Dict[str, Any] = {
-        "schema": "ph6.er1a.topology_reconstruct.v1",
+        "schema": "ph6.er1b.topology_reconstruct.v2",
         "authority_level": "ZERO",
         "advisory_only": True,
         "chain_errors": errors,

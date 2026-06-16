@@ -380,6 +380,13 @@ class TokenStore:
             "cram_ref_hash": vlt.cram_ref_hash,
             "token_state_hash": vlt.state_hash(),
             "config_hash": blake2b256_hex(config),
+            # ER-1B spatial fields — recoverable from chain replay
+            "object_class": vlt.object_class,
+            "centroid": vlt.centroid,
+            "bbox": vlt.bbox,
+            "support_count": vlt.support_count,
+            "first_seen_ms": vlt.first_seen_ms,
+            "last_seen_ms": vlt.last_seen_ms,
         }, event_time_ms)
 
         self._save_all()
