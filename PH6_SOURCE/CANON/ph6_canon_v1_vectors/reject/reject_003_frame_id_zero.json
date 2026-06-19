@@ -1,0 +1,15 @@
+{
+  "vector_id": "reject_003",
+  "description": "frame_id=0 — frame IDs must be >= 1; INVALID_FRAME_ID",
+  "expected_outcome": "REJECT",
+  "rejection_reason": "INVALID_FRAME_ID",
+  "schema": "ph6.canon.v1",
+  "frame_id": 0,
+  "payload_hash": "186dd2f0f4daaa573ca450b1cdd1b54decbe3ded0f2db61ee84b8e7e5caf3045",
+  "hash_algorithm": "BLAKE2b-256",
+  "canon_hash": "7df91901ce54cd745025bec680d7be4b912de418c84a08f15fb45c479bc5dfc1",
+  "_notes": {
+    "payload_source": "b'zero_frame'",
+    "note": "frame_id=0 is invalid; minimum value is 1 per §4.2 of parent spec"
+  }
+}

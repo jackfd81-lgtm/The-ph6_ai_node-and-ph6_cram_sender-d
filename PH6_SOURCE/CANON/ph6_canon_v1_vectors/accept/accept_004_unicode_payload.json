@@ -1,0 +1,16 @@
+{
+  "vector_id": "accept_004",
+  "description": "Valid ph6.canon.v1 object — frame_id=42, payload contains UTF-8 encoded unicode (π character)",
+  "expected_outcome": "ACCEPT",
+  "schema": "ph6.canon.v1",
+  "frame_id": 42,
+  "payload_hash": "57c83b30b80805fb9f8809194276565af6cf2c43ba83b248bd9c634085e3ec0e",
+  "hash_algorithm": "BLAKE2b-256",
+  "canon_hash": "0f5b97cc9c856e5d2e24dabdcbe8f36aeaa05fe38534aeffb5cc1f55586a2bcd",
+  "_notes": {
+    "payload_source": "'ph6_test_\\u03c0_payload'.encode('utf-8')",
+    "payload_hash_computed": "BLAKE2b-256('ph6_test_π_payload'.encode('utf-8'))",
+    "canon_hash_computed": "BLAKE2b-256(canonical_json(body))",
+    "purpose": "Verifies UTF-8 payload hashing and ensure_ascii=False in canonical JSON"
+  }
+}
