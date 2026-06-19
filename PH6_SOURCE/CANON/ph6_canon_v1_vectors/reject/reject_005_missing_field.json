@@ -1,0 +1,13 @@
+{
+  "vector_id": "reject_005",
+  "description": "payload_hash field is absent — missing required field; missing_required_fields",
+  "expected_outcome": "REJECT",
+  "rejection_reason": "missing_required_fields: ['payload_hash']",
+  "schema": "ph6.canon.v1",
+  "frame_id": 5,
+  "hash_algorithm": "BLAKE2b-256",
+  "canon_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "_notes": {
+    "note": "payload_hash is deliberately omitted to test REQ-01 missing-field detection"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "vector_id": "reject_001",
+  "description": "payload_hash is 3 characters — not 64 lowercase hex chars; INVALID_PAYLOAD_HASH_FORMAT",
+  "expected_outcome": "REJECT",
+  "rejection_reason": "INVALID_PAYLOAD_HASH_FORMAT",
+  "schema": "ph6.canon.v1",
+  "frame_id": 1,
+  "payload_hash": "abc",
+  "hash_algorithm": "BLAKE2b-256",
+  "canon_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+}

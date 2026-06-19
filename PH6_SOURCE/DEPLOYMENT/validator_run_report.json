@@ -1,0 +1,115 @@
+{
+  "schema": "ph6.canon.v1.validator_run",
+  "validator_version": "0.3-RC2",
+  "authority": "ZERO",
+  "production_status": "TEST_HARNESS_ONLY",
+  "total_vectors": 11,
+  "vectors_matched": 11,
+  "vectors_mismatched": 0,
+  "all_match": true,
+  "all_impl_match": true,
+  "results": [
+    {
+      "vector_file": "ph6_canon_v1_vectors/accept/accept_001_basic.json",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "match": true,
+      "errors": [],
+      "impl_match": true
+    },
+    {
+      "vector_file": "ph6_canon_v1_vectors/accept/accept_002_frame2.json",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "match": true,
+      "errors": [],
+      "impl_match": true
+    },
+    {
+      "vector_file": "ph6_canon_v1_vectors/accept/accept_003_high_frame_id.json",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "match": true,
+      "errors": [],
+      "impl_match": true
+    },
+    {
+      "vector_file": "ph6_canon_v1_vectors/accept/accept_004_unicode_payload.json",
+      "expected_outcome": "ACCEPT",
+      "actual_outcome": "ACCEPT",
+      "match": true,
+      "errors": [],
+      "impl_match": true
+    },
+    {
+      "vector_file": "ph6_canon_v1_vectors/reject/reject_001_bad_hash_length.json",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "match": true,
+      "errors": [
+        "INVALID_PAYLOAD_HASH_FORMAT: must be 64-char lowercase hex"
+      ],
+      "impl_match": null
+    },
+    {
+      "vector_file": "ph6_canon_v1_vectors/reject/reject_002_wrong_algorithm.json",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "match": true,
+      "errors": [
+        "WRONG_HASH_ALGORITHM: 'SHA-256' \u2014 must be BLAKE2b-256"
+      ],
+      "impl_match": null
+    },
+    {
+      "vector_file": "ph6_canon_v1_vectors/reject/reject_003_frame_id_zero.json",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "match": true,
+      "errors": [
+        "INVALID_FRAME_ID: 0 \u2014 must be integer >= 1"
+      ],
+      "impl_match": null
+    },
+    {
+      "vector_file": "ph6_canon_v1_vectors/reject/reject_004_canon_hash_mismatch.json",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "match": true,
+      "errors": [
+        "CANON_HASH_MISMATCH: provided=0000000000000000000000000000000000000000000000000000000000000000 computed=d516198b0de157a19ac0a4103afb39514eece3648518341fabb692a16c377520"
+      ],
+      "impl_match": true
+    },
+    {
+      "vector_file": "ph6_canon_v1_vectors/reject/reject_005_missing_field.json",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "match": true,
+      "errors": [
+        "missing_required_fields: ['payload_hash']"
+      ],
+      "impl_match": null
+    },
+    {
+      "vector_file": "ph6_canon_v1_vectors/reject/reject_006_uppercase_hash.json",
+      "expected_outcome": "REJECT",
+      "actual_outcome": "REJECT",
+      "match": true,
+      "errors": [
+        "INVALID_PAYLOAD_HASH_FORMAT: must be 64-char lowercase hex"
+      ],
+      "impl_match": null
+    },
+    {
+      "vector_file": "ph6_canon_v1_vectors/quarantine/quarantine_001_future_schema.json",
+      "expected_outcome": "QUARANTINE",
+      "actual_outcome": "QUARANTINE",
+      "match": true,
+      "errors": [
+        "UNKNOWN_SCHEMA_VERSION: 'ph6.canon.v2' not within ph6.canon.v1 scope"
+      ],
+      "impl_match": null
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "vector_id": "quarantine_001",
+  "description": "schema field is ph6.canon.v2 — future version outside ph6.canon.v1 scope",
+  "expected_outcome": "QUARANTINE",
+  "quarantine_reason": "UNKNOWN_SCHEMA_VERSION — ph6.canon.v2 is not within ph6.canon.v1 validator scope",
+  "schema": "ph6.canon.v2",
+  "frame_id": 100,
+  "payload_hash": "05c36c64f57382f622179448dd52076fc3cfb4eae9c438dc27f3a44e1cac38cb",
+  "hash_algorithm": "BLAKE2b-256",
+  "canon_hash": "9125eb483f39ccfd9d8d21664d42ff4012bc6a3e357018a712742452cae67db2",
+  "_notes": {
+    "payload_source": "b'ph6_quarantine_future_frame'",
+    "note": "canon_hash is computed using ph6.canon.v2 body — validator cannot verify correctness under v1 rules and must return QUARANTINE"
+  }
+}
