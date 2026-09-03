@@ -1,0 +1,24 @@
+brain_computer_v2_product/
+├── README.md
+├── pyproject.toml
+├── typescript_interfaces.ts
+├── examples/
+│   ├── perplexity_adapter_example.py
+│   └── perplexity_session_sync_example.py
+├── scripts/
+│   └── neo4j_admin_import_template.sh
+├── src/
+│   └── brain_computer_v2/
+│       ├── __init__.py
+│       ├── brain_computer_v2.py
+│       ├── neo4j_export.py
+│       └── perplexity_adapter.py
+├── state/
+│   ├── brain_computer_v2_kernel_final_hash.txt
+│   ├── brain_computer_v2_kernel_ingest_state_final.json
+│   ├── brain_computer_v2_kernel_verified_final.json
+│   ├── nodes.csv
+│   └── relationships.csv
+└── tests/
+    ├── test_brain_computer_v2_harness.py
+    └── test_perplexity_adapter.py

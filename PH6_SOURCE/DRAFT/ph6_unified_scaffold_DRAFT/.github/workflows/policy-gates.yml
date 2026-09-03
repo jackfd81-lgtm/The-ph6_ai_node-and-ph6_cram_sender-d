@@ -1,0 +1,33 @@
+# policy-gates.yml — FIXED 2026-09-03
+#
+# CHANGE LOG (disclosed, not silent):
+#   The previous "Fail closed" step was a no-op: it echoed a sentence
+#   and unconditionally `exit 0`, without ever calling verify_manifest.py
+#   or verify_vectors.py. It enforced nothing. This version actually
+#   invokes both, using the new 03_VERIFICATION_AND_TESTS/05_TOOLS paths.
+#   replay-validation.yml already called these correctly — this file
+#   did not, and the audit log's "VR-003: Closed" claim was not
+#   supported by this file's actual content until now.
+name: policy-gates
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  policy-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce governance hash fields present
+        run: |
+          grep -q "GOVERNANCE_HASH" 03_VERIFICATION_AND_TESTS/constants_v1.0.json
+          grep -q "GOVERNANCE_HASH" 03_VERIFICATION_AND_TESTS/golden_vectors/golden_vectors_v1.0.json
+      - name: Verify manifest (fails closed on mismatch)
+        run: python 05_TOOLS/verify_manifest.py
+      - name: Replay golden vectors (fails closed on mismatch)
+        run: python 05_TOOLS/verify_vectors.py
