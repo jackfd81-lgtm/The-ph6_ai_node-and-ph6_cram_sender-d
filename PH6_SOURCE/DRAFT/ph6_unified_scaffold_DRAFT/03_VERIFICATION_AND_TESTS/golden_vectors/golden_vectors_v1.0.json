@@ -1,0 +1,422 @@
+{
+  "CONST_SET_HASH": "2cb94b3d1a81470000bfb8fb29ea97cea322a84f687bb3ac36f29cc3395857d2",
+  "GOVERNANCE_HASH": "d6259f1abc55a8b356c41cb5aaa06a2a40426736331f47a7844611f9381d8519",
+  "PH6_VERSION": "v1.0",
+  "RATIFICATION_STATE": "PROPOSED",
+  "vectors": [
+    {
+      "Y_gold": [
+        "DROP",
+        "PASS"
+      ],
+      "frames": [
+        {
+          "bytes": 145000,
+          "entropy": 5.8,
+          "frame": 0,
+          "lap_var": 120.0,
+          "motion_fraction": 0.0,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 146000,
+          "entropy": 5.7,
+          "frame": 1,
+          "lap_var": 118.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        }
+      ],
+      "id": "GV-001-FIRST-FRAME-BOUNDARY"
+    },
+    {
+      "Y_gold": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "DROP",
+        "PASS"
+      ],
+      "frames": [
+        {
+          "bytes": 145000,
+          "entropy": 3.19,
+          "frame": 1,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 145000,
+          "entropy": 3.1,
+          "frame": 2,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 145000,
+          "entropy": 3.05,
+          "frame": 3,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 145000,
+          "entropy": 3.0,
+          "frame": 4,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 145000,
+          "entropy": 2.95,
+          "frame": 5,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 145000,
+          "entropy": 4.2,
+          "frame": 6,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        }
+      ],
+      "id": "GV-002-ENTROPY-PERSISTENCE"
+    },
+    {
+      "Y_gold": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "DROP"
+      ],
+      "frames": [
+        {
+          "bytes": 140000,
+          "entropy": 5.0,
+          "frame": 1,
+          "lap_var": 100.0,
+          "motion_fraction": 0.004,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 140000,
+          "entropy": 5.0,
+          "frame": 2,
+          "lap_var": 100.0,
+          "motion_fraction": 0.004,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 140000,
+          "entropy": 5.0,
+          "frame": 3,
+          "lap_var": 100.0,
+          "motion_fraction": 0.004,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 140000,
+          "entropy": 5.0,
+          "frame": 4,
+          "lap_var": 100.0,
+          "motion_fraction": 0.004,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 140000,
+          "entropy": 5.0,
+          "frame": 5,
+          "lap_var": 100.0,
+          "motion_fraction": 0.004,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 140000,
+          "entropy": 5.0,
+          "frame": 6,
+          "lap_var": 100.0,
+          "motion_fraction": 0.004,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 140000,
+          "entropy": 5.0,
+          "frame": 7,
+          "lap_var": 100.0,
+          "motion_fraction": 0.004,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 140000,
+          "entropy": 5.0,
+          "frame": 8,
+          "lap_var": 100.0,
+          "motion_fraction": 0.004,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 140000,
+          "entropy": 5.0,
+          "frame": 9,
+          "lap_var": 100.0,
+          "motion_fraction": 0.004,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 140000,
+          "entropy": 5.0,
+          "frame": 10,
+          "lap_var": 100.0,
+          "motion_fraction": 0.004,
+          "resolution": [
+            1920,
+            1080
+          ]
+        }
+      ],
+      "id": "GV-003-MOTION-STASIS-WINDOW"
+    },
+    {
+      "Y_gold": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "DROP"
+      ],
+      "frames": [
+        {
+          "bytes": 146000,
+          "entropy": 5.5,
+          "frame": 1,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 147000,
+          "entropy": 5.5,
+          "frame": 2,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 145000,
+          "entropy": 5.5,
+          "frame": 3,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 146000,
+          "entropy": 5.5,
+          "frame": 4,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 147000,
+          "entropy": 5.5,
+          "frame": 5,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 145000,
+          "entropy": 5.5,
+          "frame": 6,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 146000,
+          "entropy": 5.5,
+          "frame": 7,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 147000,
+          "entropy": 5.5,
+          "frame": 8,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 145000,
+          "entropy": 5.5,
+          "frame": 9,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 146000,
+          "entropy": 5.5,
+          "frame": 10,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "bytes": 30000,
+          "entropy": 5.5,
+          "frame": 11,
+          "lap_var": 100.0,
+          "motion_fraction": 0.1,
+          "resolution": [
+            640,
+            360
+          ]
+        }
+      ],
+      "id": "GV-004-ZSCORE-STRUCTURAL-ANOMALY"
+    },
+    {
+      "Y_gold": [
+        "DROP"
+      ],
+      "frames": [
+        {
+          "bytes": 120000,
+          "entropy": 4.2,
+          "frame": 1,
+          "lap_var": 14.99,
+          "motion_fraction": 0.1,
+          "resolution": [
+            1920,
+            1080
+          ]
+        }
+      ],
+      "id": "GV-005-LAP-VAR-IMMEDIATE-DROP"
+    },
+    {
+      "Y_gold": [
+        "PASS"
+      ],
+      "frames": [
+        {
+          "bytes": 145000,
+          "entropy": 3.2,
+          "frame": 1,
+          "lap_var": 15.0,
+          "motion_fraction": 0.005,
+          "resolution": [
+            1920,
+            1080
+          ]
+        }
+      ],
+      "id": "GV-006-EQUALITY-AT-THRESHOLD"
+    }
+  ]
+}

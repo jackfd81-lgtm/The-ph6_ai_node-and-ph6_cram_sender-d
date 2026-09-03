@@ -1,0 +1,453 @@
+{
+  "manifest_schema": "PH6-MIGRATION-RECONCILIATION-v1.0",
+  "scope_note": "Covers only the files already assembled into ph6_unified_scaffold this session (from ph6_repo_skeleton_v2.zip, PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF.zip, PH6_CANON_STACK_v4_0_SOURCE_SET_3.zip, and the brain_computer_v2_product subtree of PH6_SOURCE_SORTED.zip). Does NOT cover the other ~750 files in the full sorted library -- that would be a separate, explicitly-scoped Stage 0 inventory.",
+  "primary_hash_algorithm": "BLAKE2b-256",
+  "compatibility_hash_algorithm": "SHA-256",
+  "no_wall_clock_timestamps": true,
+  "self_reference_excluded": true,
+  "self_reference_note": "This record excludes its own file per the self-reference rule.",
+  "taxonomy_note": "Reviewed doc's disposition taxonomy (PRESERVED/RELOCATED/QUARANTINED/EXCLUDED_DERIVED_CACHE_ARTIFACT/UNRESOLVED) has no category for a file that was both moved AND content-edited, nor for a wholly new artifact this session created. Used RELOCATED_AND_MODIFIED and NEW_ARTIFACT as disclosed extensions rather than mislabeling into an existing category.",
+  "file_count": 55,
+  "files": [
+    {
+      "destination_path": ".github/workflows/policy-gates.yml",
+      "source_path": "ph6_repo_skeleton_v2/.github/workflows/policy-gates.yml  [MODIFIED: no-op step replaced with real verifier calls, disclosed]",
+      "disposition": "RELOCATED_AND_MODIFIED",
+      "destination_blake2b_256": "23d9e67a91483a254b414842d24868ee058b8c113a3226c43f701530a500ceed",
+      "destination_sha256": "deca4bad28c676f310b1eb8f8bfc07debe10beab0a75210d50094c45e2c2456a",
+      "size_bytes": 1275
+    },
+    {
+      "destination_path": ".github/workflows/replay-validation.yml",
+      "source_path": "ph6_repo_skeleton_v2/.github/workflows/replay-validation.yml  [MODIFIED: paths remapped, disclosed]",
+      "disposition": "RELOCATED_AND_MODIFIED",
+      "destination_blake2b_256": "dcfdd2290fd9ec16d9131e728c45f9a59ba064565d5ec63cae14c9d662b48642",
+      "destination_sha256": "2aaead07281612c13200507cb90e3ef724663e3e4a33bf3bcecd133a45d0d1d5",
+      "size_bytes": 422
+    },
+    {
+      "destination_path": "00_INDEX.md",
+      "source_path": null,
+      "disposition": "NEW_ARTIFACT",
+      "destination_blake2b_256": "3efbb4ae52aa326e1fbf3e094c2024964f7b5dab9fd83d78a2311bcddfd6cdb9",
+      "destination_sha256": "30e98133512a206601a21226dd4616f0f4e7b01de944c23396f2eead88c5364e",
+      "size_bytes": 4928
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/00_INDEX..md",
+      "source_path": "PH6_CANON_STACK_v4.0_SOURCE_SET 3/00_INDEX..md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "af35fd6c8cc162394f6cf15ea44943fa04a1a8976bd22aca88817af3ff132160",
+      "destination_sha256": "9e71352aae402c328117d10897082ce34fcd849e7a8820cbbb751660b56c9ab2",
+      "size_bytes": 5041
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/BOOK 0 \u2014 INTERPRETIVE CONTROL PLANE.pdf",
+      "source_path": "PH6_CANON_STACK_v4.0_SOURCE_SET 3/BOOK 0 \u2014 INTERPRETIVE CONTROL PLANE.pdf",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "61274ebf996e31a05441cfbb8960ff1b4e35e889b621c06a7963e07e949b02cc",
+      "destination_sha256": "e9dda15f4c78cc64d6a320eaf4dd3b9de95a640bddad2a0251d24e9797d125c2",
+      "size_bytes": 86844
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/BOOK I \u2014 OPERATIONAL SOURCE CONSTITUTION.pdf",
+      "source_path": "PH6_CANON_STACK_v4.0_SOURCE_SET 3/BOOK I \u2014 OPERATIONAL SOURCE CONSTITUTION.pdf",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "ff8b5d07b6378690b851a048f11cafe30aa2cac6b353e639a14695c72b91c825",
+      "destination_sha256": "848ea183d91fcd0a9bee88db8f79a826185f3f184de08e3a9dfb023c05ecacb0",
+      "size_bytes": 95894
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/BOOK II \u2014 SCIENTIFIC INSTRUMENT MASTER.pdf",
+      "source_path": "PH6_CANON_STACK_v4.0_SOURCE_SET 3/BOOK II \u2014 SCIENTIFIC INSTRUMENT MASTER.pdf",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "5ce6a7f30d65964186c3e575a625ba3b08bde45dc54f0acb07e16234b2496b5d",
+      "destination_sha256": "5f25d59d1054123e099ecc2701d11b816ad2c4cfba0cdb60981c94eac761097a",
+      "size_bytes": 76894
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/BOOK III \u2014 BOUNDARY CONTAINMENT ANNEX.pdf",
+      "source_path": "PH6_CANON_STACK_v4.0_SOURCE_SET 3/BOOK III \u2014 BOUNDARY CONTAINMENT ANNEX.pdf",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "0d1a8a806137e17b12e78f36491749aa3f6841238e05aba0112fe4d2100d6c72",
+      "destination_sha256": "d18dadac278bee5216b2533bcb532a87816294f9d128b12d7c083a4433b2df0b",
+      "size_bytes": 56729
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/BOOK IV \u2014 CERTIFICATION PROOF PACK.pdf",
+      "source_path": "PH6_CANON_STACK_v4.0_SOURCE_SET 3/BOOK IV \u2014 CERTIFICATION PROOF PACK.pdf",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "056b089f5d4662ed68cf6bfe7d475b81174e3727e1d5d8f58a45d8bb07533d56",
+      "destination_sha256": "d371336800ed2fe3e39bfffd4a1c552dd83967346769629010cbfe7ad9c65c55",
+      "size_bytes": 67568
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/BOOK V \u2014 EXPERIMENTAL SWARM ANNEX.pdf",
+      "source_path": "PH6_CANON_STACK_v4.0_SOURCE_SET 3/BOOK V \u2014 EXPERIMENTAL SWARM ANNEX.pdf",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "2bd51558dde31428c5cb478a13ee1e14eb72a76dd1cd2aee14c432fb3f138d08",
+      "destination_sha256": "2c578d0f5fb20e9c34a2d297220022ea366c3a5af19c41ba3ab4d49cc99ff7e6",
+      "size_bytes": 62186
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/PH6_MASTER_v4.0.docx",
+      "source_path": "PH6_CANON_STACK_v4.0_SOURCE_SET 3/PH6_MASTER_v4.0.docx",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "d89c79d749e6f4e10df3212ea34f5b6a5629887316d70fb0b90972b3751d5ffe",
+      "destination_sha256": "2e2ffdef13e9bcb72a00d246e54c3813a430b8a5033dcffcd25151d3153437ab",
+      "size_bytes": 45063
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/PH6_MASTER_v4.0.pdf",
+      "source_path": "PH6_CANON_STACK_v4.0_SOURCE_SET 3/PH6_MASTER_v4.0.pdf",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "08471b002b1cf79cd673b26fd5741d87b382aaed10d9706376bf085c7a2d4397",
+      "destination_sha256": "97eef46c66005147527f52f9f74629a90ac936603f6e23ebcc2d07586ab86287",
+      "size_bytes": 154265
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/ph6_consolidation_manifest_v2.json",
+      "source_path": "PH6_CANON_STACK_v4.0_SOURCE_SET 3/ph6_consolidation_manifest_v2.json",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "1587007c5239093b0a85fcc2e988c30a5c3240729594e9e21925bbc69ad9ad5a",
+      "destination_sha256": "e46214828a92034e104c60c84b582933712dbb9afc509985804bca9b6a28e3cf",
+      "size_bytes": 24796
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/ph6_master_v1.0.md",
+      "source_path": "ph6_repo_skeleton_v2/spec/ph6_master_v1.0.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "35f65afdbac8e70c5d4615c093f070536bad3f81a2fc553619a96c8116b592b1",
+      "destination_sha256": "04c7751f3106f32709dabfe5674f166404e200907f95837bdca72c847db63703",
+      "size_bytes": 1128
+    },
+    {
+      "destination_path": "01_DOCTRINE_AND_SPEC/ph6_system_operation_reconstruction_v1.0.md",
+      "source_path": "ph6_repo_skeleton_v2/spec/ph6_system_operation_reconstruction_v1.0.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "154e2e0aa154d0b5927634176ba7690c92f6690a8619478ecc93cb37f12806e4",
+      "destination_sha256": "5e0dcb2f34d5fd82fb909a67e2f9cd601a1498759e2c553386727cbe7db311ce",
+      "size_bytes": 492
+    },
+    {
+      "destination_path": "02_CONTROL_PLANE/GOVERNANCE.md",
+      "source_path": "ph6_repo_skeleton_v2/docs/GOVERNANCE.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "36ff77cba29d34fdb1f6bad4f25e17b284b2f7a94c0cca610d4373886b5a2df0",
+      "destination_sha256": "d6259f1abc55a8b356c41cb5aaa06a2a40426736331f47a7844611f9381d8519",
+      "size_bytes": 2053
+    },
+    {
+      "destination_path": "02_CONTROL_PLANE/PH6_AUTHORITY_MODEL_V0.1.md",
+      "source_path": "PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF/PH6_SOURCE/02_GOVERNANCE/PH6_AUTHORITY_MODEL_V0.1.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "25e62e9269260de49ad8cc8d7c6fb8bad78eb2bd542ec058c6e8b8faef8f464a",
+      "destination_sha256": "70e755d06619f71dbf66fe50990871e998e56adbd4ee7cbd53c51c5fd6b12ea8",
+      "size_bytes": 2091
+    },
+    {
+      "destination_path": "02_CONTROL_PLANE/PH6_DOCTRINE_BASELINE_V0.1.md",
+      "source_path": "PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF/PH6_SOURCE/01_CORE_DOCTRINE/PH6_DOCTRINE_BASELINE_V0.1.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "b3df74d64baa3efa0c2b588b57fc9703d8914cc7e76c186ccd9d3adb3a73f31a",
+      "destination_sha256": "3e2897aa60a10d915e82cf9a7febc6c452bfe206bb636374eb03be010b9bfbe1",
+      "size_bytes": 1581
+    },
+    {
+      "destination_path": "02_CONTROL_PLANE/PH6_GATE_PROTOCOL_V0.1.md",
+      "source_path": "PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF/PH6_SOURCE/02_GOVERNANCE/PH6_GATE_PROTOCOL_V0.1.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "ff6834edb0bb45f9e8bab7aa91f2ab196b625dd3f437c2edbc158cd0e78cfdb4",
+      "destination_sha256": "38e9a2081bb9948fd2b5d758b3492e0092ac0a3baa0457414f5123bb17f4a526",
+      "size_bytes": 2665
+    },
+    {
+      "destination_path": "02_CONTROL_PLANE/PH6_HANDOFF_MANIFEST_V0.1.md",
+      "source_path": "PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF/PH6_SOURCE/08_HANDOFFS/PH6_HANDOFF_MANIFEST_V0.1.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "bd6669198ba2a649c22987c230f9e3535d84f7a8b15644f58958ef1e5c56828f",
+      "destination_sha256": "509b911d33768d9c020ff6cfac14f350f2560f0d2be864edc4982eb95d2bfee9",
+      "size_bytes": 4114
+    },
+    {
+      "destination_path": "02_CONTROL_PLANE/PH6_INDEX_V0.1.md",
+      "source_path": "PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF/PH6_SOURCE/00_INDEX/PH6_INDEX_V0.1.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "4842c2ffe247efb408fe690cfa5af0d135f4d1a6b20aab03fd3180869912e544",
+      "destination_sha256": "43181d1a49c9a17884edb8f54b7543aba926927e707c8aa49a1d919c302a4f6c",
+      "size_bytes": 3818
+    },
+    {
+      "destination_path": "02_CONTROL_PLANE/PH6_REQUIREMENTS_BASELINE_V0.1.md",
+      "source_path": "PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF/PH6_SOURCE/04_REQUIREMENTS/PH6_REQUIREMENTS_BASELINE_V0.1.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "8c28680597e0f0f5db2ddfbcaa99fb930444aac19ccedad2a07ecd8a041bbfeb",
+      "destination_sha256": "20c72b404f036e0ab831bea916899c46cce259cbec383430583a23c6def15d5f",
+      "size_bytes": 2690
+    },
+    {
+      "destination_path": "02_CONTROL_PLANE/PH6_STRUCTURE_ACCEPTANCE_RECORD_V0.1.md",
+      "source_path": "PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF/PH6_SOURCE/02_GOVERNANCE/PH6_STRUCTURE_ACCEPTANCE_RECORD_V0.1.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "f6aa63d462b002b485addb27b02677cdef7df318b3a5123468a5f1c9953429b2",
+      "destination_sha256": "174c600874084da757024631a0be23f26603bc6b06e647db92055d4f9f0f7911",
+      "size_bytes": 3522
+    },
+    {
+      "destination_path": "02_CONTROL_PLANE/PH6_UNIVERSAL_AGENT_BOOTSTRAP_PROMPT_V0.1.md",
+      "source_path": "PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF/PH6_SOURCE/09_PROMPTS/PH6_UNIVERSAL_AGENT_BOOTSTRAP_PROMPT_V0.1.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "812f4965520a40ae6ac4a9c959cc268ec8a455f0aa93b93aa0dfc0de5d8cc848",
+      "destination_sha256": "f2cc8b03d224a34959a38afb11bdc4cf886c464b7a9ee0a022b3e621c5fcf640",
+      "size_bytes": 1887
+    },
+    {
+      "destination_path": "03_VERIFICATION_AND_TESTS/blake2b256_manifest_v1.0.json",
+      "source_path": null,
+      "disposition": "NEW_ARTIFACT",
+      "destination_blake2b_256": "5f3ffb598c274d744b85b75e5b0783b4e5d89a118b663059209e9ae82cb5e8d0",
+      "destination_sha256": "9723de22e32f52279ea336bb9232091e11f20b0fd87a65a7a97b11e11cb7ab57",
+      "size_bytes": 1239
+    },
+    {
+      "destination_path": "03_VERIFICATION_AND_TESTS/constants_v1.0.bin",
+      "source_path": "ph6_repo_skeleton_v2/spec/constants_v1.0.bin",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "21a3a453a4132cd2d1cab7f998f45d0d89034519a3fe6ee134fc145a5461b26d",
+      "destination_sha256": "2a6ee2e7d78dacd1081afe74b9d282c7e15afdc5ce2e2571ddedcf1097f72373",
+      "size_bytes": 72
+    },
+    {
+      "destination_path": "03_VERIFICATION_AND_TESTS/constants_v1.0.json",
+      "source_path": "ph6_repo_skeleton_v2/spec/constants_v1.0.json",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "26bdc2b17f7f23cb2c8a83a8adf3b82c1dee16d025a63decba6dbfe7064a593f",
+      "destination_sha256": "2cb94b3d1a81470000bfb8fb29ea97cea322a84f687bb3ac36f29cc3395857d2",
+      "size_bytes": 440
+    },
+    {
+      "destination_path": "03_VERIFICATION_AND_TESTS/golden_vectors/golden_vectors_v1.0.json",
+      "source_path": "ph6_repo_skeleton_v2/tests/golden_vectors/golden_vectors_v1.0.json",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "d3f9258be40780da359a257a73e220582fad13a25364ec1f308ab98540e10a5b",
+      "destination_sha256": "22328625423cdaaf7dc4b3ff63bd54eb0bbd26ad1ad3ac2b3aa0db9211871578",
+      "size_bytes": 8590
+    },
+    {
+      "destination_path": "03_VERIFICATION_AND_TESTS/sha256_manifest_v1.0.json",
+      "source_path": "ph6_repo_skeleton_v2/spec/sha256_manifest_v1.0.json",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "91904bf36eb921a18deb45e840d1920cbec7a3e3a6f77be7fa5ea18d30d906bc",
+      "destination_sha256": "9b161deb289d448fefcf1fa5b4ea3537a9d01957107a296a15e186c8be11259f",
+      "size_bytes": 1215
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/DIRECTORY_TREE.txt",
+      "source_path": "PH6_SOURCE_SORTED/03_ARCHITECTURE/Life cram /brain_computer_v2_product/DIRECTORY_TREE.txt",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "a458ea319526cf79775748466c795232837251eb2fd49b6e5a7fe9f5edca2111",
+      "destination_sha256": "6a4f30d8690973fda9b733b6e2b629933d218590f01fbf13314bef17a6847eae",
+      "size_bytes": 856
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/README.md",
+      "source_path": "PH6_SOURCE_SORTED/03_ARCHITECTURE/Life cram /brain_computer_v2_product/README.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "42bde451dfc01eb1c079d6406e769ba89133458a9eb155cdb34c82aa574a7afc",
+      "destination_sha256": "f2db92f9ee56b0961a3a25844ee7a4cd2f2d8f533a7f05432f00fe547b001380",
+      "size_bytes": 2268
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/examples/perplexity_adapter_example.py",
+      "source_path": "PH6_SOURCE_SORTED/.../examples/perplexity_adapter_example.py",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "2edf68c4148c7f22ee9f9da7faa080bd6aa4773d793db84a82cf67351bb4cbef",
+      "destination_sha256": "6e4674efeb15bd5f6445d3d4b44439324cd4f43693b644531e51b5b89caba8b8",
+      "size_bytes": 690
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/pyproject.toml",
+      "source_path": "PH6_SOURCE_SORTED/03_ARCHITECTURE/Life cram /brain_computer_v2_product/pyproject.toml",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "855ebbb69f31c579da145ab5d3afc8a767ce91afb4fee6ba9cf2247877de3dd9",
+      "destination_sha256": "0e9e89863167f5526dbe0c45285352d6cd2f2ecd8b5a2c081b37463de73f0b5c",
+      "size_bytes": 521
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/scripts/neo4j_admin_import_template.sh",
+      "source_path": "PH6_SOURCE_SORTED/.../scripts/neo4j_admin_import_template.sh",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "866fdf9226a8812ff789407914798cda552fb26537fb0eb6dd1bb0ad50db0e33",
+      "destination_sha256": "40160dc012b72078f4302b4af10b07701fe27d09d4682f49328dfa8b6921165c",
+      "size_bytes": 1648
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/src/brain_computer_v2/__init__.py",
+      "source_path": "PH6_SOURCE_SORTED/.../src/brain_computer_v2/__init__.py",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "854464c6b4809a8959d6fe4f5e165e435ab0b13e56a5577801d9b627f27ea441",
+      "destination_sha256": "f3ceb9a31dc90f7e9790a50dd2da45c0c510312c82c7f929630124186541ae78",
+      "size_bytes": 149
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/src/brain_computer_v2/brain_computer_v2.py",
+      "source_path": "PH6_SOURCE_SORTED/.../src/brain_computer_v2/brain_computer_v2.py",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "91ecacc192a34309efdf5f89b61f6c35cc4ec862747e70adcc8cb437623c8da1",
+      "destination_sha256": "04730229b99c05562bbd311023db4b1da6ccdd08c49bf1c3d485b19bb0578ca4",
+      "size_bytes": 15785
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/src/brain_computer_v2/neo4j_export.py",
+      "source_path": "PH6_SOURCE_SORTED/.../src/brain_computer_v2/neo4j_export.py",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "8455cd17b9a11d87e7afc2937189946e092e48cba18e201f41086fcb812ecae6",
+      "destination_sha256": "184446d08bab69ae935016ca93c35db3e16d0e94b408440764465267ed8be58d",
+      "size_bytes": 222
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/src/brain_computer_v2/perplexity_adapter.py",
+      "source_path": "PH6_SOURCE_SORTED/.../src/brain_computer_v2/perplexity_adapter.py",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "fa2b308cd77a11065a02637721eea3c77d663780b4c9a029fa6d2465f18fd930",
+      "destination_sha256": "9ce63daf350ad78c6d0775153b2dd0faad850884dd2bfa798ca1223aab97d487",
+      "size_bytes": 4462
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/state/brain_computer_v2_kernel_final_hash.txt",
+      "source_path": "PH6_SOURCE_SORTED/.../state/brain_computer_v2_kernel_final_hash.txt",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "cfd38c4e94c15762a04a852f78e6c3315c2d53933bf4557623747508e4690036",
+      "destination_sha256": "7259fea6c007f3876fda924b2a3b528df416e15547cfb2132246f2a4f02c356d",
+      "size_bytes": 64
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/state/brain_computer_v2_kernel_ingest_state_final.json",
+      "source_path": "PH6_SOURCE_SORTED/.../state/brain_computer_v2_kernel_ingest_state_final.json",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "af633b4e3a088e74cb403a69574da774ed959b63ef49cfc3427e8b1d4f145240",
+      "destination_sha256": "61ead89a7279322b050a9199a3744e29790aefc4e6e0497cc5d85e03f6c20a07",
+      "size_bytes": 19292
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/state/brain_computer_v2_kernel_verified_final.json",
+      "source_path": "PH6_SOURCE_SORTED/.../state/brain_computer_v2_kernel_verified_final.json",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "79a7354643e6a68fef321545f5c6ed883fd3b1be4c65cf58a406be674dfe825d",
+      "destination_sha256": "3a50a6123261918c4140748a562718936f078b51264e0c8a051c925357fff3d3",
+      "size_bytes": 21425
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/state/nodes.csv",
+      "source_path": "PH6_SOURCE_SORTED/.../state/nodes.csv",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "68904af5776457db638d499fdaf5a4d0771954eb11e88083aa6dac4c724f1693",
+      "destination_sha256": "27ed94c2d22bac9d70ee9762c92698ea83eed367e26c446688c58a235f4e1f3a",
+      "size_bytes": 4187
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/state/relationships.csv",
+      "source_path": "PH6_SOURCE_SORTED/.../state/relationships.csv",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "c01c0ae234325c917cc8ba0fde8762a5b12b3121d8eb0a6c1c76ac60570e67d4",
+      "destination_sha256": "fb1cd94b813cb8e1be81941c3a52a130c95e12374c70755ea8fa38d9d71d96d9",
+      "size_bytes": 768
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/tests/test_brain_computer_v2_harness.py",
+      "source_path": "PH6_SOURCE_SORTED/.../tests/test_brain_computer_v2_harness.py",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "d011cd00f2aa96f201347870d8b3ac3c4f48d32c30a4f1bcbdcc922d801ec4ef",
+      "destination_sha256": "e08cde2961936a4e574c0bc055e6ac810d49e70685e489c2e477cc58ea321354",
+      "size_bytes": 7639
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/tests/test_perplexity_adapter.py",
+      "source_path": "PH6_SOURCE_SORTED/.../tests/test_perplexity_adapter.py",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "669c3eb10e09090d481a214baf693ea784b723e4df53e89dc61f8d20d2553aee",
+      "destination_sha256": "51f03a7e3f587059606babe908cf140c4a3228e96c3c236d5518b6e62cb5350f",
+      "size_bytes": 1399
+    },
+    {
+      "destination_path": "04_SUBSYSTEMS/brain_computer_v2/typescript_interfaces.ts",
+      "source_path": "PH6_SOURCE_SORTED/03_ARCHITECTURE/Life cram /brain_computer_v2_product/typescript_interfaces.ts",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "02e5b7d939852ba9e8c700e505c351e0b205107a8ca83f893f07f1ae682e19ae",
+      "destination_sha256": "14bcceca664502172b52f57652af590e8015baf09ffdfeb7dc530263b77c36f9",
+      "size_bytes": 409
+    },
+    {
+      "destination_path": "05_TOOLS/verify_manifest.py",
+      "source_path": "ph6_repo_skeleton_v2/tools/verify_manifest.py  [MODIFIED: paths remapped, disclosed]",
+      "disposition": "RELOCATED_AND_MODIFIED",
+      "destination_blake2b_256": "8e0d6c150ea545df3288290a6902192caa8d6c1896a08df2cc4cdc198dc611ce",
+      "destination_sha256": "17d3989ac2a4d5cbc5afdfe1509524ebde6ee4025e59bb397128912c9da9d23c",
+      "size_bytes": 3271
+    },
+    {
+      "destination_path": "05_TOOLS/verify_manifest_blake2b.py",
+      "source_path": null,
+      "disposition": "NEW_ARTIFACT",
+      "destination_blake2b_256": "8ea99e4f8da6d0a152439beb51c1004b9932aacf6c062371da5d50e2b58db52e",
+      "destination_sha256": "a2254e1070e024d87824493d81ef27622251291148feea7aa0e82c2f7f424595",
+      "size_bytes": 2819
+    },
+    {
+      "destination_path": "05_TOOLS/verify_vectors.py",
+      "source_path": "ph6_repo_skeleton_v2/tools/verify_vectors.py  [MODIFIED: paths remapped, disclosed]",
+      "disposition": "RELOCATED_AND_MODIFIED",
+      "destination_blake2b_256": "852414b209fbcba10059609c3b1a3972422cccf0e9580b41d2e72204fbdab6f3",
+      "destination_sha256": "1a0570dbf042a9b32bc1c598fa1dabd2e306de982a6f70f7916742fe07074b84",
+      "size_bytes": 3898
+    },
+    {
+      "destination_path": "06_AUDIT_AND_LOGS/PH6_CERT_PROTOCOL_v1.0.md",
+      "source_path": "ph6_repo_skeleton_v2/cert/PH6_CERT_PROTOCOL_v1.0.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "5cbecf0b43994fb70bc899ff27d89c9b61c86d05ef0ffffd321bd5ce4ccc1df9",
+      "destination_sha256": "d69334083d713354f5f336146c0505c5978b6174a10d8c9cfeff0dc99b7ab053",
+      "size_bytes": 624
+    },
+    {
+      "destination_path": "06_AUDIT_AND_LOGS/replay_validation_log.json",
+      "source_path": null,
+      "disposition": "NEW_ARTIFACT",
+      "destination_blake2b_256": "ee53c00cf385729807b5e172ab0ba5001a947001bf8eb2bcf8eb3dddf7f37ad2",
+      "destination_sha256": "c3465090067b572ac0cd08abe7a3b1324f86323c24d1cfd8851456988f4ceaf1",
+      "size_bytes": 1953
+    },
+    {
+      "destination_path": "06_AUDIT_AND_LOGS/reproducibility_log_template_v1.0.json",
+      "source_path": "ph6_repo_skeleton_v2/cert/reproducibility_log_template_v1.0.json",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "dde23245ae98627bf9b65c5d1d4d096650c73073114af8dd3925d49f0cc2828f",
+      "destination_sha256": "cee48525faaf60df93ce74da725b436b0c52ef8ee43e1beb1e6f01ff2e82288d",
+      "size_bytes": 324
+    },
+    {
+      "destination_path": "06_AUDIT_AND_LOGS/violations_and_resolutions_log_v1.0.md",
+      "source_path": "ph6_repo_skeleton_v2/audit/violations_and_resolutions_log_v1.0.md",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "74ecd1201d0b8aa63d2ff7709f723cf1686d64e91c64560d19ef68bbaca626f8",
+      "destination_sha256": "7e4434011d28c0222561976ac2fa87b555e60903d0d59d16ae359c14b7908376",
+      "size_bytes": 411
+    },
+    {
+      "destination_path": "99_ARCHIVE/SUPERSEDED_BOOK0/BOOK 0 \u2014 INTERPRETIVE CONTROL PLANE.pdf",
+      "source_path": "PH6_SOURCE_SORTED/01_CORE_DOCTRINE/Six engines pH 6/BOOK 0 \u2014 INTERPRETIVE CONTROL PLANE.pdf",
+      "disposition": "RELOCATED",
+      "destination_blake2b_256": "59e93002746d14ab6907ae0f9b1d74e6c9b302c858150cae4f81435a97dea28a",
+      "destination_sha256": "f7df0bf086ab3bed79b8fd352fd1c01ba5dfa533098a2f596f871b54ec62cb18",
+      "size_bytes": 642968
+    },
+    {
+      "destination_path": "99_ARCHIVE/SUPERSEDED_BOOK0/NOTICE.md",
+      "source_path": null,
+      "disposition": "NEW_ARTIFACT",
+      "destination_blake2b_256": "482971cc7a6ab00501ee527c45f7a71f1eaa5fbc16626cbc0ef00600169dbd97",
+      "destination_sha256": "8207f88034ec224cb60d747c92bf6c1e0834d19a8c53ca767d0f53add3e7d3b7",
+      "size_bytes": 1405
+    }
+  ]
+}

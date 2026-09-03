@@ -1,0 +1,698 @@
+{
+  "state": {
+    "brain_id": "BRAIN-BLANK-001",
+    "nodes": [
+      {
+        "id": "CONTEXT-DB12DE90",
+        "type": "SESSION_DOC",
+        "label": "Current session transcript",
+        "classification": "CONTEXT",
+        "content": "Current chat session includes kernel initialization, consolidation, verification, and patch review.",
+        "sequence": 1,
+        "created_at": "2026-06-21T13:13:31.496992+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "session",
+          "transcript"
+        ]
+      },
+      {
+        "id": "OUTPUT-650320FB",
+        "type": "DOC",
+        "label": "Brain Computer v2 module",
+        "classification": "OUTPUT",
+        "content": "Cleaned operational module with hashing, import/export, retrieval, and supersession.",
+        "sequence": 3,
+        "created_at": "2026-06-21T13:13:31.497158+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "module",
+          "v2"
+        ]
+      },
+      {
+        "id": "OUTPUT-E59C979C",
+        "type": "DOC",
+        "label": "Test harness",
+        "classification": "OUTPUT",
+        "content": "Expanded deterministic harness with positive and negative-path tests.",
+        "sequence": 5,
+        "created_at": "2026-06-21T13:13:31.497191+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "harness",
+          "tests"
+        ]
+      },
+      {
+        "id": "OUTPUT-1BC667B1",
+        "type": "DOC",
+        "label": "Verified export",
+        "classification": "OUTPUT",
+        "content": "Canonical verified state export with hash envelope.",
+        "sequence": 7,
+        "created_at": "2026-06-21T13:13:31.497215+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "verification",
+          "export"
+        ]
+      },
+      {
+        "id": "OUTPUT-4A15D173",
+        "type": "DOC",
+        "label": "Working document",
+        "classification": "OUTPUT",
+        "content": "Consolidated review document and status summary.",
+        "sequence": 9,
+        "created_at": "2026-06-21T13:13:31.497314+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "document",
+          "status"
+        ]
+      },
+      {
+        "id": "OUTPUT-71969AA5",
+        "type": "DOC",
+        "label": "Ingested state",
+        "classification": "OUTPUT",
+        "content": "Bootstrap state with 23 nodes and 17 edges.",
+        "sequence": 11,
+        "created_at": "2026-06-21T13:13:31.497341+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "state",
+          "bootstrap"
+        ]
+      },
+      {
+        "id": "OUTPUT-8829D846",
+        "type": "DOC",
+        "label": "Hash artifact",
+        "classification": "OUTPUT",
+        "content": "Canonical SHA-256 digest of verified state projection.",
+        "sequence": 13,
+        "created_at": "2026-06-21T13:13:31.497363+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "hash",
+          "canonical"
+        ]
+      },
+      {
+        "id": "OUTPUT-F75E1B5F",
+        "type": "DOC",
+        "label": "Harness results",
+        "classification": "OUTPUT",
+        "content": "Six passing tests in deterministic harness.",
+        "sequence": 15,
+        "created_at": "2026-06-21T13:13:31.497390+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "results",
+          "tests"
+        ]
+      },
+      {
+        "id": "CONSTRAINT-2A623202",
+        "type": "CONSTRAINT",
+        "label": "Zero authority rule",
+        "classification": "CONSTRAINT",
+        "content": "Organizational only; do not assert truth; preserve contradictions.",
+        "sequence": 17,
+        "created_at": "2026-06-21T13:13:31.497412+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "zero-authority"
+        ]
+      },
+      {
+        "id": "CONSTRAINT-32069379",
+        "type": "CONSTRAINT",
+        "label": "Append-only ledger rule",
+        "classification": "CONSTRAINT",
+        "content": "Record every structural change as an immutable ledger event.",
+        "sequence": 19,
+        "created_at": "2026-06-21T13:13:31.497433+00:00",
+        "active": false,
+        "retrieval_tags": [
+          "append-only",
+          "ledger"
+        ]
+      },
+      {
+        "id": "CONSTRAINT-8F5FBFB0",
+        "type": "CONSTRAINT",
+        "label": "Retrieval policy",
+        "classification": "CONSTRAINT",
+        "content": "Foundation anchors plus one-hop expansion while preserving contradictions.",
+        "sequence": 21,
+        "created_at": "2026-06-21T13:13:31.497533+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "retrieval",
+          "policy"
+        ]
+      },
+      {
+        "id": "GOAL-62683A08",
+        "type": "GOAL",
+        "label": "Build operational V2",
+        "classification": "GOAL",
+        "content": "Consolidate all patches into one operational Brain Computer v2 package.",
+        "sequence": 23,
+        "created_at": "2026-06-21T13:13:31.497561+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "goal",
+          "consolidate"
+        ]
+      },
+      {
+        "id": "NEXT_STEP-9CF5190D",
+        "type": "NEXT_STEP",
+        "label": "Finalize verification",
+        "classification": "NEXT_STEP",
+        "content": "Confirm canonical hash from full file and keep sequence continuity synchronized.",
+        "sequence": 25,
+        "created_at": "2026-06-21T13:13:31.497607+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "next-step",
+          "verification"
+        ]
+      },
+      {
+        "id": "LESSON-F95D0A6B",
+        "type": "LESSON",
+        "label": "Sequence counters share ledger",
+        "classification": "LESSON",
+        "content": "Odd node sequences are expected because ledger events consume even sequence numbers too.",
+        "sequence": 27,
+        "created_at": "2026-06-21T13:13:31.497638+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "sequence",
+          "lesson"
+        ]
+      },
+      {
+        "id": "OBSERVATION-FCE45236",
+        "type": "OBSERVATION",
+        "label": "Verified export lacks _sequence",
+        "classification": "OBSERVATION",
+        "content": "Runtime _sequence is restored via _sync_sequence() during import.",
+        "sequence": 29,
+        "created_at": "2026-06-21T13:13:31.497805+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "observation",
+          "import"
+        ]
+      },
+      {
+        "id": "RISK-7490D74F",
+        "type": "RISK",
+        "label": "Truncation risk",
+        "classification": "RISK",
+        "content": "Partial artifact paste cannot verify full envelope or hash.",
+        "sequence": 31,
+        "created_at": "2026-06-21T13:13:31.497850+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "truncation",
+          "risk"
+        ]
+      },
+      {
+        "id": "RISK-3CC68314",
+        "type": "RISK",
+        "label": "Schema drift risk",
+        "classification": "RISK",
+        "content": "Incremental patches may diverge without final cleanup pass.",
+        "sequence": 33,
+        "created_at": "2026-06-21T13:13:31.497882+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "schema-drift",
+          "risk"
+        ]
+      },
+      {
+        "id": "ROLE-03C97715",
+        "type": "ROLE",
+        "label": "Brain Computer v2 Kernel",
+        "classification": "ROLE",
+        "content": "Append-only deterministic topological memory substrate.",
+        "sequence": 35,
+        "created_at": "2026-06-21T13:13:31.497906+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "role",
+          "kernel"
+        ]
+      },
+      {
+        "id": "CONSTRAINT-C03",
+        "type": "CONSTRAINT_SPEC",
+        "label": "Append-only ledger canonical",
+        "classification": "CONSTRAINT",
+        "content": "Ledger is append only and records what changed and why.",
+        "sequence": 56,
+        "created_at": "2026-06-21T13:39:55.204473+00:00",
+        "active": true,
+        "retrieval_tags": [
+          "append-only",
+          "ledger",
+          "ledger-model"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "ROLE-03C97715",
+        "to": "CONTEXT-DB12DE90",
+        "relation": "RELATES_TO"
+      },
+      {
+        "from": "ROLE-03C97715",
+        "to": "GOAL-62683A08",
+        "relation": "SUPPORTS"
+      },
+      {
+        "from": "GOAL-62683A08",
+        "to": "OUTPUT-650320FB",
+        "relation": "SUPPORTS"
+      },
+      {
+        "from": "GOAL-62683A08",
+        "to": "OUTPUT-E59C979C",
+        "relation": "SUPPORTS"
+      },
+      {
+        "from": "GOAL-62683A08",
+        "to": "OUTPUT-1BC667B1",
+        "relation": "SUPPORTS"
+      },
+      {
+        "from": "GOAL-62683A08",
+        "to": "OUTPUT-4A15D173",
+        "relation": "SUPPORTS"
+      },
+      {
+        "from": "OUTPUT-1BC667B1",
+        "to": "OUTPUT-8829D846",
+        "relation": "DERIVED_FROM"
+      },
+      {
+        "from": "OUTPUT-1BC667B1",
+        "to": "OUTPUT-71969AA5",
+        "relation": "DERIVED_FROM"
+      },
+      {
+        "from": "CONSTRAINT-32069379",
+        "to": "OUTPUT-4A15D173",
+        "relation": "SUPPORTS"
+      },
+      {
+        "from": "CONSTRAINT-2A623202",
+        "to": "OUTPUT-4A15D173",
+        "relation": "SUPPORTS"
+      },
+      {
+        "from": "CONSTRAINT-8F5FBFB0",
+        "to": "OUTPUT-E59C979C",
+        "relation": "SUPPORTS"
+      },
+      {
+        "from": "LESSON-F95D0A6B",
+        "to": "CONSTRAINT-32069379",
+        "relation": "SUPPORTS"
+      },
+      {
+        "from": "OBSERVATION-FCE45236",
+        "to": "NEXT_STEP-9CF5190D",
+        "relation": "SUPPORTS"
+      },
+      {
+        "from": "RISK-7490D74F",
+        "to": "OUTPUT-1BC667B1",
+        "relation": "CONTRADICTS"
+      },
+      {
+        "from": "RISK-3CC68314",
+        "to": "OUTPUT-650320FB",
+        "relation": "CONTRADICTS"
+      },
+      {
+        "from": "NEXT_STEP-9CF5190D",
+        "to": "OUTPUT-650320FB",
+        "relation": "PRECEDES"
+      },
+      {
+        "from": "CONSTRAINT-32069379",
+        "to": "CONSTRAINT-C03",
+        "relation": "DELTA_OF"
+      }
+    ],
+    "ledger": [
+      {
+        "event": "NODE_ADDED",
+        "target": "CONTEXT-DB12DE90",
+        "reason": "Added CONTEXT node: Current session transcript",
+        "created_at": "2026-06-21T13:13:31.497017+00:00",
+        "sequence": 2
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "OUTPUT-650320FB",
+        "reason": "Added OUTPUT node: Brain Computer v2 module",
+        "created_at": "2026-06-21T13:13:31.497166+00:00",
+        "sequence": 4
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "OUTPUT-E59C979C",
+        "reason": "Added OUTPUT node: Test harness",
+        "created_at": "2026-06-21T13:13:31.497194+00:00",
+        "sequence": 6
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "OUTPUT-1BC667B1",
+        "reason": "Added OUTPUT node: Verified export",
+        "created_at": "2026-06-21T13:13:31.497218+00:00",
+        "sequence": 8
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "OUTPUT-4A15D173",
+        "reason": "Added OUTPUT node: Working document",
+        "created_at": "2026-06-21T13:13:31.497320+00:00",
+        "sequence": 10
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "OUTPUT-71969AA5",
+        "reason": "Added OUTPUT node: Ingested state",
+        "created_at": "2026-06-21T13:13:31.497345+00:00",
+        "sequence": 12
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "OUTPUT-8829D846",
+        "reason": "Added OUTPUT node: Hash artifact",
+        "created_at": "2026-06-21T13:13:31.497366+00:00",
+        "sequence": 14
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "OUTPUT-F75E1B5F",
+        "reason": "Added OUTPUT node: Harness results",
+        "created_at": "2026-06-21T13:13:31.497393+00:00",
+        "sequence": 16
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "CONSTRAINT-2A623202",
+        "reason": "Added CONSTRAINT node: Zero authority rule",
+        "created_at": "2026-06-21T13:13:31.497415+00:00",
+        "sequence": 18
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "CONSTRAINT-32069379",
+        "reason": "Added CONSTRAINT node: Append-only ledger rule",
+        "created_at": "2026-06-21T13:13:31.497436+00:00",
+        "sequence": 20
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "CONSTRAINT-8F5FBFB0",
+        "reason": "Added CONSTRAINT node: Retrieval policy",
+        "created_at": "2026-06-21T13:13:31.497539+00:00",
+        "sequence": 22
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "GOAL-62683A08",
+        "reason": "Added GOAL node: Build operational V2",
+        "created_at": "2026-06-21T13:13:31.497564+00:00",
+        "sequence": 24
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "NEXT_STEP-9CF5190D",
+        "reason": "Added NEXT_STEP node: Finalize verification",
+        "created_at": "2026-06-21T13:13:31.497612+00:00",
+        "sequence": 26
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "LESSON-F95D0A6B",
+        "reason": "Added LESSON node: Sequence counters share ledger",
+        "created_at": "2026-06-21T13:13:31.497641+00:00",
+        "sequence": 28
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "OBSERVATION-FCE45236",
+        "reason": "Added OBSERVATION node: Verified export lacks _sequence",
+        "created_at": "2026-06-21T13:13:31.497821+00:00",
+        "sequence": 30
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "RISK-7490D74F",
+        "reason": "Added RISK node: Truncation risk",
+        "created_at": "2026-06-21T13:13:31.497854+00:00",
+        "sequence": 32
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "RISK-3CC68314",
+        "reason": "Added RISK node: Schema drift risk",
+        "created_at": "2026-06-21T13:13:31.497885+00:00",
+        "sequence": 34
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "ROLE-03C97715",
+        "reason": "Added ROLE node: Brain Computer v2 Kernel",
+        "created_at": "2026-06-21T13:13:31.497909+00:00",
+        "sequence": 36
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "ROLE-03C97715->CONTEXT-DB12DE90",
+        "reason": "Relation: RELATES_TO",
+        "created_at": "2026-06-21T13:13:31.498373+00:00",
+        "sequence": 37
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "ROLE-03C97715->GOAL-62683A08",
+        "reason": "Relation: SUPPORTS",
+        "created_at": "2026-06-21T13:13:31.498410+00:00",
+        "sequence": 38
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "GOAL-62683A08->OUTPUT-650320FB",
+        "reason": "Relation: SUPPORTS",
+        "created_at": "2026-06-21T13:13:31.498456+00:00",
+        "sequence": 39
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "GOAL-62683A08->OUTPUT-E59C979C",
+        "reason": "Relation: SUPPORTS",
+        "created_at": "2026-06-21T13:13:31.498477+00:00",
+        "sequence": 40
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "GOAL-62683A08->OUTPUT-1BC667B1",
+        "reason": "Relation: SUPPORTS",
+        "created_at": "2026-06-21T13:13:31.498489+00:00",
+        "sequence": 41
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "GOAL-62683A08->OUTPUT-4A15D173",
+        "reason": "Relation: SUPPORTS",
+        "created_at": "2026-06-21T13:13:31.498515+00:00",
+        "sequence": 42
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "OUTPUT-1BC667B1->OUTPUT-8829D846",
+        "reason": "Relation: DERIVED_FROM",
+        "created_at": "2026-06-21T13:13:31.498548+00:00",
+        "sequence": 43
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "OUTPUT-1BC667B1->OUTPUT-71969AA5",
+        "reason": "Relation: DERIVED_FROM",
+        "created_at": "2026-06-21T13:13:31.498657+00:00",
+        "sequence": 44
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "CONSTRAINT-32069379->OUTPUT-4A15D173",
+        "reason": "Relation: SUPPORTS",
+        "created_at": "2026-06-21T13:13:31.498693+00:00",
+        "sequence": 45
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "CONSTRAINT-2A623202->OUTPUT-4A15D173",
+        "reason": "Relation: SUPPORTS",
+        "created_at": "2026-06-21T13:13:31.498709+00:00",
+        "sequence": 46
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "CONSTRAINT-8F5FBFB0->OUTPUT-E59C979C",
+        "reason": "Relation: SUPPORTS",
+        "created_at": "2026-06-21T13:13:31.498735+00:00",
+        "sequence": 47
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "LESSON-F95D0A6B->CONSTRAINT-32069379",
+        "reason": "Relation: SUPPORTS",
+        "created_at": "2026-06-21T13:13:31.498785+00:00",
+        "sequence": 48
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "OBSERVATION-FCE45236->NEXT_STEP-9CF5190D",
+        "reason": "Relation: SUPPORTS",
+        "created_at": "2026-06-21T13:13:31.498842+00:00",
+        "sequence": 49
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "RISK-7490D74F->OUTPUT-1BC667B1",
+        "reason": "Relation: CONTRADICTS",
+        "created_at": "2026-06-21T13:13:31.498859+00:00",
+        "sequence": 50
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "RISK-3CC68314->OUTPUT-650320FB",
+        "reason": "Relation: CONTRADICTS",
+        "created_at": "2026-06-21T13:13:31.498875+00:00",
+        "sequence": 51
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "NEXT_STEP-9CF5190D->OUTPUT-650320FB",
+        "reason": "Relation: PRECEDES",
+        "created_at": "2026-06-21T13:13:31.498917+00:00",
+        "sequence": 52
+      },
+      {
+        "event": "NOTE_ADDED",
+        "target": "continuity_observations",
+        "reason": "Session history ingested and consolidated into kernel initialization state.",
+        "created_at": "2026-06-21T13:13:31.499010+00:00",
+        "sequence": 53
+      },
+      {
+        "event": "NOTE_ADDED",
+        "target": "ambiguities",
+        "reason": "Some artifacts were represented as review summaries rather than full file payloads.",
+        "created_at": "2026-06-21T13:13:31.499069+00:00",
+        "sequence": 54
+      },
+      {
+        "event": "NOTE_ADDED",
+        "target": "contradictions",
+        "reason": "Summary-pass verification coexists with candidate-valid hash pending full recomputation.",
+        "created_at": "2026-06-21T13:13:31.499120+00:00",
+        "sequence": 55
+      },
+      {
+        "event": "NODE_ADDED",
+        "target": "CONSTRAINT-C03",
+        "reason": "Added CONSTRAINT node: Append-only ledger canonical",
+        "created_at": "2026-06-21T13:39:55.204493+00:00",
+        "sequence": 57
+      },
+      {
+        "event": "NODE_TAGS_MERGED",
+        "target": "CONSTRAINT-C03",
+        "reason": "Merged retrieval tags from CONSTRAINT-32069379 into canonical node",
+        "created_at": "2026-06-21T13:39:55.204764+00:00",
+        "sequence": 58
+      },
+      {
+        "event": "NODE_DEACTIVATED",
+        "target": "CONSTRAINT-32069379",
+        "reason": "Deactivated duplicate constraint after canonical merge into CONSTRAINT-C03",
+        "created_at": "2026-06-21T13:39:55.204824+00:00",
+        "sequence": 59
+      },
+      {
+        "event": "EDGE_ADDED",
+        "target": "CONSTRAINT-32069379->CONSTRAINT-C03",
+        "reason": "Relation: DELTA_OF duplicate merged to canonical constraint",
+        "created_at": "2026-06-21T13:39:55.204972+00:00",
+        "sequence": 60
+      },
+      {
+        "event": "NOTE_ADDED",
+        "target": "continuity_observations",
+        "reason": "Duplicate append-only ledger constraint CONSTRAINT-32069379 canonicalized into CONSTRAINT-C03 with merged tags.",
+        "created_at": "2026-06-21T13:39:55.205030+00:00",
+        "sequence": 61
+      }
+    ],
+    "notes": {
+      "ambiguities": [
+        "Some artifacts were represented as review summaries rather than full file payloads."
+      ],
+      "continuity_observations": [
+        "Session history ingested and consolidated into kernel initialization state.",
+        "Duplicate append-only ledger constraint CONSTRAINT-32069379 canonicalized into CONSTRAINT-C03 with merged tags."
+      ],
+      "contradictions": [
+        "Summary-pass verification coexists with candidate-valid hash pending full recomputation."
+      ]
+    }
+  },
+  "verification": {
+    "schema_version": "bcv2.verify.1",
+    "exported_at": "2026-06-21T13:39:55.208156+00:00",
+    "session_id": "SESSION-FINAL-001",
+    "canonicalization": {
+      "format": "json",
+      "sort_keys": true,
+      "separators": [
+        ",",
+        ":"
+      ],
+      "encoding": "utf-8",
+      "trailing_newline": false
+    },
+    "counts": {
+      "nodes": 19,
+      "edges": 17,
+      "ledger": 42,
+      "ambiguities": 1,
+      "continuity_observations": 2,
+      "contradictions": 1
+    },
+    "projection_hash_sha256": "445f047fa91d09c6cb7f707f2b6f1a2ced31a9ee96dea98d77ec27c3c1ec6844",
+    "deep_copy_check": {
+      "performed": true,
+      "equal_by_value": true,
+      "same_object_identity": false,
+      "same_nested_identity_detected": false
+    }
+  }
+}
