@@ -208,3 +208,130 @@ this document alone.
 ```json
 {"proposed_by":"claude-code-lane2","proposed_at_utc":"2026-09-15T11:54:16Z","api_call_log_ref":"ph6-reconciliation-pass-001-session","ratified_by":null}
 ```
+
+---
+
+## 6. Addendum (same session) — Evidence Kernel identity reconciliation + 2 more staged packages
+
+Per operator authorization to run a structured identity reconciliation
+(not "which candidate is real" but "what is each one, and how do they
+relate") across the three Evidence Kernel candidates, plus inspect two
+more Priority-1 staged packages.
+
+### 6.1 Naming correction, stated plainly
+
+The operator's suggested Priority 2 list named `PH6_RULES_PACKAGE` and
+`PH6_CONSOLIDATED_MATERIAL_PACKET`. **Neither exists** among the actual 13
+top-level staged-corpus package names recorded in `initial.json`. The real
+list is: `PH6-SoSo-Agent-Reasoning-Core-v0.1.zip`, `PH6_BCV2_SoSo_Starter.zip`,
+`PH6_CANON_STACK_v4.0_SOURCE_SET 3.zip`,
+`PH6_SOSO_NERO_CONTROL_PACKAGE_V0_1_ADVISORY_DRAFT.zip`,
+`PH6_SOSO_SOURCE_DOCUMENT_SET.zip`, `PH6_SOSO_SYSTEM_scaffold.zip`,
+`PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF.zip` (+ `_v2`),
+`PH6_STORAGE_LIBRARY_SOURCE_PACKAGE_SCAFFOLD.zip`, `PH6_TFH_AK_v1_1_1.zip`,
+`ph6_closure_code.zip`, `tri_ph6_cram_ORGANIZED.zip`, and one oddly-named
+loose text file. This isn't pedantry: silently substituting a plausible-
+sounding name for the real one is exactly the kind of drift this whole
+exercise exists to prevent, so it's corrected here rather than quietly
+followed.
+
+### 6.2 Evidence Kernel identity reconciliation
+
+| Field | Candidate A — PR #9 "PH6 Canon V1 RC2" | Candidate B — TFH_AK v1.1.1 | Candidate C — "Evidence Kernel Patch Set 001" |
+|---|---|---|---|
+| Artifact identity | Canonical JSON serialization spec + dual-impl validator + golden vectors + conformance report | Audit/canonicalization/provenance/replay Python package with its own CLI, schemas, systemd unit | No artifact located under this name anywhere searched |
+| Branch | `claude/ph6-canon-rc2-search-h1dq0c` (open PR #9) | N/A — not in this git repository at all; staged corpus only | N/A |
+| Commit | `86b473c9af231ac6d18e7d2d493bcbcbdbe42e45` | N/A (zip, not a commit) | N/A |
+| Date | 2026-06-19T11:34:26Z (commit); `SHA256SUMS.json` says `generated_at_utc: 2026-06-19T00:00:00Z`; `governance_manifest.json` inside it is dated `2026-06-06` (older, bundled from an earlier pass) | Unknown — `initial.json` only records the staging snapshot time (2026-09-15), not the package's own creation date; its internal `MANIFEST.yaml`/`CHANGELOG.md` presumably has one but this session cannot read staged-corpus byte content | N/A |
+| Status | Open, draft, **never merged**, base diverged from `main` at `e23749a1d0` — roughly a dozen commits behind current `main` | Not applicable to git status; exists only in the operator's separately-staged `/mnt/data` corpus | Not found |
+| Specification | `PH6_SOURCE/CANON/PH6-CANON-V1-SPEC-0.3-RC2.md` — canonical JSON + BLAKE2b-256 hash construction | `PH6_TFH_AK_v1_1_1/docs/PH6-TFH-001.md` (path confirmed, content not read this session) | None |
+| Canonicalizer | `PH6_SOURCE/TOOLS/canon_compiler/canon_compiler.py` (real, in-repo-on-branch bytes read) | `ph6_tfh/canonical.py` (path only, content unread) | N/A |
+| Verifier | `ph6/tiny_validator.py`, dual implementation (Impl-A/B) | No file path suggesting a standalone "verifier" distinct from the audit engine (`ph6_tfh/audit/engine.py`) | N/A |
+| Fixtures | 11 vectors: `ph6_canon_v1_vectors/{accept×4,reject×6,quarantine×1}` | `tests/vectors/{clear_translation,provenance_break,scope_drift}.json` — 3 vectors, different domain (translation/scope, not accept/reject/quarantine) | N/A |
+| Conformance | `PH6_SOURCE/DEPLOYMENT/validator_run_report.json` — self-reported 11/11 matched, `all_impl_match: true` (not independently re-run this session) | `tests/{test_authority,test_tfh,test_v1_1_0_fixes}.py` exist (paths only; pass/fail status unknown, content unread) | N/A |
+| Hash profile | SHA-256 **and** BLAKE2b-256 recorded per-file in `SHA256SUMS.json` (both algorithms, explicitly labeled "BLAKE2b-256 (PH6 authority hash)") | `ph6_tfh/provenance/hashes.py` exists (path only; algorithm unconfirmed) | N/A |
+| Schema | `ph6.canon.v1.rc2.sha256sums`, `authority: "ZERO"`, `production_status: "TEST_HARNESS_ONLY"` | `schemas/{audit,receipt_bundle,representation,translation_contract}.schema.json` (paths only) | N/A |
+| Authority | Explicitly `ZERO` / `TEST_HARNESS_ONLY` (self-declared in `SHA256SUMS.json`) | `ph6_tfh/governance/{drift_gate,policy,registry}.py` suggest it has its own governance/authority model, distinct from PH6's Lane-1/Lane-2 split — unconfirmed without reading content | N/A |
+| Relationship to BCV2/TFH/CRAM | No reference to BCV2, TFH, or CRAM found in the file names/paths available | Name itself ("AK" = plausibly "Audit Kernel") suggests audit/evidence framing; no confirmed link to BCV2 or Canon V1 | N/A |
+| Supersession | Nothing on `main` derives from or supersedes it (see 6.3) | Unknown | N/A |
+| Currentness | **Not current** — corrected finding, see 6.3 below | Not in repo at all — not current by definition | N/A — nothing to be current with |
+
+**Outcome: `IDENTITY_UNRESOLVED` for all three pairwise relationships.**
+None of `CONFIRMED_SAME_REFERENT`, `CONFIRMED_PREDECESSOR`,
+`CONFIRMED_SUCCESSOR`, `RELATED_BUT_DISTINCT`, or `UNRELATED` can be
+established from evidence available to this session. What can be said:
+Candidate A is real, in-repo (on an unmerged branch), executed, and
+self-reported passing. Candidate B is real but access-limited (staged
+corpus, no byte content available). Candidate C's literal name is
+unlocated anywhere. They are three different names with three different
+evidence profiles, not three descriptions of one thing.
+
+### 6.3 Correction to this session's own earlier "currentness" check
+
+Initial grep for `canon_compiler` against `main` returned a hit:
+`PH6_SOURCE/TOOLS/guard_scanner/canon_compiler_guard.py`. Read in full,
+that file's own docstring states: *"PH6CRAM Canon Guard Scanner — checks
+all Python modules enforce if-main execution guards. **Separate from
+canon_compiler.py (manifest generator)**."* It was added to `main` by a
+different, earlier commit (`621a959258`, `"sei: integrate PH6 scientific
+evidence instrument architecture"`) that predates this session's initial
+20-commit `git log` window and was not otherwise investigated. The file
+explicitly disclaims any relationship to PR #9's `canon_compiler.py` — so
+this is **not** evidence that Candidate A is current on `main`; it's a
+coincidental name match in an unrelated file, correctly self-labeled by
+the file itself. Corrected in the table above rather than left standing.
+
+Flagging without investigating further: that `sei:` commit references a
+**"PH6 scientific evidence instrument architecture"** — a component name
+not previously encountered in this reconciliation pass or PR #17's
+manifest, and not covered by the 11-domain matrix in §3. Out of scope for
+this addendum; noted so it isn't lost.
+
+### 6.4 Two more Priority-1 staged packages — structural inventory only (index-only, no byte access)
+
+Same access limitation as every other staged-corpus finding in this and
+the PR #17 pass: `initial.json` records path + hash + size only, never
+file contents. What follows is member-path structure, not code review.
+
+**`PH6-SoSo-Agent-Reasoning-Core-v0.1.zip`** (SHA-256 `7fa81d1d...45a1a`,
+45285 bytes, 23 members) — a substantial, separate SoSo implementation:
+`soso_controller.py`, `soso_reasoner.py`, `soso_reasoning_core.py`,
+`soso_mram_s.py`, and a `soso/` package with `boundary/guard.py`,
+`provenance/analyzer.py`, `reasoning/{context,contracts,orchestrator}.py`,
+`relationships/mapper.py`, `source/identity.py`, `run_vertical_slice.py`.
+This is structurally distinct from (not obviously the same as) the SoSo
+implementation actually on `main` (`ph6/ssmt/*.py`, listed in §3). Whether
+this staged package is a predecessor, an alternate design, or unrelated
+research is **unresolved** — same "staged, never landed" pattern as
+BCV2/NERO, now confirmed for a third domain.
+
+**`ph6_closure_code.zip`** (SHA-256 `128a968b...d2d253`, 6804 bytes, 9
+members) — `ph6/canon.py`, `ph6/audit.py`, `ph6_cert/hrg9.py`,
+`ph6_cert/validate_run.py`, `build_hrg9_manifest.py`. The `hrg9` naming is
+notable: CLAUDE.md records `HRG9` as **CLOSED at commit `2ef5fd6`, "NEVER
+regenerate or list as open."** This package is very plausibly the
+historical source of that closure — but this is an inference from naming,
+not confirmed from content, and per CLAUDE.md's own explicit instruction
+this is **not being reopened or investigated further**. Noted for the
+record only.
+
+### 6.5 What this addendum still does not do
+
+- Does not resolve `IDENTITY_UNRESOLVED` for the Evidence Kernel
+  candidates — that's the operator's call once actually needed.
+- Does not touch HRG9 (explicitly closed, never to be regenerated).
+- Does not investigate the newly-surfaced "SEI" (scientific evidence
+  instrument) component.
+- Does not inventory the remaining 8 staged packages (this addendum did 2
+  of the ~10 outstanding; 6 remain: `PH6_CANON_STACK_v4.0_SOURCE_SET 3`,
+  `PH6_SOSO_SOURCE_DOCUMENT_SET`, `PH6_SOSO_SYSTEM_scaffold`,
+  `PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF` ×2, `PH6_STORAGE_LIBRARY_SOURCE_PACKAGE_SCAFFOLD`,
+  `tri_ph6_cram_ORGANIZED`, and the one loose text file).
+- Does not build the full machine-readable "PH6 Implementation & Source
+  Reconciliation Matrix" schema — deliberately held for a dedicated pass
+  once staged-package inventory is further along, per the operator's own
+  recommended ordering.
+
+```json
+{"proposed_by":"claude-code-lane2","proposed_at_utc":"2026-09-15T11:59:41Z","api_call_log_ref":"ph6-reconciliation-pass-001-session-addendum-1","ratified_by":null}
+```
