@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "PH6-SOURCE-MANIFEST-001",
+  "title": "PH6 Source Manifest 001",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_id",
+    "manifest_version",
+    "status",
+    "generated_at",
+    "corpus_id",
+    "corpus_scope",
+    "identity_policy",
+    "authority_policy",
+    "status_dimensions",
+    "artifacts"
+  ],
+  "properties": {
+    "manifest_id": {
+      "const": "PH6-SOURCE-MANIFEST-001"
+    },
+    "manifest_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "corpus_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "corpus_scope": {
+      "type": "object"
+    },
+    "identity_policy": {
+      "type": "object"
+    },
+    "authority_policy": {
+      "type": "object"
+    },
+    "status_dimensions": {
+      "type": "object"
+    },
+    "non_equivalence_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifact_id",
+          "artifact_kind",
+          "path",
+          "media_type",
+          "size_bytes",
+          "hash",
+          "identity_basis",
+          "source_class",
+          "declared_status",
+          "relationships",
+          "notes"
+        ],
+        "properties": {
+          "artifact_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "artifact_kind": {
+            "enum": [
+              "top_level_staged_artifact",
+              "archive_member",
+              "repository_artifact",
+              "generated_artifact"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "media_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "hash": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "algorithm",
+              "value"
+            ],
+            "properties": {
+              "algorithm": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "pattern": "^[A-Fa-f0-9]{64}$"
+              }
+            }
+          },
+          "identity_basis": {
+            "type": "string"
+          },
+          "source_class": {
+            "type": "string"
+          },
+          "declared_status": {
+            "type": "object"
+          },
+          "relationships": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "contains",
+              "contained_by",
+              "supersedes",
+              "superseded_by",
+              "depends_on"
+            ],
+            "properties": {
+              "contains": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "contained_by": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "supersedes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "superseded_by": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "depends_on": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "deployment_correspondence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "relationship_status",
+              "source_artifact_ids",
+              "deployment_target",
+              "observation_basis",
+              "observed_deployment",
+              "comparison_method",
+              "confidence",
+              "notes"
+            ],
+            "properties": {
+              "relationship_status": {
+                "enum": [
+                  "NOT_ASSESSED",
+                  "CANDIDATE_FOR_DEPLOYMENT",
+                  "INTENDED_DEPLOYMENT",
+                  "OBSERVED_MATCH",
+                  "OBSERVED_MISMATCH",
+                  "VARIANT",
+                  "UNRESOLVED"
+                ]
+              },
+              "source_artifact_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "deployment_target": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "observation_basis": {
+                "enum": [
+                  "NONE",
+                  "DOCUMENTATION_ONLY",
+                  "REPOSITORY_INSPECTION",
+                  "PHYSICAL_DEVICE_OBSERVATION",
+                  "COMBINED"
+                ]
+              },
+              "observed_deployment": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "comparison_method": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "confidence": {
+                "enum": [
+                  "UNKNOWN",
+                  "LOW",
+                  "MEDIUM",
+                  "HIGH"
+                ]
+              },
+              "notes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "manifest_version": "0.2.1"
+}
