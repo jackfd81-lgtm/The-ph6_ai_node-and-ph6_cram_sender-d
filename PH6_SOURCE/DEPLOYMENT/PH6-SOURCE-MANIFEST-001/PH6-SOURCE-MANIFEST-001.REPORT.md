@@ -242,11 +242,11 @@ supplied `PH6-SOURCE-MANIFEST-001.schema.v0.2.1.json` using
 - `PH6-SOURCE-MANIFEST-001.schema.json` — copy of the supplied v0.2.1 schema this manifest validates against
 - `PH6-SOURCE-MANIFEST-001.REPORT.md` — this file
 
-All four are staged **uncommitted** in the working tree at
-`PH6_SOURCE/DEPLOYMENT/PH6-SOURCE-MANIFEST-001/` (this repo's convention
-for reports/session records). Nothing has been `git add`ed or committed —
-per CLAUDE.md hard rule 2, that step waits for explicit operator review and
-approval.
+All four were committed to `claude/ph6-manifest-reconnaissance-7qohsi` and
+pushed as **draft PR #17** (following this repo's own PR #1–16 precedent:
+Lane-2 PROPOSED work is committed and opened as a draft, not left stranded
+locally — the draft PR is the "stop and wait" point, not the local working
+tree). PR #17 remains draft, unmerged, unratified.
 
 **Self-check:** `PH6_SOURCE/TOOLS/governance_drift_scan.py --scan-root PH6_SOURCE/`
 was re-run against the tree *including these new files*:
@@ -257,4 +257,114 @@ CLAUDE.md's governance baseline exactly.
 
 ```json
 {"proposed_by":"claude-code-lane2","proposed_at_utc":"2026-09-15T11:25:40Z","api_call_log_ref":"ph6-source-manifest-001-recon-session","ratified_by":null}
+```
+
+---
+
+## 13. Addendum (2026-09-15, same session) — operator-directed refinement
+
+Following operator review of the initial PR #17 report, four corrections
+were made. None of them change any prior finding's substance; they make the
+evidence-state encoding stricter, per operator direction.
+
+### 13.1 BCV2 — collapsed into independent dimensions, not a single field
+
+The earlier "starter confirmed, product undetermined" framing collapsed
+distinct dimensions into one classification. Corrected to four independent
+axes on the confirmed starter artifact
+(`PH6-SRC-PH6_BCV2_SoSo_Starter.zip-0fe388386c5c`):
+
+```json
+{
+  "existence_status": "CONFIRMED_IN_STAGED_CORPUS",
+  "implementation_status": "MINIMAL_SCAFFOLD",
+  "authority_status": "LANE_2_ADVISORY_ONLY",
+  "ratification_status": "UNRATIFIED"
+}
+```
+
+...plus a **separate** claim-record artifact
+(`PH6-CLAIM-BCV2-FULL-PRODUCT-STATUS`) explicitly stating that the full
+BCV2 product's existence, implementation, authority, and ratification are
+all independently `UNRESOLVED` / `UNRATIFIED` — the starter's confirmed
+existence must not be read as evidence for any of those.
+
+### 13.2 Evidence Kernel / Patch Set 001 — independently investigated (read-only)
+
+An operator-relayed claim (sourced to an external document, `pasted.txt`,
+not supplied to this session) stated that "Evidence Kernel Patch Set 001"
+is specified but not implemented, naming a missing canonicalizer, verifier,
+fixtures, and conformance suite. This session traced the claim as far as
+the available materials allow, rather than accepting it as established:
+
+- **Repository**: zero hits for `evidence kernel`, `patch set 001`,
+  `EK-001`, `canonicalizer`/`canonicaliser`, or `conformance suite`, under
+  any spelling, anywhere in the git-tracked tree (including
+  `PH6_SOURCE/GAP_REGISTER_v3.0.md`). The single repo hit for "evidence
+  kernel" is this manifest's own boilerplate, copied from the supplied
+  handoff README's generic hash-boundary language — not a repo-specific
+  reference.
+- **Operator-staged corpus** (`initial.json` index, 349 artifacts): zero
+  hits for the same terms. One package with plausibly related *function*
+  exists under a **different name** — `PH6_TFH_AK_v1_1_1.zip` ("TFH_AK"),
+  containing `ph6_tfh/canonical.py`, `ph6_tfh/audit/{engine,receipt,replay}.py`,
+  `ph6_tfh/provenance/hashes.py`, audit/receipt-bundle schemas, a test
+  suite (`test_authority.py`, `test_tfh.py`, `test_v1_1_0_fixes.py`, test
+  vectors), and its own `docs/IMPLEMENTATION_STATUS.md`.
+- **This session cannot read that package's actual byte content** —
+  `initial.json` records only path, hash, and size, not file contents, and
+  the raw staged corpus (`/mnt/data`) was never supplied here, only the two
+  handoff/patch zips (neither contains `PH6_TFH_AK_v1_1_1.zip`).
+
+Recorded as claim-record `PH6-CLAIM-EVIDENCE-KERNEL-PATCH-SET-001`:
+`term_located_in_repository: NOT_FOUND`,
+`term_located_in_staged_corpus_index: NOT_FOUND`,
+`candidate_package_identified: PH6_TFH_AK_v1_1_1.zip (unconfirmed as the same referent)`,
+`candidate_package_content_verified: NOT_POSSIBLE_THIS_SESSION`,
+implementation/verifier/conformance-suite status all `UNRESOLVED`.
+
+This is a **correction**, not just an answer, to the operator's proposed
+label of `SUPPORTED_BY_STAGED_REPORT / INDEPENDENT_VERIFICATION_PENDING`:
+this session could not even locate the term itself under independent
+search — only a candidate package under different naming. Recorded instead
+as `NAME_NOT_LOCATED / CANDIDATE_PACKAGE_UNVERIFIED`, which is the more
+conservative and more accurate description of what was actually
+established this session.
+
+### 13.3 RECON-001 — restructured from prose into a structured object
+
+New claim-record artifact `PH6-CLAIM-RECON-001-COVERAGE`:
+
+```json
+{
+  "status": "NOT_FOUND_IN_DECLARED_CORPUS_COVERAGE",
+  "scope": "repository + declared staged corpus index (initial.json, 349 artifacts) inspected by this reconnaissance pass",
+  "global_absence_proven": false
+}
+```
+
+`global_absence_proven` is explicitly `false`, not omitted — this
+distinguishes "absent from the corpus this pass had coverage over" from a
+(unsupportable) claim that RECON-001 doesn't exist anywhere at all.
+
+### 13.4 Raspberry Pi — unchanged
+
+Left exactly as `NOT_ASSESSED`, per explicit operator direction not to
+weaken or reinterpret that finding. No new information this round.
+
+### 13.5 Not done, on explicit instruction
+
+No merge of PR #17. No scope expansion into architecture/implementation
+work. No Raspberry Pi observation campaign (requires a session with actual
+hardware/network access). No targeted RECON-001 retrieval beyond the
+corpus already inspected. All remain queued for separate, explicitly
+authorized work.
+
+Manifest: 2,784 artifacts (was 2,781), re-validated against
+`PH6-SOURCE-MANIFEST-001.schema.v0.2.1.json` — 0 errors. `manifest_version`
+bumped to `0.2.1-r1` to distinguish this revision from the original PR #17
+snapshot without breaking `$id`/schema compatibility.
+
+```json
+{"proposed_by":"claude-code-lane2","proposed_at_utc":"2026-09-15T11:41:51Z","api_call_log_ref":"ph6-source-manifest-001-recon-session-addendum-1","ratified_by":null}
 ```

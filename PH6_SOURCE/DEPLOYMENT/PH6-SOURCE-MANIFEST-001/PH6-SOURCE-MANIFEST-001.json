@@ -1,8 +1,8 @@
 {
   "manifest_id": "PH6-SOURCE-MANIFEST-001",
-  "manifest_version": "0.2.1",
+  "manifest_version": "0.2.1-r1",
   "status": "PROPOSED_REPOSITORY_SNAPSHOT",
-  "generated_at": "2026-09-15T11:24:00.191185+00:00",
+  "generated_at": "2026-09-15T11:41:00.403462+00:00",
   "corpus_id": "PH6-REPOSITORY-SNAPSHOT-cafcc3737c99",
   "corpus_scope": {
     "description": "Repository-grounded snapshot of jackfd81-lgtm/the-ph6_ai_node-and-ph6_cram_sender-d at commit cafcc3737c992ca48e744ed536632fdaa28d621f (branch claude/ph6-manifest-reconnaissance-7qohsi), built by direct inspection in this Claude Code session — not by trusting the supplied initial.json's classifications.",
@@ -81,7 +81,10 @@
     "documented deployment ≠ observed deployment (v0.2.1).",
     "repository HEAD ≠ Raspberry Pi running state (v0.2.1).",
     "PR body self-report ≠ independently reverified CI/test result.",
-    "operator-staged corpus (initial.json, /mnt/data) ≠ git repository contents — these are two distinct corpora and must not be conflated."
+    "operator-staged corpus (initial.json, /mnt/data) ≠ git repository contents — these are two distinct corpora and must not be conflated.",
+    "artifact/package existence ≠ full product existence.",
+    "a claim appearing in an external document ≠ that claim being independently verified against repository/corpus artifacts.",
+    "corpus-coverage absence (NOT_FOUND_IN_DECLARED_CORPUS_COVERAGE) ≠ global absence (global_absence_proven)."
   ],
   "artifacts": [
     {
@@ -66574,7 +66577,12 @@
       },
       "identity_basis": "artifact_id + hash.algorithm + hash.value + path (AS REPORTED in operator-supplied initial.json; NOT independently recomputed — raw bytes not present in this session)",
       "source_class": "HISTORICAL_RECORDED_STATE",
-      "declared_status": {},
+      "declared_status": {
+        "existence_status": "CONFIRMED_IN_STAGED_CORPUS",
+        "implementation_status": "MINIMAL_SCAFFOLD",
+        "authority_status": "LANE_2_ADVISORY_ONLY",
+        "ratification_status": "UNRATIFIED"
+      },
       "relationships": {
         "contains": [],
         "contained_by": [],
@@ -66586,7 +66594,8 @@
         "Recorded from PH6-SOURCE-MANIFEST-001.initial.json (corpus_id PH6-STAGED-SOURCE-CORPUS-2026-09-15, generated_at 2026-09-15T10:36:51.893537+00:00), operator-staged at /mnt/data, NOT present in the jackfd81-lgtm/the-ph6_ai_node-and-ph6_cram_sender-d git repository (confirmed: zero case-sensitive or case-insensitive hits for 'BCV2' anywhere in the tracked working tree).",
         "This is the first concrete evidence that a named BCV2 candidate source package exists at all: contains bcv2/__init__.py, bcv2/models.py, contracts/bcv2_interface.json, contracts/coordination.json, tests, README, pyproject.toml — i.e. a scaffolded module + interface contract, not merely an undefined term.",
         "PR #16 (created 2026-09-13, two days before this staged corpus was produced) could not have seen this package — its 'zero occurrences of BCV2 anywhere in this repository' finding is independently corroborated for the repository, but does not and could not account for this out-of-repo staged package.",
-        "GOVERNANCE CONFLICT: whether/how PH6_BCV2_SoSo_Starter.zip should be reconciled against PR #16's Life-CRAM/LCC-01 implementation is NOT resolved here — routed to PH6 governance review per the manifest's own reconciliation boundary."
+        "GOVERNANCE CONFLICT: whether/how PH6_BCV2_SoSo_Starter.zip should be reconciled against PR #16's Life-CRAM/LCC-01 implementation is NOT resolved here — routed to PH6 governance review per the manifest's own reconciliation boundary.",
+        "Status refined 2026-09-15 per operator follow-up review: four independent axes (existence/implementation/authority/ratification) replace the earlier single-field framing -- these are not mutually exclusive states and must not be collapsed. 'MINIMAL_SCAFFOLD' reflects that the archive contains real code (bcv2/, contracts/, tests/) but this alone does not establish a complete/production BCV2 implementation -- see the separate PH6-CLAIM-BCV2-FULL-PRODUCT-STATUS record."
       ]
     },
     {
@@ -67037,6 +67046,109 @@
         "This is the first concrete evidence that a named BCV2 candidate source package exists at all: contains bcv2/__init__.py, bcv2/models.py, contracts/bcv2_interface.json, contracts/coordination.json, tests, README, pyproject.toml — i.e. a scaffolded module + interface contract, not merely an undefined term.",
         "PR #16 (created 2026-09-13, two days before this staged corpus was produced) could not have seen this package — its 'zero occurrences of BCV2 anywhere in this repository' finding is independently corroborated for the repository, but does not and could not account for this out-of-repo staged package.",
         "GOVERNANCE CONFLICT: whether/how PH6_BCV2_SoSo_Starter.zip should be reconciled against PR #16's Life-CRAM/LCC-01 implementation is NOT resolved here — routed to PH6 governance review per the manifest's own reconciliation boundary."
+      ]
+    },
+    {
+      "artifact_id": "PH6-CLAIM-BCV2-FULL-PRODUCT-STATUS",
+      "artifact_kind": "generated_artifact",
+      "path": "(claim-record)::BCV2 full product (as distinct from the confirmed starter scaffold)",
+      "media_type": "application/json",
+      "size_bytes": 144,
+      "hash": {
+        "algorithm": "SHA-256",
+        "value": "7b109453c7f516cda6fbc285620bb5a39a54d12c77db6d148d4163c83b6844df"
+      },
+      "identity_basis": "artifact_id + hash of this record's own canonical JSON content (no underlying file; this is a reconnaissance finding, not a repository artifact)",
+      "source_class": "RECONNAISSANCE_CLAIM_RECORD",
+      "declared_status": {
+        "existence_status": "UNRESOLVED",
+        "implementation_status": "UNRESOLVED",
+        "authority_status": "UNRESOLVED",
+        "ratification_status": "UNRATIFIED"
+      },
+      "relationships": {
+        "contains": [],
+        "contained_by": [],
+        "supersedes": [],
+        "superseded_by": [],
+        "depends_on": []
+      },
+      "notes": [
+        "The confirmed PH6_BCV2_SoSo_Starter.zip (see PH6-SRC-PH6_BCV2_SoSo_Starter.zip-0fe388386c5c) establishes that a BCV2 starter scaffold exists in the operator's staged corpus. It does NOT establish that a complete/full BCV2 product exists, is implemented, holds any authority, or has been ratified. Those remain separately UNRESOLVED and must not be inferred from the starter's existence.",
+        "No search performed this session (repository or staged-corpus index) found any artifact beyond the one starter package that would constitute a fuller BCV2 product tree."
+      ]
+    },
+    {
+      "artifact_id": "PH6-CLAIM-EVIDENCE-KERNEL-PATCH-SET-001",
+      "artifact_kind": "generated_artifact",
+      "path": "(claim-record)::\"Evidence Kernel Patch Set 001\" (canonicalizer/verifier/fixtures/conformance suite)",
+      "media_type": "application/json",
+      "size_bytes": 420,
+      "hash": {
+        "algorithm": "SHA-256",
+        "value": "e42383814386da13257cbb3bb33c3de9bc8dda8b005e8abc2611f92c00cc9e38"
+      },
+      "identity_basis": "artifact_id + hash of this record's own canonical JSON content (no underlying file; this is a reconnaissance finding, not a repository artifact)",
+      "source_class": "RECONNAISSANCE_CLAIM_RECORD",
+      "declared_status": {
+        "term_located_in_repository": "NOT_FOUND",
+        "term_located_in_staged_corpus_index": "NOT_FOUND",
+        "candidate_package_identified": "PH6_TFH_AK_v1_1_1.zip (staged corpus only, different name, not independently confirmed as the same referent)",
+        "candidate_package_content_verified": "NOT_POSSIBLE_THIS_SESSION",
+        "implementation_status": "UNRESOLVED",
+        "verifier_status": "UNRESOLVED",
+        "conformance_suite_status": "UNRESOLVED"
+      },
+      "relationships": {
+        "contains": [],
+        "contained_by": [],
+        "supersedes": [],
+        "superseded_by": [],
+        "depends_on": []
+      },
+      "notes": [
+        "Operator-relayed claim (sourced to an external document, 'pasted.txt', not supplied to this session) states Evidence Kernel Patch Set 001 is 'specified but not implemented' with the canonicalizer, verifier, fixtures, and conformance suite specifically named as missing.",
+        "This session traced that claim as far as it can be traced from the materials actually available: the literal term does not appear anywhere in the git repository or in the index of the operator's separately-staged corpus, under the exact wording or the close variants searched (canonicalizer, conformance suite, patch set 001, EK-001).",
+        "A package that LOOKS functionally related (TFH_AK v1.1.1: canonical.py, audit/replay.py, provenance/hashes.py, schemas, tests, its own IMPLEMENTATION_STATUS.md) exists in the staged corpus but under a different name, is not in the git repository, and its actual byte content was never supplied to this session -- so whether it IS the referent of 'Evidence Kernel', whether its canonicalizer/verifier actually work, and whether its own docs/IMPLEMENTATION_STATUS.md agrees with the 'specified but not implemented' claim are all UNRESOLVED, not confirmed and not refuted.",
+        "Correction to the operator's proposed label: 'SUPPORTED_BY_STAGED_REPORT / INDEPENDENT_VERIFICATION_PENDING' is not quite accurate for what this session found -- this session could not even locate the term 'Evidence Kernel' itself in either corpus under independent search, only a candidate package under different naming. Recorded as NAME_NOT_LOCATED / CANDIDATE_PACKAGE_UNVERIFIED instead, which is the more conservative and more accurate description of what was actually established.",
+        "grep -rIl --exclude-dir=.git -i 'evidence[ _-]kernel' . -> only self-match: this manifest's own identity_policy boilerplate (copied from the supplied handoff README's generic hash-boundary language: 'Evidence Kernel SHA-256 contracts where separately specified') -- not a repo-specific reference to a real artifact.",
+        "grep -rIl --exclude-dir=.git -iE 'patch[ _-]?set[ _-]?001|\\bEK-?001\\b' . -> zero hits.",
+        "grep -rIl --exclude-dir=.git -i 'canonicali[sz]er' . -> zero hits.",
+        "grep -rIl --exclude-dir=.git -i 'conformance[ _-]suite' . -> zero hits.",
+        "grep -in 'evidence.kernel|kernel' PH6_SOURCE/GAP_REGISTER_v3.0.md -> zero hits.",
+        "Searched initial.json (operator-staged corpus index, 349 artifacts: 13 top-level + 336 archive members) for 'evidence kernel', 'canonicalizer', 'conformance', 'patch set 001', 'ek-001' -> zero hits under any of those exact terms/spellings.",
+        "One plausibly-related staged package exists but under a DIFFERENT name: PH6_TFH_AK_v1_1_1.zip ('TFH_AK') containing ph6_tfh/canonical.py, ph6_tfh/audit/{engine,receipt,replay}.py, ph6_tfh/provenance/hashes.py, schemas/{audit,receipt_bundle}.schema.json, tests/{test_authority,test_tfh,test_v1_1_0_fixes}.py, tests/vectors/*.json, and docs/IMPLEMENTATION_STATUS.md -- i.e. real canonicalization/audit/provenance/replay code with tests and its own implementation-status document.",
+        "This session CANNOT read the actual byte content of any TFH_AK member: initial.json records only path + reported hash + size, not file contents, and the raw staged corpus (/mnt/data) was never supplied to this session -- only the two handoff/patch zip packages, neither of which contains PH6_TFH_AK_v1_1_1.zip."
+      ]
+    },
+    {
+      "artifact_id": "PH6-CLAIM-RECON-001-COVERAGE",
+      "artifact_kind": "generated_artifact",
+      "path": "(claim-record)::RECON-001 (\"the existing PH6 reconciliation authority\" referenced by the handoff package)",
+      "media_type": "application/json",
+      "size_bytes": 232,
+      "hash": {
+        "algorithm": "SHA-256",
+        "value": "64360c845e2397b6fd7827fb393e63fea26c2f7e1393d00ada9c61f09308e617"
+      },
+      "identity_basis": "artifact_id + hash of this record's own canonical JSON content (no underlying file; this is a reconnaissance finding, not a repository artifact)",
+      "source_class": "RECONNAISSANCE_CLAIM_RECORD",
+      "declared_status": {
+        "status": "NOT_FOUND_IN_DECLARED_CORPUS_COVERAGE",
+        "scope": "repository (git-tracked working tree) + declared staged corpus index (initial.json, 349 artifacts) inspected by this reconnaissance pass",
+        "global_absence_proven": false
+      },
+      "relationships": {
+        "contains": [],
+        "contained_by": [],
+        "supersedes": [],
+        "superseded_by": [],
+        "depends_on": []
+      },
+      "notes": [
+        "Repository-wide case-sensitive search for the literal string 'RECON-001' across all tracked files: zero hits.",
+        "initial.json (staged corpus index) also searched: zero hits.",
+        "This does not prove RECON-001 does not exist anywhere (e.g. in the operator's own external process, a document not supplied to this session, or a corpus location outside what was inspected) -- only that it is absent from the corpus this reconnaissance pass actually had coverage over. global_absence_proven is explicitly false, not omitted, to prevent this from being silently read as a stronger claim than it is."
       ]
     }
   ]
