@@ -322,11 +322,16 @@ record only.
 - Does not touch HRG9 (explicitly closed, never to be regenerated).
 - Does not investigate the newly-surfaced "SEI" (scientific evidence
   instrument) component.
-- Does not inventory the remaining 8 staged packages (this addendum did 2
-  of the ~10 outstanding; 6 remain: `PH6_CANON_STACK_v4.0_SOURCE_SET 3`,
-  `PH6_SOSO_SOURCE_DOCUMENT_SET`, `PH6_SOSO_SYSTEM_scaffold`,
-  `PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF` ×2, `PH6_STORAGE_LIBRARY_SOURCE_PACKAGE_SCAFFOLD`,
-  `tri_ph6_cram_ORGANIZED`, and the one loose text file).
+- **Count correction (caught on operator review, not by this session
+  unprompted):** this section originally said "6 remain." That was wrong.
+  13 total top-level staged packages minus the 5 actually examined
+  (`BCV2`, `NERO`, `TFH_AK`, `PH6-SoSo-Agent-Reasoning-Core-v0.1`,
+  `ph6_closure_code`) leaves **8** remaining, not 6:
+  `PH6_CANON_STACK_v4.0_SOURCE_SET 3`, `PH6_SOSO_SOURCE_DOCUMENT_SET`,
+  `PH6_SOSO_SYSTEM_scaffold`, `PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF` (v1
+  *and* v2 — counted separately, both real distinct package entries),
+  `PH6_STORAGE_LIBRARY_SOURCE_PACKAGE_SCAFFOLD`, `tri_ph6_cram_ORGANIZED`,
+  and the one loose text file. See §7 — all 8 are now inventoried.
 - Does not build the full machine-readable "PH6 Implementation & Source
   Reconciliation Matrix" schema — deliberately held for a dedicated pass
   once staged-package inventory is further along, per the operator's own
@@ -334,4 +339,177 @@ record only.
 
 ```json
 {"proposed_by":"claude-code-lane2","proposed_at_utc":"2026-09-15T11:59:41Z","api_call_log_ref":"ph6-reconciliation-pass-001-session-addendum-1","ratified_by":null}
+```
+
+---
+
+## 7. Addendum 2 (same session) — remaining 8 staged packages, index-only
+
+Per operator authorization to complete the controlled inventory before
+starting the reconciliation matrix. Same access limitation throughout:
+`initial.json` records path + hash + size, never file bytes. **No nested
+archive was extracted** (several packages below contain their own nested
+`.zip`/`.tar.gz` members — those are listed by path only, per explicit
+instruction not to extract without separate, controlled authorization).
+No filename is treated as establishing identity by itself.
+
+### 7.1 SEI correction
+
+§6.3 characterized "SEI" (scientific evidence instrument) as "newly-
+surfaced" and "previously unnoticed." That was imprecise. A repo-wide
+search this round found it's actually already documented on `main`:
+`PH6_SOURCE/GOVERNANCE/scientific/PH6_SCIENTIFIC_EVIDENCE_INSTRUMENT_DOCTRINE.md`,
+referenced across several `PH6_SOURCE/DRAFT/PH6-*-INGEST-*` files. It was
+outside the 11-domain list this pass was originally scoped to (§3), not
+actually hidden or undocumented. Corrected here rather than left standing.
+
+### 7.2 The 8 packages
+
+**`PH6_CANON_STACK_v4.0_SOURCE_SET 3.zip`** (SHA-256 `f565c6e7...c6e05`,
+471,759 bytes, 11 members) — a "Books 0–V" canon stack: `BOOK 0 —
+INTERPRETIVE CONTROL PLANE`, `BOOK I — OPERATIONAL SOURCE CONSTITUTION`,
+`BOOK II — SCIENTIFIC INSTRUMENT MASTER`, `BOOK III — BOUNDARY CONTAINMENT
+ANNEX`, `BOOK IV — CERTIFICATION PROOF PACK`, `BOOK V — EXPERIMENTAL SWARM
+ANNEX` (all PDF), plus `PH6_MASTER_v4.0.pdf`/`.docx`,
+`ph6_consolidation_manifest_v2.json`, `00_INDEX..md`, `text.txt`. **Book
+II's title plausibly relates to the SEI doctrine in §7.1** — unconfirmed,
+content unread (PDF, not extracted). File names in this package are
+UTF-8-mis-decoded in the index (`ΓÇö` = a corrupted em dash "—") — a
+staging/encoding artifact, not meaningful data, noted so it isn't
+misread. This is "v4.0" of canon; the actual repo's own canon material
+(`PH6_SOURCE/CANON/`, `PH6_SOURCE/DRAFT/`) uses different version markers
+throughout (Canon V1 on PR #9, `PH6-MASTER-AI-INGEST-6.0.md` on main) —
+whether "v4.0" here is an ancestor, a parallel numbering scheme, or
+unrelated is **unresolved**, flagged for possible byte-level follow-up
+given its apparent scope (six "books").
+
+**`PH6_SOSO_SOURCE_DOCUMENT_SET.zip`** (SHA-256 `bbf13382...8434e96`,
+79,726 bytes, 64 members) — a large, internally-numbered SoSo doctrine set
+(`DOCUMENT_000` through `DOCUMENT_050`), covering doctrine, `AUTHORITY_ZERO`,
+`SEVEN_IRON_LAWS`, lane definitions, governance architecture, a JSON
+schema (`ph6_soso_step3_record_v0_2_candidate.schema.json`), a validator
+(`validators/procedural_validator_scaffold.py`), and example fixtures
+(valid/invalid JSON records). **Notably, it contains its own internal
+supersession bookkeeping**: `DOCUMENT_044_HISTORICAL_ARTIFACT_REGISTRY.md`,
+`DOCUMENT_045_SUPERSEDED_DOCUMENT_REGISTRY.md`,
+`DOCUMENT_046_DEPRECATED_DOCUMENT_REGISTRY.md`,
+`DOCUMENT_047_SOURCE_MATERIAL_LINEAGE_MAP.md`. Also contains
+per-provider AI advisory review documents (`DOCUMENT_040`–`043`: Claude,
+Gemini, Perplexity, Grok). **Flagged as high-value for a future
+byte-level pass**: if this package's own registries are readable, they
+may directly answer some of this reconciliation's open questions (e.g.
+whether some staged material is already self-declared superseded) without
+this session having to infer it. Not read this pass — index only.
+
+**`PH6_SOSO_SYSTEM_scaffold.zip`** (SHA-256 `2fe975a1...bcded53ba`, 26,801
+bytes, 47 members) — a complete numbered doctrine+test scaffold
+(`00_INDEX` through `11_BOOTSTRAPS`). `00_INDEX/SUPERSEDED_CLAIMS.md` and
+`00_INDEX/CURRENT_ACCEPTED_MODEL.md` are the same self-bookkeeping pattern
+as the document set above. **New finding: `03_TOKENS/{MIT,PIT,SIT}.md`
+name three token types not seen anywhere else this pass** — distinct from
+the six already known (`RT`/`VDT`/`VLT` implemented on `main`;
+`RLT`/`PLT`/`AHT` doctrine + PR #16 unmerged implementation). A repo-wide
+search this round for `MIT`/`PIT`/`SIT` as token-family terms (not the
+MIT license) found **zero hits anywhere in the git repository** — these
+three exist only in this one staged package. `07_CRAM_PSEUDO_BOUNDARY/`
+contains `PASS_DROP_AUTHORITY.md` and `PSEUDO_A_VALIDATION_BOUNDARY.md` —
+doctrine-level material that may bear on §3's `PARTIAL_TRACE` finding for
+Lane-1/PSEUDO-A (no single dedicated module was found in the actual repo
+code); unread this pass, flagged for follow-up. `09_TESTS/` contains
+actual test files (`test_lane2_no_pass_drop.py`,
+`test_vlt_not_confirmed_identity.py`, etc.) — a fourth "staged, never
+landed" implementation-adjacent package, same pattern as BCV2/NERO/
+SoSo-Agent-Reasoning-Core.
+
+**`PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF.zip`** (v1, SHA-256
+`0719714f...335a81c`, 17,684 bytes) and **`_v2.zip`** (SHA-256
+`540608d9...ce94447`, 17,666 bytes) — both 9 members, same 9 relative
+paths (`PH6_SOURCE/{00_INDEX,01_CORE_DOCTRINE,02_GOVERNANCE×3,
+03_ARCHITECTURE,04_REQUIREMENTS,08_HANDOFFS,09_PROMPTS}/*_V0.1.md`), a
+"v0.1" doctrine baseline scaffold. **Member-level hash comparison, done
+this pass**: 8 of 9 files are byte-identical between v1 and v2; only
+`PH6_SOURCE/00_INDEX/PH6_INDEX_V0.1.md` differs. So v2 is a narrow,
+confirmed, single-file index update over v1 — not a full rewrite. This is
+about the only place in this whole reconciliation pass where a
+version-to-version delta could be established with certainty rather than
+inferred.
+
+**`PH6_STORAGE_LIBRARY_SOURCE_PACKAGE_SCAFFOLD.zip`** (SHA-256
+`6057b73a...5c6fc9386`, 8,474,298 bytes, 4 members) — a wrapper directory
+(`PH6_STORAGE_LIBRARY/SOURCE_PACKAGES/PH6_CRAM_ORGANIZED_SOURCE_PACKAGE/`)
+containing a manifest, two README-style markdown files, and **a nested
+`tri_ph6_cram_ORGANIZED.zip`**. **Hash comparison, done this pass**: this
+nested zip's SHA-256 (`65dbe824...21a6f3442`) is **byte-identical** to the
+standalone top-level `tri_ph6_cram_ORGANIZED.zip` entry below. Confirmed
+duplicate staging — the same 8.4MB archive is catalogued twice in the
+corpus (once wrapped, once standalone), not two different versions.
+
+**`tri_ph6_cram_ORGANIZED.zip`** (SHA-256 `65dbe824...21a6f3442`,
+8,458,815 bytes, 85 members) — by far the largest and most historically
+dense package: dozens of PDFs under `01_Reference_Docs/` (multiple
+numbered/duplicate-suffixed variants of "PH6 CRAM Master Documentation
+Package," "PH6-CRAM-PSEUDO Universal Build Doctrine," canon v0.1.0/v2.1
+packets, a "PH6 Time Machine" doc), markdown doctrine
+(`CANONICAL_DOCTRINE.md`, `SEVEN_IRON_LAWS.md`, `VOCABULARY_LOCKED.md`,
+`HARDWARE_ROLES.md`, `LANE_MODEL.md`, `STORAGE_TOPOLOGY.md`,
+`UNIVERSE_FREEZE_PROCEDURE.md`), Word docs, and — **not extracted, listed
+by path only** — six more nested archives under `04_Archives/`:
+`PH6_CANON_v0.1.0_bundle.zip`, `PH6_CRAM_DOCUMENT_PACKAGE.zip`,
+`ph6_cert_final.tar.gz` (+ a `-1.zip` variant), `ph6_cert_suite_v2.tar.gz`,
+`ph6_certification_suite.tar.gz`, `ph6_complete_with_config.tar.gz` (+ a
+`courtroom_v1` variant and its own `-4` suffix). This is the deepest,
+oldest-looking layer of the whole corpus — filenames alone (`(1)`, `(2)`,
+`(3)` suffixes; "Combine February 20, 2026"; a screenshot;
+`ORGANIZATION_REPORT.md`) suggest an already-deduplicated archival effort
+by the operator predating this reconciliation work, not raw unsorted
+material. **This is the single most likely place for a genuinely
+superseded or historical-only implementation to be hiding, and the least
+practical to hand-inventory further without extraction** — flagged
+explicitly as the top candidate for a controlled, separately-authorized
+byte-level pass, not attempted here.
+
+**`corpus contains a much stronger PH6 constitutional, implementation,
+boundary, to.txt`** (SHA-256 `bd1ecabb...c368d4e`, 32,015 bytes, plain
+text, not an archive) — the filename itself reads as a truncated sentence
+fragment, not a normal artifact name. This is flagged as a **naming
+anomaly**, not treated as meaningful. Content unread (plain text, but
+still staged-corpus-only, no byte access this session).
+
+### 7.3 Overlaps and contradictions identified (not resolved)
+
+- Four separate "staged, never landed" implementation-adjacent packages
+  now confirmed: BCV2, NERO, `PH6-SoSo-Agent-Reasoning-Core-v0.1`, and
+  `PH6_SOSO_SYSTEM_scaffold`. This is a pattern, not a coincidence, but
+  *why* four independent SoSo-adjacent efforts exist unlanded is not
+  something this session can determine from paths alone.
+- Two internally self-documenting packages
+  (`PH6_SOSO_SOURCE_DOCUMENT_SET`, `PH6_SOSO_SYSTEM_scaffold`) each carry
+  their *own* supersession/deprecation registries. These registries were
+  not read this pass. They may already contain authoritative answers to
+  some of this reconciliation's open questions — reading them is
+  identified as the highest-value next step, not performed here.
+- `MIT`/`PIT`/`SIT` token types exist only in one staged package, absent
+  from the repository and from every other staged package inspected.
+- Confirmed exact duplicate: `tri_ph6_cram_ORGANIZED.zip` is staged twice
+  (nested + standalone), byte-identical.
+- Confirmed exact near-duplicate: `PH6_SOURCE_SCAFFOLD_DRAFT_HANDOFF`
+  v1/v2 differ in exactly one file.
+- `PH6_CANON_STACK_v4.0`'s "Book II — Scientific Instrument Master" may
+  relate to the SEI doctrine already on `main` (§7.1) — unconfirmed.
+
+### 7.4 What this addendum still does not do
+
+- Does not extract any nested archive (7 further nested archives now
+  identified: 1 inside `PH6_STORAGE_LIBRARY_SOURCE_PACKAGE_SCAFFOLD`, 6+
+  inside `tri_ph6_cram_ORGANIZED`).
+- Does not read any package's internal registry, doctrine, or schema
+  content beyond file/path names already present in the index.
+- Does not modify `main` or PR #17.
+- Does not reopen HRG9.
+- Does not build the reconciliation matrix — all 13 staged packages are
+  now inventoried at the index level (13/13), which is the checkpoint the
+  operator asked to reach before that next step.
+
+```json
+{"proposed_by":"claude-code-lane2","proposed_at_utc":"2026-09-15T12:05:46Z","api_call_log_ref":"ph6-reconciliation-pass-001-session-addendum-2","ratified_by":null}
 ```
