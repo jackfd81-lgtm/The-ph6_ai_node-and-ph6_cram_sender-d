@@ -327,6 +327,94 @@ class TestCRAMIntegrity:
         assert not result.ok
         assert len(result.prev_hash_mismatches) >= 1
 
+    def test_missing_marker_on_tail_record_detected(self, store):
+        writer = CRAMWriter(store.cram_store)
+        writer.commit(1, "h" * 64, _verdict(1, "PASS"))
+        marker = next(store.cram_store.glob("cram_*.json.blake2b"))
+        marker.unlink()
+        result = check_cram_integrity(store)
+        assert not result.ok
+        assert result.missing_markers == [1]
+        assert result.markerless_predecessors == []
+
+    def test_markerless_predecessor_fails_closed(self, store):
+        writer = CRAMWriter(store.cram_store)
+        writer.commit(1, "h" * 64, _verdict(1, "PASS"))
+        # Simulate a crash after the CRAM-A json was durably renamed into
+        # place but before its .blake2b marker was written.
+        marker = next(store.cram_store.glob("cram_*.json.blake2b"))
+        marker.unlink()
+        # A later commit legitimately chains its prev_cram_hash onto the
+        # markerless record — this must fail closed, not pass silently.
+        writer.commit(2, "h" * 64, _verdict(2, "PASS"))
+        result = check_cram_integrity(store)
+        assert not result.ok
+        assert result.missing_markers == [1]
+        assert result.markerless_predecessors == [1]
+        assert result.chain_broken_at == 1
+
+
+# ---------------------------------------------------------------------------
+# 6b. CRAMWriter write-path prevention gate (Recovery Policy A)
+# ---------------------------------------------------------------------------
+
+class TestCRAMWriterMarkerGate:
+    """
+    Construction-time gate: a *new* CRAMWriter must refuse to load a
+    predecessor's hash — and therefore refuse to continue the authoritative
+    chain — when that predecessor's .blake2b marker is missing or does not
+    match its cram_hash. This is the write-path half of Recovery Policy A;
+    check_cram_integrity() (above) remains the read-path detector.
+    """
+
+    def test_missing_marker_halts_construction(self, store):
+        writer = CRAMWriter(store.cram_store)
+        writer.commit(1, "h" * 64, _verdict(1, "PASS"))
+
+        cram_file = next(store.cram_store.glob("cram_*.json"))
+        marker = next(store.cram_store.glob("cram_*.json.blake2b"))
+        original_bytes = cram_file.read_bytes()
+        original_digest = blake2b256(json.loads(original_bytes))
+        marker.unlink()
+
+        with pytest.raises(RuntimeError):
+            CRAMWriter(store.cram_store)
+
+        # Evidence preserved untouched; no repair, no recreated marker.
+        assert cram_file.read_bytes() == original_bytes
+        assert blake2b256(json.loads(cram_file.read_bytes())) == original_digest
+        assert not marker.exists()
+
+    def test_mismatched_marker_halts_construction(self, store):
+        writer = CRAMWriter(store.cram_store)
+        writer.commit(1, "h" * 64, _verdict(1, "PASS"))
+
+        cram_file = next(store.cram_store.glob("cram_*.json"))
+        marker = next(store.cram_store.glob("cram_*.json.blake2b"))
+        original_bytes = cram_file.read_bytes()
+        marker.write_text("f" * 64 + "\n", encoding="utf-8")
+
+        with pytest.raises(RuntimeError):
+            CRAMWriter(store.cram_store)
+
+        # No automatic repair of either the record or the marker.
+        assert cram_file.read_bytes() == original_bytes
+        assert marker.read_text(encoding="utf-8").strip() == "f" * 64
+
+    def test_valid_marker_permits_construction_and_chaining(self, store):
+        writer = CRAMWriter(store.cram_store)
+        rec1 = writer.commit(1, "h" * 64, _verdict(1, "PASS"))
+
+        writer2 = CRAMWriter(store.cram_store)
+        assert writer2._prev_hash == rec1["cram_hash"]
+
+        rec2 = writer2.commit(2, "h" * 64, _verdict(2, "PASS"))
+        assert rec2["prev_cram_hash"] == rec1["cram_hash"]
+
+    def test_empty_store_still_returns_genesis(self, store):
+        writer = CRAMWriter(store.cram_store)
+        assert writer._prev_hash == "0" * 64
+
 
 # ---------------------------------------------------------------------------
 # 7. RSYNC health

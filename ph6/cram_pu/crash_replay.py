@@ -153,6 +153,8 @@ class CRAMIntegrityResult:
     hash_failures: List[str] = field(default_factory=list)
     chain_broken_at: Optional[int] = None  # frame_id where chain breaks
     prev_hash_mismatches: List[int] = field(default_factory=list)
+    missing_markers: List[int] = field(default_factory=list)  # cram_*.json with no .blake2b marker
+    markerless_predecessors: List[int] = field(default_factory=list)  # missing-marker frame_ids a successor already chained onto
 
     @property
     def ok(self) -> bool:
@@ -160,6 +162,7 @@ class CRAMIntegrityResult:
             len(self.hash_failures) == 0
             and self.chain_broken_at is None
             and len(self.prev_hash_mismatches) == 0
+            and len(self.missing_markers) == 0
         )
 
 
@@ -274,6 +277,26 @@ class CrashReplayReport:
                 frame_id=fid, timestamp_utc=now,
             ))
 
+        # CRAM-A record missing its .blake2b durability marker → C1
+        # (marker is written last in the atomic commit contract; its absence
+        # means the commit never completed, regardless of matching hashes)
+        for fid in self.cram_integrity.missing_markers:
+            result.append(make_failure(
+                "C1", "HIGH",
+                "CRAM-A record has no .blake2b durability marker — atomic write contract incomplete",
+                frame_id=fid, timestamp_utc=now,
+            ))
+
+        # Chain continued past a markerless predecessor → R4, fail closed.
+        # A successor must never inherit authority from a commit that was
+        # never proven durable.
+        for fid in self.cram_integrity.markerless_predecessors:
+            result.append(make_replay_failure(
+                "R4", "CRITICAL",
+                "chain built on a CRAM-A predecessor with no durability marker — fail closed",
+                object_id=str(fid), timestamp_utc=now,
+            ))
+
         # RSYNC blocked → O1
         if self.rsync_health.blocked:
             result.append(make_failure(
@@ -331,9 +354,11 @@ class CrashReplayReport:
             f"({len(self.drop_shedding.unlogged_drops)} unlogged drops)",
             f"[4] Advisory iso     : {_tag(self.advisory_isolation.ok, ['G5'])} "
             f"({len(self.advisory_isolation.lane1_paths_touched_by_advisory)} violations)",
-            f"[5] CRAM integrity   : {_tag(self.cram_integrity.ok, ['R3','R4'])} "
+            f"[5] CRAM integrity   : {_tag(self.cram_integrity.ok, ['C1','R3','R4'])} "
             f"({len(self.cram_integrity.hash_failures)} hash failures, "
-            f"{len(self.cram_integrity.prev_hash_mismatches)} chain breaks)",
+            f"{len(self.cram_integrity.prev_hash_mismatches)} chain breaks, "
+            f"{len(self.cram_integrity.missing_markers)} missing markers, "
+            f"{len(self.cram_integrity.markerless_predecessors)} markerless predecessors)",
             f"[6] RSYNC health     : {_tag(self.rsync_health.ok, ['O1'])} "
             f"(blocked={self.rsync_health.blocked})",
             f"    Continuity       : {_tag(self.continuity.ok, ['R2','R3'])} "
@@ -534,6 +559,12 @@ def check_cram_integrity(paths: CRAMPaths) -> CRAMIntegrityResult:
     Verify:
       - stored cram_hash matches recomputed hash of file content
       - prev_cram_hash links match the hash of the previous file
+      - each record's .blake2b durability marker exists (written last per
+        the atomic commit contract; a matching hash alone does not prove
+        the commit completed)
+      - no successor has chained its prev_cram_hash onto a predecessor
+        whose marker is missing — fail closed rather than silently
+        trusting an unproven commit
     """
     result = CRAMIntegrityResult()
     cram_records = _read_cram_files(paths.cram_store)
@@ -541,6 +572,8 @@ def check_cram_integrity(paths: CRAMPaths) -> CRAMIntegrityResult:
 
     GENESIS = "0" * 64
     prev_hash = GENESIS
+    prev_frame_id: Optional[int] = None
+    prev_marker_present = True  # no marker requirement for the genesis link
 
     for p, rec in cram_records:
         stored_hash = rec.get("cram_hash", "")
@@ -554,12 +587,25 @@ def check_cram_integrity(paths: CRAMPaths) -> CRAMIntegrityResult:
         if recomputed != stored_hash:
             result.hash_failures.append(str(p))
 
-        if stored_prev != prev_hash:
+        chain_ok = stored_prev == prev_hash
+        if not chain_ok:
             result.prev_hash_mismatches.append(frame_id)
             if result.chain_broken_at is None:
                 result.chain_broken_at = frame_id
 
+        marker_path = p.parent / (p.name + ".blake2b")
+        marker_present = marker_path.exists()
+        if not marker_present:
+            result.missing_markers.append(frame_id)
+
+        if chain_ok and not prev_marker_present:
+            result.markerless_predecessors.append(prev_frame_id)
+            if result.chain_broken_at is None:
+                result.chain_broken_at = prev_frame_id
+
         prev_hash = stored_hash
+        prev_frame_id = frame_id
+        prev_marker_present = marker_present
 
     return result
 
@@ -618,6 +664,12 @@ class CRAMWriter:
     """
     Atomic CRAM commit: write(tmp) → fsync(tmp) → rename → fsync(dir)
     Never call this with verdict != PASS.
+
+    Recovery Policy A: on construction, the last CRAM-A record's .blake2b
+    durability marker must exist and agree with its cram_hash. A missing or
+    mismatched marker means that commit never proved it was durable, so the
+    chain must not be continued from it — refuse (RuntimeError) rather than
+    repair, recreate, or skip the record.
     """
 
     def __init__(self, store: Path):
@@ -629,9 +681,31 @@ class CRAMWriter:
         files = sorted(self.store.glob("cram_*.json"), key=lambda p: p.name)
         if not files:
             return "0" * 64
-        with files[-1].open("r", encoding="utf-8") as f:
+
+        predecessor = files[-1]
+        with predecessor.open("r", encoding="utf-8") as f:
             rec = json.load(f)
-        return rec.get("cram_hash", "0" * 64)
+        stored_hash = rec.get("cram_hash", "0" * 64)
+
+        marker = predecessor.parent / (predecessor.name + ".blake2b")
+        if not marker.exists():
+            raise RuntimeError(
+                f"CRAM-A predecessor {predecessor.name} has no .blake2b "
+                "durability marker — refusing to continue the authoritative "
+                "chain (Recovery Policy A). The record is left untouched "
+                "pending operator intervention."
+            )
+
+        with marker.open("r", encoding="utf-8") as f:
+            marker_hash = f.read().strip()
+        if marker_hash != stored_hash:
+            raise RuntimeError(
+                f"CRAM-A predecessor {predecessor.name} .blake2b marker does "
+                "not match its cram_hash — refusing to continue the "
+                "authoritative chain (Recovery Policy A). No repair attempted."
+            )
+
+        return stored_hash
 
     def commit(self, frame_id: int, payload_hash: str, verdict_record: dict) -> dict:
         if verdict_record.get("verdict") != "PASS":
