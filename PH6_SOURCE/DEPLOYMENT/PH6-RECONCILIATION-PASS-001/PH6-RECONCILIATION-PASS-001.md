@@ -513,3 +513,67 @@ still staged-corpus-only, no byte access this session).
 ```json
 {"proposed_by":"claude-code-lane2","proposed_at_utc":"2026-09-15T12:05:46Z","api_call_log_ref":"ph6-reconciliation-pass-001-session-addendum-2","ratified_by":null}
 ```
+
+---
+
+## 8. Addendum 3 (same session) — Provenance investigation: BLOCKED on missing input
+
+The operator authorized the next phase: a content-level provenance/
+supersession investigation, starting with `PH6_SOSO_SOURCE_DOCUMENT_SET`'s
+own index/manifest and its four registry documents (`DOCUMENT_044`
+historical-artifact, `045` superseded-document, `046` deprecated-document,
+`047` source-material-lineage-map), to determine whether they establish
+real relationships among BCV2, NERO, the two other SoSo-adjacent staged
+implementations, the Evidence Kernel candidates, and other inventoried
+artifacts.
+
+**This session cannot perform that investigation.** Verified this pass:
+the only files ever uploaded to this session are
+`PH6-SOURCE-MANIFEST-001-CLAUDE-CODE-HANDOFF.zip` and
+`PH6-SOURCE-MANIFEST-001-UPDATE-PATCH-v0.2.1.zip` (each re-uploaded once,
+byte-identical both times — 4 files total, 2 distinct). Neither contains
+`PH6_SOSO_SOURCE_DOCUMENT_SET.zip` or any of the other 12 staged packages.
+Everything reported about all 13 packages in §3–7 of this document — every
+member path, every hash, every size — comes from `initial.json`
+(path + hash + size index only). **No file inside any of the 13 staged
+packages has ever been opened by this session.** That includes the
+`manifest.json`, `DOCUMENT_INDEX.md`, and all four registry documents this
+phase specifically needs to read.
+
+Attempting the requested output sections (A–G) without those bytes would
+require inventing plausible-sounding registry content — supersession
+declarations, dates, version numbers — which is exactly the fabrication
+this entire operation exists to prevent. That is not done here.
+
+### 8.1 What can honestly be reported against the requested output sections
+
+- **A. Provenance sources examined**: none — no source content was
+  readable this pass.
+- **B. Relationship findings**: none established. No new table rows.
+- **C. Supersession/deprecation findings**: none established.
+- **D. Evidence Kernel update**: **unchanged** — `IDENTITY_UNRESOLVED`
+  stands for Candidates A/B/C, explicitly because no new evidence was
+  available to examine, not because new evidence was weighed and found
+  insufficient.
+- **E. SoSo implementation lineage**: **unchanged** — BCV2, NERO,
+  `PH6-SoSo-Agent-Reasoning-Core-v0.1`, and `PH6_SOSO_SYSTEM_scaffold`
+  remain four independent, unrelated-by-evidence staged artifacts.
+- **F. Unresolved identity questions**: all questions from §6/§7 of this
+  document remain open, plus one new one: whether
+  `PH6_SOSO_SOURCE_DOCUMENT_SET`'s registries actually resolve any of them
+  — genuinely unknown, since they haven't been read.
+- **G. Extraction candidates**: none identified — establishing a candidate
+  requires reading the registries first, which requires the missing input.
+
+### 8.2 What would unblock this
+
+`PH6_SOSO_SOURCE_DOCUMENT_SET.zip` uploaded to this session (or the
+operator's broader `/mnt/data` staged corpus, if the other 12 packages are
+also meant to be readable at content level going forward). Once supplied,
+this phase can run exactly as specified: index/manifest first, only the
+four registry documents next, no further extraction without a specifically
+identified, reported reason.
+
+```json
+{"proposed_by":"claude-code-lane2","proposed_at_utc":"2026-09-15T12:09:44Z","api_call_log_ref":"ph6-reconciliation-pass-001-session-addendum-3-blocked","ratified_by":null}
+```
