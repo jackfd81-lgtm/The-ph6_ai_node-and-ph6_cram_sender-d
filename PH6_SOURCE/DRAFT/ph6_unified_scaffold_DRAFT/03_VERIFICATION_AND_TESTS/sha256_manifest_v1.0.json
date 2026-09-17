@@ -1,0 +1,33 @@
+{
+  "CONST_SET_HASH": "2cb94b3d1a81470000bfb8fb29ea97cea322a84f687bb3ac36f29cc3395857d2",
+  "GOLDEN_VECTOR_HASH": "22328625423cdaaf7dc4b3ff63bd54eb0bbd26ad1ad3ac2b3aa0db9211871578",
+  "GOVERNANCE_HASH": "d6259f1abc55a8b356c41cb5aaa06a2a40426736331f47a7844611f9381d8519",
+  "PH6_VERSION": "v1.0",
+  "RATIFICATION_STATE": "PROPOSED",
+  "files": [
+    {
+      "path": "docs/GOVERNANCE.md",
+      "sha256": "d6259f1abc55a8b356c41cb5aaa06a2a40426736331f47a7844611f9381d8519"
+    },
+    {
+      "path": "spec/ph6_master_v1.0.md",
+      "sha256": "04c7751f3106f32709dabfe5674f166404e200907f95837bdca72c847db63703"
+    },
+    {
+      "path": "spec/ph6_system_operation_reconstruction_v1.0.md",
+      "sha256": "5e0dcb2f34d5fd82fb909a67e2f9cd601a1498759e2c553386727cbe7db311ce"
+    },
+    {
+      "path": "spec/constants_v1.0.json",
+      "sha256": "2cb94b3d1a81470000bfb8fb29ea97cea322a84f687bb3ac36f29cc3395857d2"
+    },
+    {
+      "path": "spec/constants_v1.0.bin",
+      "sha256": "2a6ee2e7d78dacd1081afe74b9d282c7e15afdc5ce2e2571ddedcf1097f72373"
+    },
+    {
+      "path": "tests/golden_vectors/golden_vectors_v1.0.json",
+      "sha256": "22328625423cdaaf7dc4b3ff63bd54eb0bbd26ad1ad3ac2b3aa0db9211871578"
+    }
+  ]
+}

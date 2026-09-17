@@ -1,0 +1,32 @@
+{
+  "HASH_ALGORITHM": "BLAKE2b-256 (blake2b, digest_size=32)",
+  "NOTE": "Additive. Does not supersede sha256_manifest_v1.0.json without explicit Lane 1 decision.",
+  "PH6_VERSION": "v1.0",
+  "RATIFICATION_STATE": "PROPOSED",
+  "files": [
+    {
+      "blake2b256": "36ff77cba29d34fdb1f6bad4f25e17b284b2f7a94c0cca610d4373886b5a2df0",
+      "path": "02_CONTROL_PLANE/GOVERNANCE.md"
+    },
+    {
+      "blake2b256": "35f65afdbac8e70c5d4615c093f070536bad3f81a2fc553619a96c8116b592b1",
+      "path": "01_DOCTRINE_AND_SPEC/ph6_master_v1.0.md"
+    },
+    {
+      "blake2b256": "154e2e0aa154d0b5927634176ba7690c92f6690a8619478ecc93cb37f12806e4",
+      "path": "01_DOCTRINE_AND_SPEC/ph6_system_operation_reconstruction_v1.0.md"
+    },
+    {
+      "blake2b256": "26bdc2b17f7f23cb2c8a83a8adf3b82c1dee16d025a63decba6dbfe7064a593f",
+      "path": "03_VERIFICATION_AND_TESTS/constants_v1.0.json"
+    },
+    {
+      "blake2b256": "21a3a453a4132cd2d1cab7f998f45d0d89034519a3fe6ee134fc145a5461b26d",
+      "path": "03_VERIFICATION_AND_TESTS/constants_v1.0.bin"
+    },
+    {
+      "blake2b256": "d3f9258be40780da359a257a73e220582fad13a25364ec1f308ab98540e10a5b",
+      "path": "03_VERIFICATION_AND_TESTS/golden_vectors/golden_vectors_v1.0.json"
+    }
+  ]
+}

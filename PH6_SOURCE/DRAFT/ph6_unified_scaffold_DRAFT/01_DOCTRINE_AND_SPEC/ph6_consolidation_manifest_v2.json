@@ -1,0 +1,508 @@
+{
+  "schema_version": "2.0-SMI-1.0",
+  "generated_at": "2026-04-28T22:22:51.788312+00:00",
+  "compression_ratio": "70.00%",
+  "drift_surfaces_before": 20,
+  "drift_surfaces_after": 6,
+  "active_canon_files": [
+    "01_BOOK0_INTERPRETIVE_CONTROL/00_BOOK0_INTERPRETIVE_CONTROL_PLANE.pdf",
+    "02_OPERATIONAL_CONSTITUTION/01_BOOK_I_OPERATIONAL_CONSTITUTION.pdf",
+    "03_SCIENTIFIC_INSTRUMENT/02_BOOK_II_SCIENTIFIC_INSTRUMENT_MASTER.pdf",
+    "04_BOUNDARY_CONTAINMENT/03_BOOK_III_BOUNDARY_CONTAINMENT_ANNEX.pdf",
+    "05_CERTIFICATION/04_BOOK_IV_CERTIFICATION_PROOF_PACK.pdf",
+    "EXPERIMENTAL/05_BOOK_V_EXPERIMENTAL_SWARM_ANNEX.pdf"
+  ],
+  "book_structure": {
+    "00_BOOK0_INTERPRETIVE_CONTROL": {
+      "label": "CANON",
+      "question": "How doctrine is interpreted."
+    },
+    "01_BOOK_I_OPERATIONAL_CONSTITUTION": {
+      "label": "CANON",
+      "question": "What is true."
+    },
+    "02_BOOK_II_SCIENTIFIC_INSTRUMENT": {
+      "label": "CANON",
+      "question": "How truth is measured."
+    },
+    "03_BOOK_III_BOUNDARY_CONTAINMENT": {
+      "label": "CANON",
+      "question": "What is forbidden."
+    },
+    "04_BOOK_IV_CERTIFICATION_PROOF": {
+      "label": "CERTIFICATION",
+      "question": "How truth is proven."
+    },
+    "05_BOOK_V_EXPERIMENTAL_SWARM": {
+      "label": "EXPERIMENTAL",
+      "question": "What may be explored safely."
+    }
+  },
+  "entries": [
+    {
+      "source": "00_BOOK0_INTERPRETIVE_CONTROL_PLANE_v1.1.pdf",
+      "target_book": "00_BOOK0_INTERPRETIVE_CONTROL",
+      "action": "KEEP_BASE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B0 §0  — System Identity Statement",
+        "B0 §1  — Interpretive Precedence (newest instruction → clearest source → safest default)",
+        "B0 §2  — Controlled Vocabulary Lock",
+        "B0 §3  — Reader Protocol / Mandatory Reading Order",
+        "B0 §4  — Inference Firewall",
+        "B0 §5  — Drift Prohibition",
+        "B0 §6  — Scientific Mode vs Authority Mode Separation",
+        "B0 §7  — Interpretation Receipts (BLAKE2b-256 hash, Audit Gate PASS required)"
+      ],
+      "rationale": "Book 0 Interpretive Control Plane v1.1 is the primary spine for the interpretive layer. It governs how the corpus is read, indexed, parsed, and protected from misinterpretation. It does not create authority, alter doctrine, or create verdict paths. Keep as BOOK_0 base; merge ICP Lock Patch and Canon Patch Addenda into it.",
+      "notes": ""
+    },
+    {
+      "source": "__PH6_BOOK_0___INTERPRETIVE_CONTROL_PLANE_LOCK_PATCH.pdf",
+      "target_book": "00_BOOK0_INTERPRETIVE_CONTROL",
+      "action": "MERGE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B0 §8  — Book 0 Lock Statement",
+        "B0 §9  — Constitutional Relationship Clause (Book 0 ↔ Book I)",
+        "B0 §10 — Negative Doctrine / Forbidden Transformations (5 prohibited)",
+        "B0 §11 — Audit Gate Rule (mandatory in CI)",
+        "B0 §12 — Open Issues Register [KEEP ACTIVE — do not lose]",
+        "B0 §13 — Provisional Artifact Set (B0-01 through B0-07)"
+      ],
+      "rationale": "ICP Lock Patch v0.1-rc1 closes interpretive gaps in Book 0. Adds the Lock Statement, the constitutional relationship clause (Book 0 gates access; Book I is doctrinal authority), negative doctrine block, and the active Open Issues Register. Merge entire document into Book 0 as a 'Lock Patch' section. Critical: Open Issues Register must remain ACTIVE.",
+      "notes": "Open Issues Register contains 6 tracked items — do NOT discard during merge."
+    },
+    {
+      "source": "BOOK_0_CONSOLIDATED_CANON_PATCH.pdf",
+      "target_book": "00_BOOK0_INTERPRETIVE_CONTROL",
+      "action": "MERGE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B0 §14 — Addendum A: Interpretive Separation Law (Substance vs Interpretation Plane)",
+        "B0 §15 — Addendum B: Canonical Constraint Compiler (policy.yaml / invariants.yaml)",
+        "B0 §16 — Addendum C: Recursive Drift Prohibition + Boundary Inheritance Law",
+        "B0 §17 — Addendum D: Interpretation Receipts",
+        "B0 §18 — Addendum E: Scientific Mode Patch (Six-Engine Explanatory Model rename)",
+        "B0 §19 — Integrated Precedence Ladder"
+      ],
+      "rationale": "Five addenda completing the interpretive control framework. All addenda become numbered sections under a 'Consolidated Canon Patch' block. Do NOT keep as separate patch PDF after merge.",
+      "notes": ""
+    },
+    {
+      "source": "PH6_MASTER_PROJECT_DOCUMENTATION__SIX_ENGINE_SOURCE.pdf",
+      "target_book": "01_BOOK_I_OPERATIONAL_CONSTITUTION",
+      "action": "DISTRIBUTE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B1 §1  — System Identity and Governing Principle",
+        "B1 §2  — Lane Architecture (Lane 1 authoritative / Lane 2 advisory)",
+        "B1 §3  — Seven Iron Laws",
+        "B1 §4  — PASS/DROP Exclusivity + Vocabulary Lock",
+        "B1 §5  — One-Way Membrane",
+        "B1 §6  — Boundary Inheritance Law",
+        "B1 §7  — Update Exception Clause",
+        "B1 §8  — FAST/SLOW Doctrine",
+        "B1 §9  — Six-Engine Explanatory Mapping (explanatory only, not authority)",
+        "B1 §10 — Swarm-Disabled Constitutional Constraints",
+        "[ALSO → B2, B4: see notes]"
+      ],
+      "rationale": "v5.2-RC4 master. Books I-IV (constitutional) → BOOK I. Books V-IX (architecture/implementation) → BOOK II. HRG9/certification procedures → BOOK IV. Highest priority: distribute this FIRST before all other sources. v5.2 wins on all conflicts during distribution.",
+      "notes": "HIGHEST PRIORITY — distribute before all others. Split: B1§1-10 from Books I-IV | B2 content from Books V-IX | B4 content from HRG9/STOP-SHIP sections. v5.2 wins on conflicts."
+    },
+    {
+      "source": "01_PH6_OPERATIONAL_SOURCE_CANON_v2.0.pdf",
+      "target_book": "01_BOOK_I_OPERATIONAL_CONSTITUTION",
+      "action": "DISTRIBUTE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B1 §2  — Dual-Lane Constitutional Statement (updated canon form)",
+        "B1 §5  — Boundary Law (Locked) — One-Way Scientific Membrane",
+        "B1 §11 — Truth Class Separation table (4 classes)",
+        "B1 §12 — Constitutional Invariants (10 locked items incl. RSYNC, atomic write)",
+        "B1 §13 — Inheritance Law Update",
+        "B1 §14 — AI Reconstruction Rules",
+        "[ALSO → B2: implementation sections]"
+      ],
+      "rationale": "Operational Source Canon v2.0. Constitutional sections (authority rules, dual-lane doctrine, boundary law, constitutional invariants) → BOOK I. Implementation sections (runtime procedures, FAST/HOT specifics) → BOOK II. Retire as standalone after distribution.",
+      "notes": "SPLIT: constitutional sections → B1; implementation sections → B2 §11"
+    },
+    {
+      "source": "03_BOOK_IV_ADDENDUM_A_CCA_1.1.pdf",
+      "target_book": "01_BOOK_I_OPERATIONAL_CONSTITUTION",
+      "action": "MERGE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B1 §15 — Functional Partition table (6 partitions: PSEUDO-M, PSEUDO-A, FAST, HOT, SoSo, Swarm)",
+        "B1 §16 — Swarm Constitutional Containment Rule",
+        "B1 §17 — Framing Rule (no authority difference between framings)",
+        "B1 §18 — No Authority Widening Rule",
+        "B1 §19 — Boundary Inheritance Clarification",
+        "B1 §20 — DRIFT_FAIL Condition Definitions",
+        "B1 §21 — Definitions and Glossary"
+      ],
+      "rationale": "Addendum A / CCA-1.1 is constitutional clarification only. Does not justify standalone active-document status. Constitutional content (functional partitions, swarm containment, framing rule, DRIFT_FAIL definitions) → BOOK I. Retire standalone after merge.",
+      "notes": "NOTE: 'Scientifical' deprecated alias in source → normalize to 'Scientific Instrument Framing'"
+    },
+    {
+      "source": "PSEUDO_EXPLICIT_BOUNDARY_PATCH.pdf",
+      "target_book": "01_BOOK_I_OPERATIONAL_CONSTITUTION",
+      "action": "DISTRIBUTE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B1 §2  — PSEUDO Authority Invariant",
+        "B1 §2  — Scientific Extension Invariant",
+        "B1 §2  — Science Consumption Law (consume yes / tune no)",
+        "[ALSO → B2: six-engine table + PSEUDO-SCI architecture]"
+      ],
+      "rationale": "Critical patch making PSEUDO explicit as authority engine. Constitutional invariants (3 boundary laws) → BOOK I §2. Updated engine table and PSEUDO-SCI/PSEUDO-M relationship → BOOK II §2. Retire as standalone after distribution.",
+      "notes": "SPLIT: 3 constitutional invariants → B1 §2; engine table + PSEUDO-SCI → B2 §2/5"
+    },
+    {
+      "source": "SIX_ENGINE_SUBJECT_MATTER_UPDATE_FRAME.pdf",
+      "target_book": "01_BOOK_I_OPERATIONAL_CONSTITUTION",
+      "action": "DISTRIBUTE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B1 §22 — Engine VI Constitutional Limits and Boundary Laws",
+        "[ALSO → B2: Engine VI PSEUDO-SCI/ISE-1.0 architecture]"
+      ],
+      "rationale": "Patch integrating Engine VI / ISE-1.0. Constitutional invariants (Engine VI boundary laws) → BOOK I §22. Architecture content (PSEUDO-SCI definition, submodes, packet classification) → BOOK II §2. Retire as standalone after distribution.",
+      "notes": "SPLIT: constitutional → B1 §22; architecture (PSEUDO-SCI, ISE-1.0, submodes) → B2 §2"
+    },
+    {
+      "source": "PH6_CRAM__SCIENTIFIC_INSTRUMENT_AND_SCIENTIFIC_MODE_MASTER.pdf",
+      "target_book": "02_BOOK_II_SCIENTIFIC_INSTRUMENT",
+      "action": "KEEP_BASE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B2 §1  — Deterministic Instrument Science Objectives and Scope",
+        "B2 §2  — Six-Engine Runtime Model (Lane + Layer Architecture)",
+        "B2 §3  — Calibration Doctrine",
+        "B2 §4  — CRAM Storage Model (CRAM-0/A/R, MRAM-S)",
+        "B2 §5  — Sensor Normalization",
+        "B2 §6  — evaluate_frame Contract",
+        "B2 §7  — Entropy / Laplacian / Motion Gates",
+        "B2 §8  — PSEUDO Measurement Doctrine (PSEUDO-M and PSEUDO-A)",
+        "B2 §9  — EvidencePacket and Schema Definitions",
+        "B2 §10 — Absolute Constraints",
+        "B2 §11 — Functional and Non-Functional Requirements",
+        "B2 §12 — Atomic Write Contract (4-step sequence)",
+        "B2 §13 — Standard Operating Procedures",
+        "B2 §14 — Authoritative Science Lane (Lane 1)",
+        "B2 §15 — Exploratory Science Lane (Lane 2)",
+        "B2 §16 — Recovery and Debugging"
+      ],
+      "rationale": "Primary instrument/runtime spec. Most complete single engineering document. Contains CRAM tiers, PSEUDO-M/A, evaluate_frame contract, atomic write, lane rules, EvidencePacket schema, Scientific Mode doctrine, runtime paths, Seven Laws. Base layer for BOOK II.",
+      "notes": ""
+    },
+    {
+      "source": "02_PH6_SCIENTIFIC_INSTRUMENT_MASTER_v1.1.pdf",
+      "target_book": "02_BOOK_II_SCIENTIFIC_INSTRUMENT",
+      "action": "MERGE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B2 §2  — Six-Engine Runtime Model (v1.1 updates)",
+        "B2 §5  — PSEUDO Measurement and Adjudication (v1.1 updates)",
+        "B2 §8  — Schemas (EvidencePacket, evaluate_frame v1.1)",
+        "B2 §13 — Scientific Mode Operating Procedures (v1.1)"
+      ],
+      "rationale": "Scientific Instrument Master v1.1 is the versioned update to the base. Reconcile v1.1 updates into BOOK II. v1.1 WINS OVER the earlier master on all conflicts. Retire earlier master as SUPERSEDED after reconciliation.",
+      "notes": "v1.1 wins over PH6_CRAM__SCIENTIFIC_INSTRUMENT_AND_SCIENTIFIC_MODE_MASTER on all conflicts"
+    },
+    {
+      "source": "PH6_CRAM__SIX_ENGINE_SCIENTIFIC_MODE.pdf",
+      "target_book": "02_BOOK_II_SCIENTIFIC_INSTRUMENT",
+      "action": "MERGE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B2 §2  — Three-Layer Scientific Architecture (Layer A/B/C)",
+        "B2 §2  — Eight-Phase Scientific Method Overlay",
+        "B2 §2  — Scientific Instrument Framing (Runtime vs Research Bench distinction)",
+        "B2 §2  — Scientific Epistemic Rule"
+      ],
+      "rationale": "SM-1.1 Six-Engine Scientific Mode posture. Elaborates Scientific Mode already defined in master. Layer A/B/C model, 8-phase scientific method overlay, and mode distinction (Runtime vs Research Bench) are valuable. IMPORTANT: source uses legacy term 'Scientifical' — normalize to 'Scientific Instrument Framing' in all merged text. Retire as standalone — absorb into BOOK II §2.",
+      "notes": "Normalize 'Scientifical' → 'Scientific Instrument Framing' throughout during merge"
+    },
+    {
+      "source": "SIX_ENGINE_SWARM_ADVISORY_SOURCE.pdf",
+      "target_book": "03_BOOK_III_BOUNDARY_CONTAINMENT",
+      "action": "DISTRIBUTE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B3 §1  — SoSo Isolation Doctrine",
+        "B3 §2  — Scientific Advisory Token Mode (L2_EXPAND) — containment rules only",
+        "B3 §3  — Swarm Restrictions and Prohibited Operations",
+        "B3 §4  — Recursive Drift Prohibition",
+        "B3 §5  — Forbidden Transformations",
+        "B3 §6  — Advisory May Not Contaminate Authority (hard constraint)",
+        "[ALSO → B5: advisory-only content, token science, worker model]"
+      ],
+      "rationale": "SIX_ENGINE_SWARM_ADVISORY_SOURCE contains two types of content: (1) containment/prohibition rules → BOOK III; (2) advisory-only experimental content → BOOK V. In prior v1.2 plan this entire document went to DOC 3. Under SMI-1.0 the containment rules are authoritative and belong in B3; only the experimental/advisory research material goes to B5.",
+      "notes": "SPLIT (SMI-1.0 change from v1.2): Containment/prohibition sections → B3; Token science / worker model / advisory research → B5"
+    },
+    {
+      "source": "04_PH6_SCHEMA_CERTIFICATION_PACK_v1.0.pdf",
+      "target_book": "04_BOOK_IV_CERTIFICATION_PROOF",
+      "action": "KEEP_BASE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B4 §1  — Schema Contracts (EvidencePacket, Receipt, Replay Manifest, MRAM-S)",
+        "B4 §2  — EvidencePacket Contracts and Compliance Requirements",
+        "B4 §3  — Replay Parity Requirements",
+        "B4 §4  — BLAKE2b-256 Rules",
+        "B4 §5  — C1 Golden Vectors",
+        "B4 §6  — HRG9 Gate Definition and Closure Procedure",
+        "B4 §7  — STOP-SHIP Criteria",
+        "B4 §8  — Certification Law",
+        "B4 §9  — Certification Matrices",
+        "B4 §10 — Resource-Cage Compliance Tests",
+        "B4 §11 — Determinism Proofs",
+        "B4 §12 — Drift Gate Specification",
+        "B4 §13 — Manifests and Closure Gates"
+      ],
+      "rationale": "Schema Certification Pack v1.0 is the primary base for BOOK IV. Covers EvidencePacket, Receipt, Replay Manifest, MRAM-S schema, C1 vectors, HRG9 gate, STOP-SHIP criteria, and certification law. Remaining gap: absorb HRG9 closure procedure steps from PH6_MASTER distribution and confirm replay parity receipt schema is present.",
+      "notes": "STATUS: PARTIALLY POPULATED — base content confirmed present. Gap: HRG9 closure steps + replay parity receipt from PH6_MASTER distribution."
+    },
+    {
+      "source": "Swarm_tokens_.pdf",
+      "target_book": "05_BOOK_V_EXPERIMENTAL_SWARM",
+      "action": "KEEP_BASE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [
+        "B5 §1  — Swarm Token Science Model (STSM-1.0) — advisory research only",
+        "B5 §2  — Token Classes (RT / VDT / VLT — all Authority ZERO)",
+        "B5 §3  — Swarm Worker Roles (6 workers)",
+        "B5 §4  — Token Science Pipeline",
+        "B5 §5  — Advisory-Only Safety Constraints (Allowed vs Forbidden Operations)",
+        "B5 §6  — Safety Invariants (Authority ZERO, no reverse path)"
+      ],
+      "rationale": "Swarm Token Science Model. All content is advisory-only / Authority ZERO. No content from this document may promote to Lane 1, modify PASS/DROP, or influence verdicts. Keep as BOOK V base.",
+      "notes": "AUTHORITY ZERO throughout. This book is NOT in the authority stack."
+    },
+    {
+      "source": "PH6_CRAM__SCIENTIFIC_INSTRUMENT_AND_SCIENTIFIC_MODE_MASTER.pdf",
+      "target_book": "SUPERSEDED",
+      "action": "ARCHIVE",
+      "status": "PENDING",
+      "verified": false,
+      "target_sections": [],
+      "rationale": "Superseded by 02_PH6_SCIENTIFIC_INSTRUMENT_MASTER_v1.1.pdf. Retire to _SUPERSEDED/ after v1.1 reconciliation is VERIFIED.",
+      "notes": "Do not retire until v1.1 merge is VERIFIED."
+    }
+  ],
+  "known_duplications": [
+    {
+      "content": "One-way membrane / Lane authority",
+      "duplication_count": 6,
+      "appears_in": [
+        "PH6_CRAM__SCIENTIFIC_INSTRUMENT_AND_SCIENTIFIC_MODE_MASTER.pdf",
+        "PH6_CRAM__SIX_ENGINE_SCIENTIFIC_MODE.pdf",
+        "SIX_ENGINE_SWARM_ADVISORY_SOURCE.pdf",
+        "PH6_MASTER_PROJECT_DOCUMENTATION__SIX_ENGINE_SOURCE.pdf",
+        "PSEUDO_EXPLICIT_BOUNDARY_PATCH.pdf",
+        "SIX_ENGINE_SUBJECT_MATTER_UPDATE_FRAME.pdf"
+      ],
+      "canonical_home": "BOOK_I §5 (One-Way Membrane)"
+    },
+    {
+      "content": "Scientific Mode constitutional limit",
+      "duplication_count": 5,
+      "appears_in": [
+        "PH6_CRAM__SCIENTIFIC_INSTRUMENT_AND_SCIENTIFIC_MODE_MASTER.pdf",
+        "PH6_CRAM__SIX_ENGINE_SCIENTIFIC_MODE.pdf",
+        "SIX_ENGINE_SUBJECT_MATTER_UPDATE_FRAME.pdf",
+        "PSEUDO_EXPLICIT_BOUNDARY_PATCH.pdf",
+        "PH6_MASTER_PROJECT_DOCUMENTATION__SIX_ENGINE_SOURCE.pdf"
+      ],
+      "canonical_home": "BOOK_I §22 (Engine VI Constitutional Limits)"
+    },
+    {
+      "content": "PASS/DROP vocabulary lock + forbidden fields",
+      "duplication_count": 4,
+      "appears_in": [
+        "PH6_CRAM__SCIENTIFIC_INSTRUMENT_AND_SCIENTIFIC_MODE_MASTER.pdf",
+        "PH6_CRAM__SIX_ENGINE_SCIENTIFIC_MODE.pdf",
+        "PH6_MASTER_PROJECT_DOCUMENTATION__SIX_ENGINE_SOURCE.pdf",
+        "PSEUDO_EXPLICIT_BOUNDARY_PATCH.pdf"
+      ],
+      "canonical_home": "BOOK_I §4 (PASS/DROP Exclusivity + Vocabulary Lock)"
+    },
+    {
+      "content": "CRAM tier definitions (CRAM-0/A/R/MRAM-S)",
+      "duplication_count": 4,
+      "appears_in": [
+        "PH6_CRAM__SCIENTIFIC_INSTRUMENT_AND_SCIENTIFIC_MODE_MASTER.pdf",
+        "PH6_CRAM__SIX_ENGINE_SCIENTIFIC_MODE.pdf",
+        "SIX_ENGINE_SWARM_ADVISORY_SOURCE.pdf",
+        "PH6_MASTER_PROJECT_DOCUMENTATION__SIX_ENGINE_SOURCE.pdf"
+      ],
+      "canonical_home": "BOOK_II §4 (CRAM Storage Model)"
+    },
+    {
+      "content": "Seven Iron Laws",
+      "duplication_count": 2,
+      "appears_in": [
+        "PH6_CRAM__SCIENTIFIC_INSTRUMENT_AND_SCIENTIFIC_MODE_MASTER.pdf",
+        "PH6_MASTER_PROJECT_DOCUMENTATION__SIX_ENGINE_SOURCE.pdf"
+      ],
+      "canonical_home": "BOOK_I §3 (Seven Iron Laws)"
+    },
+    {
+      "content": "Atomic write contract (4-step sequence)",
+      "duplication_count": 2,
+      "appears_in": [
+        "PH6_CRAM__SCIENTIFIC_INSTRUMENT_AND_SCIENTIFIC_MODE_MASTER.pdf",
+        "PH6_MASTER_PROJECT_DOCUMENTATION__SIX_ENGINE_SOURCE.pdf"
+      ],
+      "canonical_home": "BOOK_II §12 (Atomic Write Contract)"
+    },
+    {
+      "content": "Swarm prohibition / Authority ZERO rule",
+      "duplication_count": 3,
+      "appears_in": [
+        "SIX_ENGINE_SWARM_ADVISORY_SOURCE.pdf",
+        "Swarm_tokens_.pdf",
+        "03_BOOK_IV_ADDENDUM_A_CCA_1.1.pdf"
+      ],
+      "canonical_home": "BOOK_III §3 (Swarm Restrictions) — statement; BOOK_V §5 (Safety Constraints) — operational detail"
+    }
+  ],
+  "gap_analysis": {
+    "BOOK_0_INTERPRETIVE": {
+      "required_by_smi": [
+        "interpretive precedence",
+        "controlled vocabulary lock",
+        "reader protocol",
+        "inference firewall",
+        "drift prohibition",
+        "scientific mode vs authority mode separation",
+        "interpretation receipts"
+      ],
+      "sourced_from": [
+        "00_BOOK0_INTERPRETIVE_CONTROL_PLANE_v1.1.pdf",
+        "BOOK_0_CONSOLIDATED_CANON_PATCH.pdf",
+        "__PH6_BOOK_0___INTERPRETIVE_CONTROL_PLANE_LOCK_PATCH.pdf"
+      ],
+      "gaps": [],
+      "status": "FULLY_SOURCED"
+    },
+    "BOOK_I_CONSTITUTION": {
+      "required_by_smi": [
+        "lane architecture",
+        "layer architecture",
+        "Seven Iron Laws",
+        "PASS/DROP exclusivity",
+        "one-way membrane",
+        "boundary inheritance law",
+        "update exception clause",
+        "FAST/SLOW doctrine",
+        "six-engine explanatory mapping",
+        "swarm-disabled constraints"
+      ],
+      "sourced_from": [
+        "PH6_MASTER_PROJECT_DOCUMENTATION__SIX_ENGINE_SOURCE.pdf",
+        "01_PH6_OPERATIONAL_SOURCE_CANON_v2.0.pdf",
+        "03_BOOK_IV_ADDENDUM_A_CCA_1.1.pdf",
+        "PSEUDO_EXPLICIT_BOUNDARY_PATCH.pdf",
+        "SIX_ENGINE_SUBJECT_MATTER_UPDATE_FRAME.pdf"
+      ],
+      "gaps": [],
+      "status": "FULLY_SOURCED"
+    },
+    "BOOK_II_INSTRUMENT": {
+      "required_by_smi": [
+        "deterministic instrument science",
+        "calibration doctrine",
+        "sensor normalization",
+        "evaluate_frame contracts",
+        "entropy / Laplacian / motion gates",
+        "pseudo measurement doctrine",
+        "authoritative science lane",
+        "exploratory science lane"
+      ],
+      "sourced_from": [
+        "PH6_CRAM__SCIENTIFIC_INSTRUMENT_AND_SCIENTIFIC_MODE_MASTER.pdf",
+        "02_PH6_SCIENTIFIC_INSTRUMENT_MASTER_v1.1.pdf",
+        "PH6_CRAM__SIX_ENGINE_SCIENTIFIC_MODE.pdf"
+      ],
+      "gaps": [
+        "MRAM-S advisory result schema — confirmed MISSING in code pack (audit ISSUE)",
+        "Scientific experiment metadata schema — confirmed MISSING in code pack"
+      ],
+      "status": "PARTIALLY_SOURCED — 2 schema gaps confirmed by audit report"
+    },
+    "BOOK_III_CONTAINMENT": {
+      "required_by_smi": [
+        "SoSo isolation doctrine",
+        "scientific advisory token mode",
+        "swarm restrictions",
+        "recursive drift prohibition",
+        "forbidden transformations",
+        "advisory may not contaminate authority"
+      ],
+      "sourced_from": [
+        "SIX_ENGINE_SWARM_ADVISORY_SOURCE.pdf (containment sections)",
+        "BOOK_0_CONSOLIDATED_CANON_PATCH.pdf (Addendum C — Recursive Drift Prohibition)",
+        "__PH6_BOOK_0___INTERPRETIVE_CONTROL_PLANE_LOCK_PATCH.pdf (Negative Doctrine)"
+      ],
+      "gaps": [
+        "No dedicated standalone source for SoSo isolation doctrine — must be extracted from instrument master",
+        "Forbidden transformations scattered across multiple patch PDFs — consolidation required"
+      ],
+      "status": "PARTIALLY_SOURCED — extraction + consolidation work required (NEW book, no prior base)"
+    },
+    "BOOK_IV_CERTIFICATION": {
+      "required_by_smi": [
+        "schema contracts",
+        "EvidencePacket contracts",
+        "replay parity requirements",
+        "BLAKE2b-256 rules",
+        "certification vectors",
+        "HRG / CRA materials",
+        "compliance tests",
+        "determinism proofs"
+      ],
+      "sourced_from": [
+        "04_PH6_SCHEMA_CERTIFICATION_PACK_v1.0.pdf",
+        "PH6_MASTER_PROJECT_DOCUMENTATION__SIX_ENGINE_SOURCE.pdf (HRG9/STOP-SHIP)"
+      ],
+      "gaps": [
+        "HRG9 closure procedure steps — in PH6_MASTER, not yet distributed",
+        "Resource-Cage Compliance Tests — flagged NEEDS POPULATION in consolidation map",
+        "Drift Gate Specification — flagged VERIFY in consolidation map"
+      ],
+      "status": "PARTIALLY_SOURCED — 3 confirmed gaps, base is solid"
+    },
+    "BOOK_V_EXPERIMENTAL": {
+      "required_by_smi": [
+        "advisory-only swarm research",
+        "exploratory token concepts",
+        "disabled-by-default architectures"
+      ],
+      "sourced_from": [
+        "Swarm_tokens_.pdf",
+        "SIX_ENGINE_SWARM_ADVISORY_SOURCE.pdf (advisory sections)"
+      ],
+      "gaps": [
+        "Swarm Mesh extension stubs (reserved, disabled) — referenced but not confirmed in available PDFs",
+        "Simulation/deception annexes — referenced in consolidation map as 'from non-uploaded sources'"
+      ],
+      "status": "MOSTLY_SOURCED — 2 items may not exist in available source set"
+    }
+  }
+}

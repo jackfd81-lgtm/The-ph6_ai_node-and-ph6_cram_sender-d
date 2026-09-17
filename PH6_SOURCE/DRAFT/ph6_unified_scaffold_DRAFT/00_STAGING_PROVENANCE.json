@@ -1,0 +1,16 @@
+{
+  "record_type": "staging_provenance",
+  "description": "Verbatim staging of uploaded archive db656467-ph6_unified_scaffold_DRAFT.zip into repo DRAFT tree at Jack's request ('put this on my p5'). No content inside this subtree was edited, reconciled, or reformatted by the AI beyond adding this record.",
+  "source_archive": "ph6_unified_scaffold_DRAFT.zip",
+  "canon_status": "PROPOSED",
+  "known_conflicts": "Self-declared UNRESOLVED — RECONCILIATION REQUIRED against PH6_CONSOLIDATED_CANON.docx. See 06_AUDIT_AND_LOGS/UNRESOLVED_canon_vs_scaffold_20260903.md within this subtree for the full finding (gate threshold/model mismatch, mismatched golden vector suites, referenced ph6_six_engine_pack implementation package not present in this scaffold or in the wider repo).",
+  "not_yet_done": [
+    "No governance/canon-lint scan has been run against this new subtree.",
+    "No reconciliation between this scaffold's verification tooling and repo canon has been attempted.",
+    "Not merged, deployed, or otherwise activated on any node."
+  ],
+  "proposed_by": "claude-code-lane2",
+  "proposed_at_utc": "2026-09-03T11:48:13Z",
+  "api_call_log_ref": "session_019FUYCL6NS5ezH77QcuqmVa",
+  "ratified_by": null
+}

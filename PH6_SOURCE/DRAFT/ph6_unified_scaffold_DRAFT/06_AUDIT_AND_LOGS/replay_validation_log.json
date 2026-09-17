@@ -1,0 +1,117 @@
+{
+  "platform": "Linux-6.18.44-fc-v24-x86_64-with-glibc2.39",
+  "python_version": "3.12.3",
+  "results": [
+    {
+      "actual": [
+        "DROP",
+        "PASS"
+      ],
+      "expected": [
+        "DROP",
+        "PASS"
+      ],
+      "id": "GV-001-FIRST-FRAME-BOUNDARY",
+      "status": "PASS"
+    },
+    {
+      "actual": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "DROP",
+        "PASS"
+      ],
+      "expected": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "DROP",
+        "PASS"
+      ],
+      "id": "GV-002-ENTROPY-PERSISTENCE",
+      "status": "PASS"
+    },
+    {
+      "actual": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "DROP"
+      ],
+      "expected": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "DROP"
+      ],
+      "id": "GV-003-MOTION-STASIS-WINDOW",
+      "status": "PASS"
+    },
+    {
+      "actual": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "DROP"
+      ],
+      "expected": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "DROP"
+      ],
+      "id": "GV-004-ZSCORE-STRUCTURAL-ANOMALY",
+      "status": "PASS"
+    },
+    {
+      "actual": [
+        "DROP"
+      ],
+      "expected": [
+        "DROP"
+      ],
+      "id": "GV-005-LAP-VAR-IMMEDIATE-DROP",
+      "status": "PASS"
+    },
+    {
+      "actual": [
+        "PASS"
+      ],
+      "expected": [
+        "PASS"
+      ],
+      "id": "GV-006-EQUALITY-AT-THRESHOLD",
+      "status": "PASS"
+    }
+  ],
+  "tool_version": "verify_vectors.py v1.0"
+}

@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brain-computer-v2"
+version = "0.2.0"
+description = "Python-first external memory and continuity layer with append-only ledger, verified state export, Neo4j CSV export, and Perplexity adapter support."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["requests>=2.31.0"]
+authors = [{name = "Jack"}]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

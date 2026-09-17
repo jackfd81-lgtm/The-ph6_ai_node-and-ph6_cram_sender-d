@@ -1,0 +1,14 @@
+{
+  "PH6_VERSION": "v1.0",
+  "RATIFICATION_STATE": "PROPOSED",
+  "run_id": "replace-me",
+  "governance_hash": "",
+  "const_set_hash": "",
+  "golden_vector_hash": "",
+  "manifest_hash": "",
+  "tool_version": "verify_vectors.py v1.0",
+  "platform": "",
+  "python_version": "",
+  "results": [],
+  "overall_status": "PENDING"
+}
