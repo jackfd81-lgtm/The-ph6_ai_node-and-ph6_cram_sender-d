@@ -21,6 +21,20 @@
 .sudo_as_admin_successful
 .zshrc
 
+# Other AI CLI tool state — contains live auth.json credentials, never commit
+.codex/
+.grok/
+
+# PlatformIO toolchain/package cache (ESP32 firmware dev) — reinstallable
+.platformio/
+
+# Shell/editor/session runtime debris
+.bashrc.bak.*
+.claude.json.tmp.*
+.lesshst
+.wget-hsts
+.ph6_session_context
+
 # Downloads
 Downloads/
 
@@ -58,6 +72,9 @@ build/
 # Env
 .env
 *.log
+
+# ESP_S1 live device credentials — never commit
+ph6/esp_s1/secrets.py
 
 # ESP_S1 advisory sidecar log — runtime only, not evidence
 PH6_SOURCE/TESTS/DUAL_USB_CAMERA/mixed_10min/json/esp_s1_sensor_status.jsonl

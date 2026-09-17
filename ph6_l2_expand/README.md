@@ -21,8 +21,8 @@ subsystem used to:
 - track whether advisory topology "improves" (more stable links, clearer
   decay/stability classification, repeatable topology) across repeated
   cycles — entirely within MRAM-S
-- exercise the above using a deterministic mock offline AI by default, or
-  an optional local Ollama `deepseek-r1:1.5b` model
+- exercise the above using a deterministic mock offline AI (the only
+  advisory node in this package -- see "DeepSeek/Ollama removed" below)
 
 ## Authority boundary
 
@@ -33,7 +33,7 @@ Reality
   -> PSEUDO-A
   -> CRAM-A / CRAM-R
   -> read-only reference seed
-  -> SoSo / Tokens / Mock AI / DeepSeek   (this package)
+  -> SoSo / Tokens / Mock AI   (this package)
   -> MRAM-S only
 ```
 
@@ -64,21 +64,27 @@ etc.). Any hit classifies the **entire** payload `DRIFT_FAIL` and
 `mram_s_writer.py` writes it to `<out>/quarantine/` unchanged — it is
 never sanitized into accepted output.
 
-## Mock offline AI (default)
+## Mock offline AI (only advisory node)
 
 `experimental/mock_ai_client.py` is a deterministic, rule-based, fully
 offline advisory node (`MOCK_OFFLINE_AI`). Same input always produces the
-same output. It requires no internet and no Ollama, and is the default
-for every CLI command.
+same output. It requires no internet and no external model backend, and
+is used by every CLI command.
 
-## Optional local DeepSeek (experimental)
+## DeepSeek/Ollama removed (2026-09-16)
 
-`experimental/deepseek_client.py` can call a local Ollama instance running
-`deepseek-r1:1.5b` (`http://127.0.0.1:11434/api/generate`, `temperature=0`,
-`top_p=1`, enforced timeout and prompt-size limits). If Ollama is
-unreachable or returns unparseable output, it degrades safely to a
-`SKIPPED_DEEPSEEK_OFFLINE` advisory record — it never fails Lane 1 or
-blocks RSYNC, and it never silently falls back to the mock AI.
+This package previously offered an optional `experimental/deepseek_client.py`
+path that called a local Ollama instance running `deepseek-r1:1.5b`. Per
+operator directive 2026-09-16 (PH6 permits exactly one Lane-2 AI agent,
+with no competing model backend), that module, its
+`deepseek_boundary_guard.py` companion, and every activation path
+(`OLLAMA_LOCAL` mode in `advisory_improvement_tracker.py`,
+`DEEPSEEK_EXPERIMENTAL` execution class in `jedi_master`, `--mode
+ollama-local` in `cli.py`) were removed from this working tree. The
+removed code remains recoverable from git history only; it is not an
+active dependency, configuration option, or fallback path anywhere in
+this package. See
+`PH6_SOURCE/DEPLOYMENT/PH6_LMPQ_DEEPSEEK_OLLAMA_REMOVAL_RECORD.md`.
 
 ## Install / run notes
 
@@ -106,7 +112,6 @@ python3 -m ph6_l2_expand.cli mock-ai --source object.json --out /var/ph6/mram-s/
 python3 -m ph6_l2_expand.cli improve --source object.json --out /var/ph6/mram-s/ --cycles 5
 python3 -m ph6_l2_expand.cli compare-maps --before before.json --after after.json
 python3 -m ph6_l2_expand.cli deepseek --source object.json --out /var/ph6/mram-s/ --mode mock-offline-ai
-python3 -m ph6_l2_expand.cli deepseek --source object.json --out /var/ph6/mram-s/ --mode ollama-local
 python3 -m ph6_l2_expand.cli audit --out /var/ph6/mram-s/
 ```
 
@@ -117,6 +122,7 @@ python3 -m pytest ph6_l2_expand/tests -q
 ```
 
 Tests prove (among other things): SoSo/tokens are not Lane 1, no write
-ever reaches CRAM-0/A/R, no PASS/DROP from mock AI or DeepSeek becomes
-accepted output, replay works with `ph6_l2_expand` entirely absent, token
-classes are locked to RT/VDT/VLT, and mock AI output is deterministic.
+ever reaches CRAM-0/A/R, no PASS/DROP from mock AI becomes accepted
+output, replay works with `ph6_l2_expand` entirely absent, token classes
+are locked to RT/VDT/VLT, mock AI output is deterministic, and no
+DeepSeek/Ollama/LLaMA path can be activated (`test_no_competing_ai_agent.py`).

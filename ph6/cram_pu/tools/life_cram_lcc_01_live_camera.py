@@ -39,6 +39,7 @@ from ph6.cram_pu.arrival_logger import ArrivalLogger
 from ph6.cram_pu.crash_replay import (
     CRAMPaths, CrashReplayValidator, CRAMWriter, SheddingLogger,
 )
+from ph6.cram_pu._lane1_auth import mint_commit_authorization
 from ph6.cram_pu.tools.cram_pu_schema_validate import validate_run_dir
 from ph6.cram_pu.schemas.canonical import canonical_json, blake2b_256, fp_int
 from ph6.cram_pu.cram_pu_live import _TokSidecar, _atomic_write_json, _write_payload_bin
@@ -283,6 +284,7 @@ def run_lcc01(
             last_res_time = frame_t0
 
         # Capture
+        capture_timestamp_ns = time.time_ns()
         ok, frame = cap.read()
         if not ok or frame is None:
             counts["capture_fail"] += 1
@@ -331,11 +333,15 @@ def run_lcc01(
                 "authority":         "LANE_1",
                 "soso_advisory":     soso,
                 "timestamp_utc":     _utc(),
+                "capture_timestamp_ns": capture_timestamp_ns,
             }
             _append_jsonl(paths.verdict_log, verdict_record)
 
             if verdict == "PASS":
-                cram_writer.commit(frame_id, payload_hash, verdict_record)
+                auth = mint_commit_authorization(
+                    frame_id=frame_id, payload_hash=payload_hash, verdict=verdict
+                )
+                cram_writer.commit(frame_id, payload_hash, verdict_record, auth)
                 tok.on_pass(frame_id, payload_hash)
                 counts["pass"] += 1
             else:

@@ -15,8 +15,13 @@ from pathlib import Path
 from datetime import datetime
 
 from ph6.cram_pu.crash_replay import CRAMWriter, blake2b256
+from ph6.cram_pu._lane1_auth import mint_commit_authorization
 from ph6.ssmt.audit_log import SSMTAuditLog
 from ph6.ssmt.models import SwarmPacket
+
+
+def _auth(frame_id: int, payload_hash: str = "h" * 64, verdict: str = "PASS") -> dict:
+    return mint_commit_authorization(frame_id=frame_id, payload_hash=payload_hash, verdict=verdict)
 
 
 # ---------------------------------------------------------------------------
@@ -84,14 +89,14 @@ class TestTimestampUTC:
     def test_cram_writer_record_has_timestamp_utc(self, tmp_path):
         writer = CRAMWriter(tmp_path)
         verdict = {"verdict": "PASS", "frame_id": 1}
-        record = writer.commit(1, "h" * 64, verdict)
+        record = writer.commit(1, "h" * 64, verdict, _auth(1))
         assert "timestamp_utc" in record, "CRAM commit record must have timestamp_utc"
         assert "timestamp" not in record, "Raw float timestamp must not appear in CRAM commit"
 
     def test_cram_writer_timestamp_utc_is_iso_format(self, tmp_path):
         writer = CRAMWriter(tmp_path)
         verdict = {"verdict": "PASS", "frame_id": 1}
-        record = writer.commit(1, "h" * 64, verdict)
+        record = writer.commit(1, "h" * 64, verdict, _auth(1))
         ts = record["timestamp_utc"]
         assert "T" in ts and ts.endswith("Z"), \
             f"timestamp_utc must be ISO UTC, got {ts!r}"
@@ -186,28 +191,28 @@ class TestCRAMWriterMarker:
     def test_marker_written_after_commit(self, tmp_path):
         writer = CRAMWriter(tmp_path)
         verdict = {"verdict": "PASS", "frame_id": 1}
-        writer.commit(1, "h" * 64, verdict)
+        writer.commit(1, "h" * 64, verdict, _auth(1))
         markers = list(tmp_path.glob("*.blake2b"))
         assert len(markers) == 1, "CRAMWriter must write .blake2b marker"
 
     def test_marker_contains_cram_hash(self, tmp_path):
         writer = CRAMWriter(tmp_path)
         verdict = {"verdict": "PASS", "frame_id": 1}
-        record = writer.commit(1, "h" * 64, verdict)
+        record = writer.commit(1, "h" * 64, verdict, _auth(1))
         marker = next(tmp_path.glob("*.blake2b"))
         assert marker.read_text().strip() == record["cram_hash"]
 
     def test_no_tmp_files_remain(self, tmp_path):
         writer = CRAMWriter(tmp_path)
         verdict = {"verdict": "PASS", "frame_id": 1}
-        writer.commit(1, "h" * 64, verdict)
+        writer.commit(1, "h" * 64, verdict, _auth(1))
         assert list(tmp_path.glob("*.tmp")) == []
         assert list(tmp_path.glob("*.blake2b.tmp")) == []
 
     def test_multiple_commits_each_have_marker(self, tmp_path):
         writer = CRAMWriter(tmp_path)
         for i in range(1, 4):
-            writer.commit(i, "h" * 64, {"verdict": "PASS", "frame_id": i})
+            writer.commit(i, "h" * 64, {"verdict": "PASS", "frame_id": i}, _auth(i))
         markers = list(tmp_path.glob("*.blake2b"))
         commits = list(tmp_path.glob("cram_*.json"))
         assert len(markers) == len(commits) == 3
@@ -216,7 +221,7 @@ class TestCRAMWriterMarker:
         import json as _json
         writer = CRAMWriter(tmp_path)
         verdict = {"verdict": "PASS", "frame_id": 1}
-        writer.commit(1, "h" * 64, verdict)
+        writer.commit(1, "h" * 64, verdict, _auth(1))
         cram_file = next(tmp_path.glob("cram_*.json"))
         marker_file = Path(str(cram_file) + ".blake2b")
         record = _json.loads(cram_file.read_text())

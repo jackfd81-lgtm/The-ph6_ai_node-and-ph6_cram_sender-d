@@ -30,6 +30,7 @@ sys.path.insert(0, str(HERE.parent.parent.parent))
 from ph6.cram_pu.departure_logger import DepartureLogger
 from ph6.cram_pu.arrival_logger import ArrivalLogger
 from ph6.cram_pu.verdict_logger import VerdictLogger
+from ph6.cram_pu._lane1_auth import mint_commit_authorization
 from ph6.cram_pu.crash_replay import (
     CRAMPaths, CrashReplayValidator, CRAMWriter, SheddingLogger,
 )
@@ -165,7 +166,8 @@ def fi_04_tampered_cram_hash() -> bool:
         arr  = ArrivalLogger(paths.arrival_log).log(1, payload, dep["payload_hash"])
         verd = VerdictLogger(paths.verdict_log).log(1, payload, dep["payload_hash"])
         writer = CRAMWriter(paths.cram_store)
-        writer.commit(1, dep["payload_hash"], verd)
+        auth = mint_commit_authorization(frame_id=1, payload_hash=dep["payload_hash"], verdict=verd["verdict"])
+        writer.commit(1, dep["payload_hash"], verd, auth)
 
         # Tamper cram_hash in the written file
         cram_file = next(paths.cram_store.glob("cram_*.json"))
@@ -194,7 +196,8 @@ def fi_05_advisory_leakage() -> bool:
         dep  = DepartureLogger(paths.departure_log).log(1, payload)
         arr  = ArrivalLogger(paths.arrival_log).log(1, payload, dep["payload_hash"])
         verd = VerdictLogger(paths.verdict_log).log(1, payload, dep["payload_hash"])
-        CRAMWriter(paths.cram_store).commit(1, dep["payload_hash"], verd)
+        auth = mint_commit_authorization(frame_id=1, payload_hash=dep["payload_hash"], verdict=verd["verdict"])
+        CRAMWriter(paths.cram_store).commit(1, dep["payload_hash"], verd, auth)
 
         # Inject advisory that leaks Lane-1 cram_store path
         bad_advisory = {
@@ -235,7 +238,10 @@ def fi_06_pass_shedding() -> bool:
         # Force a DROP verdict dict to test that CRAMWriter raises on non-PASS
         bad_verd = dict(verd, verdict="DROP")
         try:
-            CRAMWriter(paths.cram_store).commit(1, dep["payload_hash"], bad_verd)
+            # PASS-only check happens before authorization is verified, so no
+            # real authorization is needed for this negative case -- see
+            # CRAMWriter.commit()'s check ordering.
+            CRAMWriter(paths.cram_store).commit(1, dep["payload_hash"], bad_verd, None)
             return _assert(False, "FI-06 PASS-only commit guard → expected ValueError not raised")
         except ValueError:
             return _assert(True, "FI-06 CRAMWriter rejects non-PASS → ValueError raised")
@@ -291,7 +297,8 @@ def fi_08_broken_chain() -> bool:
             d = deps.log(fid, payload)
             a = arrs.log(fid, payload, d["payload_hash"])
             v = verts.log(fid, payload, d["payload_hash"])
-            writer.commit(fid, d["payload_hash"], v)
+            auth = mint_commit_authorization(frame_id=fid, payload_hash=d["payload_hash"], verdict=v["verdict"])
+            writer.commit(fid, d["payload_hash"], v, auth)
 
         # Break the chain in commit 2: set wrong prev_cram_hash
         cram2 = next(paths.cram_store.glob("cram_0000000002.json"))

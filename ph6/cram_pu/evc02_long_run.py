@@ -45,6 +45,7 @@ from ph6.cram_pu.ingest_receipt_logger import IngestReceiptLogger
 from ph6.cram_pu.ingest_receipt_verify  import verify_receipt_chain
 from ph6.cram_pu.crash_replay           import CRAMWriter, SheddingLogger, CRAMPaths
 from ph6.cram_pu.verdict_logger         import VerdictLogger
+from ph6.cram_pu._lane1_auth            import mint_commit_authorization
 from ph6.cram_pu.vrc                    import certify
 
 
@@ -103,7 +104,10 @@ def run_evc02(
             receipt_logger.arrived(frame_id=frame_id, payload_hash=payload_hash)
 
             if verdict == "PASS":
-                cram_rec = cram_writer.commit(frame_id, payload_hash, verdict_rec)
+                auth = mint_commit_authorization(
+                    frame_id=frame_id, payload_hash=payload_hash, verdict=verdict
+                )
+                cram_rec = cram_writer.commit(frame_id, payload_hash, verdict_rec, auth)
                 receipt_logger.accepted(frame_id=frame_id, cram_hash=cram_rec["cram_hash"])
                 accepted += 1
             else:

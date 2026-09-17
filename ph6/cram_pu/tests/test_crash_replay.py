@@ -30,6 +30,11 @@ from ph6.cram_pu.crash_replay import (
     check_cram_integrity,
     check_rsync_health,
 )
+from ph6.cram_pu._lane1_auth import mint_commit_authorization
+
+
+def _auth(frame_id: int, payload_hash: str, verdict: str = "PASS") -> dict:
+    return mint_commit_authorization(frame_id=frame_id, payload_hash=payload_hash, verdict=verdict)
 
 
 # ---------------------------------------------------------------------------
@@ -179,7 +184,7 @@ class TestPassLoss:
     def test_pass_with_cram_commit_passes(self, store):
         writer = CRAMWriter(store.cram_store)
         h = "x" * 64
-        writer.commit(1, h, _verdict(1, "PASS"))
+        writer.commit(1, h, _verdict(1, "PASS"), _auth(1, h))
         _write_jsonl(store.verdict_log, [_verdict(1, "PASS")])
         result = check_pass_loss(store)
         assert result.ok
@@ -201,7 +206,7 @@ class TestPassLoss:
     def test_multiple_passes_all_must_commit(self, store):
         writer = CRAMWriter(store.cram_store)
         for fid in range(1, 4):
-            writer.commit(fid, "h" * 64, _verdict(fid, "PASS"))
+            writer.commit(fid, "h" * 64, _verdict(fid, "PASS"), _auth(fid, "h" * 64))
         verdicts = [_verdict(fid, "PASS") for fid in range(1, 5)]  # 4 verdicts, 3 commits
         _write_jsonl(store.verdict_log, verdicts)
         result = check_pass_loss(store)
@@ -297,14 +302,14 @@ class TestCRAMIntegrity:
     def test_valid_chain_passes(self, store):
         writer = CRAMWriter(store.cram_store)
         for fid in range(1, 4):
-            writer.commit(fid, "h" * 64, _verdict(fid, "PASS"))
+            writer.commit(fid, "h" * 64, _verdict(fid, "PASS"), _auth(fid, "h" * 64))
         result = check_cram_integrity(store)
         assert result.ok
         assert result.total_files == 3
 
     def test_tampered_file_detected(self, store):
         writer = CRAMWriter(store.cram_store)
-        writer.commit(1, "h" * 64, _verdict(1, "PASS"))
+        writer.commit(1, "h" * 64, _verdict(1, "PASS"), _auth(1, "h" * 64))
         cram_file = next(store.cram_store.glob("cram_*.json"))
         rec = json.loads(cram_file.read_text())
         rec["payload_hash"] = "tampered"
@@ -315,8 +320,8 @@ class TestCRAMIntegrity:
 
     def test_broken_prev_hash_chain_detected(self, store):
         writer = CRAMWriter(store.cram_store)
-        writer.commit(1, "h" * 64, _verdict(1, "PASS"))
-        writer.commit(2, "h" * 64, _verdict(2, "PASS"))
+        writer.commit(1, "h" * 64, _verdict(1, "PASS"), _auth(1, "h" * 64))
+        writer.commit(2, "h" * 64, _verdict(2, "PASS"), _auth(2, "h" * 64))
         second_file = sorted(store.cram_store.glob("cram_*.json"))[1]
         rec = json.loads(second_file.read_text())
         # Break the chain: set prev_cram_hash to something wrong
@@ -363,24 +368,24 @@ class TestRSYNCHealth:
 class TestCRAMWriter:
     def test_atomic_write_no_tmp_left(self, store):
         writer = CRAMWriter(store.cram_store)
-        writer.commit(1, "h" * 64, _verdict(1, "PASS"))
+        writer.commit(1, "h" * 64, _verdict(1, "PASS"), _auth(1, "h" * 64))
         tmp_files = list(store.cram_store.glob("*.tmp"))
         assert tmp_files == []
 
     def test_drop_verdict_rejected(self, store):
         writer = CRAMWriter(store.cram_store)
         with pytest.raises(ValueError, match="Only PASS"):
-            writer.commit(1, "h" * 64, _verdict(1, "DROP"))
+            writer.commit(1, "h" * 64, _verdict(1, "DROP"), None)
 
     def test_chain_links_correctly(self, store):
         writer = CRAMWriter(store.cram_store)
-        r1 = writer.commit(1, "h" * 64, _verdict(1, "PASS"))
-        r2 = writer.commit(2, "h" * 64, _verdict(2, "PASS"))
+        r1 = writer.commit(1, "h" * 64, _verdict(1, "PASS"), _auth(1, "h" * 64))
+        r2 = writer.commit(2, "h" * 64, _verdict(2, "PASS"), _auth(2, "h" * 64))
         assert r2["prev_cram_hash"] == r1["cram_hash"]
 
     def test_genesis_prev_hash(self, store):
         writer = CRAMWriter(store.cram_store)
-        r1 = writer.commit(1, "h" * 64, _verdict(1, "PASS"))
+        r1 = writer.commit(1, "h" * 64, _verdict(1, "PASS"), _auth(1, "h" * 64))
         assert r1["prev_cram_hash"] == "0" * 64
 
 
@@ -395,7 +400,7 @@ class TestCrashReplayValidator:
         _write_jsonl(store.arrival_log, [_arrival(1, h)])
         _write_jsonl(store.verdict_log, [_verdict(1, "PASS")])
         writer = CRAMWriter(store.cram_store)
-        writer.commit(1, h, _verdict(1, "PASS"))
+        writer.commit(1, h, _verdict(1, "PASS"), _auth(1, h))
         report = CrashReplayValidator(store).run()
         assert report.verdict == "PASS"
 

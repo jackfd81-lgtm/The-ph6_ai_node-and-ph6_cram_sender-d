@@ -17,6 +17,11 @@ It never means model self-modification, threshold/authority/PASS-DROP
 changes, EvidencePacket mutation, CRAM mutation, or replay-dependency
 changes. Each cycle's record is independently boundary-checked by
 mram_s_writer before it is accepted.
+
+MOCK_OFFLINE_AI is the only supported mode. A prior OLLAMA_LOCAL mode
+(calling ph6_l2_expand.experimental.deepseek_client) was removed
+2026-09-16 per operator directive -- see
+PH6_SOURCE/DEPLOYMENT/PH6_LMPQ_DEEPSEEK_OLLAMA_REMOVAL_RECORD.md.
 """
 
 from __future__ import annotations
@@ -33,7 +38,6 @@ from ph6_l2_expand.token_promotion import DEFAULT_PROMOTION_THRESHOLD
 from ph6_l2_expand.virtual_token_mapper import DEFAULT_DECAY_TTL
 
 MOCK_OFFLINE_AI = "mock-offline-ai"
-OLLAMA_LOCAL = "ollama-local"
 
 
 def _utc_now_iso() -> str:
@@ -83,15 +87,6 @@ def run_cycles(
             )
             analysis_type = "MOCK_AI"
             model_info = "mock-offline-ai:deterministic-rule-based"
-        elif mode == OLLAMA_LOCAL:
-            from ph6_l2_expand.experimental import deepseek_client
-
-            advisory = deepseek_client.generate(
-                source_object_id, source_object, cycle, token_map,
-                decay_ttl=decay_ttl, promotion_threshold=promotion_threshold,
-            )
-            analysis_type = "DEEPSEEK"
-            model_info = advisory.get("model_info", "deepseek-r1:1.5b")
         else:
             raise ValueError(f"unknown mode: {mode!r}")
 

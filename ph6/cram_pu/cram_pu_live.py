@@ -27,6 +27,7 @@ sys.path.insert(0, str(HERE.parent.parent))  # /home/jack
 from ph6.cram_pu.departure_logger import DepartureLogger
 from ph6.cram_pu.arrival_logger import ArrivalLogger
 from ph6.cram_pu.verdict_logger import VerdictLogger
+from ph6.cram_pu._lane1_auth import mint_commit_authorization
 from ph6.cram_pu.crash_replay import (
     CRAMPaths,
     CrashReplayValidator,
@@ -169,7 +170,10 @@ def run(n_packets: int = 10, base_dir: Path | None = None,
         if verd["verdict"] == "PASS":
             # CRAMWriter.commit() writes both the CRAM JSON and the .blake2b
             # marker atomically (write→fsync→rename→fsync dir).
-            cram_writer.commit(frame_id, dep["payload_hash"], verd)
+            auth = mint_commit_authorization(
+                frame_id=frame_id, payload_hash=dep["payload_hash"], verdict=verd["verdict"]
+            )
+            cram_writer.commit(frame_id, dep["payload_hash"], verd, auth)
             tok.on_pass(frame_id, dep["payload_hash"])  # Lane-2 advisory, authority ZERO
             counts["pass"] += 1
         else:

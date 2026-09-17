@@ -9,13 +9,15 @@ Deterministic, rule-based, fully offline mock AI advisory node.
 
 Mode: MOCK_OFFLINE_AI
   - no internet
-  - no Ollama required
+  - no external model backend required
   - same input -> same output (deterministic)
   - never emits authority, never issues PASS/DROP, never mutates Lane 1
 
-This is the DEFAULT advisory node. ph6_l2_expand.experimental.deepseek_client
-is an optional, experimental, real-model replacement that follows the same
-output schema and the same boundary rules.
+This is the ONLY advisory node in this package. A prior optional
+real-model replacement (ph6_l2_expand.experimental.deepseek_client, local
+Ollama/deepseek-r1) was removed 2026-09-16 per operator directive: PH6
+permits exactly one Lane-2 AI agent, with no competing model backend. See
+PH6_SOURCE/DEPLOYMENT/PH6_LMPQ_DEEPSEEK_OLLAMA_REMOVAL_RECORD.md.
 """
 
 from __future__ import annotations

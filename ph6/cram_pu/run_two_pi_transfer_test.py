@@ -34,6 +34,7 @@ sys.path.insert(0, str(HERE.parent.parent))
 from ph6.cram_pu.transfer_receiver import TransferReceiver
 from ph6.cram_pu.transfer_sender import TransferSender, check_receiver_health
 from ph6.cram_pu.verdict_logger import VerdictLogger
+from ph6.cram_pu._lane1_auth import mint_commit_authorization
 from ph6.cram_pu.crash_replay import (
     CRAMPaths, CrashReplayValidator, CRAMWriter, SheddingLogger,
 )
@@ -144,7 +145,10 @@ def run(n_packets: int = 12, base_dir: Path | None = None,
 
         if verd["verdict"] == "PASS":
             # CRAMWriter.commit() writes both the CRAM JSON and .blake2b marker atomically.
-            cram_writer.commit(frame_id, payload_hash, verd)
+            auth = mint_commit_authorization(
+                frame_id=frame_id, payload_hash=payload_hash, verdict=verd["verdict"]
+            )
+            cram_writer.commit(frame_id, payload_hash, verd, auth)
             counts["pass"] += 1
         else:
             shedding_logger.log(

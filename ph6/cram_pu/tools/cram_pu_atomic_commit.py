@@ -44,12 +44,21 @@ class AtomicCRAMCommitter:
         files = sorted(self.cram_dir.glob("cram_*.json"))
         return len(files)
 
-    def commit(self, verdict: dict) -> dict:
+    def commit(self, verdict: dict, authorization: dict) -> dict:
         if verdict["verdict"] != "PASS":
             raise ValueError(
                 f"AtomicCRAMCommitter.commit: verdict must be PASS, got {verdict['verdict']!r}. "
                 "DROP packets must not be committed to CRAM."
             )
+
+        from ph6.cram_pu._lane1_auth import verify_commit_authorization
+        verify_commit_authorization(
+            authorization,
+            packet_id=verdict["packet_id"],
+            payload_hash=verdict["input_hash"],
+            verdict=verdict["verdict"],
+        )
+
         self._seq += 1
         record = {
             "schema":        "ph6.cram_commit.v1",
@@ -106,11 +115,16 @@ class AtomicCRAMCommitter:
 
 
 def commit_pass_verdicts(verdicts: list, cram_dir: Path) -> list:
+    from ph6.cram_pu._lane1_auth import mint_commit_authorization
+
     committer = AtomicCRAMCommitter(cram_dir)
     committed = []
     for v in verdicts:
         if v["verdict"] == "PASS":
-            committed.append(committer.commit(v))
+            auth = mint_commit_authorization(
+                packet_id=v["packet_id"], payload_hash=v["input_hash"], verdict=v["verdict"]
+            )
+            committed.append(committer.commit(v, auth))
     return committed
 
 

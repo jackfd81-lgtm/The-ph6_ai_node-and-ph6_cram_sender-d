@@ -52,6 +52,11 @@ def _verdict(frame_id: int, verdict: str = "PASS") -> dict:
     }
 
 
+def _auth(frame_id: int, payload_hash: str = "h" * 64, verdict: str = "PASS") -> dict:
+    from ph6.cram_pu._lane1_auth import mint_commit_authorization
+    return mint_commit_authorization(frame_id=frame_id, payload_hash=payload_hash, verdict=verdict)
+
+
 # ---------------------------------------------------------------------------
 # Interface-shape tests: denial by omission, not by runtime check
 # ---------------------------------------------------------------------------
@@ -89,7 +94,7 @@ class TestBoundaryInterfaceShape:
 class TestGetEvidence:
     def test_returns_found_for_valid_record(self, store, boundary):
         writer = CRAMWriter(store.cram_store)
-        committed = writer.commit(1, "h" * 64, _verdict(1))
+        committed = writer.commit(1, "h" * 64, _verdict(1), _auth(1))
 
         view = boundary.get_evidence(1)
 
@@ -107,7 +112,7 @@ class TestGetEvidence:
 
     def test_detects_tampered_hash_as_conflict(self, store, boundary):
         writer = CRAMWriter(store.cram_store)
-        writer.commit(1, "h" * 64, _verdict(1))
+        writer.commit(1, "h" * 64, _verdict(1), _auth(1))
         cram_file = next(store.cram_store.glob("cram_*.json"))
         rec = json.loads(cram_file.read_text())
         rec["payload_hash"] = "tampered"
@@ -119,7 +124,7 @@ class TestGetEvidence:
 
     def test_detects_missing_marker_as_conflict(self, store, boundary):
         writer = CRAMWriter(store.cram_store)
-        writer.commit(1, "h" * 64, _verdict(1))
+        writer.commit(1, "h" * 64, _verdict(1), _auth(1))
         marker = next(store.cram_store.glob("cram_*.json.blake2b"))
         marker.unlink()
 
@@ -130,7 +135,7 @@ class TestGetEvidence:
 
     def test_detects_mismatched_marker_as_conflict(self, store, boundary):
         writer = CRAMWriter(store.cram_store)
-        writer.commit(1, "h" * 64, _verdict(1))
+        writer.commit(1, "h" * 64, _verdict(1), _auth(1))
         marker = next(store.cram_store.glob("cram_*.json.blake2b"))
         marker.write_text("f" * 64 + "\n", encoding="utf-8")
 
@@ -164,7 +169,7 @@ class TestGetEvidenceRange:
     def test_range_matches_committed_frames(self, store, boundary):
         writer = CRAMWriter(store.cram_store)
         for fid in range(1, 4):
-            writer.commit(fid, "h" * 64, _verdict(fid))
+            writer.commit(fid, "h" * 64, _verdict(fid), _auth(fid))
 
         views = boundary.get_evidence_range(1, 3)
 
@@ -197,13 +202,13 @@ class TestGetEvidenceRange:
 class TestVerifyIntegrity:
     def test_verify_integrity_matches_get_evidence(self, store, boundary):
         writer = CRAMWriter(store.cram_store)
-        writer.commit(1, "h" * 64, _verdict(1))
+        writer.commit(1, "h" * 64, _verdict(1), _auth(1))
 
         assert boundary.verify_integrity(1) == boundary.get_evidence(1)
 
     def test_verify_integrity_reports_conflict_on_tamper(self, store, boundary):
         writer = CRAMWriter(store.cram_store)
-        writer.commit(1, "h" * 64, _verdict(1))
+        writer.commit(1, "h" * 64, _verdict(1), _auth(1))
         marker = next(store.cram_store.glob("cram_*.json.blake2b"))
         marker.unlink()
 

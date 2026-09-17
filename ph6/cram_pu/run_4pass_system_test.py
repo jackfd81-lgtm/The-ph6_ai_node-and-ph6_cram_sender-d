@@ -33,6 +33,7 @@ sys.path.insert(0, str(HERE.parent.parent))
 from ph6.cram_pu.departure_logger  import DepartureLogger
 from ph6.cram_pu.arrival_logger    import ArrivalLogger
 from ph6.cram_pu.verdict_logger    import VerdictLogger
+from ph6.cram_pu._lane1_auth       import mint_commit_authorization
 from ph6.cram_pu.crash_replay      import CRAMPaths, CrashReplayValidator, CRAMWriter, SheddingLogger
 from ph6.cram_pu.tools.cram_pu_schema_validate import validate_run_dir
 
@@ -183,7 +184,10 @@ def _run_pass(pass_num: int, label: str, seed: int, n_frames: int,
 
         if verd["verdict"] == "PASS":
             # CRAMWriter.commit() writes both the CRAM JSON and .blake2b marker atomically.
-            cram_w.commit(frame_id, dep["payload_hash"], verd)
+            auth = mint_commit_authorization(
+                frame_id=frame_id, payload_hash=dep["payload_hash"], verdict=verd["verdict"]
+            )
+            cram_w.commit(frame_id, dep["payload_hash"], verd, auth)
             result.cram_commits += 1
         else:
             shed_log.log(frame_id=frame_id, policy_ref="PH6-DROP-POLICY-v1",

@@ -629,16 +629,49 @@ class CRAMWriter:
         files = sorted(self.store.glob("cram_*.json"), key=lambda p: p.name)
         if not files:
             return "0" * 64
-        with files[-1].open("r", encoding="utf-8") as f:
+        last = files[-1]
+        with last.open("r", encoding="utf-8") as f:
             rec = json.load(f)
-        return rec.get("cram_hash", "0" * 64)
+        cram_hash = rec.get("cram_hash", "0" * 64)
 
-    def commit(self, frame_id: int, payload_hash: str, verdict_record: dict) -> dict:
+        # PH6 Finding A / Recovery Policy A (operator-ratified, halt/fail-closed):
+        # a cram_*.json payload is authoritative chain history only when its
+        # required .blake2b marker exists and matches (GLOSSARY_LOCK.md:39).
+        # A markerless or mismatched last record must halt authoritative chain
+        # continuation, not be silently skipped in favor of an earlier
+        # predecessor. Bytes are never altered or removed here.
+        marker = last.parent / (last.name + ".blake2b")
+        if not marker.exists():
+            raise RuntimeError(
+                f"INVARIANT VIOLATION: CRAM-A chain predecessor {last.name} has no "
+                f".blake2b authority marker — not authoritative CRAM-A history "
+                f"(GLOSSARY_LOCK.md:39). Halting authoritative chain continuation. "
+                f"Operator intervention required."
+            )
+        marker_hash = marker.read_text(encoding="utf-8").strip()
+        if marker_hash != cram_hash:
+            raise RuntimeError(
+                f"INVARIANT VIOLATION: CRAM-A chain predecessor {last.name} has an "
+                f"invalid .blake2b marker (marker={marker_hash!r} != "
+                f"cram_hash={cram_hash!r}) — not authoritative CRAM-A history. "
+                f"Halting authoritative chain continuation. Operator intervention required."
+            )
+        return cram_hash
+
+    def commit(self, frame_id: int, payload_hash: str, verdict_record: dict, authorization: dict) -> dict:
         if verdict_record.get("verdict") != "PASS":
             raise ValueError(
                 f"CRAMWriter.commit called with verdict={verdict_record.get('verdict')}. "
                 "Only PASS frames may be committed to CRAM."
             )
+
+        from ph6.cram_pu._lane1_auth import verify_commit_authorization
+        verify_commit_authorization(
+            authorization,
+            frame_id=frame_id,
+            payload_hash=payload_hash,
+            verdict=verdict_record.get("verdict"),
+        )
 
         record = {
             "schema":         "ph6.cram_commit.v1",

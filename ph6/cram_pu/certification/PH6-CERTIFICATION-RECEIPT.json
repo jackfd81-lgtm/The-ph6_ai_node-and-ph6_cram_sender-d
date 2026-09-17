@@ -1,0 +1,67 @@
+{
+  "artifact_id": "PH6-CERTIFICATION-RECEIPT",
+  "harness_version": "PH6-CERT-TOPOLOGY-EXPANSION-1.1.0-draft",
+  "generated_at_utc": "2026-09-05T12:31:00Z",
+  "updated_at_utc": "2026-09-05T13:02:00Z",
+  "generated_by": "claude-code-lane2",
+  "source_tree_identity": {
+    "repo_root": "/home/jack",
+    "head_commit": "cafcc3737c992ca48e744ed536632fdaa28d621f",
+    "branch": "main",
+    "dirty_files_count": 301,
+    "dirty_note": "301 untracked entries at snapshot time — consistent with the many PH6_INTERNAL_SYSTEM_TEST_*.md / evidence-campaign artifacts already known to be untracked-by-design per CLAUDE.md file placement rules (validation_runs/, runtime/, etc. are not staged). Not itself a certification finding."
+  },
+  "contract_identity": "PH6 Runtime Certification & Containment Harness — full-topology expansion (REALITY -> INGEST -> PRE-INGEST FILTER -> CRAM-PU -> PSEUDO -> CRAM-A/R -> TOK -> SoSo -> AI/advisory -> MRAM-S), operator directive 2026-09-05",
+  "test_suite_identity": "mandatory_test_registry_v1.json (registry_id=PH6-CERT-MANDATORY-TEST-REGISTRY, version=1.1.0-draft)",
+  "required_tests": 32,
+  "executed_tests": 27,
+  "PASS": 26,
+  "FAIL": 1,
+  "NOT_EXECUTED": 0,
+  "UNRESOLVED": 4,
+  "OUT_OF_SCOPE": 1,
+  "stop_ship": true,
+  "evidence_references": [
+    "ph6/cram_pu/certification/RECONCILIATION_MAP_v1.md",
+    "ph6/cram_pu/certification/mandatory_test_registry_v1.json",
+    "PH6_INTERNAL_SYSTEM_TEST_20260905T122545Z.md",
+    "/home/jack/ph6/cram_pu/validation_runs/20260905T122730Z_TOK1_SOSO1_isolation/tok_soso_isolation_receipt.json",
+    "cram_pu/validation_runs/20260506T111731Z/PH6_4_PASS_SYSTEM_REPORT.md",
+    "PH6_SOURCE/HRG9_CLOSURE/hrg9_replay_parity_receipt.json"
+  ],
+  "domain_results": {
+    "CRAM": {"status": "PASS", "tests": ["CRAMPU-001"], "note": "Import health + integrity metadata (STORAGE-001) + isolation proof crash/replay checks all PASS."},
+    "PSEUDO": {"status": "PASS", "tests": ["PSEUDO-001", "PSEUDO-002", "PSEUDO-003"], "note": "Deterministic gate logic, negative-input rejection (partial coverage — see PSEUDO-002 coverage_note), no Lane-2 delegation, all PASS."},
+    "TOK": {"status": "PASS", "tests": ["TOK-001", "TOK-002", "TOK-003"], "note": "Schema validation, Lane-2 containment, and deterministic serialization/identity hash (TOK-003, executed against real tok/rebuild.py functions) all PASS. Domain closed."},
+    "SoSo": {"status": "PASS", "tests": ["SOSO-001", "SOSO-002"], "note": "Contract suite + forbidden-capability negative tests both PASS. ChainIndex/EvidencePacket-specific sub-cases remain structurally untestable (those contracts don't exist in code)."},
+    "AI": {"status": "PARTIAL", "tests": ["AI_ADVISORY-001", "AI_ADVISORY-002", "AI_ADVISORY-003"], "note": "Escalation-denial via existing contract tests PASS. Effective-capability computation (AI_ADVISORY-001) and the registry/capability enforcement gap (AI_ADVISORY-003) remain UNRESOLVED per operator decision — no enforcement code exists to test."},
+    "MRAM-S": {"status": "PASS", "tests": ["CONTAINMENT-001", "MRAMS-001"], "note": "MRAMS-001 executed against real production /var/ph6/mram-s/ data: full 81-event audit-chain integrity verified, exact packet/cycle/receipt hash reproduction confirmed via the durable append-only audit log (the mutable flat snapshot files were shown NOT to be a reliable replay source on their own — a real, non-trivial finding, documented rather than hidden). TOK/hw_hooks-advisory sub-families have zero on-disk artifacts on this node to sample (not a violation, no data exists yet)."},
+    "authority": {"status": "PASS", "tests": ["AUTHORITY-001"], "note": "Lane-1/Lane-2 isolation proof: 15/15 proof points PASS, identical result_set_hash with Lane-2 on/off."},
+    "containment": {"status": "PASS", "tests": ["CONTAINMENT-001", "CONTAINMENT-002"], "note": "Positive MRAM-S path and negative CRAM-0/A/R denial both confirmed at code level (isolation proof + hw_hooks governance boundary suite), not merely filesystem permissions."},
+    "replay": {"status": "PARTIAL", "tests": ["REPLAY-001", "REPLAY-002"], "note": "Lane-1 determinism PASS (fresh run + historical report corroboration). AI contract-based replay PASS. Note: REPLAY-001's historical corroboration is a stored report, not freshly recomputed this session."},
+    "HRG9": {"status": "UNRESOLVED", "tests": ["HRG9-001"], "note": "Full call-graph trace performed: the exact algorithm that produced the sealed receipt's result_set_hash ({frame_id, payload_hash, verdict}, sorted, per parity_method) does not exist verbatim anywhere in the current codebase — run_4pass_system_test.py (the tool named in the receipt) contains no result_set_hash computation; the only function with that literal name (cram_pu_live.py) uses a materially different formula. Per the explicit rule against reimplementing the HRG9 algorithm, no substitute formula was applied against the sealed evidence. Corroborating evidence gathered instead: VRC-1.0 (existing read-only verifier) run directly against the real sealed pass_1/cram_store confirmed CRAM prev_hash chain intact; the historical PH6_4_PASS_SYSTEM_REPORT.md independently documents 0 chain breaks for this run. Per operator decision, HRG9 is never to be listed as reopened/OPEN regardless of this UNRESOLVED status — it remains CLOSED per commit 2ef5fd6, this UNRESOLVED applies only to this session's ability to freshly recompute its specific parity hash."}
+  },
+  "result_set_hash": "blake2b256:37710fd7312163147adb0e36c5a13cc97cb50ef4c0090629e38fb4cb723a8d6a",
+  "result_set_hash_method": "BLAKE2b-256 over canonical JSON (sort_keys, no whitespace) of the sorted list of {test_id, contract_id, status} across all 32 registry entries. Reproduces the same canonicalization pattern used by cram_pu/tools/cram_pu_atomic_commit.py, applied here to the registry rather than a CRAM payload.",
+  "authority_hash": null,
+  "authority_hash_note": "Not applicable — this receipt is Lane-2 advisory output (Authority ZERO) about the state of the codebase. It carries no Lane-1 authority and cannot itself PASS/DROP anything.",
+  "certification_status": "NOT_CERTIFIED",
+  "certification_decision": "NOT_CERTIFIED. 26/32 required tests PASS, 1 FAIL, 0 NOT_EXECUTED, 4 UNRESOLVED. AI_ADVISORY-003 corrected 2026-09-05T13:10:00Z from UNRESOLVED to FAIL per operator ruling: a direct adversarial call against the real Lane-1 commit API succeeded carrying AI-attributed provenance with no caller-identity check — 'Lane-2/AI authority = ZERO' requires a technically enforced boundary, and the absence of a current production call path does not establish one. Remaining UNRESOLVED (all investigated with real executed evidence this session, not static inference): CRYPTO-003 (no golden-vector fixture exists anywhere in the repo — confirmed by exhaustive regex search), SCHEMA-002 (ph6.canonjson.v1 as a literal identifier does not exist; canonical.py is a strong but unconfirmed reconciliation candidate), AI_ADVISORY-001 (effective-capability formula has 4 of 6 terms with no implementing code), HRG9-001 (the exact sealed-receipt hash algorithm cannot be located verbatim in the current codebase; not reimplemented per explicit instruction; VRC-1.0 corroboration gathered instead). TOPOLOGY-001 resolved to OUT_OF_SCOPE (frame_filter confirmed to have no code-level dependency from ph6/, non-blocking, was already required:false). Per the fail-closed rule, the FAIL alone blocks CERTIFIED; the 4 UNRESOLVED items are additional independent blockers. No canonical PH6 behavior was modified to obtain a pass. No contract, schema, golden vector, or evidence was invented.",
+  "family_certification": {
+    "soso_family_status": "NOT_CERTIFIED",
+    "soso_family_reason": "SOSO-SPOOF-001 = FAIL: ssmt_version field is never validated on read (no rejection, no drift detection, no recorded transformation) — confirmed by a real adversarial test this session. All other tested SoSo requirements (SOSO-FAMILY-001, SOSO-MRAMS-001, SOSO-SEAM-001) PASS.",
+    "pseudo_family_status": "NOT_CERTIFIED",
+    "pseudo_family_reason": "All 4 real PSEUDO members (PSEUDO-M, PSEUDO-A, PSEUDO-Predictive, PSEUDO-SCI) individually PASS via fresh execution (C10/C11/C12, 0 violations, 3 stress profiles) and historical governance-audit corroboration (pseudo_family_boundary_audit.md, 2026-05-17). PSEUDO-SEAM-001 = FAIL for the same root cause as AI_ADVISORY-003/SOSO-SPOOF-001's sibling finding: the commit API PSEUDO-A hands off to has no caller-identity enforcement.",
+    "family_registry": "ph6/cram_pu/certification/soso_pseudo_family_registry_v1.json",
+    "members_identified": {
+      "soso_implemented": ["SOSO-1.0 (ssmt/)"],
+      "soso_historical_source_only": ["SoSo-JEDI", "DISSENT_TOKEN"],
+      "soso_not_found": ["Agent SoSo", "Media Steward SoSo", "AI SoSo", "Deterministic/Regular SoSo"],
+      "pseudo_implemented": ["PSEUDO-M", "PSEUDO-A", "PSEUDO-Predictive", "PSEUDO-SCI"],
+      "pseudo_not_yet_specified": ["PSEUDO-SCI-I", "PSEUDO-SCI-A"],
+      "pseudo_not_found": ["PSEUDO-Core", "PSEUDO-AI"]
+    },
+    "family_test_counts": {"total": 22, "PASS": 10, "FAIL": 3, "NOT_EXECUTED": 0, "UNRESOLVED": 0, "NOT_APPLICABLE": 9}
+  },
+  "_provenance": {"proposed_by":"claude-code-lane2","proposed_at_utc":"2026-09-05T12:31:00Z","api_call_log_ref":"session_01Er4uEgGZE7jhVVrQcnSh6S","ratified_by":null}
+}

@@ -6,15 +6,16 @@ Authority: ZERO
 Write domain: MRAM-S only (via ph6_l2_expand.mram_s_writer)
 
 Command-line entry point for the SoSo token / virtual-token mapping
-subsystem. Default mode is MOCK_OFFLINE_AI; --mode ollama-local is
-optional and experimental.
+subsystem. MOCK_OFFLINE_AI is the only advisory mode. A prior
+--mode ollama-local (DeepSeek/Ollama) was removed 2026-09-16 per operator
+directive -- see
+PH6_SOURCE/DEPLOYMENT/PH6_LMPQ_DEEPSEEK_OLLAMA_REMOVAL_RECORD.md.
 
   python3 -m ph6_l2_expand.cli map --source <CRAM_A_OR_R_OBJECT> --out /var/ph6/mram-s/
   python3 -m ph6_l2_expand.cli mock-ai --source <CRAM_A_OR_R_OBJECT> --out /var/ph6/mram-s/
   python3 -m ph6_l2_expand.cli improve --source <CRAM_A_OR_R_OBJECT> --out /var/ph6/mram-s/ --cycles 5
   python3 -m ph6_l2_expand.cli compare-maps --before <MRAM_S_JSON> --after <MRAM_S_JSON>
   python3 -m ph6_l2_expand.cli deepseek --source <CRAM_A_OR_R_OBJECT> --out /var/ph6/mram-s/ --mode mock-offline-ai
-  python3 -m ph6_l2_expand.cli deepseek --source <CRAM_A_OR_R_OBJECT> --out /var/ph6/mram-s/ --mode ollama-local
   python3 -m ph6_l2_expand.cli audit --out /var/ph6/mram-s/
 """
 
@@ -28,7 +29,6 @@ from pathlib import Path
 from ph6_l2_expand.experimental import mock_ai_client
 from ph6_l2_expand.experimental.advisory_improvement_tracker import (
     MOCK_OFFLINE_AI,
-    OLLAMA_LOCAL,
     build_advisory_record,
     run_cycles,
 )
@@ -84,13 +84,8 @@ def _cmd_compare_maps(args: argparse.Namespace) -> int:
 def _cmd_deepseek(args: argparse.Namespace) -> int:
     object_id, source_object = reference_worker.load_source(args.source)
 
-    if args.mode == OLLAMA_LOCAL:
-        from ph6_l2_expand.experimental import deepseek_client
-        advisory = deepseek_client.generate(object_id, source_object, cycle=1, token_map_before_dict={})
-        model_info = advisory.get("model_info", deepseek_client.DEFAULT_MODEL)
-    else:
-        advisory = mock_ai_client.generate(object_id, source_object, cycle=1, token_map_before_dict={})
-        model_info = "mock-offline-ai:deterministic-rule-based"
+    advisory = mock_ai_client.generate(object_id, source_object, cycle=1, token_map_before_dict={})
+    model_info = "mock-offline-ai:deterministic-rule-based"
 
     record = build_advisory_record(object_id, "DEEPSEEK", advisory, model_info=model_info)
     mode_slug = args.mode.replace("-", "_")
@@ -137,10 +132,10 @@ def build_parser() -> argparse.ArgumentParser:
     p_compare.add_argument("--after", required=True)
     p_compare.set_defaults(func=_cmd_compare_maps)
 
-    p_deepseek = sub.add_parser("deepseek", help="Run one DeepSeek (or mock) advisory cycle")
+    p_deepseek = sub.add_parser("deepseek", help="Run one mock advisory cycle (DeepSeek/Ollama mode removed 2026-09-16)")
     p_deepseek.add_argument("--source", required=True)
     p_deepseek.add_argument("--out", required=True)
-    p_deepseek.add_argument("--mode", choices=[MOCK_OFFLINE_AI, OLLAMA_LOCAL], default=MOCK_OFFLINE_AI)
+    p_deepseek.add_argument("--mode", choices=[MOCK_OFFLINE_AI], default=MOCK_OFFLINE_AI)
     p_deepseek.set_defaults(func=_cmd_deepseek)
 
     p_audit = sub.add_parser("audit", help="Audit an MRAM-S output directory")

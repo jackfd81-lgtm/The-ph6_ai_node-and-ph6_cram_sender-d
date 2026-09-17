@@ -118,6 +118,17 @@ Total expected INFO: 27 (PH6_SOURCE canonical scan). If count increases: investi
 
 Any CRITICAL or HIGH on `PH6_SOURCE/` = **STOP. Do not commit. Report to operator.**
 
+## TOOLCHAIN FACTS (reconciled 2026-09-11 — see RECONCILIATION_REPORT.md)
+
+VERIFIED (current, do not assume otherwise without re-checking):
+- Test runner: `pytest` only (`pytest.ini`). No `unittest discover` target exists.
+- Lint/typecheck: none configured. No flake8/mypy/ruff config anywhere in repo.
+- Secrets: no `.env` mechanism. ESP_S1 Wi-Fi creds live at `ph6/esp_s1/secrets.py`
+  (MicroPython device file, not app config) — untracked and `.gitignore`d.
+
+PROPOSED (not yet implemented — do not claim these exist):
+- Adopt a lint/typecheck gate (tool TBD) if the operator wants one.
+
 ## OPEN ITEMS (sync from GAP_REGISTER_v3.0.md + governance_manifest)
 
 | ID | Status | Blocking | Action needed |

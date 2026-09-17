@@ -23,6 +23,13 @@ from ph6.cram_pu.schemas.canonical import (
 )
 from ph6.cram_pu.schemas.audit import append_audit, validate_chain, GENESIS_HASH
 from ph6.cram_pu.tools.cram_pu_atomic_commit import AtomicCRAMCommitter
+from ph6.cram_pu._lane1_auth import mint_commit_authorization
+
+
+def _auth(verdict: dict) -> dict:
+    return mint_commit_authorization(
+        packet_id=verdict["packet_id"], payload_hash=verdict["input_hash"], verdict=verdict["verdict"]
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -267,7 +274,7 @@ class TestCRAMAMarker:
             "input_hash": "h" * 64,
             "verdict": "PASS",
         }
-        record = committer.commit(verdict)
+        record = committer.commit(verdict, _auth(verdict))
 
         markers = list(tmp_path.glob("*.blake2b"))
         assert len(markers) == 1, "Expected exactly one .blake2b marker"
@@ -279,7 +286,7 @@ class TestCRAMAMarker:
             "input_hash": "i" * 64,
             "verdict": "PASS",
         }
-        record = committer.commit(verdict)
+        record = committer.commit(verdict, _auth(verdict))
 
         marker = next(tmp_path.glob("*.blake2b"))
         marker_content = marker.read_text().strip()
@@ -293,7 +300,7 @@ class TestCRAMAMarker:
             "input_hash": "j" * 64,
             "verdict": "PASS",
         }
-        committer.commit(verdict)
+        committer.commit(verdict, _auth(verdict))
 
         tmp_markers = list(tmp_path.glob("*.blake2b.tmp"))
         assert tmp_markers == [], "No .tmp marker files should remain"
@@ -305,7 +312,7 @@ class TestCRAMAMarker:
             "input_hash": "k" * 64,
             "verdict": "PASS",
         }
-        committer.commit(verdict)
+        committer.commit(verdict, _auth(verdict))
 
         # Delete the marker — object should be treated as non-authoritative
         for m in tmp_path.glob("*.blake2b"):
