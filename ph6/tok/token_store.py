@@ -15,11 +15,17 @@ from ph6.tok.lifecycle import (
     RT,
     VDT,
     VLT,
+    RLT,
+    PLT,
+    AHT,
     TokenBase,
     DEFAULT_TOK_CONFIG,
     attempt_vdt_promotion,
     should_prune_vdt,
     should_prune_vlt,
+    make_rlt,
+    make_plt,
+    make_aht,
 )
 
 __all__ = [
@@ -27,9 +33,15 @@ __all__ = [
     "RT",
     "VDT",
     "VLT",
+    "RLT",
+    "PLT",
+    "AHT",
     "TokenBase",
     "DEFAULT_TOK_CONFIG",
     "attempt_vdt_promotion",
     "should_prune_vdt",
     "should_prune_vlt",
+    "make_rlt",
+    "make_plt",
+    "make_aht",
 ]

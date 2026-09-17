@@ -106,7 +106,7 @@ def append_jsonl(path: Path, payload: dict) -> None:
 # Token Models
 # =============================================================================
 
-TokenType = Literal["RT", "VDT", "VLT"]
+TokenType = Literal["RT", "VDT", "VLT", "RLT", "PLT", "AHT"]
 
 
 @dataclass(frozen=True)
@@ -167,6 +167,161 @@ class VLT(TokenBase):
 
 
 # =============================================================================
+# Loss / Prediction / Anchor Token Models (RLT / PLT / AHT)
+#
+# Doctrine: PH6_SOURCE/GOVERNANCE/PH6_LIVING_MEMORY_TOKEN_RETENTION_POLICY.md
+#           section 4 ("Token-Loss Mitigation") and section 6 ("Rehydration").
+#
+# RLT = Real-Loss Token      — an RT whose CRAM evidence was found lost or
+#                               corrupted on read-only inspection. Lineage to
+#                               the original RT is preserved; the RT record
+#                               itself is never deleted or rewritten.
+# PLT = Predicted-Loss Token — an RT flagged as at risk by an explicit,
+#                               caller-supplied risk signal (not inferred).
+# AHT = Anchor Handle Token  — an identity stub created alongside an RLT to
+#                               preserve a rehydration handle. AHT never
+#                               claims to be a new observation: a successful
+#                               rehydration produces a *new* RT token,
+#                               version-linked back to the lost one.
+# =============================================================================
+
+@dataclass(frozen=True)
+class RLT(TokenBase):
+    lost_token_id: str = ""
+    frame_id: int = 0
+    detection_reason: str = ""
+    aht_token_id: str = ""
+    token_type: TokenType = "RLT"
+
+    def is_invalid(self) -> bool:
+        return (
+            super().is_invalid()
+            or not self.lost_token_id
+            or not self.detection_reason
+        )
+
+
+@dataclass(frozen=True)
+class PLT(TokenBase):
+    at_risk_token_id: str = ""
+    frame_id: int = 0
+    risk_reason: str = ""
+    risk_score: float = 0.0
+    token_type: TokenType = "PLT"
+
+    def is_invalid(self) -> bool:
+        return (
+            super().is_invalid()
+            or not self.at_risk_token_id
+            or not self.risk_reason
+            or not (0.0 <= self.risk_score <= 1.0)
+        )
+
+
+@dataclass(frozen=True)
+class AHT(TokenBase):
+    anchor_for_token_id: str = ""
+    frame_id: int = 0
+    rehydration_status: str = "PENDING"  # PENDING | SUCCEEDED | FAILED
+    rehydrated_to_token_id: str = ""
+    token_type: TokenType = "AHT"
+
+    def is_invalid(self) -> bool:
+        return (
+            super().is_invalid()
+            or not self.anchor_for_token_id
+            or self.rehydration_status not in ("PENDING", "SUCCEEDED", "FAILED")
+        )
+
+
+def loss_seed(lost_token_id: str, frame_id: int, reason: str) -> Dict[str, Any]:
+    return {"lost_token_id": lost_token_id, "frame_id": frame_id, "reason": reason}
+
+
+def rlt_token_id(lost_token_id: str, frame_id: int, reason: str) -> str:
+    """Deterministic RLT token id. Identity depends only on the loss event
+    inputs — never on wall-clock time — so replaying the same detection
+    against the same evidence always yields the same RLT identity."""
+    return "rlt_" + blake2b256_hex(loss_seed(lost_token_id, frame_id, reason))[:24]
+
+
+def aht_token_id_for(lost_token_id: str, frame_id: int) -> str:
+    """Deterministic AHT token id, independent of detection_reason so the
+    same lost token always anchors to the same handle regardless of which
+    check first detected the loss."""
+    return "aht_" + blake2b256_hex({"anchor_for_token_id": lost_token_id, "frame_id": frame_id})[:24]
+
+
+def plt_token_id(at_risk_token_id: str, frame_id: int, risk_reason: str) -> str:
+    """Deterministic PLT token id from the explicit risk signal inputs."""
+    seed = {"at_risk_token_id": at_risk_token_id, "frame_id": frame_id, "risk_reason": risk_reason}
+    return "plt_" + blake2b256_hex(seed)[:24]
+
+
+def rehydrated_rt_token_id(aht_token_id: str, frame_id: int, cram_ref_hash: str) -> str:
+    """Deterministic id for an RT produced by rehydrating an AHT anchor."""
+    seed = {"rehydrated_from_aht": aht_token_id, "frame_id": frame_id, "cram_ref_hash": cram_ref_hash}
+    return "rt_rehydrated_" + blake2b256_hex(seed)[:24]
+
+
+def make_rlt(
+    lost_rt: TokenBase,
+    frame_id: int,
+    detection_reason: str,
+    aht_id: str,
+    event_time_ms: int,
+) -> "RLT":
+    return RLT(
+        token_id=rlt_token_id(lost_rt.token_id, frame_id, detection_reason),
+        cram_ref_hash=lost_rt.cram_ref_hash,
+        timestamp_ms=event_time_ms,
+        lost_token_id=lost_rt.token_id,
+        frame_id=frame_id,
+        detection_reason=detection_reason,
+        aht_token_id=aht_id,
+        metadata={"lost_object_class": getattr(lost_rt, "object_class", "")},
+    )
+
+
+def make_aht(
+    lost_rt: TokenBase,
+    frame_id: int,
+    event_time_ms: int,
+) -> "AHT":
+    return AHT(
+        token_id=aht_token_id_for(lost_rt.token_id, frame_id),
+        cram_ref_hash=lost_rt.cram_ref_hash,
+        timestamp_ms=event_time_ms,
+        anchor_for_token_id=lost_rt.token_id,
+        frame_id=frame_id,
+        rehydration_status="PENDING",
+        metadata={
+            "object_class": getattr(lost_rt, "object_class", ""),
+            "bbox": list(getattr(lost_rt, "bbox", [])),
+            "confidence": getattr(lost_rt, "confidence", 0.0),
+        },
+    )
+
+
+def make_plt(
+    at_risk_rt: TokenBase,
+    frame_id: int,
+    risk_reason: str,
+    risk_score: float,
+    event_time_ms: int,
+) -> "PLT":
+    return PLT(
+        token_id=plt_token_id(at_risk_rt.token_id, frame_id, risk_reason),
+        cram_ref_hash=at_risk_rt.cram_ref_hash,
+        timestamp_ms=event_time_ms,
+        at_risk_token_id=at_risk_rt.token_id,
+        frame_id=frame_id,
+        risk_reason=risk_reason,
+        risk_score=risk_score,
+    )
+
+
+# =============================================================================
 # Advisory Audit Chain
 # =============================================================================
 
@@ -179,6 +334,16 @@ _TOK_EVENT_ADVISORY_RESULT = {
     "VLT_PRUNED": "ANALYSIS_COMPLETE",
     "VLT_PROTECTION_REQUEST": "OBSERVATION",
     "LIVE_STORE_LOAD_WARNING": "DRIFT_WARNING",
+    # Loss / prediction / anchor events. Values are drawn from the closed
+    # `advisory_result` vocabulary in PH6-SOSO-FAMILY-CONTRACT-v1.0.md
+    # section 5 — this list may not be extended without a governance review.
+    "RLT_GENESIS": "GAP_DETECTED",
+    "AHT_GENESIS": "OBSERVATION",
+    "PLT_GENESIS": "DRIFT_WARNING",
+    # A rehydration is explicitly never OBSERVATION: replay is not a new
+    # observation (doctrine: "Replay != New Observation").
+    "AHT_REHYDRATION_SUCCEEDED": "ANALYSIS_COMPLETE",
+    "AHT_REHYDRATION_FAILED": "GAP_DETECTED",
 }
 
 
@@ -255,6 +420,9 @@ class TokenStore:
         self.rt_store: Dict[str, RT] = {}
         self.vdt_store: Dict[str, VDT] = {}
         self.vlt_store: Dict[str, VLT] = {}
+        self.rlt_store: Dict[str, RLT] = {}
+        self.plt_store: Dict[str, PLT] = {}
+        self.aht_store: Dict[str, AHT] = {}
 
         self.load_live_materialization()
 
@@ -269,6 +437,9 @@ class TokenStore:
             "rt_store": {k: v.to_dict() for k, v in sorted(self.rt_store.items())},
             "vdt_store": {k: v.to_dict() for k, v in sorted(self.vdt_store.items())},
             "vlt_store": {k: v.to_dict() for k, v in sorted(self.vlt_store.items())},
+            "rlt_store": {k: v.to_dict() for k, v in sorted(self.rlt_store.items())},
+            "plt_store": {k: v.to_dict() for k, v in sorted(self.plt_store.items())},
+            "aht_store": {k: v.to_dict() for k, v in sorted(self.aht_store.items())},
         }
 
         atomic_write_json(self._path("live_tokens.json"), payload)
@@ -289,6 +460,15 @@ class TokenStore:
 
             for k, v in raw.get("vlt_store", {}).items():
                 self.vlt_store[k] = VLT(**v)
+
+            for k, v in raw.get("rlt_store", {}).items():
+                self.rlt_store[k] = RLT(**v)
+
+            for k, v in raw.get("plt_store", {}).items():
+                self.plt_store[k] = PLT(**v)
+
+            for k, v in raw.get("aht_store", {}).items():
+                self.aht_store[k] = AHT(**v)
 
         except Exception as e:
             self.audit.emit(
@@ -348,6 +528,128 @@ class TokenStore:
             "token_id": token_id,
             "reason": reason,
             "token_state_hash": new_vlt.state_hash(),
+        }, event_time_ms)
+
+        self._save_all()
+        return True
+
+    # -------------------------------------------------------------------------
+    # Loss / Prediction / Anchor (RLT / PLT / AHT)
+    # -------------------------------------------------------------------------
+
+    def add_rlt(self, rlt: RLT, aht: AHT, event_time_ms: Optional[int] = None) -> None:
+        """
+        Record a detected RT loss. Always creates the RLT and its paired AHT
+        anchor together (doctrine: token-loss response protocol steps 2-3).
+
+        Never deletes or mutates the original RT record — DROP != DELETE
+        applies equally here: loss is recorded, not erased.
+        """
+        if rlt.is_invalid():
+            raise ValueError("Invalid RLT")
+        if aht.is_invalid():
+            raise ValueError("Invalid AHT")
+        if aht.anchor_for_token_id != rlt.lost_token_id:
+            raise ValueError("AHT anchor_for_token_id must match RLT lost_token_id")
+
+        self.rlt_store[rlt.token_id] = rlt
+        self.aht_store[aht.token_id] = aht
+
+        self.audit.emit("RLT_GENESIS", {
+            "token_id": rlt.token_id,
+            "token_type": "RLT",
+            "lost_token_id": rlt.lost_token_id,
+            "frame_id": rlt.frame_id,
+            "detection_reason": rlt.detection_reason,
+            "aht_token_id": rlt.aht_token_id,
+            "cram_ref_hash": rlt.cram_ref_hash,
+            "token_state_hash": rlt.state_hash(),
+        }, event_time_ms)
+
+        self.audit.emit("AHT_GENESIS", {
+            "token_id": aht.token_id,
+            "token_type": "AHT",
+            "anchor_for_token_id": aht.anchor_for_token_id,
+            "frame_id": aht.frame_id,
+            "cram_ref_hash": aht.cram_ref_hash,
+            "token_state_hash": aht.state_hash(),
+        }, event_time_ms)
+
+        self._save_all()
+
+    def add_plt(self, plt: PLT, event_time_ms: Optional[int] = None) -> None:
+        """Record a predicted-risk warning for an RT. Advisory only —
+        never blocks, defers, or mutates anything on the CRAM/PSEUDO side."""
+        if plt.is_invalid():
+            raise ValueError("Invalid PLT")
+
+        self.plt_store[plt.token_id] = plt
+
+        self.audit.emit("PLT_GENESIS", {
+            "token_id": plt.token_id,
+            "token_type": "PLT",
+            "at_risk_token_id": plt.at_risk_token_id,
+            "frame_id": plt.frame_id,
+            "risk_reason": plt.risk_reason,
+            "risk_score": plt.risk_score,
+            "cram_ref_hash": plt.cram_ref_hash,
+            "token_state_hash": plt.state_hash(),
+        }, event_time_ms)
+
+        self._save_all()
+
+    def mark_aht_rehydration_failed(
+        self, aht_token_id: str, reason: str, event_time_ms: Optional[int] = None
+    ) -> bool:
+        """A rehydration attempt failed. The AHT remains as a handle for a
+        future attempt; the corresponding RLT continues to mark the gap."""
+        aht = self.aht_store.get(aht_token_id)
+        if not aht:
+            return False
+
+        new_aht = AHT(**{**aht.to_dict(), "rehydration_status": "FAILED"})
+        self.aht_store[aht_token_id] = new_aht
+
+        self.audit.emit("AHT_REHYDRATION_FAILED", {
+            "token_id": aht_token_id,
+            "reason": reason,
+            "token_state_hash": new_aht.state_hash(),
+        }, event_time_ms)
+
+        self._save_all()
+        return True
+
+    def rehydrate_aht_to_rt(
+        self, aht_token_id: str, new_rt: RT, event_time_ms: Optional[int] = None
+    ) -> bool:
+        """
+        Complete a successful rehydration: AHT -> RT (new version edge).
+
+        This never overwrites or erases the original lost RT or its RLT —
+        it adds a new RT token whose metadata records provenance as
+        REHYDRATION, never as a fresh OBSERVATION (doctrine: "Replay != New
+        Observation", "Persistence != Truth").
+        """
+        aht = self.aht_store.get(aht_token_id)
+        if not aht:
+            raise ValueError(f"Unknown AHT token_id: {aht_token_id}")
+        if new_rt.metadata.get("provenance") != "REHYDRATION":
+            raise ValueError("Rehydrated RT must declare metadata.provenance == 'REHYDRATION'")
+
+        new_aht = AHT(**{
+            **aht.to_dict(),
+            "rehydration_status": "SUCCEEDED",
+            "rehydrated_to_token_id": new_rt.token_id,
+        })
+        self.aht_store[aht_token_id] = new_aht
+        self.rt_store[new_rt.cram_ref_hash] = new_rt
+
+        self.audit.emit("AHT_REHYDRATION_SUCCEEDED", {
+            "token_id": aht_token_id,
+            "rehydrated_to_token_id": new_rt.token_id,
+            "cram_ref_hash": new_rt.cram_ref_hash,
+            "token_state_hash": new_aht.state_hash(),
+            "new_rt_state_hash": new_rt.state_hash(),
         }, event_time_ms)
 
         self._save_all()

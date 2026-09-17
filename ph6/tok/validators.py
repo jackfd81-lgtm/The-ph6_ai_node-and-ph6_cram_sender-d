@@ -122,3 +122,50 @@ def validate_vlt(vlt) -> Optional[str]:
     if getattr(vlt, "support_count", 0) < 1:
         return "VLT support_count must be >= 1"
     return None
+
+
+def validate_rlt(rlt) -> Optional[str]:
+    err = validate_token_base(rlt)
+    if err:
+        return err
+    if getattr(rlt, "token_type", None) != "RLT":
+        return f"expected token_type RLT, got {rlt.token_type!r}"
+    if not getattr(rlt, "lost_token_id", None):
+        return "RLT lost_token_id must not be empty"
+    if not getattr(rlt, "detection_reason", None):
+        return "RLT detection_reason must not be empty"
+    if not getattr(rlt, "aht_token_id", None):
+        return "RLT aht_token_id must not be empty (loss response requires a paired AHT)"
+    return None
+
+
+def validate_plt(plt) -> Optional[str]:
+    err = validate_token_base(plt)
+    if err:
+        return err
+    if getattr(plt, "token_type", None) != "PLT":
+        return f"expected token_type PLT, got {plt.token_type!r}"
+    if not getattr(plt, "at_risk_token_id", None):
+        return "PLT at_risk_token_id must not be empty"
+    if not getattr(plt, "risk_reason", None):
+        return "PLT risk_reason must not be empty"
+    score = getattr(plt, "risk_score", None)
+    if score is None or not (0.0 <= score <= 1.0):
+        return "PLT risk_score must be in [0.0, 1.0]"
+    return None
+
+
+def validate_aht(aht) -> Optional[str]:
+    err = validate_token_base(aht)
+    if err:
+        return err
+    if getattr(aht, "token_type", None) != "AHT":
+        return f"expected token_type AHT, got {aht.token_type!r}"
+    if not getattr(aht, "anchor_for_token_id", None):
+        return "AHT anchor_for_token_id must not be empty"
+    status = getattr(aht, "rehydration_status", None)
+    if status not in ("PENDING", "SUCCEEDED", "FAILED"):
+        return f"AHT rehydration_status must be one of PENDING/SUCCEEDED/FAILED, got {status!r}"
+    if status == "SUCCEEDED" and not getattr(aht, "rehydrated_to_token_id", None):
+        return "AHT rehydration_status SUCCEEDED requires rehydrated_to_token_id"
+    return None
