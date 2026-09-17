@@ -1,0 +1,130 @@
+{
+  "advisory_only": true,
+  "authority": "ZERO",
+  "experience_id": "E001",
+  "missing_components": {
+    "AHT (rehydration token)": "Not found anywhere in this repository as a token type. A rehydration *capability* exists (ph6_l2_expand.topology_reconstruct.reconstruct_topology, which reconstructs state purely from the persisted tok advisory audit chain) but nothing materializes it as an AHT token object.",
+    "BCV2": "Not found anywhere in this repository.",
+    "Life CRAM (named component)": "No module, class, or function named 'Life CRAM' or 'BCV2' exists anywhere in this repository. The closest existing analog is ph6.cram_pu.verdict_logger._soso_advisory, a 3-state (STABLE/MODERATE/UNSTABLE) bounded signal derived from entropy; it carries no 'attention' or 'readiness' semantics of its own.",
+    "PLT (Predicted Loss Token)": "Not found anywhere in this repository.",
+    "RLT (Real Loss Token)": "Not found anywhere in this repository.",
+    "SoSo-JEDI (as a provenance-lookup component)": "The only code under the 'SoSo-JEDI' / 'Book V' name (PH6_SOURCE/AI/soso_jedi/jedi/swarm_sim_bp.py, BookVCoreEngine) is a heavier storm/swarm-exploration simulation that requires a list of synthetic 'storm branches' as input and is not wired into ph6/ or ph6_l2_expand/. It is not built for, and was not used for, a single-token provenance lookup. This harness performs the provenance trace directly against the token's cram_ref_hash and the CRAM-A evidence file instead."
+  },
+  "schema": "ph6.lmpq001.single_chain_report.v1",
+  "steps": [
+    {
+      "component": "ph6.cram_pu.ph6_cram_sim.CRAMSimulation + ph6.cram_pu.verdict_logger._pseudo_metrics",
+      "detail": {
+        "authority_hash": "5244884280c3695959591652a70577dd3ee574de6888838f9eebd804ac40798a",
+        "cram_audit_path": "/tmp/lmpq001_run/bench_root/cram/audit/audit.jsonl",
+        "metrics_fixed_point": {
+          "entropy_fp": 79089,
+          "laplacian_var_fp": 342311105,
+          "metric_scale": 10000,
+          "metric_schema": "ph6.metrics.fixedpoint.v1",
+          "motion_fraction_fp": 3335
+        },
+        "metrics_used": {
+          "entropy": 7.9089,
+          "laplacian_var": 34231.1105,
+          "motion_fraction": 0.3335
+        },
+        "missing_files": [],
+        "verdict": "PASS"
+      },
+      "status": "PASS_PENDING_REVIEW",
+      "step": "cram_evidence_pseudo_m_pseudo_a"
+    },
+    {
+      "component": "ph6.cram_pu.verdict_logger._soso_advisory (substitute -- see missing_components)",
+      "detail": {
+        "signal": {
+          "authority": "NONE",
+          "state": "STABLE"
+        }
+      },
+      "status": "PASS_PENDING_REVIEW",
+      "step": "readiness_attention_signal"
+    },
+    {
+      "component": "ph6.tok.lifecycle.TokenStore",
+      "detail": {
+        "audit_chain_path": "/tmp/lmpq001_run/bench_root/mram-s/tokens/tok_advisory_audit.jsonl",
+        "bench_config_override": {
+          "N": 1
+        },
+        "rt_token_id": "rt_E001_5244884280c36959",
+        "vdt_token_id": "vdt_E001_5244884280c36959",
+        "vlt_cram_ref_hash": "5244884280c3695959591652a70577dd3ee574de6888838f9eebd804ac40798a",
+        "vlt_token_id": "vlt_5e0a04fb3337a98dbdd49984"
+      },
+      "status": "PASS_PENDING_REVIEW",
+      "step": "ph6_token_rt_vdt_vlt"
+    },
+    {
+      "component": "ph6.ssmt.swarms.S1ActiveMemorySwarm",
+      "detail": {
+        "advisory_payload": {
+          "active_cram_refs": [
+            "5244884280c3695959591652a70577dd3ee574de6888838f9eebd804ac40798a"
+          ],
+          "active_tok_refs": [
+            "rt_E001_5244884280c36959",
+            "vdt_E001_5244884280c36959",
+            "vlt_5e0a04fb3337a98dbdd49984"
+          ],
+          "summary": "current advisory state snapshot"
+        },
+        "authority": "NONE",
+        "swarm_id": "S1"
+      },
+      "status": "PASS_PENDING_REVIEW",
+      "step": "soso_continuity"
+    },
+    {
+      "component": "direct cram_ref_hash cross-check (see missing_components: SoSo-JEDI)",
+      "detail": {
+        "cram_a_files_missing": [],
+        "cram_authority_hash": "5244884280c3695959591652a70577dd3ee574de6888838f9eebd804ac40798a",
+        "hashes_match": true,
+        "vlt_cram_ref_hash": "5244884280c3695959591652a70577dd3ee574de6888838f9eebd804ac40798a"
+      },
+      "status": "PASS_PENDING_REVIEW",
+      "step": "provenance_trace_to_source"
+    },
+    {
+      "component": "ph6_l2_expand.topology_reconstruct.reconstruct_topology (substitute -- see missing_components: AHT)",
+      "detail": {
+        "chain_errors": [],
+        "observation_count": 1,
+        "token_count": 10,
+        "topology_hash": "84d65cec996d797950e3a6f57f8e3d0a5e804a0e3214d0cd45d721afce4ac3ec"
+      },
+      "status": "PASS_PENDING_REVIEW",
+      "step": "rehydration"
+    },
+    {
+      "component": "ph6_l2_expand.experimental.mock_ai_client.generate",
+      "detail": {
+        "authority_level": "ZERO",
+        "boundary_warnings": [],
+        "mode": "MOCK_OFFLINE_AI",
+        "observations": [
+          "observed field 'cram_ref_hash'"
+        ]
+      },
+      "status": "PASS_PENDING_REVIEW",
+      "step": "ai_deterministic_pass"
+    },
+    {
+      "component": "ph6.cram_pu.ph6_cram_sim.CRAMSimulation.replay_check",
+      "detail": {
+        "authority_hash": "5244884280c3695959591652a70577dd3ee574de6888838f9eebd804ac40798a",
+        "replay_message": "OK",
+        "replay_ok": true
+      },
+      "status": "PASS_PENDING_REVIEW",
+      "step": "verified_source_hash"
+    }
+  ]
+}

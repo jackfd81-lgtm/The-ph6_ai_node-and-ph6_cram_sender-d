@@ -1,0 +1,32 @@
+{
+  "advisory_only": true,
+  "artifact_paths": {
+    "ai_response_log": "PH6_SOURCE/ARTIFACTS/LMPQ001_PM01_05_SINGLE_CHAIN_20260913/ai_response_log.jsonl",
+    "cram_audit": "PH6_SOURCE/ARTIFACTS/LMPQ001_PM01_05_SINGLE_CHAIN_20260913/cram_audit.jsonl",
+    "qualification_matrix": "PH6_SOURCE/ARTIFACTS/LMPQ001_PM01_05_SINGLE_CHAIN_20260913/qualification_matrix.json",
+    "result_summary": "PH6_SOURCE/ARTIFACTS/LMPQ001_PM01_05_SINGLE_CHAIN_20260913/result_summary.json",
+    "tok_advisory_audit": "PH6_SOURCE/ARTIFACTS/LMPQ001_PM01_05_SINGLE_CHAIN_20260913/tok_advisory_audit.jsonl"
+  },
+  "authority_level": "ZERO",
+  "campaign_id": "LMPQ001_PM01_05_SINGLE_CHAIN_20260913",
+  "chain_completed_without_halting": true,
+  "cram_authority_hash": "5244884280c3695959591652a70577dd3ee574de6888838f9eebd804ac40798a",
+  "experience_id": "E001",
+  "file_sha256": {
+    "ai_response_log.jsonl": "80b18372d6b8f2182a0cb0d99ff65067c5cce9bd780e32d41df1f5f9f5599219",
+    "cram_audit.jsonl": "b00bd6eb5c758aa01e8f322a2a87d29cbac3015f1a263e83f521ccfdce67556d",
+    "qualification_matrix.json": "a990b489d4dd309a440346149baf73c091382b83abdc1290563fb9df39f1b9ad",
+    "result_summary.json": "8c532d4afee8d4b91751e349958d06e77a210e6f5e8447d3097dd512ad573fa6",
+    "tok_advisory_audit.jsonl": "99cdbf391b0d79b8295ce49c5d91795d33d962da12e985351852349e375ed17c"
+  },
+  "harness": "ph6/lmpq001_single_chain_bench.py",
+  "lane1_imports_from_ph6_l2_expand": false,
+  "milestone": "1 -- one complete, verifiable single-experience chain (not the 1,000-experience campaign)",
+  "reproduction": "PYTHONPATH=. python3 ph6/run_lmpq001_single_chain.py <output_dir>",
+  "runner": "ph6/run_lmpq001_single_chain.py",
+  "schema": "ph6.lmpq001.single_chain_manifest.v1",
+  "spec": "LMPQ-001",
+  "test_suite": "ph6/tests/test_lmpq001_pm01_pm05_single_chain.py",
+  "topology_hash": "84d65cec996d797950e3a6f57f8e3d0a5e804a0e3214d0cd45d721afce4ac3ec",
+  "vlt_token_id": "vlt_5e0a04fb3337a98dbdd49984"
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "ph6.lmpq001.qualification_matrix.v1",
+  "authority": "ZERO",
+  "advisory_only": true,
+  "spec": "LMPQ-001",
+  "scope": "Milestone 1 -- one complete, verifiable single-experience chain (E001), not the 1,000-experience campaign",
+  "status_vocabulary": "LMPQ-001 SS25: PASS_VERIFIED | PASS_PENDING_REVIEW | FAIL | BLOCKED | INCOMPLETE | NOT_EXECUTED | NOT_APPLICABLE",
+  "self_ratification_note": "No test result below is PASS_VERIFIED; per LMPQ-001 SS29 ('No test result SHALL be self-ratified') and SS25, this run's own harness/test suite may only assert PASS_PENDING_REVIEW at best -- ratification to PASS_VERIFIED is an operator decision.",
+  "results": [
+    {
+      "test_id": "PM-01",
+      "name": "Preservation Test",
+      "status": "PASS_PENDING_REVIEW",
+      "rationale": "The full PM-01 procedure (generate, preserve via CRAM, measure via PSEUDO, generate tokens, store memory representation, ask AI to summarize, compare AI representation against original evidence) was executed exactly as specified for one experience. Result: E001's CRAM-A evidence file is unchanged (replay_check + independent on-disk hash check), and the AI response log records only claims traceable to the structured record -- it does not claim or invent meaning for the underlying synthetic payload.",
+      "caveat": "Payload was synthetic seeded noise (no semantic content), so 'AI-derived information remains distinguishable from source evidence' was tested for non-fabrication, not for summarization accuracy of meaningful content. A future run should use semantically meaningful synthetic experiences (per SS5's class table) to test that dimension."
+    },
+    {
+      "test_id": "PM-02",
+      "name": "Continuity Test",
+      "status": "NOT_EXECUTED",
+      "rationale": "PM-02 requires a 4-experience chain (E001->E002->E003->E004, E004 depending on E001) with E001 removed from AI context and reconstructed. This run has only E001; SoSo continuity (S1ActiveMemorySwarm) was exercised once but the actual continuity-reconstruction procedure was not run.",
+      "caveat": "Requires milestone 2 (10-20 fixtures) at minimum."
+    },
+    {
+      "test_id": "PM-03",
+      "name": "SoSo-JEDI Provenance Test",
+      "status": "PASS_PENDING_REVIEW",
+      "rationale": "The functional requirement (memory -> token -> source -> CRAM object -> original hash) was verified: the VLT's cram_ref_hash is byte-identical to the CRAM authority_hash, and the CRAM-A evidence files are present and hash-verified.",
+      "caveat": "The named 'SoSo-JEDI' component (PH6_SOURCE/AI/soso_jedi Book-V storm engine) was NOT exercised -- it is not built for a single-token lookup and is not wired into ph6/ or ph6_l2_expand/. This test's PASS reflects a direct hash cross-check substitute, not the named component. See missing_components.SoSo-JEDI in result_summary.json."
+    },
+    {
+      "test_id": "PM-04",
+      "name": "Life CRAM Attention Test",
+      "status": "BLOCKED",
+      "rationale": "Neither 'Life CRAM' nor 'BCV2' exist anywhere in this repository under any name. The full procedure requires injecting six distinct event types (stable/sudden-change/repeated/irrelevant/possible-loss/unstable) and observing a differential attention/readiness response -- there is no named component to test, and one experience cannot exercise a differential test regardless.",
+      "caveat": "The nearest existing analog, ph6.cram_pu.verdict_logger._soso_advisory (a 3-state STABLE/MODERATE/UNSTABLE signal derived from entropy), was exercised once (returned STABLE) as a structural substitute. Whether this signal should stand in for 'Life CRAM/SAL' permanently, or whether a real Life CRAM/BCV2 component must be built, is an architecture decision for the operator -- not made here."
+    },
+    {
+      "test_id": "PM-05",
+      "name": "Token-Lifecycle Test",
+      "status": "FAIL",
+      "rationale": "Per LMPQ-001 SS25/SS29, a test with any unmet required-verification bullet is not classified PASS. PM-05 requires verifying: RT points to real evidence (met), VLT represents durable continuity (met), VDT represents instability/decay (mechanism exists, not separately exercised here), RLT represents actual loss (component does not exist), PLT represents predicted loss (component does not exist), AHT can rehydrate the required evidence (no AHT token type exists; a functionally equivalent rehydration capability exists via ph6_l2_expand.topology_reconstruct.reconstruct_topology and was exercised successfully).",
+      "caveat": "RT/VDT/VLT sub-path: PASS_PENDING_REVIEW (fully exercised via ph6.tok.lifecycle.TokenStore, real promotion, real audit chain). RLT/PLT/AHT sub-path: BLOCKED (components do not exist in this repository under any name). Building RLT/PLT/AHT is a real implementation gap, not a test-harness gap -- explicitly out of scope for this bench slice per the operator's 'build only the minimum non-authoritative integration harness' instruction."
+    }
+  ],
+  "chain_plumbing_result": {
+    "note": "Separately from the PM-01..05 procedure-level statuses above, every interface link in the requested single chain (E001 -> CRAM evidence -> PSEUDO-M -> PSEUDO-A -> token -> SoSo -> provenance -> rehydration -> AI -> verified source/hash) executed successfully end-to-end with existing components. See result_summary.json for the full step trace and result_summary.sha256 for its integrity hash.",
+    "chain_completed_without_halting": true
+  },
+  "missing_components_requiring_operator_decision": [
+    "Life CRAM (named component) / BCV2 -- does not exist; PM-04 cannot be run as specified without either building it or ratifying the _soso_advisory substitute",
+    "RLT (Real Loss Token) -- does not exist",
+    "PLT (Predicted Loss Token) -- does not exist",
+    "AHT (rehydration token) -- does not exist as a token type (rehydration capability exists via a different mechanism)",
+    "SoSo-JEDI (Book-V engine) -- exists but is not fit for single-token provenance lookup and is unwired"
+  ]
+}
