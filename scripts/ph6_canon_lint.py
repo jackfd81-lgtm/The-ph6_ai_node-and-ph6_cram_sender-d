@@ -137,6 +137,40 @@ def check_forbidden_audit_event_types(root: Path) -> List[Tuple[str, str, str]]:
     return issues
 
 
+def check_missing_audit_required_fields(root: Path) -> List[Tuple[str, str, str]]:
+    """
+    Flag: SSMT audit_log.py missing required fields from the emitted event dict.
+    Static source check — does not execute code.
+
+    Direct fields must appear as literal string keys in audit_log.py.
+    chain_event() fields (event_hash, prev_event_hash) are injected by
+    chain_event() — verified by confirming chain_event() is called.
+    """
+    issues = []
+    audit_log = root / "ssmt/audit_log.py"
+    if not audit_log.exists():
+        return issues
+
+    direct_fields = {
+        "schema", "event_seq", "event_type", "object_id",
+        "authority_hash", "node_id", "stage", "status", "timestamp_utc",
+    }
+    chain_injected = {"event_hash", "prev_event_hash"}
+
+    text = audit_log.read_text(encoding="utf-8")
+
+    for field in sorted(direct_fields):
+        if f'"{field}"' not in text:
+            issues.append((FAIL, str(audit_log), f"audit_log.py missing required field: {field!r}"))
+
+    if "chain_event(" not in text:
+        issues.append((FAIL, str(audit_log),
+                       f"audit_log.py does not call chain_event() — "
+                       f"fields {sorted(chain_injected)} will be absent"))
+
+    return issues
+
+
 def check_tok_advisory_result_naming(root: Path) -> List[Tuple[str, str, str]]:
     """
     Warn: TOK rebuild.py using "result": "PASS"/"WARN" instead of "advisory_result".
@@ -185,8 +219,9 @@ def run_lint(root: Path) -> int:
         ("Unsafe .blake2b write_text()", check_unsafe_blake2b_write_text),
         ("Duplicate canonical helpers", check_duplicate_canonical_helpers),
         ("Forbidden audit event types", check_forbidden_audit_event_types),
-        ("TOK advisory_result naming", check_tok_advisory_result_naming),
+        ("Missing audit required fields", check_missing_audit_required_fields),
         ("Lane-2 authority leakage", check_lane2_authority_leakage),
+        ("TOK advisory_result naming", check_tok_advisory_result_naming),
     ]
 
     fail_count = 0
