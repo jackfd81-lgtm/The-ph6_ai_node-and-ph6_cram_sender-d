@@ -1,0 +1,15 @@
+{
+  "vector_id": "accept_002",
+  "description": "Valid ph6.canon.v1 object — frame_id=2, different ASCII payload",
+  "expected_outcome": "ACCEPT",
+  "schema": "ph6.canon.v1",
+  "frame_id": 2,
+  "payload_hash": "f72f3d061717f86b7fb3105ab739dbdc4e523045f200e784905ee672b972c358",
+  "hash_algorithm": "BLAKE2b-256",
+  "canon_hash": "829504087e453827f021e0b62d9cae4490408fdeb76398b1933a4cb1f781f065",
+  "_notes": {
+    "payload_source": "b'ph6_test_payload_frame_002'",
+    "payload_hash_computed": "BLAKE2b-256(b'ph6_test_payload_frame_002')",
+    "canon_hash_computed": "BLAKE2b-256(canonical_json(body))"
+  }
+}

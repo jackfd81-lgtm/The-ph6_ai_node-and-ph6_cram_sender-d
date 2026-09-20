@@ -1,0 +1,102 @@
+{
+  "schema": "ph6.canon.v1.rc2.sha256sums",
+  "version": "0.3-RC2",
+  "authority": "ZERO",
+  "production_status": "TEST_HARNESS_ONLY",
+  "generated_at_utc": "2026-06-19T00:00:00Z",
+  "proposed_by": "claude-code-lane2",
+  "ratified_by": null,
+  "note": "SHA-256 listed as primary for cross-platform verification. BLAKE2b-256 (PH6 authority hash) also provided per compatibility convention.",
+  "files": {
+    "PH6_SOURCE/CANON/PH6-CANON-V1-SPEC-0.3-RC2.md": {
+      "sha256": "8f379f0a2efa0454943c8318b94e5e502bfccd547418cfd69fa42d94ff8578b9",
+      "blake2b_256": "fa0377f93515cc1f0563ca670822a4950a2ea3f75663f02a9b0d66b8e7fd6020",
+      "size_bytes": 7656
+    },
+    "PH6_SOURCE/CANON/ph6_numeric_encoding_v1_SPEC_DRAFT.md": {
+      "sha256": "b4e239b77ca3fa9b0df8a4c229146d808a78350d0082de69f55a5606e58c4005",
+      "blake2b_256": "1be258858a184a29e7f4a5d4fde1b6786d089d1a8cd5f5cda96cfba3860b9901",
+      "size_bytes": 4516
+    },
+    "PH6_SOURCE/CANON/PH6_CANON_V1_TINY_VALIDATOR_REQUIREMENTS.md": {
+      "sha256": "8b1b4e97430230f301907f010e5fa5bc786bdf37c456f3bd27c45325a7efdce8",
+      "blake2b_256": "ba6570b6514e24562c7a3ae2651e31b78dddc1c91e185e541fe9b73aa9acd144",
+      "size_bytes": 5918
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/manifest.json": {
+      "sha256": "d6cfaaaed12cc11531400a3beb7c904bc2139a2a9310051eb1f46fa0844ccd38",
+      "blake2b_256": "3db400e18b4220f8a458c1c1104534e7af743e7abc90cee98aacbce94a4207d8",
+      "size_bytes": 4146
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/accept/accept_001_basic.json": {
+      "sha256": "2c8453ab7e82c9d155d3f2f6d568ddc5f7c83de1a71ddaf1d55ed36312bfd2b9",
+      "blake2b_256": "0bebe5463b6b81434268625109b19552c9715d7a74f588189508562511cbf6fd",
+      "size_bytes": 738
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/accept/accept_002_frame2.json": {
+      "sha256": "e2b1c87ed99c1c38f212b0385bfc21ee7cd4b5a68acbd59d1444ba1c33a039b3",
+      "blake2b_256": "6879202306332be879e81bad20528c759b509447998d41522df8364b84c4ee76",
+      "size_bytes": 612
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/accept/accept_003_high_frame_id.json": {
+      "sha256": "4638fbf75354d211af9cfc15e7bc50a94731b90493bb1437269a189a949436f2",
+      "blake2b_256": "561faf69c892e3172df952c95d0aea490e847a19244f160d1d61d66a90efd34a",
+      "size_bytes": 687
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/accept/accept_004_unicode_payload.json": {
+      "sha256": "1989f4f5c23cc4b295432bb3620324c195007af326ca35cdc749224301cda02e",
+      "blake2b_256": "230de24cb4dd2579b44a397626c061ad998fdfcbe63558c1b3d45d1fb2573d29",
+      "size_bytes": 755
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/reject/reject_001_bad_hash_length.json": {
+      "sha256": "9b6d510c4d2b4091dea1036a89e7029a36b264e4720518e2bb409b75a47e3ca8",
+      "blake2b_256": "84abbadc2adac27650d49acbe6b1552bd93f7f63fae7d651ee8343a635e90eef",
+      "size_bytes": 415
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/reject/reject_002_wrong_algorithm.json": {
+      "sha256": "1ee226e0d7de7ba284d7b00c5d660197537c5c52275fdb5f839b30ff5e922021",
+      "blake2b_256": "0e9862be8fa4cd5f461aa936cee7ab3852499cb3878c3b0efd4b8c975674e59c",
+      "size_bytes": 642
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/reject/reject_003_frame_id_zero.json": {
+      "sha256": "ec16a3702048bd03c4270d7c80ff59b62e7bb5634d6204a14fbded5850bea37d",
+      "blake2b_256": "c4a54dadf434a0ee342bf9470cdb91bd586798cf28a7291affe9f5700207918f",
+      "size_bytes": 571
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/reject/reject_004_canon_hash_mismatch.json": {
+      "sha256": "66d6e595f22cf1577111e08c57d6d28d286d391c6d95a5ef4e38d6c7c097396c",
+      "blake2b_256": "ebdd3bb7320728efe6a1fe74ffa0113455bd52e50fd6ebf0bec717cff72500f1",
+      "size_bytes": 675
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/reject/reject_005_missing_field.json": {
+      "sha256": "429e9eb0ff1d2265147caa8eb1c7184e94305719988e54d7dae33cdd639e72c6",
+      "blake2b_256": "8c5a731109cb4ff70430e8b74f300962ecfdd8dc372d30d8d8680eeafe6cb00e",
+      "size_bytes": 505
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/reject/reject_006_uppercase_hash.json": {
+      "sha256": "061a238633dc3515dd46bb998cd01e7e2acf3808216cbe34da86864cb9f371d7",
+      "blake2b_256": "bf4ff8fffe7d9712b6d2477649048a7cd692b718d30f94be82fdd47e445ca7e9",
+      "size_bytes": 694
+    },
+    "PH6_SOURCE/CANON/ph6_canon_v1_vectors/quarantine/quarantine_001_future_schema.json": {
+      "sha256": "53ca9f0eb9a633e9916ac48c6a90d5e5178bf341b0e39690d5b9b53bb578d71e",
+      "blake2b_256": "c52e1c505be422d94b53d29f899e3963b1d42ab0808ab72c668fd31b22a84d71",
+      "size_bytes": 746
+    },
+    "ph6/tiny_validator.py": {
+      "sha256": "05abe8993e1c87aeacf0fc9f0ba19a789baceb36e60f81415b7967da42d39dd0",
+      "blake2b_256": "4dba51adc565e9db0e22fc0425133d08897c14a20e027e559fe18f83c06d2bcb",
+      "size_bytes": 7906
+    },
+    "PH6_SOURCE/DEPLOYMENT/validator_run_report.json": {
+      "sha256": "a511f41b31598a5832a1fd265787d837b1dfdc16bb6b5a022126545eb2264f41",
+      "blake2b_256": "ce2ada0c621f9bd2e497a5d5f313cf70b28cae6c664f3bd68382af42d9deb970",
+      "size_bytes": 3466
+    },
+    "PH6_SOURCE/DEPLOYMENT/cross_language_match_report.md": {
+      "sha256": "d34946ffff70a0a42551676440a08df1756461e40569b2ef6834ea6d43909219",
+      "blake2b_256": "de764283da10cf51e7204ece51d42f688525c086845c881033fb4549ca38e891",
+      "size_bytes": 4768
+    }
+  }
+}

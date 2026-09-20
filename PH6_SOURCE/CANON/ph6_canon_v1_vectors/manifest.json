@@ -1,0 +1,103 @@
+{
+  "schema": "ph6.canon.v1.vectors.manifest",
+  "version": "0.3-RC2",
+  "authority": "ZERO",
+  "production_status": "TEST_HARNESS_ONLY",
+  "proposed_by": "claude-code-lane2",
+  "proposed_at_utc": "2026-06-19T00:00:00Z",
+  "ratified_by": null,
+  "parent_spec": "PH6_SOURCE/CANON/PH6-CANON-V1-SPEC-0.3-RC2.md",
+  "vector_count": {
+    "accept": 4,
+    "reject": 6,
+    "quarantine": 1,
+    "total": 11
+  },
+  "vectors": [
+    {
+      "vector_id": "accept_001",
+      "file": "accept/accept_001_basic.json",
+      "expected_outcome": "ACCEPT",
+      "description": "Basic valid ph6.canon.v1 object — frame_id=1, ASCII payload",
+      "frame_id": 1,
+      "expected_payload_hash": "bb7a16998237ac39ba6a2eef66c3d7454f3b867ad2646cb49ffb64e48aa5df2d",
+      "expected_canon_hash": "d516198b0de157a19ac0a4103afb39514eece3648518341fabb692a16c377520"
+    },
+    {
+      "vector_id": "accept_002",
+      "file": "accept/accept_002_frame2.json",
+      "expected_outcome": "ACCEPT",
+      "description": "Valid ph6.canon.v1 object — frame_id=2, different ASCII payload",
+      "frame_id": 2,
+      "expected_payload_hash": "f72f3d061717f86b7fb3105ab739dbdc4e523045f200e784905ee672b972c358",
+      "expected_canon_hash": "829504087e453827f021e0b62d9cae4490408fdeb76398b1933a4cb1f781f065"
+    },
+    {
+      "vector_id": "accept_003",
+      "file": "accept/accept_003_high_frame_id.json",
+      "expected_outcome": "ACCEPT",
+      "description": "Valid ph6.canon.v1 object — high frame_id boundary (999999), binary zero payload",
+      "frame_id": 999999,
+      "expected_payload_hash": "89eb0d6a8a691dae2cd15ed0369931ce0a949ecafa5c3f93f8121833646e15c3",
+      "expected_canon_hash": "d0fc232ed417e3509846123e1619309e655bb64009455b64d4bd16a2adfeddf1"
+    },
+    {
+      "vector_id": "accept_004",
+      "file": "accept/accept_004_unicode_payload.json",
+      "expected_outcome": "ACCEPT",
+      "description": "Valid ph6.canon.v1 object — frame_id=42, UTF-8 encoded unicode payload",
+      "frame_id": 42,
+      "expected_payload_hash": "57c83b30b80805fb9f8809194276565af6cf2c43ba83b248bd9c634085e3ec0e",
+      "expected_canon_hash": "0f5b97cc9c856e5d2e24dabdcbe8f36aeaa05fe38534aeffb5cc1f55586a2bcd"
+    },
+    {
+      "vector_id": "reject_001",
+      "file": "reject/reject_001_bad_hash_length.json",
+      "expected_outcome": "REJECT",
+      "rejection_reason": "INVALID_PAYLOAD_HASH_FORMAT",
+      "description": "payload_hash is 3 characters — not 64 lowercase hex chars"
+    },
+    {
+      "vector_id": "reject_002",
+      "file": "reject/reject_002_wrong_algorithm.json",
+      "expected_outcome": "REJECT",
+      "rejection_reason": "WRONG_HASH_ALGORITHM",
+      "description": "hash_algorithm is SHA-256 — only BLAKE2b-256 is authoritative"
+    },
+    {
+      "vector_id": "reject_003",
+      "file": "reject/reject_003_frame_id_zero.json",
+      "expected_outcome": "REJECT",
+      "rejection_reason": "INVALID_FRAME_ID",
+      "description": "frame_id=0 — frame IDs must be >= 1"
+    },
+    {
+      "vector_id": "reject_004",
+      "file": "reject/reject_004_canon_hash_mismatch.json",
+      "expected_outcome": "REJECT",
+      "rejection_reason": "CANON_HASH_MISMATCH",
+      "description": "canon_hash is all-zeros — does not match recomputed BLAKE2b-256 of canonical body"
+    },
+    {
+      "vector_id": "reject_005",
+      "file": "reject/reject_005_missing_field.json",
+      "expected_outcome": "REJECT",
+      "rejection_reason": "missing_required_fields: ['payload_hash']",
+      "description": "payload_hash field is absent"
+    },
+    {
+      "vector_id": "reject_006",
+      "file": "reject/reject_006_uppercase_hash.json",
+      "expected_outcome": "REJECT",
+      "rejection_reason": "INVALID_PAYLOAD_HASH_FORMAT",
+      "description": "payload_hash contains uppercase hex — must be 64 lowercase hex chars"
+    },
+    {
+      "vector_id": "quarantine_001",
+      "file": "quarantine/quarantine_001_future_schema.json",
+      "expected_outcome": "QUARANTINE",
+      "quarantine_reason": "UNKNOWN_SCHEMA_VERSION",
+      "description": "schema field is ph6.canon.v2 — outside ph6.canon.v1 validator scope"
+    }
+  ]
+}

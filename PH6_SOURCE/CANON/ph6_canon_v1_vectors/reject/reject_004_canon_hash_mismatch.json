@@ -1,0 +1,15 @@
+{
+  "vector_id": "reject_004",
+  "description": "canon_hash is all-zeros — does not match BLAKE2b-256 of canonical body; CANON_HASH_MISMATCH",
+  "expected_outcome": "REJECT",
+  "rejection_reason": "CANON_HASH_MISMATCH",
+  "schema": "ph6.canon.v1",
+  "frame_id": 1,
+  "payload_hash": "bb7a16998237ac39ba6a2eef66c3d7454f3b867ad2646cb49ffb64e48aa5df2d",
+  "hash_algorithm": "BLAKE2b-256",
+  "canon_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "_notes": {
+    "correct_canon_hash": "d516198b0de157a19ac0a4103afb39514eece3648518341fabb692a16c377520",
+    "note": "Same payload and frame_id as accept_001 but canon_hash replaced with zeros"
+  }
+}

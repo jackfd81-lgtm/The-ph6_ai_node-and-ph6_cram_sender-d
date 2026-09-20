@@ -1,0 +1,15 @@
+{
+  "vector_id": "reject_002",
+  "description": "hash_algorithm is SHA-256 — only BLAKE2b-256 is authoritative in ph6.canon.v1; WRONG_HASH_ALGORITHM",
+  "expected_outcome": "REJECT",
+  "rejection_reason": "WRONG_HASH_ALGORITHM",
+  "schema": "ph6.canon.v1",
+  "frame_id": 1,
+  "payload_hash": "bae17db2916f6077e111c262ce40bff8774ae84e281351af21b6690d6af19170",
+  "hash_algorithm": "SHA-256",
+  "canon_hash": "3301c379bc974648cc242ddc3cdcf7a99035b2ed18030adae91dac89910d81cb",
+  "_notes": {
+    "payload_source": "b'bad_algo'",
+    "note": "SHA-256 is a compatibility sidecar only; it MUST NOT appear as hash_algorithm in ph6.canon.v1"
+  }
+}

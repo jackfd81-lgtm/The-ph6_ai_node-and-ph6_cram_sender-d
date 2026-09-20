@@ -1,0 +1,15 @@
+{
+  "vector_id": "reject_006",
+  "description": "payload_hash contains uppercase hex — must be 64 lowercase hex chars; INVALID_PAYLOAD_HASH_FORMAT",
+  "expected_outcome": "REJECT",
+  "rejection_reason": "INVALID_PAYLOAD_HASH_FORMAT",
+  "schema": "ph6.canon.v1",
+  "frame_id": 1,
+  "payload_hash": "BB7A16998237AC39BA6A2EEF66C3D7454F3B867AD2646CB49FFB64E48AA5DF2D",
+  "hash_algorithm": "BLAKE2b-256",
+  "canon_hash": "d516198b0de157a19ac0a4103afb39514eece3648518341fabb692a16c377520",
+  "_notes": {
+    "lowercase_equivalent": "bb7a16998237ac39ba6a2eef66c3d7454f3b867ad2646cb49ffb64e48aa5df2d",
+    "note": "Uppercase hex is non-canonical; validator must enforce ^[0-9a-f]{64}$ pattern"
+  }
+}
