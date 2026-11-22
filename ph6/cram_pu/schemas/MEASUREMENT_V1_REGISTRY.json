@@ -1,0 +1,53 @@
+{
+  "status": "PROPOSED",
+  "proposed_by": "codex-lane2",
+  "ratified_by": null,
+  "adr": "ADR-MR1-20260929.md",
+  "entries": [
+    {
+      "id": "ph6.acquisition_commit.v1",
+      "schema_file": "acquisition_commit_v1.schema.json",
+      "semantics": "Durable pre-PSEUDO optical acquisition/context commitment"
+    },
+    {
+      "id": "ph6.measurement_record.v1",
+      "schema_file": "measurement_record_v1.schema.json",
+      "semantics": "Immutable full measurement/disposition/derived-payload record"
+    },
+    {
+      "id": "ph6.cram_commit.v2",
+      "schema_file": "cram_commit_v2.schema.json",
+      "semantics": "PASS marker commitment bound to measurement; never for DROP"
+    },
+    {
+      "id": "ph6.metrics.camera.fixedpoint.v2",
+      "validator": "ph6.measurement_record.camera_metrics",
+      "semantics": "Installed optical gates plus diagnostic entropy and explicit first-motion status"
+    },
+    {
+      "id": "ph6.pseudo_verdict.camera.v2",
+      "validator": "ph6.cram_pu.tools.cram_pu_schema_validate",
+      "semantics": "Post-preservation receipt; not replay authority"
+    },
+    {
+      "id": "ph6.pseudo_verdict.v3",
+      "validator": "ph6.cram_pu.tools.cram_pu_schema_validate",
+      "semantics": "Generic receipt without pre-preservation SoSo"
+    },
+    {
+      "id": "ph6.tok.cram_advisory.v2",
+      "validator": "ph6.tok.reconciliation",
+      "semantics": "Reconstructable snapshot with explicit provenance status"
+    },
+    {
+      "id": "ph6.measurement_run.v1",
+      "validator": "ph6.cram_pu.measurement_writer",
+      "semantics": "New namespace run/profile declaration"
+    },
+    {
+      "id": "ph6.lcc01_final_manifest.v3",
+      "validator": "ph6.cram_pu.tools.life_cram_lcc_01_live_camera",
+      "semantics": "Campaign receipt; no ratification or universal sensor qualification"
+    }
+  ]
+}

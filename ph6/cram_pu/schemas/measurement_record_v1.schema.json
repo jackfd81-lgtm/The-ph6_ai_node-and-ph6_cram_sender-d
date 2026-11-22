@@ -1,0 +1,667 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ph6:measurement_record_v1",
+  "$comment": "PROPOSED codex-lane2 2026-09-29; ratified_by=None. Structural checks only: run semantic replay and hash verification.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "ph6.measurement_record.v1"
+    },
+    "measurement_id": {
+      "type": "string",
+      "pattern": "^m_[0-9a-f]{64}$"
+    },
+    "sequence_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "acquisition": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "ph6.acquisition_commit.v1"
+        },
+        "measurement_id": {
+          "type": "string",
+          "pattern": "^m_[0-9a-f]{64}$"
+        },
+        "run_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "sequence_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "context": {
+          "type": "object",
+          "properties": {
+            "timestamp_utc": {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "Z$"
+            },
+            "wall_time_ns": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "monotonic_timestamp_ns": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "clock_scope": {
+              "const": "HOST_AFTER_CAMERA_READ_NOT_EXPOSURE"
+            },
+            "sensor": {
+              "type": "object",
+              "properties": {
+                "device": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "backend": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physical_identity": {
+                  "const": {
+                    "status": "UNKNOWN",
+                    "value": null
+                  }
+                },
+                "calibration": {
+                  "const": {
+                    "status": "UNKNOWN",
+                    "value": null
+                  }
+                }
+              },
+              "required": [
+                "device",
+                "backend",
+                "physical_identity",
+                "calibration"
+              ],
+              "additionalProperties": false
+            },
+            "capture_configuration": {
+              "type": "object",
+              "properties": {
+                "width_px": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "height_px": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "stated_fps_fp": {
+                  "oneOf": [
+                    {
+                      "const": {
+                        "status": "UNKNOWN",
+                        "value": null
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "const": "DRIVER_REPORTED"
+                        },
+                        "value": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "exposure_fp": {
+                  "oneOf": [
+                    {
+                      "const": {
+                        "status": "UNKNOWN",
+                        "value": null
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "const": "DRIVER_REPORTED"
+                        },
+                        "value": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "gain_fp": {
+                  "oneOf": [
+                    {
+                      "const": {
+                        "status": "UNKNOWN",
+                        "value": null
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "const": "DRIVER_REPORTED"
+                        },
+                        "value": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "white_balance_fp": {
+                  "oneOf": [
+                    {
+                      "const": {
+                        "status": "UNKNOWN",
+                        "value": null
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "const": "DRIVER_REPORTED"
+                        },
+                        "value": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "focus_fp": {
+                  "oneOf": [
+                    {
+                      "const": {
+                        "status": "UNKNOWN",
+                        "value": null
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "const": "DRIVER_REPORTED"
+                        },
+                        "value": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "width_px",
+                "height_px",
+                "stated_fps_fp",
+                "exposure_fp",
+                "gain_fp",
+                "white_balance_fp",
+                "focus_fp"
+              ],
+              "additionalProperties": false
+            },
+            "thermal_state": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "const": "UNKNOWN"
+                    },
+                    "host_temperature_millicelsius": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "host_temperature_millicelsius"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "const": "OBSERVED"
+                    },
+                    "host_temperature_millicelsius": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "host_temperature_millicelsius"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "io_state": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "const": "UNKNOWN"
+                    },
+                    "free_bytes": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "free_bytes"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "const": "OBSERVED"
+                    },
+                    "free_bytes": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "free_bytes"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "timestamp_utc",
+            "wall_time_ns",
+            "monotonic_timestamp_ns",
+            "clock_scope",
+            "sensor",
+            "capture_configuration",
+            "thermal_state",
+            "io_state"
+          ],
+          "additionalProperties": false
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "pixel_format": {
+          "const": "BGR8_UINT8"
+        },
+        "layout": {
+          "type": "object",
+          "properties": {
+            "order": {
+              "const": "C"
+            },
+            "row_stride_bytes": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "pixel_stride_bytes": {
+              "const": 3
+            },
+            "original_strides_bytes": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "required": [
+            "order",
+            "row_stride_bytes",
+            "pixel_stride_bytes",
+            "original_strides_bytes"
+          ],
+          "additionalProperties": false
+        },
+        "acquisition_byte_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "hash_algorithm": {
+          "const": "BLAKE2b-256"
+        },
+        "raw_ref": {
+          "type": "string",
+          "pattern": "^acquisitions/acquisition_[0-9]{10}\\.bin$"
+        },
+        "previous_acquisition_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "pseudo_version": {
+          "const": "ph6.pseudo_vis.installed_camera.v1"
+        },
+        "pseudo_configuration_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "record_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "schema",
+        "measurement_id",
+        "run_id",
+        "sequence_number",
+        "context",
+        "dimensions",
+        "pixel_format",
+        "layout",
+        "acquisition_byte_hash",
+        "hash_algorithm",
+        "raw_ref",
+        "previous_acquisition_hash",
+        "pseudo_version",
+        "pseudo_configuration_hash",
+        "record_hash"
+      ],
+      "additionalProperties": false
+    },
+    "acquisition_record_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "pseudo": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "ph6.pseudo_vis.installed_camera.v1"
+        },
+        "configuration": {
+          "const": {
+            "metric_scale": 10000,
+            "brightness_min_fp": 200000,
+            "brightness_max_fp": 2350000,
+            "laplacian_min_fp": 150000,
+            "motion_max_fp": 4000,
+            "motion_pixel_difference": 15,
+            "first_motion_policy": "ZERO_WITH_NO_PREDECESSOR_STATUS",
+            "entropy_gate": "DISABLED",
+            "jpeg_quality": 85
+          }
+        },
+        "configuration_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "library_versions": {
+          "type": "object",
+          "properties": {
+            "opencv": {
+              "type": "string",
+              "minLength": 1
+            },
+            "numpy": {
+              "type": "string",
+              "minLength": 1
+            },
+            "python": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "opencv",
+            "numpy",
+            "python"
+          ],
+          "additionalProperties": false
+        },
+        "inputs": {
+          "type": "object",
+          "properties": {
+            "original_acquisition_hash": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "previous_acquisition_hash": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "previous_measurement_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^m_[0-9a-f]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "entropy_input": {
+              "const": "BGR_TO_GRAY_ALL_PIXELS"
+            },
+            "laplacian_input": {
+              "const": "BGR_TO_GRAY_CV64F"
+            },
+            "motion_input": {
+              "const": "CURRENT_AND_PREVIOUS_GRAY_ABSDIFF_GT_15"
+            }
+          },
+          "required": [
+            "original_acquisition_hash",
+            "previous_acquisition_hash",
+            "previous_measurement_id",
+            "entropy_input",
+            "laplacian_input",
+            "motion_input"
+          ],
+          "additionalProperties": false
+        },
+        "metrics": {
+          "type": "object",
+          "properties": {
+            "metric_schema": {
+              "const": "ph6.metrics.camera.fixedpoint.v2"
+            },
+            "metric_scale": {
+              "const": 10000
+            },
+            "mean_brightness_fp": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "laplacian_var_fp": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "motion_fraction_fp": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "entropy_fp": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "motion_input_status": {
+              "enum": [
+                "NO_PREDECESSOR",
+                "MEASURED"
+              ]
+            }
+          },
+          "required": [
+            "metric_schema",
+            "metric_scale",
+            "mean_brightness_fp",
+            "laplacian_var_fp",
+            "motion_fraction_fp",
+            "entropy_fp",
+            "motion_input_status"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "version",
+        "configuration",
+        "configuration_hash",
+        "library_versions",
+        "inputs",
+        "metrics"
+      ],
+      "additionalProperties": false
+    },
+    "disposition": {
+      "enum": [
+        "PASS",
+        "DROP"
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "brightness_low",
+          "brightness_high",
+          "blur_low_detail",
+          "motion_high"
+        ]
+      }
+    },
+    "encoded_payload": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^payloads/frame_[0-9]{10}\\.bin$"
+        },
+        "hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "hash_algorithm": {
+          "const": "BLAKE2b-256"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "encoding": {
+          "type": "object",
+          "properties": {
+            "format": {
+              "const": "JPEG"
+            },
+            "quality": {
+              "const": 85
+            },
+            "encoder": {
+              "const": "OpenCV"
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "format",
+            "quality",
+            "encoder",
+            "version"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "path",
+        "hash",
+        "hash_algorithm",
+        "size_bytes",
+        "encoding"
+      ],
+      "additionalProperties": false
+    },
+    "previous_record_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "record_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "schema",
+    "measurement_id",
+    "sequence_number",
+    "acquisition",
+    "acquisition_record_hash",
+    "pseudo",
+    "disposition",
+    "reasons",
+    "encoded_payload",
+    "previous_record_hash",
+    "timestamp_utc",
+    "record_hash"
+  ],
+  "additionalProperties": false
+}

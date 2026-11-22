@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ph6:cram_commit_v2",
+  "$comment": "PROPOSED codex-lane2 2026-09-29; ratified_by=None. Structural checks only: run semantic replay and hash verification.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "ph6.cram_commit.v2"
+    },
+    "frame_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "hash_algorithm": {
+      "const": "BLAKE2b-256"
+    },
+    "verdict": {
+      "const": "PASS"
+    },
+    "authority": {
+      "const": "LANE_1"
+    },
+    "prev_cram_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "measurement_id": {
+      "type": "string",
+      "pattern": "^m_[0-9a-f]{64}$"
+    },
+    "measurement_record_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "acquisition_byte_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "cram_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "schema",
+    "frame_id",
+    "payload_hash",
+    "hash_algorithm",
+    "verdict",
+    "authority",
+    "prev_cram_hash",
+    "timestamp_utc",
+    "measurement_id",
+    "measurement_record_hash",
+    "acquisition_byte_hash",
+    "cram_hash"
+  ],
+  "additionalProperties": false
+}
