@@ -65,7 +65,9 @@ class ForensicClosureValidator:
 
     def run(self, packets) -> dict:
         memory_checks = {
-            "all_authority_none": all(p.authority == AUTHORITY for p in packets),
+            # Same key, stricter check: exact authority/lane/affects_* and no
+            # Lane-1 claims inside the payload (fails closed).
+            "all_authority_none": self._replay.validate_no_authority_escalation(packets),
             "all_lane_2": all(p.lane == LANE for p in packets),
             "no_replay_dependency": self._replay.validate_no_replay_dependency(packets),
             "no_pass_drop": self._replay.validate_no_pass_drop(packets),

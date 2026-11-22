@@ -6,19 +6,21 @@ from datetime import datetime, timezone
 from .constants import SSMT_WRITE_ROOT
 from .hash_chain import canon_hash
 from ph6.advisory_chain import append_checked, verified_tip
+from .write_boundary import SSMT_APPROVED_ROOT, confine_root, open_confined_dir
 
 
 GENESIS_HASH = "0" * 64
 
 
 class SSMTAuditLog:
-    def __init__(self, root: str = SSMT_WRITE_ROOT):
-        if not root.startswith("/var/ph6/mram-s/swarms/"):
-            raise RuntimeError("SSMT audit boundary violation")
+    def __init__(self, root: str = SSMT_WRITE_ROOT, *, approved_root: str = SSMT_APPROVED_ROOT):
+        # Canonical containment first; directories are created only afterwards,
+        # one component at a time without following symlinks.
+        real, base, parts = confine_root(root, approved_root)
+        os.close(open_confined_dir(base, parts, create=True))
 
-        self.root = root
-        self.audit_path = os.path.join(root, "ssmt_audit.jsonl")
-        os.makedirs(root, exist_ok=True)
+        self.root = real
+        self.audit_path = os.path.join(real, "ssmt_audit.jsonl")
 
     def _last_hash_and_seq(self):
         count, tail = verified_tip(self.audit_path, GENESIS_HASH, sequence=True)
