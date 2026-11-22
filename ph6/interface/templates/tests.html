@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Tests{% endblock %}
+{% block content %}
+<h1>Tests</h1>
+
+<div class="disabled-notice">
+  Safety: Camera DISABLED · USB Tests DISABLED · CAN HAT DEFERRED · Destructive actions BLOCKED
+</div>
+
+{% if result %}
+<div class="section">
+  <div class="card">
+    <h2>Result: {{ result.command }}</h2>
+    <div class="status-row">
+      <span class="status-label">Status</span>
+      <span class="status-value">
+        {% if result.status == 'PASS' %}
+          <span class="badge badge-pass">PASS</span>
+        {% else %}
+          <span class="badge badge-fail">FAIL (rc={{ result.returncode }})</span>
+        {% endif %}
+      </span>
+    </div>
+    {% if result.stdout %}
+    <div style="margin-top:12px;">
+      <div class="card-title">stdout</div>
+      <div class="output-box {{ 'output-pass' if result.status == 'PASS' else 'output-fail' }}">{{ result.stdout }}</div>
+    </div>
+    {% endif %}
+    {% if result.stderr %}
+    <div style="margin-top:12px;">
+      <div class="card-title">stderr</div>
+      <div class="output-box">{{ result.stderr }}</div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+<div class="grid-2">
+  <div class="card">
+    <h2>CRAM Internal Test</h2>
+    <p class="muted" style="font-size:12px;margin-bottom:12px;">
+      Runs ph6_internal_test.py (20 checks). Tests CRAM simulation, authority hash, PASS/DROP logic.
+    </p>
+    <form method="post" action="/run/internal-test">
+      <button type="submit">Run CRAM Test</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Governance Scan</h2>
+    <p class="muted" style="font-size:12px;margin-bottom:12px;">
+      Runs governance_drift_scan.py against PH6_SOURCE. Checks for CRITICAL/HIGH violations.
+    </p>
+    <form method="post" action="/run/governance">
+      <button type="submit">Run Governance Scan</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>AI Preflight Check</h2>
+    <p class="muted" style="font-size:12px;margin-bottom:12px;">
+      Runs ai_preflight_check.py. Verifies open items, stop-ship gates, lane authority.
+    </p>
+    <form method="post" action="/run/preflight">
+      <button type="submit">Run Preflight</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Python Compile Check</h2>
+    <p class="muted" style="font-size:12px;margin-bottom:12px;">
+      Runs compileall on ph6/. Verifies no syntax errors in the active source tree.
+    </p>
+    <form method="post" action="/run/compileall">
+      <button type="submit">Run Compile Check</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

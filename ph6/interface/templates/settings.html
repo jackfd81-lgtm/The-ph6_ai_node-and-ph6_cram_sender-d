@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+<h1>Settings</h1>
+
+{% if saved %}
+<div style="background:#1a3a1a;border:1px solid #2a5a2a;border-radius:8px;padding:10px 14px;margin-bottom:16px;color:#3fb950;">
+  Settings saved successfully.
+</div>
+{% endif %}
+
+<div class="card">
+  <form method="post" action="/settings">
+
+    <h2>Interface</h2>
+    <label>Interface name</label>
+    <input type="text" name="interface_name" value="{{ settings.interface_name }}">
+
+    <label>Bind host (127.0.0.1 = localhost only)</label>
+    <input type="text" name="bind_host" value="{{ settings.bind_host }}">
+
+    <label>Bind port</label>
+    <input type="number" name="bind_port" value="{{ settings.bind_port }}" min="1024" max="65535">
+
+    <h2 style="margin-top:20px;">Paths</h2>
+    <label>Repo root</label>
+    <input type="text" name="repo_root" value="{{ settings.repo_root }}">
+
+    <label>PH6_SOURCE directory</label>
+    <input type="text" name="ph6_source" value="{{ settings.ph6_source }}">
+
+    <label>Internal test script</label>
+    <input type="text" name="internal_test_script" value="{{ settings.internal_test_script }}">
+
+    <label>Report directory</label>
+    <input type="text" name="report_dir" value="{{ settings.report_dir }}">
+
+    <label>Zero 2W sentinel IP</label>
+    <input type="text" name="zero_sentinel_ip" value="{{ settings.zero_sentinel_ip }}">
+
+    <h2 style="margin-top:20px;">Hardware Safety Locks</h2>
+    <p class="muted" style="font-size:12px;margin-bottom:8px;">
+      These are disabled by default. Only enable after explicit operator decision.
+    </p>
+
+    <div class="form-check">
+      <input type="checkbox" name="camera_tests_enabled" id="cam" {% if settings.camera_tests_enabled %}checked{% endif %}>
+      <label for="cam">Camera tests enabled</label>
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" name="usb_tests_enabled" id="usb" {% if settings.usb_tests_enabled %}checked{% endif %}>
+      <label for="usb">USB tests enabled</label>
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" name="can_hat_enabled" id="can" {% if settings.can_hat_enabled %}checked{% endif %}>
+      <label for="can">CAN HAT enabled</label>
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" name="allow_destructive_actions" id="destr" {% if settings.allow_destructive_actions %}checked{% endif %}>
+      <label for="destr">Allow destructive actions</label>
+    </div>
+
+    <div style="margin-top:20px;">
+      <button type="submit">Save Settings</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

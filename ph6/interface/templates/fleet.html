@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}Fleet{% endblock %}
+{% block content %}
+<h1>Fleet</h1>
+
+<div class="fleet-node">
+  <div class="fleet-node-title">
+    Pi 5 Primary (CRAM-0 / ingest)
+    <span class="badge badge-pass">LOCAL</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Hostname</span>
+    <span class="status-value mono">{{ pi5.hostname }}</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">IP</span>
+    <span class="status-value mono">192.168.254.188</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Uptime</span>
+    <span class="status-value">{{ pi5.uptime }}</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Memory</span>
+    <span class="status-value">{{ pi5.memory }}</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">CPU Temp</span>
+    <span class="status-value">{{ pi5.cpu_temp }}</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Git HEAD</span>
+    <span class="status-value mono">{{ pi5.git_head }}</span>
+  </div>
+</div>
+
+<div class="fleet-node">
+  <div class="fleet-node-title">
+    Pi Zero 2W (Sentinel)
+    {% if zero.reachable %}
+      <span class="badge badge-pass">REACHABLE</span>
+    {% else %}
+      <span class="badge badge-warn">UNREACHABLE</span>
+    {% endif %}
+  </div>
+  <div class="status-row">
+    <span class="status-label">IP</span>
+    <span class="status-value mono">{{ zero.ip }}</span>
+  </div>
+  {% if zero.reachable %}
+  <div class="status-row">
+    <span class="status-label">Hostname</span>
+    <span class="status-value mono">{{ zero.hostname }}</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Model</span>
+    <span class="status-value">{{ zero.model }}</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Arch</span>
+    <span class="status-value mono">{{ zero.arch }}</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Uptime</span>
+    <span class="status-value">{{ zero.uptime }}</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Claude installed</span>
+    <span class="status-value">
+      {% if zero.claude_status == 'not installed' %}
+        <span class="badge badge-pass">OK: not installed</span>
+      {% else %}
+        <span class="badge badge-warn">{{ zero.claude_status }}</span>
+      {% endif %}
+    </span>
+  </div>
+  {% else %}
+  <div class="status-row">
+    <span class="status-label">Status</span>
+    <span class="status-value"><span class="badge badge-warn">WARN — SSH unreachable (not FAIL)</span></span>
+  </div>
+  {% if zero.error %}
+  <div class="status-row">
+    <span class="status-label">Error</span>
+    <span class="status-value muted">{{ zero.error }}</span>
+  </div>
+  {% endif %}
+  {% endif %}
+
+  {% if zero.hostname_warning %}
+  <div class="disabled-notice" style="margin-top:12px;">
+    ⚠ Hostname conflict: Zero 2W hostname may still be "jackjack" — rename to "jackjack2" (OI: ZERO2W)
+  </div>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Open Fleet Items</h2>
+  <div class="status-row">
+    <span class="status-label">ZERO2W hostname rename</span>
+    <span class="status-value"><span class="badge badge-warn">OPEN</span></span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Pi 3B+ Scout-P / authority</span>
+    <span class="status-value"><span class="badge badge-off">TBD</span></span>
+  </div>
+</div>
+{% endblock %}

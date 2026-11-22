@@ -1,0 +1,14 @@
+{
+  "interface_name": "PH6 Local Desktop",
+  "bind_host": "0.0.0.0",
+  "bind_port": 8765,
+  "repo_root": "/home/jack",
+  "ph6_source": "/home/jack/PH6_SOURCE",
+  "internal_test_script": "/home/jack/ph6/cram_pu/ph6_internal_test.py",
+  "report_dir": "/home/jack/PH6_SOURCE/DEPLOYMENT",
+  "zero_sentinel_ip": "192.168.254.189",
+  "camera_tests_enabled": false,
+  "usb_tests_enabled": false,
+  "can_hat_enabled": false,
+  "allow_destructive_actions": false
+}

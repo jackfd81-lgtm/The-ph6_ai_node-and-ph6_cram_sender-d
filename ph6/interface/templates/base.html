@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}PH6{% endblock %} — PH6 Local Desktop</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<nav>
+  <span class="brand">⬡ PH6</span>
+  <a href="/" {% if page == 'dashboard' %}class="active"{% endif %}>Dashboard</a>
+  <a href="/tests" {% if page == 'tests' %}class="active"{% endif %}>Tests</a>
+  <a href="/reports" {% if page == 'reports' %}class="active"{% endif %}>Reports</a>
+  <a href="/fleet" {% if page == 'fleet' %}class="active"{% endif %}>Fleet</a>
+  <a href="/settings" {% if page == 'settings' %}class="active"{% endif %}>Settings</a>
+</nav>
+<div class="container">
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>

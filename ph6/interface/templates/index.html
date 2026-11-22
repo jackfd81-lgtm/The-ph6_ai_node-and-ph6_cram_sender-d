@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+
+<div class="grid">
+  <div class="card">
+    <div class="card-title">Hostname</div>
+    <div class="card-value mono">{{ info.hostname }}</div>
+  </div>
+  <div class="card">
+    <div class="card-title">IP Address</div>
+    <div class="card-value mono">{{ info.ip }}</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Uptime</div>
+    <div class="card-value">{{ info.uptime }}</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Memory</div>
+    <div class="card-value">{{ info.memory }}</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Disk (root)</div>
+    <div class="card-value">{{ info.disk }}</div>
+  </div>
+  <div class="card">
+    <div class="card-title">CPU Temp</div>
+    <div class="card-value">{{ info.cpu_temp }}</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="card">
+    <h2>Repository</h2>
+    <div class="status-row">
+      <span class="status-label">Repo root</span>
+      <span class="status-value mono">{{ info.repo_root }}</span>
+    </div>
+    <div class="status-row">
+      <span class="status-label">HEAD</span>
+      <span class="status-value mono">{{ info.git_head }}</span>
+    </div>
+    <div class="status-row">
+      <span class="status-label">Working tree</span>
+      <span class="status-value">
+        {% if info.git_dirty %}
+          <span class="badge badge-warn">MODIFIED</span>
+        {% else %}
+          <span class="badge badge-pass">CLEAN</span>
+        {% endif %}
+      </span>
+    </div>
+    <div class="status-row">
+      <span class="status-label">PH6_SOURCE</span>
+      <span class="status-value">
+        {% if info.ph6_source_exists %}
+          <span class="badge badge-pass">EXISTS</span>
+        {% else %}
+          <span class="badge badge-fail">MISSING</span>
+        {% endif %}
+      </span>
+    </div>
+    <div class="status-row">
+      <span class="status-label">CRAM test script</span>
+      <span class="status-value">
+        {% if info.internal_test_exists %}
+          <span class="badge badge-pass">EXISTS</span>
+        {% else %}
+          <span class="badge badge-fail">MISSING</span>
+        {% endif %}
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="card">
+    <h2>Hardware Safety Locks</h2>
+    <div class="status-row">
+      <span class="status-label">Camera tests</span>
+      <span class="status-value">
+        {% if settings.camera_tests_enabled %}
+          <span class="badge badge-warn">ENABLED</span>
+        {% else %}
+          <span class="badge badge-off">CAMERA DISABLED</span>
+        {% endif %}
+      </span>
+    </div>
+    <div class="status-row">
+      <span class="status-label">USB tests</span>
+      <span class="status-value">
+        {% if settings.usb_tests_enabled %}
+          <span class="badge badge-warn">ENABLED</span>
+        {% else %}
+          <span class="badge badge-off">USB TESTS DISABLED</span>
+        {% endif %}
+      </span>
+    </div>
+    <div class="status-row">
+      <span class="status-label">CAN HAT</span>
+      <span class="status-value">
+        {% if settings.can_hat_enabled %}
+          <span class="badge badge-warn">ENABLED</span>
+        {% else %}
+          <span class="badge badge-off">CAN HAT DEFERRED</span>
+        {% endif %}
+      </span>
+    </div>
+    <div class="status-row">
+      <span class="status-label">Destructive actions</span>
+      <span class="status-value">
+        {% if settings.allow_destructive_actions %}
+          <span class="badge badge-fail">ENABLED — DANGER</span>
+        {% else %}
+          <span class="badge badge-pass">BLOCKED</span>
+        {% endif %}
+      </span>
+    </div>
+  </div>
+</div>
+
+{% if last_test %}
+<div class="section">
+  <div class="card">
+    <h2>Last CRAM Test Result</h2>
+    <div class="status-row">
+      <span class="status-label">Status</span>
+      <span class="status-value">
+        {% if last_test.status == 'PASS' %}
+          <span class="badge badge-pass">PASS</span>
+        {% else %}
+          <span class="badge badge-fail">{{ last_test.status }}</span>
+        {% endif %}
+      </span>
+    </div>
+    <div class="status-row">
+      <span class="status-label">Run at</span>
+      <span class="status-value muted">{{ last_test.run_at }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

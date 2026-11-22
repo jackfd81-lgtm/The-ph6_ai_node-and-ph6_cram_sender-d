@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<h1>Reports</h1>
+
+{% if report_content %}
+<div class="section">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+    <a href="/reports" class="btn btn-secondary">← Back to list</a>
+    <span class="muted mono">{{ report_name }}</span>
+  </div>
+  <div class="card">
+    <div class="output-box" style="max-height:600px;">{{ report_content }}</div>
+  </div>
+</div>
+
+{% elif reports %}
+<div class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Report</th>
+        <th>Size</th>
+        <th>Modified</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in reports %}
+      <tr>
+        <td><a class="report-link" href="/reports/{{ r.name }}">{{ r.name }}</a></td>
+        <td class="muted">{{ r.size }}</td>
+        <td class="muted mono">{{ r.modified }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% else %}
+<div class="card">
+  <p class="muted">No reports found in <span class="mono">{{ report_dir }}</span></p>
+</div>
+{% endif %}
+{% endblock %}
