@@ -1,5 +1,6 @@
 import json
 import os
+import uuid
 from dataclasses import asdict
 from .constants import SSMT_WRITE_ROOT
 from .audit_log import SSMTAuditLog
@@ -18,7 +19,7 @@ class AdvisoryAuditWriter:
 
         final_path = os.path.join(
             self.root,
-            f"{packet.swarm_id}_{int(packet.created_at)}.json",
+            f"{packet.swarm_id}_{int(packet.created_at)}_{uuid.uuid4().hex}.json",
         )
         tmp_path = final_path + ".tmp"
 

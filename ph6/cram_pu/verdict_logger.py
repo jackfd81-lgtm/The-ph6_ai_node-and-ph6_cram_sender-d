@@ -110,15 +110,16 @@ def _soso_advisory(metrics: dict) -> dict:
 
 
 class VerdictLogger:
-    def __init__(self, log_path: Path):
+    def __init__(self, log_path: Path, *, include_advisory: bool = True):
         self.log_path = log_path
+        self.include_advisory = include_advisory
         self._prev_payload: bytes | None = None
 
     def log(self, frame_id: int, payload: bytes,
             payload_hash: str) -> dict:
         metrics = _pseudo_metrics(payload, self._prev_payload)
         verdict, reasons = _pseudo_verdict(metrics)
-        soso = _soso_advisory(metrics)
+        soso = _soso_advisory(metrics) if self.include_advisory else None
         self._prev_payload = payload
         record = {
             "schema":              "ph6.pseudo_verdict.v2",
@@ -134,5 +135,8 @@ class VerdictLogger:
             "soso_advisory":       soso,
             "timestamp_utc":       time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         }
+        if not self.include_advisory:
+            record["schema"] = "ph6.pseudo_verdict.v3"
+            record.pop("soso_advisory")
         _append_jsonl(self.log_path, record)
         return record

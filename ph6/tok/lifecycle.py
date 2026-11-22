@@ -19,6 +19,7 @@ import json
 import time
 import tempfile
 import hashlib
+from ph6.advisory_chain import append_checked, read_checked
 from pathlib import Path
 from dataclasses import dataclass, asdict, field
 from typing import Dict, List, Optional, Any, Literal
@@ -193,23 +194,7 @@ class AdvisoryAudit:
         self.prev_event_hash = self._load_last_hash()
 
     def _load_last_hash(self) -> str:
-        if not self.audit_path.exists():
-            return "GENESIS"
-
-        last = None
-        with open(self.audit_path, "rb") as f:
-            for line in f:
-                if line.strip():
-                    last = line
-
-        if not last:
-            return "GENESIS"
-
-        try:
-            obj = json.loads(last.decode("utf-8"))
-            return obj.get("event_hash", "GENESIS")
-        except Exception:
-            return "GENESIS"
+        return read_checked(self.audit_path, "GENESIS")[1]
 
     def emit(self, event_type: str, payload: dict, event_time_ms: Optional[int] = None) -> dict:
         event = {
@@ -228,8 +213,8 @@ class AdvisoryAudit:
             "payload": payload,
         }
 
-        event["event_hash"] = blake2b256_hex(event)
-        append_jsonl(self.audit_path, event)
+        event.pop("prev_event_hash", None)
+        event = append_checked(self.audit_path, event, "GENESIS")
         self.prev_event_hash = event["event_hash"]
         return event
 

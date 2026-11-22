@@ -36,46 +36,14 @@ from ph6.cram_pu.crash_replay import (
 )
 from ph6.cram_pu.tools.cram_pu_schema_validate import validate_run_dir
 from ph6.cram_pu.schemas.canonical import canonical_json, blake2b_256
-from ph6.tok.lifecycle import TokenStore, RT, now_ms as tok_now_ms
+from ph6.tok.handoff import TokenHandoff
 
 
-class _TokSidecar:
-    """
-    Lane-2 advisory token sidecar.  Authority ZERO.  Writes MRAM-S only.
+class _TokSidecar(TokenHandoff):
+    """Compatibility name for the memory-only, nonblocking notification client."""
 
-    Any exception inside this class is caught and logged advisory — it must
-    never propagate into the Lane-1 verdict or CRAM path.
-    """
-
-    def __init__(self, mram_s_dir: Path, enabled: bool) -> None:
-        self.enabled = enabled
-        self._store: TokenStore | None = None
-        if enabled:
-            try:
-                self._store = TokenStore(str(mram_s_dir / "tokens"))
-            except Exception as e:
-                print(f"  TOK sidecar init failed (advisory): {e}", file=sys.stderr)
-
-    def on_pass(self, frame_id: int, cram_ref_hash: str) -> None:
-        if not self.enabled or self._store is None:
-            return
-        try:
-            rt = RT(
-                token_id=f"rt_{frame_id:010d}",
-                cram_ref_hash=cram_ref_hash,
-                timestamp_ms=tok_now_ms(),
-                object_class="",
-                bbox=[],
-                confidence=0.0,
-            )
-            self._store.add_rt(rt)
-        except Exception:
-            pass  # advisory failure — never surfaces to Lane-1
-
-    def rt_count(self) -> int:
-        if self._store is None:
-            return 0
-        return len(self._store.rt_store)
+    def __init__(self, mram_s_dir: Path, enabled: bool, **kwargs) -> None:
+        super().__init__(mram_s_dir.parent.parent / "cram_store", enabled, **kwargs)
 
 
 def _write_payload_bin(payloads_dir: Path, frame_id: int, payload: bytes) -> None:
@@ -136,7 +104,6 @@ def run(n_packets: int = 10, base_dir: Path | None = None,
     payloads_dir = cram_store / "payloads"
     mram_s_dir   = base_dir / "mram_s" / "swarms"
     cram_store.mkdir(parents=True, exist_ok=True)
-    mram_s_dir.mkdir(parents=True, exist_ok=True)
 
     paths = CRAMPaths(cram_store=cram_store, mram_s=mram_s_dir)
 
@@ -144,7 +111,7 @@ def run(n_packets: int = 10, base_dir: Path | None = None,
 
     departure_logger = DepartureLogger(paths.departure_log)
     arrival_logger   = ArrivalLogger(paths.arrival_log)
-    verdict_logger   = VerdictLogger(paths.verdict_log)
+    verdict_logger   = VerdictLogger(paths.verdict_log, include_advisory=False)
     shedding_logger  = SheddingLogger(paths)
     cram_writer      = CRAMWriter(cram_store)
 
@@ -185,15 +152,8 @@ def run(n_packets: int = 10, base_dir: Path | None = None,
             )
             counts["drop"] += 1
 
-        # 6. MRAM-S advisory sidecar — Authority NONE, zero Lane-1 path refs
-        advisory = {
-            "schema":    "ph6.mram_s.advisory.v1",
-            "frame_id":  frame_id,
-            "soso":      verd["soso_advisory"],
-            "authority": "NONE",
-            "timestamp": time.time(),
-        }
-        _atomic_write_json(mram_s_dir / f"S{frame_id:010d}.json", advisory)
+        # SoSo context is already preserved in the verdict record. Its separate
+        # advisory snapshot is reconstructed by the worker, outside acquisition.
 
     print(f"  Processed {len(packets)} packets: "
           f"PASS={counts['pass']}  DROP={counts['drop']}")
@@ -239,7 +199,7 @@ def run(n_packets: int = 10, base_dir: Path | None = None,
 
     # 11. Manifest
     manifest = {
-        "schema":    "ph6.cram_pu.live_manifest.v1",
+        "schema":    "ph6.cram_pu.live_manifest.v2",
         "milestone": "CRAM-PU-LIVE-1.0",
         "run_id":    run_id,
         "created_utc": ts,
@@ -260,6 +220,7 @@ def run(n_packets: int = 10, base_dir: Path | None = None,
         "result_set_hash":  result_set_hash,
         "tok_enabled":      tok_enabled,
         "tok_rt_count":     tok.rt_count(),
+        "tok_handoff":      tok.accounting(),
         "acceptance": {
             "continuity_required":         True,
             "replay_required":             True,
@@ -275,6 +236,7 @@ def run(n_packets: int = 10, base_dir: Path | None = None,
         "result_set_hash": result_set_hash,
         "tok_enabled":     tok_enabled,
         "tok_rt_count":    tok.rt_count(),
+        "tok_handoff":     tok.accounting(),
         "run_dir":         str(base_dir),
     }
 

@@ -4,7 +4,8 @@ import time
 from dataclasses import asdict
 from datetime import datetime, timezone
 from .constants import SSMT_WRITE_ROOT
-from .hash_chain import chain_event, canon_hash
+from .hash_chain import canon_hash
+from ph6.advisory_chain import append_checked, verified_tip
 
 
 GENESIS_HASH = "0" * 64
@@ -20,30 +21,17 @@ class SSMTAuditLog:
         os.makedirs(root, exist_ok=True)
 
     def _last_hash_and_seq(self):
-        if not os.path.exists(self.audit_path):
-            return GENESIS_HASH, 0
-
-        last = None
-        with open(self.audit_path, "r", encoding="utf-8") as f:
-            for line in f:
-                if line.strip():
-                    last = json.loads(line)
-
-        if last is None:
-            return GENESIS_HASH, 0
-
-        return last["event_hash"], last["event_seq"]
+        count, tail = verified_tip(self.audit_path, GENESIS_HASH, sequence=True)
+        return tail, count
 
     def append_packet_event(self, packet, packet_path: str) -> dict:
-        prev_hash, prev_seq = self._last_hash_and_seq()
 
         packet_dict = asdict(packet)
 
         event = {
             "schema":               "ph6.ssmt.audit_event.v1",
-            "event_seq":            prev_seq + 1,
             "event_type":           "SSMT_PACKET_WRITE",
-            "object_id":            f"{packet.swarm_id}:{int(packet.created_at)}",
+            "object_id":            os.path.basename(packet_path),
             "authority_hash":       canon_hash(packet_dict),
             "node_id":              packet.swarm_id,
             "stage":                "PACKET_WRITE",
@@ -58,18 +46,4 @@ class SSMTAuditLog:
             "dependency_for_replay": packet.dependency_for_replay,
         }
 
-        chained = chain_event(event, prev_hash)
-
-        with open(self.audit_path, "a", encoding="utf-8") as f:
-            f.write(json.dumps(
-                chained,
-                ensure_ascii=False,
-                sort_keys=True,
-                separators=(",", ":"),
-                allow_nan=False,
-            ))
-            f.write("\n")
-            f.flush()
-            os.fsync(f.fileno())
-
-        return chained
+        return append_checked(self.audit_path, event, GENESIS_HASH, sequence=True)

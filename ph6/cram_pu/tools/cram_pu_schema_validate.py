@@ -62,7 +62,7 @@ def _check_verdict(rec: dict, idx: int) -> List[str]:
     errs = []
     pfx  = f"verdict[{idx}]"
     if rec.get("schema") not in ("ph6.pseudo_verdict.v1", "ph6.pseudo_verdict.v2",
-                                  "ph6.pseudo_verdict.camera.v1"):
+                                  "ph6.pseudo_verdict.camera.v1", "ph6.pseudo_verdict.camera.v2", "ph6.pseudo_verdict.v3"):
         errs.append(f"{pfx} schema mismatch: {rec.get('schema')!r}")
     if not isinstance(rec.get("frame_id"), int):
         errs.append(f"{pfx} frame_id missing or not int")
@@ -73,7 +73,10 @@ def _check_verdict(rec: dict, idx: int) -> List[str]:
     if rec.get("hash_algorithm") != "BLAKE2b-256":
         errs.append(f"{pfx} hash_algorithm must be 'BLAKE2b-256', got {rec.get('hash_algorithm')!r}")
     soso = rec.get("soso_advisory", {})
-    if soso.get("authority") != "NONE":
+    if rec.get("schema") in ("ph6.pseudo_verdict.camera.v2", "ph6.pseudo_verdict.v3"):
+        if "soso_advisory" in rec:
+            errs.append(f"{pfx} advisory data forbidden in versioned measurement receipt")
+    elif soso.get("authority") != "NONE":
         errs.append(f"{pfx} soso_advisory.authority must be NONE — authority leakage detected")
     ih = rec.get("input_hash", "")
     if not HEX64.match(ih):
@@ -84,7 +87,7 @@ def _check_verdict(rec: dict, idx: int) -> List[str]:
 def _check_commit(rec: dict, path: str) -> List[str]:
     errs = []
     pfx  = f"commit[{path}]"
-    if rec.get("schema") != "ph6.cram_commit.v1":
+    if rec.get("schema") not in ("ph6.cram_commit.v1", "ph6.cram_commit.v2"):
         errs.append(f"{pfx} schema mismatch: {rec.get('schema')!r}")
     if not isinstance(rec.get("frame_id"), int):
         errs.append(f"{pfx} frame_id missing or not int")
@@ -151,6 +154,14 @@ def validate_run_dir(paths) -> List[str]:
     for i, rec in enumerate(_read_jsonl(paths.shedding_log)):
         errs.extend(_check_shedding(rec, i))
 
+    if (paths.cram_store / "measurement_run.json").exists():
+        try:
+            from ph6.measurement_record import read_measurements, validate_commit_binding
+            measurements = read_measurements(paths.cram_store)
+            for p in sorted(paths.cram_store.glob("cram_*.json")):
+                validate_commit_binding(json.loads(p.read_text()), measurements)
+        except (ValueError, OSError, KeyError, TypeError) as error:
+            errs.append("MEASUREMENT_RECORD_V1: " + str(error))
     return errs
 
 

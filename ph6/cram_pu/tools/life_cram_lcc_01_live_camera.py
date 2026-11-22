@@ -39,7 +39,8 @@ from ph6.cram_pu.arrival_logger import ArrivalLogger
 from ph6.cram_pu.crash_replay import (
     CRAMPaths, CrashReplayValidator, CRAMWriter, SheddingLogger,
 )
-from ph6.cram_pu._lane1_auth import mint_commit_authorization
+from ph6.cram_pu.measurement_writer import MeasurementWriter, acquisition_context
+from ph6.measurement_record import strict_load
 from ph6.cram_pu.tools.cram_pu_schema_validate import validate_run_dir
 from ph6.cram_pu.schemas.canonical import canonical_json, blake2b_256, fp_int
 from ph6.cram_pu.cram_pu_live import _TokSidecar, _atomic_write_json, _write_payload_bin
@@ -211,6 +212,8 @@ def run_lcc01(
     device: str,
     base_dir: Path,
     tok_enabled: bool = True,
+    metrics_log: Path | None = None,
+    advisory_socket: str | None = None,
 ) -> dict:
     run_id = str(uuid.uuid4())
     ts     = _ts()
@@ -220,24 +223,28 @@ def run_lcc01(
     mram_s_dir   = base_dir / "mram_s" / "swarms"
     resource_log = base_dir / "lcc01_resource_trace.jsonl"
 
-    for d in (cram_store, mram_s_dir):
-        d.mkdir(parents=True, exist_ok=True)
+    if cram_store.exists() and any(cram_store.iterdir()):
+        raise ValueError("New capture requires an empty evidence directory; existing evidence is immutable")
+    cram_store.mkdir(parents=True, exist_ok=True)
 
     paths = CRAMPaths(cram_store=cram_store, mram_s=mram_s_dir)
 
     # Ensure shedding_log exists even if no frames are dropped
     paths.shedding_log.touch()
 
-    tok          = _TokSidecar(mram_s_dir, enabled=tok_enabled)
+    socket_options = {"socket_path": advisory_socket} if advisory_socket is not None else {}
+    tok          = _TokSidecar(mram_s_dir, enabled=tok_enabled, **socket_options)
     dep_log      = DepartureLogger(paths.departure_log)
     arr_log      = ArrivalLogger(paths.arrival_log)
     shed_log     = SheddingLogger(paths)
-    cram_writer  = CRAMWriter(cram_store)
+    measurement_writer = MeasurementWriter(cram_store)
+    run_id = measurement_writer.run_id
 
     # Open camera
     try:
         cap, camera_inventory = _open_camera(device)
     except Exception as e:
+        measurement_writer.close()
         print(f"CAMERA OPEN FAILED: {e}", file=sys.stderr)
         return {"ok": False, "error": str(e), "run_dir": str(base_dir)}
 
@@ -257,7 +264,7 @@ def run_lcc01(
         "authority_rule": "Lane 1 decides. Lane 2 advises.",
         "pseudo_rule":    "PSEUDO-A issues PASS/DROP. Metrics image-space fixed-point.",
         "closure_rule":   "Maximum automatic result: PASS_PENDING_REVIEW.",
-        "real_source":    True,
+        "real_source":    camera_inventory["real_source"],
     })
 
     _append_jsonl(resource_log, _resource_snapshot(0))
@@ -268,7 +275,6 @@ def run_lcc01(
     frame_sizes_bytes:  list[int]   = []
     last_res_time = time.perf_counter()
 
-    prev_gray = None
     frames_done = 0
     session_start = time.perf_counter()
 
@@ -277,6 +283,8 @@ def run_lcc01(
 
     for frame_id in range(1, n_frames + 1):
         frame_t0 = time.perf_counter()
+        advisory_enqueued = None
+        tok_handoff_outcome = "BYPASSED"
 
         # Resource snapshot every 5 s
         if frame_t0 - last_res_time >= 5.0:
@@ -284,7 +292,6 @@ def run_lcc01(
             last_res_time = frame_t0
 
         # Capture
-        capture_timestamp_ns = time.time_ns()
         ok, frame = cap.read()
         if not ok or frame is None:
             counts["capture_fail"] += 1
@@ -295,77 +302,71 @@ def run_lcc01(
                 break
             continue
 
-        # Encode JPEG for durable payload storage
-        ret, buf = cv2.imencode(".jpg", frame, [cv2.IMWRITE_JPEG_QUALITY, 85])
-        if not ret:
-            counts["error"] += 1
-            critical_hits.append(f"frame {frame_id}: JPEG encode failed")
-            continue
-        jpeg_bytes = buf.tobytes()
-        frame_sizes_bytes.append(len(jpeg_bytes))
-
+        # Freeze original acquisition bytes/context before any PSEUDO computation.
         try:
+            context = acquisition_context(camera_inventory, cap, cram_store,
+                wall_time_ns=time.time_ns(), monotonic_ns=time.monotonic_ns())
+            measurement_writer.begin(frame, context)
+            measurement = measurement_writer.finalize()
+            frame_id = measurement["sequence_number"]
+            verdict = measurement["disposition"]
+            reasons = measurement["reasons"]
+            metrics = measurement["pseudo"]["metrics"]
+            payload_hash = measurement["encoded_payload"]["hash"]
+            jpeg_bytes = (cram_store / measurement["encoded_payload"]["path"]).read_bytes()
+            frame_sizes_bytes.append(len(jpeg_bytes))
+            counts["pass" if verdict == "PASS" else "drop"] += 1
+
+            # Compatibility logs describe already preserved evidence. They contain
+            # no SoSo interpretation; the immutable measurement is the replay input.
             dep = dep_log.log(frame_id, jpeg_bytes, media_type="CAMERA_JPEG")
-            arr = arr_log.log(frame_id, jpeg_bytes, dep["payload_hash"])
-            _write_payload_bin(payloads_dir, frame_id, jpeg_bytes)
-
-            if arr["transfer_status"] != "OK":
-                critical_hits.append(f"frame {frame_id}: HASH_MISMATCH on arrival")
-
-            # Real-camera PSEUDO metrics (image-space)
-            gray    = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            metrics = _pseudo_metrics_camera(frame, prev_gray)
-            verdict, reasons = _pseudo_verdict_camera(metrics)
-            soso    = _soso_advisory_camera(metrics)
-            prev_gray = gray
-
-            payload_hash = dep["payload_hash"]
+            arr_log.log(frame_id, jpeg_bytes, dep["payload_hash"])
             verdict_record = {
-                "schema":            "ph6.pseudo_verdict.camera.v1",
-                "frame_id":          frame_id,
-                "verdict":           verdict,
-                "reasons":           reasons,
-                "metrics":           metrics,
-                "motion_gate":       "REAL_CAMERA",
-                "input_hash":        payload_hash,
-                "hash_algorithm":    "BLAKE2b-256",
-                "fixed_point_scale": 10000,
-                "authority":         "LANE_1",
-                "soso_advisory":     soso,
-                "timestamp_utc":     _utc(),
-                "capture_timestamp_ns": capture_timestamp_ns,
+                "schema": "ph6.pseudo_verdict.camera.v2", "frame_id": frame_id,
+                "verdict": verdict, "reasons": reasons, "metrics": metrics,
+                "motion_gate": "REAL_CAMERA", "input_hash": measurement["acquisition"]["acquisition_byte_hash"],
+                "encoded_payload_hash": payload_hash, "hash_algorithm": "BLAKE2b-256",
+                "fixed_point_scale": 10000, "authority": "LANE_1",
+                "measurement_id": measurement["measurement_id"],
+                "measurement_record_hash": measurement["record_hash"],
+                "timestamp_utc": measurement["timestamp_utc"],
+                "capture_timestamp_ns": context["wall_time_ns"],
             }
             _append_jsonl(paths.verdict_log, verdict_record)
-
             if verdict == "PASS":
-                auth = mint_commit_authorization(
-                    frame_id=frame_id, payload_hash=payload_hash, verdict=verdict
-                )
-                cram_writer.commit(frame_id, payload_hash, verdict_record, auth)
-                tok.on_pass(frame_id, payload_hash)
-                counts["pass"] += 1
+                committed = strict_load(cram_store / f"cram_{frame_id:010d}.json")
+                # Best-effort admission only. No advisory callback or wait is allowed.
+                try:
+                    from ph6.ssmt.async_client import submit_reference
+                    advisory_enqueued = submit_reference(str(cram_store / f"cram_{frame_id:010d}.json"), committed["cram_hash"], **socket_options)
+                    tok_handoff_outcome = tok.on_pass(frame_id, payload_hash)
+                except Exception:
+                    # Advisory admission failed; CRAM is already preserved and
+                    # the next acquisition must still proceed. Discovery retries.
+                    advisory_enqueued = False
+                    tok_handoff_outcome = "FAILED"
             else:
-                shed_log.log(
-                    frame_id=frame_id,
-                    policy_ref="PH6-DROP-POLICY-v1",
-                    reason=("; ".join(reasons) if reasons else "drop_no_reason"),
-                )
-                counts["drop"] += 1
-
-            _atomic_write_json(mram_s_dir / f"S{frame_id:010d}.json", {
-                "schema":    "ph6.mram_s.advisory.v1",
-                "frame_id":  frame_id,
-                "soso":      soso,
-                "authority": "NONE",
-                "timestamp": time.time(),
-            })
-
+                shed_log.log(frame_id=frame_id, policy_ref="PH6-DROP-POLICY-v1",
+                             reason="; ".join(reasons) if reasons else "drop_no_reason")
         except Exception as e:
             counts["error"] += 1
-            critical_hits.append(f"frame {frame_id}: exception: {e}")
+            critical_hits.append(f"frame {frame_id}: preservation/receipt exception: {e}")
+            # A pending acquisition is observable and recoverable by the Lane-1
+            # writer. Never skip it and keep acquiring into an ambiguous chain.
+            break
 
         frames_done += 1
-        frame_latencies_ms.append((time.perf_counter() - frame_t0) * 1000.0)
+        frame_end = time.perf_counter()
+        frame_latencies_ms.append((frame_end - frame_t0) * 1000.0)
+        if metrics_log is not None:
+            # Test-only host timing, not a driver sequence or exposure timestamp.
+            with metrics_log.open("a", encoding="utf-8") as trace:
+                trace.write(json.dumps({"seq": frame_id,
+                    "latency_sec": frame_end - frame_t0, "mono_ts": frame_end,
+                    "frame_start_mono": frame_t0, "advisory_enqueued": advisory_enqueued,
+                    "tok_handoff_outcome": tok_handoff_outcome,
+                    "error_count": counts["error"], "capture_fail_count": counts["capture_fail"]},
+                    sort_keys=True, allow_nan=False) + "\n")
 
         if frame_id % 100 == 0:
             elapsed = time.perf_counter() - session_start
@@ -376,6 +377,7 @@ def run_lcc01(
             sys.stdout.flush()
 
     cap.release()
+    measurement_writer.close()
 
     session_end  = time.perf_counter()
     duration_s   = session_end - session_start
@@ -475,8 +477,9 @@ def run_lcc01(
 
     # Final manifest
     manifest = {
-        "schema":              "ph6.lcc01_final_manifest.v1",
+        "schema":              "ph6.lcc01_final_manifest.v3",
         "campaign_id":         "LCC-01",
+        "measurement_schema":  "ph6.measurement_record.v1",
         "run_id":              run_id,
         "started_utc":         ts,
         "completed_utc":       _utc(),
@@ -503,12 +506,13 @@ def run_lcc01(
         "rsync_pass":          rsync_observation["rsync_pass"],
         "tok_enabled":         tok_enabled,
         "tok_rt_count":        tok.rt_count(),
+        "tok_handoff":         tok.accounting(),
         "overall":             overall,
         "state":               state,
         "closed":              False,
-        "real_source":         True,
+        "real_source":         camera_inventory["real_source"],
         "acceptance": {
-            "real_camera_confirmed":       True,
+            "real_camera_confirmed":       camera_inventory["real_source"],
             "minimum_frame_count_reached": valid_run,
             "cram_commits_present":        counts["pass"] > 0,
             "authority_leakage_scan_pass": leakage_scan["scan_pass"],
@@ -537,6 +541,8 @@ if __name__ == "__main__":
                     help="frames to capture (300=smoke, 1200=standard, 3600=evidence)")
     ap.add_argument("--device",       type=str,  default="/dev/video0")
     ap.add_argument("--run-dir",      type=Path, default=None)
+    ap.add_argument("--metrics-log", type=Path, default=None)
+    ap.add_argument("--advisory-socket", default=None, help="Explicit bounded notification socket; discovery remains authoritative")
     ap.add_argument("--tok-disabled", action="store_true", default=False)
     args = ap.parse_args()
 
@@ -560,6 +566,8 @@ if __name__ == "__main__":
         device=args.device,
         base_dir=run_dir,
         tok_enabled=not args.tok_disabled,
+        metrics_log=args.metrics_log,
+        advisory_socket=args.advisory_socket,
     )
 
     print(f"\n{'='*70}")
