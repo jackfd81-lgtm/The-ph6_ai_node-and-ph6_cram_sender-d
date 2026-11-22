@@ -82,3 +82,22 @@ PH6_SOURCE/TESTS/DUAL_USB_CAMERA/mixed_10min/json/esp_s1_sensor_status.jsonl
 # ESP-CAM context run raw CRAM evidence — frame-by-frame JSONL, not committed
 PH6_SOURCE/TESTS/DUAL_USB_CAMERA/esp_cam_soso_3000/**/cram_*.jsonl
 PH6_SOURCE/TESTS/DUAL_USB_CAMERA/esp_cam_soso_3000/**/esp_s1_sensor_status.jsonl
+
+# Generated evidence/runtime output under ph6/ (added 2026-11-21, PROPOSED, ratified_by=null).
+# Only affects UNTRACKED files: evidence already committed under these paths stays tracked.
+# Inspected 2026-11-21: 144,838 untracked files in validation_runs/ and 12,477 in runtime/
+# (json/.blake2b/.bin/.yuv/.png/.wav run output, reports, 2 run-specific analysis scripts).
+# Real untracked source in ph6/cram_pu (schemas/, tests/, tools/, measurement_writer.py) is NOT matched.
+ph6/cram_pu/validation_runs/
+ph6/cram_pu/runtime/
+ph6/cram_pu/cram_pu/
+ph6/validation_runs/
+
+# Virtualenvs and test caches
+venv/
+.venv/
+*-venv/
+.pytest_cache/
+
+# Lane-2 review scratch (test copies, worktrees, evidence logs)
+ph6_review/
